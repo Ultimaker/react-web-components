@@ -4,19 +4,20 @@ import * as classNames from 'classnames';
 import Spinner from './spinner';
 
 export type ButtonType = 'submit' | 'button';
+export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'circle' | 'pill';
 
 export interface ButtonProps {
   onClickHandler?: (e: React.MouseEvent<HTMLElement>) => void;
-  additionalClasses?: string;
   disabled?: boolean;
-  type?: ButtonType
+  type?: ButtonType;
+  style?: ButtonStyle;
   showSpinner?: boolean;
 }
 
 const Button: React.StatelessComponent<ButtonProps> =
-  ({ onClickHandler, additionalClasses, disabled, type = 'button', showSpinner, children }) => {
+  ({ onClickHandler, disabled, type, style, showSpinner, children }) => {
 
-    const classes = classNames('btn', { 'disabled': disabled }, { 'waiting': showSpinner }, additionalClasses);
+    const classes = classNames(`btn btn--${style}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
     const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();
@@ -37,7 +38,8 @@ const Button: React.StatelessComponent<ButtonProps> =
   };
 
 Button.defaultProps = {
-  type: 'button'
+  type: 'button',
+  style: 'primary'
 };
 
 export default Button;
