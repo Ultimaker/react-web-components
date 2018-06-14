@@ -10,7 +10,7 @@ export interface DropDownMenuItemProps {
 const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
   ({ active, disabled, onClickHandler, children }) => {
 
-    const _handleClick = (e) => {
+    const _onClickHandler = (e: React.MouseEvent<HTMLLIElement>) => {
       if(disabled){
         e.stopPropagation();
       }
@@ -19,7 +19,7 @@ const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
       }
     }
 
-    return <li className={classNames({ disabled, active })} onClick={_handleClick}>
+    return <li className={classNames({ disabled, active })} onClick={_onClickHandler}>
       {children}
     </li>
 

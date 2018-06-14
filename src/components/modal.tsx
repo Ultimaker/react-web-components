@@ -25,15 +25,15 @@ export default class Modal extends React.Component<ModalProps, {}> {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     document.body.classList.remove('noscroll');
   }
 
-  _stopPropagation(e): void {
+  _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
     e.stopPropagation();
   }
 
-  _handleOverlayClick(e): void {
+  _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {
     const { onOverlayClickHandler } = this.props;
 
     this._stopPropagation(e);

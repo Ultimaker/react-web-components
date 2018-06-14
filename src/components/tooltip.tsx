@@ -25,12 +25,12 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
     this._setTooltipOffset = this._setTooltipOffset.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this._setTooltipOffset();
     window.addEventListener("resize", this._setTooltipOffset);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     window.removeEventListener("resize", this._setTooltipOffset);
   }
 
@@ -73,7 +73,7 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
 
   }
 
-  _getElementDetails(el) {
+  _getElementDetails(el: any): any {
     // get global positions of a html element 
     el = el.getBoundingClientRect();
     return {

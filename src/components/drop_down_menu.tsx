@@ -27,7 +27,7 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
     });
   }
 
-  _stopPropagation(e): void {
+  _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
     e.stopPropagation()
   }
 

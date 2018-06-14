@@ -51,12 +51,12 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     };
 
     this._setPopupBodyClass = this._setPopupBodyClass.bind(this);
-    this._handleChange = this._handleChange.bind(this);
+    this._onChangeHandler = this._onChangeHandler.bind(this);
     this._primaryBtnHandler = this._primaryBtnHandler.bind(this);
     this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this._focusOnPromptInput();
     this._setPopupBodyClass();
     window.addEventListener("resize", this._setPopupBodyClass);
@@ -67,11 +67,11 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     window.removeEventListener("resize", this._setPopupBodyClass);
   }
 
-  _focusOnPromptInput() {
+  _focusOnPromptInput(): void {
     if (this.promptInput) {
       this.promptInput.focus();
     }
@@ -90,7 +90,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     }
   }
 
-  _primaryBtnHandler(event): void {
+  _primaryBtnHandler(): void {
     event.preventDefault()
 
     const inputValue = this.state.inputValue;
@@ -129,8 +129,8 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     this.setState({ secondaryBtnSpinner: true });
   }
 
-  _handleChange(event): void {
-    this.setState({ inputValue: event.target.value, validationError: false });
+  _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>): void {
+    this.setState({ inputValue: e.target.value, validationError: false });
   }
 
   _getBtnClass(type: ButtonType): string {
@@ -165,7 +165,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
                 type={inputType ? inputType : null}
                 min={inputMin ? inputMin : null}
                 max={inputMax ? inputMax : null}
-                onChange={this._handleChange}
+                onChange={this._onChangeHandler}
                 placeholder={promptPlaceholder}
                 className={validationError ? 'error' : ''}
                 ref={input => this.promptInput = input} />

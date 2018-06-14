@@ -110,7 +110,7 @@ export default class ContextMenu extends React.Component<ContextMenuProps, Conte
     return menuStyle;
   }
 
-  _stopPropagation(e): void {
+  _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
     e.stopPropagation()
   }
 
