@@ -1,20 +1,20 @@
 // Copyright (c) 2018 Ultimaker B.V.
-const base = require('../../webpack.config.dev.js');
+const path = require('path')
+const merge = require('webpack-merge');
 
-const DEV_BASE_DIR = path.resolve(__dirname, 'app/dev');
+const commonsBase = require("../../webpack.config.common.js");
+const devBase = require('../../webpack.config.dev.js');
 
+const webpackArgs = [[path.resolve(__dirname, "app/assets"), path.resolve(__dirname, "../../src")], path.resolve(__dirname, "app/static"), path.resolve(__dirname, "app/assets/index.js")]
 
-module.exports = merge(base, {
+const commons = commonsBase(...webpackArgs)
+const dev = devBase(...webpackArgs)
+
+module.exports = merge(commons, dev, {
     devServer: {
-        contentBase: DEV_BASE_DIR,
+        contentBase: path.resolve(__dirname, './dev'),
         host: '127.0.0.1',
         port: 8000,
-        historyApiFallback: true,
-        proxy: [
-            {
-                target: 'http://127.0.0.1:5000',
-                secure: false
-            }
-        ]
-    },
+        historyApiFallback: true
+    }
 })

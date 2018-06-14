@@ -2,3 +2,4 @@
 node_modules
 static
 tmp
+yarn-error.log
