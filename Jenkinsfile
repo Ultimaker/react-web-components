@@ -14,6 +14,6 @@ node(defaultNode)
     // Build the Docker image for this service in order to run the tests
     stage("Build")
     {
-        sh "docker build ultimaker/react-web-components:test ."
+        sh "docker build -t ultimaker/react-web-components:test ."
     }
 }
