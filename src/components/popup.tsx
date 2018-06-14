@@ -61,7 +61,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     this._setPopupBodyClass();
     window.addEventListener("resize", this._setPopupBodyClass);
 
-    if(this.props.inputType === 'number' && this.props.inputMin){
+    if (this.props.inputType === 'number' && this.props.inputMin) {
       this.setState({ inputValue: this.props.inputMin.toString() });
       this.promptInput.value = this.props.inputMin.toString();
     }
@@ -182,7 +182,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
           <Button
             additionalClasses={primaryBtnClass}
             disabled={validationError || secondaryBtnSpinner}
-            submit={true}
+            type="submit"
             showSpinner={primaryBtnSpinner}>
 
             {primaryBtnText}
