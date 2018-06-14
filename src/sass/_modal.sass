@@ -1,0 +1,22 @@
+.modal
+  min-width: $min-window-width
+  position: fixed
+  z-index: 999999
+  left: 0
+  top: 0
+  bottom: 0
+  right: 0
+  overflow: auto
+  background-color: $modal-overlay-color
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
+  align-items: center
+
+  .modal__content
+    position: relative
+    display: flex
+    max-height: 90vh
+    margin: -2vh 3vw 0
+    background-color: $color-background
+    box-shadow: 0 1.2rem 2.2rem 0 rgba(0, 0, 0, 0.21)

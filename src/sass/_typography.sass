@@ -1,0 +1,64 @@
+@mixin font-size-header-1
+  font-size: 1.8rem
+  
+  @include respond-to(md)
+    font-size: 2.2rem
+
+@mixin font-size-header-2
+  font-size: 1.6rem
+  
+  @include respond-to(md)
+    font-size: 1.8rem
+
+@mixin font-size-text-1
+  font-size: 1.4rem
+  
+  @include respond-to(md)
+    font-size: 1.6rem
+
+@mixin font-size-text-2
+  font-size: 1.4rem
+
+@mixin font-size-text-3
+  font-size: 1.2rem
+
+h2
+  font-family: $font-primary-medium
+  line-height: 1.24
+  margin: 3.6rem 0 2.4rem
+  font-weight: normal
+  text-align: center
+  @include font-size-header-1
+
+  @include respond-to(md)
+    margin: 6rem 0 3.6rem
+
+h3
+  @include font-size-header-2
+  font-family: $font-primary
+  font-weight: normal
+
+
+p
+  margin: 0 0 2.4rem
+
+.uppercase
+  text-transform: uppercase
+
+.truncate
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  width: 100%
+
+.text-center
+  text-align: center
+
+.text-right
+  text-align: right
+
+.empty-state
+  text-align: center
+  padding: 0 2.4rem
+  margin-bottom: 3.6rem
+  width: 100%

@@ -1,0 +1,27 @@
+input
+  width: 100%
+  padding: 1.2rem 0.9rem
+  border: none
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5)
+  font-size: 1.6rem
+  line-height: 2.2rem
+  outline: none
+  transition: all 0.2s ease-out
+  border-radius: 0
+
+  &:hover, &:focus, &:active, &.error
+    border-bottom-width: 2px
+    padding-bottom: 1.1rem
+
+
+  &:hover
+    border-bottom-color: rgba(0, 0, 0, 0.88)
+
+  &:focus, &:active
+    border-bottom-color: $color-border-active
+
+  &.error
+    border-bottom-color: $color-red
+
+  &::placeholder
+    color: rgba(0, 0, 0, 0.35)

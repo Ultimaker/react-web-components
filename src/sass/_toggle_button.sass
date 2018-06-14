@@ -1,0 +1,44 @@
+.toggle-button
+  left: -9999px
+  position: absolute
+
+.toggle-button+label
+  padding-right: 6.2rem
+  position: relative
+
+.toggle-button+label:before
+  background-color: #d8d8d8
+  border-radius: 9999px
+  content: ''
+  cursor: pointer
+  display: block
+  height: 2.4rem
+  margin-top: 0.1rem
+  right: 0
+  position: absolute
+  top: 50%
+  transform: translate(0, -50%)
+  transition: background-color 150ms ease-out
+  width: 6.2rem
+
+.toggle-button:checked+label:before
+  background-color: $color-anchor
+
+.toggle-button+label:after
+  background-color: #fff
+  border-radius: 50%
+  content: ''
+  cursor: pointer
+  display: block
+  height: 3rem
+  margin-top: 0.1rem
+  position: absolute
+  right: 3.2rem
+  transition: right 150ms ease-out
+  top: 50%
+  transform: translate(0, -50%)
+  width: 3rem
+  box-shadow: 0 0.1rem 0.5rem 0 rgba(0, 0, 0, 0.3)
+
+.toggle-button:checked+label:after
+  right: 0
