@@ -35,7 +35,6 @@ export function createApp(domId: string, AppComponent, localesPath: string) {
             _renderApp(domId, AppComponent);
         })
     }
-    
 }
 
 /**

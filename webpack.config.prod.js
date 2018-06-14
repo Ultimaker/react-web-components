@@ -10,7 +10,7 @@ module.exports = (sourceDirs, buildDir, entryPoint) => {
             new CleanWebpackPlugin([buildDir, "tmp"]),
             new ExtractTextPlugin({ filename: "main.css", allChunks: true }),
             new UglifyJSPlugin({ sourceMap: true }),
-            new webpack.DefinePlugin({ "process.env.NODE_ENV": "production" })
+            new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") })
         ],
         module: {
             rules: [{
