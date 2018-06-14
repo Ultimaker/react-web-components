@@ -33,7 +33,7 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
 
   render(): JSX.Element {
 
-    const { label } = this.props;
+    const { label, children } = this.props;
     const { showMenu } = this.state;
 
     const dropDownMenuClasses = classNames('drop-down-menu', { 'visible': showMenu });
@@ -51,7 +51,7 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
         <div ref="menu" className="menu">
           <UnmountClosed isOpened={showMenu} springConfig={{ stiffness: 370, damping: 35 }}>
             <ul>
-              {this.props.children}
+              {children}
             </ul>
           </UnmountClosed>
         </div>

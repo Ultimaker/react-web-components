@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 import { TransitionMotion, spring } from 'react-motion';
 
 export interface ModalProps {
@@ -14,8 +13,10 @@ export interface MotionStyle {
 export default class Modal extends React.Component<ModalProps, {}> {
 
   componentDidUpdate(prevProps: ModalProps): void {
-    if (prevProps.isOpen !== this.props.isOpen) {
-      if (this.props.isOpen) {
+    const { isOpen } = this.props;
+
+    if (prevProps.isOpen !== isOpen) {
+      if (isOpen) {
         document.body.classList.add('noscroll');
       }
       else {
@@ -33,10 +34,12 @@ export default class Modal extends React.Component<ModalProps, {}> {
   }
 
   _handleOverlayClick(e): void {
+    const { onOverlayClickHandler } = this.props;
+
     this._stopPropagation(e);
 
-    if (this.props.onOverlayClickHandler) {
-      this.props.onOverlayClickHandler();
+    if (onOverlayClickHandler) {
+      onOverlayClickHandler();
     }
   }
 
@@ -62,7 +65,7 @@ export default class Modal extends React.Component<ModalProps, {}> {
 
   render(): JSX.Element {
 
-    const { isOpen, children } = this.props;
+    const { isOpen } = this.props;
 
     const interpolatedStyle = {
       key: 'modal',

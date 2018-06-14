@@ -74,7 +74,7 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
   }
 
   _getElementDetails(el) {
-    // get global postions of a html element 
+    // get global positions of a html element 
     el = el.getBoundingClientRect();
     return {
       left: el.left + window.scrollX,
