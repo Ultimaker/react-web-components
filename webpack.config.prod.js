@@ -1,3 +1,4 @@
+// Copyright (c) 2018 Ultimaker B.V.
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
