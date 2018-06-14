@@ -149,61 +149,63 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     const primaryBtnClass = this._getBtnClass(primaryBtnType);
     const secondaryBtnClass = this._getBtnClass(secondaryBtnType);
 
-    return <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
+    return <Modal>
+      <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
 
-      <div className="popup__header">
-        {headerText}
-      </div>
-
-      <div className="popup__body" ref={popupBody => this.popupBody = popupBody} >
-        {splitTextByNewLine(bodyText)}
-
-        {type === 'prompt' &&
-          <div className="prompt-input">
-            <input
-              type={inputType ? inputType : null}
-              min={inputMin ? inputMin : null}
-              max={inputMax ? inputMax : null}
-              onChange={this._handleChange}
-              placeholder={promptPlaceholder}
-              className={validationError ? 'error' : ''}
-              ref={input => this.promptInput = input} />
-
-            {showValidationError &&
-              <div className="validation-error">{validationErrorMsg}</div>
-            }
-          </div>
-        }
-      </div>
-
-      <div className="popup__actions">
-
-        <div className="btn__container">
-          <Button
-            additionalClasses={primaryBtnClass}
-            disabled={validationError || secondaryBtnSpinner}
-            type="submit"
-            showSpinner={primaryBtnSpinner}>
-
-            {primaryBtnText}
-          </Button>
+        <div className="popup__header">
+          {headerText}
         </div>
 
-        {secondaryBtnText &&
+        <div className="popup__body" ref={popupBody => this.popupBody = popupBody} >
+          {splitTextByNewLine(bodyText)}
+
+          {type === 'prompt' &&
+            <div className="prompt-input">
+              <input
+                type={inputType ? inputType : null}
+                min={inputMin ? inputMin : null}
+                max={inputMax ? inputMax : null}
+                onChange={this._handleChange}
+                placeholder={promptPlaceholder}
+                className={validationError ? 'error' : ''}
+                ref={input => this.promptInput = input} />
+
+              {showValidationError &&
+                <div className="validation-error">{validationErrorMsg}</div>
+              }
+            </div>
+          }
+        </div>
+
+        <div className="popup__actions">
+
           <div className="btn__container">
             <Button
-              additionalClasses={secondaryBtnClass}
-              disabled={primaryBtnSpinner}
-              onClickHandler={this._secondaryBtnHandler}
-              showSpinner={secondaryBtnSpinner}>
+              additionalClasses={primaryBtnClass}
+              disabled={validationError || secondaryBtnSpinner}
+              type="submit"
+              showSpinner={primaryBtnSpinner}>
 
-              {secondaryBtnText}
+              {primaryBtnText}
             </Button>
           </div>
-        }
 
-      </div>
+          {secondaryBtnText &&
+            <div className="btn__container">
+              <Button
+                additionalClasses={secondaryBtnClass}
+                disabled={primaryBtnSpinner}
+                onClickHandler={this._secondaryBtnHandler}
+                showSpinner={secondaryBtnSpinner}>
 
-    </form>
+                {secondaryBtnText}
+              </Button>
+            </div>
+          }
+
+        </div>
+
+      </form>
+    </Modal>
   };
 }
