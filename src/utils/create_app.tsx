@@ -14,7 +14,7 @@ declare const module: any;
  * @param appComponent The main application component to generate the app with.
  * @param localesPath The directory location of the translation files.
  */
-export function createApp(domId: string, appComponent: React.Component, localesPath: string): React.Component {
+export function createApp(domId: string, AppComponent, localesPath: string) {
     
     // Set locale
     let locale = I18n.getLocale();
@@ -25,14 +25,14 @@ export function createApp(domId: string, appComponent: React.Component, localesP
         path: localesPath,
         locale: locale,
         complete: () => {
-            _renderApp(domId, appComponent);
+            _renderApp(domId, AppComponent);
         }
     });
 
     // Hot Module Replacement API
     if (module.hot) {
         module.hot.accept("", () => {
-            _renderApp(domId, appComponent);
+            _renderApp(domId, AppComponent);
         })
     }
     
@@ -43,11 +43,11 @@ export function createApp(domId: string, appComponent: React.Component, localesP
  * @param domId The DOM element on which to render the app.
  * @param appComponent The root app component.
  */
-function _renderApp(domId: string, appComponent: React.Component) {
+function _renderApp(domId: string, AppComponent) {
     ReactDOM.render(
         <AppContainer>
             <BrowserRouter>
-                {appComponent}
+                <AppComponent />
             </BrowserRouter>
         </AppContainer>, document.getElementById(domId)
     )
