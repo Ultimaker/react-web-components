@@ -1,33 +1,30 @@
 {
-  "name": "print-cluster",
+  "name": "react-web-components",
   "version": "1.0.0",
-  "description": "Ultimaker Print Cluster",
+  "description": "Ultimaker's unified react component and style library for front-end web",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "build-rest-api": "python3 extract_swagger_api.py && node swagger_to_refetch_ts.js",
     "build": "yarn build-rest-api && webpack --config webpack.config.prod.js",
-    "extract-pot": "node extract_pot.js",
-    "start": "yarn build-rest-api && webpack-dev-server --open --inline --hot --config webpack.config.dev.js"
+    "extract-pot": "node extract_pot.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ultimaker/print-cluster.git"
+    "url": "git+https://github.com/Ultimaker/react-web-components.git"
   },
   "author": "Ultimaker",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ultimaker/print-cluster/issues"
+    "url": "https://github.com/Ultimaker/react-web-components/issues"
   },
-  "homepage": "https://github.com/Ultimaker/print-cluster#readme",
+  "homepage": "https://github.com/Ultimaker/react-web-components#readme",
   "dependencies": {
     "array.prototype.includes": "^1.0.0",
     "classnames": "^2.2.5",
     "d3": "5.0.0",
     "d3-tip": "0.7.1",
-    "dexie": "^2.0.3",
     "gettext-extractor": "^3.2.1",
     "gettext-parser": "^1.3.0",
     "lodash": "^4.17.10",
@@ -37,7 +34,6 @@
     "react-collapse": "^4.0.3",
     "react-dom": "^16.3.1",
     "react-motion": "^0.5.2",
-    "react-refetch": "^1.0.0",
     "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
