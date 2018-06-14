@@ -1,48 +1,52 @@
+// Copyright (c) 2018 Ultimaker B.V.
 const webpack = require("webpack");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require("path");
 
-const BUILD_DIR = path.resolve(__dirname, "app/static");
-const APP_DIR = path.resolve(__dirname, "app/assets");
-const TMP_DIR = path.resolve(__dirname, "tmp");
+module.exports = (sourceDirs, buildDir, entryPoint) => {
 
-module.exports = {
+    resourceTypes = ["fonts", "images", "locales"]
+    assetsToCopy = []
+    
+    for (sourceDir of sourceDirs) {
+        for (type of resourceTypes) {
+            assetsToCopy.push({
+                from: `${sourceDir}/${type}`,
+                to: `${buildDir}/${type}`,
+            })
+        }
+    }
 
-  entry: [
-    "react-hot-loader/patch",
-    APP_DIR + "/javascripts/index.js"
-  ],
+    return {
+        
+        entry: [
+            "react-hot-loader/patch",
+            entryPoint
+        ],
 
-  plugins: [
-    // copy assets to static folder
-    new CopyWebpackPlugin([
-      { from: APP_DIR + '/fonts', to: BUILD_DIR + '/fonts' },
-      { from: APP_DIR + '/images', to: BUILD_DIR + '/images' },
-      { from: APP_DIR + '/locales', to: BUILD_DIR + '/locales' },
-    ]),
-    new webpack.NormalModuleReplacementPlugin(
-      /\/iconv-loader$/, 'node-noop'
-    )
-  ],
+        plugins: [
+            new CopyWebpackPlugin(assetsToCopy),
+            new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop')
+        ],
 
-  output: {
-    filename: "bundle.js",
-    path: BUILD_DIR,
-    publicPath: "/static/"
-  },
+        output: {
+            filename: "bundle.js",
+            path: buildDir,
+            publicPath: "/static/"
+        },
 
-  resolve: {
-    // Add ".ts" and ".tsx" as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
-  },
+        resolve: {
+            // Add ".ts" and ".tsx" as resolvable extensions.
+            extensions: [".ts", ".tsx", ".js", ".json"]
+        },
 
-  module: {
-    rules: [
-      // All files with a ".ts" or ".tsx" extension will be handled by "awesome-typescript-loader".
-      { test: /\.tsx?$/, loader: ["react-hot-loader/webpack", "awesome-typescript-loader"] },
-
-      // All output ".js" files will have any sourcemaps re-processed by "source-map-loader".
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
-    ]
-  },
-};
+        module: {
+            rules: [
+                // All files with a ".ts" or ".tsx" extension will be handled by "awesome-typescript-loader".
+                { test: /\.tsx?$/, loader: ["react-hot-loader/webpack", "awesome-typescript-loader"] },
+          
+                // All output ".js" files will have any sourcemaps re-processed by "source-map-loader".
+                { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+            ]
+        }
+    }
+}
