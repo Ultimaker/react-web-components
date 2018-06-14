@@ -18,7 +18,7 @@ const Button: React.StatelessComponent<ButtonProps> =
 
     const classes = classNames('btn', { 'disabled': disabled }, { 'waiting': showSpinner }, additionalClasses);
 
-    const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    const _handleClick = (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();
 
       if (onClickHandler) {
@@ -27,7 +27,7 @@ const Button: React.StatelessComponent<ButtonProps> =
     }
 
     return (
-      <button className={classes} onClick={handleClick} disabled={disabled || showSpinner} type={type}>
+      <button className={classes} onClick={_handleClick} disabled={disabled || showSpinner} type={type}>
         <span className="text">{children}</span>
         {showSpinner &&
           <Spinner />

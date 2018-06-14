@@ -43,7 +43,7 @@ export default class Modal extends React.Component<ModalProps, {}> {
     }
   }
 
-  renderModal(key: string, style: MotionStyle): JSX.Element {
+  _renderModal(key: string, style: MotionStyle): JSX.Element {
     const { children } = this.props;
 
     return (
@@ -55,11 +55,11 @@ export default class Modal extends React.Component<ModalProps, {}> {
     );
   }
 
-  willEnter(): MotionStyle {
+  _willEnter(): MotionStyle {
     return { opacity: 0 };
   }
 
-  willLeave(): MotionStyle {
+  _willLeave(): MotionStyle {
     return { opacity: spring(0) };
   }
 
@@ -74,11 +74,11 @@ export default class Modal extends React.Component<ModalProps, {}> {
     }
 
     return <TransitionMotion
-      willEnter={this.willEnter}
-      willLeave={this.willLeave}
+      willEnter={this._willEnter}
+      willLeave={this._willLeave}
       styles={isOpen ? [interpolatedStyle] : []}>
       {interpolatedStyles =>
-        interpolatedStyles.length ? this.renderModal(interpolatedStyles[0].key, interpolatedStyles[0].style) : null
+        interpolatedStyles.length ? this._renderModal(interpolatedStyles[0].key, interpolatedStyles[0].style) : null
       }
     </TransitionMotion>
   };
