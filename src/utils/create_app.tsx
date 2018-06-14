@@ -31,7 +31,7 @@ export function createApp(domId: string, AppComponent, localesPath: string) {
 
     // Hot Module Replacement API
     if (module.hot) {
-        module.hot.accept("", () => {
+        module.hot.accept(() => {
             _renderApp(domId, AppComponent);
         })
     }

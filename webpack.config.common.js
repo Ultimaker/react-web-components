@@ -4,20 +4,16 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (sourceDirs, buildDir, entryPoint) => {
 
+    resourceTypes = ["fonts", "images", "locales"]
     assetsToCopy = []
-    for (sourceDir in sourceDirs) {
-      assetsToCopy.push({
-            from: sourceDir + "/fonts",
-            to: buildDir + "/fonts"
-        })
-        assetsToCopy.push({
-            from: sourceDir + "/images",
-            to: buildDir + "/images"
-        })
-        assetsToCopy.push({
-            from: sourceDir + "/locales",
-            to: buildDir + "/locales"
-        })
+    
+    for (sourceDir of sourceDirs) {
+        for (type of resourceTypes) {
+            assetsToCopy.push({
+                from: `${sourceDir}/${type}`,
+                to: `${buildDir}/${type}`,
+            })
+        }
     }
 
     return {
