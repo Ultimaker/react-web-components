@@ -1,0 +1,136 @@
+.navigation
+  width: 100%
+  padding-left: 0.9rem
+  position: relative
+
+  .burger-menu
+    .btn
+      top: 0.9rem
+      box-shadow: 0 2px 3px 0 $color-shadow
+      z-index: 999999
+
+  ul
+    width: 100vw
+    padding: 0
+    margin: 0
+    list-style: none
+    position: absolute
+    top: 0.9rem
+    left: 1.2rem
+
+    @include respond-to(sm)
+      box-sizing: border-box
+      display: flex
+      flex-basis: 100%
+      flex-flow: row nowrap
+      justify-content: flex-end
+      margin: 0
+      position: relative
+      width: auto
+      top: 0
+      left: 0
+
+    li
+      position: absolute
+
+      @include respond-to(sm)
+        border-left: 1px solid $color-border-light
+        flex: 1 1 0
+        min-width: 9rem
+        max-width: 11rem
+        margin: 0
+        position: relative
+        top: 0 !important
+
+      @include respond-to(md)
+        max-width: 13.5rem
+
+      &.settings
+        min-width: 4.4rem
+        max-width: 6rem
+        margin: 0
+      
+      a
+        border-radius: 9999px
+        background: white
+        font-size: 1.6rem
+        box-shadow: 0 2px 3px 0 $color-shadow-dark
+        display: inline-block
+        text-decoration: none
+        color: $color-secondary-btn-text
+        position: relative
+        width: 46px
+        height: 46px
+
+        @include respond-to(sm)
+          border-radius: 0
+          box-shadow: none
+          margin: 0
+          padding: 0
+          align-items: center
+          color: $color-text
+          display: flex
+          justify-content: center
+          text-align: center
+          border-bottom: 3px solid transparent
+          height: 5rem
+          width: auto !important
+          padding: 0 0.5rem
+          font-size: 1.4rem
+          transition: border 0.2s ease-out
+
+          &:hover
+            border-bottom-color: $color-background-darker
+
+        @include respond-to(md)
+          height: 6rem
+          border-bottom: 5px solid transparent
+          @include font-size-text-1
+
+        &.active
+          color: white
+          background: $color-primary-btn
+
+          @include respond-to(sm)
+            border-bottom-color: $color-border-active
+            color: $color-text
+            background: white
+
+        .label
+          position: absolute
+          top: 0
+          left: 0
+          opacity: 0
+          visibility: hidden
+          margin: 1.2rem 2.4rem
+
+          @include respond-to(sm)
+            opacity: 1
+            visibility: visible
+            position: relative
+            margin: 0
+
+  &.open
+    min-width: $min-window-width
+    position: fixed
+    z-index: 99999
+    left: 0
+    top: 0
+    bottom: 0
+    right: 0
+    overflow-x: hidden
+    background-color: $modal-overlay-color-light
+
+    @include respond-to(sm)
+      position: relative
+      background-color: transparent
+
+    li a 
+      width: 150px
+      transition: width 200ms ease-in
+      
+      .label
+        opacity: 1
+        visibility: visible
+        transition: visibility 200ms ease-in
+        transition-delay: 200ms
