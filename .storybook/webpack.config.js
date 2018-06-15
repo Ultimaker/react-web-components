@@ -1,15 +1,18 @@
 const path = require("path");
-const include = path.resolve(__dirname, '../');
 
 module.exports = {
-  module: {
-      rules: [
-          {
-            test: /\.tsx/,
-            loader: 'babel-loader!ts-loader',
-            exclude: /node_modules/,
-            include
-          }
-      ]
-  }
+    module: {
+        rules: [
+            {
+                test: /\.tsx/,
+                loader: 'awesome-typescript-loader',
+                include: path.resolve(__dirname, '../src')
+            },
+            {
+                test: /\.sass$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader'],
+                include: path.resolve(__dirname, '../src')
+            }
+        ]
+    }
 };
