@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-export type InputFieldType = 'text' | 'number';
+export type InputFieldType = 'text' | 'number' | 'textarea';
 
 export interface InputFieldProps {
   type?: InputFieldType;
@@ -38,7 +38,7 @@ export default class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+  _onChangeHandler(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) {
     const { onChangeHandler } = this.props;
 
     e.stopPropagation();
@@ -53,13 +53,24 @@ export default class InputField extends React.Component<InputFieldProps, {}> {
 
     const classes = classNames('text-field', { 'error': validationError });
 
-    return <input
-      type={type ? type : null}
-      min={min ? min : null}
-      max={max ? max : null}
-      onChange={this._onChangeHandler}
-      placeholder={placeholder}
-      className={classes}
-      ref={input => this.input = input} />
+    return <React.Fragment>
+      {type !== 'textarea' &&
+        <input
+          type={type ? type : null}
+          min={min ? min : null}
+          max={max ? max : null}
+          onChange={this._onChangeHandler}
+          placeholder={placeholder}
+          className={classes}
+          ref={input => this.input = input} />
+      }
+      {type === 'textarea' &&
+        <textarea
+          onChange={this._onChangeHandler}
+          placeholder={placeholder}
+          className={classes}
+          ref={input => this.input = input} />
+      }
+    </ React.Fragment>
   };
 };
