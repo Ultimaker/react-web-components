@@ -2,25 +2,26 @@ import * as React from 'react';
 
 import splitTextByNewLine from '../utils/split_text_by_new_line';
 import Modal from './modal';
-import Button from './button';
+import { default as Button, ButtonStyle } from './button';
+import { default as InputField, InputFieldType } from './input_field';
 
-export type ButtonType = 'primary' | 'secondary' | 'quiet';
+export type PopupType = 'confirm' | 'prompt';
 
 export interface PopupProps {
   isOpen?: boolean;
-  type: 'confirm' | 'prompt';
+  type: PopupType;
   headerText: string;
   bodyText: string;
-  inputType?: 'text' | 'number';
+  inputType?: InputFieldType;
   inputMin?: number;
   inputMax?: number;
   validationHandler?: Function;
   primaryBtnText: string;
   primaryBtnHandler: Function;
-  primaryBtnType?: ButtonType;
+  primaryBtnStyle?: ButtonStyle;
   secondaryBtnText?: string;
   secondaryBtnHandler?: Function;
-  secondaryBtnType?: ButtonType;
+  secondaryBtnStyle?: ButtonStyle;
   promptPlaceholder?: string;
 }
 
@@ -36,7 +37,6 @@ export interface PopupState {
 export default class Popup extends React.Component<PopupProps, PopupState> {
 
   private popupBody: HTMLElement;
-  private promptInput: HTMLInputElement;
 
   constructor(props) {
     super(props);
@@ -57,24 +57,12 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
   }
 
   componentDidMount(): void {
-    this._focusOnPromptInput();
     this._setPopupBodyClass();
     window.addEventListener("resize", this._setPopupBodyClass);
-
-    if (this.props.inputType === 'number' && this.props.inputMin) {
-      this.setState({ inputValue: this.props.inputMin.toString() });
-      this.promptInput.value = this.props.inputMin.toString();
-    }
   }
 
   componentWillUnmount(): void {
     window.removeEventListener("resize", this._setPopupBodyClass);
-  }
-
-  _focusOnPromptInput(): void {
-    if (this.promptInput) {
-      this.promptInput.focus();
-    }
   }
 
   _setPopupBodyClass(): void {
@@ -90,8 +78,8 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     }
   }
 
-  _primaryBtnHandler(): void {
-    event.preventDefault()
+  _primaryBtnHandler(e: React.FormEvent<HTMLFormElement>): void {
+    e.preventDefault();
 
     const inputValue = this.state.inputValue;
 
@@ -119,7 +107,6 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     }
     else {
       this.setState({ validationErrorMsg: validationErrorMsg, validationError: true });
-      this._focusOnPromptInput();
       return false;
     }
   }
@@ -129,27 +116,18 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     this.setState({ secondaryBtnSpinner: true });
   }
 
-  _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>): void {
-    this.setState({ inputValue: e.target.value, validationError: false });
-  }
-
-  _getBtnClass(type: ButtonType): string {
-    return type ? 'btn--' + type : 'btn--primary';
+  _onChangeHandler(value: string): void {
+    this.setState({ inputValue: value, validationError: false });
   }
 
   render(): JSX.Element {
-
-    const { isOpen, type, headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnHandler,
-      secondaryBtnHandler, primaryBtnType, secondaryBtnType, promptPlaceholder, inputType, inputMin, inputMax } = this.props;
-    const { inputValue, previousInputValue, validationError, validationErrorMsg, primaryBtnSpinner,
-      secondaryBtnSpinner } = this.state;
+    const { isOpen, type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
+      inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle } = this.props;
+    const { validationError, validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner } = this.state;
 
     const showValidationError = validationError && validationErrorMsg && validationErrorMsg.length > 0;
 
-    const primaryBtnClass = this._getBtnClass(primaryBtnType);
-    const secondaryBtnClass = this._getBtnClass(secondaryBtnType);
-
-    return <Modal>
+    return <Modal isOpen={isOpen}>
       <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
 
         <div className="popup__header">
@@ -161,14 +139,14 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
 
           {type === 'prompt' &&
             <div className="prompt-input">
-              <input
+              <InputField
                 type={inputType ? inputType : null}
                 min={inputMin ? inputMin : null}
                 max={inputMax ? inputMax : null}
-                onChange={this._onChangeHandler}
+                onChangeHandler={this._onChangeHandler}
                 placeholder={promptPlaceholder}
-                className={validationError ? 'error' : ''}
-                ref={input => this.promptInput = input} />
+                validationError={validationError}
+                focusOnLoad />
 
               {showValidationError &&
                 <div className="validation-error">{validationErrorMsg}</div>
@@ -181,7 +159,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
 
           <div className="btn__container">
             <Button
-              additionalClasses={primaryBtnClass}
+              style={primaryBtnStyle}
               disabled={validationError || secondaryBtnSpinner}
               type="submit"
               showSpinner={primaryBtnSpinner}>
@@ -193,7 +171,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
           {secondaryBtnText &&
             <div className="btn__container">
               <Button
-                additionalClasses={secondaryBtnClass}
+                style={secondaryBtnStyle}
                 disabled={primaryBtnSpinner}
                 onClickHandler={this._secondaryBtnHandler}
                 showSpinner={secondaryBtnSpinner}>
