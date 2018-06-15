@@ -15,12 +15,12 @@ export interface PopupProps {
   inputType?: InputFieldType;
   inputMin?: number;
   inputMax?: number;
-  validationHandler?: Function;
+  validationHandler?: (value: string | number) => string;
   primaryBtnText: string;
-  primaryBtnHandler: Function;
+  primaryBtnHandler: (value: string | number) => void;
   primaryBtnStyle?: ButtonStyle;
   secondaryBtnText?: string;
-  secondaryBtnHandler?: Function;
+  secondaryBtnHandler?: () => void;
   secondaryBtnStyle?: ButtonStyle;
   promptPlaceholder?: string;
 }
