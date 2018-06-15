@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "sourceMap": true,
+    "target": "es5",
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "outDir": "tmp",
+    "jsx": "react",
+    "lib": ["es6", "dom"]
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
