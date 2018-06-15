@@ -3,17 +3,17 @@ import * as React from 'react';
 export interface ToggleButtonProps {
   id: string;
   checked: boolean;
-  onChangeHandler: Function;
+  onChangeHandler: (checked: boolean) => void;
   disabled?: boolean;
 }
 
 const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({ id, checked, onChangeHandler, disabled }) => {
 
-  const _onChangeHandler = (e) => {
-    onChangeHandler(e);
+  const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeHandler(e.currentTarget.checked);
   }
 
-  const _stopPropagation = (e) => {
+  const _stopPropagation = (e: React.MouseEvent<EventTarget>) => {
     e.stopPropagation()
   }
 

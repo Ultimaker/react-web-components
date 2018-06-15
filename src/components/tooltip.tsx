@@ -14,6 +14,8 @@ export interface TooltipState {
   tooltipOffset: number;
 }
 
+const windowMargin = 10;
+
 export default class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
   constructor(props) {
@@ -25,12 +27,12 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
     this._setTooltipOffset = this._setTooltipOffset.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this._setTooltipOffset();
     window.addEventListener("resize", this._setTooltipOffset);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     window.removeEventListener("resize", this._setTooltipOffset);
   }
 
@@ -54,14 +56,13 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
 
     // if the tooltip is off the screen to the left, move it right
     if (tooltipWidth / 2 > tooltipTriggerCenter) {
-      // move relative to tooltipTrigger left. Add 10 for a window margin
-      tooltipOffset = (10 - tooltipTriggerLeft) + tooltipWidth / 2
+      // move relative to tooltipTrigger left
+      tooltipOffset = (windowMargin - tooltipTriggerLeft) + tooltipWidth / 2
     }
     // if the tooltip is off the screen to the right, move it left
     else if (tooltipWidth / 2 > windowWidth - tooltipTriggerCenter) {
       // move move relative to tooltipTrigger right, then make negative so it can be applyed to the tooltip left
-      // add 10 for a window margin
-      tooltipOffset = (tooltipWidth / 2 - tooltipTriggerWidth - (windowWidth - tooltipTriggerRight) + 10) * -1
+      tooltipOffset = (tooltipWidth / 2 - tooltipTriggerWidth - (windowWidth - tooltipTriggerRight) + windowMargin) * -1
     }
     else {
       tooltipOffset = null
@@ -73,8 +74,8 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
 
   }
 
-  _getElementDetails(el) {
-    // get global postions of a html element 
+  _getElementDetails(el: any): any {
+    // get global positions of a html element 
     el = el.getBoundingClientRect();
     return {
       left: el.left + window.scrollX,

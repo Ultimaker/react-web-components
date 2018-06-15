@@ -63,11 +63,6 @@ export default class ContextMenu extends React.Component<ContextMenuProps, Conte
       if (contextMenuLeft > windowWidth - (menuWidth - leftOffset)) {
         menuOffset = windowWidth - (contextMenuLeft + menuWidth + windowMargin);
       }
-      // if the menu will appear outside the window on the right side, move it left
-      // else if(){
-      //TODO:
-      // }
-
     }
 
     else if (menuOffsetDirection === 'left') {
@@ -115,13 +110,13 @@ export default class ContextMenu extends React.Component<ContextMenuProps, Conte
     return menuStyle;
   }
 
-  _stopPropagation(e): void {
+  _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
     e.stopPropagation()
   }
 
   render(): JSX.Element {
 
-    const { menuWidth, menuOffsetDirection } = this.props;
+    const { menuWidth, menuOffsetDirection, children } = this.props;
     const { showMenu, menuOffset } = this.state;
 
     const classes = classNames('context-menu', { 'visible': showMenu });
@@ -135,9 +130,9 @@ export default class ContextMenu extends React.Component<ContextMenuProps, Conte
 
       <div className='container' onClick={() => this._setShowMenu(false)}>
         <div ref="menu" className="menu" style={menuStyle}>
-          <Collapse isOpened={showMenu} springConfig={{stiffness: 370, damping: 35}}>
+          <Collapse isOpened={showMenu} springConfig={{ stiffness: 370, damping: 35 }}>
             <ul>
-              {this.props.children}
+              {children}
             </ul>
           </Collapse>
         </div>

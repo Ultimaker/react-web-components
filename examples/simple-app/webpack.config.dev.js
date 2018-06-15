@@ -2,8 +2,8 @@
 const path = require('path')
 const merge = require('webpack-merge');
 
-const commonsBase = require("../../webpack.config.common.js");
-const devBase = require('../../webpack.config.dev.js');
+const commonsBase = require("../../src/build/webpack.config.common.js");
+const devBase = require('../../src/build/webpack.config.dev.js');
 
 const webpackArgs = [[path.resolve(__dirname, "app/assets"), path.resolve(__dirname, "../../src")], path.resolve(__dirname, "app/static"), path.resolve(__dirname, "app/assets/index.js")]
 

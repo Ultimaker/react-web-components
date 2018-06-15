@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 import { TransitionMotion, spring } from 'react-motion';
 
 export interface ModalProps {
@@ -14,8 +13,10 @@ export interface MotionStyle {
 export default class Modal extends React.Component<ModalProps, {}> {
 
   componentDidUpdate(prevProps: ModalProps): void {
-    if (prevProps.isOpen !== this.props.isOpen) {
-      if (this.props.isOpen) {
+    const { isOpen } = this.props;
+
+    if (prevProps.isOpen !== isOpen) {
+      if (isOpen) {
         document.body.classList.add('noscroll');
       }
       else {
@@ -24,23 +25,25 @@ export default class Modal extends React.Component<ModalProps, {}> {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     document.body.classList.remove('noscroll');
   }
 
-  _stopPropagation(e): void {
+  _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
     e.stopPropagation();
   }
 
-  _handleOverlayClick(e): void {
+  _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {
+    const { onOverlayClickHandler } = this.props;
+
     this._stopPropagation(e);
 
-    if (this.props.onOverlayClickHandler) {
-      this.props.onOverlayClickHandler();
+    if (onOverlayClickHandler) {
+      onOverlayClickHandler();
     }
   }
 
-  renderModal(key: string, style: MotionStyle): JSX.Element {
+  _renderModal(key: string, style: MotionStyle): JSX.Element {
     const { children } = this.props;
 
     return (
@@ -52,17 +55,17 @@ export default class Modal extends React.Component<ModalProps, {}> {
     );
   }
 
-  willEnter(): MotionStyle {
+  _willEnter(): MotionStyle {
     return { opacity: 0 };
   }
 
-  willLeave(): MotionStyle {
+  _willLeave(): MotionStyle {
     return { opacity: spring(0) };
   }
 
   render(): JSX.Element {
 
-    const { isOpen, children } = this.props;
+    const { isOpen } = this.props;
 
     const interpolatedStyle = {
       key: 'modal',
@@ -71,11 +74,11 @@ export default class Modal extends React.Component<ModalProps, {}> {
     }
 
     return <TransitionMotion
-      willEnter={this.willEnter}
-      willLeave={this.willLeave}
+      willEnter={this._willEnter}
+      willLeave={this._willLeave}
       styles={isOpen ? [interpolatedStyle] : []}>
       {interpolatedStyles =>
-        interpolatedStyles.length ? this.renderModal(interpolatedStyles[0].key, interpolatedStyles[0].style) : null
+        interpolatedStyles.length ? this._renderModal(interpolatedStyles[0].key, interpolatedStyles[0].style) : null
       }
     </TransitionMotion>
   };

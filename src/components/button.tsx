@@ -3,29 +3,34 @@ import * as classNames from 'classnames';
 
 import Spinner from './spinner';
 
+export type ButtonType = 'submit' | 'button';
+export type ButtonStyle = 'primary' | 'secondary' | 'quiet';
+export type ButtonShape = 'rectangle' | 'circle' | 'pill';
+
 export interface ButtonProps {
-  onClickHandler?: Function;
-  additionalClasses?: string;
+  onClickHandler?: () => void;
   disabled?: boolean;
-  submit?: boolean
+  type?: ButtonType;
+  style?: ButtonStyle;
+  shape?: ButtonShape;
   showSpinner?: boolean;
 }
 
 const Button: React.StatelessComponent<ButtonProps> =
-  ({ onClickHandler, additionalClasses, disabled, submit, showSpinner, children }) => {
+  ({ onClickHandler, disabled, type, style, shape, showSpinner, children }) => {
 
-    const classes = classNames('btn', { 'disabled': disabled }, { 'waiting': showSpinner }, additionalClasses);
+    const classes = classNames(`btn btn--${style} btn--${shape}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
-    const handleClick = (e) => {
+    const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();
 
       if (onClickHandler) {
-        onClickHandler(e);
+        onClickHandler();
       }
     }
 
     return (
-      <button className={classes} onClick={handleClick} disabled={disabled || showSpinner} type={submit ? 'submit' : 'button'}>
+      <button className={classes} onClick={_onClickHandler} disabled={disabled || showSpinner} type={type}>
         <span className="text">{children}</span>
         {showSpinner &&
           <Spinner />
@@ -33,5 +38,11 @@ const Button: React.StatelessComponent<ButtonProps> =
       </button>
     );
   };
+
+Button.defaultProps = {
+  type: 'button',
+  style: 'primary',
+  shape: 'rectangle'
+};
 
 export default Button;

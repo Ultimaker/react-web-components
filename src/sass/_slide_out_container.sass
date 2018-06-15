@@ -1,0 +1,18 @@
+.slide-out-container
+  .container
+    background-color: $slide-out-color-background
+    display: flex
+
+  .content
+    padding: 4.8rem 2.4rem 2.4rem
+    width: 100%
+    align-items: center
+    position: relative
+
+    @include respond-to(md)
+      padding: 3.8rem
+
+  .close-button
+    position: absolute
+    top: 0.6rem
+    right: 1.2rem
