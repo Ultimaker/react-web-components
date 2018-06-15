@@ -7,8 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.prod.js",
-    "extract-pot": "node extract_pot.js"
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "repository": {
     "type": "git",
