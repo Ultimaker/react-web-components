@@ -15,6 +15,15 @@ module.exports = {
                 test: /\.sass$/,
                 loaders: ['style-loader', 'css-loader', 'sass-loader'],
                 include: path.resolve(__dirname, '../src')
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|png|svg|jpg|ico)$/,
+                loader: 'file-loader',
+                include: path.resolve(__dirname, '../src'),
+                options: {
+                    name: 'static/[path][name].[ext]?[hash]',
+                    context: 'src'
+                }
             }
         ]
     }
