@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.51",
+    "@sambego/storybook-styles": "^1.0.0",
     "@storybook/addon-info": "^3.4.7",
     "@storybook/addon-knobs": "^3.4.7",
     "@storybook/addon-viewport": "^3.4.7",
