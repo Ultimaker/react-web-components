@@ -7,9 +7,11 @@
     "noImplicitAny": false,
     "outDir": "tmp",
     "jsx": "react",
-    "lib": ["es6", "dom"]
+    "lib": ["es6", "dom"],
+    "rootDirs": ["src"],
+    "baseUrl": "src",
+    "allowJs": false
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build", "scripts"]
 }
