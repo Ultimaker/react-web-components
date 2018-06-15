@@ -1,8 +1,6 @@
 const path = require("path");
-const webpack = require('webpack');
 
 module.exports = {
-    devtool: "#inline-source-map",
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json']
     },
@@ -31,8 +29,5 @@ module.exports = {
                 }
             }
         ]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
+    }
 }

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "start-storybook -p 9001 -c .storybook",
-    "build": "build-storybook"
+    "build": "build-storybook -c .storybook -o docs"
   },
   "repository": {
     "type": "git",
