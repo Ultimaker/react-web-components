@@ -9,7 +9,7 @@ export interface CheckboxProps {
 
 const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, checked, onChangeHandler, disabled }) => {
 
-  const _onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeHandler(e.currentTarget.checked);
   }
 

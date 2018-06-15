@@ -7,7 +7,7 @@ export type ButtonType = 'submit' | 'button';
 export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'circle' | 'pill';
 
 export interface ButtonProps {
-  onClickHandler?: (e: React.MouseEvent<HTMLElement>) => void;
+  onClickHandler?: () => void;
   disabled?: boolean;
   type?: ButtonType;
   style?: ButtonStyle;
@@ -23,7 +23,7 @@ const Button: React.StatelessComponent<ButtonProps> =
       e.stopPropagation();
 
       if (onClickHandler) {
-        onClickHandler(e);
+        onClickHandler();
       }
     }
 
