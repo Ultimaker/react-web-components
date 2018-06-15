@@ -1,0 +1,51 @@
+.list-group
+  margin-bottom: 2.4rem
+
+  @include respond-to(md)
+    margin-bottom: 4.8rem
+    border-radius: $border-radius
+
+.list-group__row
+  position: relative
+  box-shadow: 0 0.2rem 0.3rem 0 rgba(0, 0, 0, 0.15)
+  margin-bottom: 1.2rem
+  background-color: $color-background
+
+  .row-content
+    position: relative
+
+  .cover
+    display: block
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    transition: background-color 0.2s ease-out    
+
+  &.disabled .cover
+    background-color: $color-background-darkest
+
+  &.selected .cover
+    background-color: $color-background-selected
+
+.list-group__empty
+  text-align: center
+  padding: 2.4rem 1.8rem
+  width: 100%
+
+  @include respond-to(sm)
+    padding: 2.4rem
+
+.list-group__title
+  margin: 0
+  @include font-size-header-2
+  font-weight: normal
+  font-family: $font-primary-medium
+  padding: 0 1.8rem 1.2rem 1.8rem
+  background-color: transparent
+  box-shadow: none
+  border: none
+
+  @include respond-to(sm)
+    padding: 0 2.4rem 1.2rem 2.4rem
