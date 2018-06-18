@@ -4,16 +4,27 @@ import * as classNames from 'classnames';
 export type InputFieldType = 'text' | 'number' | 'textarea';
 
 export interface InputFieldProps {
+  /** Field type: 'text' | 'number' | 'textarea' */
   type?: InputFieldType;
+  /** Applies the validation error styling when true  */
   validationError?: boolean;
+  /** Called when the field changes */
   onChangeHandler: (value: string | number) => (void);
+  /** Min value and default value for number field */
   min?: number;
+  /** Max value for number field */
   max?: number;
+  /** html placeholder text */
   placeholder?: string;
+  /** If true, the field will be focused when loaded */
   focusOnLoad?: boolean;
 }
 
-export default class InputField extends React.Component<InputFieldProps, {}> {
+export class InputField extends React.Component<InputFieldProps, {}> {
+
+  static defaultProps = {
+    type: 'text'
+  };
 
   private input;
 
@@ -48,13 +59,17 @@ export default class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  render(): JSX.Element {
-    const { type, validationError, onChangeHandler, min, max, placeholder } = this.props;
+  protected _renderLabel(): JSX.Element {
+    // TODO: inject label text
+    return <label>Test Test</label>
+  }
 
+  protected _renderInput(): JSX.Element {
+    const { type, validationError, min, max, placeholder } = this.props;
     const classes = classNames('text-field', { 'error': validationError });
 
-    return <React.Fragment>
-      {type !== 'textarea' &&
+    if (type !== "textarea") {
+      return (
         <input
           type={type ? type : null}
           min={min ? min : null}
@@ -62,15 +77,35 @@ export default class InputField extends React.Component<InputFieldProps, {}> {
           onChange={this._onChangeHandler}
           placeholder={placeholder}
           className={classes}
-          ref={input => this.input = input} />
-      }
-      {type === 'textarea' &&
+          ref={input => this.input = input}
+        />
+      )
+    } else {
+      return (
         <textarea
           onChange={this._onChangeHandler}
           placeholder={placeholder}
           className={classes}
-          ref={input => this.input = input} />
-      }
-    </ React.Fragment>
+          ref={input => this.input = input}
+        />
+      )
+    }
+  }
+
+  protected _renderValidationText(): JSX.Element {
+    // TODO: set validation state and text.
+    return <span>Validation...</span>
+  }
+
+  render(): JSX.Element {
+    return (
+      <div>
+        { this._renderLabel() }
+        { this._renderInput() }
+        { this._renderValidationText() }
+      </div>
+    )
   };
 };
+
+export default InputField;

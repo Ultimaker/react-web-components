@@ -8,7 +8,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
-                loader: 'awesome-typescript-loader',
+                loaders: ['awesome-typescript-loader', 'react-docgen-typescript-loader'],
                 include: path.resolve(__dirname, '../src'),
                 exclude: /node_modules/
             },
