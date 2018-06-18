@@ -17,7 +17,9 @@ export interface AppProps {
  */
 const App: React.StatelessComponent<AppProps> = 
 	({ fixedHeader, children }) => {
+
 		const classes = classNames('app', { 'app--fixed-header': fixedHeader });
+		
 		return (
 			<div className={classes}>
 				{children}
