@@ -10,7 +10,7 @@ import ListGroupRow from '../components/list_group_row';
 import Button from '../components/button';
 import Content from '../components/content';
 
-const stories = storiesOf('Layout examples', module);
+const stories = storiesOf('Page Layout', module);
 
 stories.addDecorator(withKnobs);
 
