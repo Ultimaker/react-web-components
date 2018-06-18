@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import * as classNames from 'classnames';
 import { Motion, spring } from 'react-motion';
 
@@ -16,6 +16,7 @@ export interface NavigationState {
 export interface NavLink {
   path: string;
   label: string;
+  visible: boolean;
 }
 
 const motion = { stiffness: 999, damping: 50 };
@@ -62,7 +63,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
         {({ x }) =>
           <ul>
             {navLinks.map((navLink, index) => {
-              return <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
+              return navLink.visible && <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
                 <NavLink to={navLink.path} activeClassName="active">
                   <span className="label">{navLink.label}</span>
                 </NavLink>

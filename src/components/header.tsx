@@ -1,3 +1,4 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
