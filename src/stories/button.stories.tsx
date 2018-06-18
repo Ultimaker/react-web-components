@@ -4,8 +4,9 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
 import { State, Store } from '@sambego/storybook-state';
+import { withInfo } from '@storybook/addon-info';
 
-import Button from '../components/button';
+import { Button, ButtonProps } from '../components/button';
 import ToggleButton from '../components/toggle_button';
 import CloseButton from '../components/close_button';
 
@@ -23,7 +24,9 @@ stories.addDecorator(withKnobs)
         height: '100vh'
     }));
 
-stories.add('Rectangle', () =>
+stories.add('Rectangle', withInfo(
+    'Default button shape with three available styles.'
+)(() =>
     <div className="layout">
         <div className="layout__item u-fit">
             <Button onClickHandler={action('clicked')}
@@ -53,9 +56,12 @@ stories.add('Rectangle', () =>
             </Button>
         </div>
     </div>
+)
 );
 
-stories.add('Circle', () =>
+stories.add('Circle', withInfo(
+    'Round button shape with three available styles. Can be used for action buttons on mobile.'
+)(() =>
     <div className="layout">
         <div className="layout__item u-fit">
             <Button onClickHandler={action('clicked')}
@@ -88,9 +94,11 @@ stories.add('Circle', () =>
             </Button>
         </div>
     </div>
-);
+));
 
-stories.add('Pill', () =>
+stories.add('Pill', withInfo(
+    'Long rounded button shape with three available styles. Can be used for filter buttons.'
+)(() =>
     <div className="layout">
         <div className="layout__item u-fit">
             <Button onClickHandler={action('clicked')}
@@ -123,17 +131,23 @@ stories.add('Pill', () =>
             </Button>
         </div>
     </div>
-);
+));
 
-stories.add('Toggle', () =>
+stories.add('Toggle', withInfo({
+    propTablesExclude: [ State ],
+    text: 'Toggle switch button based on a checkbox. Can be used for turning on/off settings.'
+}
+)(() =>
     <State store={store}>
         <ToggleButton id="toggle"
             checked={false}
             onChangeHandler={() => store.set({ checked: !store.get('checked') })}
             disabled={boolean('Disabled', false)} />
     </State>
-);
+));
 
-stories.add('Close', () =>
+stories.add('Close', withInfo(
+    'Close button. Can be used for closing a container/panel.'
+)(() =>
     <CloseButton onClickHandler={action('clicked')} />
-);
+));

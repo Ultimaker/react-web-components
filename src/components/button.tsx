@@ -8,15 +8,21 @@ export type ButtonStyle = 'primary' | 'secondary' | 'quiet';
 export type ButtonShape = 'rectangle' | 'circle' | 'pill';
 
 export interface ButtonProps {
+  /** Called when the Button is clicked */
   onClickHandler?: () => void;
+  /** Disables the button when true */
   disabled?: boolean;
+  /** html button type: 'submit' | 'button' */
   type?: ButtonType;
+  /** CSS styling: 'primary' | 'secondary' | 'quiet' */
   style?: ButtonStyle;
+  /** Visual shape of the Button: 'rectangle' | 'circle' | 'pill' */
   shape?: ButtonShape;
+  /** Replaces the Button text for an SVG spinner when true */
   showSpinner?: boolean;
 }
 
-const Button: React.StatelessComponent<ButtonProps> =
+export const Button: React.StatelessComponent<ButtonProps> =
   ({ onClickHandler, disabled, type, style, shape, showSpinner, children }) => {
 
     const classes = classNames(`btn btn--${style} btn--${shape}`, { 'disabled': disabled }, { 'waiting': showSpinner });

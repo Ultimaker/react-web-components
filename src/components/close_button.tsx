@@ -1,14 +1,15 @@
 import * as React from 'react';
 
 export interface CloseButtonProps {
-  onClickHandler: (e: React.MouseEvent<HTMLElement>) => void;
+  /** Called when the Button is clicked */
+  onClickHandler: () => void;
 }
 
-const CloseButton: React.StatelessComponent<CloseButtonProps> = ({ onClickHandler }) => {
+export const CloseButton: React.StatelessComponent<CloseButtonProps> = ({ onClickHandler }) => {
 
   const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
-    onClickHandler(e);
+    onClickHandler();
   }
 
   return (
