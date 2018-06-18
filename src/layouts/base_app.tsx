@@ -1,6 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // components
 import App from '../components/app';
@@ -92,9 +92,6 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
         return (
             <Switch>
                 { routes.map((route, key) => this._createRoute(key, route.path, route.component, route.scopes, route.props)) }
-                <Route path="/" exact><Redirect to={ this._getAppUrl() + "/profile" }/></Route>
-                <Route path={ this._getAppUrl() } exact><Redirect to={ this._getAppUrl() + "/profile" }/></Route>
-                <Route><h1>404: Page not found.</h1></Route>
             </Switch>
         )
     }

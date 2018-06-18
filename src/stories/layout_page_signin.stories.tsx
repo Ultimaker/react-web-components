@@ -10,19 +10,19 @@ import ListGroupRow from '../components/list_group_row';
 import Button from '../components/button';
 import Content from '../components/content';
 
-const stories = storiesOf('Page Layout', module);
+const stories = storiesOf('Layouts', module);
 
 stories.addDecorator(withKnobs);
 
-stories.add('Sign in page', withInfo(
+stories.add('Sign In', withInfo(
     'A example layout for a sign in page'
 )(() =>
     <Page title="Sign In" maxWidth={600}>
         <ListGroup align="center">
             <ListGroupRow>
-                <Content padding="md">
-                    <p>In order to process, you must login with your Ultimaker account</p>
-                    <Button onClickHandler={action('clicked')}>Continue</Button>
+                <Content padding="lg" align="center">
+                    <p>In order to continue, you must sign in with your Ultimaker account.</p>
+                    <Button onClickHandler={action('clicked')}>Sign In</Button>
                 </Content>
             </ListGroupRow>
         </ListGroup>

@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import { withKnobs  } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 
-import BaseApp, { BaseAppRoute } from "../layouts/base_app";
+import BaseApp, { BaseAppRoute } from '../layouts/base_app';
 
-const stories = storiesOf('App Layout', module);
+const stories = storiesOf('Layouts', module);
 
 /**
  * Example app for storybook.
@@ -31,8 +32,10 @@ class StoriesApp extends BaseApp {
 
 stories.addDecorator(withKnobs);
 
-stories.add('Base app', withInfo(
+stories.add('Base App', withInfo(
     'A example layout for an application'
 )(() =>
-    <StoriesApp />
+    <BrowserRouter>
+        <StoriesApp />
+    </BrowserRouter>
 ));
