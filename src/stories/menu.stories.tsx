@@ -8,10 +8,15 @@ import { withInfo } from '@storybook/addon-info';
 
 import ContextMenu from '../components/context_menu';
 import ContextMenuItem from '../components/context_menu_item';
+import DropDownMenu from '../components/drop_down_menu';
+import DropDownMenuItem from '../components/drop_down_menu_item';
 
 const stories = storiesOf('Menus', module);
 
-const label = 'Menu Offset Direction';
+const store = new Store({
+    label: 'Item 1',
+});
+
 const options = {
     Left: 'left',
     Right: 'right',
@@ -27,11 +32,32 @@ stories.addDecorator(withKnobs)
     }));
 
 stories.add('Context menu', withInfo(
-    'Text input field'
+    'Context menu for addition actions'
 )(() =>
-    <ContextMenu menuWidth={200} menuOffsetDirection={selectV2(label, options, defaultValue)}>
+    <ContextMenu menuWidth={200} menuOffsetDirection={selectV2('Menu Offset Direction', options, defaultValue)}>
         <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />
         <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
         <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
     </ContextMenu>
+));
+
+stories.add('Drop down menu', withInfo(
+    'Drop down for changing options'
+)(() =>
+    <State store={store}>
+        <DropDownMenu label={store.get('label')}>
+            <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 1' })}
+                label={text('Text 1', 'Item 1')}
+                active={store.get('label') === 'Item 1'}
+                disabled={boolean('Disabled', false)} />
+            <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 2' })}
+                label={text('Text 2', 'Item 2')}
+                active={store.get('label') === 'Item 2'}
+                disabled={boolean('Disabled', false)} />
+            <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 3' })}
+                label={text('Text 3', 'Item 3')}
+                active={store.get('label') === 'Item 3'}
+                disabled={boolean('Disabled', false)} />
+        </DropDownMenu>
+    </State>
 ));
