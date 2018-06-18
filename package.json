@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Ultimaker/react-web-components#readme",
   "dependencies": {
+    "@sambego/storybook-state": "^1.0.7",
     "array.prototype.includes": "^1.0.0",
     "classnames": "^2.2.5",
     "d3": "5.0.0",
