@@ -8,6 +8,7 @@ export interface PageProps {
 
 const Page: React.StatelessComponent<PageProps> =
   ({ title, maxWidth, children }): JSX.Element => {
+
     return <div className="page" style={{maxWidth: maxWidth}}>
       {title && <PageTitle title={title}/>}
       {children}
