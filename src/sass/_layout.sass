@@ -300,6 +300,14 @@
 @include layout-offsets($layout-fractions, $layout-breakpoints)
 
 
+@mixin layout-padding ($sizes) 
+  @each $name, $value in $sizes
+    .padding--#{$name}
+      padding: #{$value}
+
+@include layout-padding($layout-spacing)
+
+  
 .hide-xs
   @media (max-width: (#{map-get($layout-breakpoints, sm)} - 1))
     display: none !important
