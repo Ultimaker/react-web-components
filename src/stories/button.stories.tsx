@@ -136,8 +136,7 @@ stories.add('Pill', withInfo(
 stories.add('Toggle', withInfo({
     propTablesExclude: [ State ],
     text: 'Toggle switch button based on a checkbox. Can be used for turning on/off settings.'
-}
-)(() =>
+})(() =>
     <State store={store}>
         <ToggleButton id="toggle"
             checked={false}

@@ -1,13 +1,17 @@
 import * as React from 'react';
 
 export interface CheckboxProps {
+  /** Checkbox id. Must be unique */
   id: string;
+  /** Whether the checkbox is checked or not */
   checked: boolean;
+  /** Called when the checkbox is clicked */
   onChangeHandler: (checked: boolean) => void;
+  /** Disables the checkbox when true */
   disabled?: boolean;
 }
 
-const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, checked, onChangeHandler, disabled }) => {
+export const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, checked, onChangeHandler, disabled }) => {
 
   const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeHandler(e.currentTarget.checked);

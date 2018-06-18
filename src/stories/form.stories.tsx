@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
 import { State, Store } from '@sambego/storybook-state';
+import { withInfo } from '@storybook/addon-info';
 
 import InputField from '../components/input_field';
 import Checkbox from '../components/checkbox';
@@ -22,7 +23,9 @@ stories.addDecorator(withKnobs)
         height: '100vh',
     }));
 
-stories.add('Text field', () =>
+stories.add('Text field', withInfo(
+    'Text input field'
+)(() =>
     <div>
         <InputField type="text"
             onChangeHandler={action('changed')}
@@ -30,9 +33,11 @@ stories.add('Text field', () =>
             focusOnLoad
             validationError={boolean('Validation Error', false)} />
     </div>
-);
+));
 
-stories.add('Number field', () =>
+stories.add('Number field', withInfo(
+    'Number input field'
+)(() =>
     <div>
         <InputField type="number"
             min={1}
@@ -41,21 +46,26 @@ stories.add('Number field', () =>
             focusOnLoad
             validationError={boolean('Validation Error', false)} />
     </div>
-);
+));
 
-stories.add('Text area', () =>
+stories.add('Text area', withInfo(
+    'Text area field'
+)(() =>
     <div>
         <InputField type="textarea"
             onChangeHandler={action('changed')}
             placeholder="Textarea" />
     </div>
-);
+));
 
-stories.add('Checkbox', () =>
+stories.add('Checkbox', withInfo({
+    propTablesExclude: [ State ],
+    text: 'Checkbox input field'
+})(() =>
     <State store={store}>
         <Checkbox id="checkbox"
             checked={false}
             onChangeHandler={() => store.set({ checked: !store.get('checked') })}
             disabled={boolean('Disabled', false)} />
     </State>
-);
+));
