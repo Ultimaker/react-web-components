@@ -102,35 +102,18 @@ button
       background-color: transparent
       color: $color-quiet-btn-disabled-text
 
-.btn--circle
-  border-radius: 50%
-  height: 5rem
-  width: 5rem
-  padding: 0
+  &.btn--circle
+    border-radius: 50%
+    height: 5rem
+    width: 5rem
+    padding: 0
 
-.btn--pill
-  font-family: $font-primary
-  border-radius: 9999px
-  font-size: 1.6rem
-  line-height: 3.6rem
-  padding: 0 2.4rem
-  color: $color-primary-btn
-  border: 1px solid $color-primary-btn
-  background-color: white
-  cursor: pointer
-  -webkit-appearance: none
-  -webkit-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
-
-  &:hover
-    text-decoration: none
-    border-color: $color-primary-btn-hover
-
-  &.active
-    color: white
-    background-color: $color-primary-btn
+  &.btn--pill
+    font-family: $font-primary
+    border-radius: 9999px
+    font-size: 1.6rem
+    line-height: 3.6rem
+    padding: 0 2.4rem
 
 .close-button
   padding: 1rem
@@ -162,7 +145,6 @@ button
     &:after
       content: ''
       width: 1.2rem
-      height: 0.6rem
       position: absolute
       top: 0.6rem
       left: 0.6rem
