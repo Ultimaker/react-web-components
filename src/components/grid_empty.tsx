@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ListGroupRow from './list_group_row'
+import GridItem from './grid_item';
 import Loading from "./loading";
 
 export interface ListGroupEmptyProps {
@@ -11,11 +11,11 @@ export interface ListGroupEmptyProps {
 const ListGroupEmpty: React.StatelessComponent<ListGroupEmptyProps> =
   ({ label, loading }): JSX.Element => {
 
-    return <ListGroupRow>
-      <div className="list-group__empty">
+    return <GridItem>
+      <div className="grid-component__empty">
         {loading ? <Loading label={label}/> : label}
       </div>
-    </ListGroupRow>
+    </GridItem>
   }
 
 export default ListGroupEmpty;

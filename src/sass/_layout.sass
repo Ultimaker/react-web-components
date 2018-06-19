@@ -68,36 +68,44 @@
 .layout--withoutGutter 
   margin: 0
 
-
 .layout--withoutGutter > .layout__item 
   padding: 0
+
+  &.layout--gutterBelow
+    padding-bottom: 0
 
 
 // Quarter gutter size
 .layout--tinyGutter 
   margin: 0 (-0.125 * $layout-gutter-size)
 
-
 .layout--tinyGutter > .layout__item 
   padding: 0 (0.125 * $layout-gutter-size)
+
+  &.layout--gutterBelow
+    padding-bottom: 0.25 * $layout-gutter-size
 
 
 // Half gutter size
 .layout--smallGutter 
   margin: 0 (-0.25 * $layout-gutter-size)
 
-
 .layout--smallGutter > .layout__item 
   padding: 0 (0.25 * $layout-gutter-size)
+
+  &.layout--gutterBelow
+    padding-bottom: 0.5 * $layout-gutter-size
 
 
 // Double gutter size
 .layout--largeGutter 
    margin: 0 (-1 * $layout-gutter-size)
 
-
 .layout--largeGutter > .layout__item 
-   padding: 0 (1 * $layout-gutter-size)
+   padding: 0 $layout-gutter-size
+
+   &.layout--gutterBelow
+    padding-bottom: 2 * $layout-gutter-size
 
 
 
@@ -116,6 +124,9 @@
   flex-basis: 100% /* 1 */
   min-width: 0 /* 2 */
   padding: 0 (0.5 * $layout-gutter-size)
+
+  &.layout--gutterBelow
+    padding-bottom: $layout-gutter-size
 
 
 // Modifier: horizontally center one unit
