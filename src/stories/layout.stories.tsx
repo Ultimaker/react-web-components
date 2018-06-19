@@ -77,7 +77,7 @@ stories.add('Grid', withInfo(
     <div style={{ width: '80vw' }}>
         <Grid align={selectV2('Align', alignOptions, alignDefaultValue)}
             gutter={selectV2('Gutter', gutterOptions, gutterDefaultValue)}
-            title={text('Grid title', 'Grid title')}
+            title={text('Grid Component title', 'Grid Component')}
         >
             <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
                 breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
