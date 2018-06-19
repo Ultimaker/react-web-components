@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 
 import BaseApp, { BaseAppRoute } from '../layouts/base_app';
 
-const stories = storiesOf('Layouts', module);
+const stories = storiesOf('Example layouts', module);
 
 /**
  * Example app for storybook.

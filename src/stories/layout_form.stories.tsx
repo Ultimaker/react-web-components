@@ -9,7 +9,7 @@ import styles from "@sambego/storybook-styles";
 import Form from '../components/form';
 import { InputField } from '../components/input_field';
 
-const stories = storiesOf('Layouts', module);
+const stories = storiesOf('Example layouts', module);
 
 stories.addDecorator(withKnobs)
     .addDecorator(styles({

@@ -8,9 +8,9 @@ import Page from '../components/page';
 import ListGroup from '../components/list_group';
 import ListGroupRow from '../components/list_group_row';
 import Button from '../components/button';
-import Content from '../components/content';
+import Tile from '../components/tile';
 
-const stories = storiesOf('Layouts', module);
+const stories = storiesOf('Example layouts', module);
 
 stories.addDecorator(withKnobs);
 
@@ -20,10 +20,10 @@ stories.add('Sign In', withInfo(
     <Page title="Sign In" maxWidth={600}>
         <ListGroup align="center">
             <ListGroupRow>
-                <Content padding="lg" align="center">
+                <Tile padding="lg" align="center">
                     <p>In order to continue, you must sign in with your Ultimaker account.</p>
                     <Button onClickHandler={action('clicked')}>Sign In</Button>
-                </Content>
+                </Tile>
             </ListGroupRow>
         </ListGroup>
     </Page>
