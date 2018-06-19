@@ -41,9 +41,10 @@ stories.add('Context menu', withInfo(
     </ContextMenu>
 ));
 
-stories.add('Drop down menu', withInfo(
-    'Drop down for changing options'
-)(() =>
+stories.add('Drop down menu', withInfo({
+    propTablesExclude: [ State ],
+    text: 'Drop down for changing options'
+})(() =>
     <State store={store}>
         <DropDownMenu label={store.get('label')}>
             <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 1' })}

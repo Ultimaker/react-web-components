@@ -5,6 +5,7 @@ import { UnmountClosed } from 'react-collapse';
 export type MenuDirection = 'left' | 'right';
 
 export interface DropDownMenuProps {
+  /** The label of the selected menu item */
   label: string | number;
 }
 
@@ -12,7 +13,7 @@ export interface DropDownMenuState {
   showMenu: boolean;
 }
 
-export default class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
+export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
 
   constructor(props: DropDownMenuProps) {
     super(props);
@@ -44,7 +45,7 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
 
       <div className="label" onClick={() => this._setShowMenu(!showMenu)} >
         <div className="text">{label}</div>
-        <img className={panelArrowClasses} src={"/static/images/icons/panel-arrow-blue.svg"} />
+        <img className={panelArrowClasses} src="/static/images/icons/panel-arrow-blue.svg" />
       </div>
 
       <div className="container" onClick={() => this._setShowMenu(false)}>
@@ -60,3 +61,5 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
     </div>
   }
 }
+
+export default DropDownMenu;
