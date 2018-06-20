@@ -21,8 +21,8 @@ class StoriesApp extends BaseApp {
     return "/app";
   }
 
-  protected _getLoginComponent(): JSX.Element {
-    return <div>Sign In</div>
+  protected _getLoginUrl(): string {
+    return '/Sign In'
   }
 
   protected _getRoutes(): BaseAppRoute[] {
