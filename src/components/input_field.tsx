@@ -25,7 +25,7 @@ export interface InputFieldProps {
   /** Message to show for the validation error */
   validationErrorMsg?: string;
   /** Called when the field changes */
-  onChangeHandler: (value: string | number) => void;
+  onChangeHandler: (field: string, value: string | number) => void;
   /** Input field default value */
   defaultValue?: string | number;
   /** Minimum value for number field */
@@ -74,12 +74,12 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   _onChangeHandler(value: string) {
-    const { onChangeHandler } = this.props;
+    const { onChangeHandler, id } = this.props;
 
     event.stopPropagation();
 
     if (onChangeHandler) {
-      onChangeHandler(value);
+      onChangeHandler(id, value);
     }
   }
 
