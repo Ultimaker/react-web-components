@@ -72,7 +72,9 @@ stories.add('Form', withInfo(
           labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
-          placeholder="Textarea" />
+          placeholder="Textarea"
+          validationError={boolean('Validation error', false)}
+          validationErrorMsg={text('Validation error message', 'Validation Error')} />
       </Form>
     </Tile>
   </div>
