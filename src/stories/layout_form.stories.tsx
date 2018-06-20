@@ -1,14 +1,33 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, text, boolean, selectV2} from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 import styles from "@sambego/storybook-styles";
 
 // components
 import Form from '../components/form';
-import { InputField } from '../components/input_field';
+import InputField from '../components/input_field';
+import Tile from '../components/tile';
 
 const stories = storiesOf('Example layouts', module);
+
+const widthFractionOptions = {
+  '1/1': '1/1',
+  '1/2': '1/2',
+  '1/3': '1/3',
+  '1/4': '1/4',
+  '1/5': '1/5'
+};
+const widthFractionDefaultValue = '1/3';
+
+const breakpointOptions = {
+  'xs': 'xs',
+  'sm': 'sm',
+  'md': 'md',
+  'lg': 'lg'
+};
+const breakpointDefaultValue = 'sm';
 
 stories.addDecorator(withKnobs)
   .addDecorator(styles({
@@ -21,8 +40,40 @@ stories.addDecorator(withKnobs)
 stories.add('Form', withInfo(
   'A example layout for a form'
 )(() =>
-  <Form>
-    <InputField id="id_1" onChangeHandler={console.log} />
-    <InputField id="id_1" onChangeHandler={console.log} />
-  </Form>
+  <div>
+    <Tile padding="lg">
+      <Form>
+        <InputField type="text"
+          id="id_1"
+          label={text('Label 1', 'Text input field')}
+          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          onChangeHandler={action('changed')}
+          placeholder={text('Placeholder text', 'Placeholder text')}
+          focusOnLoad
+          validationError={boolean('Validation error', false)}
+          validationErrorMsg={text('Validation error message', 'Validation Error')} />
+
+        <InputField type="number"
+          id="id_2"
+          label={text('Label 2', 'Number input field')}
+          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          min={1}
+          max={100}
+          defaultValue={10}
+          onChangeHandler={action('changed')}
+          validationError={boolean('Validation error', false)}
+          validationErrorMsg={text('Validation error message', 'Validation Error')} />
+
+        <InputField type="textarea"
+          id="id_3"
+          label={text('Label 3', 'Textarea input field')}
+          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          onChangeHandler={action('changed')}
+          placeholder="Textarea" />
+      </Form>
+    </Tile>
+  </div>
 ));

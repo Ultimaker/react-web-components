@@ -3,12 +3,12 @@ import * as React from 'react';
 import GridItem from './grid_item';
 import Loading from "./loading";
 
-export interface ListGroupEmptyProps {
-  label?: string;
+export interface GridEmptyProps {
+  label: string;
   loading?: boolean;
 }
 
-const ListGroupEmpty: React.StatelessComponent<ListGroupEmptyProps> =
+const GridEmpty: React.StatelessComponent<GridEmptyProps> =
   ({ label, loading }): JSX.Element => {
 
     return <GridItem>
@@ -18,4 +18,4 @@ const ListGroupEmpty: React.StatelessComponent<ListGroupEmptyProps> =
     </GridItem>
   }
 
-export default ListGroupEmpty;
+export default GridEmpty;

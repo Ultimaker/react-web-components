@@ -1,16 +1,23 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email';
+export type labelPosition = 'left' | 'top';
+export type WidthFraction = '1/1' | '1/2' | '1/3' | '1/4' | '1/5';
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldProps {
-  /** Input field type: 'text' | 'number' | 'textarea' | 'password' */
+  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' */
   type?: InputFieldType;
   /** Input field id. Must be unique */
   id: string;
   /** Input field label */
   label?: string;
-  /** Applies the validation error styling when true  */
+  /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
+  labelWidthFraction?: WidthFraction;
+  /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
+  labelWidthBreakpoint?: WidthFraction;
+  /** Input field will be displayed in the error state when true */
   validationError?: boolean;
   /** Message to show for the validation error */
   validationErrorMsg?: string;
@@ -31,7 +38,9 @@ export interface InputFieldProps {
 export class InputField extends React.Component<InputFieldProps, {}> {
 
   static defaultProps = {
-    type: 'text'
+    type: 'text',
+    labelWidthFraction: '1/1',
+    labelWidthBreakpoint: 'sm'
   };
 
   private input;
@@ -73,12 +82,16 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  protected _renderLabel(id: string, label: string): JSX.Element {
-    return <label className="input-field--label" htmlFor={id}>{label}</label>
+  protected _renderLabel(): JSX.Element {
+    const { id, label, labelWidthFraction, labelWidthBreakpoint } = this.props;
+
+    return <div className={`input-field--label layout__item u-${labelWidthFraction}-${labelWidthBreakpoint}`}>
+      <label htmlFor={id}>{label}</label>
+    </div>
   }
 
-  protected _renderInput(id: string): JSX.Element {
-    const { type, validationError, min, max, placeholder } = this.props;
+  protected _renderInput(): JSX.Element {
+    const { id, type, validationError, min, max, placeholder } = this.props;
     const classes = classNames('input', { 'error': validationError });
 
     if (type !== "textarea") {
@@ -97,6 +110,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     } else {
       return (
         <textarea
+          id={id}
           onChange={this._onChangeHandler}
           placeholder={placeholder}
           className={classes}
@@ -106,18 +120,21 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  protected _renderValidationText(validationErrorMsg: string): JSX.Element {
+  protected _renderValidationText(): JSX.Element {
+    const { validationErrorMsg } = this.props;
     return <div className="input-field--error-message">{validationErrorMsg}</div>
   }
 
   render(): JSX.Element {
-    const { id, label, validationError, validationErrorMsg } = this.props;
+    const { label, labelWidthFraction, labelWidthBreakpoint, validationError } = this.props;
 
     return (
-      <div className="input-field">
-        {label && this._renderLabel(id, label)}
-        {this._renderInput(id)}
-        {validationError && this._renderValidationText(validationErrorMsg)}
+      <div className="input-field layout">
+        {label && this._renderLabel()}
+        <div className={`layout__item layout__item--bottom u-fill`}>
+          {this._renderInput()}
+          {validationError && this._renderValidationText()}
+        </div>
       </div>
     )
   };

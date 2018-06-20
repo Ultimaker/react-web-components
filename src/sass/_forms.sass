@@ -1,18 +1,22 @@
+
+.form
+  .form--item
+    margin-bottom: 1.2rem
+
+    
+
 .input-field
   .input
     width: 100%
+    min-width: 15rem
     padding: 1.2rem 0.9rem
     border: none
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5)
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5)
     font-size: 1.6rem
     line-height: 2.2rem
     outline: none
     transition: all 0.2s ease-out
     border-radius: 0
-
-    &:hover, &:focus, &:active, &.error
-      border-bottom-width: 2px
-      padding-bottom: 1.1rem
 
     &:hover
       border-bottom-color: rgba(0, 0, 0, 0.88)
@@ -27,8 +31,9 @@
       color: rgba(0, 0, 0, 0.35)
 
   .input-field--label
-    display: block
+    @include font-size-text-2
     margin-bottom: 0.6rem
+    margin-top: 1.2rem
 
   .input-field--error-message
     margin-top: 0.6rem
