@@ -4,7 +4,7 @@ import GridItem from './grid_item';
 import Loading from "./loading";
 
 export interface ListGroupEmptyProps {
-  label: string;
+  label?: string;
   loading?: boolean;
 }
 
