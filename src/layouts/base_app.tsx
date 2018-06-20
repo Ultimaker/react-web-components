@@ -1,6 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // components
 import App from '../components/app';
@@ -53,7 +53,7 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
     /**
      * Get the login view component.
      */
-    protected abstract _getLoginComponent(): JSX.Element
+    protected abstract _getLoginUrl(): string
 
     /**
      * Constructor.
@@ -67,7 +67,7 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
         }
     }
 
-    componentDidMount(): void {
+    componentWillMount(): void {
         this._fetchScopes()
     }
 
@@ -127,7 +127,7 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
         const render = ({match: {params}}) => hasAccess ?
             <Component scopes={this.state.scopes} {...props} {...params} />
                 : this.state.isLoggedIn === null ? <Spinner />
-                    : this._getLoginComponent();
+                    : <Redirect to={this._getLoginUrl()} />;
 
         // return the rendered view
         return <Route key={key} render={render} path={path} exact />;
