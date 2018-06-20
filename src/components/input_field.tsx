@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-export type InputFieldType = 'text' | 'number' | 'textarea';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password';
 
 export interface InputFieldProps {
-  /** Input field type: 'text' | 'number' | 'textarea' */
+  /** Input field type: 'text' | 'number' | 'textarea' | 'password' */
   type?: InputFieldType;
   /** Input field id. Must be unique */
   id: string;
@@ -85,7 +85,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
       return (
         <input
           id={id}
-          type={type ? type : null}
+          type={type}
           min={min ? min : null}
           max={max ? max : null}
           onChange={this._onChangeHandler}

@@ -65,12 +65,26 @@ stories.add('Text area', withInfo(
   </div>
 ));
 
+stories.add('Password field', withInfo(
+  'Password input field'
+)(() =>
+  <div>
+    <InputField type="password"
+      id="id_4"
+      label={text('Label', 'Enter your password')}
+      onChangeHandler={action('changed')}
+      focusOnLoad
+      validationError={boolean('Validation error', false)}
+      validationErrorMsg={text('Validation error message', 'Validation Error')} />
+  </div>
+));
+
 stories.add('Checkbox', withInfo({
   propTablesExclude: [State],
   text: 'Checkbox input field'
 })(() =>
   <State store={store}>
-    <Checkbox id="id_4"
+    <Checkbox id="id_5"
       checked={false}
       onChangeHandler={() => store.set({ checked: !store.get('checked') })}
       disabled={boolean('Disabled', false)} />
