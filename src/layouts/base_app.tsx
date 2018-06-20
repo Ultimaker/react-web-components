@@ -62,12 +62,12 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
         super(props)
         this.state = {
             scopes: [],
-            isLoggedIn: false,
+            isLoggedIn: null,
             error: ''
         }
     }
 
-    componentWillMount(): void {
+    componentDidMount(): void {
         this._fetchScopes()
     }
 
@@ -116,7 +116,7 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
     private _createRoute(key: any, path: string, Component: any, scopes?: string[], props?: object): Route {
 
         // by default we only have access if the component requires no additional scopes.
-        let hasAccess = !scopes
+        let hasAccess = !scopes;
 
         // determine if the user currently has access
         if (scopes && this.state.isLoggedIn && scopes.every(val => this.state.scopes.indexOf(val) >= 0)) {
