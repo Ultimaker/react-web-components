@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, selectV2} from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 import styles from "@sambego/storybook-styles";
 
@@ -66,9 +66,20 @@ stories.add('Form', withInfo(
           validationError={boolean('Validation error', false)}
           validationErrorMsg={text('Validation error message', 'Validation Error')} />
 
-        <InputField type="textarea"
+        <InputField type="select"
           id="id_3"
-          label={text('Label 3', 'Textarea input field')}
+          label={text('Label 3', 'Select input field')}
+          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          onChangeHandler={action('changed')}
+          validationError={boolean('Validation error', false)}
+          validationErrorMsg={text('Validation error message', 'Validation Error')}
+          selectActiveOption="Option 1"
+          selectOptions={['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']} />
+
+        <InputField type="textarea"
+          id="id_4"
+          label={text('Label 4', 'Textarea input field')}
           labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}

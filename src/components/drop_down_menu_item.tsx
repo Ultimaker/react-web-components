@@ -7,7 +7,7 @@ export interface DropDownMenuItemProps {
   /** Disables the menu item when true */
   disabled?: boolean;
   /** Called when the menu item is clicked */
-  onClickHandler: () => void;
+  onClickHandler: (value: string) => void;
   /** The label for the menu item */
   label: string;
 }
@@ -20,7 +20,7 @@ export const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
         e.stopPropagation();
       }
       else{
-        onClickHandler();
+        onClickHandler(label);
       }
     }
 

@@ -3,10 +3,9 @@
   .form--item
     margin-bottom: 1.2rem
 
-    
-
 .input-field
   .input
+    background-color: white
     width: 100%
     min-width: 15rem
     padding: 1.2rem 0.9rem
@@ -39,6 +38,26 @@
     margin-top: 0.6rem
     color: $color-red
     @include font-size-text-2
+
+  .drop-down-menu
+    background-color: white
+
+    .label
+      height: 4.8rem
+      padding: 1.2rem 1.8rem 1.2rem 0.9rem
+      border-bottom: 2px solid rgba(0, 0, 0, 0.5)
+      
+      &:hover
+        background-color: white
+        border-bottom-color: rgba(0, 0, 0, 0.88)
+
+      &:focus, &:active, &.active
+        border-bottom-color: $color-border-active
+
+      &.error
+        border-bottom-color: $color-red
+
+
 
 .checkbox  
   position: relative

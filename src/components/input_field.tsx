@@ -1,13 +1,16 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email';
+import DropDownMenu from '../components/drop_down_menu';
+import DropDownMenuItem from '../components/drop_down_menu_item';
+
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select';
 export type labelPosition = 'left' | 'top';
 export type WidthFraction = '1/1' | '1/2' | '1/3' | '1/4' | '1/5';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldProps {
-  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' */
+  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' */
   type?: InputFieldType;
   /** Input field id. Must be unique */
   id: string;
@@ -22,7 +25,7 @@ export interface InputFieldProps {
   /** Message to show for the validation error */
   validationErrorMsg?: string;
   /** Called when the field changes */
-  onChangeHandler: (value: string | number) => (void);
+  onChangeHandler: (value: string | number) => void;
   /** Input field default value */
   defaultValue?: string | number;
   /** Minimum value for number field */
@@ -33,6 +36,9 @@ export interface InputFieldProps {
   placeholder?: string;
   /** If true, the field will be focused when loaded */
   focusOnLoad?: boolean;
+
+  selectActiveOption?: string;
+  selectOptions?: string[];
 }
 
 export class InputField extends React.Component<InputFieldProps, {}> {
@@ -44,12 +50,6 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   };
 
   private input;
-
-  constructor(props: InputFieldProps) {
-    super(props);
-
-    this._onChangeHandler = this._onChangeHandler.bind(this);
-  }
 
   componentDidMount(): void {
     this._focusOnPromptInput();
@@ -72,13 +72,13 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  _onChangeHandler(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) {
+  _onChangeHandler(value: string) {
     const { onChangeHandler } = this.props;
 
-    e.stopPropagation();
+    event.stopPropagation();
 
     if (onChangeHandler) {
-      onChangeHandler(e.target.value);
+      onChangeHandler(value);
     }
   }
 
@@ -91,27 +91,44 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   protected _renderInput(): JSX.Element {
-    const { id, type, validationError, min, max, placeholder } = this.props;
+    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions } = this.props;
     const classes = classNames('input', { 'error': validationError });
 
-    if (type !== "textarea") {
+    console.log('selectOptions', selectOptions);
+    console.log('selectActiveOption', selectActiveOption);
+    
+    
+
+    if (type === "textarea") {
+      return (
+        <textarea
+          id={id}
+          onChange={(e) => this._onChangeHandler(e.target.value)}
+          placeholder={placeholder}
+          className={classes}
+          ref={input => this.input = input}
+        />
+      )
+
+    } else if (type === "select") {
+      return (
+        <DropDownMenu label={selectActiveOption}>
+          {selectOptions.map(option => {
+            return <DropDownMenuItem onClickHandler={this._onChangeHandler}
+              label={option}
+              active={selectActiveOption === option} />
+          })}
+        </DropDownMenu>
+      )
+    }
+    else {
       return (
         <input
           id={id}
           type={type}
           min={min ? min : null}
           max={max ? max : null}
-          onChange={this._onChangeHandler}
-          placeholder={placeholder}
-          className={classes}
-          ref={input => this.input = input}
-        />
-      )
-    } else {
-      return (
-        <textarea
-          id={id}
-          onChange={this._onChangeHandler}
+          onChange={(e) => this._onChangeHandler(e.target.value)}
           placeholder={placeholder}
           className={classes}
           ref={input => this.input = input}

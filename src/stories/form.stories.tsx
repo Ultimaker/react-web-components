@@ -104,3 +104,18 @@ stories.add('Checkbox', withInfo({
       disabled={boolean('Disabled', false)} />
   </State>
 ));
+
+stories.add('Select field', withInfo(
+  'Select input field'
+)(() =>
+  <div style={{ width: 250 }}>
+    <InputField type="select"
+      id="id_7"
+      label={text('Label', 'Select an option')}
+      onChangeHandler={action('changed')}
+      validationError={boolean('Validation error', false)}
+      validationErrorMsg={text('Validation error message', 'Validation Error')}
+      selectActiveOption="Option 1"
+      selectOptions={['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']} />
+  </div>
+));
