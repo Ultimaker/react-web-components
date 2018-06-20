@@ -26,7 +26,7 @@ stories.addDecorator(withKnobs)
 stories.add('Text field', withInfo(
   'Text input field'
 )(() =>
-  <div>
+  <div style={{ width: 250 }}>
     <InputField type="text"
       id="id_1"
       label={text('Label', 'Input field')}
@@ -41,7 +41,7 @@ stories.add('Text field', withInfo(
 stories.add('Number field', withInfo(
   'Number input field'
 )(() =>
-  <div>
+  <div style={{ width: 250 }}>
     <InputField type="number"
       id="id_2"
       min={1}
@@ -49,7 +49,7 @@ stories.add('Number field', withInfo(
       defaultValue={10}
       onChangeHandler={action('changed')}
       focusOnLoad
-      validationError={boolean('Validation Error', false)}
+      validationError={boolean('Validation error', false)}
       validationErrorMsg={text('Validation error message', 'Validation Error')} />
   </div>
 ));
@@ -57,7 +57,7 @@ stories.add('Number field', withInfo(
 stories.add('Text area', withInfo(
   'Text area field'
 )(() =>
-  <div>
+  <div style={{ width: 250 }}>
     <InputField type="textarea"
       id="id_3"
       onChangeHandler={action('changed')}
@@ -68,10 +68,24 @@ stories.add('Text area', withInfo(
 stories.add('Password field', withInfo(
   'Password input field'
 )(() =>
-  <div>
+  <div style={{ width: 250 }}>
     <InputField type="password"
       id="id_4"
       label={text('Label', 'Enter your password')}
+      onChangeHandler={action('changed')}
+      focusOnLoad
+      validationError={boolean('Validation error', false)}
+      validationErrorMsg={text('Validation error message', 'Validation Error')} />
+  </div>
+));
+
+stories.add('Email field', withInfo(
+  'Email input field'
+)(() =>
+  <div style={{ width: 250 }}>
+    <InputField type="email"
+      id="id_5"
+      label={text('Label', 'Enter your email address')}
       onChangeHandler={action('changed')}
       focusOnLoad
       validationError={boolean('Validation error', false)}
@@ -84,7 +98,7 @@ stories.add('Checkbox', withInfo({
   text: 'Checkbox input field'
 })(() =>
   <State store={store}>
-    <Checkbox id="id_5"
+    <Checkbox id="id_6"
       checked={false}
       onChangeHandler={() => store.set({ checked: !store.get('checked') })}
       disabled={boolean('Disabled', false)} />
