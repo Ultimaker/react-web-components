@@ -22,7 +22,7 @@ stories.add('Form', withInfo(
   'A example layout for a form'
 )(() =>
   <Form>
-    <InputField onChangeHandler={console.log} />
-    <InputField onChangeHandler={console.log} />
+    <InputField id="id_1" onChangeHandler={console.log} />
+    <InputField id="id_1" onChangeHandler={console.log} />
   </Form>
 ));

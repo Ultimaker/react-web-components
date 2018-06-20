@@ -28,10 +28,13 @@ stories.add('Text field', withInfo(
 )(() =>
   <div>
     <InputField type="text"
+      id="id_1"
+      label={text('Label', 'Input field')}
       onChangeHandler={action('changed')}
-      placeholder="Text field"
+      placeholder={text('Placeholder text', 'Placeholder text')}
       focusOnLoad
-      validationError={boolean('Validation Error', false)} />
+      validationError={boolean('Validation error', false)}
+      validationErrorMsg={text('Validation error message', 'Validation Error')} />
   </div>
 ));
 
@@ -40,11 +43,14 @@ stories.add('Number field', withInfo(
 )(() =>
   <div>
     <InputField type="number"
+      id="id_2"
       min={1}
       max={100}
+      defaultValue={10}
       onChangeHandler={action('changed')}
       focusOnLoad
-      validationError={boolean('Validation Error', false)} />
+      validationError={boolean('Validation Error', false)}
+      validationErrorMsg={text('Validation error message', 'Validation Error')} />
   </div>
 ));
 
@@ -53,6 +59,7 @@ stories.add('Text area', withInfo(
 )(() =>
   <div>
     <InputField type="textarea"
+      id="id_3"
       onChangeHandler={action('changed')}
       placeholder="Textarea" />
   </div>
@@ -63,7 +70,7 @@ stories.add('Checkbox', withInfo({
   text: 'Checkbox input field'
 })(() =>
   <State store={store}>
-    <Checkbox id="checkbox"
+    <Checkbox id="id_4"
       checked={false}
       onChangeHandler={() => store.set({ checked: !store.get('checked') })}
       disabled={boolean('Disabled', false)} />

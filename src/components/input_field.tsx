@@ -4,15 +4,23 @@ import * as classNames from 'classnames';
 export type InputFieldType = 'text' | 'number' | 'textarea';
 
 export interface InputFieldProps {
-  /** Field type: 'text' | 'number' | 'textarea' */
+  /** Input field type: 'text' | 'number' | 'textarea' */
   type?: InputFieldType;
+  /** Input field id. Must be unique */
+  id: string;
+  /** Input field label */
+  label?: string;
   /** Applies the validation error styling when true  */
   validationError?: boolean;
+  /** Message to show for the validation error */
+  validationErrorMsg?: string;
   /** Called when the field changes */
   onChangeHandler: (value: string | number) => (void);
-  /** Min value and default value for number field */
+  /** Input field default value */
+  defaultValue?: string | number;
+  /** Minimum value for number field */
   min?: number;
-  /** Max value for number field */
+  /** Maximum value for number field */
   max?: number;
   /** html placeholder text */
   placeholder?: string;
@@ -28,6 +36,12 @@ export class InputField extends React.Component<InputFieldProps, {}> {
 
   private input;
 
+  constructor(props: InputFieldProps) {
+    super(props);
+
+    this._onChangeHandler = this._onChangeHandler.bind(this);
+  }
+
   componentDidMount(): void {
     this._focusOnPromptInput();
     this._setDefaultNumber();
@@ -42,10 +56,10 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   _setDefaultNumber() {
-    const { type, min } = this.props;
+    const { defaultValue } = this.props;
 
-    if (type === 'number' && min) {
-      this.input.value = min.toString();
+    if (defaultValue) {
+      this.input.value = defaultValue.toString();
     }
   }
 
@@ -59,18 +73,18 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  protected _renderLabel(): JSX.Element {
-    // TODO: inject label text
-    return <label>Test Test</label>
+  protected _renderLabel(id: string, label: string): JSX.Element {
+    return <label className="input-field--label" htmlFor={id}>{label}</label>
   }
 
-  protected _renderInput(): JSX.Element {
+  protected _renderInput(id: string): JSX.Element {
     const { type, validationError, min, max, placeholder } = this.props;
-    const classes = classNames('text-field', { 'error': validationError });
+    const classes = classNames('input', { 'error': validationError });
 
     if (type !== "textarea") {
       return (
         <input
+          id={id}
           type={type ? type : null}
           min={min ? min : null}
           max={max ? max : null}
@@ -92,17 +106,18 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  protected _renderValidationText(): JSX.Element {
-    // TODO: set validation state and text.
-    return <span>Validation...</span>
+  protected _renderValidationText(validationErrorMsg: string): JSX.Element {
+    return <div className="input-field--error-message">{validationErrorMsg}</div>
   }
 
   render(): JSX.Element {
+    const { id, label, validationError, validationErrorMsg } = this.props;
+
     return (
-      <div>
-        { this._renderLabel() }
-        { this._renderInput() }
-        { this._renderValidationText() }
+      <div className="input-field">
+        {label && this._renderLabel(id, label)}
+        {this._renderInput(id)}
+        {validationError && this._renderValidationText(validationErrorMsg)}
       </div>
     )
   };

@@ -140,6 +140,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
           {type === 'prompt' &&
             <div className="prompt-input">
               <InputField
+                id="prompt-input"
                 type={inputType ? inputType : null}
                 min={inputMin ? inputMin : null}
                 max={inputMax ? inputMax : null}
