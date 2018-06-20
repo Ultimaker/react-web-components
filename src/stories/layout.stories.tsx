@@ -59,7 +59,7 @@ stories.add('Tile', withInfo(
     align={selectV2('Align', alignOptions, alignDefaultValue)}
   >
     <div>Tile</div>
-    <div style={{ marginTop: '2.4rem' }}>Component</div>
+    <div style={{ marginTop: '1.2rem' }}>Component</div>
   </ Tile>
 ));
 

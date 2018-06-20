@@ -18,7 +18,7 @@ export interface TileProps {
 export const Tile: React.StatelessComponent<TileProps> =
   ({ padding, align, children, disabled, selected }): JSX.Element => {
 
-    const classes = classNames('tile', `padding--${padding}`, { disabled, selected });
+    const classes = classNames('tile', `padding-${padding}`, { disabled, selected });
 
     return <div className={classes} style={{textAlign: align}}>
       <div className="cover" />
