@@ -13,12 +13,12 @@ const stories = storiesOf('Example layouts', module);
 stories.addDecorator(withKnobs);
 
 stories.add('Sign In', withInfo(
-    'A example layout for a sign in page'
+  'A example layout for a sign in page'
 )(() =>
-    <Page title="Sign In" maxWidth={600}>
-        <Tile padding="lg" align="center">
-            <p>In order to continue, you must sign in with your Ultimaker account.</p>
-            <Button onClickHandler={action('clicked')}>Sign In</Button>
-        </Tile>
-    </Page>
+  <Page title="Sign In" maxWidth={600}>
+    <Tile padding="lg" align="center">
+      <p>In order to continue, you must sign in with your Ultimaker account.</p>
+      <Button onClickHandler={action('clicked')}>Sign In</Button>
+    </Tile>
+  </Page>
 ));

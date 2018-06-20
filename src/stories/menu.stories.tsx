@@ -14,51 +14,51 @@ import DropDownMenuItem from '../components/drop_down_menu_item';
 const stories = storiesOf('Menus', module);
 
 const store = new Store({
-    label: 'Item 1',
+  label: 'Item 1',
 });
 
 const options = {
-    Left: 'left',
-    Right: 'right',
+  Left: 'left',
+  Right: 'right',
 };
 const defaultValue = 'Left';
 
 stories.addDecorator(withKnobs)
-    .addDecorator(styles({
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-    }));
+  .addDecorator(styles({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+  }));
 
 stories.add('Context menu', withInfo(
-    'Context menu for addition actions'
+  'Context menu for addition actions'
 )(() =>
-    <ContextMenu menuWidth={200} menuOffsetDirection={selectV2('Menu Offset Direction', options, defaultValue)}>
-        <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />
-        <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
-        <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
-    </ContextMenu>
+  <ContextMenu menuWidth={200} menuOffsetDirection={selectV2('Menu Offset Direction', options, defaultValue)}>
+    <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />
+    <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
+    <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
+  </ContextMenu>
 ));
 
 stories.add('Drop down menu', withInfo({
-    propTablesExclude: [ State ],
-    text: 'Drop down for changing options'
+  propTablesExclude: [State],
+  text: 'Drop down for changing options'
 })(() =>
-    <State store={store}>
-        <DropDownMenu label={store.get('label')}>
-            <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 1' })}
-                label={text('Text 1', 'Item 1')}
-                active={store.get('label') === 'Item 1'}
-                disabled={boolean('Disabled', false)} />
-            <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 2' })}
-                label={text('Text 2', 'Item 2')}
-                active={store.get('label') === 'Item 2'}
-                disabled={boolean('Disabled', false)} />
-            <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 3' })}
-                label={text('Text 3', 'Item 3')}
-                active={store.get('label') === 'Item 3'}
-                disabled={boolean('Disabled', false)} />
-        </DropDownMenu>
-    </State>
+  <State store={store}>
+    <DropDownMenu label={store.get('label')}>
+      <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 1' })}
+        label={text('Text 1', 'Item 1')}
+        active={store.get('label') === 'Item 1'}
+        disabled={boolean('Disabled', false)} />
+      <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 2' })}
+        label={text('Text 2', 'Item 2')}
+        active={store.get('label') === 'Item 2'}
+        disabled={boolean('Disabled', false)} />
+      <DropDownMenuItem onClickHandler={() => store.set({ label: 'Item 3' })}
+        label={text('Text 3', 'Item 3')}
+        active={store.get('label') === 'Item 3'}
+        disabled={boolean('Disabled', false)} />
+    </DropDownMenu>
+  </State>
 ));

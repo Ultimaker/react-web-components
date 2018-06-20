@@ -12,60 +12,60 @@ import Checkbox from '../components/checkbox';
 const stories = storiesOf('Forms', module);
 
 const store = new Store({
-    checked: false,
+  checked: false,
 });
 
 stories.addDecorator(withKnobs)
-    .addDecorator(styles({
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-    }));
+  .addDecorator(styles({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+  }));
 
 stories.add('Text field', withInfo(
-    'Text input field'
+  'Text input field'
 )(() =>
-    <div>
-        <InputField type="text"
-            onChangeHandler={action('changed')}
-            placeholder="Text field"
-            focusOnLoad
-            validationError={boolean('Validation Error', false)} />
-    </div>
+  <div>
+    <InputField type="text"
+      onChangeHandler={action('changed')}
+      placeholder="Text field"
+      focusOnLoad
+      validationError={boolean('Validation Error', false)} />
+  </div>
 ));
 
 stories.add('Number field', withInfo(
-    'Number input field'
+  'Number input field'
 )(() =>
-    <div>
-        <InputField type="number"
-            min={1}
-            max={100}
-            onChangeHandler={action('changed')}
-            focusOnLoad
-            validationError={boolean('Validation Error', false)} />
-    </div>
+  <div>
+    <InputField type="number"
+      min={1}
+      max={100}
+      onChangeHandler={action('changed')}
+      focusOnLoad
+      validationError={boolean('Validation Error', false)} />
+  </div>
 ));
 
 stories.add('Text area', withInfo(
-    'Text area field'
+  'Text area field'
 )(() =>
-    <div>
-        <InputField type="textarea"
-            onChangeHandler={action('changed')}
-            placeholder="Textarea" />
-    </div>
+  <div>
+    <InputField type="textarea"
+      onChangeHandler={action('changed')}
+      placeholder="Textarea" />
+  </div>
 ));
 
 stories.add('Checkbox', withInfo({
-    propTablesExclude: [ State ],
-    text: 'Checkbox input field'
+  propTablesExclude: [State],
+  text: 'Checkbox input field'
 })(() =>
-    <State store={store}>
-        <Checkbox id="checkbox"
-            checked={false}
-            onChangeHandler={() => store.set({ checked: !store.get('checked') })}
-            disabled={boolean('Disabled', false)} />
-    </State>
+  <State store={store}>
+    <Checkbox id="checkbox"
+      checked={false}
+      onChangeHandler={() => store.set({ checked: !store.get('checked') })}
+      disabled={boolean('Disabled', false)} />
+  </State>
 ));
