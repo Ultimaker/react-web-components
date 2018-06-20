@@ -17,14 +17,6 @@ stories.addDecorator(withKnobs)
         marginTop: '50px'
     }));
 
-const paddingOptions = {
-    sm: 'sm',
-    md: 'md',
-    lg: 'lg',
-    none: 'none',
-};
-const paddingDefaultValue = 'lg';
-
 const alignOptions = {
     left: 'left',
     right: 'right',
@@ -32,14 +24,14 @@ const alignOptions = {
 };
 const alignDefaultValue = 'center';
 
-const gutterOptions = {
-    tiny: 'tiny',
-    small: 'small',
-    medium: 'medium',
-    large: 'large',
-    without: 'without'
+const spacingOptions = {
+    xs: 'xs',
+    sm: 'sm',
+    md: 'md',
+    lg: 'lg',
+    none: 'none',
 };
-const gutterDefaultValue = 'medium';
+const spacingDefaultValue = 'md';
 
 const widthFractionOptions = {
     '1/1': '1/1',
@@ -63,7 +55,7 @@ stories.add('Tile', withInfo(
 )(() =>
     <Tile disabled={boolean('Disabled', false)}
         selected={boolean('Selected', false)}
-        padding={selectV2('Padding', paddingOptions, paddingDefaultValue)}
+        padding={selectV2('Padding', spacingOptions, spacingDefaultValue)}
         align={selectV2('Align', alignOptions, alignDefaultValue)}
     >
         <div>Tile</div>
@@ -76,7 +68,7 @@ stories.add('Grid', withInfo(
 )(() =>
     <div style={{ width: '80vw' }}>
         <Grid align={selectV2('Align', alignOptions, alignDefaultValue)}
-            gutter={selectV2('Gutter', gutterOptions, gutterDefaultValue)}
+            gutter={selectV2('Gutter', spacingOptions, spacingDefaultValue)}
             title={text('Grid Component title', 'Grid Component')}
         >
             <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}

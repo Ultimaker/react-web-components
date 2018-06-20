@@ -14,36 +14,36 @@
   display: flex
   flex-flow: row wrap
   padding: 0
-  margin: 0 -0.5 * $layout-gutter-size
+  margin: 0 -0.5 * $layout-gutter-default
 
 
 // Modifier: center align all layout cells
 
-.layout--alignCenter
+.layout--align-center
   justify-content: center
 
 
 // Modifier: right align all layout cells
 
-.layout--alignRight
+.layout--align-right
   justify-content: flex-end
 
 
 // Modifier: middle-align layout cells
 
-.layout--alignMiddle
+.layout--align-middle
   align-items: center
 
 
 // Modifier: bottom-align layout cells
 
-.layout--alignBottom
+.layout--align-bottom
   align-items: flex-end
 
 
 // Modifier: stretch-align layout cells
 
-.layout--alignStretch
+.layout--align-stretch
   align-items: stretch
 
 
@@ -59,54 +59,25 @@
 
 // Modifier: all cells match height of tallest cell in a row
 
-.layout--equalHeight > .layout__item 
+.layout--equal-height > .layout__item 
   display: flex
 
 
 // Modifier: gutters
 
-.layout--withoutGutter 
-  margin: 0
+@mixin layout-padding ($sizes) 
+  @each $name, $value in $sizes
 
-.layout--withoutGutter > .layout__item 
-  padding: 0
+    .layout--gutter-#{$name}
+      margin: 0 (-0.5 * $value)
 
-  &.layout--gutterBelow
-    padding-bottom: 0
+    .layout--gutter-#{$name} > .layout__item 
+      padding: 0 (0.5 * $value)
 
+      &.layout--gutter-below
+        padding-bottom: $value
 
-// Quarter gutter size
-.layout--tinyGutter 
-  margin: 0 (-0.125 * $layout-gutter-size)
-
-.layout--tinyGutter > .layout__item 
-  padding: 0 (0.125 * $layout-gutter-size)
-
-  &.layout--gutterBelow
-    padding-bottom: 0.25 * $layout-gutter-size
-
-
-// Half gutter size
-.layout--smallGutter 
-  margin: 0 (-0.25 * $layout-gutter-size)
-
-.layout--smallGutter > .layout__item 
-  padding: 0 (0.25 * $layout-gutter-size)
-
-  &.layout--gutterBelow
-    padding-bottom: 0.5 * $layout-gutter-size
-
-
-// Double gutter size
-.layout--largeGutter 
-   margin: 0 (-1 * $layout-gutter-size)
-
-.layout--largeGutter > .layout__item 
-   padding: 0 $layout-gutter-size
-
-   &.layout--gutterBelow
-    padding-bottom: 2 * $layout-gutter-size
-
+@include layout-padding($layout-spacing)
 
 
 //   layout item
@@ -123,10 +94,10 @@
   box-sizing: inherit
   flex-basis: 100% /* 1 */
   min-width: 0 /* 2 */
-  padding: 0 (0.5 * $layout-gutter-size)
+  padding: 0 (0.5 * $layout-gutter-default)
 
   &.layout--gutterBelow
-    padding-bottom: $layout-gutter-size
+    padding-bottom: $layout-gutter-default
 
 
 // Modifier: horizontally center one unit
@@ -313,7 +284,7 @@
 
 @mixin layout-padding ($sizes) 
   @each $name, $value in $sizes
-    .padding--#{$name}
+    .padding-#{$name}
       padding: #{$value}
 
 @include layout-padding($layout-spacing)
