@@ -6,7 +6,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import App from '../components/app';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
-import Spinner from '../components/spinner';
+import LoadingPage from '../components/loading_page';
 
 export interface BaseAppState {
     scopes: string[];
@@ -126,7 +126,7 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
         // render will either show the login page or the component, passing on any parameters
         const render = ({match: {params}}) => hasAccess ?
             <Component scopes={this.state.scopes} {...props} {...params} />
-                : this.state.isLoggedIn === null ? <Spinner />
+                : this.state.isLoggedIn === null ? <LoadingPage />
                     : <Redirect to={this._getLoginUrl()} />;
 
         // return the rendered view
