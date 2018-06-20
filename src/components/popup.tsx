@@ -28,7 +28,6 @@ export interface PopupProps {
 export interface PopupState {
   inputValue: string;
   previousInputValue: string;
-  validationError: boolean;
   validationErrorMsg: string;
   primaryBtnSpinner: boolean;
   secondaryBtnSpinner: boolean;
@@ -44,7 +43,6 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
     this.state = {
       inputValue: undefined,
       previousInputValue: undefined,
-      validationError: false,
       validationErrorMsg: undefined,
       primaryBtnSpinner: false,
       secondaryBtnSpinner: false,
@@ -106,7 +104,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
       return true;
     }
     else {
-      this.setState({ validationErrorMsg: validationErrorMsg, validationError: true });
+      this.setState({ validationErrorMsg: validationErrorMsg });
       return false;
     }
   }
@@ -117,15 +115,15 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
   }
 
   _onChangeHandler(value: string): void {
-    this.setState({ inputValue: value, validationError: false });
+    this.setState({ inputValue: value, validationErrorMsg: null });
   }
 
   render(): JSX.Element {
     const { isOpen, type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
       inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle } = this.props;
-    const { validationError, validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner } = this.state;
+    const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner } = this.state;
 
-    const showValidationError = validationError && validationErrorMsg && validationErrorMsg.length > 0;
+    const showValidationError = validationErrorMsg && validationErrorMsg.length > 0;
 
     return <Modal isOpen={isOpen}>
       <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
@@ -146,12 +144,9 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
                 max={inputMax ? inputMax : null}
                 onChangeHandler={this._onChangeHandler}
                 placeholder={promptPlaceholder}
-                validationError={validationError}
+                validationErrorMsg={validationErrorMsg}
                 focusOnLoad />
 
-              {showValidationError &&
-                <div className="validation-error">{validationErrorMsg}</div>
-              }
             </div>
           }
         </div>
@@ -161,7 +156,7 @@ export default class Popup extends React.Component<PopupProps, PopupState> {
           <div className="btn__container">
             <Button
               style={primaryBtnStyle}
-              disabled={validationError || secondaryBtnSpinner}
+              disabled={validationErrorMsg.length > 0 || secondaryBtnSpinner}
               type="submit"
               showSpinner={primaryBtnSpinner}>
 

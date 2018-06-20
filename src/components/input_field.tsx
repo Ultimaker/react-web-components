@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import DropDownMenu from '../components/drop_down_menu';
-import DropDownMenuItem from '../components/drop_down_menu_item';
+import DropDownMenu from './drop_down_menu';
+import DropDownMenuItem from './drop_down_menu_item';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select';
 export type labelPosition = 'left' | 'top';
@@ -36,8 +36,9 @@ export interface InputFieldProps {
   placeholder?: string;
   /** If true, the field will be focused when loaded */
   focusOnLoad?: boolean;
-
+  /** Selected option for type select */
   selectActiveOption?: string;
+  /** List of options for type select */
   selectOptions?: string[];
 }
 
@@ -94,15 +95,11 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions } = this.props;
     const classes = classNames('input', { 'error': validationError });
 
-    console.log('selectOptions', selectOptions);
-    console.log('selectActiveOption', selectActiveOption);
-    
-    
-
     if (type === "textarea") {
       return (
         <textarea
           id={id}
+          name={id}
           onChange={(e) => this._onChangeHandler(e.target.value)}
           placeholder={placeholder}
           className={classes}
@@ -113,8 +110,8 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     } else if (type === "select") {
       return (
         <DropDownMenu label={selectActiveOption}>
-          {selectOptions.map(option => {
-            return <DropDownMenuItem onClickHandler={this._onChangeHandler}
+          {selectOptions.map((option, index) => {
+            return <DropDownMenuItem key={index} onClickHandler={this._onChangeHandler}
               label={option}
               active={selectActiveOption === option} />
           })}
@@ -125,6 +122,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
       return (
         <input
           id={id}
+          name={id}
           type={type}
           min={min ? min : null}
           max={max ? max : null}
