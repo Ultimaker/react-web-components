@@ -7,7 +7,7 @@ import { Checkbox } from './checkbox';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox';
 export type labelPosition = 'left' | 'top';
-export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill' ;
+export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldProps {
@@ -56,7 +56,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   constructor(props) {
     super(props);
 
-    this._onChangeHandler =  this._onChangeHandler.bind(this);
+    this._onChangeHandler = this._onChangeHandler.bind(this);
   }
 
   private input;
@@ -152,12 +152,26 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   protected _renderValidationText(): JSX.Element {
-    const { validationErrorMsg } = this.props;
-    return <div className="input-field--error-message">{validationErrorMsg}</div>
+    const { validationErrorMsg, labelLayoutWidth } = this.props;
+    let errorMsgPositionClass;
+    
+    if(labelLayoutWidth === 'fill' || labelLayoutWidth === 'fit'){
+      errorMsgPositionClass = 'text-right';
+    }
+    else if(labelLayoutWidth === '1/1'){
+      errorMsgPositionClass = 'text-left';
+    }
+    else{
+      errorMsgPositionClass = `u-before-${labelLayoutWidth}`
+    }
+
+    return <div className={`layout__item u-full ${errorMsgPositionClass}`}>
+      <div className="input-field--error-message">{validationErrorMsg}</div>
+    </div>
   }
 
   render(): JSX.Element {
-    const { label, validationError, labelLayoutWidth } = this.props;
+    const { label, validationError, labelLayoutWidth, type } = this.props;
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
 
@@ -166,8 +180,8 @@ export class InputField extends React.Component<InputFieldProps, {}> {
         {label && this._renderLabel()}
         <div className={`layout__item layout__item--middle u-${inputLayoutWidth}`}>
           {this._renderInput()}
-          {validationError && this._renderValidationText()}
         </div>
+        {validationError && this._renderValidationText()}
       </div>
     )
   };
