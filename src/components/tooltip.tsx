@@ -4,9 +4,14 @@ import * as classNames from 'classnames';
 
 import splitTextByNewLine from '../utils/split_text_by_new_line';
 
+export type TooltipDirection = 'north' | 'south';
+
 export interface TooltipProps {
+  /** Text to be displayed inside the tooltip. \n can be used to create a new paragraph. */
   tooltipText: string;
-  direction?: 'north' | 'south';
+  /** The positional direction of the tooltip: 'north' | 'south' */
+  direction?: TooltipDirection;
+  /** When true, the tooltip will not be displayed */
   disableTooltip?: boolean;
 }
 
@@ -16,7 +21,7 @@ export interface TooltipState {
 
 const windowMargin = 10;
 
-export default class Tooltip extends React.Component<TooltipProps, TooltipState> {
+export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
   constructor(props) {
     super(props);
@@ -108,3 +113,5 @@ export default class Tooltip extends React.Component<TooltipProps, TooltipState>
     </div>
   }
 }
+
+export default Tooltip;
