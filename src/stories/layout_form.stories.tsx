@@ -47,7 +47,7 @@ stories.add('Form', withInfo(
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
         secondaryBtnStyle="quiet"
-        formValidation={{ success: boolean('Validation Success', false), validationErrors: {}}}
+        formValidation={{ success: boolean('Validation Success', true), validationErrors: {id_1: 'Validation error'}}}
       >
         <InputField type="text"
           id="id_1"
