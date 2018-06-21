@@ -18,12 +18,6 @@ stories.addDecorator(withKnobs)
     height: '100vh',
   }));
 
-const directionOptions = {
-  north: 'north',
-  south: 'south',
-};
-const spacingDefaultValue = 'north';
-
 stories.add('Modal', withInfo(
   'Basic Modal'
 )(() =>
