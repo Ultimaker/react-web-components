@@ -74,7 +74,7 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
     render(): JSX.Element {
         return (
             <App fixedHeader>
-                <Header headerLogo={<img src="/static/images/CU_Logo_RGB.svg" alt="Cura logo" />} showNav>
+                <Header headerLogo={<img src="/static/images/CU_Logo_RGB.svg" alt="Cura logo" />} headerLogoUrl={this._getAppUrl()} showNav>
                     { this._renderNavigation(this._getRoutes())}
                 </Header>
                 <div className="content app__main" role="main">
