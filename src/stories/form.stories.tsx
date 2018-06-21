@@ -99,7 +99,6 @@ stories.add('Checkbox', withInfo({
 })(() =>
   <State store={store}>
     <Checkbox id="id_6"
-      checked={false}
       onChangeHandler={() => store.set({ checked: !store.get('checked') })}
       disabled={boolean('Disabled', false)} />
   </State>

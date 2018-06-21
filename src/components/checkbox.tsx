@@ -4,40 +4,58 @@ export interface CheckboxProps {
   /** Checkbox id. Must be unique */
   id: string;
   /** Whether the checkbox is checked or not */
-  checked: boolean;
+  defaultValue?: boolean;
   /** Called when the checkbox is clicked */
   onChangeHandler: (checked: boolean) => void;
   /** Disables the checkbox when true */
   disabled?: boolean;
 }
 
-export const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, checked, onChangeHandler, disabled }) => {
+export class Checkbox extends React.Component<CheckboxProps, {}> {
 
-  const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChangeHandler(e.currentTarget.checked);
+  private input;
+
+  constructor(props) {
+    super(props);
+
+    this._onChangeHandler = this._onChangeHandler.bind(this);
   }
 
-  const _stopPropagation: React.MouseEventHandler<HTMLDivElement> = (e) => {
+  componentDidMount(): void {
+    this._setDefaultValue();
+  }
+
+  _setDefaultValue() {
+    const { defaultValue } = this.props;
+    
+    if (defaultValue === true) {
+      this.input.checked = defaultValue;
+    }
+  }
+
+  _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    this.props.onChangeHandler(e.currentTarget.checked);
+  }
+
+  _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
     e.stopPropagation()
   }
 
-  return (
-    <div className="checkbox" onClick={_stopPropagation}>
+  render(): JSX.Element {
+    const { id, disabled } = this.props;
+
+    return <div className="checkbox" onClick={this._stopPropagation} >
       <input
         id={id}
         name={id}
         type="checkbox"
-        checked={checked}
-        onChange={_onChangeHandler}
+        onChange={this._onChangeHandler}
         disabled={disabled}
+        ref={input => this.input = input}
       />
       <label htmlFor={id}></label>
     </div>
-  );
-};
-
-Checkbox.defaultProps = {
-  checked: false
-};
+  }
+}
 
 export default Checkbox;

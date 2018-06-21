@@ -7,7 +7,7 @@ import { Checkbox } from './checkbox';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox';
 export type labelPosition = 'left' | 'top';
-export type WidthFraction = '1/1' | '1/2' | '1/3' | '1/4' | '1/5';
+export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill' ;
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldProps {
@@ -18,9 +18,9 @@ export interface InputFieldProps {
   /** Input field label */
   label?: string | JSX.Element;
   /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
-  labelWidthFraction?: WidthFraction;
+  labelLayoutWidth?: LayoutWidth;
   /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
-  labelWidthBreakpoint?: WidthFraction;
+  labelWidthBreakpoint?: Breakpoint;
   /** Input field will be displayed in the error state when true */
   validationError?: boolean;
   /** Message to show for the validation error */
@@ -49,15 +49,21 @@ export class InputField extends React.Component<InputFieldProps, {}> {
 
   static defaultProps = {
     type: 'text',
-    labelWidthFraction: '1/1',
+    labelLayoutWidth: '1/1',
     labelWidthBreakpoint: 'sm'
   };
+
+  constructor(props) {
+    super(props);
+
+    this._onChangeHandler =  this._onChangeHandler.bind(this);
+  }
 
   private input;
 
   componentDidMount(): void {
     this._focusOnPromptInput();
-    this._setDefaultNumber();
+    this._setDefaultValue();
   }
 
   _focusOnPromptInput(): void {
@@ -68,10 +74,10 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  _setDefaultNumber() {
-    const { defaultValue } = this.props;
+  _setDefaultValue() {
+    const { defaultValue, type } = this.props;
 
-    if (defaultValue) {
+    if (defaultValue && type !== "checkbox" && type !== "select") {
       this.input.value = defaultValue.toString();
     }
   }
@@ -87,9 +93,9 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   protected _renderLabel(): JSX.Element {
-    const { id, label, labelWidthFraction, labelWidthBreakpoint } = this.props;
+    const { id, label, labelLayoutWidth, labelWidthBreakpoint } = this.props;
 
-    return <div className={`input-field--label layout__item u-${labelWidthFraction}-${labelWidthBreakpoint}`}>
+    return <div className={`input-field--label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`}>
       <label htmlFor={id}>{label}</label>
     </div>
   }
@@ -123,8 +129,8 @@ export class InputField extends React.Component<InputFieldProps, {}> {
       return (
         <Checkbox
           id={id}
-          onChangeHandler={this._onChangeHandler.bind(this)}
-          checked={defaultValue === true}
+          onChangeHandler={this._onChangeHandler}
+          defaultValue={defaultValue === true}
           disabled={disabled}
         />
       )
@@ -151,12 +157,14 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   render(): JSX.Element {
-    const { label, validationError } = this.props;
+    const { label, validationError, labelLayoutWidth } = this.props;
+
+    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
 
     return (
       <div className="input-field layout">
         {label && this._renderLabel()}
-        <div className={`layout__item layout__item--bottom u-fill`}>
+        <div className={`layout__item layout__item--middle u-${inputLayoutWidth}`}>
           {this._renderInput()}
           {validationError && this._renderValidationText()}
         </div>

@@ -17,7 +17,9 @@ const widthFractionOptions = {
   '1/2': '1/2',
   '1/3': '1/3',
   '1/4': '1/4',
-  '1/5': '1/5'
+  '1/5': '1/5',
+  'fill': 'fill',
+  'fit': 'fit'
 };
 const widthFractionDefaultValue = '1/3';
 
@@ -40,19 +42,22 @@ stories.addDecorator(withKnobs)
 stories.add('Form', withInfo(
   'A example layout for a form'
 )(() =>
-  <div>
+  <div style={{maxWidth: 600}}>
     <Tile padding="lg">
       <Form primaryBtnText="Submit"
         onSubmitHandler={action('submit')}
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
         secondaryBtnStyle="quiet"
-        formValidation={{ success: boolean('Validation Success', true), validationErrors: {id_1: 'Validation error'}}}
+        formValidation={{ 
+          success: boolean('Validation Success', true), 
+          validationErrors: {id_1: 'Validation error', id_2: 'Validation error', id_3: 'Validation error', id_4: 'Validation error', id_5: 'Validation error'}
+        }}
       >
         <InputField type="text"
           id="id_1"
           label={text('Label 1', 'Text input field')}
-          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           placeholder={text('Placeholder text', 'Placeholder text')}
@@ -61,7 +66,7 @@ stories.add('Form', withInfo(
         <InputField type="number"
           id="id_2"
           label={text('Label 2', 'Number input field')}
-          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           min={1}
           max={100}
@@ -71,7 +76,7 @@ stories.add('Form', withInfo(
         <InputField type="select"
           id="id_3"
           label={text('Label 3', 'Select input field')}
-          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           selectActiveOption="Option 1"
@@ -80,10 +85,18 @@ stories.add('Form', withInfo(
         <InputField type="textarea"
           id="id_4"
           label={text('Label 4', 'Textarea input field')}
-          labelWidthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           placeholder="Textarea" />
+
+        <InputField type="checkbox"
+          id="id_5"
+          label={text('Label 5', 'Checkbox input field')}
+          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          onChangeHandler={action('changed')}
+          defaultValue={true} />
       </Form>
     </Tile>
   </div>
