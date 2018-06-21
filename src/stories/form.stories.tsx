@@ -3,17 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
-import { State, Store } from '@sambego/storybook-state';
 import { withInfo } from '@storybook/addon-info';
 
 import InputField from '../components/input_field';
 import Checkbox from '../components/checkbox';
 
 const stories = storiesOf('Forms', module);
-
-const store = new Store({
-  checked: false,
-});
 
 stories.addDecorator(withKnobs)
   .addDecorator(styles({
@@ -93,15 +88,12 @@ stories.add('Email field', withInfo(
   </div>
 ));
 
-stories.add('Checkbox', withInfo({
-  propTablesExclude: [State],
-  text: 'Checkbox input field'
-})(() =>
-  <State store={store}>
-    <Checkbox id="id_6"
-      onChangeHandler={() => store.set({ checked: !store.get('checked') })}
-      disabled={boolean('Disabled', false)} />
-  </State>
+stories.add('Checkbox', withInfo(
+  'Checkbox input field'
+)(() =>
+  <Checkbox id="id_6"
+    onChangeHandler={action('changed')}
+    disabled={boolean('Disabled', false)} />
 ));
 
 stories.add('Select field', withInfo(
