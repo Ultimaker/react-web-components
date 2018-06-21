@@ -6,13 +6,14 @@ import CuraLogo from './cura_logo';
 export interface HeaderProps {
   showNav?: boolean;
   headerLogo?: JSX.Element;
+  headerLogoUrl?: string;
   rightSideLabel?: string;
 }
 
-const Header: React.StatelessComponent<HeaderProps> = ({ showNav, headerLogo, rightSideLabel, children }) => {
+const Header: React.StatelessComponent<HeaderProps> = ({ showNav, headerLogo, headerLogoUrl, rightSideLabel, children }) => {
   return (
     <header className="app__header">
-      <Link className="logo" to="/">
+      <Link className="logo" to={headerLogoUrl}>
         {headerLogo}
       </Link>
       <div className="navigation-container">
@@ -28,7 +29,8 @@ const Header: React.StatelessComponent<HeaderProps> = ({ showNav, headerLogo, ri
 
 Header.defaultProps = {
   showNav: true,
-  headerLogo: <CuraLogo />
+  headerLogo:<CuraLogo />,
+  headerLogoUrl: "/"
 }
 
 export default Header;

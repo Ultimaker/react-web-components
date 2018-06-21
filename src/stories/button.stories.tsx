@@ -25,7 +25,7 @@ stories.addDecorator(withKnobs)
   }));
 
 stories.add('Rectangle', withInfo(
-  'Default button shape with three available styles.'
+  'Default button shape with three available styles. This button is meant to.....'
 )(() =>
   <div className="layout">
     <div className="layout__item u-fit">
