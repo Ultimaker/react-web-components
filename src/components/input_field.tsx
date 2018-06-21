@@ -3,8 +3,9 @@ import * as classNames from 'classnames';
 
 import DropDownMenu from './drop_down_menu';
 import DropDownMenuItem from './drop_down_menu_item';
+import { Checkbox } from './checkbox';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox';
 export type labelPosition = 'left' | 'top';
 export type WidthFraction = '1/1' | '1/2' | '1/3' | '1/4' | '1/5';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
@@ -15,7 +16,7 @@ export interface InputFieldProps {
   /** Input field id. Must be unique */
   id: string;
   /** Input field label */
-  label?: string;
+  label?: string | JSX.Element;
   /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
   labelWidthFraction?: WidthFraction;
   /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
@@ -25,9 +26,9 @@ export interface InputFieldProps {
   /** Message to show for the validation error */
   validationErrorMsg?: string;
   /** Called when the field changes */
-  onChangeHandler: (id: string, value: string | number) => void;
+  onChangeHandler: (id: string, value: string | number | boolean) => void;
   /** Input field default value */
-  defaultValue?: string | number;
+  defaultValue?: string | number | boolean;
   /** Minimum value for number field */
   min?: number;
   /** Maximum value for number field */
@@ -40,6 +41,8 @@ export interface InputFieldProps {
   selectActiveOption?: string;
   /** List of options for type select */
   selectOptions?: string[];
+  /** Disabled state for checkbox type */
+  disabled?: boolean;
 }
 
 export class InputField extends React.Component<InputFieldProps, {}> {
@@ -73,7 +76,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
     }
   }
 
-  _onChangeHandler(value: string) {
+  _onChangeHandler(value: string | number | boolean) {
     const { onChangeHandler, id } = this.props;
 
     event.stopPropagation();
@@ -92,7 +95,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   protected _renderInput(): JSX.Element {
-    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions } = this.props;
+    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled, defaultValue } = this.props;
     const classes = classNames('input', { 'error': validationError });
 
     if (type === "textarea") {
@@ -106,7 +109,6 @@ export class InputField extends React.Component<InputFieldProps, {}> {
           ref={input => this.input = input}
         />
       )
-
     } else if (type === "select") {
       return (
         <DropDownMenu label={selectActiveOption}>
@@ -117,8 +119,16 @@ export class InputField extends React.Component<InputFieldProps, {}> {
           })}
         </DropDownMenu>
       )
-    }
-    else {
+    } else if (type === "checkbox") {
+      return (
+        <Checkbox
+          id={id}
+          onChangeHandler={this._onChangeHandler.bind(this)}
+          checked={defaultValue === true}
+          disabled={disabled}
+        />
+      )
+    } else {
       return (
         <input
           id={id}
