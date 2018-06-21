@@ -1,18 +1,19 @@
 .slide-out-container
-  .container
-    background-color: $slide-out-color-background
-    display: flex
+  width: 100%
 
-  .content
-    padding: 4.8rem 2.4rem 2.4rem
-    width: 100%
-    align-items: center
-    position: relative
+  .arrow-column
+    flex-basis: 4rem
+    text-align: center
 
-    @include respond-to(md)
-      padding: 3.8rem
+    @include respond-to(sm)
+      flex-basis: 6rem
 
-  .close-button
-    position: absolute
-    top: 0.6rem
-    right: 1.2rem
+  .slide-out-container__header
+    @include font-size-header-2
+    font-family: $font-primary-medium
+    line-height: 2.6rem
+    cursor: pointer
+    padding: 1.2rem
+
+  .slide-out-container__body
+    padding: 1.2rem 1.2rem 2.4rem 1.2rem
