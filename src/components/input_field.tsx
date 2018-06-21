@@ -25,7 +25,7 @@ export interface InputFieldProps {
   /** Message to show for the validation error */
   validationErrorMsg?: string;
   /** Called when the field changes */
-  onChangeHandler: (field: string, value: string | number) => void;
+  onChangeHandler: (id: string, value: string | number) => void;
   /** Input field default value */
   defaultValue?: string | number;
   /** Minimum value for number field */
@@ -141,7 +141,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   render(): JSX.Element {
-    const { label, labelWidthFraction, labelWidthBreakpoint, validationError } = this.props;
+    const { label, validationError } = this.props;
 
     return (
       <div className="input-field layout">
