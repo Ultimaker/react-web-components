@@ -7,6 +7,7 @@ import { withInfo } from '@storybook/addon-info';
 import Tile from '../components/tile';
 import Grid from '../components/grid';
 import GridItem from '../components/grid_item';
+import SlideOutContainer from '../components/slide_out_container';
 
 const stories = storiesOf('Layout', module);
 
@@ -102,5 +103,17 @@ stories.add('Grid', withInfo(
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
     </ Grid>
+  </div>
+));
+
+stories.add('Slide out content', withInfo(
+  'A example layout for an application'
+)(() =>
+  <div style={{ width: '80vw' }}>
+    <Tile padding="md">
+      <SlideOutContainer headerText={text('Header text', 'Slide out content component')} >
+        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+      </SlideOutContainer>
+    </Tile>
   </div>
 ));

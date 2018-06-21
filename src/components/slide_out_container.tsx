@@ -1,28 +1,58 @@
 import * as React from 'react';
 import { UnmountClosed } from 'react-collapse';
 
-import CloseButton from "./close_button";
+import PanelArrow from "./panel_arrow";
 
 export interface SlideOutContainerProps {
-  close: () => void;
-  showClose: boolean;
+  /** Text to be displayed above the slide out content */
+  headerText: string;
+}
+
+export interface SlideOutContainerState {
   isOpen: boolean;
 }
 
-const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps> =
-  ({ close, showClose, isOpen, children }): JSX.Element => {
+export class SlideOutContainer extends React.Component<SlideOutContainerProps, SlideOutContainerState> {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    };
+  }
+
+  _toggleBodyVisibility() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
+  render(): JSX.Element {
+    const { isOpen } = this.state;
+    const { headerText, children } = this.props;
 
     return <div className="slide-out-container">
-      <UnmountClosed isOpened={isOpen}>
-        <section className="container">
-          <div className="content">
-            {showClose && <CloseButton onClickHandler={close} />}
-            {children}
+
+      <div className="slide-out-container__header" onClick={() => this._toggleBodyVisibility()}>
+        <div className="layout">
+          <div className="layout__item u-fill">
+            {headerText}
           </div>
-        </section>
+          <div className="layout__item arrow-column">
+            <PanelArrow active={isOpen} widthInPixels={15} />
+          </div>
+        </div>
+      </div>
+
+      <UnmountClosed isOpened={isOpen}>
+        <div className="slide-out-container__body">
+          {children}
+        </div>
       </UnmountClosed>
+
     </div>
 
-  };
+  }
+}
 
 export default SlideOutContainer;
