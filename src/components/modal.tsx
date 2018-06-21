@@ -2,7 +2,9 @@ import * as React from 'react';
 import { TransitionMotion, spring } from 'react-motion';
 
 export interface ModalProps {
+  /** The modal will be displayed when true */
   isOpen?: boolean;
+  /** Called when the background overlay is clicked */
   onOverlayClickHandler?: Function;
 }
 
@@ -10,7 +12,7 @@ export interface MotionStyle {
   opacity: number;
 }
 
-export default class Modal extends React.Component<ModalProps, {}> {
+export class Modal extends React.Component<ModalProps, {}> {
 
   componentDidUpdate(prevProps: ModalProps): void {
     const { isOpen } = this.props;
@@ -83,3 +85,5 @@ export default class Modal extends React.Component<ModalProps, {}> {
     </TransitionMotion>
   };
 }
+
+export default Modal;
