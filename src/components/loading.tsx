@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 export interface LoadingProps {
+  /** Text to be displayed in the loading label */
   label: string;
 }
 
-const Loading: React.StatelessComponent<LoadingProps> =
+export const Loading: React.StatelessComponent<LoadingProps> =
   ({ label }): JSX.Element => {
 
     return <div className="loader">

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Spinner from './spinner';
 
-const LoadingPage: React.StatelessComponent = (): JSX.Element => {
+export const LoadingPage: React.StatelessComponent = (): JSX.Element => {
 
     return <div className="loading-page">
       <Spinner />
