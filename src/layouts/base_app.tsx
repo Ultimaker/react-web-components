@@ -7,6 +7,7 @@ import App from '../components/app';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
 import LoadingPage from '../components/loading_page';
+import CuraLogo from '../components/cura_logo';
 
 export interface BaseAppState {
     scopes: string[];
@@ -74,11 +75,10 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
     render(): JSX.Element {
         return (
             <App fixedHeader>
-                <Header headerLogo={<img src="/static/images/CU_Logo_RGB.svg" alt="Cura logo" />} headerLogoUrl={this._getAppUrl()} showNav>
+                <Header headerLogo={<CuraLogo />} headerLogoUrl={this._getAppUrl()} showNav>
                     { this._renderNavigation(this._getRoutes())}
                 </Header>
                 <div className="content app__main" role="main">
-                    {/* TODO: make component out of Main */}
                     { this._renderRoutes(this._getRoutes()) }
                 </div>
             </App>
