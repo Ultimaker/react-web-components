@@ -31,8 +31,7 @@ module.exports = ({ sourceDirs, buildDir, entryPoint, env }) => {
 
     output: {
       filename: "bundle.js",
-      path: buildDir,
-      publicPath: env.STATIC_URL || "/"
+      path: buildDir
     },
 
     resolve: {
