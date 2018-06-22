@@ -2,7 +2,7 @@
 const webpack = require("webpack");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-module.exports = (sourceDirs, buildDir, entryPoint) => {
+module.exports = ({ sourceDirs, buildDir, entryPoint, env }) => {
 
   resourceTypes = ["fonts", "images", "locales"]
   assetsToCopy = []
@@ -24,18 +24,17 @@ module.exports = (sourceDirs, buildDir, entryPoint) => {
     ],
 
     plugins: [
+      new webpack.DefinePlugin({ 'process.env.STATIC_URL': JSON.stringify(env.STATIC_URL || "/") }),
       new CopyWebpackPlugin(assetsToCopy),
-      new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop')
+      new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
     ],
 
     output: {
       filename: "bundle.js",
-      path: buildDir,
-      publicPath: "/static/"
+      path: buildDir
     },
 
     resolve: {
-      // Add ".ts" and ".tsx" as resolvable extensions.
       extensions: [".ts", ".tsx", ".js", ".json"]
     },
 
@@ -43,7 +42,6 @@ module.exports = (sourceDirs, buildDir, entryPoint) => {
       rules: [
         // All files with a ".ts" or ".tsx" extension will be handled by "awesome-typescript-loader".
         { test: /\.tsx?$/, loader: ["react-hot-loader/webpack", "awesome-typescript-loader"] },
-
         // All output ".js" files will have any sourcemaps re-processed by "source-map-loader".
         { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       ]
