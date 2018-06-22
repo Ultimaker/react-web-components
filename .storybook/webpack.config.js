@@ -14,7 +14,20 @@ module.exports = {
       },
       {
         test: /\.sass$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              data: "$static_url: " + JSON.stringify("")
+            }
+          }
+        ],
         include: path.resolve(__dirname, '../src'),
         exclude: /node_modules/
       },
