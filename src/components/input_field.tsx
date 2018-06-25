@@ -114,7 +114,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderInput(): JSX.Element {
-    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled, 
+    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled,
       defaultValue, imageSize } = this.props;
     const classes = classNames('input', { 'error': validationError && this.state.touched });
 
@@ -151,7 +151,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     } else if (type === "image") {
       return (
         <ImageUpload size={imageSize}
-          defaultURL={defaultValue.toString()}
+          defaultURL={defaultValue ? defaultValue.toString() : ''}
           onFileSelection={this._onChangeHandler}
         />
       )
