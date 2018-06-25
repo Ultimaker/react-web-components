@@ -93,9 +93,11 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   protected _renderLabel(): JSX.Element {
-    const { id, label, labelLayoutWidth, labelWidthBreakpoint } = this.props;
+    const { id, label, labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
 
-    return <div className={`input-field--label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`}>
+    const checkboxClass = type === 'checkbox' ? 'checkbox-label' : '';
+
+    return <div className={`input-field--label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint} ${checkboxClass}`}>
       <label htmlFor={id}>{label}</label>
     </div>
   }
