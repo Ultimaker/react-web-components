@@ -45,13 +45,22 @@ export interface InputFieldProps {
   disabled?: boolean;
 }
 
-export class InputField extends React.Component<InputFieldProps, {}> {
+export interface InputFieldState {
+  /** Indicates if the field has been touched (changed) or not from the default value. */
+  touched: boolean;
+}
+
+export class InputField extends React.Component<InputFieldProps, InputFieldState> {
 
   static defaultProps = {
     type: 'text',
     labelLayoutWidth: '1/1',
     labelWidthBreakpoint: 'sm'
   };
+
+  state = {
+    touched: false
+  }
 
   constructor(props) {
     super(props);
@@ -83,6 +92,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   _onChangeHandler(value: string | number | boolean) {
+    this.setState({ touched: true });
     const { onChangeHandler, id } = this.props;
 
     event.stopPropagation();
@@ -93,18 +103,16 @@ export class InputField extends React.Component<InputFieldProps, {}> {
   }
 
   protected _renderLabel(): JSX.Element {
-    const { id, label, labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
+    const { id, label, labelLayoutWidth, labelWidthBreakpoint } = this.props;
 
-    const checkboxClass = type === 'checkbox' ? 'checkbox-label' : '';
-
-    return <div className={`input-field--label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint} ${checkboxClass}`}>
+    return <div className={`input-field--label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`}>
       <label htmlFor={id}>{label}</label>
     </div>
   }
 
   protected _renderInput(): JSX.Element {
     const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled, defaultValue } = this.props;
-    const classes = classNames('input', { 'error': validationError });
+    const classes = classNames('input', { 'error': validationError && this.state.touched });
 
     if (type === "textarea") {
       return (
@@ -183,7 +191,7 @@ export class InputField extends React.Component<InputFieldProps, {}> {
         <div className={`layout__item layout__item--middle u-${inputLayoutWidth}`}>
           {this._renderInput()}
         </div>
-        {validationError && this._renderValidationText()}
+        {validationError && this.state.touched && this._renderValidationText()}
       </div>
     )
   };
