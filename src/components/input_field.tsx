@@ -4,7 +4,7 @@ import * as classNames from 'classnames';
 import DropDownMenu from './drop_down_menu';
 import DropDownMenuItem from './drop_down_menu_item';
 import Checkbox from './checkbox';
-import ImageUpload from './image_upload';
+import { ImageUpload, ImageFile } from './image_upload';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image';
 export type labelPosition = 'left' | 'top';
@@ -27,7 +27,7 @@ export interface InputFieldProps {
   /** Message to show for the validation error */
   validationErrorMsg?: string;
   /** Called when the field changes */
-  onChangeHandler: (id: string, value: string | number | boolean) => void;
+  onChangeHandler: (id: string, value: string | number | boolean | ImageFile) => void;
   /** Input field default value */
   defaultValue?: string | number | boolean;
   /** Minimum value for number field */
@@ -44,6 +44,8 @@ export interface InputFieldProps {
   selectOptions?: string[];
   /** Disabled state for checkbox type */
   disabled?: boolean;
+  /** Size of the image for type image. Include size unit */
+  imageSize?: string;
 }
 
 export interface InputFieldState {
@@ -92,7 +94,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
   }
 
-  _onChangeHandler(value: string | number | boolean) {
+  _onChangeHandler(value: string | number | boolean | ImageFile) {
     this.setState({ touched: true });
     const { onChangeHandler, id } = this.props;
 
@@ -112,7 +114,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderInput(): JSX.Element {
-    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled, defaultValue } = this.props;
+    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled, 
+      defaultValue, imageSize } = this.props;
     const classes = classNames('input', { 'error': validationError && this.state.touched });
 
     if (type === "textarea") {
@@ -147,7 +150,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       )
     } else if (type === "image") {
       return (
-        <ImageUpload
+        <ImageUpload size={imageSize}
           onFileSelection={this._onChangeHandler}
         />
       )
@@ -171,14 +174,14 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   protected _renderValidationText(): JSX.Element {
     const { validationErrorMsg, labelLayoutWidth } = this.props;
     let errorMsgPositionClass;
-    
-    if(labelLayoutWidth === 'fill' || labelLayoutWidth === 'fit'){
+
+    if (labelLayoutWidth === 'fill' || labelLayoutWidth === 'fit') {
       errorMsgPositionClass = 'text-right';
     }
-    else if(labelLayoutWidth === '1/1'){
+    else if (labelLayoutWidth === '1/1') {
       errorMsgPositionClass = 'text-left';
     }
-    else{
+    else {
       errorMsgPositionClass = `u-before-${labelLayoutWidth}`
     }
 
