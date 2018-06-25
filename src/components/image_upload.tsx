@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Dropzone from 'react-dropzone';
+import * as classNames from 'classnames';
 
 import { Image, ImageShape } from './image';
 
@@ -56,20 +57,32 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     const { size, shape } = this.props;
     const { fileURL } = this.state;
 
+    const iconClasses = classNames('icon', { 'hide': fileURL !== null });
+
     return <Dropzone accept="image/jpeg, image/png" className="image-upload" onDrop={(files) => this._onDropHandler(files)}>
-      {fileURL &&
-        <div>
-          <div className={`cover cover--${shape}`} style={{ width: size, height: size }}></div>
-          <Image src={fileURL} shape={shape} size={size} />
-        </div>
-      }
+      
       {!fileURL &&
-        <div className={`placeholder placeholder--${shape}`} style={{ width: size, height: size }}>
-          <svg viewBox="0 0 12 14">
-            <path d="M11.469 2.969q0.219 0.219 0.375 0.594t0.156 0.688v9q0 0.312-0.219 0.531t-0.531 0.219h-10.5q-0.312 0-0.531-0.219t-0.219-0.531v-12.5q0-0.312 0.219-0.531t0.531-0.219h7q0.312 0 0.688 0.156t0.594 0.375zM8 1.062v2.937h2.937q-0.078-0.227-0.172-0.32l-2.445-2.445q-0.094-0.094-0.32-0.172zM11 13v-8h-3.25q-0.312 0-0.531-0.219t-0.219-0.531v-3.25h-6v12h10zM10 9.5v2.5h-8v-1.5l1.5-1.5 1 1 3-3zM3.5 8q-0.625 0-1.062-0.438t-0.438-1.062 0.438-1.062 1.062-0.438 1.062 0.438 0.438 1.062-0.438 1.062-1.062 0.438z"></path>
-          </svg>
-        </div>
+        <div className={`placeholder placeholder--${shape}`} style={{ width: size, height: size }}></div>
       }
+      
+      {fileURL &&
+        <Image src={fileURL} shape={shape} size={size} />
+      }
+
+      <div className={`cover cover--${shape}`} style={{ width: size, height: size }}></div>
+
+      <div className={iconClasses}>
+        <svg viewBox="0 0 24 24">
+          <g>
+            <path d="M19.35,10.04C18.67,6.59,15.64,4,12,4C9.11,4,6.6,5.64,5.35,8.04C2.34,8.36,0,10.91,0,14c0,3.31,2.69,6,6,6h13
+              c2.76,0,5-2.24,5-5C24,12.36,21.95,10.22,19.35,10.04z M19,18H6c-2.21,0-4-1.79-4-4c0-2.05,1.53-3.76,3.56-3.97l1.07-0.11
+              l0.5-0.95C8.08,7.14,9.94,6,12,6c2.62,0,4.88,1.86,5.39,4.43l0.3,1.5l1.53,0.11C20.78,12.14,22,13.45,22,15
+              C22,16.65,20.65,18,19,18z"/>
+            <polygon points="8,13 10.55,13 10.55,16 13.45,16 13.45,13 16,13 12,9 		"/>
+          </g>
+        </svg>
+      </div>
+      
     </Dropzone>
   }
 }

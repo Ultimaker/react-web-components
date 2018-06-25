@@ -10,29 +10,42 @@
     left: 0
     cursor: pointer
     transition: background-color 0.2s ease-out
+    z-index: 1
+
+    &:hover + .icon
+      visibility: visible !important
+      opacity: 1 !important
+
+      svg
+        fill: rgba(0, 0, 0, 0.75)
 
     &.cover--round
       border-radius: 9999px
 
     &:hover
-      background-color: $color-background-darkest
+      background-color: rgba(0, 0, 0, 0.12)
 
   .placeholder
     border: 2px dashed rgba(0, 0, 0, 0.5)
-    display: flex
-    justify-content: center
-    align-items: center
-    text-align: center
     cursor: pointer
-
-    svg
-      fill: rgba(0, 0, 0, 0.5)
-      height: 60px
-
-    &:hover
-      transition: border-color 0.2s ease-out, background-color 0.2s ease-out
-      border-color: rgba(0, 0, 0, 0.88)
-      background-color: $color-background-dark
+    z-index: 1
+    position: relative
 
     &.placeholder--round
       border-radius: 9999px
+
+  .icon
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 50%
+
+    &.hide
+      visibility: hidden
+      opacity: 0
+      transition: opacity 0.2s ease-out
+
+    svg
+      fill: rgba(0, 0, 0, 0.5)
+      width: 100%
