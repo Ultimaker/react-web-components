@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 
 import InputField from '../components/input_field';
 import Checkbox from '../components/checkbox';
+import ImageUpload from '../components/image_upload';
 
 const stories = storiesOf('Forms', module);
 
@@ -109,4 +110,16 @@ stories.add('Select field', withInfo(
       selectActiveOption="Option 1"
       selectOptions={['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']} />
   </div>
+));
+
+const options = {
+  Round: 'round',
+  Square: 'square',
+};
+const defaultValue = 'round';
+
+stories.add('Image upload', withInfo(
+  'Image drag and drop or click to upload'
+)(() =>
+  <ImageUpload shape={selectV2('Image shape', options, defaultValue)} onFileSelection={action('changed')} />
 ));

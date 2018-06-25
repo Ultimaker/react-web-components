@@ -21,7 +21,7 @@ const options = {
   Left: 'left',
   Right: 'right',
 };
-const defaultValue = 'Left';
+const defaultValue = 'left';
 
 stories.addDecorator(withKnobs)
   .addDecorator(styles({

@@ -4,18 +4,18 @@ export type DividerDirection = 'horizontal' | 'vertical';
 
 export interface DividerProps {
   /** Direction to position the divider: 'horizontal' | 'vertical' */
-  dividerDirection?: DividerDirection;
+  direction?: DividerDirection;
 }
 
-export const Divider: React.StatelessComponent<DividerProps> = ({ dividerDirection }) => {
+export const Divider: React.StatelessComponent<DividerProps> = ({ direction }) => {
 
   return (
-    <div className={`divider divider--${dividerDirection}`}></div>
+    <div className={`divider divider--${direction}`}></div>
   );
 };
 
 Divider.defaultProps = {
-  dividerDirection: 'horizontal'
+  direction: 'horizontal'
 };
 
 export default Divider;

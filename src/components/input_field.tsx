@@ -3,15 +3,16 @@ import * as classNames from 'classnames';
 
 import DropDownMenu from './drop_down_menu';
 import DropDownMenuItem from './drop_down_menu_item';
-import { Checkbox } from './checkbox';
+import Checkbox from './checkbox';
+import ImageUpload from './image_upload';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image';
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldProps {
-  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' */
+  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image' */
   type?: InputFieldType;
   /** Input field id. Must be unique */
   id: string;
@@ -134,6 +135,12 @@ export class InputField extends React.Component<InputFieldProps, {}> {
           onChangeHandler={this._onChangeHandler}
           defaultValue={defaultValue === true}
           disabled={disabled}
+        />
+      )
+    } else if (type === "image") {
+      return (
+        <ImageUpload
+          onFileSelection={this._onChangeHandler}
         />
       )
     } else {

@@ -37,7 +37,7 @@ stories.addDecorator(withKnobs)
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100vh'
+    minHeight: '100vh'
   }));
 
 stories.add('Form', withInfo(
@@ -100,6 +100,7 @@ stories.add('Form', withInfo(
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           defaultValue={true} />
+
       </Form>
     </Tile>
   </div>

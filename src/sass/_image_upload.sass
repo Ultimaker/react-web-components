@@ -1,0 +1,25 @@
+.image-upload
+  .image
+    cursor: pointer
+
+  input[type=file]
+    display: none
+
+  .placeholder
+    border: 2px dashed rgba(0, 0, 0, 0.5)
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    cursor: pointer
+
+    svg
+      fill: rgba(0, 0, 0, 0.5)
+      height: 60px
+
+    &:hover
+      transition: border-color 0.2s ease-out
+      border-color: rgba(0, 0, 0, 0.88)
+
+    &.placeholder--round
+      border-radius: 9999px
