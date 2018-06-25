@@ -8,15 +8,15 @@ import Header from '../components/header';
 import Navigation from '../components/navigation';
 import LoadingPage from '../components/loading_page';
 import CuraLogo from '../components/cura_logo';
+import Footer from '../components/footer';
+
+// utils
+import { i18nc } from '../utils/i18n';
 
 export interface BaseAppState {
     scopes: string[];
     isLoggedIn: boolean;
     error: string;
-}
-
-export interface BaseAppProps {
-
 }
 
 /**
@@ -34,7 +34,7 @@ export interface BaseAppRoute {
 /**
  * Our main application class.
  */
-export default abstract class BaseApp extends React.Component<BaseAppProps, BaseAppState> {
+export default abstract class BaseApp extends React.Component<{}, BaseAppState> {
 
     /**
      * Fetch the OAuth scopes from the back-end.
@@ -57,15 +57,12 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
     protected abstract _getLoginUrl(): string
 
     /**
-     * Constructor.
+     * Set the default state.
      */
-    constructor(props: BaseAppProps) {
-        super(props)
-        this.state = {
-            scopes: [],
-            isLoggedIn: null,
-            error: ''
-        }
+    state: BaseAppState = {
+        scopes: [],
+        isLoggedIn: null,
+        error: ''
     }
 
     componentDidMount(): void {
@@ -81,14 +78,17 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
                 <div className="content app__main" role="main">
                     { this._renderRoutes(this._getRoutes()) }
                 </div>
+                <Footer>
+                    { this._renderFooter() }
+                </Footer>
             </App>
         )
     }
-
+    
     /**
      * Renders all available routes.
      */
-    private _renderRoutes(routes: BaseAppRoute[]): JSX.Element {
+    protected _renderRoutes(routes: BaseAppRoute[]): JSX.Element {
         return (
             <Switch>
                 { routes.map((route, key) => this._createRoute(key, route.path, route.component, route.scopes, route.props)) }
@@ -97,12 +97,21 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
     }
 
     /**
-     * 
+     * Renders the navigation items.
      * @param routes The routes to put in the navigation.
      */
-    private _renderNavigation(routes: BaseAppRoute[]): JSX.Element {
+    protected _renderNavigation(routes: BaseAppRoute[]): JSX.Element {
         return (
             <Navigation navLinks={routes} />
+        )
+    }
+
+    /**
+     * Renders the footer.
+     */
+    protected _renderFooter(): JSX.Element {
+        return (
+            <a>{i18nc("Footer About link", "About")}</a>
         )
     }
 
@@ -113,7 +122,7 @@ export default abstract class BaseApp extends React.Component<BaseAppProps, Base
      * @param scopes Optional OAuth scopes needed to view this route.
      * @param props Optional props to pass to the component on this route.
      */
-    private _createRoute(key: any, path: string, Component: any, scopes?: string[], props?: object): Route {
+    protected _createRoute(key: any, path: string, Component: any, scopes?: string[], props?: object): Route {
 
         // by default we only have access if the component requires no additional scopes.
         let hasAccess = !scopes;
