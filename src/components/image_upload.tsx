@@ -37,8 +37,8 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
   }
 
-  static getDerivedStateFromProps(props: ImageUploadProps, state: ImageUploadState): ImageUploadState{
-    if(props.defaultURL && state.fileURL === null){
+  static getDerivedStateFromProps(props: ImageUploadProps, state: ImageUploadState): ImageUploadState {
+    if (props.defaultURL && state.fileURL === null) {
       return {
         fileURL: props.defaultURL
       }
@@ -58,7 +58,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     return <Dropzone accept="image/jpeg, image/png" className="image-upload" onDrop={(files) => this._onDropHandler(files)}>
       {fileURL &&
-        <Image src={fileURL} shape={shape} size={size} />
+        <div>
+          <div className={`cover cover--${shape}`} style={{ width: size, height: size }}></div>
+          <Image src={fileURL} shape={shape} size={size} />
+        </div>
       }
       {!fileURL &&
         <div className={`placeholder placeholder--${shape}`} style={{ width: size, height: size }}>

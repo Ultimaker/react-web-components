@@ -1,9 +1,21 @@
 .image-upload
-  .image
-    cursor: pointer
+  position: relative
 
-  input[type=file]
-    display: none
+  .cover
+    background-color: rgba(0, 0, 0, 0)
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    cursor: pointer
+    transition: background-color 0.2s ease-out
+
+    &.cover--round
+      border-radius: 9999px
+
+    &:hover
+      background-color: $color-background-darkest
 
   .placeholder
     border: 2px dashed rgba(0, 0, 0, 0.5)
@@ -18,8 +30,9 @@
       height: 60px
 
     &:hover
-      transition: border-color 0.2s ease-out
+      transition: border-color 0.2s ease-out, background-color 0.2s ease-out
       border-color: rgba(0, 0, 0, 0.88)
+      background-color: $color-background-dark
 
     &.placeholder--round
       border-radius: 9999px
