@@ -9,6 +9,7 @@ import styles from "@sambego/storybook-styles";
 import Form from '../components/form';
 import InputField from '../components/input_field';
 import Tile from '../components/tile';
+import Divider from '../components/divider';
 
 const stories = storiesOf('Example layouts', module);
 
@@ -42,16 +43,16 @@ stories.addDecorator(withKnobs)
 stories.add('Form', withInfo(
   'A example layout for a form'
 )(() =>
-  <div style={{maxWidth: 600}}>
+  <div style={{ maxWidth: 600 }}>
     <Tile padding="lg">
       <Form primaryBtnText="Submit"
         onSubmitHandler={action('submit')}
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
         secondaryBtnStyle="quiet"
-        formValidation={{ 
-          success: boolean('Validation Success', true), 
-          validationErrors: {id_1: 'Validation error', id_2: 'Validation error', id_3: 'Validation error', id_4: 'Validation error', id_5: 'Validation error'}
+        formValidation={{
+          success: boolean('Validation Success', true),
+          validationErrors: { id_1: 'Validation error', id_2: 'Validation error', id_3: 'Validation error', id_4: 'Validation error', id_5: 'Validation error' }
         }}
       >
         <InputField type="text"
@@ -89,6 +90,8 @@ stories.add('Form', withInfo(
           labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           placeholder="Textarea" />
+
+        <Divider />
 
         <InputField type="checkbox"
           id="id_5"
