@@ -89,7 +89,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   _setDefaultValue() {
     const { defaultValue, type } = this.props;
 
-    if (defaultValue && type !== "checkbox" && type !== "select") {
+    if (defaultValue && type !== 'checkbox' && type !== 'select' && type !== 'image') {
       this.input.value = defaultValue.toString();
     }
   }
@@ -151,6 +151,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     } else if (type === "image") {
       return (
         <ImageUpload size={imageSize}
+          defaultURL={defaultValue.toString()}
           onFileSelection={this._onChangeHandler}
         />
       )
