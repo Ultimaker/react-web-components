@@ -132,7 +132,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     this.setState({ secondaryBtnSpinner: true });
   }
 
-  _onChangeHandler(value: string): void {
+  _onChangeHandler(id: string, value: string): void {
     this.setState({ inputValue: value, validationErrorMsg: null });
   }
 
