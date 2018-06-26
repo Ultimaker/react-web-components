@@ -26,7 +26,7 @@ export interface BaseAppRoute {
     path: string;
     label: string;
     visible?: boolean;
-    component: React.ComponentClass;
+    component: React.ComponentClass | React.StatelessComponent;
     scopes?: string[];
     props?: object;
 }
