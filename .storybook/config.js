@@ -9,6 +9,7 @@ import "../src/fonts/notosans/NotoSans-Medium.woff"
 import "../src/fonts/notosans/NotoSans-Regular.woff2"
 import "../src/fonts/notosans/NotoSans-Bold.woff2"
 import "../src/fonts/notosans/NotoSans-Medium.woff2"
+import "../src/images/CU_Logo_RGB.svg";
 
 // load stories
 const req = require.context('../src', true, /\.stories.tsx?$/)

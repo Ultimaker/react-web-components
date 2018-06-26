@@ -1,6 +1,12 @@
 const path = require("path");
+const webpack = require("webpack");
+
+const static_url = "http://localhost:9001";
 
 module.exports = {
+  plugins: [
+    new webpack.DefinePlugin({ 'process.env.STATIC_URL': JSON.stringify(static_url || "/") }),
+  ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json']
   },
@@ -24,7 +30,7 @@ module.exports = {
           {
             loader: "sass-loader",
             options: {
-              data: "$static_url: " + JSON.stringify("")
+              data: "$static_url: " + JSON.stringify(static_url)
             }
           }
         ],
@@ -37,7 +43,7 @@ module.exports = {
         include: path.resolve(__dirname, '../src'),
         exclude: /node_modules/,
         options: {
-          name: 'static/[path][name].[ext]?[hash]',
+          name: '[path][name].[ext]?[hash]',
           context: 'src'
         }
       }
