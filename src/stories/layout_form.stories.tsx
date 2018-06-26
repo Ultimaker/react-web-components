@@ -52,21 +52,21 @@ stories.add('Form', withInfo(
         secondaryBtnStyle="quiet"
         formValidation={{
           success: boolean('Validation Success', true),
-          validationErrors: { id_1: 'Validation error', id_2: 'Validation error', id_3: 'Validation error', id_4: 'Validation error', id_5: 'Validation error' }
+          validationErrors: { id_0: 'Validation error', id_2: 'Validation error' }
         }}
       >
-        <div className="text-center">
-          <InputField type="image"
-            id="id_0"
-            labelLayoutWidth='fit'
-            onChangeHandler={action('changed')} />
-        </div>
+        
+        <InputField type="image"
+          id="id_0"
+          labelLayoutWidth='fit'
+          centerInputField
+          onChangeHandler={action('changed')} />
 
         <InputField type="text"
           id="id_1"
           label={text('Label 1', 'Text input field')}
-          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           placeholder={text('Placeholder text', 'Placeholder text')}
           focusOnLoad />
@@ -74,27 +74,29 @@ stories.add('Form', withInfo(
         <InputField type="number"
           id="id_2"
           label={text('Label 2', 'Number input field')}
-          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           min={1}
           max={100}
           defaultValue={10}
           onChangeHandler={action('changed')} />
 
+        <Divider />
+
         <InputField type="select"
           id="id_3"
           label={text('Label 3', 'Select input field')}
-          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           selectActiveOption="Option 1"
           selectOptions={['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']} />
 
         <InputField type="checkbox"
-          id="id_5"
-          label={text('Label 5', 'Checkbox input field')}
-          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          id="id_4"
+          label={text('Label 4', 'Checkbox input field')}
+          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           defaultValue={true} />
 

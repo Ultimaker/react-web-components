@@ -22,6 +22,8 @@ export interface InputFieldProps {
   labelLayoutWidth?: LayoutWidth;
   /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
   labelWidthBreakpoint?: Breakpoint;
+  /** Input field will be centered if true. Useful for type image or checkbox */
+  centerInputField?: boolean;
   /** Input field will be displayed in the error state when true */
   validationError?: boolean;
   /** Message to show for the validation error */
@@ -55,18 +57,19 @@ export interface InputFieldState {
 
 export class InputField extends React.Component<InputFieldProps, InputFieldState> {
 
-  static defaultProps = {
+  public static defaultProps: Partial<InputFieldProps> = {
     type: 'text',
     labelLayoutWidth: '1/1',
-    labelWidthBreakpoint: 'sm'
+    labelWidthBreakpoint: 'sm',
+    centerInputField: false
   };
-
-  state = {
-    touched: false
-  }
 
   constructor(props) {
     super(props);
+
+    this.state = {
+			touched: false
+		};
 
     this._onChangeHandler = this._onChangeHandler.bind(this);
   }
@@ -192,14 +195,16 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   render(): JSX.Element {
-    const { label, validationError, labelLayoutWidth, type } = this.props;
+    const { label, validationError, labelLayoutWidth, centerInputField } = this.props;
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
+
+    const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, {'text-center': centerInputField});
 
     return (
       <div className="input-field layout">
         {label && this._renderLabel()}
-        <div className={`layout__item layout__item--middle u-${inputLayoutWidth}`}>
+        <div className={inputLayoutClasses}>
           {this._renderInput()}
         </div>
         {validationError && this.state.touched && this._renderValidationText()}
