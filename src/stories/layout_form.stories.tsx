@@ -55,6 +55,13 @@ stories.add('Form', withInfo(
           validationErrors: { id_1: 'Validation error', id_2: 'Validation error', id_3: 'Validation error', id_4: 'Validation error', id_5: 'Validation error' }
         }}
       >
+        <div className="text-center">
+          <InputField type="image"
+            id="id_0"
+            labelLayoutWidth='fit'
+            onChangeHandler={action('changed')} />
+        </div>
+
         <InputField type="text"
           id="id_1"
           label={text('Label 1', 'Text input field')}
@@ -82,16 +89,6 @@ stories.add('Form', withInfo(
           onChangeHandler={action('changed')}
           selectActiveOption="Option 1"
           selectOptions={['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']} />
-
-        <InputField type="textarea"
-          id="id_4"
-          label={text('Label 4', 'Textarea input field')}
-          labelLayoutWidth={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
-          onChangeHandler={action('changed')}
-          placeholder="Textarea" />
-
-        <Divider />
 
         <InputField type="checkbox"
           id="id_5"

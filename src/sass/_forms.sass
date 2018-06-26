@@ -1,5 +1,7 @@
 
 .form
+  margin-top: 1.2rem
+
   .form__item
     margin-bottom: 1.2rem
 
@@ -25,7 +27,7 @@
     width: 100%
     padding: 1.2rem 0.9rem
     border: none
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5)
+    border-bottom: 2px solid $input-field-color-border
     font-size: 1.6rem
     line-height: 2.2rem
     outline: none
@@ -33,16 +35,16 @@
     border-radius: 0
 
     &:hover
-      border-bottom-color: rgba(0, 0, 0, 0.88)
+      border-bottom-color: $input-field-color-border-hover
 
     &:focus, &:active
-      border-bottom-color: $color-border-active
+      border-bottom-color: $input-field-color-border-active
 
     &.error
-      border-bottom-color: $color-red
+      border-bottom-color: $input-field-color-border-error
 
     &::placeholder
-      color: rgba(0, 0, 0, 0.35)
+      color: $input-field-color-border
 
   .input-field--label
     @include font-size-text-2
@@ -55,7 +57,7 @@
 
   .input-field--error-message
     margin-top: 0.6rem
-    color: $color-red
+    color: $input-field-color-border-error
     @include font-size-text-2
 
   .drop-down-menu
@@ -69,11 +71,11 @@
     .label
       padding: 1.2rem 1.8rem 1.2rem 0.9rem
       background-color: white
-      border-bottom: 2px solid rgba(0, 0, 0, 0.5)
+      border-bottom: 2px solid $input-field-color-border
       
       &:hover, &:focus, &:active, &.active
         background-color: white
-        border-bottom-color: rgba(0, 0, 0, 0.88)
+        border-bottom-color: $input-field-color-border-hover
 
       &.error
         border-bottom-color: $color-red

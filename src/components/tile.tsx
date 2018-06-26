@@ -20,7 +20,7 @@ export const Tile: React.StatelessComponent<TileProps> =
 
     const classes = classNames('tile', `padding-${padding}`, { disabled, selected });
 
-    return <div className={classes} style={{textAlign: align}}>
+    return <div className={classes} style={{ textAlign: align }}>
       <div className="cover" />
       {children}
     </div>
