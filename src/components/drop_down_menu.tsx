@@ -2,6 +2,8 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import { UnmountClosed } from 'react-collapse';
 
+import PanelArrow from './panel_arrow';
+
 export type MenuDirection = 'left' | 'right';
 
 export interface DropDownMenuProps {
@@ -38,7 +40,6 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
     const { showMenu } = this.state;
 
     const dropDownMenuClasses = classNames('drop-down-menu', { 'visible': showMenu });
-    const panelArrowClasses = classNames('panel-arrow', { 'active': showMenu });
     const labelClasses = classNames('label', { 'active': showMenu });
 
     return <div className={dropDownMenuClasses} tabIndex={1}
@@ -50,7 +51,7 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
             <div className="text">{label}</div>
           </div>
           <div className="layout__item u-fit layout__item--right">
-            <img className={panelArrowClasses} src="/static/images/icons/panel-arrow-blue.svg" />
+            <PanelArrow active={showMenu} widthInPixels={12} color="blue"/>
           </div>
         </div>
       </div>
