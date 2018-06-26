@@ -12,8 +12,16 @@
     bottom: 0
     transition: background-color 0.2s ease-out    
 
+  &.selected .cover
+    background-color: $color-background-selected
+
   &.disabled .cover
     background-color: $color-background-darkest
 
-  &.selected .cover
-    background-color: $color-background-selected
+  &.alert 
+    color: white
+    background-color: $color-background-alert
+
+  &.success 
+    color: white
+    background-color: $color-background-success

@@ -54,7 +54,7 @@ stories.add('Form', withInfo(
           validationErrors: { id_1: 'Validation error', id_4: 'Validation error' }
         }}
       >
-        
+
         <InputField type="image"
           id="id_0"
           labelLayoutWidth='fit'
@@ -98,6 +98,7 @@ stories.add('Form', withInfo(
           defaultValue={true} />
 
       </Form>
+
     </Tile>
   </div>
 ));

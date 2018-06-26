@@ -56,6 +56,8 @@ stories.add('Tile', withInfo(
 )(() =>
   <Tile disabled={boolean('Disabled', false)}
     selected={boolean('Selected', false)}
+    alert={boolean('Alert', false)}
+    success={boolean('Success', false)}
     padding={selectV2('Padding', spacingOptions, spacingDefaultValue)}
     align={selectV2('Align', alignOptions, alignDefaultValue)}
   >
