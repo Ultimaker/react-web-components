@@ -8,6 +8,7 @@ import Tile from '../components/tile';
 import Grid from '../components/grid';
 import GridItem from '../components/grid_item';
 import SlideOutContainer from '../components/slide_out_container';
+import { Divider } from '../components/divider';
 
 const stories = storiesOf('Layout', module);
 
@@ -34,14 +35,14 @@ const spacingOptions = {
 };
 const spacingDefaultValue = 'md';
 
-const widthFractionOptions = {
+const layoutWidthOptions = {
   '1/1': '1/1',
   '1/2': '1/2',
   '1/3': '1/3',
   '1/4': '1/4',
   '1/5': '1/5'
 };
-const widthFractionDefaultValue = '1/3';
+const layoutWidthDefaultValue = '1/3';
 
 const breakpointOptions = {
   'xs': 'xs',
@@ -72,32 +73,34 @@ stories.add('Grid', withInfo(
       gutter={selectV2('Gutter', spacingOptions, spacingDefaultValue)}
       title={text('Grid Component title', 'Grid Component')}
     >
-      <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+      <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
-      <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+      
+      <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
-      <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+      
+      <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
-      <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+      <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
-      <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+      <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
-      <GridItem widthFraction={selectV2('Width fraction', widthFractionOptions, widthFractionDefaultValue)}
+      <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
