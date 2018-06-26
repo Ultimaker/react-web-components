@@ -5,6 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 
 import BaseApp, { BaseAppRoute } from '../layouts/base_app';
+import Page from '../components/page';
 
 const stories = storiesOf('Example layouts', module);
 
@@ -26,7 +27,12 @@ class StoriesApp extends BaseApp {
   }
 
   protected _getRoutes(): BaseAppRoute[] {
-    return []
+    return [{
+      path: '/home',
+      label: 'Home',
+      visible: true,
+      component: Page
+    }]
   }
 }
 

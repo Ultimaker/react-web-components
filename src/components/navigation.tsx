@@ -50,6 +50,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
 
     const burgerIconClasses = classNames('burger-menu__icon', { 'open': showNav });
     const navClasses = classNames('navigation', { 'open': showNav });
+    const visibleNavLinks = navLinks.filter((navLink) => navLink.visible);
 
     return <nav className={navClasses} onClick={() => this._toggleShowNav(false)}>
 
@@ -62,8 +63,8 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
       <Motion style={{ x: spring(showNav ? 56 : 0, motion) }}>
         {({ x }) =>
           <ul>
-            {navLinks.map((navLink, index) => {
-              return navLink.visible && <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
+            {visibleNavLinks.map((navLink, index) => {
+              return <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
                 <NavLink to={navLink.path} activeClassName="active">
                   <span className="label">{navLink.label}</span>
                 </NavLink>
