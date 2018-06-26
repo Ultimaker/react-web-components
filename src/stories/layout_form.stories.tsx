@@ -9,7 +9,6 @@ import styles from "@sambego/storybook-styles";
 import Form from '../components/form';
 import InputField from '../components/input_field';
 import Tile from '../components/tile';
-import Divider from '../components/divider';
 
 const stories = storiesOf('Example layouts', module);
 
@@ -80,8 +79,6 @@ stories.add('Form', withInfo(
           max={100}
           defaultValue={10}
           onChangeHandler={action('changed')} />
-
-        <Divider />
 
         <InputField type="select"
           id="id_3"
