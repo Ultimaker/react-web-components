@@ -39,7 +39,7 @@ export class SlideOutContainer extends React.Component<SlideOutContainerProps, S
             {headerText}
           </div>
           <div className="layout__item arrow-column">
-            <PanelArrow active={isOpen} widthInPixels={18} />
+            <PanelArrow active={isOpen} width="1.8rem" />
           </div>
         </div>
       </div>

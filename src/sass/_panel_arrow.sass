@@ -1,0 +1,22 @@
+.panel-arrow
+  transition: transform 100ms ease-out
+  opacity: 0.7
+  object-fit: contain
+  object-position: bottom
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  &.panel-arrow--active
+    -moz-transform: scaleY(-1)
+    -o-transform: scaleY(-1)
+    -webkit-transform: scaleY(-1)
+    transform: scaleY(-1)
+    transition: transform 100ms ease-out
+
+  &.panel-arrow--blue path
+    fill: $color-blue
+  
+  svg
+    display: block

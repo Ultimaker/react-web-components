@@ -51,7 +51,7 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
             <div className="text">{label}</div>
           </div>
           <div className="layout__item u-fit layout__item--right">
-            <PanelArrow active={showMenu} widthInPixels={12} color="blue"/>
+            <PanelArrow active={showMenu} width="1.2rem" color="blue"/>
           </div>
         </div>
       </div>
