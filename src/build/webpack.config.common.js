@@ -24,7 +24,8 @@ module.exports = ({ sourceDirs, buildDir, entryPoint, env }) => {
     ],
 
     plugins: [
-      new webpack.DefinePlugin({ 'process.env.STATIC_URL': JSON.stringify(env.STATIC_URL || "/") }),
+      new webpack.DefinePlugin({ 'process.env.STATIC_URL': JSON.stringify(env.STATIC_URL || "") }),
+      new webpack.DefinePlugin({ 'process.env.APP_VERSION': JSON.stringify(env.APP_VERSION || "0.0.0") }),
       new CopyWebpackPlugin(assetsToCopy),
       new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
     ],
