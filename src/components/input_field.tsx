@@ -68,8 +68,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     super(props);
 
     this.state = {
-			touched: false
-		};
+      touched: false
+    };
 
     this._onChangeHandler = this._onChangeHandler.bind(this);
   }
@@ -177,20 +177,28 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
   protected _renderValidationText(): JSX.Element {
     const { validationErrorMsg, labelLayoutWidth } = this.props;
-    let errorMsgPositionClass;
+    let errorMsgOffsetClass;
 
     if (labelLayoutWidth === 'fill' || labelLayoutWidth === 'fit') {
-      errorMsgPositionClass = 'text-right';
+      // align validation message to the right
+      errorMsgOffsetClass = 'u-fill'
     }
     else if (labelLayoutWidth === '1/1') {
-      errorMsgPositionClass = 'text-left';
+      // align validation message to the left
+      errorMsgOffsetClass = 'u-fit'
     }
     else {
-      errorMsgPositionClass = `u-before-${labelLayoutWidth}`
+      // align validation message under input (after label width)
+      errorMsgOffsetClass = `u-${labelLayoutWidth}`
     }
 
-    return <div className={`layout__item u-full ${errorMsgPositionClass}`}>
-      <div className="input-field--error-message">{validationErrorMsg}</div>
+    return <div className="layout__item u-full">
+      <div className="layout layout--gutter-none">
+        <div className={`layout__item ${errorMsgOffsetClass}`}></div>
+        <div className="layout__item u-fit">
+          <div className="input-field--error-message">{validationErrorMsg}</div>
+        </div>
+      </div>
     </div>
   }
 
@@ -199,7 +207,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
 
-    const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, {'text-center': centerInputField});
+    const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
     return (
       <div className="input-field layout">

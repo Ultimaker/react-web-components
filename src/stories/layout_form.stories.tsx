@@ -51,7 +51,7 @@ stories.add('Form', withInfo(
         secondaryBtnStyle="quiet"
         formValidation={{
           success: boolean('Validation Success', true),
-          validationErrors: { id_0: 'Validation error', id_2: 'Validation error' }
+          validationErrors: { id_1: 'Validation error', id_4: 'Validation error' }
         }}
       >
         
