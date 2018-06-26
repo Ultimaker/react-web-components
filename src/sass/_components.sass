@@ -29,94 +29,13 @@
   -ms-user-select: none
   user-select: none
 
-.icon--circle
-  border-radius: 50%
-  height: 4rem
-  width: 4rem
-  padding: 0
-  color: $color-primary-btn-text
-  background-color: $color-primary-btn
-  display: flex
-  justify-content: center
-  align-items: center
-
-.burger-menu
-  position: relative
-
-  .burger-menu__icon, .burger-menu__icon:after, .burger-menu__icon:before
-    background-color: currentColor
-    content: ''
-    height: 0.2rem
-    left: 0
-    position: absolute
-    width: 2.2rem
-
-  .burger-menu__icon
-    top: 50%
-    display: block
-    left: 0
-    right: 0
-    margin-left: auto
-    margin-right: auto
-
-    &:before
-      top: -0.6rem
-
-    &:after
-      bottom: -0.6rem
-
-    &.open
-      transform: rotate(-45deg)
-
-      &:before
-        display: none
-
-      &:after
-        bottom: 0
-        transform: rotate(90deg)
-
-.floating-action-btn
-  position: fixed
-  right: 0.9rem
-  bottom: 2.4rem
-  z-index: 99999
-  visibility: hidden
-  opacity: 0
-  transition: opacity 0.2s ease-out
-
-  &.visible
-    visibility: visible
-    opacity: 1
-
-  .btn--circle
-    box-shadow: 0 1px 4px 0 $color-shadow-dark
-
-  .floating-action-btn--trigger
-    position: relative
-    z-index: 99
-    font-size: 2rem
-
-  .floating-action-btn--sub-btns
-    position: absolute
+  .icon--circle
+    border-radius: 50%
+    height: 4rem
+    width: 4rem
     padding: 0
-    margin: 0
-    list-style: none
-    left: 0.2rem
-    bottom: 0.2rem
-
-    li
-      position: absolute
-      z-index: 9
-
-      .btn--circle
-        width: 4.6rem
-        height: 4.6rem
-        background-color: white
-        color: black
-
-.image
-  background-position: center center
-  background-repeat: no-repeat
-
-  &.image--round
-    border-radius: 9999px
+    color: $color-primary-btn-text
+    background-color: $color-primary-btn
+    display: flex
+    justify-content: center
+    align-items: center
