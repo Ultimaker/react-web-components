@@ -64,13 +64,15 @@ stories.add('Prompt popup', withInfo(
 ));
 
 stories.add('About dialog', withInfo(
-  'Popup modal for user input'
+  'About dialog modal for providing information about the application'
 )(() =>
   <AboutDialog
     appName="Test app"
     versionNumber="1.0.0"
     isOpen={boolean('isOpen', true)}
     closeHandler={action('clicked')}
+    supportLinkURL={'https://ultimaker.com/'}
+    supportLinkText="Support page"
     componentsList={[
       { name: "array.prototype.includes", license: "MIT", url: "https://github.com/Steditor/es7-array.prototype.includes" },
       { name: "classnames", license: "MIT", url: "https://github.com/JedWatson/classnames" },

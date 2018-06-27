@@ -72,8 +72,11 @@ stories.add('Grid', withInfo(
   <div style={{ width: '80vw' }}>
     <Grid align={selectV2('Align', alignOptions, alignDefaultValue)}
       gutter={selectV2('Gutter', spacingOptions, spacingDefaultValue)}
-      title={text('Grid Component title', 'Grid Component')}
     >
+      <GridItem layoutWidth="1/1">
+        Grid component
+      </GridItem>
+
       <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
@@ -85,7 +88,7 @@ stories.add('Grid', withInfo(
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
-      
+
       <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
@@ -110,12 +113,12 @@ stories.add('Grid', withInfo(
   </div>
 ));
 
-stories.add('Slide out content', withInfo(
-  'A example layout for an application'
+stories.add('Slide out container', withInfo(
+  'A toggle slide out container'
 )(() =>
   <div style={{ width: '80vw' }}>
     <Tile padding="md">
-      <SlideOutContainer headerText={text('Header text', 'Slide out content component')} >
+      <SlideOutContainer headerText={text('Header text', 'Slide out container component')} >
         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
       </SlideOutContainer>
     </Tile>

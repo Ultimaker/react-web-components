@@ -25,7 +25,7 @@ stories.addDecorator(withKnobs)
   }));
 
 stories.add('Rectangle', withInfo(
-  'Default button shape with three available styles. This button is meant to.....'
+  'Default button shape with three available styles.'
 )(() =>
   <div className="layout">
     <div className="layout__item u-fit">
@@ -34,7 +34,7 @@ stories.add('Rectangle', withInfo(
         disabled={boolean('Disabled', false)}
         style="primary"
       >
-        {text('Text 1', 'Primary button')}
+        {text('Text 1', 'Primary')}
       </Button>
     </div>
     <div className="layout__item u-fit">
@@ -43,7 +43,7 @@ stories.add('Rectangle', withInfo(
         disabled={boolean('Disabled', false)}
         style="secondary"
       >
-        {text('Text 2', 'Secondary button')}
+        {text('Text 2', 'Secondary')}
       </Button>
     </div>
     <div className="layout__item u-fit">
@@ -52,7 +52,16 @@ stories.add('Rectangle', withInfo(
         disabled={boolean('Disabled', false)}
         style="quiet"
       >
-        {text('Text 3', 'Quiet button')}
+        {text('Text 3', 'Quiet')}
+      </Button>
+    </div>
+    <div className="layout__item u-fit">
+      <Button onClickHandler={action('clicked')}
+        showSpinner={boolean('Loading', false)}
+        disabled={boolean('Disabled', false)}
+        style="alert"
+      >
+        {text('Text 4', 'Alert')}
       </Button>
     </div>
   </div>
@@ -93,6 +102,16 @@ stories.add('Circle', withInfo(
         {text('Text 3', 'Q')}
       </Button>
     </div>
+    <div className="layout__item u-fit">
+      <Button onClickHandler={action('clicked')}
+        showSpinner={boolean('Loading', false)}
+        disabled={boolean('Disabled', false)}
+        style="alert"
+        shape="circle"
+      >
+        {text('Text 4', 'A')}
+      </Button>
+    </div>
   </div>
 ));
 
@@ -107,7 +126,7 @@ stories.add('Pill', withInfo(
         style="primary"
         shape="pill"
       >
-        {text('Text 1', 'Primary button')}
+        {text('Text 1', 'Primary')}
       </Button>
     </div>
     <div className="layout__item u-fit">
@@ -117,7 +136,7 @@ stories.add('Pill', withInfo(
         style="secondary"
         shape="pill"
       >
-        {text('Text 2', 'Secondary button')}
+        {text('Text 2', 'Secondary')}
       </Button>
     </div>
     <div className="layout__item u-fit">
@@ -127,7 +146,17 @@ stories.add('Pill', withInfo(
         style="quiet"
         shape="pill"
       >
-        {text('Text 3', 'Quiet button')}
+        {text('Text 3', 'Quiet')}
+      </Button>
+    </div>
+    <div className="layout__item u-fit">
+      <Button onClickHandler={action('clicked')}
+        showSpinner={boolean('Loading', false)}
+        disabled={boolean('Disabled', false)}
+        style="alert"
+        shape="pill"
+      >
+        {text('Text 3', 'Alert')}
       </Button>
     </div>
   </div>

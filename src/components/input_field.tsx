@@ -93,7 +93,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   _setDefaultValue() {
     const { defaultValue, type } = this.props;
 
-    if (defaultValue && type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email') {
+    if (defaultValue && (type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email')) {
       this.input.value = defaultValue.toString();
     }
   }

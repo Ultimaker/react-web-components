@@ -71,11 +71,20 @@
     .layout--gutter-#{$name}
       margin: 0 (-0.5 * $value)
 
-    .layout--gutter-#{$name} > .layout__item 
-      padding: 0 (0.5 * $value)
+      &> .layout__item 
+        padding: 0 (0.5 * $value)
 
-      &.layout--gutter-below
-        padding-bottom: $value
+    .layout--gutter-#{$name}--above
+      margin-top: (-0.5 * $value)
+      
+      &> .layout__item 
+        padding-top: (0.5 * $value)
+    
+    .layout--gutter-#{$name}--below
+      margin-bottom: (-0.5 * $value)
+
+      &> .layout__item 
+        padding-bottom: (0.5 * $value)
 
 @include layout-padding($layout-spacing)
 

@@ -57,6 +57,7 @@ stories.add('Text area', withInfo(
   <div style={{ width: 250 }}>
     <InputField type="textarea"
       id="id_3"
+      focusOnLoad
       onChangeHandler={action('changed')}
       placeholder="Textarea" />
   </div>
@@ -126,7 +127,7 @@ stories.add('Image upload', withInfo(
 ));
 
 stories.add('Date Picker', withInfo(
-  'Select input field'
+  'Date selection field'
 )(() =>
   <div style={{ width: 250 }}>
     <DatePicker

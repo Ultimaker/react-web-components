@@ -102,6 +102,23 @@ button
       background-color: transparent
       color: $color-quiet-btn-disabled-text
 
+  &.btn--alert
+    color: $color-alert-btn-text
+    background-color: $color-alert-btn
+
+    &:hover
+      background-color: $color-alert-btn-hover
+
+    &:active, &.waiting, &.waiting:hover
+      background-color: $color-alert-btn-active
+
+    &.disabled, .disabled:hover, .disabled:active
+      background-color: $color-alert-btn-disabled
+      color: $color-alert-btn-disabled-text
+
+    .spinner .path
+      stroke: white
+
   &.btn--circle
     border-radius: 50%
     height: 5rem

@@ -16,7 +16,7 @@ export const GridItem: React.StatelessComponent<GridItemProps> =
 
     const breakpointClass = breakpoint === 'xs' ? '' : '-' + breakpoint;
 
-    const classes = classNames('grid-component__item', 'layout__item', 'layout--gutter-below', `u-${layoutWidth}${breakpointClass}`);
+    const classes = classNames('grid-component__item', 'layout__item', `u-${layoutWidth}${breakpointClass}`);
 
     return <div className={classes}>
         {children}
