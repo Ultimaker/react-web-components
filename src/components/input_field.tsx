@@ -5,14 +5,15 @@ import DropDownMenu from './drop_down_menu';
 import DropDownMenuItem from './drop_down_menu_item';
 import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
+import DatePicker from './date_picker';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image' | 'date';
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldProps {
-  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image' */
+  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image' | 'date' */
   type?: InputFieldType;
   /** Input field id. Must be unique */
   id: string;
@@ -92,7 +93,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   _setDefaultValue() {
     const { defaultValue, type } = this.props;
 
-    if (defaultValue && type !== 'checkbox' && type !== 'select' && type !== 'image') {
+    if (defaultValue && type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email') {
       this.input.value = defaultValue.toString();
     }
   }
@@ -134,7 +135,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       )
     } else if (type === "select") {
       return (
-        <DropDownMenu label={selectActiveOption}>
+        <DropDownMenu label={selectActiveOption} error={validationError && this.state.touched}>
           {selectOptions.map((option, index) => {
             return <DropDownMenuItem key={index} onClickHandler={this._onChangeHandler}
               label={option}
@@ -154,8 +155,17 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     } else if (type === "image") {
       return (
         <ImageUpload size={imageSize}
-          defaultURL={defaultValue ? defaultValue.toString() : ''}
+          defaultURL={defaultValue ? defaultValue.toString() : null}
           onFileSelection={this._onChangeHandler}
+        />
+      )
+    } else if (type === "date") {
+      return (
+        <DatePicker
+          id={id}
+          onChangeHandler={this._onChangeHandler}
+          defaultDate={defaultValue ? defaultValue.toString() : null}
+          error={validationError && this.state.touched}
         />
       )
     } else {
@@ -183,18 +193,16 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       // align validation message to the right
       errorMsgOffsetClass = 'u-fill'
     }
-    else if (labelLayoutWidth === '1/1') {
-      // align validation message to the left
-      errorMsgOffsetClass = 'u-fit'
-    }
     else {
       // align validation message under input (after label width)
       errorMsgOffsetClass = `u-${labelLayoutWidth}`
     }
 
     return <div className="layout__item u-full">
-      <div className="layout layout--gutter-none">
-        <div className={`layout__item ${errorMsgOffsetClass}`}></div>
+      <div className="layout">
+        {labelLayoutWidth !== '1/1' &&
+          <div className={`layout__item ${errorMsgOffsetClass}`}></div>
+        }
         <div className="layout__item u-fit">
           <div className="input-field--error-message">{validationErrorMsg}</div>
         </div>

@@ -8,6 +8,7 @@ import { withInfo } from '@storybook/addon-info';
 import InputField from '../components/input_field';
 import Checkbox from '../components/checkbox';
 import ImageUpload from '../components/image_upload';
+import DatePicker from '../components/date_picker';
 
 const stories = storiesOf('Forms', module);
 
@@ -123,4 +124,14 @@ stories.add('Image upload', withInfo(
   'Image drag and drop or click to upload'
 )(() =>
   <ImageUpload shape={selectV2('Image shape', options, defaultValue)} onFileSelection={action('changed')} />
+));
+
+stories.add('Date Picker', withInfo(
+  'Select input field'
+)(() =>
+  <div style={{ width: 250 }}>
+    <DatePicker
+      id="id_8"
+      onChangeHandler={action('changed')} />
+  </div>
 ));
