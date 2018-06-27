@@ -35,16 +35,15 @@ export interface FormValidationResponse {
 
 export class Form extends React.Component<FormProps, FormState> {
 
-	private popupBody: HTMLElement;
+	state = {
+		primaryBtnSpinner: false,
+		secondaryBtnSpinner: false
+	}
 
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			primaryBtnSpinner: false,
-			secondaryBtnSpinner: false,
-		};
-
+		// bind callbacks once
 		this._onSubmitHandler = this._onSubmitHandler.bind(this);
 		this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
 	}

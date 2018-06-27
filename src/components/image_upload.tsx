@@ -30,12 +30,8 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     size: '18rem'
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      fileURL: null
-    }
+  state = {
+    fileURL: null
   }
 
   static getDerivedStateFromProps(props: ImageUploadProps, state: ImageUploadState): ImageUploadState {
