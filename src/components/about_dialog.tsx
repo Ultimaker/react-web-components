@@ -17,6 +17,10 @@ export interface AboutDialogProps {
   isOpen: boolean;
   /** Function to close the dialog */
   closeHandler: () => void;
+  /** URL to a support page */
+  supportLinkURL?: string;
+  /** Link text for the support page */
+  supportLinkText?: string;
 }
 
 interface OpenSourceComponent {
@@ -36,7 +40,7 @@ function licenseList(componentsList: OpenSourceComponent[]): JSX.Element[] {
 }
 
 const AboutDialog: React.StatelessComponent<AboutDialogProps> =
-  ({ componentsList, isOpen, versionNumber, closeHandler, appName }) => {
+  ({ componentsList, isOpen, versionNumber, closeHandler, appName, supportLinkURL, supportLinkText }) => {
 
     return (
       <div className="about-dialog">
@@ -44,6 +48,9 @@ const AboutDialog: React.StatelessComponent<AboutDialogProps> =
           <Tile>
             <div className="about-dialog__header">{i18nc_format("About dialog", "About %{appName}", { appName })}</div>
             <p>{i18nc_format("About dialog", "Version: %{versionNumber}", { versionNumber })}</p>
+            {supportLinkURL &&
+              <p>{i18nc("About dialog", "For support visit:")}&nbsp;&nbsp;&nbsp;<a href={supportLinkURL} target="_blank">{supportLinkText}</a></p>
+            }
             <p>{i18nc_format("About dialog", "%{appName} uses the following Open Source components:", { appName })}</p>
             <table className="about-components-list">
               <tbody>

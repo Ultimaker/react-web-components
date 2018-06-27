@@ -71,6 +71,8 @@ stories.add('About dialog', withInfo(
     versionNumber="1.0.0"
     isOpen={boolean('isOpen', true)}
     closeHandler={action('clicked')}
+    supportLinkURL={'https://ultimaker.com/'}
+    supportLinkText="Support page"
     componentsList={[
       { name: "array.prototype.includes", license: "MIT", url: "https://github.com/Steditor/es7-array.prototype.includes" },
       { name: "classnames", license: "MIT", url: "https://github.com/JedWatson/classnames" },
