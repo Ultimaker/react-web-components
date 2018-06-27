@@ -2,11 +2,9 @@ import * as React from 'react';
 import classNames = require('classnames');
 
 export type Align = 'left' | 'center' | 'right';
-export type Gutter = 'xs' | 'sm' | 'md' | 'lg' | 'none' ;
+export type Gutter = 'xs' | 'sm' | 'md' | 'lg' | 'none';
 
 export interface GridProps {
-  /** Title label for the grid */
-  title?: string;
   /** Alignment of the grid items: 'left' | 'center' | 'right' */
   align?: Align;
   /** Gutter size between the grid items: 'xs' | 'sm' | 'md' | 'lg' | 'none' */
@@ -14,12 +12,12 @@ export interface GridProps {
 }
 
 export const Grid: React.StatelessComponent<GridProps> =
-  ({ title, align, gutter, children }): JSX.Element => {
+  ({ align, gutter, children }): JSX.Element => {
 
-    const classes = classNames("grid-component", "layout", `layout--align-${align}`, `layout--gutter-${gutter}`)
+    const classes = classNames('grid-component', 'layout', `layout--align-${align}`,
+      `layout--gutter-${gutter}`, `layout--gutter-${gutter}--above`, `layout--gutter-${gutter}--below`);
 
     return <div className={classes}>
-      {title && <h3 className="grid-component__title">{title}</h3>}
       {children}
     </div>
   }

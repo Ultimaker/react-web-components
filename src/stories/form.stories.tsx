@@ -56,6 +56,7 @@ stories.add('Text area', withInfo(
   <div style={{ width: 250 }}>
     <InputField type="textarea"
       id="id_3"
+      focusOnLoad
       onChangeHandler={action('changed')}
       placeholder="Textarea" />
   </div>

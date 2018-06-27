@@ -72,8 +72,11 @@ stories.add('Grid', withInfo(
   <div style={{ width: '80vw' }}>
     <Grid align={selectV2('Align', alignOptions, alignDefaultValue)}
       gutter={selectV2('Gutter', spacingOptions, spacingDefaultValue)}
-      title={text('Grid Component title', 'Grid Component')}
     >
+      <GridItem layoutWidth="1/1">
+        Grid component
+      </GridItem>
+
       <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
@@ -85,7 +88,7 @@ stories.add('Grid', withInfo(
       >
         <div style={{ background: 'grey', height: '100px' }}></div>
       </GridItem>
-      
+
       <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
         breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
       >
