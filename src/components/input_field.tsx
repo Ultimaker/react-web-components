@@ -186,7 +186,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderValidationText(): JSX.Element {
-    const { validationErrorMsg, labelLayoutWidth } = this.props;
+    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint } = this.props;
     let errorMsgOffsetClass;
 
     if (labelLayoutWidth === 'fill' || labelLayoutWidth === 'fit') {
@@ -195,7 +195,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
     else {
       // align validation message under input (after label width)
-      errorMsgOffsetClass = `u-${labelLayoutWidth}`
+      errorMsgOffsetClass = `u-${labelLayoutWidth}-${labelWidthBreakpoint}`
     }
 
     return <div className="layout__item u-full">

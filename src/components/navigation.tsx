@@ -54,25 +54,30 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
 
     return <nav className={navClasses} onClick={() => this._toggleShowNav(false)}>
 
-      <div className="burger-menu show-xs">
-        <Button style="primary" shape="circle" onClickHandler={() => this._toggleShowNav(!showNav)}>
-          <div className={burgerIconClasses}></div>
-        </Button>
-      </div>
+      {visibleNavLinks.length > 0 &&
+        <div>
+          <div className="burger-menu show-xs">
+            <Button style="primary" shape="circle" onClickHandler={() => this._toggleShowNav(!showNav)}>
+              <div className={burgerIconClasses}></div>
+            </Button>
+          </div>
 
-      <Motion style={{ x: spring(showNav ? 56 : 0, motion) }}>
-        {({ x }) =>
-          <ul>
-            {visibleNavLinks.map((navLink, index) => {
-              return <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
-                <NavLink to={navLink.path} activeClassName="active">
-                  <span className="label">{navLink.label}</span>
-                </NavLink>
-              </li>
-            })}
-          </ul>
-        }
-      </Motion>
+
+          <Motion style={{ x: spring(showNav ? 56 : 0, motion) }}>
+            {({ x }) =>
+              <ul>
+                {visibleNavLinks.map((navLink, index) => {
+                  return <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
+                    <NavLink to={navLink.path} activeClassName="active">
+                      <span className="label">{navLink.label}</span>
+                    </NavLink>
+                  </li>
+                })}
+              </ul>
+            }
+          </Motion>
+        </div>
+      }
 
     </nav >
   };
