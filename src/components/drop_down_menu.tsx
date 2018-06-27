@@ -9,6 +9,7 @@ export type MenuDirection = 'left' | 'right';
 export interface DropDownMenuProps {
   /** The label of the selected menu item */
   label: string | number;
+  error?: boolean;
 }
 
 export interface DropDownMenuState {
@@ -35,12 +36,11 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
   }
 
   render(): JSX.Element {
-
-    const { label, children } = this.props;
+    const { label, error, children } = this.props;
     const { showMenu } = this.state;
 
     const dropDownMenuClasses = classNames('drop-down-menu', { 'visible': showMenu });
-    const labelClasses = classNames('label', { 'active': showMenu });
+    const labelClasses = classNames('label', { 'active': showMenu, error });
 
     return <div className={dropDownMenuClasses} tabIndex={1}
       onClick={this._stopPropagation} onBlur={() => this._setShowMenu(false)}>

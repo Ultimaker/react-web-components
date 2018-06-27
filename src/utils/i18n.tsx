@@ -14,10 +14,11 @@ import 'moment/locale/ko';
 import 'moment/locale/pt';
 import 'moment/locale/ru';
 
-let translations;
 let localeName;
 const supportedLanguages = ['de', 'en', 'es', 'fr', 'it', 'nl', 'pl', 'tr', 'zh', 'ja', 'ko', 'pt', 'ru'];
 const defaultLanguage = 'en';
+
+moment.locale(defaultLanguage);
 
 const gt = new Gettext({debug: false});
 

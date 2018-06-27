@@ -8,27 +8,33 @@ module.exports = ({ env }) => {
       new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV || "development") }),
     ],
     module: {
-      rules: [{
-        test: /\.sass$/,
-        use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true
+      rules: [
+        {
+          test: /\.sass$/,
+          use: [
+            {
+              loader: "style-loader"
+            },
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true,
+                data: "$static_url: " + JSON.stringify(env.STATIC_URL || "/static")
+              }
             }
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
-              data: "$static_url: " + JSON.stringify(env.STATIC_URL || "/static")
-            }
-          }
-        ]
-      }]
+          ]
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
+        }
+      ]
     },
     devtool: 'inline-source-map'
   }

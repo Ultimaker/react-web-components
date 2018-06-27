@@ -20,28 +20,34 @@ module.exports = ({ buildDir, env, htmlTemplate }) => {
       new InterpolateHtmlPlugin(env)
     ],
     module: {
-      rules: [{
-        test: /\.sass$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader", // only use style-loader in development
-          use: [
-            {
-              loader: "css-loader", // translates CSS into CommonJS 
-              options: {
-                minimize: true,
-                sourceMap: true
+      rules: [
+        {
+          test: /\.sass$/,
+          loader: ExtractTextPlugin.extract({
+            fallback: "style-loader", // only use style-loader in development
+            use: [
+              {
+                loader: "css-loader", // translates CSS into CommonJS 
+                options: {
+                  minimize: true,
+                  sourceMap: true
+                }
+              },
+              {
+                loader: "sass-loader", // compiles Sass to CSS
+                options: {
+                  sourceMap: true,
+                  data: "$static_url: " + JSON.stringify(env.STATIC_URL || "/")
+                }
               }
-            },
-            {
-              loader: "sass-loader", // compiles Sass to CSS
-              options: {
-                sourceMap: true,
-                data: "$static_url: " + JSON.stringify(env.STATIC_URL || "/")
-              }
-            }
-          ]
-        })
-      }]
+            ]
+          })
+        },
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
+        }
+      ]
     }
   }
 }
