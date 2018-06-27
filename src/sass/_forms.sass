@@ -20,30 +20,35 @@
     .btn
       margin-bottom: 1.2rem
 
+
+%input-style
+  background-color: white
+  width: 100%
+  padding: 1.2rem 0.9rem
+  border: none
+  border-bottom: 2px solid $input-field-color-border
+  @include font-size-text-1
+  line-height: 2.2rem
+  outline: none
+  transition: all 0.2s ease-out
+  border-radius: 0
+  font-family: $font-primary
+
+  &:hover
+    border-bottom-color: $input-field-color-border-hover
+
+  &:focus, &:active
+    border-bottom-color: $input-field-color-border-active
+
+  &.error
+    border-bottom-color: $input-field-color-border-error
+
+  &::placeholder
+    color: $input-field-color-placeholder
+
 .input-field
   .input
-    background-color: white
-    width: 100%
-    padding: 1.2rem 0.9rem
-    border: none
-    border-bottom: 2px solid $input-field-color-border
-    font-size: 1.6rem
-    line-height: 2.2rem
-    outline: none
-    transition: all 0.2s ease-out
-    border-radius: 0
-
-    &:hover
-      border-bottom-color: $input-field-color-border-hover
-
-    &:focus, &:active
-      border-bottom-color: $input-field-color-border-active
-
-    &.error
-      border-bottom-color: $input-field-color-border-error
-
-    &::placeholder
-      color: $input-field-color-placeholder
+    @extend %input-style
 
   .input-field--label
     @include font-size-text-2
@@ -128,3 +133,44 @@
         
 textarea
   vertical-align: top
+
+.date-picker 
+  .SingleDatePicker
+    width: 100%
+
+  .SingleDatePicker_picker
+    top: 46px !important
+
+  .SingleDatePickerInput
+    width: 100%
+
+  .DateInput
+    width: 100%
+
+  .DateInput_input
+    @extend %input-style
+    color: $color-text
+    font-weight: 400
+  
+  &.error
+    .DateInput_input
+      border-bottom-color: $input-field-color-border-error
+
+  .DateInput_fang
+    top: 38px !important
+    height: 0.75rem
+  
+  .DateInput_fangStroke
+    stroke: $color-shadow-chevron
+
+  .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover
+    background: $input-field-color-border-active
+    border-color: $input-field-color-border-active
+
+  .CalendarDay__default:hover 
+    background: $context-menu-color-hover
+    border-color: $context-menu-color-hover
+
+  .DayPicker__withBorder
+    box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow
+    border-radius: 1px

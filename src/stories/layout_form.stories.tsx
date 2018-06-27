@@ -51,7 +51,7 @@ stories.add('Form', withInfo(
         secondaryBtnStyle="quiet"
         formValidation={{
           success: boolean('Validation Success', true),
-          validationErrors: { id_1: 'Validation error', id_4: 'Validation error' }
+          validationErrors: { id_1: 'Validation error', id_2: 'Validation error', id_3: 'Validation error', id_4: 'Validation error', id_5: 'Validation error' }
         }}
       >
 
@@ -96,6 +96,14 @@ stories.add('Form', withInfo(
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           defaultValue={true} />
+
+        <InputField type="date"
+          id="id_5"
+          label={text('Label 5', 'Date input field')}
+          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+          onChangeHandler={action('changed')}
+          defaultValue="2019-02-08" />
 
       </Form>
 
