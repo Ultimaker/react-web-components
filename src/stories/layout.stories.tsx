@@ -110,12 +110,12 @@ stories.add('Grid', withInfo(
   </div>
 ));
 
-stories.add('Slide out content', withInfo(
-  'A example layout for an application'
+stories.add('Slide out container', withInfo(
+  'A toggle slide out container'
 )(() =>
   <div style={{ width: '80vw' }}>
     <Tile padding="md">
-      <SlideOutContainer headerText={text('Header text', 'Slide out content component')} >
+      <SlideOutContainer headerText={text('Header text', 'Slide out container component')} >
         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
       </SlideOutContainer>
     </Tile>

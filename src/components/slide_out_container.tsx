@@ -34,12 +34,12 @@ export class SlideOutContainer extends React.Component<SlideOutContainerProps, S
     return <div className="slide-out-container">
 
       <div className="slide-out-container__header" onClick={() => this._toggleBodyVisibility()}>
-        <div className="layout">
+        <div className="layout layout--align-middle">
           <div className="layout__item u-fill">
             {headerText}
           </div>
           <div className="layout__item arrow-column">
-            <PanelArrow active={isOpen} width="1.8rem" />
+            <PanelArrow active={isOpen} width="1.6rem" />
           </div>
         </div>
       </div>
