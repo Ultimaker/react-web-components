@@ -32,7 +32,7 @@ stories.addDecorator(withKnobs)
   }));
 
 stories.add('Context menu', withInfo(
-  'Context menu for addition actions'
+  'Context menu for additional actions'
 )(() =>
   <ContextMenu menuWidth={200} menuOffsetDirection={selectV2('Menu Offset Direction', options, defaultValue)}>
     <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />

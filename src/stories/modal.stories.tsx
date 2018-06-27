@@ -64,7 +64,7 @@ stories.add('Prompt popup', withInfo(
 ));
 
 stories.add('About dialog', withInfo(
-  'Popup modal for user input'
+  'About dialog modal for providing information about the application'
 )(() =>
   <AboutDialog
     appName="Test app"
