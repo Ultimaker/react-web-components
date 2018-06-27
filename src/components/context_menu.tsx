@@ -6,7 +6,9 @@ import { Collapse } from 'react-collapse';
 export type MenuDirection = 'left' | 'right';
 
 export interface ContextMenuProps {
-  menuWidth: number; // in pixels
+  /** Width of the menu in pixels */
+  menuWidth: number;
+  /** Direction to position the menu: 'left' | 'right' */
   menuOffsetDirection: MenuDirection;
 }
 
@@ -19,7 +21,7 @@ const menuOffsetDefault = 30;
 const triggerWidth = 45;
 const windowMargin = 10;
 
-export default class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
+export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
 
   constructor(props: ContextMenuProps) {
     super(props);
@@ -141,3 +143,5 @@ export default class ContextMenu extends React.Component<ContextMenuProps, Conte
     </div>
   }
 }
+
+export default ContextMenu;

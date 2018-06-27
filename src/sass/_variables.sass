@@ -1,6 +1,7 @@
 $color-blue: #00a7e9
-$color-red: #e90000
+$color-red: #ea2324
 $color-grey: #f3f3f3
+$color-green: #23aa1d
 
 $font-primary: "NotoSans-Regular", sans-serif
 $font-primary-medium: "NotoSans-Medium", sans-serif
@@ -16,6 +17,8 @@ $color-background-dark: rgba(0, 0, 0, 0.03)
 $color-background-darker: rgba(0, 0, 0, 0.06)
 $color-background-darkest: rgba(0, 0, 0, 0.09)
 $color-background-selected: rgba(0, 167, 233, 0.06)
+$color-background-alert: $color-red
+$color-background-success: $color-green
 
 $color-border: #dcdcdc
 $color-border-dark: #4a4a4a
@@ -71,6 +74,12 @@ $tooltip-dark-color-background: #666666
 $tooltip-color-text: white
 $tooltip-arrow-size: 15px
 
+$input-field-color-border: rgba(0, 0, 0, 0.15)
+$input-field-color-border-hover: rgba(0, 0, 0, 0.8)
+$input-field-color-border-active: $color-blue
+$input-field-color-border-error: $color-red
+$input-field-color-placeholder: rgba(0, 0, 0, 0.25)
+
 $slide-out-color-background: white
 
 $modal-overlay-color: rgba(48, 52, 53, 0.4)
@@ -83,4 +92,5 @@ $min-window-width: 320px
 
 $layout-breakpoints: (lg: 1025px, md: 800px, sm: 620px)
 $layout-fractions: 1 2 3 4 5
-$layout-gutter-size: 2.4rem
+$layout-spacing: (lg: 3.6rem, md: 2.4rem, sm: 1.2rem, xs: 0.6rem, none: 0)
+$layout-gutter-default: 2.4rem

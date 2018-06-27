@@ -42,6 +42,9 @@
         position: relative
         top: 0 !important
 
+        &:last-child
+          border-right: 1px solid $color-border-light
+
       @include respond-to(md)
         max-width: 13.5rem
 
@@ -134,3 +137,38 @@
         visibility: visible
         transition: visibility 200ms ease-in
         transition-delay: 200ms
+
+.burger-menu
+  position: relative
+
+  .burger-menu__icon, .burger-menu__icon:after, .burger-menu__icon:before
+    background-color: currentColor
+    content: ''
+    height: 0.2rem
+    left: 0
+    position: absolute
+    width: 2.2rem
+
+  .burger-menu__icon
+    top: 50%
+    display: block
+    left: 0
+    right: 0
+    margin-left: auto
+    margin-right: auto
+
+    &:before
+      top: -0.6rem
+
+    &:after
+      bottom: -0.6rem
+
+    &.open
+      transform: rotate(-45deg)
+
+      &:before
+        display: none
+
+      &:after
+        bottom: 0
+        transform: rotate(90deg)

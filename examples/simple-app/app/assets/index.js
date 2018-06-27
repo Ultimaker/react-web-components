@@ -4,4 +4,4 @@ import {App} from "./App.tsx";
 import "../../../../src/sass/main.sass";
 
 // create a new app on a DOM element with ID "root"
-createApp("root", App, "./static/locales");
+createApp("root", App, "./locales");
