@@ -53,19 +53,20 @@ export interface PopupState {
 
 export class Popup extends React.Component<PopupProps, PopupState> {
 
+  state = {
+    inputValue: undefined,
+    previousInputValue: undefined,
+    validationErrorMsg: undefined,
+    primaryBtnSpinner: false,
+    secondaryBtnSpinner: false,
+  }
+
   private popupBody: HTMLElement;
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      inputValue: undefined,
-      previousInputValue: undefined,
-      validationErrorMsg: undefined,
-      primaryBtnSpinner: false,
-      secondaryBtnSpinner: false,
-    };
-
+    // bind callbacks once
     this._setPopupBodyClass = this._setPopupBodyClass.bind(this);
     this._onChangeHandler = this._onChangeHandler.bind(this);
     this._primaryBtnHandler = this._primaryBtnHandler.bind(this);

@@ -65,17 +65,18 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     centerInputField: false
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      touched: false
-    };
-
-    this._onChangeHandler = this._onChangeHandler.bind(this);
+  state = {
+    touched: false
   }
 
   private input;
+
+  constructor(props) {
+    super(props);
+
+    // bind callbacks once
+    this._onChangeHandler = this._onChangeHandler.bind(this);
+  }
 
   componentDidMount(): void {
     this._focusOnPromptInput();

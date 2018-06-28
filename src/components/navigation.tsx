@@ -23,12 +23,8 @@ const motion = { stiffness: 999, damping: 50 };
 
 export default class Navigation extends React.Component<NavigationProps, NavigationState> {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showNav: false
-    };
+  state = {
+    showNav: false
   }
 
   _toggleShowNav(showNav: boolean): void {

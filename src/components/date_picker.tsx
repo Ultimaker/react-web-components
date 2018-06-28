@@ -21,12 +21,9 @@ export interface DatePickerState {
 
 export class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false,
-      date: null
-    };
+  state = {
+    focused: false,
+    date: null
   }
 
   static getDerivedStateFromProps(props: DatePickerProps, state: DatePickerState): Partial<DatePickerState> {
