@@ -179,3 +179,17 @@ stories.add('Close', withInfo(
 )(() =>
   <CloseButton onClickHandler={action('clicked')} />
 ));
+
+stories.add('Link', withInfo(
+  'An anchor styled as a button. Useful for page navigation'
+)(() =>
+  <Button type="link"
+    linkURL="https://ultimaker.com/"
+    linkToNewTab={boolean('Link to new tab', false)}
+    showSpinner={boolean('Loading', false)}
+    disabled={boolean('Disabled', false)}
+    style="primary"
+  >
+    {text('Text 1', 'Link')}
+  </Button>
+));
