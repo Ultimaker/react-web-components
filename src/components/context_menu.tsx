@@ -23,12 +23,13 @@ const windowMargin = 10;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
 
+  state = {
+    showMenu: false,
+    menuOffset: null
+  };
+
   constructor(props: ContextMenuProps) {
     super(props);
-    this.state = {
-      showMenu: false,
-      menuOffset: null
-    };
 
     this._setmenuOffset = this._setmenuOffset.bind(this);
   }
