@@ -21,6 +21,7 @@ export interface ImageUploadProps {
 
 export interface ImageUploadState {
   fileURL: string;
+  dropActive: boolean;
 }
 
 export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
@@ -31,10 +32,18 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
   };
 
   state = {
-    fileURL: null
+    fileURL: null,
+    dropActive: false
   }
 
-  static getDerivedStateFromProps(props: ImageUploadProps, state: ImageUploadState): ImageUploadState {
+  constructor(props) {
+    super(props);
+
+    this._onDragEnter = this._onDragEnter.bind(this);
+    this._onDragLeave = this._onDragLeave.bind(this);
+  }
+
+  static getDerivedStateFromProps(props: ImageUploadProps, state: ImageUploadState): Partial<ImageUploadState> {
     if (props.defaultURL && state.fileURL === null) {
       return {
         fileURL: props.defaultURL
@@ -44,21 +53,43 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
   }
 
   _onDropHandler(files: ImageFile[]): void {
+    this.setState({
+      dropActive: false
+    });
+    
     const file = files[0];
     this.setState({ fileURL: file.preview });
     this.props.onFileSelection(file);
   }
 
+  _onDragEnter(): void {
+    this.setState({
+      dropActive: true
+    });
+  }
+
+  _onDragLeave(): void {
+    this.setState({
+      dropActive: false
+    });
+  }
+
   render(): JSX.Element {
     const { size, shape } = this.props;
-    const { fileURL } = this.state;
+    const { fileURL, dropActive } = this.state;
 
     const iconClasses = classNames('icon', { 'hide': fileURL !== null });
+    const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
 
-    return <Dropzone accept="image/jpeg, image/png" multiple={false} className="image-upload" style={{ width: size, height: size }}
-      onDrop={(files) => this._onDropHandler(files)}>
+    return <Dropzone className="image-upload" style={{ width: size, height: size }}
+      accept="image/jpeg, image/png" 
+      multiple={false} 
+      onDragEnter={this._onDragEnter}
+      onDragLeave={this._onDragLeave}
+      onDrop={(files) => this._onDropHandler(files)}
+    >
 
-      <div className="hover">
+      <div className={hoverAreaClasses}>
         <div className={iconClasses}>
           <svg viewBox="0 0 24 24">
             <g>

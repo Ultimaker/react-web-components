@@ -14,12 +14,9 @@ export interface SlideOutContainerState {
 
 export class SlideOutContainer extends React.Component<SlideOutContainerProps, SlideOutContainerState> {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-  }
+  state = {
+    isOpen: false
+  };
 
   _toggleBodyVisibility() {
     this.setState({
