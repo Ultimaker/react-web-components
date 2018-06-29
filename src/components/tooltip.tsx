@@ -23,11 +23,12 @@ const windowMargin = 10;
 
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
+  state = {
+    tooltipOffset: null
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      tooltipOffset: null
-    };
 
     this._setTooltipOffset = this._setTooltipOffset.bind(this);
   }
