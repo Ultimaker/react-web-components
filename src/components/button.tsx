@@ -8,6 +8,8 @@ export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'alert';
 export type ButtonShape = 'rectangle' | 'circle' | 'pill';
 
 export interface ButtonProps {
+  /** Optional ID for the button **/
+  id?: string;
   /** Called when the Button is clicked */
   onClickHandler?: () => void;
   /** Disables the button when true */
@@ -27,7 +29,7 @@ export interface ButtonProps {
 }
 
 export const Button: React.StatelessComponent<ButtonProps> =
-  ({ onClickHandler, disabled, type, style, shape, showSpinner, linkURL, linkToNewTab, children }) => {
+  ({ id, onClickHandler, disabled, type, style, shape, showSpinner, linkURL, linkToNewTab, children }) => {
 
     const classes = classNames(`btn btn--${style} btn--${shape}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
@@ -40,7 +42,7 @@ export const Button: React.StatelessComponent<ButtonProps> =
     }
 
     if (type === 'link') {
-      return <a className={classes} href={disabled || showSpinner ? null : linkURL} target={linkToNewTab ? '_blank' : null}>
+      return <a id={id} className={classes} href={disabled || showSpinner ? null : linkURL} target={linkToNewTab ? '_blank' : null}>
         <span className="text">{children}</span>
         {showSpinner &&
           <Spinner />
@@ -48,7 +50,7 @@ export const Button: React.StatelessComponent<ButtonProps> =
       </a>
     }
     else {
-      return <button className={classes} onClick={_onClickHandler} disabled={disabled || showSpinner} type={type}>
+      return <button id={id} className={classes} onClick={_onClickHandler} disabled={disabled || showSpinner} type={type}>
         <span className="text">{children}</span>
         {showSpinner &&
           <Spinner />
