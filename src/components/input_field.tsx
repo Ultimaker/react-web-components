@@ -103,8 +103,6 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     this.setState({ touched: true });
     const { onChangeHandler, id } = this.props;
 
-    event.stopPropagation();
-
     if (onChangeHandler) {
       onChangeHandler(id, value);
     }
