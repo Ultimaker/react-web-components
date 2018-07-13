@@ -1,12 +1,9 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
 
 import { I18n } from '../utils/i18n';
-
-declare const module: any;
 
 /**
  * Create a standard app.
@@ -21,6 +18,7 @@ export function createApp(domId: string, AppComponent, localesPath: string) {
   console.info('locale', locale);
   I18n.setMomentLocale(locale);
 
+  // Load translations before rendering app
   I18n.load({
     path: localesPath,
     locale: locale,
@@ -28,13 +26,6 @@ export function createApp(domId: string, AppComponent, localesPath: string) {
       _renderApp(domId, AppComponent);
     }
   });
-
-  // Hot Module Replacement API
-  if (module.hot) {
-    module.hot.accept(() => {
-      _renderApp(domId, AppComponent);
-    })
-  }
 }
 
 /**
@@ -44,10 +35,8 @@ export function createApp(domId: string, AppComponent, localesPath: string) {
  */
 function _renderApp(domId: string, AppComponent) {
   ReactDOM.render(
-    <AppContainer>
-      <BrowserRouter>
-        <AppComponent />
-      </BrowserRouter>
-    </AppContainer>, document.getElementById(domId)
+    <BrowserRouter>
+      <AppComponent />
+    </BrowserRouter>, document.getElementById(domId)
   )
 }

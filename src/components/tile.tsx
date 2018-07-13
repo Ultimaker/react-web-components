@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classnames from 'classnames';
 
 export type Padding = 'none' | 'sm' | 'md' | 'lg';
 export type Align = 'left' | 'center' | 'right';
@@ -22,7 +22,7 @@ export interface TileProps {
 export const Tile: React.StatelessComponent<TileProps> =
   ({ padding, align, children, disabled, selected, alert, success }): JSX.Element => {
 
-    const classes = classNames('tile', `padding-${padding}`, { selected, alert, disabled, success });
+    const classes = classnames('tile', `padding-${padding}`, { selected, alert, disabled, success });
 
     return <div className={classes} style={{ textAlign: align }}>
       <div className="cover" />
