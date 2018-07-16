@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Dropzone from 'react-dropzone';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 import { Image, ImageShape } from './image';
 

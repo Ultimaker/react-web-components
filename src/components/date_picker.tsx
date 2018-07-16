@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';

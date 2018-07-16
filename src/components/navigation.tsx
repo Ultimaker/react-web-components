@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import { Motion, spring } from 'react-motion';
 
 import Button from './button';

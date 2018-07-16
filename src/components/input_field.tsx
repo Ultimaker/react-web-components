@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 import DropDownMenu from './drop_down_menu';
 import DropDownMenuItem from './drop_down_menu_item';

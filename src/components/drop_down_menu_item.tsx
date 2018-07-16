@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 export interface DropDownMenuItemProps {
   /** This should be set to true when the item is selected */
