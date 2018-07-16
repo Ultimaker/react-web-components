@@ -10,6 +10,9 @@ import LoadingPage from '../components/loading_page';
 import CuraLogo from '../components/cura_logo';
 import Footer from '../components/footer';
 
+// views
+import PageNotFoundView from '../views/page_not_found';
+
 // utils
 import { I18n } from '../utils/i18n';
 
@@ -92,6 +95,7 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
         return (
             <Switch>
                 { routes.map((route, key) => this._createRoute(key, route.path, route.component, route.scopes, route.props)) }
+                <Route component={PageNotFoundView} />
             </Switch>
         )
     }

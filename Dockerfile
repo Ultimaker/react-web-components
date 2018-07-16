@@ -10,3 +10,7 @@ RUN yarn build
 # Build the example app as test
 WORKDIR /usr/src/app/examples/simple-app
 RUN yarn build
+
+WORKDIR /usr/src/app
+EXPOSE 9001
+CMD ["yarn", "start"]
