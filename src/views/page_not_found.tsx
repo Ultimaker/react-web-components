@@ -23,9 +23,9 @@ export default class PageNotFoundView extends React.Component<PageNotFoundViewPr
         return <Page title={I18n.translate("title page_not_found", "Page Not Found")} maxWidth={550}>
             <Tile padding="lg" align="center">
                 <p>
-                    {I18n.translate("page_not_found", "The page could not be found.")}
-                    {this.props.location.pathname}
+                    {I18n.translate("page_not_found", "The page requested could not be found.")}
                 </p>
+                <pre>{this.props.location.pathname}</pre>
             </Tile>
         </Page>
     }
