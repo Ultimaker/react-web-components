@@ -11,7 +11,7 @@ import CuraLogo from '../components/cura_logo';
 import Footer from '../components/footer';
 
 // utils
-import { i18nc } from '../utils/i18n';
+import { I18n } from '../utils/i18n';
 
 export interface BaseAppState {
     scopes: string[];
@@ -111,7 +111,7 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
      */
     protected _renderFooter(): JSX.Element {
         return (
-            <a>{i18nc("Footer About link", "About")}</a>
+            <a>{I18n.translate("Footer About link", "About")}</a>
         )
     }
 

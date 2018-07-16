@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { i18nc, i18nc_format } from '../utils/i18n';
+import { I18n } from '../utils/i18n';
 
 import Button from '../components/button';
 import CloseButton from "../components/close_button";
@@ -34,7 +34,7 @@ function licenseList(componentsList: OpenSourceComponent[]): JSX.Element[] {
   return componentsList.map(component => {
     return (<tr key={component.name}>
       <td className="about-component-name"><a href={component.url} target="_blank">{component.name}</a></td>
-      <td className="about-component-license"><a href={"https://spdx.org/licenses/" + component.license + ".html"} target="_blank">{i18nc_format("About dialog", "license %{license}", { license: component.license })}</a></td>
+      <td className="about-component-license"><a href={"https://spdx.org/licenses/" + component.license + ".html"} target="_blank">{I18n.format("About dialog", "license %{license}", { license: component.license })}</a></td>
     </tr>);
   });
 }
@@ -46,12 +46,12 @@ const AboutDialog: React.StatelessComponent<AboutDialogProps> =
       <div className="about-dialog">
         <Modal isOpen={isOpen} onOverlayClickHandler={closeHandler}>
           <Tile>
-            <div className="about-dialog__header">{i18nc_format("About dialog", "About %{appName}", { appName })}</div>
-            <p>{i18nc_format("About dialog", "Version: %{versionNumber}", { versionNumber })}</p>
+            <div className="about-dialog__header">{I18n.format("About dialog", "About %{appName}", { appName })}</div>
+            <p>{I18n.format("About dialog", "Version: %{versionNumber}", { versionNumber })}</p>
             {supportLinkURL &&
-              <p>{i18nc("About dialog", "For support visit:")}&nbsp;&nbsp;&nbsp;<a href={supportLinkURL} target="_blank">{supportLinkText}</a></p>
+              <p>{I18n.translate("About dialog", "For support visit:")}&nbsp;&nbsp;&nbsp;<a href={supportLinkURL} target="_blank">{supportLinkText}</a></p>
             }
-            <p>{i18nc_format("About dialog", "%{appName} uses the following Open Source components:", { appName })}</p>
+            <p>{I18n.format("About dialog", "%{appName} uses the following Open Source components:", { appName })}</p>
             <table className="about-components-list">
               <tbody>
                 {licenseList(componentsList)}
