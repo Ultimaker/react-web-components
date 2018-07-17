@@ -4,6 +4,7 @@
   left: 0
   height: 100%
   width: 0
+  z-index: 9999999
 
   &::after
     content: ''
@@ -45,15 +46,15 @@
     border-bottom: 1px solid $color-border
     padding: 0 2.4rem
     align-items: center
-    height: 4.2rem
+    height: 4.3rem
     display: flex
     flex-shrink: 0
 
     @include respond-to(sm)
-      height: 5rem
+      height: 5.1rem
 
     @include respond-to(md)
-      height: 6rem
+      height: 6.2rem
 
   .slide-in-panel__content
     padding: 1.2rem 2.4rem
