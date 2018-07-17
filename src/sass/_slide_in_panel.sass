@@ -31,6 +31,9 @@
     right: 0
     background: $color-background
     z-index: 1
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
 
     @include respond-to(sm)
       max-width: 90%
@@ -39,11 +42,12 @@
       max-width: 70%
 
   .slide-in-panel__header
-    border-bottom: 1px solid #dcdcdc
+    border-bottom: 1px solid $color-border
     padding: 0 2.4rem
     align-items: center
     height: 4.2rem
     display: flex
+    flex-shrink: 0
 
     @include respond-to(sm)
       height: 5rem
@@ -53,5 +57,11 @@
 
   .slide-in-panel__content
     padding: 1.2rem 2.4rem
+    overflow: auto
+    flex-grow: 1
 
+  .slide-in-panel__footer
+    flex-shrink: 0
+    padding: 1.2rem 2.4rem
+    border-top: 1px solid $color-border
   

@@ -12,7 +12,9 @@ export interface SlideInPanelProps {
   /** Called when the background overlay is clicked */
   onOverlayClickHandler?: Function;
   /** Width of panel. Include unit */
-  panelWidth?: string;
+  width?: string;
+  /** Show footer */
+  includeFooter?: boolean;
 }
 
 export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
@@ -28,7 +30,7 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
   }
 
   render(): JSX.Element {
-    const { headerTitle, isOpen, panelWidth, children } = this.props;
+    const { headerTitle, isOpen, width, includeFooter, children } = this.props;
 
     const motion = { stiffness: 450, damping: 50 };
     const classes = classNames('slide-in-panel', { isOpen });
@@ -37,13 +39,18 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
 
       <Motion style={{ x: spring(isOpen ? 0 : 100, motion) }}>
         {({ x }) =>
-          <div className="slide-in-panel__container" style={{ transform: `translate3d(${x}%,0,0)`, width: panelWidth }}>
+          <div className="slide-in-panel__container" style={{ transform: `translate3d(${x}%,0,0)`, width }}>
             <div className="slide-in-panel__header">
               {headerTitle}
             </div>
             <div className="slide-in-panel__content">
-              {children}
+              {children[0]}
             </div>
+            {includeFooter &&
+              <div className="slide-in-panel__footer">
+                {children[1]}
+              </div>
+            }
           </div>
         }
       </Motion>
