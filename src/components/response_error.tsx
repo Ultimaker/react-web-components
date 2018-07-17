@@ -2,11 +2,11 @@
 import * as React from 'react';
 
 // components
-import Popup from 'react-web-components/src/components/popup';
-import Tile from 'react-web-components/src/components/tile';
+import Popup from './popup';
+import Tile from './tile';
 
 // utils
-import { I18n } from 'react-web-components/src/utils/i18n';
+import { I18n } from '../utils/i18n';
 
 /**
  * Map of all API error codes that should be translated.
