@@ -127,7 +127,7 @@ stories.add('Slide out container', withInfo(
 ));
 
 stories.add('Slide in panel', withInfo(
-  'A toggle slide in panel'
+  'A toggle slide in panel, that slides into view from the right side of the screen.'
 )(() =>
   <div>
     <SlideInPanel headerTitle="Panel title" isOpen={boolean('isOpen', true)} panelWidth="600px">
