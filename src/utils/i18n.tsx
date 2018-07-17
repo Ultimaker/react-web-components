@@ -1,5 +1,5 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import Gettext from 'node-gettext'
+import Gettext = require('node-gettext');
 import { po } from 'gettext-parser'
 
 // type for available languages
