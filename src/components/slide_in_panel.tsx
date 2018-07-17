@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Motion, spring } from 'react-motion';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 export interface SlideInPanelProps {
   /** Text to be displayed in the panel header */
