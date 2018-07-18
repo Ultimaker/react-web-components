@@ -6,7 +6,7 @@
   width: 0
   z-index: 9999999
 
-  &::after
+  .slide-in-panel__overlay
     content: ''
     position: fixed
     top: 0
@@ -20,7 +20,7 @@
   &.isOpen
     width: 100%
 
-    &::after
+    .slide-in-panel__overlay
       width: 100%
       background-color: $modal-overlay-color
 
@@ -38,9 +38,6 @@
 
     @include respond-to(sm)
       max-width: 90%
-
-    @include respond-to(md)
-      max-width: 70%
 
   .slide-in-panel__header
     border-bottom: 1px solid $color-border

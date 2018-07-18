@@ -33,7 +33,9 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
     const motion = { stiffness: 450, damping: 50 };
     const classes = classNames('slide-in-panel', { isOpen });
 
-    return <div className={classes} onClick={(e) => this._handleOverlayClick(e)}>
+    return <div className={classes}>
+
+      <div className="slide-in-panel__overlay" onClick={(e) => this._handleOverlayClick(e)}></div>
 
       <Motion style={{ x: spring(isOpen ? 0 : 100, motion) }}>
         {({ x }) =>
