@@ -111,7 +111,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   protected _renderLabel(): JSX.Element {
     const { id, label, labelLayoutWidth, labelWidthBreakpoint } = this.props;
 
-    return <div className={`input-field--label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`}>
+    return <div className={`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`}>
       <label htmlFor={id}>{label}</label>
     </div>
   }
@@ -203,7 +203,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           <div className={`layout__item ${errorMsgOffsetClass}`}></div>
         }
         <div className="layout__item u-fit">
-          <div className="input-field--error-message">{validationErrorMsg}</div>
+          <div className="input-field__error-message">{validationErrorMsg}</div>
         </div>
       </div>
     </div>

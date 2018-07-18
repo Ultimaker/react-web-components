@@ -27,7 +27,7 @@
   padding: 1.2rem 0.9rem
   border: none
   border-bottom: 2px solid $input-field-color-border
-  @include font-size-text-1
+  font-size: 1.6rem
   line-height: 2.2rem
   outline: none
   transition: all 0.2s ease-out
@@ -50,7 +50,7 @@
   .input
     @extend %input-style
 
-  .input-field--label
+  .input-field__label
     @include font-size-text-2
     margin-bottom: 0.6rem
     margin-top: 1.2rem
@@ -59,7 +59,7 @@
       margin-top: 0.3rem
       margin-bottom: 0.3rem
 
-  .input-field--error-message
+  .input-field__error-message
     margin-top: 0.6rem
     color: $input-field-color-border-error
     @include font-size-text-2
