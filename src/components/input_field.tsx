@@ -202,7 +202,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         {labelLayoutWidth !== '1/1' &&
           <div className={`layout__item ${errorMsgOffsetClass}`}></div>
         }
-        <div className="layout__item u-fit">
+        <div className="layout__item u-fill">
           <div className="input-field__error-message">{validationErrorMsg}</div>
         </div>
       </div>
