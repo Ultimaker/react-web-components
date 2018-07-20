@@ -5,7 +5,7 @@ import { default as Button, ButtonStyle } from './button';
 
 export interface FormProps {
 	/** Primary button text */
-	primaryBtnText: string;
+	primaryBtnText?: string;
 	/** Called when the primary button is clicked to submit the form */
 	onSubmitHandler: () => void;
 	/** Primary button style type */
@@ -58,56 +58,61 @@ export class Form extends React.Component<FormProps, FormState> {
 	}
 
 	render(): JSX.Element {
-		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, formValidation, secondaryBtnLink, children } = this.props;
+		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, formValidation,
+			secondaryBtnLink, children } = this.props;
 		const { primaryBtnSpinner, secondaryBtnSpinner } = this.state;
 
 		const isValidationErrors = formValidation && formValidation.success === false;
 
 		return (
 			<form noValidate className="form" onSubmit={this._onSubmitHandler}>
-				{React.Children.map(children, (child: any) =>
-					<div className="form__item">
-						{React.cloneElement(child, {
+				{React.Children.map(children, (child: any) => {
+					return <div className="form__item">
+						{child && React.cloneElement(child, {
 							validationError: isValidationErrors && formValidation.validationErrors[child.props.id],
 							validationErrorMsg: isValidationErrors ? formValidation.validationErrors[child.props.id] : null
 						})}
 					</div>
-				)}
+				})}
 
-				<div className="form__actions">
-					<div className="btn__container">
-						<Button
-							style={primaryBtnStyle}
-							disabled={secondaryBtnSpinner || isValidationErrors}
-							type="submit"
-							showSpinner={primaryBtnSpinner}>
+				{primaryBtnText &&
+					<div className="form__actions">
+						{primaryBtnText &&
+							<div className="btn__container">
+								<Button
+									style={primaryBtnStyle}
+									disabled={secondaryBtnSpinner || isValidationErrors}
+									type="submit"
+									showSpinner={primaryBtnSpinner}>
 
-							{primaryBtnText}
-						</Button>
+									{primaryBtnText}
+								</Button>
+							</div>
+						}
+
+						{secondaryBtnText && !secondaryBtnLink &&
+							<div className="btn__container">
+								<Button
+									style={secondaryBtnStyle}
+									disabled={primaryBtnSpinner}
+									onClickHandler={this._secondaryBtnHandler}
+									showSpinner={secondaryBtnSpinner}
+								>
+									{secondaryBtnText}
+								</Button>
+							</div>
+						}
+
+						{secondaryBtnText && secondaryBtnLink &&
+							<div className="btn__container">
+								<Link to={secondaryBtnLink} className="btn btn--quiet">
+									<span className="text">{secondaryBtnText}</span>
+								</Link>
+							</div>
+						}
+
 					</div>
-
-					{secondaryBtnText && !secondaryBtnLink &&
-						<div className="btn__container">
-							<Button
-								style={secondaryBtnStyle}
-								disabled={primaryBtnSpinner}
-								onClickHandler={this._secondaryBtnHandler}
-								showSpinner={secondaryBtnSpinner}
-							>
-								{secondaryBtnText}
-							</Button>
-						</div>
-					}
-
-					{secondaryBtnText && secondaryBtnLink &&
-						<div className="btn__container">
-							<Link to={secondaryBtnLink} className="btn btn--quiet">
-								<span className="text">{secondaryBtnText}</span>
-							</Link>
-						</div>
-					}
-
-				</div>
+				}
 			</form>
 		)
 	}
