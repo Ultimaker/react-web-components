@@ -52,7 +52,7 @@ export interface InputFieldProps {
   disabled?: boolean;
   /** Size of the image for type image. Include size unit */
   imageSize?: string;
-  /** If true, the defaultValue is shown as plain text and the input in hidden */
+  /** If true, the defaultValue is shown as plain text and the input hidden */
   staticField?: boolean
 }
 
