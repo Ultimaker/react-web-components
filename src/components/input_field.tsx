@@ -7,16 +7,19 @@ import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
 import DatePicker from './date_picker';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image' | 'date';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date';
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
+export type InputFieldValue = string | number | boolean | ImageFile;
 
 export interface InputFieldProps {
-  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'select' | 'checkbox' | 'image' | 'date' */
+  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' */
   type?: InputFieldType;
   /** Input field id. Must be unique */
   id: string;
+  /** Additional classes for styling */
+  className?: string;
   /** Input field label */
   label?: string | JSX.Element;
   /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
@@ -30,9 +33,9 @@ export interface InputFieldProps {
   /** Message to show for the validation error */
   validationErrorMsg?: string;
   /** Called when the field changes */
-  onChangeHandler: (id: string, value: string | number | boolean | ImageFile) => void;
+  onChangeHandler: (id: string, value: InputFieldValue ) => void;
   /** Input field default value */
-  defaultValue?: string | number | boolean;
+  defaultValue?: InputFieldValue;
   /** Minimum value for number field */
   min?: number;
   /** Maximum value for number field */
@@ -49,6 +52,8 @@ export interface InputFieldProps {
   disabled?: boolean;
   /** Size of the image for type image. Include size unit */
   imageSize?: string;
+  /** If true, the defaultValue is shown as plain text and the input in hidden */
+  staticField?: boolean
 }
 
 export interface InputFieldState {
@@ -94,7 +99,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   _setDefaultValue() {
     const { defaultValue, type } = this.props;
 
-    if (defaultValue && (type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email')) {
+    if (defaultValue && this.input && (type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email' || type === 'url')) {
       this.input.value = defaultValue.toString();
     }
   }
@@ -132,7 +137,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           ref={input => this.input = input}
         />
       )
-    } else if (type === "select") {
+    }
+    if (type === "select") {
       return (
         <DropDownMenu label={selectActiveOption} error={validationError && this.state.touched}>
           {selectOptions.map((option, index) => {
@@ -142,7 +148,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           })}
         </DropDownMenu>
       )
-    } else if (type === "checkbox") {
+    }
+    if (type === "checkbox") {
       return (
         <Checkbox
           id={id}
@@ -151,14 +158,16 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           disabled={disabled}
         />
       )
-    } else if (type === "image") {
+    }
+    if (type === "image") {
       return (
         <ImageUpload size={imageSize}
           defaultURL={defaultValue ? defaultValue.toString() : null}
           onFileSelection={this._onChangeHandler}
         />
       )
-    } else if (type === "date") {
+    }
+    if (type === "date") {
       return (
         <DatePicker
           id={id}
@@ -167,21 +176,30 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           error={validationError && this.state.touched}
         />
       )
-    } else {
-      return (
-        <input
-          id={id}
-          name={id}
-          type={type}
-          min={min ? min : null}
-          max={max ? max : null}
-          onChange={(e) => this._onChangeHandler(e.target.value)}
-          placeholder={placeholder}
-          className={classes}
-          ref={input => this.input = input}
-        />
-      )
     }
+    return (
+      <input
+        id={id}
+        className={classes}
+        name={id}
+        type={type}
+        min={min ? min : null}
+        max={max ? max : null}
+        onChange={(e) => this._onChangeHandler(e.target.value)}
+        placeholder={placeholder}
+        ref={input => this.input = input}
+      />
+    )
+  }
+
+  protected _renderStaticValue(type: InputFieldType, value: InputFieldValue): JSX.Element | InputFieldValue {
+    if (type === 'url') {
+      return <a href={value.toString()} target="_blank">{value}</a>
+    }
+    if (type === 'email') {
+      return <a href={`mailto:${value}`} target="_top">{value}</a>
+    }
+    return value
   }
 
   protected _renderValidationText(): JSX.Element {
@@ -210,17 +228,19 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   render(): JSX.Element {
-    const { label, validationError, labelLayoutWidth, centerInputField } = this.props;
+    const { label, className, validationError, labelLayoutWidth, centerInputField,
+      staticField, defaultValue, type } = this.props;
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
-
+    const inputClasses = classNames(`input-field layout ${className}`, { 'hide-input': staticField });
     const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
     return (
-      <div className="input-field layout">
+      <div className={inputClasses}>
         {label && this._renderLabel()}
         <div className={inputLayoutClasses}>
           {this._renderInput()}
+          {staticField && this._renderStaticValue(type, defaultValue)}
         </div>
         {validationError && this.state.touched && this._renderValidationText()}
       </div>

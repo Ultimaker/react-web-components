@@ -47,6 +47,13 @@
     color: $input-field-color-placeholder
 
 .input-field
+  &.hide-input 
+    .input
+      display: none
+
+    .input-field__label
+      margin: 0
+
   .input
     @extend %input-style
 
