@@ -7,14 +7,14 @@ import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
 import DatePicker from './date_picker';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children';
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 export type InputFieldValue = string | number | boolean | ImageFile;
 
 export interface InputFieldProps {
-  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' */
+  /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
   type?: InputFieldType;
   /** Input field id. Must be unique */
   id: string;
@@ -121,11 +121,14 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     </div>
   }
 
-  protected _renderInput(): JSX.Element {
+  protected _renderInput(): React.ReactNode {
     const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled,
-      defaultValue, imageSize } = this.props;
+      defaultValue, imageSize, children } = this.props;
     const classes = classNames('input', { 'error': validationError && this.state.touched });
 
+    if (type === "children") {
+      return children;
+    }
     if (type === "textarea") {
       return (
         <textarea
