@@ -1,8 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import DropDownMenu from './drop_down_menu';
-import DropDownMenuItem from './drop_down_menu_item';
+import { DropDownMenu, SelectOption } from './drop_down_menu';
 import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
 import DatePicker from './date_picker';
@@ -33,7 +32,7 @@ export interface InputFieldProps {
   /** Message to show for the validation error */
   validationErrorMsg?: string;
   /** Called when the field changes */
-  onChangeHandler: (id: string, value: InputFieldValue ) => void;
+  onChangeHandler: (id: string, value: InputFieldValue) => void;
   /** Input field default value */
   defaultValue?: InputFieldValue;
   /** Minimum value for number field */
@@ -45,9 +44,9 @@ export interface InputFieldProps {
   /** If true, the field will be focused when loaded */
   focusOnLoad?: boolean;
   /** Selected option for type select */
-  selectActiveOption?: string;
+  selectActiveOption?: SelectOption;
   /** List of options for type select */
-  selectOptions?: string[];
+  selectOptions?: SelectOption[];
   /** Disabled state for checkbox type */
   disabled?: boolean;
   /** Size of the image for type image. Include size unit */
@@ -108,7 +107,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     this.setState({ touched: true });
     const { onChangeHandler, id, type } = this.props;
 
-    if(type === 'number' && typeof value === 'string'){
+    if (type === 'number' && typeof value === 'string') {
       // convert value from and string to a number for number input fields
       value = parseFloat(value);
     }
@@ -148,13 +147,12 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
     if (type === "select") {
       return (
-        <DropDownMenu label={selectActiveOption} error={validationError && this.state.touched}>
-          {selectOptions.map((option, index) => {
-            return <DropDownMenuItem key={index} onClickHandler={this._onChangeHandler}
-              label={option}
-              active={selectActiveOption === option} />
-          })}
-        </DropDownMenu>
+        <DropDownMenu
+          onChangeHandler={this._onChangeHandler}
+          activeOption={selectActiveOption}
+          selectOptions={selectOptions}
+          error={validationError && this.state.touched}
+        />
       )
     }
     if (type === "checkbox") {
