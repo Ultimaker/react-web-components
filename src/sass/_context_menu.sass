@@ -1,4 +1,5 @@
 .context-menu
+  position: relative
 
   &:focus
     outline: none
@@ -44,8 +45,9 @@
 
   .container
     visibility: hidden
-    position: relative
-    top: -5px
+    position: absolute
+    bottom: 3px
+    width: 100%
 
     &:before
       background: white

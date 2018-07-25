@@ -9,9 +9,9 @@ export type MenuDirection = 'left' | 'right';
 
 export interface DropDownMenuProps {
   /** The list of available options */
-  selectOptions: SelectOption[];
-  /** The selected option */
-  activeOption: SelectOption;
+  options: SelectOption[];
+  /** The value of the selected option */
+  activeOptionValue: string | number;
   /** Called when an option is selected */
   onChangeHandler: (value: string | number) => void;
   /** When true the error state will be enabled */
@@ -40,12 +40,22 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
     });
   }
 
+  _getActiveOptionLabel() {
+    const { options, activeOptionValue } = this.props;
+    const option = options.find(option => option.value === activeOptionValue);
+
+    if (option) {
+      return option.label;
+    }
+    return null;
+  }
+
   _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
     e.stopPropagation()
   }
 
   render(): JSX.Element {
-    const { error, selectOptions, activeOption, onChangeHandler } = this.props;
+    const { error, options, activeOptionValue, onChangeHandler } = this.props;
     const { showMenu } = this.state;
 
     const dropDownMenuClasses = classNames('drop-down-menu', { 'visible': showMenu });
@@ -57,7 +67,7 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
       <div className={labelClasses} onClick={() => this._setShowMenu(!showMenu)} >
         <div className="layout layout--align-middle layout--gutter-none">
           <div className="layout__item u-fit">
-            <div className="text">{activeOption.label}</div>
+            <div className="text">{this._getActiveOptionLabel()}</div>
           </div>
           <div className="layout__item u-fit layout__item--right">
             <PanelArrow active={showMenu} width="1.2rem" color="blue" />
@@ -69,11 +79,11 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
         <div ref="menu" className="menu">
           <UnmountClosed isOpened={showMenu} springConfig={{ stiffness: 370, damping: 35 }}>
             <ul>
-              {selectOptions.map((option, index) => {
+              {options.map((option, index) => {
                 return <DropDownMenuItem key={index} onChangeHandler={onChangeHandler}
                   label={option.label}
                   value={option.value}
-                  active={activeOption === option}
+                  active={activeOptionValue === option.value}
                   disabled={option.disabled} />
               })}
             </ul>

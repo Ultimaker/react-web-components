@@ -86,7 +86,6 @@ stories.add('Form', withInfo(
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
-          selectActiveOption={{ label: 'Option 1', value: 1 }}
           selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]} />
 
         <InputField type="checkbox"

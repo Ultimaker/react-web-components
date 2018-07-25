@@ -44,7 +44,7 @@ export interface InputFieldProps {
   /** If true, the field will be focused when loaded */
   focusOnLoad?: boolean;
   /** Selected option for type select */
-  selectActiveOption?: SelectOption;
+  selectActiveOptionValue?: string | number;
   /** List of options for type select */
   selectOptions?: SelectOption[];
   /** Disabled state for checkbox type */
@@ -126,7 +126,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderInput(): React.ReactNode {
-    const { id, type, validationError, min, max, placeholder, selectActiveOption, selectOptions, disabled,
+    const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions, disabled,
       defaultValue, imageSize, children } = this.props;
     const classes = classNames('input', { 'error': validationError && this.state.touched });
 
@@ -149,8 +149,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       return (
         <DropDownMenu
           onChangeHandler={this._onChangeHandler}
-          activeOption={selectActiveOption}
-          selectOptions={selectOptions}
+          activeOptionValue={selectActiveOptionValue}
+          options={selectOptions}
           error={validationError && this.state.touched}
         />
       )
