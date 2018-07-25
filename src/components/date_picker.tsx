@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { SingleDatePicker } from 'react-dates';
-import * as moment from 'moment';
+import moment = require('moment');
 
 export interface DatePickerProps {
   onChangeHandler: (date) => void;
@@ -41,7 +41,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
 
   _onChangeHandler(date) {
     this.setState({ date });
-    this.props.onChangeHandler(moment(date).format());
+    this.props.onChangeHandler(moment(date).utc().format());
   }
 
   render(): JSX.Element {

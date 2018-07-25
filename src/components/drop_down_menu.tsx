@@ -43,11 +43,7 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
   _getActiveOptionLabel() {
     const { options, activeOptionValue } = this.props;
     const option = options.find(option => option.value === activeOptionValue);
-
-    if (option) {
-      return option.label;
-    }
-    return null;
+    return option ? option.label : null;
   }
 
   _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {

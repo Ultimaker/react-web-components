@@ -48,7 +48,7 @@
 
 .input-field
   &.hide-input 
-    .input, .input-field__error-message
+    .input-container, .input-field__error-message
       display: none
 
     .input-field__label
@@ -126,6 +126,10 @@
     @include respond-to(sm)
       &:hover::after
         opacity: 1
+  
+  &.disabled 
+    label
+      cursor: default
   
   input[type=checkbox]
     visibility: hidden

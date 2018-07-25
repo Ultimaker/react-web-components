@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames';
 
 export interface CheckboxProps {
   /** Checkbox id. Must be unique */
@@ -44,7 +45,9 @@ export class Checkbox extends React.Component<CheckboxProps, {}> {
   render(): JSX.Element {
     const { id, disabled } = this.props;
 
-    return <div className="checkbox" onClick={this._stopPropagation} >
+    const classes = classNames('checkbox', { disabled });
+
+    return <div className={classes} onClick={this._stopPropagation} >
       <input
         id={id}
         name={id}

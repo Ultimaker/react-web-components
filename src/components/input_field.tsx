@@ -1,9 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import moment = require('moment');
 
 import { DropDownMenu, SelectOption } from './drop_down_menu';
 import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
+import { Image, ImageShape } from './image';
 import DatePicker from './date_picker';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children';
@@ -47,10 +49,10 @@ export interface InputFieldProps {
   selectActiveOptionValue?: string | number;
   /** List of options for type select */
   selectOptions?: SelectOption[];
-  /** Disabled state for checkbox type */
-  disabled?: boolean;
   /** Size of the image for type image. Include size unit */
   imageSize?: string;
+  /** Shape of the image for type image: 'round' | 'square' */
+  imageShape?: ImageShape;
   /** If true, the defaultValue is shown as plain text and the input hidden */
   staticField?: boolean
 }
@@ -126,8 +128,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderInput(): React.ReactNode {
-    const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions, disabled,
-      defaultValue, imageSize, children } = this.props;
+    const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions,
+      defaultValue, imageSize, staticField, imageShape, children } = this.props;
     const classes = classNames('input', { 'error': validationError && this.state.touched });
 
     if (type === "children") {
@@ -161,7 +163,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           id={id}
           onChangeHandler={this._onChangeHandler}
           defaultValue={defaultValue === true}
-          disabled={disabled}
+          disabled={staticField}
         />
       )
     }
@@ -170,6 +172,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         <ImageUpload size={imageSize}
           defaultURL={defaultValue ? defaultValue.toString() : null}
           onFileSelection={this._onChangeHandler}
+          shape={imageShape}
         />
       )
     }
@@ -199,12 +202,25 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderStaticValue(type: InputFieldType, value: InputFieldValue): JSX.Element | InputFieldValue {
+    const { selectOptions, selectActiveOptionValue, imageSize, imageShape } = this.props;
+
     if (type === 'url') {
       return <a href={value.toString()} target="_blank">{value}</a>
     }
     if (type === 'email') {
       return <a href={`mailto:${value}`} target="_top">{value}</a>
     }
+    if (type === 'date' && typeof value === 'string') {
+      return moment(value).format('DD-MM-YYYY');
+    }
+    if (type === 'select') {
+      const option = selectOptions.find(option => option.value === selectActiveOptionValue);
+      return option ? option.label : null;
+    }
+    if (type === 'image') {
+      <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
+    }
+
     return value
   }
 
@@ -245,7 +261,9 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       <div className={inputClasses}>
         {label && this._renderLabel()}
         <div className={inputLayoutClasses}>
-          {this._renderInput()}
+          <div className="input-container">
+            {this._renderInput()}
+          </div>
           {staticField && this._renderStaticValue(type, defaultValue)}
         </div>
         {validationError && this.state.touched && this._renderValidationText()}
