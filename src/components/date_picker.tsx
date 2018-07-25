@@ -21,6 +21,10 @@ export interface DatePickerState {
 
 export class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
+  static defaultProps = {
+    placeholder: ''
+  };
+
   state = {
     focused: false,
     date: null
@@ -29,7 +33,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
   static getDerivedStateFromProps(props: DatePickerProps, state: DatePickerState): Partial<DatePickerState> {
     if (props.defaultDate && state.date === null) {
       return {
-        date: moment(props.defaultDate)
+        date: moment(props.defaultDate, 'DD-MM-YYYY')
       }
     }
     return null;
@@ -58,7 +62,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
         hideKeyboardShortcutsPanel
         numberOfMonths={1}
         anchorDirection="left"
-        displayFormat="YYYY-MM-DD"
+        displayFormat="DD-MM-YYYY"
         enableOutsideDays
       />
     </div>
