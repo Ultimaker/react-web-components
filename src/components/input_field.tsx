@@ -106,7 +106,12 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
   _onChangeHandler(value: string | number | boolean | ImageFile) {
     this.setState({ touched: true });
-    const { onChangeHandler, id } = this.props;
+    const { onChangeHandler, id, type } = this.props;
+
+    if(type === 'number' && typeof value === 'string'){
+      // convert value from and string to a number for number input fields
+      value = parseFloat(value);
+    }
 
     if (onChangeHandler) {
       onChangeHandler(id, value);
