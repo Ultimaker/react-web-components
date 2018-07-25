@@ -201,7 +201,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     )
   }
 
-  protected _renderStaticValue(type: InputFieldType, value: InputFieldValue): JSX.Element | InputFieldValue {
+  protected _renderStaticValue(type: InputFieldType, value: InputFieldValue): JSX.Element | React.ReactNode | InputFieldValue {
     const { selectOptions, selectActiveOptionValue, imageSize, imageShape } = this.props;
 
     if (type === 'url') {
@@ -218,7 +218,10 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       return option ? option.label : null;
     }
     if (type === 'image') {
-      <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
+      return <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
+    }
+    if (type === 'checkbox') {
+      return this._renderInput();
     }
 
     return value
