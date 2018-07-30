@@ -2,18 +2,16 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export interface PillProps {
-  /** Text to be shown inside the pill */
-  text: string
   /** Whether the pill should be shown as active **/
   active?: boolean
 }
 
 export const Pill: React.StatelessComponent<PillProps> =
-  ({ text, active }) => {
+  ({ active, children }) => {
 
     const classes = classNames('pill', { 'active': active });
 
-    return <div className={classes}>{text}</div>
+    return <div className={classes}>{children}</div>
   };
 
 Pill.defaultProps = {
