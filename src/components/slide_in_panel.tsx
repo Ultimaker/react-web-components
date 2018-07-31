@@ -2,9 +2,16 @@ import * as React from 'react';
 import { Motion, spring } from 'react-motion';
 import classNames from 'classnames';
 
+export interface SlideInPanelHeaderLabels {
+  label: string
+  info: string
+}
+
 export interface SlideInPanelProps {
   /** Text to be displayed in the panel header */
   headerTitle: string;
+  /** Labels to be displayed on the right side of the panel header */
+  headerLabels: SlideInPanelHeaderLabels
   /** The panel will be open when true */
   isOpen: boolean;
   /** Called when the background overlay is clicked */
