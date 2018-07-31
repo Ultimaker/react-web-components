@@ -56,8 +56,8 @@ stories.add('Pill', withInfo(
   'A toggleable pill'
 )(() =>
   <Tile padding="md">
-    <Pill
-      active={boolean('Active', false)}
-      text={text('Text', 'Pill')} />
+    <Pill active={boolean('Active', false)}>
+      {text('Text', 'Pill')}
+    </Pill>
   </Tile>
 ));
