@@ -11,7 +11,7 @@ export interface SlideInPanelProps {
   /** Text to be displayed in the panel header */
   headerTitle: string;
   /** Labels to be displayed on the right side of the panel header */
-  headerLabels: SlideInPanelHeaderLabels
+  headerLabels: SlideInPanelHeaderLabels[]
   /** The panel will be open when true */
   isOpen: boolean;
   /** Called when the background overlay is clicked */
