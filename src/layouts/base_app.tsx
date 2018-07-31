@@ -7,7 +7,7 @@ import App from '../components/app';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
 import LoadingPage from '../components/loading_page';
-import CuraLogo from '../components/cura_logo';
+import CuraLogo from '../components/icons/cura_logo';
 import Footer from '../components/footer';
 
 // views
