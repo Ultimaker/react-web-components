@@ -4,14 +4,14 @@ import classNames from 'classnames';
 
 export interface SlideInPanelHeaderLabels {
   label: string
-  info: string
+  info?: string
 }
 
 export interface SlideInPanelProps {
   /** Text to be displayed in the panel header */
   headerTitle: string;
   /** Labels to be displayed on the right side of the panel header */
-  headerLabels: SlideInPanelHeaderLabels[]
+  headerLabels?: SlideInPanelHeaderLabels[]
   /** The panel will be open when true */
   isOpen: boolean;
   /** Called when the background overlay is clicked */
@@ -24,7 +24,7 @@ export interface SlideInPanelProps {
 
 export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
 
-  _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {
+  private _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {
     const { onOverlayClickHandler } = this.props;
 
     e.stopPropagation();
@@ -34,8 +34,24 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
     }
   }
 
+  private _renderHeaderLabels() {
+    const { headerLabels } = this.props;
+
+    return headerLabels.map(item => {
+      return <div className="layout__item u-fit">
+        <div className="header-label">
+          {item.label} 
+          {item.info &&
+            <span className="header-label__info">{item.info}</span>
+          }
+        </div>
+      </div>
+    })
+
+  }
+
   render(): JSX.Element {
-    const { headerTitle, isOpen, width, includeFooter, children } = this.props;
+    const { headerTitle, headerLabels, isOpen, width, includeFooter, children } = this.props;
 
     const motion = { stiffness: 450, damping: 50 };
     const classes = classNames('slide-in-panel', { isOpen });
@@ -48,7 +64,12 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
         {({ x }) =>
           <div className="slide-in-panel__container" style={{ transform: `translate3d(${x}%,0,0)`, width }}>
             <div className="slide-in-panel__header">
-              {headerTitle}
+              <div className="layout">
+                <div className="layout__item u-fill">
+                  {headerTitle}
+                </div>
+                {headerLabels && this._renderHeaderLabels()}
+              </div>
             </div>
             <div className="slide-in-panel__content">
               {children[0]}
