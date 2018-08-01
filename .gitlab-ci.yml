@@ -1,0 +1,9 @@
+image: node:8
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - docker build -it ultimaker/react-web-components:test .
