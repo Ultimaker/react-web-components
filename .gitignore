@@ -4,3 +4,4 @@ tmp/
 yarn-error.log
 .vscode/
 build/
+.idea
