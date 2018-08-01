@@ -6,4 +6,6 @@ stages:
 test:
   stage: test
   script:
-    - docker build -it ultimaker/react-web-components:test .
+    - yarn install
+    # TODO: yarn test
+    - yarn build
