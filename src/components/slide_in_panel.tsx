@@ -37,8 +37,8 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
   private _renderHeaderLabels() {
     const { headerLabels } = this.props;
 
-    return headerLabels.map(item => {
-      return <div className="layout__item u-fit">
+    return headerLabels.map((item, index) => {
+      return <div className="layout__item u-fit" key={index}>
         <div className="header-label">
           {item.label} 
           {item.info &&
