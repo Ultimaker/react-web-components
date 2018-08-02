@@ -1,0 +1,57 @@
+.tags-selector
+  /* Example Styles for React Tags*/
+  .ReactTags__tags
+    position: relative
+
+  /* Styles for the input */
+  .ReactTags__tagInput
+    width: 100%
+    display: inline-block
+
+    .ReactTags__tagInputField
+      @extend %input-style
+
+
+  /* Styles for selected tags */
+  .ReactTags__selected 
+    .ReactTags__tag
+      @extend .pill
+      margin-right: 0.6rem
+      margin-bottom: 0.6rem
+
+    .ReactTags__remove
+      color: #aaa
+      margin-left: 5px
+      cursor: pointer
+
+
+  /* Styles for suggestions */
+  .ReactTags__suggestions
+    position: absolute
+
+    ul
+      background-color: $context-menu-color-background
+      line-height: 2.2rem
+      color: $context-menu-color-text
+      position: absolute
+      border-radius: 1px
+      z-index: 99998
+      box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow
+      @include font-size-text-2
+      list-style: none
+      padding: 1rem 0
+      margin: 0
+
+      li
+        cursor: pointer
+        padding: 1.2rem 2.4rem
+
+        mark
+          text-decoration: underline
+          background: none
+          font-weight: 600
+
+        .ReactTags__activeSuggestion
+          background: #b7cfe0
+          cursor: pointer
+

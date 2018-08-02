@@ -7,13 +7,14 @@ import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
 import { Image, ImageShape } from './image';
 import DatePicker from './date_picker';
+import TagsSelector from './tags_selector';
 import InfoTooltip from './info_tooltip';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
-export type InputFieldValue = string | number | boolean | ImageFile;
+export type InputFieldValue = string | number | boolean | ImageFile | string[];
 
 export interface InputFieldProps {
   /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
@@ -58,6 +59,8 @@ export interface InputFieldProps {
   staticField?: boolean
   /** Description of the fields to be shown in a tooltip */
   descriptionText?: string
+  /** A list of suggestions for tags input field */
+  tagSuggestions?: string[]
 }
 
 export interface InputFieldState {
@@ -108,7 +111,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
   }
 
-  _onChangeHandler(value: string | number | boolean | ImageFile) {
+  _onChangeHandler(value: string | number | boolean | ImageFile | string[]) {
     this.setState({ touched: true });
     const { onChangeHandler, id, type } = this.props;
 
@@ -132,13 +135,13 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
   protected _renderInput(): React.ReactNode {
     const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions,
-      defaultValue, imageSize, staticField, imageShape, children } = this.props;
+      defaultValue, imageSize, staticField, imageShape, tagSuggestions, children } = this.props;
     const classes = classNames('input', { 'error': validationError && this.state.touched });
 
-    if (type === "children") {
+    if (type === 'children') {
       return children;
     }
-    if (type === "textarea") {
+    if (type === 'textarea') {
       return (
         <textarea
           id={id}
@@ -151,7 +154,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         />
       )
     }
-    if (type === "select") {
+    if (type === 'select') {
       return (
         <DropDownMenu
           onChangeHandler={this._onChangeHandler}
@@ -161,7 +164,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         />
       )
     }
-    if (type === "checkbox") {
+    if (type === 'checkbox') {
       return (
         <Checkbox
           id={id}
@@ -171,7 +174,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         />
       )
     }
-    if (type === "image") {
+    if (type === 'image') {
       return (
         <ImageUpload size={imageSize}
           defaultURL={defaultValue ? defaultValue.toString() : null}
@@ -180,7 +183,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         />
       )
     }
-    if (type === "date") {
+    if (type === 'date') {
       return (
         <DatePicker
           id={id}
@@ -189,6 +192,12 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           error={validationError && this.state.touched}
         />
       )
+    }
+    if (type === 'tags') {
+      return <TagsSelector
+        onChangeHandler={this._onChangeHandler}
+        placeholder={placeholder}
+        suggestions={tagSuggestions} />
     }
     return (
       <input

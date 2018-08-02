@@ -9,6 +9,8 @@ import InputField from '../components/input_field';
 import Checkbox from '../components/checkbox';
 import ImageUpload from '../components/image_upload';
 import DatePicker from '../components/date_picker';
+import TagsSelector from '../components/tags_selector';
+import { Tile } from '../components/tile';
 
 const stories = storiesOf('Forms', module);
 
@@ -110,7 +112,7 @@ stories.add('Select field', withInfo(
       validationError={boolean('Validation error', false)}
       validationErrorMsg={text('Validation error message', 'Validation Error')}
       selectActiveOptionValue={1}
-      selectOptions={[{label: 'Option 1', value: 1}, {label: 'Option 2', value: 2, disabled: true}, {label: 'Option 3', value: 3}]} />
+      selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]} />
   </div>
 ));
 
@@ -126,7 +128,7 @@ stories.add('Image upload', withInfo(
   <ImageUpload shape={selectV2('Image shape', options, defaultValue)} onFileSelection={action('changed')} />
 ));
 
-stories.add('Date Picker', withInfo(
+stories.add('Date picker', withInfo(
   'Date selection field'
 )(() =>
   <div style={{ width: 250 }}>
@@ -134,4 +136,19 @@ stories.add('Date Picker', withInfo(
       id="id_8"
       onChangeHandler={action('changed')} />
   </div>
+));
+
+stories.add('Tags selector', withInfo(
+  'Tags input field with suggestions'
+)(() =>
+  <Tile>
+    <div style={{ width: 250 }}>
+      <InputField type="tags"
+        id="id_3"
+        focusOnLoad
+        onChangeHandler={action('changed')}
+        placeholder="Tags"
+        tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort']} />
+    </div>
+  </Tile>
 ));
