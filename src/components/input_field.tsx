@@ -147,6 +147,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           placeholder={placeholder}
           className={classes}
           ref={input => this.input = input}
+          rows={3}
         />
       )
     }
