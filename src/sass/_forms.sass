@@ -54,8 +54,17 @@
     .input-field__label
       margin: 0
 
+  .input-container
+    position: relative
+
   .input
     @extend %input-style
+
+  .input-field__info
+    position: absolute
+    right: 0
+    top: 50%
+    transform: translateY(-50%)
 
   .input-field__label
     @include font-size-text-2

@@ -7,6 +7,7 @@ import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
 import { Image, ImageShape } from './image';
 import DatePicker from './date_picker';
+import InfoTooltip from './info_tooltip';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children';
 export type labelPosition = 'left' | 'top';
@@ -55,6 +56,8 @@ export interface InputFieldProps {
   imageShape?: ImageShape;
   /** If true, the defaultValue is shown as plain text and the input hidden */
   staticField?: boolean
+  /** Description of the fields to be shown in a tooltip */
+  descriptionText?: string
 }
 
 export interface InputFieldState {
@@ -252,9 +255,17 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     </div>
   }
 
+  protected _renderDescriptionText(): JSX.Element {
+    const { descriptionText } = this.props;
+
+    return <div className="input-field__info">
+      <InfoTooltip infoText={descriptionText} />
+    </div>
+  }
+
   render(): JSX.Element {
     const { label, className, validationError, labelLayoutWidth, centerInputField,
-      staticField, defaultValue, type } = this.props;
+      staticField, defaultValue, type, descriptionText } = this.props;
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
     const inputClasses = classNames(`input-field layout ${className}`, { 'hide-input': staticField });
@@ -266,6 +277,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         <div className={inputLayoutClasses}>
           <div className="input-container">
             {this._renderInput()}
+            {descriptionText && this._renderDescriptionText()}
           </div>
           {staticField && this._renderStaticValue(type, defaultValue)}
         </div>
