@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { SingleDatePicker } from 'react-dates';
-import * as moment from 'moment';
+import moment = require('moment');
 
 export interface DatePickerProps {
   onChangeHandler: (date) => void;
@@ -21,6 +21,10 @@ export interface DatePickerState {
 
 export class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
+  static defaultProps = {
+    placeholder: ''
+  };
+
   state = {
     focused: false,
     date: null
@@ -29,7 +33,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
   static getDerivedStateFromProps(props: DatePickerProps, state: DatePickerState): Partial<DatePickerState> {
     if (props.defaultDate && state.date === null) {
       return {
-        date: moment(props.defaultDate)
+        date: moment(props.defaultDate, 'DD-MM-YYYY')
       }
     }
     return null;
@@ -37,7 +41,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
 
   _onChangeHandler(date) {
     this.setState({ date });
-    this.props.onChangeHandler(moment(date).format());
+    this.props.onChangeHandler(moment(date).utc().format());
   }
 
   render(): JSX.Element {
@@ -58,7 +62,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
         hideKeyboardShortcutsPanel
         numberOfMonths={1}
         anchorDirection="left"
-        displayFormat="YYYY-MM-DD"
+        displayFormat="DD-MM-YYYY"
         enableOutsideDays
       />
     </div>

@@ -2,6 +2,7 @@
 import { configure } from '@storybook/react';
 
 // load assets
+import "../src/sass/fonts.sass";
 import "../src/sass/main.sass";
 import "../src/fonts/notosans/NotoSans-Regular.woff";
 import "../src/fonts/notosans/NotoSans-Bold.woff";

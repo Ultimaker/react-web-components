@@ -7,11 +7,14 @@ import App from '../components/app';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
 import LoadingPage from '../components/loading_page';
-import CuraLogo from '../components/cura_logo';
+import CuraLogo from '../components/icons/cura_logo';
 import Footer from '../components/footer';
 
+// views
+import PageNotFoundView from '../views/page_not_found';
+
 // utils
-import { i18nc } from '../utils/i18n';
+import { I18n } from '../utils/i18n';
 
 export interface BaseAppState {
     scopes: string[];
@@ -92,6 +95,7 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
         return (
             <Switch>
                 { routes.map((route, key) => this._createRoute(key, route.path, route.component, route.scopes, route.props)) }
+                <Route component={PageNotFoundView} />
             </Switch>
         )
     }
@@ -111,7 +115,7 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
      */
     protected _renderFooter(): JSX.Element {
         return (
-            <a>{i18nc("Footer About link", "About")}</a>
+            <a>{I18n.translate("Footer About link", "About")}</a>
         )
     }
 

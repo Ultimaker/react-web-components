@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 import Spinner from './spinner';
 
@@ -34,9 +34,8 @@ export const Button: React.StatelessComponent<ButtonProps> =
     const classes = classNames(`btn btn--${style} btn--${shape}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
     const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
-      e.stopPropagation();
-
       if (onClickHandler) {
+        e.stopPropagation();
         onClickHandler();
       }
     }

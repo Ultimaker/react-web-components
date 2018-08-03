@@ -2,7 +2,7 @@
 .form
 
   .form__item
-    margin-bottom: 1.2rem
+    margin-bottom: 1.8rem
 
   .form__actions
     flex: 0 0 auto
@@ -27,7 +27,7 @@
   padding: 1.2rem 0.9rem
   border: none
   border-bottom: 2px solid $input-field-color-border
-  @include font-size-text-1
+  font-size: 1.6rem
   line-height: 2.2rem
   outline: none
   transition: all 0.2s ease-out
@@ -47,19 +47,36 @@
     color: $input-field-color-placeholder
 
 .input-field
+  &.hide-input 
+    .input-container, .input-field__error-message
+      display: none
+
+    .input-field__label
+      margin: 0
+
+  .input-container
+    position: relative
+
   .input
     @extend %input-style
 
-  .input-field--label
+  .input-field__info
+    position: absolute
+    right: 0
+    top: 50%
+    transform: translateY(-50%)
+
+  .input-field__label
     @include font-size-text-2
     margin-bottom: 0.6rem
     margin-top: 1.2rem
 
-    &.checkbox-label
-      margin-top: 0.3rem
-      margin-bottom: 0.3rem
+    &.tag-selector-label
+      align-self: flex-end
+      margin-bottom: 1.3rem
+      margin-top: 0.6rem
 
-  .input-field--error-message
+  .input-field__error-message
     margin-top: 0.6rem
     color: $input-field-color-border-error
     @include font-size-text-2
@@ -120,6 +137,10 @@
       &:hover::after
         opacity: 1
   
+  &.disabled 
+    label
+      cursor: default
+  
   input[type=checkbox]
     visibility: hidden
 
@@ -133,6 +154,7 @@
         
 textarea
   vertical-align: top
+  height: auto
 
 .date-picker 
   .SingleDatePicker
@@ -174,3 +196,20 @@ textarea
   .DayPicker__withBorder
     box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow
     border-radius: 1px
+
+.file-upload
+  input
+    display: none
+
+  .file-upload__label-container
+    position: relative
+
+  .file-upload__label
+    @extend %input-style
+    @extend .truncate
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    cursor: pointer

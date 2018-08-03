@@ -1,0 +1,87 @@
+.tags-selector
+  
+  .ReactTags__tags
+    position: relative
+
+  /* Styles for the input */
+  .ReactTags__tagInput
+    width: 100%
+    display: inline-block
+
+    .ReactTags__tagInputField
+      @extend %input-style
+
+
+  /* Styles for selected tags */
+  .ReactTags__selected 
+    .ReactTags__tag
+      @extend .pill
+      margin-right: 0.6rem
+      margin-bottom: 0.6rem
+
+    .ReactTags__remove
+      visibility: collapse
+      position: relative
+      margin-left: 0.9rem
+
+      &::after
+        content: '\2715'
+        cursor: pointer
+        color: white
+        position: absolute
+        top: 0
+        left: -0.3rem
+        border-radius: 9999px
+        height: 1.8rem
+        width: 1.8rem
+        background: #858585
+        line-height: 1.8rem
+        text-align: center
+        color: #ffffff
+        visibility: visible
+        font-size: 1rem
+
+      &:hover
+        &::after
+          text-decoration: none
+          transition: background-color 0.2s ease-out
+          background-color: #6a6a6a
+          
+
+  /* Styles for suggestions */
+  .ReactTags__suggestions
+    position: absolute
+
+    ul
+      background-color: $context-menu-color-background
+      line-height: 2.2rem
+      color: $context-menu-color-text
+      position: absolute
+      border-radius: 1px
+      z-index: 99998
+      box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow
+      @include font-size-text-2
+      list-style: none
+      padding: 1rem 0
+      margin: 0
+
+      li
+        cursor: pointer
+        padding: 1.2rem 2.4rem
+
+        &:hover
+          background-color: $context-menu-color-hover
+          transition: background-color 0.2s ease-out
+
+        mark
+          text-decoration: underline
+          background: none
+          font-weight: 600
+
+        .ReactTags__activeSuggestion
+          background: #b7cfe0
+          cursor: pointer
+
+  &.disabled
+    .ReactTags__tagInput, .ReactTags__remove
+      display: none

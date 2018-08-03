@@ -8,6 +8,7 @@ import Tile from '../components/tile';
 import Grid from '../components/grid';
 import GridItem from '../components/grid_item';
 import SlideOutContainer from '../components/slide_out_container';
+import SlideInPanel from '../components/slide_in_panel';
 
 const stories = storiesOf('Layout', module);
 
@@ -122,5 +123,16 @@ stories.add('Slide out container', withInfo(
         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
       </SlideOutContainer>
     </Tile>
+  </div>
+));
+
+stories.add('Slide in panel', withInfo(
+  'A toggle slide in panel, that slides into view from the right side of the screen.'
+)(() =>
+  <div>
+    <SlideInPanel headerTitle="Panel title" headerLabels={[{label: 'Panel label', info: '1.0.0'}]} isOpen={boolean('isOpen', true)} width="600px" includeFooter>
+      <div>Panel body</div>
+      <div>Panel Footer</div>
+    </SlideInPanel>
   </div>
 ));

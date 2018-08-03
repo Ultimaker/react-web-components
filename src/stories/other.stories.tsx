@@ -4,9 +4,11 @@ import { withKnobs, boolean, number, text, selectV2 } from '@storybook/addon-kno
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 
+import Tile from '../components/tile';
 import ProgressBar from '../components/progress_bar';
 import PanelArrow from '../components/panel_arrow';
 import Divider from '../components/divider';
+import Pill from '../components/pill';
 
 const stories = storiesOf('Other', module);
 
@@ -48,4 +50,14 @@ stories.add('Divider', withInfo(
   <div style={{ width: 200, height: 200 }} >
     <Divider direction={selectV2('Direction', directionOptions, directionValue)} />
   </div>
+));
+
+stories.add('Pill', withInfo(
+  'A toggleable pill'
+)(() =>
+  <Tile padding="md">
+    <Pill active={boolean('Active', false)}>
+      {text('Text', 'Pill')}
+    </Pill>
+  </Tile>
 ));

@@ -9,6 +9,8 @@ import InputField from '../components/input_field';
 import Checkbox from '../components/checkbox';
 import ImageUpload from '../components/image_upload';
 import DatePicker from '../components/date_picker';
+import TagsSelector from '../components/tags_selector';
+import { Tile } from '../components/tile';
 
 const stories = storiesOf('Forms', module);
 
@@ -109,8 +111,8 @@ stories.add('Select field', withInfo(
       onChangeHandler={action('changed')}
       validationError={boolean('Validation error', false)}
       validationErrorMsg={text('Validation error message', 'Validation Error')}
-      selectActiveOption="Option 1"
-      selectOptions={['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']} />
+      selectActiveOptionValue={1}
+      selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]} />
   </div>
 ));
 
@@ -126,12 +128,42 @@ stories.add('Image upload', withInfo(
   <ImageUpload shape={selectV2('Image shape', options, defaultValue)} onFileSelection={action('changed')} />
 ));
 
-stories.add('Date Picker', withInfo(
+stories.add('Date picker', withInfo(
   'Date selection field'
 )(() =>
   <div style={{ width: 250 }}>
     <DatePicker
       id="id_8"
       onChangeHandler={action('changed')} />
+  </div>
+));
+
+stories.add('Tags selector', withInfo(
+  'Tags input field with suggestions'
+)(() =>
+  <Tile>
+    <div style={{ width: 350 }}>
+      <InputField type="tags"
+        id="id_3"
+        onChangeHandler={action('changed')}
+        placeholder="Tags"
+        tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']}
+        defaultValue={['Manchester', 'Utrecht']} />
+    </div>
+  </Tile>
+));
+
+stories.add('Upload file field', withInfo(
+  'Upload file field'
+)(() =>
+  <div style={{ width: 350 }}>
+    <InputField type="file"
+      id="id_1"
+      label={text('Label', 'Upload file')}
+      onChangeHandler={action('changed')}
+      placeholder={text('Placeholder text', 'Placeholder text')}
+      focusOnLoad
+      validationError={boolean('Validation error', false)}
+      validationErrorMsg={text('Validation error message', 'Validation Error')} />
   </div>
 ));

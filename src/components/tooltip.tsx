@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 import splitTextByNewLine from '../utils/split_text_by_new_line';
 
@@ -17,6 +17,7 @@ export interface TooltipProps {
 
 export interface TooltipState {
   tooltipOffset: number;
+  showTooltip: boolean;
 }
 
 const windowMargin = 10;
@@ -24,22 +25,14 @@ const windowMargin = 10;
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
   state = {
-    tooltipOffset: null
+    tooltipOffset: null,
+    showTooltip: false
   };
 
   constructor(props) {
     super(props);
 
-    this._setTooltipOffset = this._setTooltipOffset.bind(this);
-  }
-
-  componentDidMount(): void {
-    this._setTooltipOffset();
-    window.addEventListener("resize", this._setTooltipOffset);
-  }
-
-  componentWillUnmount(): void {
-    window.removeEventListener("resize", this._setTooltipOffset);
+    this._showTooltip = this._showTooltip.bind(this);
   }
 
   _setTooltipOffset(): void {
@@ -95,14 +88,21 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     return true
   }
 
+  _showTooltip() {
+    this._setTooltipOffset();
+    this.setState({ showTooltip: true });
+  }
+
   render(): JSX.Element {
     const { tooltipText, direction, disableTooltip, children } = this.props;
-    const { tooltipOffset } = this.state;
+    const { tooltipOffset, showTooltip } = this.state;
 
     const directionClass = direction ? direction : 'north';
-    const classes = classNames('tooltip-trigger', 'tooltip-trigger--' + directionClass, { 'disabled': disableTooltip });
+    const classes = classNames('tooltip-trigger', 'tooltip-trigger--' + directionClass, { 'disabled': disableTooltip }, { 'show': showTooltip });
 
-    return <div className={classes} onTouchEnd={this._touchHoverFix}>
+    return <div className={classes} onTouchEnd={this._touchHoverFix}
+      onPointerEnter={this._showTooltip} onPointerLeave={() => this.setState({ showTooltip: false })}>
+
       {children}
 
       <div ref='tooltip' className="tooltip" style={{ left: tooltipOffset }}>
