@@ -195,3 +195,20 @@ textarea
   .DayPicker__withBorder
     box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow
     border-radius: 1px
+
+.file-upload
+  input
+    display: none
+
+  .file-upload__label-container
+    position: relative
+
+  .file-upload__label
+    @extend %input-style
+    @extend .truncate
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    cursor: pointer

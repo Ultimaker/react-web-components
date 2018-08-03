@@ -145,11 +145,25 @@ stories.add('Tags selector', withInfo(
     <div style={{ width: 250 }}>
       <InputField type="tags"
         id="id_3"
-        focusOnLoad
         onChangeHandler={action('changed')}
         placeholder="Tags"
         tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']}
         defaultValue={['Manchester', 'Utrecht']} />
     </div>
   </Tile>
+));
+
+stories.add('Upload file field', withInfo(
+  'Upload file field'
+)(() =>
+  <div style={{ width: 350 }}>
+    <InputField type="file"
+      id="id_1"
+      label={text('Label', 'Upload file')}
+      onChangeHandler={action('changed')}
+      placeholder={text('Placeholder text', 'Placeholder text')}
+      focusOnLoad
+      validationError={boolean('Validation error', false)}
+      validationErrorMsg={text('Validation error message', 'Validation Error')} />
+  </div>
 ));

@@ -9,6 +9,7 @@ import { Image, ImageShape } from './image';
 import DatePicker from './date_picker';
 import TagsSelector from './tags_selector';
 import InfoTooltip from './info_tooltip';
+import FileUpload from './file_upload';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type labelPosition = 'left' | 'top';
@@ -199,6 +200,13 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         placeholder={placeholder}
         suggestions={tagSuggestions}
         defaultTags={Array.isArray(defaultValue) && defaultValue}
+      />
+    }
+    if (type === 'file') {
+      return <FileUpload
+        id={id}
+        onChangeHandler={this._onChangeHandler}
+        disabled={staticField}
       />
     }
     return (

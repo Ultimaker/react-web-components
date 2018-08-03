@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { I18n } from '../utils/i18n';
 
-import Button from '../components/button';
-import CloseButton from "../components/close_button";
-import Modal from "../components/modal";
-import Tile from "../components/tile";
+import Button from './button';
+import CloseButton from "./close_button";
+import Modal from "./modal";
+import Tile from "./tile";
 
 export interface AboutDialogProps {
   /** List of open source components used */
