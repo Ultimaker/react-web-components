@@ -6,7 +6,7 @@ export interface FileUploadProps {
   /** FileUpload id. Must be unique */
   id: string;
   /** Called when the file is selected is clicked */
-  onChangeHandler: (value: string) => void;
+  onChangeHandler: (value: HTMLInputElement) => void;
   /** Disables the file upload when true */
   disabled?: boolean;
 }
@@ -30,10 +30,8 @@ export class FileUpload extends React.Component<FileUploadProps, {}> {
   }
 
   _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log('e.target', e.target);
-
-    this.setState({ selectedFileName: e.target.value.replace(/^.*[\\\/]/, '') })
-    this.props.onChangeHandler(e.target.value);
+    this.setState({ selectedFileName: e.target.files[0].name })
+    this.props.onChangeHandler(e.target);
   }
 
   _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {

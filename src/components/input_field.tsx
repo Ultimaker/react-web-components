@@ -15,7 +15,7 @@ export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'emai
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
-export type InputFieldValue = string | number | boolean | ImageFile | string[];
+export type InputFieldValue =  string | number | boolean | ImageFile | string[] | HTMLInputElement;
 
 export interface InputFieldProps {
   /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
@@ -112,7 +112,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
   }
 
-  _onChangeHandler(value: string | number | boolean | ImageFile | string[]) {
+  _onChangeHandler(value: InputFieldValue): void {
     this.setState({ touched: true });
     const { onChangeHandler, id, type } = this.props;
 
