@@ -135,7 +135,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         suggestions={suggestions}
         handleDelete={this._handleDelete}
         handleAddition={this._handleAddition}
-        handleDrag={!disabled && this._handleDrag}
+        handleDrag={!disabled ? null : this._handleDrag}
         delimiters={delimiters}
         placeholder={placeholder} />
     </div>
