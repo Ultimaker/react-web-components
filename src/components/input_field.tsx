@@ -126,7 +126,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderLabel(): JSX.Element {
-    const { id, label, labelLayoutWidth, labelWidthBreakpoint } = this.props;
+    const { id, label, labelLayoutWidth, labelWidthBreakpoint, defaultValue } = this.props;
 
     return <div className={`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`}>
       <label htmlFor={id}>{label}</label>
@@ -197,7 +197,9 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       return <TagsSelector
         onChangeHandler={this._onChangeHandler}
         placeholder={placeholder}
-        suggestions={tagSuggestions} />
+        suggestions={tagSuggestions}
+        defaultTags={Array.isArray(defaultValue) && defaultValue}
+      />
     }
     return (
       <input

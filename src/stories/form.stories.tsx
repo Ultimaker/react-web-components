@@ -148,7 +148,8 @@ stories.add('Tags selector', withInfo(
         focusOnLoad
         onChangeHandler={action('changed')}
         placeholder="Tags"
-        tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort']} />
+        tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']}
+        defaultValue={['Manchester', 'Utrecht']} />
     </div>
   </Tile>
 ));

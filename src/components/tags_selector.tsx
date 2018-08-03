@@ -5,11 +5,13 @@ export interface TagsSelectorProps {
   suggestions?: string[];
   onChangeHandler: (tags: string[]) => void;
   placeholder?: string;
+  defaultTags?: string[]
 }
 
 export interface TagsSelectorState {
   tags: Tag[]
   suggestions: Tag[]
+  defaultSet: boolean
 }
 
 export interface Tag {
@@ -28,7 +30,8 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
   state = {
     tags: [],
-    suggestions: []
+    suggestions: [],
+    defaultSet: false
   }
 
   constructor(props) {
@@ -39,29 +42,41 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     this._handleDrag = this._handleDrag.bind(this);
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.suggestions && state.suggestions.length === 0) {
-      let suggestions: Tag[] = [];
-      props.suggestions.forEach(tag => {
-        suggestions.push({ id: tag, text: tag });
-      })
+  static getDerivedStateFromProps(props: TagsSelectorProps, state: TagsSelectorState): TagsSelectorState {
+    let suggestions = []
+    let defaultTags = []
 
-      return {
-        suggestions
-      }
+    if (props.suggestions && !state.defaultSet) {
+      suggestions = TagsSelector._convertStringsToTags(props.suggestions)
     }
 
-    return null
+    if (props.defaultTags && !state.defaultSet) {
+      defaultTags = TagsSelector._convertStringsToTags(props.defaultTags)
+    }
+
+    return {
+      suggestions: [...suggestions, ...state.suggestions],
+      tags: [...defaultTags, ...state.tags],
+      defaultSet: true
+    }
   }
 
-  private _handleDelete(i) {
+  static _convertStringsToTags(strings: string[]): Tag[] {
+    let tags: Tag[] = [];
+    strings.forEach(string => {
+      tags.push({ id: string, text: string });
+    })
+    return tags
+  }
+
+  private _handleDelete(i: number): void {
     const { tags } = this.state;
     this.setState({
       tags: tags.filter((tag, index) => index !== i),
     });
   }
 
-  private _handleAddition(tag) {
+  private _handleAddition(tag: Tag): void {
     const { tags } = this.state;
     this.setState({ tags: [...tags, tag] });
 
@@ -72,7 +87,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     this.props.onChangeHandler(texts);
   }
 
-  private _handleDrag(tag, currPos, newPos) {
+  private _handleDrag(tag: Tag, currPos: number, newPos: number): void {
     const tags = [...this.state.tags];
     const newTags = tags.slice();
 
@@ -87,7 +102,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
   render(): JSX.Element {
     const { tags, suggestions } = this.state;
     const { placeholder } = this.props;
-    
+
     return <div className="tags-selector">
       <ReactTags tags={tags}
         suggestions={suggestions}
