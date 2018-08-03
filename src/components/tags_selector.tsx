@@ -1,11 +1,18 @@
 import * as React from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
+import classNames from 'classnames';
 
 export interface TagsSelectorProps {
+
   suggestions?: string[];
+  /** Called when the tag is selected */
   onChangeHandler: (tags: string[]) => void;
+  /** Placeholder text */
   placeholder?: string;
+  /** Tags that should already be selected */
   defaultTags?: string[]
+  /** Disables the selector when true */
+  disabled?: boolean;
 }
 
 export interface TagsSelectorState {
@@ -69,46 +76,66 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     return tags
   }
 
+  static _convertTagsToStrings(tags: Tag[]): string[] {
+    let strings: string[] = [];
+    tags.forEach(tag => {
+      strings.push(tag.text)
+    })
+    return strings
+  }
+
   private _handleDelete(i: number): void {
-    const { tags } = this.state;
-    this.setState({
-      tags: tags.filter((tag, index) => index !== i),
-    });
+    const { disabled } = this.props;
+
+    if (!disabled) {
+      const { tags } = this.state;
+      const updatedTags = tags.filter((tag, index) => index !== i);
+      this.setState({
+        tags: updatedTags
+      });
+      this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+    }
   }
 
   private _handleAddition(tag: Tag): void {
-    const { tags } = this.state;
-    this.setState({ tags: [...tags, tag] });
+    const { disabled } = this.props;
 
-    let texts: string[] = [];
-    [...tags, tag].forEach(tag => {
-      texts.push(tag.text)
-    })
-    this.props.onChangeHandler(texts);
+    if (!disabled) {
+      const { tags } = this.state;
+      const updatedTags = [...tags, tag];
+      this.setState({ tags: updatedTags });
+      this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+    }
   }
 
   private _handleDrag(tag: Tag, currPos: number, newPos: number): void {
-    const tags = [...this.state.tags];
-    const newTags = tags.slice();
+    const { disabled } = this.props;
 
-    newTags.splice(currPos, 1);
-    newTags.splice(newPos, 0, tag);
+    if (!disabled) {
+      const tags = [...this.state.tags];
+      const updatedTags = tags.slice();
 
-    // re-render
-    this.setState({ tags: newTags });
+      updatedTags.splice(currPos, 1);
+      updatedTags.splice(newPos, 0, tag);
+
+      this.setState({ tags: updatedTags });
+      this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+    }
   }
 
 
   render(): JSX.Element {
     const { tags, suggestions } = this.state;
-    const { placeholder } = this.props;
+    const { placeholder, disabled } = this.props;
 
-    return <div className="tags-selector">
+    const classes = classNames('tags-selector', { disabled });
+
+    return <div className={classes}>
       <ReactTags tags={tags}
         suggestions={suggestions}
         handleDelete={this._handleDelete}
         handleAddition={this._handleAddition}
-        handleDrag={this._handleDrag}
+        handleDrag={!disabled && this._handleDrag}
         delimiters={delimiters}
         placeholder={placeholder} />
     </div>

@@ -127,9 +127,12 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderLabel(): JSX.Element {
-    const { id, label, labelLayoutWidth, labelWidthBreakpoint, defaultValue } = this.props;
+    const { id, label, labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
 
-    return <div className={`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`}>
+    const classes = classNames(`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`,
+      { 'tag-selector-label': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
+
+    return <div className={classes}>
       <label htmlFor={id}>{label}</label>
     </div>
   }
@@ -200,6 +203,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         placeholder={placeholder}
         suggestions={tagSuggestions}
         defaultTags={Array.isArray(defaultValue) && defaultValue}
+        disabled={staticField}
       />
     }
     if (type === 'file') {
@@ -243,7 +247,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     if (type === 'image') {
       return <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
     }
-    if (type === 'checkbox') {
+    if (type === 'checkbox' || type === 'tags') {
       return this._renderInput();
     }
 

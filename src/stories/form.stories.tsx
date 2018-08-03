@@ -142,7 +142,7 @@ stories.add('Tags selector', withInfo(
   'Tags input field with suggestions'
 )(() =>
   <Tile>
-    <div style={{ width: 250 }}>
+    <div style={{ width: 350 }}>
       <InputField type="tags"
         id="id_3"
         onChangeHandler={action('changed')}
