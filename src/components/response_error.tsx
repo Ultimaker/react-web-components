@@ -105,7 +105,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
         return errors.map((originalError: ResponseErrorObject, index) => {
             const { code, http_status, title, meta } = originalError;
             const { field_name } = meta;
-            return <div key={index}>
+            return <div key={index} className="response-error">
 
                 <Tile align="center" alert>
                     <span>{getTranslatedError(code, {
