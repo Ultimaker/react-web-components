@@ -24,6 +24,23 @@ export interface SlideInPanelProps {
 
 export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
 
+  componentDidUpdate(prevProps: SlideInPanelProps): void {
+    const { isOpen } = this.props;
+
+    if (prevProps.isOpen !== isOpen) {
+      if (isOpen) {
+        document.body.classList.add('noscroll');
+      }
+      else {
+        document.body.classList.remove('noscroll');
+      }
+    }
+  }
+
+  componentWillUnmount(): void {
+    document.body.classList.remove('noscroll');
+  }
+
   private _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {
     const { onOverlayClickHandler } = this.props;
 
