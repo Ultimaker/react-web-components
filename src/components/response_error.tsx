@@ -50,19 +50,21 @@ export const FIELD_NAME_TO_I18NC = {
 }
 
 /**
- * Gets a translated message per error code.
- * @param code The error code.
- * @param params The parameters to replace in the template string.
+ * Gets a translated message for the given error.
  */
-export const getTranslatedError = (code: string, params: {[key: string]: string} = {}): string => {
-    return I18n.format("error code", ERROR_CODE_TO_I18NC_TEMPLATE[code]
+export const getTranslatedError = (error: ResponseErrorObject): string => {
+    let params = { ...error }
+    if (params.meta) {
+        Object.keys(error.meta).forEach(key => {
+            let value = error.meta[key]
+            if (key === "field_name" && FIELD_NAME_TO_I18NC[value]) {
+                value = FIELD_NAME_TO_I18NC[value]
+            }
+            params[key] = value
+        });
+    }
+    return I18n.format("error code", ERROR_CODE_TO_I18NC_TEMPLATE[error.code]
         || ERROR_CODE_TO_I18NC_TEMPLATE["genericError"], params)
-}
-
-export interface ResponseErrorMetaObject {
-    field_name?: string;
-    given_value?: string;
-    url?: string;
 }
 
 export interface ResponseErrorObject {
@@ -71,11 +73,13 @@ export interface ResponseErrorObject {
     http_status: string;
     title: string;
     detail?: string;
-    meta?: ResponseErrorMetaObject;
+    meta?: {[key: string]: any};
 }
 
 export interface ResponseErrorProps {
     errors: ResponseErrorObject[];
+    linkTo?: string;
+    linkText?: string;
 }
 
 export interface ResponseErrorState {
@@ -99,23 +103,15 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
         this._closePopup = this._closePopup.bind(this);
     }
 
-    render(): JSX.Element[] {
+    render(): JSX.Element {
         const { errors } = this.props;
-
-        return errors.map((originalError: ResponseErrorObject, index) => {
-            const { code, http_status, title, meta } = originalError;
-            const { field_name } = meta;
-            return <div key={index}>
-
+        const isServerError = errors.find(e => parseInt(e.http_status) >= 500)
+        return (
+            <div>
                 <Tile align="center" alert>
-                    <span>{getTranslatedError(code, {
-                        "code": code,
-                        "field_name": FIELD_NAME_TO_I18NC[field_name],
-                        "title": title
-                    })}</span>
+                    {errors.map(error => <div key={error.id}>{getTranslatedError(error)}</div>)}
                 </Tile>
-
-                { parseInt(http_status) >= 500 && <Popup
+                { isServerError && <Popup
                     isOpen={this.state.showPopup}
                     type="prompt"
                     headerText={I18n.translate("error popup title", "Something went wrong at our end :(")}
@@ -123,16 +119,15 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
                         Then download the report and attach this in an email to your Ultimaker reseller.")}
                     primaryBtnText={I18n.translate("error popup send", "Download")}
                     primaryBtnStyle="primary"
-                    primaryBtnHandler={() => this._downloadTextFile(originalError)}
+                    primaryBtnHandler={this._downloadTextFile}
                     secondaryBtnText={I18n.translate("error popup cancel", "Cancel")}
                     secondaryBtnStyle="quiet"
                     secondaryBtnHandler={this._closePopup}
                     inputType="textarea"
                     validationHandler={this._validate}
                 /> }
-                
             </div>
-        });
+        )
     }
 
     private _validate(value: string): any {
@@ -145,20 +140,19 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
 
     /**
      * Generates a downloadable text file with error details.
-     * @param originalError The original error object returned by the server.
      */
-    private _downloadTextFile(originalError: ResponseErrorObject): void {
+    private _downloadTextFile(): void {
         const blob = new Blob([JSON.stringify({
             "userText": this.state.userText,
             "userAgent": navigator.userAgent,
             "currentPage": window.location,
             "currentTime": new Date().toISOString(),
             "language": navigator.language,
-            "originalError": originalError
+            "errors": this.props.errors
         }, null, 4)], { type: "text/plain;charset=utf-8"});
         const element = document.createElement('a');
         element.href = URL.createObjectURL(blob);
-        element.download = "cura-cloud-error-" + originalError.id + ".txt";
+        element.download = "cura-cloud-error-" + this.props.errors[0].id + ".txt";
         element.click();
         this._closePopup();
     }
