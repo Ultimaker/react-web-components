@@ -102,3 +102,16 @@
       max-width: 95%
       padding: 0 1.2rem
     
+
+.tile-list
+  .tile-list__title
+    @include font-size-header-2
+    margin: 3.6rem 0 0 1.2rem
+
+  .tile-list__table
+    @extend .table
+    border-collapse: separate 
+    border-spacing: 0 1.2rem
+    
+    tr
+      @extend .tile
