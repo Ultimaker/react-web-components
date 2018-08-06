@@ -139,7 +139,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
   protected _renderInput(): React.ReactNode {
     const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions,
-      defaultValue, imageSize, staticField, imageShape, tagSuggestions, children } = this.props;
+      defaultValue, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad, children } = this.props;
     const classes = classNames('input', { 'error': validationError && this.state.touched });
 
     if (type === 'children') {
@@ -204,6 +204,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         suggestions={tagSuggestions}
         defaultTags={Array.isArray(defaultValue) && defaultValue}
         disabled={staticField}
+        autofocus={focusOnLoad}
       />
     }
     if (type === 'file') {
