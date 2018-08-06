@@ -33,9 +33,10 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     super(props);
 
     this._showTooltip = this._showTooltip.bind(this);
+    this._hideTooltip = this._hideTooltip.bind(this);
   }
 
-  _setTooltipOffset(): void {
+  private _setTooltipOffset(): void {
     // get browser page width
     const windowWidth = window.innerWidth;
 
@@ -73,7 +74,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
   }
 
-  _getElementDetails(el: any): any {
+  private _getElementDetails(el: any): any {
     // get global positions of a html element 
     el = el.getBoundingClientRect();
     return {
@@ -84,24 +85,24 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     }
   }
 
-  _touchHoverFix(): boolean {
-    return true
-  }
-
-  _showTooltip() {
+  private _showTooltip(): void {
     this._setTooltipOffset();
     this.setState({ showTooltip: true });
   }
 
-  render(): JSX.Element {
+  private _hideTooltip(): void {
+    this.setState({ showTooltip: false });
+  }
+
+  public render(): JSX.Element {
     const { tooltipText, direction, disableTooltip, children } = this.props;
     const { tooltipOffset, showTooltip } = this.state;
 
     const directionClass = direction ? direction : 'north';
     const classes = classNames('tooltip-trigger', 'tooltip-trigger--' + directionClass, { 'disabled': disableTooltip }, { 'show': showTooltip });
 
-    return <div className={classes} onTouchEnd={this._touchHoverFix}
-      onPointerEnter={this._showTooltip} onPointerLeave={() => this.setState({ showTooltip: false })}>
+    return <div className={classes} onTouchStart={this._showTooltip} onTouchEnd={this._hideTooltip}
+      onPointerEnter={this._showTooltip} onPointerLeave={this._hideTooltip}>
 
       {children}
 
