@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { default as Button, ButtonStyle } from './button';
-import InputField from './input_field'
 
 export interface FormProps {
 	/** Primary button text */
@@ -67,14 +66,14 @@ export class Form extends React.Component<FormProps, FormState> {
 
 		return (
 			<form noValidate className="form" onSubmit={this._onSubmitHandler}>
-				{React.Children.map(children, (child: any) => InputField.isPrototypeOf(child.type) ? (
+				{React.Children.map(children, (child: any) => HTMLElement.isPrototypeOf(child.type) ? child : (
 					<div className="form__item">
 						{child && React.cloneElement(child, formValidation.validationErrors[child.props.id] && {
 							validationError: isValidationErrors && formValidation.validationErrors[child.props.id],
 							validationErrorMsg: isValidationErrors ? formValidation.validationErrors[child.props.id] : null
 						})}
 					</div>
-				) : child)}
+				))}
 
 				{primaryBtnText &&
 					<div className="form__actions">
