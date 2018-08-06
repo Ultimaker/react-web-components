@@ -15,7 +15,7 @@ export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'emai
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
-export type InputFieldValue =  string | number | boolean | ImageFile | string[] | HTMLInputElement;
+export type InputFieldValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
 
 export interface InputFieldProps {
   /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
@@ -287,11 +287,19 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     </div>
   }
 
+  protected _renderChildren(): JSX.Element {
+    const { children } = this.props;
+
+    return <div className="layout__item u-fit">
+      {children}
+    </div>
+  }
+
   render(): JSX.Element {
     const { label, className, validationError, labelLayoutWidth, centerInputField,
-      staticField, defaultValue, type, descriptionText } = this.props;
+      staticField, defaultValue, type, descriptionText, children } = this.props;
 
-    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
+    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField ? 'fit' : 'fill';
     const inputClasses = classNames(`input-field layout ${className}`, { 'hide-input': staticField });
     const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
@@ -305,6 +313,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           </div>
           {staticField && this._renderStaticValue(type, defaultValue)}
         </div>
+        {type !== 'children' && children && this._renderChildren()}
         {validationError && this.state.touched && this._renderValidationText()}
       </div>
     )
