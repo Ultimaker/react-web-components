@@ -67,14 +67,16 @@ export class Form extends React.Component<FormProps, FormState> {
 
 		return (
 			<form noValidate className="form" onSubmit={this._onSubmitHandler}>
-				{React.Children.map(children, (child: any) => child && InputField.isPrototypeOf(child.type) ? (
+				{React.Children.map(children, (child: any) => child && child.type.name && child.type.name === 'InputField' ? (
 					<div className="form__item">
 						{child && React.cloneElement(child, formValidation.validationErrors[child.props.id] && {
 							validationError: isValidationErrors && formValidation.validationErrors[child.props.id],
 							validationErrorMsg: isValidationErrors ? formValidation.validationErrors[child.props.id] : null
 						})}
 					</div>
-				) : child)}
+				) : <div className="form__item">
+					{child}
+				</div>)}
 
 				{primaryBtnText &&
 					<div className="form__actions">
