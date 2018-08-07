@@ -8,7 +8,10 @@ import Tile from './tile';
 // utils
 import { I18n } from '../utils/i18n';
 
+// a mapping of error codes to translated error messages which may include the error parameters as replacement keys
 export type ErrorMessageTemplates = {[key: string]: string};
+
+// a mapping of field names to translated versions
 export type FieldTranslations = {[key: string]: string};
 
 /**
@@ -30,7 +33,7 @@ export const getTranslatedError = (
         });
     }
     const errorMessage = errorMessageTemplates[error.code] || I18n.translate('error message default',
-        "There was a problem on the server, please try again. (Code: %{code})")
+        "There was a problem on the server: %{title} (code %{code})")
     return I18n.interpolate(errorMessage, params)
 }
 
