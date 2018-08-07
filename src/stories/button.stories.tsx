@@ -6,9 +6,10 @@ import styles from "@sambego/storybook-styles";
 import { State, Store } from '@sambego/storybook-state';
 import { withInfo } from '@storybook/addon-info';
 
-import { Button, ButtonProps } from '../components/button';
+import Button from '../components/button';
 import ToggleButton from '../components/toggle_button';
 import CloseButton from '../components/close_button';
+import InfoLink from '../components/info_link';
 
 const stories = storiesOf('Button', module);
 
@@ -192,4 +193,10 @@ stories.add('Link', withInfo(
   >
     {text('Text 1', 'Link')}
   </Button>
+));
+
+stories.add('Info link', withInfo(
+  'An info link to open an external page'
+)(() =>
+  <InfoLink infoLinkURL={text('URL', 'https://ultimaker.com/')} />
 ));
