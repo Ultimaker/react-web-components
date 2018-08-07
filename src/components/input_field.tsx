@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import moment = require('moment');
 
-import { DropDownMenu, SelectOption } from './drop_down_menu';
+import { SelectList, SelectOption } from './select_list';
 import Checkbox from './checkbox';
 import { ImageUpload, ImageFile } from './image_upload';
 import { Image, ImageShape } from './image';
@@ -166,7 +166,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
     if (type === 'select') {
       return (
-        <DropDownMenu
+        <SelectList
           onChangeHandler={this._onChangeHandler}
           activeOptionValue={selectActiveOptionValue}
           options={selectOptions}
