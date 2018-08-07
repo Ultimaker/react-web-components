@@ -3,13 +3,16 @@ import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { Collapse } from 'react-collapse';
 
-export type MenuDirection = 'left' | 'right';
+export type MenuOffsetDirection = 'left' | 'right';
+export type MenuDirection = 'north' | 'south';
 
 export interface ContextMenuProps {
   /** Width of the menu in pixels */
   menuWidth: number;
-  /** Direction to position the menu: 'left' | 'right' */
-  menuOffsetDirection: MenuDirection;
+  /** Direction to offset the menu: 'left' | 'right' */
+  menuOffsetDirection?: MenuOffsetDirection;
+  /** Direction to position the menu: 'north' | 'south' */
+  menuDirection?: MenuDirection;
 }
 
 export interface ContextMenuState {
@@ -23,27 +26,17 @@ const windowMargin = 10;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
 
+  static defaultProps = {
+    menuOffsetDirection: 'left',
+    menuDirection: 'south'
+  };
+
   state = {
     showMenu: false,
     menuOffset: null
   };
 
-  constructor(props: ContextMenuProps) {
-    super(props);
-
-    this._setmenuOffset = this._setmenuOffset.bind(this);
-  }
-
-  componentDidMount(): void {
-    this._setmenuOffset();
-    window.addEventListener("resize", this._setmenuOffset);
-  }
-
-  componentWillUnmount(): void {
-    window.removeEventListener("resize", this._setmenuOffset);
-  }
-
-  _setmenuOffset(): void {
+  _setMenuOffset(): void {
 
     const { menuWidth, menuOffsetDirection } = this.props;
 
@@ -90,14 +83,15 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
   }
 
   _setShowMenu(showMenu: boolean): void {
+    this._setMenuOffset();
     this.setState({
       showMenu: showMenu
     });
   }
 
-  _getMenuStyle(menuOffset: number, menuOffsetDirection: MenuDirection, menuWidth: number): React.CSSProperties {
+  _getMenuStyle(menuOffset: number, menuOffsetDirection: MenuOffsetDirection, menuWidth: number): React.CSSProperties {
     let offset = -menuOffsetDefault;
-    let direction: MenuDirection = 'left';
+    let direction: MenuOffsetDirection = 'left';
 
     if (menuOffset) {
       offset = menuOffset;
@@ -119,10 +113,10 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
   render(): JSX.Element {
 
-    const { menuWidth, menuOffsetDirection, children } = this.props;
+    const { menuWidth, menuOffsetDirection, menuDirection, children } = this.props;
     const { showMenu, menuOffset } = this.state;
 
-    const classes = classNames('context-menu', { 'visible': showMenu });
+    const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu });
     const menuStyle = this._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
     return <div ref="contextMenu" className={classes} tabIndex={1}
@@ -133,7 +127,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
       <div className='container' onClick={() => this._setShowMenu(false)}>
         <div ref="menu" className="menu" style={menuStyle}>
-          <Collapse isOpened={showMenu} springConfig={{ stiffness: 370, damping: 35 }}>
+          <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
             <ul>
               {children}
             </ul>

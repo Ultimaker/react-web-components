@@ -24,6 +24,10 @@ const windowMargin = 10;
 
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
+  static defaultProps = {
+    direction: 'north'
+  };
+
   state = {
     tooltipOffset: null,
     showTooltip: false
@@ -98,8 +102,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     const { tooltipText, direction, disableTooltip, children } = this.props;
     const { tooltipOffset, showTooltip } = this.state;
 
-    const directionClass = direction ? direction : 'north';
-    const classes = classNames('tooltip-trigger', 'tooltip-trigger--' + directionClass, { 'disabled': disableTooltip }, { 'show': showTooltip });
+    const classes = classNames('tooltip-trigger', 'tooltip-trigger--' + direction, { 'disabled': disableTooltip }, { 'show': showTooltip });
 
     return <div className={classes} onTouchStart={this._showTooltip} onTouchEnd={this._hideTooltip}
       onPointerEnter={this._showTooltip} onPointerLeave={this._hideTooltip}>
