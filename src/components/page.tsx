@@ -19,4 +19,6 @@ Page.defaultProps = {
   maxWidth: "100%"
 }
 
+Page.displayName = "Page";
+
 export default Page;

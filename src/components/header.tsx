@@ -33,4 +33,6 @@ Header.defaultProps = {
   headerLogoUrl: "/"
 }
 
+Header.displayName = "Header";
+
 export default Header;

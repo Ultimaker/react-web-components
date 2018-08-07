@@ -18,4 +18,6 @@ const GridEmpty: React.StatelessComponent<GridEmptyProps> =
     </GridItem>
   }
 
+GridEmpty.displayName = "GridEmpty";
+
 export default GridEmpty;

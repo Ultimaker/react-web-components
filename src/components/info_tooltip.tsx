@@ -27,4 +27,6 @@ export const InfoTooltip: React.StatelessComponent<InfoTooltipProps> =
     );
   };
 
+InfoTooltip.displayName = "InfoTooltip";
+
 export default InfoTooltip;

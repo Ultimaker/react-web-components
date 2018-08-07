@@ -17,4 +17,6 @@ export const InfoLink: React.StatelessComponent<InfoLinkProps> =
     );
   };
 
+InfoLink.displayName = "InfoLink";
+
 export default InfoLink;

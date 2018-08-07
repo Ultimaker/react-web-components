@@ -12,21 +12,20 @@ export interface PageNotFoundViewProps {
     location: Location
 }
 
-export interface PageNotFoundViewState {
-}
-
 /**
  * The page not found view.
  */
-export default class PageNotFoundView extends React.Component<PageNotFoundViewProps, PageNotFoundViewState> {
-    render(): JSX.Element {
-        return <Page title={I18n.translate("title page_not_found", "Page Not Found")} maxWidth={550}>
-            <Tile padding="lg" align="center">
-                <p>
-                    {I18n.translate("page_not_found", "The page requested could not be found.")}
-                </p>
-                <pre>{this.props.location.pathname}</pre>
-            </Tile>
-        </Page>
-    }
-}
+const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({ location }) => (
+    <Page title={I18n.translate("title page_not_found", "Page Not Found")} maxWidth={550}>
+        <Tile padding="lg" align="center">
+            <p>
+                {I18n.translate("page_not_found", "The page requested could not be found.")}
+            </p>
+            <pre>{location.pathname}</pre>
+        </Tile>
+    </Page>
+)
+
+PageNotFoundView.displayName = "PageNotFoundView";
+
+export default PageNotFoundView;

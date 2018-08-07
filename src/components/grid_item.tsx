@@ -28,4 +28,6 @@ export const GridItem: React.StatelessComponent<GridItemProps> =
     breakpoint: 'xs'
   }
 
+GridItem.displayName = "GridItem";
+
 export default GridItem;

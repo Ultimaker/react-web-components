@@ -66,4 +66,6 @@ const AboutDialog: React.StatelessComponent<AboutDialogProps> =
     );
   };
 
+AboutDialog.displayName = "AboutDialog";
+
 export default AboutDialog;

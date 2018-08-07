@@ -10,4 +10,6 @@ const PageTitle: React.StatelessComponent<PageTitleProps> =
     return <h2 className="page-title">{title}</h2>
   }
 
+PageTitle.displayName = "PageTitle";
+
 export default PageTitle;

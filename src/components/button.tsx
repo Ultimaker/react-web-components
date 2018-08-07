@@ -65,4 +65,6 @@ Button.defaultProps = {
   linkToNewTab: false
 };
 
+Button.displayName = "Button";
+
 export default Button;

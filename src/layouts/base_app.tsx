@@ -133,7 +133,7 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
      * @param key - The index of the route in the application routes.
      * @return The created route, or a redirect route if the user is denied access.
      */
-    protected _createRoute(route: BaseAppRoute, key: number): Route {
+    protected _createRoute(route: BaseAppRoute, key: number): JSX.Element {
         const {path, scopes: requiredScopes, props, component: Component} = route
         const {scopes: actualScopes, isLoggedIn} = this.state
 

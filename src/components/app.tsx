@@ -27,4 +27,6 @@ const App: React.StatelessComponent<AppProps> =
 		)
 	}
 
+App.displayName = "App";
+
 export default App;

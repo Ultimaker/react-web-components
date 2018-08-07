@@ -23,4 +23,6 @@ Image.defaultProps = {
   size: '18rem'
 };
 
+Image.displayName = "Image";
+
 export default Image;

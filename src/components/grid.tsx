@@ -30,4 +30,6 @@ Grid.defaultProps = {
   gutter: 'md'
 }
 
+Grid.displayName = "Grid"
+
 export default Grid;
