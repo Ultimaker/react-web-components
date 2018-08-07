@@ -8,63 +8,33 @@ import Tile from './tile';
 // utils
 import { I18n } from '../utils/i18n';
 
-/**
- * Map of all API error codes that should be translated.
- * The variables "code", "field_name" and "title" are available here.
- */
-export const ERROR_CODE_TO_I18NC_TEMPLATE = {
+// a mapping of error codes to translated error messages which may include the error parameters as replacement keys
+export type ErrorMessageTemplates = {[key: string]: string};
 
-    // generic errors
-    "genericError": "There was a problem on the server, please try again. (Code: %{code})",
-    "apiResponseError": "There was a problem on the server, please try again.",
-
-    // generic field errors
-    "fieldError": "%{field_name} was invalid: %{title}.",
-    "lessThanMinimum": "%{field_name} does not have enough characters.",
-
-    // specific field errors
-    "emailInvalid": "Email address was not valid. Please use only lower-case characters and a full domain name.",
-    "fullNameInvalid": "Full name was not valid. Please use only latin characters, \
-        numbers and simple separators (single space, underline or hyphen).",
-    "usernameInvalid": "Username was not valid. Please use only latin characters, \
-        numbers and simple separators (single space, underline or hyphen).",
-    "passwordInvalid": "Password was not valid. Please use at least eight characters, \
-        at least one number and both lower and uppercase letters and special characters.",
-    "badPasswordRepeat": "Repeated password did not match original password.",
-    "dataUriImageInvalid": "Profile image was not valid. Please use a JPEG or PNG image."
-
-}
-
-/**
- * Map of all form field names that should be translated.
- */
-export const FIELD_NAME_TO_I18NC = {
-
-    // user data
-    "username": I18n.translate("form field username", "Username"),
-    "email": I18n.translate("form field email", "Email Address"),
-    "name": I18n.translate("form field name", "Full Name"),
-    "password": I18n.translate("form field password", "Password"),
-    "password_repeat": I18n.translate("form field password_repeat", "Repeat Password"),
-
-}
+// a mapping of field names to translated versions
+export type FieldTranslations = {[key: string]: string};
 
 /**
  * Gets a translated message for the given error.
  */
-export const getTranslatedError = (error: ResponseErrorObject): string => {
+export const getTranslatedError = (
+    error: ResponseErrorObject,
+    errorMessageTemplates: ErrorMessageTemplates,
+    fieldTranslations: FieldTranslations
+): string => {
     let params = { ...error }
     if (params.meta) {
         Object.keys(error.meta).forEach(key => {
             let value = error.meta[key]
-            if (key === "field_name" && FIELD_NAME_TO_I18NC[value]) {
-                value = FIELD_NAME_TO_I18NC[value]
+            if (key === "field_name" && fieldTranslations[value]) {
+                value = fieldTranslations[value]
             }
             params[key] = value
         });
     }
-    return I18n.format("error code", ERROR_CODE_TO_I18NC_TEMPLATE[error.code]
-        || ERROR_CODE_TO_I18NC_TEMPLATE["genericError"], params)
+    const errorMessage = errorMessageTemplates[error.code] || I18n.translate('error message default',
+        "There was a problem on the server: %{title} (code %{code})")
+    return I18n.interpolate(errorMessage, params)
 }
 
 export interface ResponseErrorObject {
@@ -80,6 +50,8 @@ export interface ResponseErrorProps {
     errors: ResponseErrorObject[];
     linkTo?: string;
     linkText?: string;
+    errorMessageTemplates?: ErrorMessageTemplates;
+    fieldNames?: FieldTranslations;
 }
 
 export interface ResponseErrorState {
@@ -104,12 +76,14 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
     }
 
     render(): JSX.Element {
-        const { errors } = this.props;
+        const { errors, errorMessageTemplates, fieldNames } = this.props;
         const isServerError = errors.find(e => parseInt(e.http_status) >= 500)
         return (
             <div className="response-error">
                 <Tile align="center" alert>
-                    {errors.map(error => <div key={error.id}>{getTranslatedError(error)}</div>)}
+                    {errors.map(error =>
+                        <div key={error.id}>{getTranslatedError(error, errorMessageTemplates, fieldNames)}</div>
+                    )}
                 </Tile>
                 { isServerError && <Popup
                     isOpen={this.state.showPopup}
