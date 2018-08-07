@@ -75,6 +75,8 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
     protected constructor(props) {
         super(props)
         this._createRoute = this._createRoute.bind(this)
+        this._setAuthLoading = this._setAuthLoading.bind(this)
+        this._setAuth = this._setAuth.bind(this)
         this._appRoutes = this._getRoutes()
     }
 
@@ -146,7 +148,6 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
             hasAccess = true;
         }
 
-        console.log("Rendering", {key, route, state: this.state})
         // render will either show the login page or the component, passing on any parameters
         const render = ({match: {params}}) => hasAccess ?
             <Component scopes={actualScopes} {...props} {...params} />
