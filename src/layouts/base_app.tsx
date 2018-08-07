@@ -69,6 +69,15 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
         error: ''
     }
 
+    // keeps the result of this._getRoutes so it doesn't need to be recalculated
+    private readonly _appRoutes: BaseAppRoute[]
+
+    protected constructor(props) {
+        super(props)
+        this._createRoute = this._createRoute.bind(this)
+        this._appRoutes = this._getRoutes()
+    }
+
     componentDidMount(): void {
         this._fetchScopes()
     }
@@ -77,10 +86,10 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
         return (
             <App fixedHeader>
                 <Header headerLogo={<UltimakerLogo />} headerLogoUrl={this._getAppUrl()} showNav>
-                    { this._renderNavigation(this._getRoutes())}
+                    { this._renderNavigation()}
                 </Header>
                 <div className="content app__main" role="main">
-                    { this._renderRoutes(this._getRoutes()) }
+                    { this._renderRoutes() }
                 </div>
                 <Footer>
                     { this._renderFooter() }
@@ -88,14 +97,14 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
             </App>
         )
     }
-    
+
     /**
      * Renders all available routes.
      */
-    protected _renderRoutes(routes: BaseAppRoute[]): JSX.Element {
+    protected _renderRoutes(): JSX.Element {
         return (
             <Switch>
-                { routes.map((route, key) => this._createRoute(key, route.path, route.component, route.scopes, route.props)) }
+                { this._appRoutes.map(this._createRoute) }
                 <Route component={PageNotFoundView} />
             </Switch>
         )
@@ -103,11 +112,10 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
 
     /**
      * Renders the navigation items.
-     * @param routes The routes to put in the navigation.
      */
-    protected _renderNavigation(routes: BaseAppRoute[]): JSX.Element {
+    protected _renderNavigation(): JSX.Element {
         return (
-            <Navigation navLinks={routes} />
+            <Navigation navLinks={this._appRoutes} />
         )
     }
 
@@ -122,25 +130,27 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
 
     /**
      * Create a routed component.
-     * @param path The path to match for this route.
-     * @param Component The component to render on this route.
-     * @param scopes Optional OAuth scopes needed to view this route.
-     * @param props Optional props to pass to the component on this route.
+     * @param route - The specification of the route to be created.
+     * @param key - The index of the route in the application routes.
+     * @return The created route, or a redirect route if the user is denied access.
      */
-    protected _createRoute(key: any, path: string, Component: any, scopes?: string[], props?: object): Route {
+    protected _createRoute(route: BaseAppRoute, key: number): Route {
+        const {path, scopes: requiredScopes, props, component: Component} = route
+        const {scopes: actualScopes, isLoggedIn} = this.state
 
         // by default we only have access if the component requires no additional scopes.
-        let hasAccess = !scopes;
+        let hasAccess = !requiredScopes;
 
         // determine if the user currently has access
-        if (scopes && this.state.isLoggedIn && scopes.every(val => this.state.scopes.indexOf(val) >= 0)) {
+        if (requiredScopes && isLoggedIn && requiredScopes.every(scope => actualScopes.indexOf(scope) >= 0)) {
             hasAccess = true;
         }
 
+        console.log("Rendering", {key, route, state: this.state})
         // render will either show the login page or the component, passing on any parameters
         const render = ({match: {params}}) => hasAccess ?
-            <Component scopes={this.state.scopes} {...props} {...params} />
-                : this.state.isLoggedIn === null ? <LoadingPage />
+            <Component scopes={actualScopes} {...props} {...params} />
+                : isLoggedIn === null ? <LoadingPage />
                     : <Redirect to={this._getLoginUrl()} />;
 
         // return the rendered view
