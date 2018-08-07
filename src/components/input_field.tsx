@@ -9,13 +9,14 @@ import { Image, ImageShape } from './image';
 import DatePicker from './date_picker';
 import TagsSelector from './tags_selector';
 import InfoTooltip from './info_tooltip';
+import InfoLink from './info_link';
 import FileUpload from './file_upload';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
-export type InputFieldValue =  string | number | boolean | ImageFile | string[] | HTMLInputElement;
+export type InputFieldValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
 
 export interface InputFieldProps {
   /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
@@ -59,7 +60,9 @@ export interface InputFieldProps {
   /** If true, the defaultValue is shown as plain text and the input hidden */
   staticField?: boolean
   /** Description of the fields to be shown in a tooltip */
-  descriptionText?: string
+  infoText?: string
+  /** The URL of the link to be shown next to the input field */
+  infoLinkURL?: string
   /** A list of suggestions for tags input field */
   tagSuggestions?: string[]
 }
@@ -139,8 +142,12 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
   protected _renderInput(): React.ReactNode {
     const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions,
-      defaultValue, imageSize, staticField, imageShape, tagSuggestions, children } = this.props;
-    const classes = classNames('input', { 'error': validationError && this.state.touched });
+      defaultValue, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad, infoText, infoLinkURL,
+      children } = this.props;
+
+    const classes = classNames('input',
+      { 'error': validationError && this.state.touched },
+      { 'pad-right': (infoText || infoLinkURL) });
 
     if (type === 'children') {
       return children;
@@ -204,6 +211,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         suggestions={tagSuggestions}
         defaultTags={Array.isArray(defaultValue) && defaultValue}
         disabled={staticField}
+        autofocus={focusOnLoad}
       />
     }
     if (type === 'file') {
@@ -211,6 +219,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         id={id}
         onChangeHandler={this._onChangeHandler}
         disabled={staticField}
+        infoLinkURL={infoLinkURL}
       />
     }
     return (
@@ -279,19 +288,36 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     </div>
   }
 
-  protected _renderDescriptionText(): JSX.Element {
-    const { descriptionText } = this.props;
+  protected _renderInfo(): JSX.Element {
+    const { infoText, infoLinkURL, type } = this.props;
 
-    return <div className="input-field__info">
-      <InfoTooltip infoText={descriptionText} />
+    if (type !== 'file') {
+      return <div className="input-field__info">
+        {infoText &&
+          <InfoTooltip infoText={infoText} />
+        }
+        {infoLinkURL &&
+          <InfoLink infoLinkURL={infoLinkURL} />
+        }
+      </div>
+    }
+
+    return null;
+  }
+
+  protected _renderChildren(): JSX.Element {
+    const { children } = this.props;
+
+    return <div className="layout__item u-fit">
+      {children}
     </div>
   }
 
   render(): JSX.Element {
     const { label, className, validationError, labelLayoutWidth, centerInputField,
-      staticField, defaultValue, type, descriptionText } = this.props;
+      staticField, defaultValue, type, infoText, infoLinkURL, children } = this.props;
 
-    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : 'fill';
+    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField ? 'fit' : 'fill';
     const inputClasses = classNames(`input-field layout ${className}`, { 'hide-input': staticField });
     const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
@@ -301,10 +327,11 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         <div className={inputLayoutClasses}>
           <div className="input-container">
             {this._renderInput()}
-            {descriptionText && this._renderDescriptionText()}
+            {(infoText || infoLinkURL) && this._renderInfo()}
           </div>
           {staticField && this._renderStaticValue(type, defaultValue)}
         </div>
+        {type !== 'children' && children && this._renderChildren()}
         {validationError && this.state.touched && this._renderValidationText()}
       </div>
     )

@@ -8,6 +8,7 @@ import Header from '../components/header';
 import Navigation from '../components/navigation';
 import LoadingPage from '../components/loading_page';
 import CuraLogo from '../components/icons/cura_logo';
+import UltimakerLogo from '../components/icons/ultimaker_logo'
 import Footer from '../components/footer';
 
 // views
@@ -84,7 +85,7 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
     render(): JSX.Element {
         return (
             <App fixedHeader>
-                <Header headerLogo={<CuraLogo />} headerLogoUrl={this._getAppUrl()} showNav>
+                <Header headerLogo={<UltimakerLogo />} headerLogoUrl={this._getAppUrl()} showNav>
                     { this._renderNavigation()}
                 </Header>
                 <div className="content app__main" role="main">

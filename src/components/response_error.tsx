@@ -107,7 +107,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
         const { errors } = this.props;
         const isServerError = errors.find(e => parseInt(e.http_status) >= 500)
         return (
-            <div>
+            <div className="response-error">
                 <Tile align="center" alert>
                     {errors.map(error => <div key={error.id}>{getTranslatedError(error)}</div>)}
                 </Tile>

@@ -13,6 +13,8 @@ export interface TagsSelectorProps {
   defaultTags?: string[]
   /** Disables the selector when true */
   disabled?: boolean;
+  /** Whether the tag field should be auto-focused */
+  autofocus?: boolean
 }
 
 export interface TagsSelectorState {
@@ -126,7 +128,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
   render(): JSX.Element {
     const { tags, suggestions } = this.state;
-    const { placeholder, disabled } = this.props;
+    const { placeholder, disabled, autofocus } = this.props;
 
     const classes = classNames('tags-selector', { disabled });
 
@@ -137,7 +139,8 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         handleAddition={this._handleAddition}
         handleDrag={!disabled ? null : this._handleDrag}
         delimiters={delimiters}
-        placeholder={placeholder} />
+        placeholder={placeholder}
+        autofocus={autofocus} />
     </div>
   }
 
