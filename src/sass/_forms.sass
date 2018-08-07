@@ -34,6 +34,9 @@
   border-radius: 0
   font-family: $font-primary
 
+  &.pad-right
+    padding-right: 2.5rem
+
   &:hover
     border-bottom-color: $input-field-color-border-hover
 
@@ -62,7 +65,7 @@
 
   .input-field__info
     position: absolute
-    right: 0
+    right: 0.3rem
     top: 50%
     transform: translateY(-50%)
 
@@ -80,6 +83,9 @@
     margin-top: 0.6rem
     color: $input-field-color-border-error
     @include font-size-text-2
+
+  .input-field__post-text
+    color: $color-text-light
 
   .drop-down-menu
     &.visible 
@@ -201,10 +207,10 @@ textarea
   input
     display: none
 
-  .file-upload__label-container
+  .file-upload__input-container
     position: relative
 
-  .file-upload__label
+  .file-upload__input
     @extend %input-style
     @extend .truncate
     position: absolute
@@ -213,3 +219,9 @@ textarea
     left: 0
     right: 0
     cursor: pointer
+
+  .info-link
+    position: absolute
+    right: 0.3rem
+    top: 50%
+    transform: translateY(-50%)

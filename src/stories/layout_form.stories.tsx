@@ -68,7 +68,7 @@ stories.add('Form', withInfo(
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
           placeholder={text('Placeholder text', 'Placeholder text')}
-          descriptionText={text('Description text', 'Description of the input field')}
+          infoText={text('Info text', 'Description of the input field')}
           focusOnLoad />
 
         <InputField type="number"
