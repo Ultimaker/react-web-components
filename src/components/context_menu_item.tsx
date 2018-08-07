@@ -28,4 +28,6 @@ export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> =
 
   };
 
+ContextMenuItem.displayName = "ContextMenuItem";
+
 export default ContextMenuItem;

@@ -32,4 +32,6 @@ export const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
 
   };
 
+DropDownMenuItem.displayName = "DropDownMenuItem";
+
 export default DropDownMenuItem;

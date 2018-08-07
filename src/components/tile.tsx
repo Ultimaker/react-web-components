@@ -35,4 +35,6 @@ Tile.defaultProps = {
   align: 'left'
 }
 
+Tile.displayName = "Tile";
+
 export default Tile;

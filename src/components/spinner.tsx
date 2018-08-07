@@ -11,4 +11,6 @@ const Spinner: React.StatelessComponent<{}> = () => {
   );
 };
 
+Spinner.displayName = "Spinner";
+
 export default Spinner;

@@ -22,4 +22,6 @@ Divider.defaultProps = {
   margin: false
 };
 
+Divider.displayName = "Divider";
+
 export default Divider;

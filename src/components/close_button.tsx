@@ -21,4 +21,6 @@ export const CloseButton: React.StatelessComponent<CloseButtonProps> = ({ onClic
   );
 };
 
+CloseButton.displayName = "CloseButton";
+
 export default CloseButton;

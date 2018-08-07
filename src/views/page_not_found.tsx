@@ -27,4 +27,5 @@ const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({ loc
 )
 
 PageNotFoundView.displayName = "PageNotFoundView";
+
 export default PageNotFoundView;

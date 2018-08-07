@@ -9,4 +9,6 @@ const Footer: React.StatelessComponent = ({ children }) => {
   );
 };
 
+Footer.displayName = "Footer";
+
 export default Footer;

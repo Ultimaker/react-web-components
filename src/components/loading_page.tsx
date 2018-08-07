@@ -9,4 +9,6 @@ export const LoadingPage: React.StatelessComponent = (): JSX.Element => {
     </div>
   };
 
+LoadingPage.displayName = "LoadingPage";
+
 export default LoadingPage;

@@ -27,4 +27,6 @@ PanelArrow.defaultProps = {
   color: 'black'
 };
 
+PanelArrow.displayName = "PanelArrow";
+
 export default PanelArrow;

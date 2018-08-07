@@ -18,4 +18,6 @@ Pill.defaultProps = {
   active: false
 };
 
+Pill.displayName = "Pill";
+
 export default Pill;

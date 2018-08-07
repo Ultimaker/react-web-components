@@ -41,4 +41,6 @@ ToggleButton.defaultProps = {
   checked: false
 };
 
+ToggleButton.displayName = "ToggleButton";
+
 export default ToggleButton;

@@ -31,4 +31,6 @@ ProgressBar.defaultProps = {
   barHeight: 2
 };
 
+ProgressBar.displayName = "ProgressBar";
+
 export default ProgressBar;
