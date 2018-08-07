@@ -43,6 +43,19 @@ stories.add('Translated errors', withInfo(
 			fieldNames={FIELD_NAME_TO_I18NC}
 			errors={[{
 				id: '12345',
+				code: 'randomError',
+				http_status: '403',
+				title: 'The server crashed hard'
+			}]}
+		/>
+
+		<br/>
+
+		<ResponseError
+			errorMessageTemplates={ERROR_CODE_TO_I18NC_TEMPLATE}
+			fieldNames={FIELD_NAME_TO_I18NC}
+			errors={[{
+				id: '12345',
 				code: 'fieldError',
 				http_status: '403',
 				title: 'Field was invalid',
