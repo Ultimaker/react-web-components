@@ -2,21 +2,16 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Motion, spring } from 'react-motion';
+import { BaseAppRoute } from '../layouts/base_app';
 
 import Button from './button';
 
 export interface NavigationProps {
-  navLinks: NavLink[];
+  navLinks: BaseAppRoute[];
 }
 
 export interface NavigationState {
   showNav: boolean;
-}
-
-export interface NavLink {
-  path: string;
-  label: string;
-  visible: boolean;
 }
 
 const motion = { stiffness: 999, damping: 50 };
@@ -54,7 +49,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
         <div>
           <div className="burger-menu show-xs">
             <Button style="primary" shape="circle" onClickHandler={() => this._toggleShowNav(!showNav)}>
-              <div className={burgerIconClasses}></div>
+              <div className={burgerIconClasses} />
             </Button>
           </div>
 
