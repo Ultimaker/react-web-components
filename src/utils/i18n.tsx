@@ -80,7 +80,7 @@ export class I18n {
 	 * @param parameters The parameters to insert in the text.
 	 */
 	public static format (context: string, text: string, parameters: object): string {
-		return I18n._interpolate(this.translate(context, text), parameters)
+		return I18n.interpolate(this.translate(context, text), parameters)
 	}
 
 	/**
@@ -88,8 +88,8 @@ export class I18n {
 	 * @param text The text to interpolate.
 	 * @param parameters The parameters to insert in the text.
 	 */
-	private static _interpolate (text: string, parameters: object = {}): string {
-		return text.replace(/\{(\w+)\}/g, (_, expr) => (parameters || window)[expr])
+	public static interpolate (text: string, parameters: object = {}): string {
+		return text.replace(/\%{(\w+)\}/g, (_, expr) => (parameters || window)[expr])
 	}
 
 	/**

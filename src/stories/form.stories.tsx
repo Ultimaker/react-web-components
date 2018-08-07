@@ -9,7 +9,6 @@ import InputField from '../components/input_field';
 import Checkbox from '../components/checkbox';
 import ImageUpload from '../components/image_upload';
 import DatePicker from '../components/date_picker';
-import TagsSelector from '../components/tags_selector';
 import { Tile } from '../components/tile';
 
 const stories = storiesOf('Forms', module);
