@@ -69,15 +69,11 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
         error: ''
     }
 
-    // keeps the result of this._getRoutes so it doesn't need to be recalculated
-    private readonly _appRoutes: BaseAppRoute[]
-
     protected constructor(props) {
         super(props)
         this._createRoute = this._createRoute.bind(this)
         this._setAuthLoading = this._setAuthLoading.bind(this)
         this._setAuth = this._setAuth.bind(this)
-        this._appRoutes = this._getRoutes()
     }
 
     componentDidMount(): void {
@@ -85,13 +81,14 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
     }
 
     render(): JSX.Element {
+        const routes = this._getRoutes()
         return (
             <App fixedHeader>
                 <Header headerLogo={<UltimakerLogo />} headerLogoUrl={this._getAppUrl()} showNav>
-                    { this._renderNavigation()}
+                    { this._renderNavigation(routes)}
                 </Header>
                 <div className="content app__main" role="main">
-                    { this._renderRoutes() }
+                    { this._renderRoutes(routes) }
                 </div>
                 <Footer>
                     { this._renderFooter() }
@@ -103,10 +100,10 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
     /**
      * Renders all available routes.
      */
-    protected _renderRoutes(): JSX.Element {
+    protected _renderRoutes(routes: BaseAppRoute[]): JSX.Element {
         return (
             <Switch>
-                { this._appRoutes.map(this._createRoute) }
+                { routes.map(this._createRoute) }
                 <Route component={PageNotFoundView} />
             </Switch>
         )
@@ -115,9 +112,9 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
     /**
      * Renders the navigation items.
      */
-    protected _renderNavigation(): JSX.Element {
+    protected _renderNavigation(routes: BaseAppRoute[]): JSX.Element {
         return (
-            <Navigation navLinks={this._appRoutes} />
+            <Navigation navLinks={routes} />
         )
     }
 
