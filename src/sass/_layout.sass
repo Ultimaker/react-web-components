@@ -309,30 +309,30 @@
 
   
 .hide-xs
-  @media (max-width: (#{map-get($layout-breakpoints, sm)} - 1))
+  @media (max-width: (map-get($layout-breakpoints, sm) - 1))
     display: none !important
-    visiblity: hidden !important
+    visibility: hidden !important
 
 .hide-sm
-  @media (max-width: (#{map-get($layout-breakpoints, md)} - 1))
+  @media (max-width: (map-get($layout-breakpoints, md) - 1))
     display: none !important
-    visiblity: hidden !important
+    visibility: hidden !important
 
 .hide-md
-  @media (max-width: (#{map-get($layout-breakpoints, lg)} - 1))
+  @media (max-width: (map-get($layout-breakpoints, lg) - 1))
     display: none !important
-    visiblity: hidden !important
+    visibility: hidden !important
 
 .show-xs
   display: block
 
   @media (min-width: (#{map-get($layout-breakpoints, sm)}))
     display: none !important
-    visiblity: hidden !important
+    visibility: hidden !important
 
 .show-sm
   display: block
 
   @media (min-width: (#{map-get($layout-breakpoints, md)}))
     display: none !important
-    visiblity: hidden !important
+    visibility: hidden !important
