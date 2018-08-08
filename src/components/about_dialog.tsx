@@ -2,9 +2,29 @@ import * as React from 'react';
 import { I18n } from '../utils/i18n';
 
 import Button from './button';
-import CloseButton from "./close_button";
 import Modal from "./modal";
 import Tile from "./tile";
+
+
+/**
+ * The translated messages for this component.
+ */
+const T = {
+  // translate beforehand
+  _aboutApp: I18n.translate("About dialog", "About %{appName}"),
+  _license: I18n.translate("About dialog", "license %{license}"),
+  _version: I18n.translate("About dialog", "Version: %{versionNumber}"),
+  _appUses: I18n.translate("About dialog", "%{appName} uses the following Open Source components:"),
+
+  // only interpolate when needed
+  aboutApp: (appName: string) => I18n.interpolate(T._aboutApp, {appName}),
+  license: (license: string) => I18n.interpolate(T._license, {license}),
+  version: (versionNumber: any) => I18n.interpolate(T._version, {versionNumber}),
+  appUses: (appName: string) => I18n.interpolate(T._appUses, {appName}),
+
+  forSupport: I18n.translate("About dialog", "For support visit:"),
+}
+
 
 export interface AboutDialogProps {
   /** List of open source components used */
@@ -31,12 +51,19 @@ interface OpenSourceComponent {
 
 
 function licenseList(componentsList: OpenSourceComponent[]): JSX.Element[] {
-  return componentsList.map(component => {
-    return (<tr key={component.name}>
-      <td className="about-component-name"><a href={component.url} target="_blank">{component.name}</a></td>
-      <td className="about-component-license"><a href={"https://spdx.org/licenses/" + component.license + ".html"} target="_blank">{I18n.format("About dialog", "license %{license}", { license: component.license })}</a></td>
-    </tr>);
-  });
+  return componentsList.map(component => (
+      <tr key={component.name}>
+        <td className="about-component-name">
+          <a href={component.url} target="_blank">{component.name}</a>
+        </td>
+        <td className="about-component-license">
+          <a href={"https://spdx.org/licenses/" + component.license + ".html"} target="_blank">
+            {T.license(component.license)}
+          </a>
+        </td>
+      </tr>
+    )
+  );
 }
 
 const AboutDialog: React.StatelessComponent<AboutDialogProps> =
@@ -46,12 +73,12 @@ const AboutDialog: React.StatelessComponent<AboutDialogProps> =
       <div className="about-dialog">
         <Modal isOpen={isOpen} onOverlayClickHandler={closeHandler}>
           <Tile>
-            <div className="about-dialog__header">{I18n.format("About dialog", "About %{appName}", { appName })}</div>
-            <p>{I18n.format("About dialog", "Version: %{versionNumber}", { versionNumber })}</p>
+            <div className="about-dialog__header">{T.aboutApp(appName)}</div>
+            <p>{T.version(versionNumber)}</p>
             {supportLinkURL &&
-              <p>{I18n.translate("About dialog", "For support visit:")}&nbsp;&nbsp;&nbsp;<a href={supportLinkURL} target="_blank">{supportLinkText}</a></p>
+              <p>{T.forSupport}&nbsp;&nbsp;&nbsp;<a href={supportLinkURL} target="_blank">{supportLinkText}</a></p>
             }
-            <p>{I18n.format("About dialog", "%{appName} uses the following Open Source components:", { appName })}</p>
+            <p>{T.appUses(appName)}</p>
             <table className="about-components-list">
               <tbody>
                 {licenseList(componentsList)}
