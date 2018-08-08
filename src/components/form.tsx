@@ -67,8 +67,8 @@ export class Form extends React.Component<FormProps, FormState> {
      */
 	private _renderChild(child: JSX.Element): JSX.Element {
 		const formValidation = this.props.formValidation
-		const errors = formValidation && child.props && formValidation.validationErrors[child.props.id]
-		return (
+		const errors = formValidation && child && child.props && formValidation.validationErrors[child.props.id]
+		return child && (
 			<div className="form__item">
 				{React.cloneElement(child, errors && {
 					validationError: errors,
