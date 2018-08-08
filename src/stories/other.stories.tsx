@@ -26,7 +26,7 @@ stories.add('Progress bar', withInfo(
   <div style={{ width: 200 }} >
     <ProgressBar progressPercentage={number('Percentage', 33)}
       isStopped={boolean('isStopped', false)}
-      barHeight={number('Bar height', 5)} />
+      barHeight={text('Bar height', '0.6rem')} />
   </div>
 ));
 
