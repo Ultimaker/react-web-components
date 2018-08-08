@@ -11,11 +11,34 @@
     height: 4rem
     width: 4rem
     padding: 0
-    color: $color-primary-btn-text
-    background-color: $color-primary-btn
     display: flex
     justify-content: center
     align-items: center
+    color: $color-primary-btn-text
+    background-color: $color-primary-btn
+    font-size: 1.6rem
+
+    &.primary
+      &.disabled
+        background-color: $color-primary-btn-disabled
+        color: $color-primary-btn-disabled-text
+
+    &.secondary
+      color: $color-secondary-btn-text
+      background-color: $color-secondary-btn
+      border: 2px solid $color-secondary-btn-border
+
+      &.disabled
+        border-color: $color-text-lighter
+        color: $color-text-lighter
+
+    &.alert
+      color: $color-alert-btn-text
+      background-color: $color-alert-btn
+
+      &.disabled
+        background-color: $color-alert-btn-disabled
+        color: $color-alert-btn-disabled-text
 
   &.icon--approved
     svg
