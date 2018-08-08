@@ -3,56 +3,43 @@ import { UnmountClosed } from 'react-collapse';
 
 import PanelArrow from "./panel_arrow";
 
-export type Align = 'left' | 'center' | 'right';
+export type TextAlign = 'left' | 'center' | 'right';
 
 export interface SlideOutContainerProps {
-  /** Text to be displayed above the slide out content */
-  headerText: string;
-  /** The text alignment of the header */
-  headerTextAlignment?: Align;
-  /** Whether the PanelArrow should be displayed */
-  showPanelArrow?: boolean;
-}
-
-export interface SlideOutContainerState {
+  /** Whether the container should be open */
   isOpen: boolean;
+  /** Called when the container header is clicked */
+  onHeaderClick?: () => void;
+  /** Text to be displayed above the slide out content */
+  headerText?: string;
+  /** The text alignment of the header */
+  headerTextAlignment?: TextAlign;
+  /** Whether the PanelArrow should be displayed */
+  showHeaderPanelArrow?: boolean;
+  /** Whether the header should be displayed */
+  showHeader?: boolean;
 }
 
-export class SlideOutContainer extends React.Component<SlideOutContainerProps, SlideOutContainerState> {
 
-  static defaultProps = {
-    showPanelArrow: true,
-    headerTextAlignment: 'left'
-  };
-
-  state = {
-    isOpen: false
-  };
-
-  _toggleBodyVisibility() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
-  render(): JSX.Element {
-    const { isOpen } = this.state;
-    const { headerText, showPanelArrow, headerTextAlignment, children } = this.props;
+export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps> =
+  ({ isOpen, showHeader, headerText, showHeaderPanelArrow, headerTextAlignment, onHeaderClick, children }) => {
 
     return <div className="slide-out-container">
-
-      <div className="slide-out-container__header" onClick={() => this._toggleBodyVisibility()}>
-        <div className="layout layout--align-middle">
-          <div className="layout__item u-fill" style={{ textAlign: headerTextAlignment }}>
-            {headerText}
-          </div>
-          {showPanelArrow &&
-            <div className="layout__item arrow-column">
-              <PanelArrow active={isOpen} width="1.6rem" />
+    
+      {showHeader &&
+        <div className="slide-out-container__header" onClick={() => onHeaderClick()}>
+          <div className="layout layout--align-middle">
+            <div className="layout__item u-fill" style={{ textAlign: headerTextAlignment }}>
+              {headerText}
             </div>
-          }
+            {showHeaderPanelArrow &&
+              <div className="layout__item arrow-column">
+                <PanelArrow active={isOpen} width="1.6rem" />
+              </div>
+            }
+          </div>
         </div>
-      </div>
+      }
 
       <UnmountClosed isOpened={isOpen}>
         <div className="slide-out-container__body">
@@ -63,6 +50,10 @@ export class SlideOutContainer extends React.Component<SlideOutContainerProps, S
     </div>
 
   }
-}
+
+SlideOutContainer.defaultProps = {
+  showHeaderPanelArrow: true,
+  headerTextAlignment: 'left'
+};
 
 export default SlideOutContainer;
