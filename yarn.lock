@@ -393,8 +393,8 @@
     "@types/d3-time" "*"
 
 "@types/d3-selection@*":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@types/d3-selection/-/d3-selection-1.3.1.tgz#c6227f4e39d429cc429ce3882fd533facc7f014c"
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@types/d3-selection/-/d3-selection-1.3.2.tgz#dd5661a560ba9ce3aba823c424b8d4a1bc7e833f"
 
 "@types/d3-shape@*":
   version "1.2.3"
@@ -7186,7 +7186,7 @@ react-dom@16.4.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-dom@^16.3.1:
+react-dom@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4"
   dependencies:
@@ -7330,8 +7330,8 @@ react-style-proptype@^3.0.0:
     prop-types "^15.5.4"
 
 react-tag-input@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/react-tag-input/-/react-tag-input-5.1.1.tgz#8ae56898b47470c7adcc8f987847479cb3909aff"
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-tag-input/-/react-tag-input-5.1.2.tgz#d8afbb073f71ac38a12364c970cef9df00016c1d"
   dependencies:
     core-js "2.5.5"
     lodash "4.17.5"
@@ -7405,7 +7405,7 @@ react@16.4.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react@^16.4.1:
+react@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
   dependencies:
