@@ -16,20 +16,19 @@ export type FieldTranslations = {[key: string]: string};
 
 /**
  * Gets a translated message for the given error.
+ * @param error - The error object to be translated.
+ * @param errorMessageTemplates - The error translation templates.
+ * @param fieldTranslations - The field translation templates.
  */
 export const getTranslatedError = (
     error: ResponseErrorObject,
     errorMessageTemplates: ErrorMessageTemplates,
     fieldTranslations: FieldTranslations
-): string => {
+): any[] => {
     let params = { ...error }
     if (params.meta) {
         Object.keys(error.meta).forEach(key => {
-            let value = error.meta[key]
-            if (key === "field_name" && fieldTranslations[value]) {
-                value = fieldTranslations[value]
-            }
-            params[key] = value
+            params[key] = (key === "field_name" && fieldTranslations[params[key]]) || error.meta[key]
         });
     }
     const errorMessage = errorMessageTemplates[error.code] || I18n.translate('error message default',

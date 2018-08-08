@@ -90,7 +90,7 @@ export class I18n {
 	 * @param parameters The parameters to insert in the text.
 	 */
 	public static interpolate(text: string, parameters: {[key: string]: any}): any[] {
-		return text.split(/%{(\w+)}/g).map((part, i) =>
+		return text.split(/%{(\w+)}/g).map((part, i) => part &&
 			<span key={i}>{parameters[part] || part}</span>
 		)
 	}
