@@ -13,7 +13,6 @@ import InfoLink from './info_link';
 import FileUpload from './file_upload';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
-export type labelPosition = 'left' | 'top';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 export type InputFieldValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
@@ -318,7 +317,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       staticField, defaultValue, type, infoText, infoLinkURL, children } = this.props;
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField ? 'fit' : 'fill';
-    const inputClasses = classNames(`input-field layout ${className}`, { 'hide-input': staticField });
+    const inputClasses = classNames('input-field layout', className, { 'hide-input': staticField });
     const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
     return (
