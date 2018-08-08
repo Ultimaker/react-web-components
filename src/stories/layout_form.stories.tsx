@@ -9,6 +9,7 @@ import styles from "@sambego/storybook-styles";
 import Form from '../components/form';
 import InputField from '../components/input_field';
 import Tile from '../components/tile';
+import Settings from '../../../oauth2-server/src/Settings'
 
 const stories = storiesOf('Example layouts', module);
 
@@ -105,6 +106,9 @@ stories.add('Form', withInfo(
           onChangeHandler={action('changed')}
           defaultValue="2019-02-08" />
 
+          <div>
+            <a href="#link">Links</a>  or other elements may also be used.
+        </div>
       </Form>
 
     </Tile>

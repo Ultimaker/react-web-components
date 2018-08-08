@@ -47,6 +47,7 @@ export class Form extends React.Component<FormProps, FormState> {
 		// bind callbacks once
 		this._onSubmitHandler = this._onSubmitHandler.bind(this);
 		this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
+		this._renderChild = this._renderChild.bind(this);
 	}
 
 	_onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
@@ -58,6 +59,25 @@ export class Form extends React.Component<FormProps, FormState> {
 		this.props.secondaryBtnHandler();
 	}
 
+    /**
+	 * Renders a single child of the form component. If the child has the `id` props, we will check for errors in the
+	 * form validation, any errors are passed as extra props to the child.
+     * @param child - The child element to be rendered.
+     * @private
+     */
+	private _renderChild(child: JSX.Element): JSX.Element {
+		const formValidation = this.props.formValidation
+		const errors = formValidation && child.props && formValidation.validationErrors[child.props.id]
+		return (
+			<div className="form__item">
+				{React.cloneElement(child, errors && {
+					validationError: errors,
+					validationErrorMsg: errors
+				})}
+			</div>
+		)
+	}
+
 	render(): JSX.Element {
 		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, formValidation,
 			secondaryBtnLink, children } = this.props;
@@ -67,15 +87,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
 		return (
 			<form noValidate className="form" onSubmit={this._onSubmitHandler}>
-				{React.Children.map(children, (child: any) => child && InputField.isPrototypeOf(child.type) ? (
-					<div className="form__item">
-						{child && React.cloneElement(child, formValidation.validationErrors[child.props.id] && {
-							validationError: isValidationErrors && formValidation.validationErrors[child.props.id],
-							validationErrorMsg: isValidationErrors ? formValidation.validationErrors[child.props.id] : null
-						})}
-					</div>
-				) : child)}
-
+				{React.Children.map(children, this._renderChild)}
 				{primaryBtnText &&
 					<div className="form__actions">
 						{primaryBtnText &&
