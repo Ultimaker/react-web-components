@@ -1,0 +1,105 @@
+.chart
+  .axis, .label
+    @include font-size-text-2
+    font-family: $font-primary
+
+    &.segment-label
+      fill: $color-text-light
+
+  .axis
+    line
+      visibility: hidden
+    
+    &.axis--y
+      text
+        fill: $color-text-light
+      
+      path
+        visibility: hidden
+
+    &.axis--x
+      text
+        fill: $color-text-light
+
+      path
+        stroke: $color-text-lighter
+
+  path, rect, circle
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+
+.chart-container
+  flex: 1
+  overflow: hidden
+  position: relative
+
+  .legend
+    @include font-size-text-2
+    position: absolute
+    top: 0
+    right: 1.2rem
+
+    .legend__item .dash
+      font-size: 2.5em
+      position: absolute
+      left: -2.4rem
+      top: -0.2rem
+
+
+.pie-chart-total
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  text-align: center
+
+  .total
+    @include font-size-header-1
+    font-family: $font-primary-medium
+
+  .label
+    @include font-size-text-2
+    color: $color-text-light
+
+.chart-tooltip
+  .tooltip, &:after
+    visibility: visible
+    transition: opacity 0.2s ease-out
+    transition-delay: 0.2s
+    opacity: 1
+
+  &:after
+    border-top-color: $tooltip-dark-color-background !important
+    border-bottom-color: $tooltip-dark-color-background !important
+
+  .tooltip
+    background-color: $tooltip-dark-color-background
+
+    .text
+      max-width: 18rem
+      min-width: 12rem
+
+  .percentage-icon
+    height: 3.2rem
+
+    img
+      width: 3.2rem
+
+  .tooltip-header
+    margin-top: 0.6rem
+
+    &:first-child
+      margin-top: 0
+
+  .tooltip-info
+    @include font-size-text-3
+    margin-top: 0.6rem
+    line-height: 1.4
+
+.chart-placeholder
+  display: flex
+  justify-content: center
+  align-items: center
