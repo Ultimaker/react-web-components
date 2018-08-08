@@ -88,8 +88,9 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
                     isOpen={this.state.showPopup}
                     type="prompt"
                     headerText={I18n.translate("error popup title", "Something went wrong at our end :(")}
-                    bodyText={I18n.translate("error popup details", "Please describe here what you were doing that caused the error to happen. \
-                        Then download the report and attach this in an email to your Ultimaker reseller.")}
+                    bodyText={I18n.translate("error popup details",
+                        "Please describe here what you were doing that caused the error to happen. " +
+                        "Then download the report and attach this in an email to your Ultimaker reseller.")}
                     primaryBtnText={I18n.translate("error popup send", "Download")}
                     primaryBtnStyle="primary"
                     primaryBtnHandler={this._downloadTextFile}
