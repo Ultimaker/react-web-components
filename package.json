@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/Ultimaker/react-web-components#readme",
   "dependencies": {
-    
     "array.prototype.includes": "^1.0.0",
     "classnames": "^2.2.6",
     "d3": "5.0.0",
@@ -42,6 +41,7 @@
     "react-tag-input": "^5.1.1"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.0",
     "@types/d3": "^5.0.0",
     "@types/history": "^4.7.0",
     "@types/node": "^8.5.2",
