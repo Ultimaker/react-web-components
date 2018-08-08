@@ -9,7 +9,6 @@ import styles from "@sambego/storybook-styles";
 import Form from '../components/form';
 import InputField from '../components/input_field';
 import Tile from '../components/tile';
-import Settings from '../../../oauth2-server/src/Settings'
 
 const stories = storiesOf('Example layouts', module);
 
