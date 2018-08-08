@@ -1,6 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import Gettext = require('node-gettext');
 import { po } from 'gettext-parser'
+import * as React from 'react'
 
 // type for available languages
 export type Languages = 'en-US' | 'nl-NL'
@@ -19,11 +20,11 @@ export class I18n {
 	private static _gt = new Gettext({ debug: false })
 	private static _defaultLanguage = 'en-DEV'
 	private static _supportedLanguages: Languages[] = ['en-US', 'nl-NL']
-	
+
 	/**
 	 * Initialize the Gettext context.
 	 */
-	public static async initialize (translations: TranslationListItem[]) {
+	public static async initialize(translations: TranslationListItem[]) {
 
 		// load the translation files
 		translations.forEach(async translation => await this._loadTranslation(translation.name, translation.source))
@@ -79,7 +80,7 @@ export class I18n {
 	 * @param text The text to translate and format.
 	 * @param parameters The parameters to insert in the text.
 	 */
-	public static format (context: string, text: string, parameters: object): string {
+	public static format (context: string, text: string, parameters: {[key: string]: any}): any[] {
 		return I18n.interpolate(this.translate(context, text), parameters)
 	}
 
@@ -88,14 +89,16 @@ export class I18n {
 	 * @param text The text to interpolate.
 	 * @param parameters The parameters to insert in the text.
 	 */
-	public static interpolate (text: string, parameters: object = {}): string {
-		return text.replace(/\%{(\w+)\}/g, (_, expr) => (parameters || window)[expr])
+	public static interpolate(text: string, parameters: {[key: string]: any}): any[] {
+		return text.split(/%{(\w+)}/g).map((part, i) =>
+			<span key={i}>{parameters[part] || part}</span>
+		)
 	}
 
 	/**
 	 * Loads a language source file async.
-	 * @param language The language we're loading.
-	 * @param source The url of the language source file.
+	 * @param language - The language we're loading.
+	 * @param url - The url of the language source file.
 	 */
 	private static async _loadTranslation (language: Languages, url: string) {
 		await fetch(url)
