@@ -9,6 +9,7 @@ import ProgressBar from '../components/progress_bar';
 import PanelArrow from '../components/panel_arrow';
 import Divider from '../components/divider';
 import Pill from '../components/pill';
+import CircleIcon from '../components/circle_icon';
 
 const stories = storiesOf('Other', module);
 
@@ -60,4 +61,19 @@ stories.add('Pill', withInfo(
       {text('Text', 'Pill')}
     </Pill>
   </Tile>
+));
+
+const styleOptions = {
+  'primary': 'primary',
+  'secondary': 'secondary',
+  'alert': 'alert'
+};
+const styleValue = 'primary';
+
+stories.add('Circle Icon', withInfo(
+  'A circle icon'
+)(() =>
+  <CircleIcon style={selectV2('Style', styleOptions, styleValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
+    {text('Text', '1')}
+  </CircleIcon>
 ));
