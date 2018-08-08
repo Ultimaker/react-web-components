@@ -16,19 +16,17 @@ export interface SlideOutContainerProps {
   headerTextAlignment?: TextAlign;
   /** Whether the PanelArrow should be displayed */
   showHeaderPanelArrow?: boolean;
-  /** Whether the header should be displayed */
-  showHeader?: boolean;
 }
 
 
 export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps> =
-  ({ isOpen, showHeader, headerText, showHeaderPanelArrow, headerTextAlignment, onHeaderClick, children }) => {
+  ({ isOpen, headerText, showHeaderPanelArrow, headerTextAlignment, onHeaderClick, children }) => {
 
     return <div className="slide-out-container">
-    
-      {showHeader &&
+
+      {headerText &&
         <div className="slide-out-container__header" onClick={() => onHeaderClick()}>
-          <div className="layout layout--align-middle">
+          <div className="layout">
             <div className="layout__item u-fill" style={{ textAlign: headerTextAlignment }}>
               {headerText}
             </div>
