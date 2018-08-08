@@ -26,6 +26,8 @@ const windowMargin = 10;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
 
+  private menuRef;
+
   static defaultProps = {
     menuOffsetDirection: 'left',
     menuDirection: 'south'
@@ -36,6 +38,11 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     menuOffset: null
   };
 
+  constructor(props: ContextMenuProps) {
+    super(props);
+    this.menuRef = React.createRef();
+  }
+
   _setMenuOffset(): void {
 
     const { menuWidth, menuOffsetDirection } = this.props;
@@ -44,7 +51,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     const windowWidth = window.innerWidth;
 
     // get dom element
-    const contextMenuElement = ReactDOM.findDOMNode(this.refs.contextMenu);
+    const contextMenuElement = this.menuRef.current;
 
     // get element position
     const contextMenuLeft = contextMenuElement.getBoundingClientRect().left;
@@ -119,14 +126,14 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu });
     const menuStyle = this._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
-    return <div ref="contextMenu" className={classes} tabIndex={1}
+    return <div ref={this.menuRef} className={classes} tabIndex={1}
       onClick={this._stopPropagation} onBlur={() => this._setShowMenu(false)}>
 
       <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}
         style={{ width: triggerWidth }}></div>
 
       <div className='container' onClick={() => this._setShowMenu(false)}>
-        <div ref="menu" className="menu" style={menuStyle}>
+        <div className="menu" style={menuStyle}>
           <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
             <ul>
               {children}

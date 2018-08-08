@@ -80,15 +80,15 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     centerInputField: false
   };
 
+  private inputRef;
+
   state = {
     touched: false
   }
 
-  private input;
-
   constructor(props) {
     super(props);
-
+    this.inputRef = React.createRef();
     // bind callbacks once
     this._onChangeHandler = this._onChangeHandler.bind(this);
   }
@@ -101,16 +101,16 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   _focusOnPromptInput(): void {
     const { focusOnLoad } = this.props;
 
-    if (this.input && focusOnLoad) {
-      this.input.focus();
+    if (this.inputRef.current && focusOnLoad) {
+      this.inputRef.current.focus();
     }
   }
 
   _setDefaultValue() {
     const { defaultValue, type } = this.props;
 
-    if (defaultValue && this.input && (type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email' || type === 'url')) {
-      this.input.value = defaultValue.toString();
+    if (defaultValue && this.inputRef.current && (type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email' || type === 'url')) {
+      this.inputRef.current.value = defaultValue.toString();
     }
   }
 
@@ -159,7 +159,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           onChange={(e) => this._onChangeHandler(e.target.value)}
           placeholder={placeholder}
           className={classes}
-          ref={input => this.input = input}
+          ref={this.inputRef}
           rows={3}
         />
       )
@@ -231,7 +231,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         max={max ? max : null}
         onChange={(e) => this._onChangeHandler(e.target.value)}
         placeholder={placeholder}
-        ref={input => this.input = input}
+        ref={this.inputRef}
       />
     )
   }

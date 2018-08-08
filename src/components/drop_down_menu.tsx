@@ -16,12 +16,9 @@ export interface DropDownMenuState {
 
 export default class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
 
-  constructor(props: DropDownMenuProps) {
-    super(props);
-    this.state = {
-      showMenu: false
-    };
-  }
+  state = {
+    showMenu: false
+  };
 
   _setShowMenu(showMenu: boolean): void {
     this.setState({
@@ -55,7 +52,7 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
       </div>
 
       <div className="container" onClick={() => this._setShowMenu(false)}>
-        <div ref="menu" className="menu">
+        <div className="menu">
           <UnmountClosed isOpened={showMenu} springConfig={{ stiffness: 370, damping: 35 }}>
             <ul>
               {this.props.children}

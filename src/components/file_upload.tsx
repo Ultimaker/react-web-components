@@ -21,15 +21,12 @@ export interface FileUploadState {
 
 export class FileUpload extends React.Component<FileUploadProps, {}> {
 
-  private input;
-
   state = {
     selectedFileName: null
   }
 
   constructor(props) {
     super(props);
-
     this._onChangeHandler = this._onChangeHandler.bind(this);
   }
 
@@ -56,7 +53,6 @@ export class FileUpload extends React.Component<FileUploadProps, {}> {
         type="file"
         onChange={this._onChangeHandler}
         disabled={disabled}
-        ref={input => this.input = input}
       />
       <div className="layout layout--gutter-sm">
         <div className="layout__item u-fill file-upload__input-container">
