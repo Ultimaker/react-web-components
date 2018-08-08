@@ -7,6 +7,8 @@ import { withInfo } from '@storybook/addon-info';
 
 import ContextMenu from '../components/context_menu';
 import ContextMenuItem from '../components/context_menu_item';
+import DropDownMenu from '../components/drop_down_menu';
+import DropDownMenuItem from '../components/drop_down_menu_item';
 
 const stories = storiesOf('Menus', module);
 
