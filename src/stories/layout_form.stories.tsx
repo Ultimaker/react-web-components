@@ -105,6 +105,9 @@ stories.add('Form', withInfo(
           onChangeHandler={action('changed')}
           defaultValue="2019-02-08" />
 
+          <div>
+            <a href="#link">Links</a>  or other elements may also be used.
+        </div>
       </Form>
 
     </Tile>
