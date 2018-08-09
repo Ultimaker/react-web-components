@@ -50,6 +50,6 @@ stories.add('User account menu', withInfo(
   <UserAccountMenu
     onSignOutClickHandler={action('clicked')}
     onManageAccountClickHandler={action('clicked')}
-    account={{ display_name: 'Test User' }}
+    displayName="Test User"
   ></UserAccountMenu>
 ));

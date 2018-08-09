@@ -9,25 +9,16 @@ import ProfileImage from './profile_image';
 // utils
 import { I18n } from '../utils/i18n';
 
-export interface AccountDetails {
-  /** The ID of the author. */
-  author_id?: string
-  /** The description of the author. */
-  description?: string
-  /** The display name of the item. */
-  display_name: string
-  /** The e-mail of the author. */
-  email?: string
-  /** An URL for the icon of the author. */
-  icon_url?: string
-  /** The URL to the author's website. */
-  website?: string
-}
 
 export interface UserAccountMenuProps {
+  /** Called when the sign out button is clicked */
   onSignOutClickHandler: () => void;
+  /** Called when the manage account button is clicked */
   onManageAccountClickHandler: () => void;
-  account: AccountDetails;
+  /** The display name of the user. */
+  displayName: string
+  /** An URL for the user profile image. */
+  imageURL?: string
 }
 
 export interface UserAccountMenuState {
@@ -73,7 +64,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
   render(): JSX.Element {
 
-    const { onSignOutClickHandler, onManageAccountClickHandler, account, children } = this.props;
+    const { onSignOutClickHandler, onManageAccountClickHandler, displayName, imageURL, children } = this.props;
     const { showMenu } = this.state;
 
     const classes = classNames('user-account-menu', { 'visible': showMenu });
@@ -81,7 +72,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
     return <div className={classes} tabIndex={1} onClick={this._stopPropagation}>
 
       <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
-        <ProfileImage imageURL={account.icon_url} size="4rem" />
+        <ProfileImage imageURL={imageURL} size="4rem" />
       </div>
 
       <div className='container'>
@@ -93,9 +84,9 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
               <div className="account-section__profile">
                 <div className="account-section__icon">
-                  <ProfileImage imageURL={account.icon_url} size="7.5rem" />
+                  <ProfileImage imageURL={imageURL} size="7.5rem" />
                 </div>
-                <div className="account-section__name">{account.display_name}</div>
+                <div className="account-section__name">{displayName}</div>
               </div>
 
               <Button style="primary" onClickHandler={() => { this._setShowMenu(false); onManageAccountClickHandler() }}>
