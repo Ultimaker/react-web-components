@@ -1,0 +1,42 @@
+.user-account-menu
+  @extend .context-menu
+
+  .trigger:after
+    content: none
+
+  .menu
+    right: calc(100% - 4.8rem)
+
+  .account-section
+    width: 28rem
+    min-height: 36rem
+    padding: 2.4rem
+    display: flex
+    flex-direction: column
+    flex-wrap: nowrap
+
+    .account-section__profile
+      display: flex
+      flex-direction: column
+      flex-wrap: nowrap
+      justify-content: center
+      flex-grow: 1
+
+    .account-section__title
+      @include font-size-header-2
+      font-family: $font-primary-medium
+
+    .account-section__icon
+      text-align: center
+
+    .account-section__name
+      font-family: $font-primary-medium
+      text-align: center
+      margin-top: 1.2rem
+
+    .btn
+      width: 100%
+      margin-top: 1.2rem
+
+  .other-section
+    @extend .account-section
