@@ -5,7 +5,7 @@ import { Collapse } from 'react-collapse';
 // components
 import Image from './image';
 import Button from './button';
-import EmailIcon from './icons/email_icon';
+import DefaultProfileIcon from './default_profile_icon';
 
 // utils
 import { I18n } from '../utils/i18n';
@@ -82,7 +82,12 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
     return <div className={classes} tabIndex={1} onClick={this._stopPropagation}>
 
       <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
-        <Image src={account.icon_url} size="3.6rem" />
+        {account.icon_url &&
+          <Image src={account.icon_url} size="4rem" />
+        }
+        {!account.icon_url &&
+          <DefaultProfileIcon size="4rem" />
+        }
       </div>
 
       <div className='container'>
@@ -94,16 +99,21 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
               <div className="account-section__profile">
                 <div className="account-section__icon">
-                  <Image src={account.icon_url} size="7.5rem" />
+                  {account.icon_url &&
+                    <Image src={account.icon_url} size="7.5rem" />
+                  }
+                  {!account.icon_url &&
+                    <DefaultProfileIcon size="7.5rem" />
+                  }
                 </div>
                 <div className="account-section__name">{account.display_name}</div>
               </div>
 
-              <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onManageAccountClickHandler() }}>
+              <Button style="primary" onClickHandler={() => { this._setShowMenu(false); onManageAccountClickHandler() }}>
                 {I18n.translate("User account menu button", "Manage account")}
               </Button>
 
-              <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
+              <Button style="primary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
                 {I18n.translate("User account menu button", "Sign out")}
               </Button>
             </div>
