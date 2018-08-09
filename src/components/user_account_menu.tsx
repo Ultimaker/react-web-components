@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import { Collapse } from 'react-collapse';
 
 // components
-import Image from './image';
 import Button from './button';
-import DefaultProfileIcon from './default_profile_icon';
+import ProfileImage from './profile_image';
 
 // utils
 import { I18n } from '../utils/i18n';
@@ -82,12 +81,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
     return <div className={classes} tabIndex={1} onClick={this._stopPropagation}>
 
       <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
-        {account.icon_url &&
-          <Image src={account.icon_url} size="4rem" />
-        }
-        {!account.icon_url &&
-          <DefaultProfileIcon size="4rem" />
-        }
+        <ProfileImage imageURL={account.icon_url} size="4rem" />
       </div>
 
       <div className='container'>
@@ -99,12 +93,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
               <div className="account-section__profile">
                 <div className="account-section__icon">
-                  {account.icon_url &&
-                    <Image src={account.icon_url} size="7.5rem" />
-                  }
-                  {!account.icon_url &&
-                    <DefaultProfileIcon size="7.5rem" />
-                  }
+                  <ProfileImage imageURL={account.icon_url} size="7.5rem" />
                 </div>
                 <div className="account-section__name">{account.display_name}</div>
               </div>
