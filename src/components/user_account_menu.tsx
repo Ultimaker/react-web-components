@@ -95,7 +95,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
                 <div className="account-section__profile">
                   <div className="account-section__icon">
-                    <ProfileImage imageURL={imageURL} size="7.5rem" />
+                    <ProfileImage imageURL={imageURL} size="10rem" />
                   </div>
                   <div className="account-section__name">{displayName}</div>
                 </div>
