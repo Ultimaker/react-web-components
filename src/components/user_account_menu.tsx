@@ -5,6 +5,7 @@ import { Collapse } from 'react-collapse';
 // components
 import Button from './button';
 import ProfileImage from './profile_image';
+import LinkIcon from './icons/link_icon';
 
 // utils
 import { I18n } from '../utils/i18n';
@@ -101,7 +102,8 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                 </div>
 
                 <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
-                  {I18n.translate("User account menu button", "Manage account")}
+                  {I18n.translate("User account menu button", "Manage account")} 
+                  <LinkIcon />
                 </Button>
 
                 <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
