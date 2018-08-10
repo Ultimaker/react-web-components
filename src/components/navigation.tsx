@@ -36,7 +36,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
   }
 
   render(): JSX.Element {
-    const { navLinks } = this.props;
+    const { navLinks, children } = this.props;
     const { showNav } = this.state;
 
     const burgerIconClasses = classNames('burger-menu__icon', { 'open': showNav });
@@ -46,7 +46,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
     return <nav className={navClasses} onClick={() => this._toggleShowNav(false)}>
 
       {visibleNavLinks.length > 0 &&
-        <div>
+        <div className="nav-links-container">
           <div className="burger-menu show-xs">
             <Button style="primary" shape="circle" onClickHandler={() => this._toggleShowNav(!showNav)}>
               <div className={burgerIconClasses} />
@@ -67,6 +67,13 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
               </ul>
             }
           </Motion>
+
+          {children &&
+            <div className="children-containter">
+              {children}
+            </div>
+          }
+
         </div>
       }
 
