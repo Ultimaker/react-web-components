@@ -8,15 +8,19 @@
       content: none
 
   .container
-    bottom: -0.9rem
+    bottom: -0.7rem
 
   .menu
-    right: calc(100% - 7.2rem)
+    right: calc(100% - 6rem)
+
+  .sections
+    display: flex
+    flex-flow: row nowrap
 
   .account-section
     width: 28rem
     min-height: 36rem
-    padding: 2.4rem
+    padding: 2.4rem 2.4rem 3.6rem
     display: flex
     flex-direction: column
     flex-wrap: nowrap
@@ -46,3 +50,4 @@
 
   .other-section
     @extend .account-section
+    border-right: 1px solid $color-border

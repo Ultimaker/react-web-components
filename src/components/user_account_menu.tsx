@@ -78,32 +78,38 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
       <div className='container'>
         <div className="menu">
           <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
+            <div className="sections">
 
-            <div className="account-section">
-              <div className="account-section__title">{I18n.translate("User account menu title", "My account")}</div>
-
-              <div className="account-section__profile">
-                <div className="account-section__icon">
-                  <ProfileImage imageURL={imageURL} size="7.5rem" />
+              {children &&
+                <div className="other-section">
+                  {React.Children.map(children, (child: JSX.Element) =>
+                    React.cloneElement(child, { onCloseMenuHandler: () => this._setShowMenu(false) })
+                  )}
                 </div>
-                <div className="account-section__name">{displayName}</div>
+              }
+
+              <div className="account-section">
+                <div className="account-section__title">
+                  {I18n.translate("User account menu title", "My account")}
+                </div>
+
+                <div className="account-section__profile">
+                  <div className="account-section__icon">
+                    <ProfileImage imageURL={imageURL} size="7.5rem" />
+                  </div>
+                  <div className="account-section__name">{displayName}</div>
+                </div>
+
+                <Button style="primary" type="link" linkURL={manageAccountURL} linkToNewTab>
+                  {I18n.translate("User account menu button", "Manage account")}
+                </Button>
+
+                <Button style="primary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
+                  {I18n.translate("User account menu button", "Sign out")}
+                </Button>
               </div>
 
-              <Button style="primary" type="link" linkURL={manageAccountURL} linkToNewTab>
-                {I18n.translate("User account menu button", "Manage account")}
-              </Button>
-
-              <Button style="primary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
-                {I18n.translate("User account menu button", "Sign out")}
-              </Button>
             </div>
-
-            {children &&
-              <div className="other-section">
-                {children}
-              </div>
-            }
-
           </Collapse>
         </div>
       </div>
