@@ -13,8 +13,8 @@ import { I18n } from '../utils/i18n';
 export interface UserAccountMenuProps {
   /** Called when the sign out button is clicked */
   onSignOutClickHandler: () => void;
-  /** Called when the manage account button is clicked */
-  onManageAccountClickHandler: () => void;
+  /** URL to the account management page */
+  manageAccountURL: string;
   /** The display name of the user. */
   displayName: string
   /** An URL for the user profile image. */
@@ -64,19 +64,19 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
   render(): JSX.Element {
 
-    const { onSignOutClickHandler, onManageAccountClickHandler, displayName, imageURL, children } = this.props;
+    const { onSignOutClickHandler, manageAccountURL, displayName, imageURL, children } = this.props;
     const { showMenu } = this.state;
 
     const classes = classNames('user-account-menu', { 'visible': showMenu });
 
-    return <div className={classes} tabIndex={1} onClick={this._stopPropagation}>
+    return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this.menuRef}>
 
       <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
-        <ProfileImage imageURL={imageURL} size="4rem" />
+        <ProfileImage imageURL={imageURL} size="3.6rem" />
       </div>
 
       <div className='container'>
-        <div className="menu" ref={this.menuRef}>
+        <div className="menu">
           <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
 
             <div className="account-section">
@@ -89,7 +89,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                 <div className="account-section__name">{displayName}</div>
               </div>
 
-              <Button style="primary" onClickHandler={() => { this._setShowMenu(false); onManageAccountClickHandler() }}>
+              <Button style="primary" type="link" linkURL={manageAccountURL} linkToNewTab>
                 {I18n.translate("User account menu button", "Manage account")}
               </Button>
 

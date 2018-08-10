@@ -10,9 +10,8 @@ export interface CircleIconProps {
 }
 
 
-export const ProfileImage: React.StatelessComponent<CircleIconProps> = ({ size, imageURL }) => {
-
-  return <div className="profile-image">
+export const ProfileImage: React.StatelessComponent<CircleIconProps> = ({ size, imageURL }) => (
+  <div className="profile-image">
     {imageURL &&
       <Image src={imageURL} size={size} />
     }
@@ -22,7 +21,7 @@ export const ProfileImage: React.StatelessComponent<CircleIconProps> = ({ size, 
       </CircleIcon>
     }
   </div>
-};
+);
 
 ProfileImage.displayName = "ProfileImage";
 

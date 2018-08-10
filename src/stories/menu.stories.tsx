@@ -49,7 +49,7 @@ stories.add('User account menu', withInfo(
 )(() =>
   <UserAccountMenu
     onSignOutClickHandler={action('clicked')}
-    onManageAccountClickHandler={action('clicked')}
+    manageAccountURL="https://account-staging.ultimaker.com"
     displayName="Test User"
   ></UserAccountMenu>
 ));
