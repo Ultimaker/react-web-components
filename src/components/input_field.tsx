@@ -345,7 +345,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
     const inputClasses = classNames(`input-field input-field--${type} layout`, className, { 'hide-input': staticField });
-    const inputLayoutClasses = classNames(`layout__item u-${inputLayoutWidth}`, { 'text-center': centerInputField });
+    const inputLayoutClasses = classNames(`layout__item u-${inputLayoutWidth} layout__item--middle`, { 'text-center': centerInputField });
 
     return (
       <div className={inputClasses}>
