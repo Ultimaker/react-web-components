@@ -317,7 +317,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       staticField, defaultValue, type, infoText, infoLinkURL, children } = this.props;
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField ? 'fit' : 'fill';
-    const inputClasses = classNames('input-field layout', className, { 'hide-input': staticField });
+    const inputClasses = classNames(`input-field input-field--${type} layout`, className, { 'hide-input': staticField });
     const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
     return (
