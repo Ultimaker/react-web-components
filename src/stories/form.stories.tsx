@@ -163,7 +163,6 @@ stories.add('Upload file field', withInfo(
       placeholder={text('Placeholder text', 'Placeholder text')}
       focusOnLoad
       validationError={boolean('Validation error', false)}
-      validationErrorMsg={text('Validation error message', 'Validation Error')}
-      infoLinkURL="http://www.ultimaker.com" />
+      validationErrorMsg={text('Validation error message', 'Validation Error')} />
   </div>
 ));

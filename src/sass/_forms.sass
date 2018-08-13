@@ -2,7 +2,7 @@
 .form
 
   .form__item
-    margin-bottom: 1.8rem
+    margin-bottom: 2.4rem
 
   .form__actions
     flex: 0 0 auto
@@ -63,11 +63,21 @@
   .input
     @extend %input-style
 
-  .input-field__info
-    position: absolute
-    right: 0.3rem
-    top: 50%
-    transform: translateY(-50%)
+  .input-field__field-addition
+    .icon--required
+      margin-top: 1.8rem
+      width: 1rem
+      height: 1rem
+
+      svg
+        width: 1rem
+        height: 1rem
+        fill: $color-text-light
+
+  &.input-field--checkbox
+    .input-field__field-addition
+      .icon--required
+        margin-top: 0.9rem
 
   .input-field__label
     @include font-size-text-2
@@ -106,6 +116,10 @@
 
       &.error
         border-bottom-color: $color-red
+
+  &.input-field--tags
+    &.hide-input
+      margin-bottom: -1.2rem
         
 
 .checkbox  

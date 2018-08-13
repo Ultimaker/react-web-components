@@ -140,7 +140,8 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         handleDrag={!disabled ? null : this._handleDrag}
         delimiters={delimiters}
         placeholder={placeholder}
-        autofocus={autofocus} />
+        autofocus={autofocus}
+        maxLength={30} />
     </div>
   }
 

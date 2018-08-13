@@ -11,8 +11,6 @@ export interface FileUploadProps {
   onChangeHandler: (value: HTMLInputElement) => void;
   /** Disables the file upload when true */
   disabled?: boolean;
-  /** The URL of the link to be shown next to the input field */
-  infoLinkURL?: string
 }
 
 export interface FileUploadState {
@@ -43,11 +41,11 @@ export class FileUpload extends React.Component<FileUploadProps, {}> {
   }
 
   render(): JSX.Element {
-    const { id, disabled, infoLinkURL } = this.props;
+    const { id, disabled } = this.props;
     const { selectedFileName } = this.state;
 
     const classes = classNames('file-upload', { disabled });
-    const inputClasses = classNames('file-upload__input', { 'pad-right': infoLinkURL });
+    const inputClasses = classNames('file-upload__input');
 
     return <div className={classes} onClick={this._stopPropagation} >
       <input
@@ -61,9 +59,6 @@ export class FileUpload extends React.Component<FileUploadProps, {}> {
       <div className="layout layout--gutter-sm">
         <div className="layout__item u-fill file-upload__input-container">
           <label className={inputClasses} htmlFor={id}>{selectedFileName}</label>
-          {infoLinkURL &&
-            <InfoLink infoLinkURL={infoLinkURL} />
-          }
         </div>
         <div className="layout__item u-fit">
           <label className='btn btn--primary' htmlFor={id}>{I18n.translate('file upload button', 'Choose file')}</label>
