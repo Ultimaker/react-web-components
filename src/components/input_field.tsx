@@ -148,7 +148,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderLabelAddition(): JSX.Element {
-    const { infoText, infoLinkURL, type } = this.props;
+    const { infoText, infoLinkURL } = this.props;
 
     if (infoText || infoLinkURL) {
       return <div className="layout__item u-fit input-field__label-addition">
@@ -342,10 +342,10 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   render(): JSX.Element {
     const { label, className, labelLayoutWidth, centerInputField,
       staticField, defaultValue, type, children } = this.props;
-
+      
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
     const inputClasses = classNames(`input-field input-field--${type} layout`, className, { 'hide-input': staticField });
-    const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
+    const inputLayoutClasses = classNames(`layout__item u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
     return (
       <div className={inputClasses}>
