@@ -63,11 +63,21 @@
   .input
     @extend %input-style
 
-  .input-field__info
-    position: absolute
-    right: 0.3rem
-    top: 50%
-    transform: translateY(-50%)
+  .input-field__field-addition
+    .icon--required
+      margin-top: 1.8rem
+      width: 1rem
+      height: 1rem
+
+      svg
+        width: 1rem
+        height: 1rem
+        fill: $color-text-lighter
+
+  &.input-field--checkbox
+    .input-field__field-addition
+      .icon--required
+        margin-top: 0.9rem
 
   .input-field__label
     @include font-size-text-2

@@ -11,6 +11,7 @@ import TagsSelector from './tags_selector';
 import InfoTooltip from './info_tooltip';
 import InfoLink from './info_link';
 import FileUpload from './file_upload';
+import RequiredIcon from './icons/required_icon';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
@@ -64,6 +65,8 @@ export interface InputFieldProps {
   infoLinkURL?: string
   /** A list of suggestions for tags input field */
   tagSuggestions?: string[]
+  /** Displays the required icon when true */
+  required?: boolean
 }
 
 export interface InputFieldState {
@@ -135,18 +138,40 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       { 'tag-selector-label': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
 
     return <div className={classes}>
-      <label htmlFor={id}>{label}</label>
+      <div className="layout layout--gutter-xs" >
+        <div className="layout__item u-fit">
+          <label htmlFor={id}>{label}</label>
+        </div>
+        {this._renderLabelAddition()}
+      </div>
     </div>
+  }
+
+  protected _renderLabelAddition(): JSX.Element {
+    const { infoText, infoLinkURL, type } = this.props;
+
+    if (infoText || infoLinkURL) {
+      return <div className="layout__item u-fit input-field__label-addition">
+        {infoText &&
+          <InfoTooltip infoText={infoText} />
+        }
+        {infoLinkURL && !infoText && // can't have both an InfoTooltip and a InfoLink
+          <InfoLink infoLinkURL={infoLinkURL} />
+        }
+      </div>
+    }
+
+    return null;
   }
 
   protected _renderInput(): React.ReactNode {
     const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions,
       defaultValue, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad, infoText, infoLinkURL,
-      children } = this.props;
+      required, children } = this.props;
 
     const classes = classNames('input',
       { 'error': validationError && this.state.touched },
-      { 'pad-right': (infoText || infoLinkURL) });
+      { 'pad-right': (infoText || infoLinkURL || required) }) // add extra padding inside the field if an icon is shown inside the input field
 
     if (type === 'children') {
       return children;
@@ -218,7 +243,6 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         id={id}
         onChangeHandler={this._onChangeHandler}
         disabled={staticField}
-        infoLinkURL={infoLinkURL}
       />
     }
     return (
@@ -263,8 +287,15 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderValidationText(): JSX.Element {
-    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint } = this.props;
+    const { validationError, validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint } = this.props;
+    const { touched } = this.state;
     let errorMsgOffsetClass;
+
+    let validationText = null;
+
+    if (validationError && touched) {
+      validationText = validationErrorMsg;
+    }
 
     if (labelLayoutWidth === 'fill' || labelLayoutWidth === 'fit') {
       // align validation message to the right
@@ -275,29 +306,25 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       errorMsgOffsetClass = `u-${labelLayoutWidth}-${labelWidthBreakpoint}`
     }
 
-    return <div className="layout__item u-full">
-      <div className="layout">
-        {labelLayoutWidth !== '1/1' &&
-          <div className={`layout__item ${errorMsgOffsetClass}`}></div>
-        }
-        <div className="layout__item u-fill">
-          <div className="input-field__error-message">{validationErrorMsg}</div>
+    if (validationText) {
+      return <div className="layout__item u-full">
+        <div className="layout">
+          {labelLayoutWidth !== '1/1' &&
+            <div className={`layout__item ${errorMsgOffsetClass}`}></div>
+          }
+          <div className="layout__item u-fill">
+            <div className="input-field__error-message">{validationText}</div>
+          </div>
         </div>
       </div>
-    </div>
+    }
   }
 
-  protected _renderInfo(): JSX.Element {
-    const { infoText, infoLinkURL, type } = this.props;
-
-    if (type !== 'file') {
-      return <div className="input-field__info">
-        {infoText &&
-          <InfoTooltip infoText={infoText} />
-        }
-        {infoLinkURL &&
-          <InfoLink infoLinkURL={infoLinkURL} />
-        }
+  protected _renderInputFieldAddition() {
+    const { required } = this.props;
+    if (required) {
+      return <div className="layout__item u-fit input-field__field-addition">
+        <RequiredIcon />
       </div>
     }
 
@@ -313,10 +340,10 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   render(): JSX.Element {
-    const { label, className, validationError, labelLayoutWidth, centerInputField,
-      staticField, defaultValue, type, infoText, infoLinkURL, children } = this.props;
+    const { label, className, labelLayoutWidth, centerInputField,
+      staticField, defaultValue, type, children } = this.props;
 
-    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField ? 'fit' : 'fill';
+    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
     const inputClasses = classNames(`input-field input-field--${type} layout`, className, { 'hide-input': staticField });
     const inputLayoutClasses = classNames(`layout__item layout__item--middle u-${inputLayoutWidth}`, { 'text-center': centerInputField });
 
@@ -324,14 +351,19 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       <div className={inputClasses}>
         {label && this._renderLabel()}
         <div className={inputLayoutClasses}>
-          <div className="input-container">
-            {this._renderInput()}
-            {(infoText || infoLinkURL) && this._renderInfo()}
+
+          <div className="input-container layout layout--gutter-xs">
+            <div className="layout__item u-fill">
+              {this._renderInput()}
+            </div>
+            {this._renderInputFieldAddition()}
           </div>
+
           {staticField && this._renderStaticValue(type, defaultValue)}
         </div>
+
         {type !== 'children' && children && this._renderChildren()}
-        {validationError && this.state.touched && this._renderValidationText()}
+        {this._renderValidationText()}
       </div>
     )
   };

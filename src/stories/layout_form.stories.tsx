@@ -32,17 +32,11 @@ const breakpointOptions = {
 const breakpointDefaultValue = 'sm';
 
 stories.addDecorator(withKnobs)
-  .addDecorator(styles({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '100vh'
-  }));
 
 stories.add('Form', withInfo(
   'A example layout for a form'
 )(() =>
-  <div style={{ maxWidth: 600 }}>
+  <div style={{ maxWidth: 500, margin: '2.4rem auto' }}>
     <Tile padding="lg">
       <Form primaryBtnText="Submit"
         onSubmitHandler={action('submit')}
@@ -69,7 +63,9 @@ stories.add('Form', withInfo(
           onChangeHandler={action('changed')}
           placeholder={text('Placeholder text', 'Placeholder text')}
           infoText={text('Info text', 'Description of the input field')}
-          focusOnLoad />
+          focusOnLoad
+          required
+          infoLinkURL="http://www.ultimaker.com" />
 
         <InputField type="number"
           id="id_2"
@@ -79,7 +75,8 @@ stories.add('Form', withInfo(
           min={1}
           max={100}
           defaultValue={10}
-          onChangeHandler={action('changed')} />
+          onChangeHandler={action('changed')}
+          required />
 
         <InputField type="select"
           id="id_3"
@@ -87,7 +84,8 @@ stories.add('Form', withInfo(
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
-          selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]} />
+          selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]}
+          required />
 
         <InputField type="checkbox"
           id="id_4"
@@ -95,7 +93,8 @@ stories.add('Form', withInfo(
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
-          defaultValue={true} />
+          defaultValue={true}
+          required />
 
         <InputField type="date"
           id="id_5"
@@ -103,7 +102,8 @@ stories.add('Form', withInfo(
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
-          defaultValue="2019-02-08" />
+          defaultValue="2019-02-08"
+          required />
 
           <div>
             <a href="#link">Links</a>  or other elements may also be used.
