@@ -14,8 +14,6 @@ export interface MotionStyle {
 
 export class Modal extends React.Component<ModalProps, {}> {
 
-  public static displayName = 'Modal';
-
   componentDidUpdate(prevProps: ModalProps): void {
     const { isOpen } = this.props;
 

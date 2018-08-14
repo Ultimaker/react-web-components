@@ -76,8 +76,6 @@ export interface InputFieldState {
 
 export class InputField extends React.Component<InputFieldProps, InputFieldState> {
 
-  public static displayName = 'InputField';
-
   public static defaultProps: Partial<InputFieldProps> = {
     type: 'text',
     labelLayoutWidth: '1/1',

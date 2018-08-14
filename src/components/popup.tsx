@@ -53,8 +53,6 @@ export interface PopupState {
 
 export class Popup extends React.Component<PopupProps, PopupState> {
 
-  public static displayName = 'Popup';
-
   state = {
     inputValue: undefined,
     previousInputValue: undefined,

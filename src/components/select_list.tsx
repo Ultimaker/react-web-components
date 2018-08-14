@@ -30,8 +30,6 @@ export interface SelectListState {
 
 export class SelectList extends React.Component<SelectListProps, SelectListState> {
 
-  public static displayName = 'SelectList';
-
   state = {
     showMenu: false
   }

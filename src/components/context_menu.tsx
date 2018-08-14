@@ -26,8 +26,6 @@ const windowMargin = 10;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
 
-  public static displayName = 'ContextMenu';
-
   private menuRef;
 
   public static defaultProps: Partial<ContextMenuProps> = {

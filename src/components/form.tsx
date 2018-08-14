@@ -36,8 +36,6 @@ export interface FormValidationResponse {
 
 export class Form extends React.Component<FormProps, FormState> {
 
-	public static displayName = 'Form';
-
 	state = {
 		primaryBtnSpinner: false,
 		secondaryBtnSpinner: false

@@ -24,8 +24,6 @@ const windowMargin = 10;
 
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
-  public static displayName = 'Tooltip';
-
   static defaultProps = {
     direction: 'north'
   };

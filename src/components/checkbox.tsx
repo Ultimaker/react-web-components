@@ -13,9 +13,7 @@ export interface CheckboxProps {
 }
 
 export class Checkbox extends React.Component<CheckboxProps, {}> {
-
-  public static displayName = 'Checkbox';
-
+  
   private inputRef;
 
   constructor(props) {
