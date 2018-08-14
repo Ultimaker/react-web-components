@@ -5,12 +5,12 @@ import Modal from './modal';
 import { default as Button, ButtonStyle } from './button';
 import { default as InputField, InputFieldType } from './input_field';
 
-export type PopupType = 'confirm' | 'prompt';
+export type PopupType = 'confirm' | 'prompt' | 'children';
 
 export interface PopupProps {
   /** The modal will be displayed when true */
   isOpen?: boolean;
-  /** Type of popup: 'confirm' | 'prompt' */
+  /** Type of popup: 'confirm' | 'prompt' | 'children' */
   type: PopupType;
   /** Popup header text */
   headerText: string;
@@ -139,10 +139,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
   render(): JSX.Element {
     const { isOpen, type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
-      inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, inputDefaultValue } = this.props;
+      inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, inputDefaultValue, children } = this.props;
     const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner } = this.state;
-
-    const showValidationError = validationErrorMsg && validationErrorMsg.length > 0;
 
     return <Modal isOpen={isOpen}>
       <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
@@ -169,6 +167,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
             </div>
           }
+
+          {type === 'children' && children}
         </div>
 
         <div className="popup__actions">
