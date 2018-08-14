@@ -3,17 +3,18 @@
 
   .arrow-column
     flex-basis: 4rem
-    text-align: center
 
     @include respond-to(sm)
       flex-basis: 6rem
+
+    .panel-arrow
+      margin: 0.8rem auto 0
 
   .slide-out-container__header
     @include font-size-header-2
     font-family: $font-primary-medium
     line-height: 2.6rem
     cursor: pointer
-    padding: 1.2rem
 
   .slide-out-container__body
-    padding: 1.2rem 1.2rem 2.4rem 1.2rem
+    padding: 2.4rem 0

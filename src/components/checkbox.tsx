@@ -13,12 +13,12 @@ export interface CheckboxProps {
 }
 
 export class Checkbox extends React.Component<CheckboxProps, {}> {
-
-  private input;
+  
+  private inputRef;
 
   constructor(props) {
     super(props);
-
+    this.inputRef = React.createRef();
     this._onChangeHandler = this._onChangeHandler.bind(this);
   }
 
@@ -30,7 +30,7 @@ export class Checkbox extends React.Component<CheckboxProps, {}> {
     const { defaultValue } = this.props;
     
     if (defaultValue === true) {
-      this.input.checked = defaultValue;
+      this.inputRef.current.checked = defaultValue;
     }
   }
 
@@ -54,7 +54,7 @@ export class Checkbox extends React.Component<CheckboxProps, {}> {
         type="checkbox"
         onChange={this._onChangeHandler}
         disabled={disabled}
-        ref={input => this.input = input}
+        ref={this.inputRef}
       />
       <label htmlFor={id}></label>
     </div>

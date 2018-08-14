@@ -26,12 +26,14 @@ export interface ButtonProps {
   linkURL?: string;
   /** If true button of type link will open in a new tab */
   linkToNewTab?: boolean;
+  /** Additional classes for styling */
+  className?: string;
 }
 
 export const Button: React.StatelessComponent<ButtonProps> =
-  ({ id, onClickHandler, disabled, type, style, shape, showSpinner, linkURL, linkToNewTab, children }) => {
+  ({ id, onClickHandler, disabled, type, style, shape, showSpinner, linkURL, linkToNewTab, className, children }) => {
 
-    const classes = classNames(`btn btn--${style} btn--${shape}`, { 'disabled': disabled }, { 'waiting': showSpinner });
+    const classes = classNames(`btn btn--${style} btn--${shape} ${className}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
     const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
       if (onClickHandler) {

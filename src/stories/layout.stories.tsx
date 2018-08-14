@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
+import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 
@@ -119,7 +120,11 @@ stories.add('Slide out container', withInfo(
 )(() =>
   <div style={{ width: '80vw' }}>
     <Tile padding="md">
-      <SlideOutContainer headerText={text('Header text', 'Slide out container component')} >
+      <SlideOutContainer
+        isOpen={boolean('isOpen', true)}
+        headerText={text('Header text', 'Slide out container component')}
+        onHeaderClick={action('clicked')}
+      >
         <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
       </SlideOutContainer>
     </Tile>
@@ -130,7 +135,7 @@ stories.add('Slide in panel', withInfo(
   'A toggle slide in panel, that slides into view from the right side of the screen.'
 )(() =>
   <div>
-    <SlideInPanel headerTitle="Panel title" headerLabels={[{label: 'Panel label', info: '1.0.0'}]} isOpen={boolean('isOpen', true)} width="600px" includeFooter>
+    <SlideInPanel headerTitle="Panel title" headerLabels={[{ label: 'Panel label', info: '1.0.0' }]} isOpen={boolean('isOpen', true)} width="600px" includeFooter>
       <div>Panel body</div>
       <div>Panel Footer</div>
     </SlideInPanel>

@@ -1,33 +1,26 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 
 export interface DropDownMenuItemProps {
-  /** This should be set to true when the item is selected */
   active: boolean;
-  /** Disables the menu item when true */
   disabled?: boolean;
-  /** Called when the menu item is clicked */
-  onChangeHandler: (value: string | number) => void;
-  /** The label for the menu item */
-  label: string;
-  /** The value of the menu item */
-  value: string | number;
+  onClickHandler: () => void;
 }
 
-export const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
-  ({ active, disabled, onChangeHandler, label, value }) => {
+const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
+  ({ active, disabled, onClickHandler, children }) => {
 
-    const _onClickHandler = (e: React.MouseEvent<HTMLLIElement>) => {
+    const handleClick = (e) => {
       if(disabled){
         e.stopPropagation();
       }
       else{
-        onChangeHandler(value);
+        onClickHandler();
       }
     }
 
-    return <li className={classNames({ disabled, active })} onClick={_onClickHandler}>
-      {label}
+    return <li className={classNames({ disabled, active })} onClick={handleClick}>
+      {children}
     </li>
 
   };

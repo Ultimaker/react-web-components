@@ -7,6 +7,8 @@ import { withInfo } from '@storybook/addon-info';
 
 import ContextMenu from '../components/context_menu';
 import ContextMenuItem from '../components/context_menu_item';
+import DropDownMenu from '../components/drop_down_menu';
+import DropDownMenuItem from '../components/drop_down_menu_item';
 import UserAccountMenu from '../components/user_account_menu';
 
 const stories = storiesOf('Menus', module);
@@ -42,6 +44,17 @@ stories.add('Context menu', withInfo(
     <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
     <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
   </ContextMenu>
+));
+
+stories.add('Drop down menu', withInfo(
+  'Drop down menu'
+)(() =>
+  <DropDownMenu activeLabel='10'>
+    <DropDownMenuItem active={true} onClickHandler={action('clicked')}>10</DropDownMenuItem>
+    <DropDownMenuItem active={false} onClickHandler={action('clicked')}>20</DropDownMenuItem>
+    <DropDownMenuItem active={false} onClickHandler={action('clicked')}>40</DropDownMenuItem>
+    <DropDownMenuItem active={false} onClickHandler={action('clicked')}>80</DropDownMenuItem>
+  </DropDownMenu>
 ));
 
 stories.add('User account menu', withInfo(

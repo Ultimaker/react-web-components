@@ -6,8 +6,8 @@ export interface ProgressBarProps {
   progressPercentage: number;
   /** Set to true if the process is stopped/paused */
   isStopped?: boolean;
-  /** The height of the progress bar */
-  barHeight?: number
+  /** The height of the progress bar. Include unit */
+  barHeight?: string
 }
 
 export const ProgressBar: React.StatelessComponent<ProgressBarProps> =
@@ -28,7 +28,7 @@ export const ProgressBar: React.StatelessComponent<ProgressBarProps> =
 
 ProgressBar.defaultProps = {
   progressPercentage: 0,
-  barHeight: 2
+  barHeight: '0.6rem'
 };
 
 ProgressBar.displayName = "ProgressBar";
