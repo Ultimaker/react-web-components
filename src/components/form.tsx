@@ -28,6 +28,7 @@ export interface FormProps {
 export interface FormState {
 	primaryBtnSpinner: boolean;
 	secondaryBtnSpinner: boolean;
+	submitted: boolean;
 }
 
 export interface FormValidationResponse {
@@ -40,7 +41,8 @@ export class Form extends React.Component<FormProps, FormState> {
 
 	state = {
 		primaryBtnSpinner: false,
-		secondaryBtnSpinner: false
+		secondaryBtnSpinner: false,
+		submitted: false
 	}
 
 	constructor(props) {
@@ -54,6 +56,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
 	_onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
 		e.preventDefault();
+		this.setState({ submitted: true });
 		this.props.onSubmitHandler();
 	}
 
@@ -61,20 +64,23 @@ export class Form extends React.Component<FormProps, FormState> {
 		this.props.secondaryBtnHandler();
 	}
 
-    /**
-	 * Renders a single child of the form component. If the child has the `id` props, we will check for errors in the
-	 * form validation, any errors are passed as extra props to the child.
-     * @param child - The child element to be rendered.
-     * @private
-     */
+	/**
+ * Renders a single child of the form component. If the child has the `id` props, we will check for errors in the
+ * form validation, any errors are passed as extra props to the child.
+	 * @param child - The child element to be rendered.
+	 * @private
+	 */
 	private _renderChild(child: JSX.Element): JSX.Element {
-		const formValidation = this.props.formValidation
-		const errors = formValidation && child && child.props && formValidation.validationErrors[child.props.id]
+		const { formValidation } = this.props;
+		const { submitted } = this.state;
+		const errors = formValidation && child && child.props && formValidation.validationErrors[child.props.id];
+
 		return child && (
 			<div className="form__item">
 				{React.cloneElement(child, errors && {
 					validationError: errors,
-					validationErrorMsg: errors
+					validationErrorMsg: errors,
+					submitted
 				})}
 			</div>
 		)

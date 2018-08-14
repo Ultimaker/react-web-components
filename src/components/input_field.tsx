@@ -67,6 +67,8 @@ export interface InputFieldProps {
   tagSuggestions?: string[]
   /** Displays the required icon when true */
   required?: boolean
+  /** Whether the form has been submitted. This will be set by the Form component */
+  submitted?: boolean
 }
 
 export interface InputFieldState {
@@ -164,13 +166,19 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     return null;
   }
 
+  protected _showValidationError(){
+    const { validationError, submitted } = this.props;
+    const { touched } = this.state;
+    return validationError && (touched || submitted )
+  }
+
   protected _renderInput(): React.ReactNode {
-    const { id, type, validationError, min, max, placeholder, selectActiveOptionValue, selectOptions,
+    const { id, type, min, max, placeholder, selectActiveOptionValue, selectOptions,
       defaultValue, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad, infoText, infoLinkURL,
       required, children } = this.props;
 
     const classes = classNames('input',
-      { 'error': validationError && this.state.touched },
+      { 'error': this._showValidationError() },
       { 'pad-right': (infoText || infoLinkURL || required) }) // add extra padding inside the field if an icon is shown inside the input field
 
     if (type === 'children') {
@@ -195,7 +203,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           onChangeHandler={this._onChangeHandler}
           activeOptionValue={selectActiveOptionValue}
           options={selectOptions}
-          error={validationError && this.state.touched}
+          error={this._showValidationError()}
         />
       )
     }
@@ -224,7 +232,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
           id={id}
           onChangeHandler={this._onChangeHandler}
           defaultDate={defaultValue ? defaultValue.toString() : null}
-          error={validationError && this.state.touched}
+          error={this._showValidationError()}
         />
       )
     }
@@ -287,13 +295,12 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderValidationText(): JSX.Element {
-    const { validationError, validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint } = this.props;
-    const { touched } = this.state;
+    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint } = this.props;
     let errorMsgOffsetClass;
 
     let validationText = null;
 
-    if (validationError && touched) {
+    if (this._showValidationError()) {
       validationText = validationErrorMsg;
     }
 
