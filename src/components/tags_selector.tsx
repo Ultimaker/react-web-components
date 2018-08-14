@@ -37,6 +37,8 @@ const delimiters = [keyCodes.comma, keyCodes.enter];
 
 export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelectorState> {
 
+  public static displayName = 'TagsSelector';
+
   state = {
     tags: [],
     suggestions: [],

@@ -60,6 +60,8 @@ export interface ResponseErrorState {
 
 export default class ResponseError extends React.Component<ResponseErrorProps, ResponseErrorState> {
 
+    public static displayName = 'ResponseError';
+
     state = {
         userText: null,
         showPopup: true

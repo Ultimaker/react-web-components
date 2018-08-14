@@ -16,6 +16,8 @@ export interface DropDownMenuState {
 
 export default class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
 
+  public static displayName = 'DropDownMenu';
+
   state = {
     showMenu: false
   };

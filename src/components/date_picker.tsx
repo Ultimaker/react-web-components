@@ -21,6 +21,8 @@ export interface DatePickerState {
 
 export class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
+  public static displayName = 'DatePicker';
+
   static defaultProps = {
     placeholder: ''
   };

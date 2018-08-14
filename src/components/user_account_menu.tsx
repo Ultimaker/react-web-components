@@ -28,6 +28,8 @@ export interface UserAccountMenuState {
 
 export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserAccountMenuState> {
 
+  public static displayName = 'UserAccountMenu';
+
   private menuRef;
 
   state = {

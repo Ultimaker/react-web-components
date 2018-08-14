@@ -14,4 +14,6 @@ export const Loading: React.StatelessComponent<LoadingProps> =
     </div>
   };
 
+Loading.displayName = "Loading";
+
 export default Loading;

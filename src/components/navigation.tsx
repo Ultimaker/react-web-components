@@ -18,6 +18,8 @@ const motion = { stiffness: 999, damping: 50 };
 
 export default class Navigation extends React.Component<NavigationProps, NavigationState> {
 
+  public static displayName = 'Navigation';
+
   state = {
     showNav: false
   }

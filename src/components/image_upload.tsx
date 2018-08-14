@@ -27,6 +27,8 @@ export interface ImageUploadState {
 
 export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
 
+  public static displayName = 'ImageUpload';
+
   public static defaultProps: Partial<ImageUploadProps> = {
     shape: 'round',
     size: '18rem'

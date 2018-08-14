@@ -19,6 +19,8 @@ export interface FileUploadState {
 
 export class FileUpload extends React.Component<FileUploadProps, {}> {
 
+  public static displayName = 'FileUpload';
+
   state = {
     selectedFileName: null
   }

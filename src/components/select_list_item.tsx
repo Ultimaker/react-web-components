@@ -18,10 +18,10 @@ export const SelectListItem: React.StatelessComponent<SelectListItemProps> =
   ({ active, disabled, onChangeHandler, label, value }) => {
 
     const _onClickHandler = (e: React.MouseEvent<HTMLLIElement>) => {
-      if(disabled){
+      if (disabled) {
         e.stopPropagation();
       }
-      else{
+      else {
         onChangeHandler(value);
       }
     }
@@ -31,5 +31,7 @@ export const SelectListItem: React.StatelessComponent<SelectListItemProps> =
     </li>
 
   };
+
+SelectListItem.displayName = "SelectListItem";
 
 export default SelectListItem;

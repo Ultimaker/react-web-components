@@ -24,6 +24,8 @@ export interface SlideInPanelProps {
 
 export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
 
+  public static displayName = 'SlideInPanel';
+
   componentDidUpdate(prevProps: SlideInPanelProps): void {
     const { isOpen } = this.props;
 

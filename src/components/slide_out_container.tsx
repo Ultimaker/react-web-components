@@ -54,4 +54,6 @@ SlideOutContainer.defaultProps = {
   headerTextAlignment: 'left'
 };
 
+SlideOutContainer.displayName = "SelectListItem";
+
 export default SlideOutContainer;
