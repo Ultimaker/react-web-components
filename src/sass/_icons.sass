@@ -19,26 +19,40 @@
     font-size: 1.6rem
 
     &.primary
+
+      svg
+        fill: $color-primary-btn-text
+
       &.disabled
         background-color: $color-primary-btn-disabled
         color: $color-primary-btn-disabled-text
+
+        svg
+          fill: $color-primary-btn-disabled-text
 
     &.secondary
       color: $color-secondary-btn-text
       background-color: $color-secondary-btn
       border: 2px solid $color-secondary-btn-border
 
-      &.disabled
-        border-color: $color-text-lighter
-        color: $color-text-lighter
+      svg
+        fill: $color-secondary-btn-text
 
     &.alert
       color: $color-alert-btn-text
       background-color: $color-alert-btn
+      border: 2px solid $color-alert-btn-border
 
+      svg
+        fill: $color-alert-btn-text
+
+    &.alert, &.secondary
       &.disabled
-        background-color: $color-alert-btn-disabled
-        color: $color-alert-btn-disabled-text
+        border-color: $color-text-lighter
+        color: $color-text-lighter
+
+        svg
+          fill: $color-text-lighter
 
   &.icon--approved
     svg
