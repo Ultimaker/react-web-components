@@ -16,13 +16,11 @@ export interface DatePickerProps {
 
 export interface DatePickerState {
   focused: boolean;
-  date: any;
+  date: moment.Moment;
 }
 
 export class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
-
-  public static displayName = 'DatePicker';
-
+  
   static defaultProps = {
     placeholder: ''
   };
@@ -41,9 +39,12 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
     return null;
   }
 
-  _onChangeHandler(date) {
+  _onChangeHandler(date: moment.Moment): void {
     this.setState({ date });
-    this.props.onChangeHandler(moment(date).utc().format());
+
+    if (date) {
+      this.props.onChangeHandler(moment(date).utc().format());
+    }
   }
 
   render(): JSX.Element {
