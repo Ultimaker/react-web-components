@@ -13,6 +13,8 @@ export interface ContextMenuProps {
   menuOffsetDirection?: MenuOffsetDirection;
   /** Direction to position the menu: 'north' | 'south' */
   menuDirection?: MenuDirection;
+  /** Whether the context menu is position in a panel, such as a header or footer */
+  menuPanelPosition?: boolean;
 }
 
 export interface ContextMenuState {
@@ -119,11 +121,10 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
   }
 
   render(): JSX.Element {
-
-    const { menuWidth, menuOffsetDirection, menuDirection, children } = this.props;
+    const { menuWidth, menuOffsetDirection, menuDirection, menuPanelPosition, children } = this.props;
     const { showMenu, menuOffset } = this.state;
 
-    const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu });
+    const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu }, {'context-menu--panel': menuPanelPosition});
     const menuStyle = this._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
     return <div ref={this.menuRef} className={classes} tabIndex={1}
