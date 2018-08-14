@@ -22,7 +22,7 @@ export interface FormProps {
 	/** The form validation state and validation error messages */
 	formValidation?: FormValidationResponse;
 	/** Override the form validation and enable the primary button */
-	formValidationOverride?: boolean;
+	alwaysEnableSubmitButton?: boolean;
 }
 
 export interface FormState {
@@ -82,7 +82,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
 	render(): JSX.Element {
 		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, formValidation,
-			secondaryBtnLink, formValidationOverride, children } = this.props;
+			secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
 		const { primaryBtnSpinner, secondaryBtnSpinner } = this.state;
 
 		const isValidationErrors = formValidation && formValidation.success === false;
@@ -96,7 +96,7 @@ export class Form extends React.Component<FormProps, FormState> {
 							<div className="btn__container">
 								<Button
 									style={primaryBtnStyle}
-									disabled={formValidationOverride ? false : secondaryBtnSpinner || isValidationErrors}
+									disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || isValidationErrors}
 									type="submit"
 									showSpinner={primaryBtnSpinner}>
 
