@@ -5,7 +5,7 @@ export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldValidationProps {
   /** Message to show for the validation error */
-  validationErrorMsg?: string;
+  validationErrorMsg: string;
   /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
   labelLayoutWidth: LayoutWidth;
   /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
