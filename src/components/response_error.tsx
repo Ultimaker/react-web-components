@@ -84,8 +84,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
                         <div key={error.id}>{getTranslatedError(error, errorMessageTemplates, fieldNames)}</div>
                     )}
                 </Tile>
-                { isServerError && <Popup
-                    isOpen={this.state.showPopup}
+                { isServerError && this.state.showPopup && <Popup
                     type="prompt"
                     headerText={I18n.translate("error popup title", "Something went wrong at our end :(")}
                     bodyText={I18n.translate("error popup details",

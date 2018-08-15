@@ -22,7 +22,7 @@ stories.addDecorator(withKnobs)
 stories.add('Modal', withInfo(
   'Basic Modal'
 )(() =>
-  <Modal isOpen={boolean('isOpen', true)} onOverlayClickHandler={action('clicked')}>
+  <Modal onOverlayClickHandler={action('clicked')}>
     <div style={{ background: 'white', height: 200, width: 300 }} />
   </Modal>
 ));
@@ -31,7 +31,6 @@ stories.add('Confirm popup', withInfo(
   'Popup modal for confirmation'
 )(() =>
   <Popup
-    isOpen={boolean('isOpen', true)}
     type="confirm"
     headerText="Confirm popup"
     bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -47,7 +46,6 @@ stories.add('Prompt popup', withInfo(
   'Popup modal for user input'
 )(() =>
   <Popup
-    isOpen={boolean('isOpen', true)}
     type="prompt"
     headerText="Prompt popup"
     bodyText="Input a number:"
@@ -69,7 +67,6 @@ stories.add('About dialog', withInfo(
   <AboutDialog
     appName="Test app"
     versionNumber="1.0.0"
-    isOpen={boolean('isOpen', true)}
     closeHandler={action('clicked')}
     supportLinkURL={'https://ultimaker.com/'}
     supportLinkText="Support page"
