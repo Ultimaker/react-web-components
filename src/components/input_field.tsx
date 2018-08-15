@@ -69,6 +69,8 @@ export interface InputFieldProps {
   required?: boolean
   /** Whether the form has been submitted. This will be set by the Form component */
   submitted?: boolean
+  /** JSX Element, such as an icon, to be shown before the input label */
+  preLabelElement?: JSX.Element
 }
 
 export interface InputFieldState {
@@ -133,6 +135,18 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
   }
 
+  protected _renderPreLabelElement(): JSX.Element {
+    const { preLabelElement } = this.props;
+
+    if (preLabelElement) {
+      return <div className="layout__item u-fit input-field__pre-element">
+        {preLabelElement}
+      </div>
+    }
+
+    return null
+  }
+
   protected _renderLabel(): JSX.Element {
     const { id, label, labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
 
@@ -140,16 +154,17 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       { 'tag-selector-label': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
 
     return <div className={classes}>
-      <div className="layout layout--gutter-xs" >
+      <div className="layout layout--gutter-sm" >
+        {this._renderPreLabelElement()}
         <div className="layout__item u-fit">
           <label htmlFor={id}>{label}</label>
         </div>
-        {this._renderLabelAddition()}
+        {this._renderPostLabelElement()}
       </div>
     </div>
   }
 
-  protected _renderLabelAddition(): JSX.Element {
+  protected _renderPostLabelElement(): JSX.Element {
     const { infoText, infoLinkURL } = this.props;
 
     if (infoText || infoLinkURL) {
@@ -166,10 +181,10 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     return null;
   }
 
-  protected _showValidationError(){
+  protected _showValidationError() {
     const { validationError, submitted } = this.props;
     const { touched } = this.state;
-    return validationError && (touched || submitted )
+    return validationError && (touched || submitted)
   }
 
   protected _renderInput(): React.ReactNode {
@@ -349,7 +364,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   render(): JSX.Element {
     const { label, className, labelLayoutWidth, centerInputField,
       staticField, defaultValue, type, children } = this.props;
-      
+
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
     const inputClasses = classNames(`input-field input-field--${type} layout`, className, { 'hide-input': staticField });
     const inputLayoutClasses = classNames(`layout__item u-${inputLayoutWidth} layout__item--middle`, { 'text-center': centerInputField });
@@ -357,8 +372,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     return (
       <div className={inputClasses}>
         {label && this._renderLabel()}
-        <div className={inputLayoutClasses}>
 
+        <div className={inputLayoutClasses}>
           <div className="input-container layout layout--gutter-xs">
             <div className="layout__item u-fill">
               {this._renderInput()}
