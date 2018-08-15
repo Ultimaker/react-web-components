@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { Collapse } from 'react-collapse';
 
@@ -14,7 +13,7 @@ export interface ContextMenuProps {
   /** Direction to position the menu: 'north' | 'south' */
   menuDirection?: MenuDirection;
   /** Whether the context menu is position in a panel, such as a header or footer */
-  menuPanelPosition?: boolean;
+  positionMenuInPanel?: boolean;
 }
 
 export interface ContextMenuState {
@@ -121,10 +120,10 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
   }
 
   render(): JSX.Element {
-    const { menuWidth, menuOffsetDirection, menuDirection, menuPanelPosition, children } = this.props;
+    const { menuWidth, menuOffsetDirection, menuDirection, positionMenuInPanel, children } = this.props;
     const { showMenu, menuOffset } = this.state;
 
-    const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu }, {'context-menu--panel': menuPanelPosition});
+    const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu }, {'context-menu--panel': positionMenuInPanel});
     const menuStyle = this._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
     return <div ref={this.menuRef} className={classes} tabIndex={1}
