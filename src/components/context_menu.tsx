@@ -12,7 +12,7 @@ export interface ContextMenuProps {
   menuOffsetDirection?: MenuOffsetDirection;
   /** Direction to position the menu: 'north' | 'south' */
   menuDirection?: MenuDirection;
-  /** Whether the context menu is position in a panel, such as a header or footer */
+  /** Whether the context menu is positioned in a panel, such as a header or footer */
   positionMenuInPanel?: boolean;
 }
 
