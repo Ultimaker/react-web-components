@@ -104,15 +104,16 @@
   &.context-menu--north
     .container
       bottom: auto
+      top: 0
 
       &:before
-        top: -5.7rem
+        top: -5px
         border: none
         border-bottom: 1px solid rgba(0, 0, 0, 0.075)
         border-right: 1px solid rgba(0, 0, 0, 0.075)
 
       .menu
-        transform: translate(0, calc(-100% - 5.2rem))
+        transform: translate(0, calc(-100%))
 
   &.visible
 
@@ -122,3 +123,14 @@
     .trigger, .label
       &:hover, &:focus
         background-color: transparent
+
+
+  &.context-menu--panel
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+
+    .trigger
+      border-radius: 0
+      height: 100%
