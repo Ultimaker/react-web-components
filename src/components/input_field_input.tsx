@@ -223,7 +223,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
       return <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
     }
     if (type === 'checkbox' || type === 'tags') {
-      return this._renderInput();
+      return this._renderInputElement();
     }
 
     return value
