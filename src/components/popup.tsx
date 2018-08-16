@@ -140,6 +140,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                 onChangeHandler={this._onChangeHandler}
                 placeholder={promptPlaceholder}
                 validationErrorMsg={validationErrorMsg}
+                validationError={validationErrorMsg && validationErrorMsg.length > 0}
+                submitted={validationErrorMsg && validationErrorMsg.length > 0}
                 focusOnLoad />
 
             </div>
