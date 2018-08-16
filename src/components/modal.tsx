@@ -2,29 +2,29 @@ import * as React from 'react';
 import { TransitionMotion, spring } from 'react-motion';
 
 export interface ModalProps {
-  /** The modal will be displayed when true */
-  isOpen?: boolean;
   /** Called when the background overlay is clicked */
   onOverlayClickHandler?: Function;
+}
+
+export interface ModalState {
+  /** The modal will be displayed when true */
+  isOpen: boolean;
 }
 
 export interface MotionStyle {
   opacity: number;
 }
 
-export class Modal extends React.Component<ModalProps, {}> {
+export class Modal extends React.Component<ModalProps, ModalState> {
 
-  componentDidUpdate(prevProps: ModalProps): void {
-    const { isOpen } = this.props;
+  state = {
+    isOpen: false
+  }
 
-    if (prevProps.isOpen !== isOpen) {
-      if (isOpen) {
-        document.body.classList.add('noscroll');
-      }
-      else {
-        document.body.classList.remove('noscroll');
-      }
-    }
+  componentDidMount(): void {
+    document.body.classList.add('noscroll');
+
+    this.setState({isOpen: true})
   }
 
   componentWillUnmount(): void {
@@ -67,7 +67,7 @@ export class Modal extends React.Component<ModalProps, {}> {
 
   render(): JSX.Element {
 
-    const { isOpen } = this.props;
+    const { isOpen } = this.state;
 
     const interpolatedStyle = {
       key: 'modal',

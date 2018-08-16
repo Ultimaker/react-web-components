@@ -1,17 +1,12 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import moment = require('moment');
 
-import { SelectList, SelectOption } from './select_list';
-import Checkbox from './checkbox';
-import { ImageUpload, ImageFile } from './image_upload';
-import { Image, ImageShape } from './image';
-import DatePicker from './date_picker';
-import TagsSelector from './tags_selector';
-import InfoTooltip from './info_tooltip';
-import InfoLink from './info_link';
-import FileUpload from './file_upload';
-import RequiredIcon from './icons/required_icon';
+import InputFieldLabel from './input_field_label';
+import InputFieldInput from './input_field_input';
+import InputFieldValidation from './input_field_validation';
+import { SelectOption } from './select_list';
+import { ImageFile } from './image_upload';
+import { ImageShape } from './image';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
@@ -25,12 +20,6 @@ export interface InputFieldProps {
   id: string;
   /** Additional classes for styling */
   className?: string;
-  /** Input field label */
-  label?: string | JSX.Element;
-  /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
-  labelLayoutWidth?: LayoutWidth;
-  /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
-  labelWidthBreakpoint?: Breakpoint;
   /** Input field will be centered if true. Useful for type image or checkbox */
   centerInputField?: boolean;
   /** Input field will be displayed in the error state when true */
@@ -59,16 +48,25 @@ export interface InputFieldProps {
   imageShape?: ImageShape;
   /** If true, the defaultValue is shown as plain text and the input hidden */
   staticField?: boolean
-  /** Description of the fields to be shown in a tooltip */
-  infoText?: string
-  /** The URL of the link to be shown next to the input field */
-  infoLinkURL?: string
   /** A list of suggestions for tags input field */
   tagSuggestions?: string[]
   /** Displays the required icon when true */
   required?: boolean
   /** Whether the form has been submitted. This will be set by the Form component */
   submitted?: boolean
+  /** Input field label */
+  label?: string | JSX.Element;
+  /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
+  labelLayoutWidth?: LayoutWidth;
+  /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
+  labelWidthBreakpoint?: Breakpoint;
+  /** JSX Element, such as an icon, to be shown before the input label */
+  preLabelElement?: JSX.Element
+  /** Description of the fields to be shown in a tooltip */
+  infoText?: string
+  /** The URL of the link to be shown next to the input field */
+  infoLinkURL?: string
+  /** A list of suggestions for tags input field */
 }
 
 export interface InputFieldState {
@@ -81,11 +79,8 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   public static defaultProps: Partial<InputFieldProps> = {
     type: 'text',
     labelLayoutWidth: '1/1',
-    labelWidthBreakpoint: 'sm',
-    centerInputField: false
+    labelWidthBreakpoint: 'sm'
   };
-
-  private inputRef;
 
   state = {
     touched: false
@@ -93,30 +88,9 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
   constructor(props) {
     super(props);
-    this.inputRef = React.createRef();
     // bind callbacks once
     this._onChangeHandler = this._onChangeHandler.bind(this);
-  }
-
-  componentDidMount(): void {
-    this._focusOnPromptInput();
-    this._setDefaultValue();
-  }
-
-  _focusOnPromptInput(): void {
-    const { focusOnLoad } = this.props;
-
-    if (this.inputRef.current && focusOnLoad) {
-      this.inputRef.current.focus();
-    }
-  }
-
-  _setDefaultValue() {
-    const { defaultValue, type } = this.props;
-
-    if (defaultValue && this.inputRef.current && (type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email' || type === 'url')) {
-      this.inputRef.current.value = defaultValue.toString();
-    }
+    this._showValidationError = this._showValidationError.bind(this);
   }
 
   _onChangeHandler(value: InputFieldValue): void {
@@ -133,244 +107,85 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
   }
 
-  protected _renderLabel(): JSX.Element {
-    const { id, label, labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
-
-    const classes = classNames(`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`,
-      { 'tag-selector-label': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
-
-    return <div className={classes}>
-      <div className="layout layout--gutter-xs" >
-        <div className="layout__item u-fit">
-          <label htmlFor={id}>{label}</label>
-        </div>
-        {this._renderLabelAddition()}
-      </div>
-    </div>
-  }
-
-  protected _renderLabelAddition(): JSX.Element {
-    const { infoText, infoLinkURL } = this.props;
-
-    if (infoText || infoLinkURL) {
-      return <div className="layout__item u-fit input-field__label-addition">
-        {infoText &&
-          <InfoTooltip infoText={infoText} />
-        }
-        {infoLinkURL && !infoText && // can't have both an InfoTooltip and a InfoLink
-          <InfoLink infoLinkURL={infoLinkURL} />
-        }
-      </div>
-    }
-
-    return null;
-  }
-
-  protected _showValidationError(){
+  _showValidationError() {
     const { validationError, submitted } = this.props;
     const { touched } = this.state;
-    return validationError && (touched || submitted )
+    return validationError && (touched || submitted)
   }
 
-  protected _renderInput(): React.ReactNode {
-    const { id, type, min, max, placeholder, selectActiveOptionValue, selectOptions,
-      defaultValue, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad, infoText, infoLinkURL,
-      required, children } = this.props;
+  protected _renderLabel(): JSX.Element {
+    const { id, label, labelLayoutWidth, labelWidthBreakpoint, type, preLabelElement, infoText, infoLinkURL } = this.props;
 
-    const classes = classNames('input',
-      { 'error': this._showValidationError() },
-      { 'pad-right': (infoText || infoLinkURL || required) }) // add extra padding inside the field if an icon is shown inside the input field
-
-    if (type === 'children') {
-      return children;
-    }
-    if (type === 'textarea') {
-      return (
-        <textarea
-          id={id}
-          name={id}
-          onChange={(e) => this._onChangeHandler(e.target.value)}
-          placeholder={placeholder}
-          className={classes}
-          ref={this.inputRef}
-          rows={3}
-        />
-      )
-    }
-    if (type === 'select') {
-      return (
-        <SelectList
-          onChangeHandler={this._onChangeHandler}
-          activeOptionValue={selectActiveOptionValue}
-          options={selectOptions}
-          error={this._showValidationError()}
-        />
-      )
-    }
-    if (type === 'checkbox') {
-      return (
-        <Checkbox
-          id={id}
-          onChangeHandler={this._onChangeHandler}
-          defaultValue={defaultValue === true}
-          disabled={staticField}
-        />
-      )
-    }
-    if (type === 'image') {
-      return (
-        <ImageUpload size={imageSize}
-          defaultURL={defaultValue ? defaultValue.toString() : null}
-          onFileSelection={this._onChangeHandler}
-          shape={imageShape}
-        />
-      )
-    }
-    if (type === 'date') {
-      return (
-        <DatePicker
-          id={id}
-          onChangeHandler={this._onChangeHandler}
-          defaultDate={defaultValue ? defaultValue.toString() : null}
-          error={this._showValidationError()}
-        />
-      )
-    }
-    if (type === 'tags') {
-      return <TagsSelector
-        onChangeHandler={this._onChangeHandler}
-        placeholder={placeholder}
-        suggestions={tagSuggestions}
-        defaultTags={Array.isArray(defaultValue) && defaultValue}
-        disabled={staticField}
-        autofocus={focusOnLoad}
-      />
-    }
-    if (type === 'file') {
-      return <FileUpload
-        id={id}
-        onChangeHandler={this._onChangeHandler}
-        disabled={staticField}
-      />
-    }
-    return (
-      <input
-        id={id}
-        className={classes}
-        name={id}
+    if (label) {
+      return <InputFieldLabel
         type={type}
-        min={min ? min : null}
-        max={max ? max : null}
-        onChange={(e) => this._onChangeHandler(e.target.value)}
-        placeholder={placeholder}
-        ref={this.inputRef}
+        id={id}
+        label={label}
+        labelLayoutWidth={labelLayoutWidth}
+        labelWidthBreakpoint={labelWidthBreakpoint}
+        preLabelElement={preLabelElement}
+        infoText={infoText}
+        infoLinkURL={infoLinkURL}
       />
-    )
-  }
-
-  protected _renderStaticValue(type: InputFieldType, value: InputFieldValue): JSX.Element | React.ReactNode | InputFieldValue {
-    const { selectOptions, selectActiveOptionValue, imageSize, imageShape } = this.props;
-
-    if (type === 'url') {
-      return <a href={value.toString()} target="_blank">{value}</a>
     }
-    if (type === 'email') {
-      return <a href={`mailto:${value}`} target="_top">{value}</a>
-    }
-    if (type === 'date' && typeof value === 'string') {
-      return moment(value).format('DD-MM-YYYY');
-    }
-    if (type === 'select') {
-      const option = selectOptions.find(option => option.value === selectActiveOptionValue);
-      return option ? option.label : null;
-    }
-    if (type === 'image') {
-      return <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
-    }
-    if (type === 'checkbox' || type === 'tags') {
-      return this._renderInput();
-    }
-
-    return value
-  }
-
-  protected _renderValidationText(): JSX.Element {
-    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint } = this.props;
-    let errorMsgOffsetClass;
-
-    let validationText = null;
-
-    if (this._showValidationError()) {
-      validationText = validationErrorMsg;
-    }
-
-    if (labelLayoutWidth === 'fill' || labelLayoutWidth === 'fit') {
-      // align validation message to the right
-      errorMsgOffsetClass = 'u-fill'
-    }
-    else {
-      // align validation message under input (after label width)
-      errorMsgOffsetClass = `u-${labelLayoutWidth}-${labelWidthBreakpoint}`
-    }
-
-    if (validationText) {
-      return <div className="layout__item u-full">
-        <div className="layout">
-          {labelLayoutWidth !== '1/1' &&
-            <div className={`layout__item ${errorMsgOffsetClass}`}></div>
-          }
-          <div className="layout__item u-fill">
-            <div className="input-field__error-message">{validationText}</div>
-          </div>
-        </div>
-      </div>
-    }
-  }
-
-  protected _renderInputFieldAddition() {
-    const { required } = this.props;
-    if (required) {
-      return <div className="layout__item u-fit input-field__field-addition">
-        <RequiredIcon />
-      </div>
-    }
-
     return null;
   }
 
-  protected _renderChildren(): JSX.Element {
-    const { children } = this.props;
+  protected _renderInputElements() {
+    const { id, type, centerInputField, validationErrorMsg, defaultValue, min, max, placeholder,
+      selectActiveOptionValue, selectOptions, imageSize, staticField, imageShape, tagSuggestions,
+      focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
 
-    return <div className="layout__item u-fit">
-      {children}
-    </div>
+    return <InputFieldInput
+      type={type}
+      id={id}
+      centerInputField={centerInputField}
+      validationErrorMsg={validationErrorMsg}
+      onChangeHandler={this._onChangeHandler}
+      defaultValue={defaultValue}
+      min={min}
+      max={max}
+      placeholder={placeholder}
+      focusOnLoad={focusOnLoad}
+      selectActiveOptionValue={selectActiveOptionValue}
+      selectOptions={selectOptions}
+      imageSize={imageSize}
+      imageShape={imageShape}
+      staticField={staticField}
+      tagSuggestions={tagSuggestions}
+      required={required}
+      showValidationError={this._showValidationError()}
+      labelLayoutWidth={labelLayoutWidth}
+      labelWidthBreakpoint={labelWidthBreakpoint}
+      children={children}
+    />
   }
 
+  protected _renderValidation(): JSX.Element {
+    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
+
+    if (this._showValidationError() && validationErrorMsg) {
+      return <InputFieldValidation
+        validationErrorMsg={validationErrorMsg}
+        labelLayoutWidth={labelLayoutWidth}
+        labelWidthBreakpoint={labelWidthBreakpoint}
+        required={required}
+      />
+    }
+    return null;
+  }
+
+
   render(): JSX.Element {
-    const { label, className, labelLayoutWidth, centerInputField,
-      staticField, defaultValue, type, children } = this.props;
-      
-    const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
+    const { className, staticField, type } = this.props;
+
     const inputClasses = classNames(`input-field input-field--${type} layout`, className, { 'hide-input': staticField });
-    const inputLayoutClasses = classNames(`layout__item u-${inputLayoutWidth} layout__item--middle`, { 'text-center': centerInputField });
 
     return (
       <div className={inputClasses}>
-        {label && this._renderLabel()}
-        <div className={inputLayoutClasses}>
-
-          <div className="input-container layout layout--gutter-xs">
-            <div className="layout__item u-fill">
-              {this._renderInput()}
-            </div>
-            {this._renderInputFieldAddition()}
-          </div>
-
-          {staticField && this._renderStaticValue(type, defaultValue)}
-        </div>
-
-        {type !== 'children' && children && this._renderChildren()}
-        {this._renderValidationText()}
+        {this._renderLabel()}
+        {this._renderInputElements()}
+        {this._renderValidation()}
       </div>
     )
   };

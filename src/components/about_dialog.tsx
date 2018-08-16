@@ -33,8 +33,6 @@ export interface AboutDialogProps {
   appName: string;
   /** Version number of the application */
   versionNumber: string;
-  /** Dialog will be displayed when true */
-  isOpen: boolean;
   /** Function to close the dialog */
   closeHandler: () => void;
   /** URL to a support page */
@@ -67,11 +65,11 @@ function licenseList(componentsList: OpenSourceComponent[]): JSX.Element[] {
 }
 
 const AboutDialog: React.StatelessComponent<AboutDialogProps> =
-  ({ componentsList, isOpen, versionNumber, closeHandler, appName, supportLinkURL, supportLinkText }) => {
+  ({ componentsList, versionNumber, closeHandler, appName, supportLinkURL, supportLinkText }) => {
 
     return (
       <div className="about-dialog">
-        <Modal isOpen={isOpen} onOverlayClickHandler={closeHandler}>
+        <Modal onOverlayClickHandler={closeHandler}>
           <Tile>
             <div className="about-dialog__header">{T.aboutApp(appName)}</div>
             <p>{T.version(versionNumber)}</p>

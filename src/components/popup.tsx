@@ -8,8 +8,6 @@ import { default as InputField, InputFieldType } from './input_field';
 export type PopupType = 'confirm' | 'prompt' | 'children';
 
 export interface PopupProps {
-  /** The modal will be displayed when true */
-  isOpen?: boolean;
   /** Type of popup: 'confirm' | 'prompt' | 'children' */
   type: PopupType;
   /** Popup header text */
@@ -61,38 +59,17 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     secondaryBtnSpinner: false,
   }
 
-  private popupBody: HTMLElement;
+  private popupBodyRef: React.RefObject<HTMLDivElement>;;
 
   constructor(props) {
     super(props);
 
+    this.popupBodyRef = React.createRef();
+
     // bind callbacks once
-    this._setPopupBodyClass = this._setPopupBodyClass.bind(this);
     this._onChangeHandler = this._onChangeHandler.bind(this);
     this._primaryBtnHandler = this._primaryBtnHandler.bind(this);
     this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
-  }
-
-  componentDidMount(): void {
-    this._setPopupBodyClass();
-    window.addEventListener("resize", this._setPopupBodyClass);
-  }
-
-  componentWillUnmount(): void {
-    window.removeEventListener("resize", this._setPopupBodyClass);
-  }
-
-  _setPopupBodyClass(): void {
-    if (this.props.isOpen) {
-      const popupBody = this.popupBody;
-
-      if (popupBody.scrollHeight > popupBody.clientHeight) {
-        popupBody.classList.add('popup__body--scrollable');
-      }
-      else {
-        popupBody.classList.remove('popup__body--scrollable');
-      }
-    }
   }
 
   _primaryBtnHandler(e: React.FormEvent<HTMLFormElement>): void {
@@ -138,18 +115,18 @@ export class Popup extends React.Component<PopupProps, PopupState> {
   }
 
   render(): JSX.Element {
-    const { isOpen, type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
+    const { type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
       inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, inputDefaultValue, children } = this.props;
     const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner } = this.state;
 
-    return <Modal isOpen={isOpen}>
+    return <Modal>
       <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
 
         <div className="popup__header">
           {headerText}
         </div>
 
-        <div className="popup__body" ref={popupBody => this.popupBody = popupBody} >
+        <div className="popup__body" ref={this.popupBodyRef} >
           {splitTextByNewLine(bodyText)}
 
           {type === 'prompt' &&
@@ -163,6 +140,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                 onChangeHandler={this._onChangeHandler}
                 placeholder={promptPlaceholder}
                 validationErrorMsg={validationErrorMsg}
+                validationError={validationErrorMsg && validationErrorMsg.length > 0}
+                submitted={validationErrorMsg && validationErrorMsg.length > 0}
                 focusOnLoad />
 
             </div>

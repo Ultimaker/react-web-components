@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
-import styles from "@sambego/storybook-styles";
 
 // components
 import Form from '../components/form';
@@ -36,7 +35,7 @@ stories.addDecorator(withKnobs)
 stories.add('Form', withInfo(
   'A example layout for a form'
 )(() =>
-  <div style={{ maxWidth: 500, margin: '2.4rem auto' }}>
+  <div style={{ maxWidth: 550, margin: '2.4rem auto' }}>
     <Tile padding="lg">
       <Form primaryBtnText="Submit"
         onSubmitHandler={action('submit')}
@@ -105,8 +104,8 @@ stories.add('Form', withInfo(
           defaultValue="2019-02-08"
           required />
 
-          <div>
-            <a href="#link">Links</a>  or other elements may also be used.
+        <div>
+          <a href="#link">Links</a>  or other elements may also be used.
         </div>
       </Form>
 
