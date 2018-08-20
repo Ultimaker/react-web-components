@@ -9,6 +9,7 @@ import { withState } from '@dump247/storybook-state';
 import Form from '../components/form';
 import InputField from '../components/input_field';
 import Tile from '../components/tile';
+import { ImageFile } from '../components/image_upload';
 
 const stories = storiesOf('Example layouts', module);
 
@@ -55,7 +56,7 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
               value={store.state.imageValue}
               labelLayoutWidth='fit'
               centerInputField
-              onChangeHandler={(id, value) => store.set({ imageValue: value })} />
+              onChangeHandler={(id, value: ImageFile) => store.set({ imageValue: value.preview })} />
 
             <InputField type="text"
               id="id_1"
