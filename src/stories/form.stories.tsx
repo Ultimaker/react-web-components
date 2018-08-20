@@ -6,9 +6,6 @@ import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 
 import InputField from '../components/input_field';
-import Checkbox from '../components/checkbox';
-import ImageUpload from '../components/image_upload';
-import DatePicker from '../components/date_picker';
 import { Tile } from '../components/tile';
 
 const stories = storiesOf('Forms', module);
@@ -95,9 +92,10 @@ stories.add('Email field', withInfo(
 stories.add('Checkbox', withInfo(
   'Checkbox input field'
 )(() =>
-  <Checkbox id="id_6"
+  <InputField type="checkbox"
+    id="id_6"
     onChangeHandler={action('changed')}
-    disabled={boolean('Disabled', false)} />
+    staticField={boolean('Disabled', false)} />
 ));
 
 stories.add('Select field', withInfo(
@@ -111,7 +109,11 @@ stories.add('Select field', withInfo(
       validationError={boolean('Validation error', false)}
       validationErrorMsg={text('Validation error message', 'Validation Error')}
       selectActiveOptionValue={1}
-      selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]} />
+      selectOptions={[
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2, disabled: true },
+        { label: 'Option 3', value: 3 }
+      ]} />
   </div>
 ));
 
@@ -124,15 +126,18 @@ const defaultValue = 'round';
 stories.add('Image upload', withInfo(
   'Image drag and drop or click to upload'
 )(() =>
-  <ImageUpload shape={selectV2('Image shape', options, defaultValue)} onFileSelection={action('changed')} />
+  <InputField type="image"
+    id="id_8"
+    onChangeHandler={action('changed')}
+    imageShape={selectV2('Image shape', options, defaultValue)} />
 ));
 
 stories.add('Date picker', withInfo(
   'Date selection field'
 )(() =>
   <div style={{ width: 250 }}>
-    <DatePicker
-      id="id_8"
+    <InputField type="date"
+      id="id_9"
       onChangeHandler={action('changed')} />
   </div>
 ));
@@ -143,7 +148,7 @@ stories.add('Tags selector', withInfo(
   <Tile>
     <div style={{ width: 350 }}>
       <InputField type="tags"
-        id="id_3"
+        id="id_10"
         onChangeHandler={action('changed')}
         placeholder="Tags"
         tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']}
@@ -157,7 +162,7 @@ stories.add('Upload file field', withInfo(
 )(() =>
   <div style={{ width: 350 }}>
     <InputField type="file"
-      id="id_1"
+      id="id_11"
       label={text('Label', 'Upload file')}
       onChangeHandler={action('changed')}
       placeholder={text('Placeholder text', 'Placeholder text')}
