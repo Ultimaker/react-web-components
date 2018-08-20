@@ -14,7 +14,7 @@ export interface SelectListProps {
   value: string | number;
   /** Called when an option is selected */
   onChangeHandler: (value: string | number) => void;
-  /** When true the error state will be enabled */
+  /** When true the error state will be displayed */
   error?: boolean;
 }
 

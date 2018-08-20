@@ -7,10 +7,15 @@ import { SingleDatePicker } from 'react-dates';
 import moment = require('moment');
 
 export interface DatePickerProps {
+  /** Called when a date is selected */
   onChangeHandler: (date) => void;
+  /** String date value to pre-fill or change the DatePicker date */
   value?: string;
+  /** DatePicker id. Must be unique */
   id: string;
+  /** Placeholder text */
   placeholder?: string;
+  /** When true the error state will be displayed */
   error?: boolean;
 }
 
