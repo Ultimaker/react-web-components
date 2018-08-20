@@ -165,7 +165,6 @@ stories.add('Date picker', withState({ value: '10-10-2018' })
   (withInfo('Date selection field')
     (({ store }) =>
       <div style={{ width: 250 }}>
-      {store.state.value}
         <InputField type="date"
           id="id_9"
           value={store.state.value}
