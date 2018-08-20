@@ -50,12 +50,14 @@ stories.add('Form', withInfo(
 
         <InputField type="image"
           id="id_0"
+          value={null}
           labelLayoutWidth='fit'
           centerInputField
           onChangeHandler={action('changed')} />
 
         <InputField type="text"
           id="id_1"
+          value={null}
           label={text('Label 1', 'Text input field')}
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
@@ -68,17 +70,18 @@ stories.add('Form', withInfo(
 
         <InputField type="number"
           id="id_2"
+          value={null}
           label={text('Label 2', 'Number input field')}
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           min={1}
           max={100}
-          defaultValue={10}
           onChangeHandler={action('changed')}
           required />
 
         <InputField type="select"
           id="id_3"
+          value={null}
           label={text('Label 3', 'Select input field')}
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
@@ -88,20 +91,20 @@ stories.add('Form', withInfo(
 
         <InputField type="checkbox"
           id="id_4"
+          value={null}
           label={text('Label 4', 'Checkbox input field')}
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
-          defaultValue={true}
           required />
 
         <InputField type="date"
           id="id_5"
+          value={null}
           label={text('Label 5', 'Date input field')}
           labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
           labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
           onChangeHandler={action('changed')}
-          defaultValue="2019-02-08"
           required />
 
         <div>

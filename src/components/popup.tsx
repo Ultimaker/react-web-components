@@ -72,6 +72,14 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
   }
 
+  componentDidMount(): void {
+    const { inputDefaultValue } = this.props;
+
+    if (inputDefaultValue){
+      this.setState({inputValue: inputDefaultValue.toString()})
+    }
+  }
+
   _primaryBtnHandler(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
 
@@ -116,8 +124,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
   render(): JSX.Element {
     const { type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
-      inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, inputDefaultValue, children } = this.props;
-    const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner } = this.state;
+      inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, children } = this.props;
+    const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner, inputValue } = this.state;
 
     return <Modal>
       <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
@@ -134,7 +142,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
               <InputField
                 id="prompt-input"
                 type={inputType ? inputType : null}
-                defaultValue={inputDefaultValue}
+                value={inputValue}
                 min={inputMin ? inputMin : null}
                 max={inputMax ? inputMax : null}
                 onChangeHandler={this._onChangeHandler}

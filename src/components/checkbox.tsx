@@ -4,61 +4,46 @@ import classNames from 'classnames';
 export interface CheckboxProps {
   /** Checkbox id. Must be unique */
   id: string;
-  /** Whether the checkbox is checked or not */
-  defaultValue?: boolean;
+  /** The value of the checkbox */
+  value: boolean;
   /** Called when the checkbox is clicked */
   onChangeHandler: (checked: boolean) => void;
   /** Disables the checkbox when true */
   disabled?: boolean;
 }
 
-export class Checkbox extends React.Component<CheckboxProps, {}> {
-  
-  private inputRef;
+export const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, value, onChangeHandler, disabled }) => {
 
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
-    this._onChangeHandler = this._onChangeHandler.bind(this);
+  const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChangeHandler(e.currentTarget.checked);
   }
 
-  componentDidMount(): void {
-    this._setDefaultValue();
-  }
-
-  _setDefaultValue() {
-    const { defaultValue } = this.props;
-    
-    if (defaultValue === true) {
-      this.inputRef.current.checked = defaultValue;
-    }
-  }
-
-  _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    this.props.onChangeHandler(e.currentTarget.checked);
-  }
-
-  _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
+  const _stopPropagation = (e: React.MouseEvent<EventTarget>) => {
     e.stopPropagation()
   }
 
-  render(): JSX.Element {
-    const { id, disabled } = this.props;
 
-    const classes = classNames('checkbox', { disabled });
+  const classes = classNames('checkbox', { disabled });
 
-    return <div className={classes} onClick={this._stopPropagation} >
-      <input
-        id={id}
-        name={id}
-        type="checkbox"
-        onChange={this._onChangeHandler}
-        disabled={disabled}
-        ref={this.inputRef}
-      />
-      <label htmlFor={id}></label>
-    </div>
-  }
+  return <div className={classes} onClick={_stopPropagation} >
+    <input
+      id={id}
+      name={id}
+      type="checkbox"
+      checked={value !== null ? value : false}
+      onChange={_onChangeHandler}
+      disabled={disabled}
+      ref={this.inputRef}
+    />
+    <label htmlFor={id}></label>
+  </div>
 }
+
+
+Checkbox.defaultProps = {
+  value: false
+};
+
+Checkbox.displayName = "Checkbox";
 
 export default Checkbox;

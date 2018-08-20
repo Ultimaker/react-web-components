@@ -9,8 +9,8 @@ export interface TagsSelectorProps {
   onChangeHandler: (tags: string[]) => void;
   /** Placeholder text */
   placeholder?: string;
-  /** Tags that should already be selected */
-  defaultTags?: string[]
+  /** List of strings to be converted into tags */
+  value: string[]
   /** Disables the selector when true */
   disabled?: boolean;
   /** Whether the tag field should be auto-focused */
@@ -20,7 +20,6 @@ export interface TagsSelectorProps {
 export interface TagsSelectorState {
   tags: Tag[]
   suggestions: Tag[]
-  defaultSet: boolean
 }
 
 export interface Tag {
@@ -39,8 +38,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
   state = {
     tags: [],
-    suggestions: [],
-    defaultSet: false
+    suggestions: []
   }
 
   constructor(props) {
@@ -53,20 +51,19 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
   static getDerivedStateFromProps(props: TagsSelectorProps, state: TagsSelectorState): TagsSelectorState {
     let suggestions = []
-    let defaultTags = []
+    let tags = []
 
-    if (props.suggestions && !state.defaultSet) {
+    if (props.suggestions && TagsSelector._convertStringsToTags(props.suggestions) !== state.suggestions) {
       suggestions = TagsSelector._convertStringsToTags(props.suggestions)
     }
 
-    if (props.defaultTags && !state.defaultSet) {
-      defaultTags = TagsSelector._convertStringsToTags(props.defaultTags)
+    if (props.value && TagsSelector._convertStringsToTags(props.value) !== state.tags) {
+      tags = TagsSelector._convertStringsToTags(props.value)
     }
 
     return {
-      suggestions: [...suggestions, ...state.suggestions],
-      tags: [...defaultTags, ...state.tags],
-      defaultSet: true
+      suggestions: suggestions,
+      tags: tags
     }
   }
 
@@ -92,9 +89,6 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     if (!disabled) {
       const { tags } = this.state;
       const updatedTags = tags.filter((tag, index) => index !== i);
-      this.setState({
-        tags: updatedTags
-      });
       this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
     }
   }
@@ -105,7 +99,6 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     if (!disabled) {
       const { tags } = this.state;
       const updatedTags = [...tags, tag];
-      this.setState({ tags: updatedTags });
       this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
     }
   }
@@ -120,7 +113,6 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
       updatedTags.splice(currPos, 1);
       updatedTags.splice(newPos, 0, tag);
 
-      this.setState({ tags: updatedTags });
       this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
     }
   }

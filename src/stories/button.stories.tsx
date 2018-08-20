@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
-import { State, Store } from '@sambego/storybook-state';
+import { withState } from '@dump247/storybook-state';
 import { withInfo } from '@storybook/addon-info';
 
 import Button from '../components/button';
@@ -12,10 +12,6 @@ import CloseButton from '../components/close_button';
 import InfoLink from '../components/info_link';
 
 const stories = storiesOf('Button', module);
-
-const store = new Store({
-  checked: false,
-});
 
 stories.addDecorator(withKnobs)
   .addDecorator(styles({
@@ -163,17 +159,17 @@ stories.add('Pill', withInfo(
   </div>
 ));
 
-stories.add('Toggle', withInfo({
-  propTablesExclude: [State],
-  text: 'Toggle switch button based on a checkbox. Can be used for turning on/off settings.'
-})(() =>
-  <State store={store}>
-    <ToggleButton id="toggle"
-      checked={false}
-      onChangeHandler={() => store.set({ checked: !store.get('checked') })}
-      disabled={boolean('Disabled', false)} />
-  </State>
-));
+stories.add('Toggle', withState({ checked: null })
+  (withInfo('Toggle switch button based on a checkbox. Can be used for turning on/off settings.')
+    (({ store }) =>
+      <ToggleButton
+        id="toggle"
+        checked={store.state.value}
+        onChangeHandler={() => store.set({ value: !store.state.value })}
+        disabled={boolean('Disabled', false)} />
+    )
+  )
+);
 
 stories.add('Close', withInfo(
   'Close button. Can be used for closing a container/panel.'

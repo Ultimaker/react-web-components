@@ -8,7 +8,7 @@ import moment = require('moment');
 
 export interface DatePickerProps {
   onChangeHandler: (date) => void;
-  defaultDate?: string;
+  value?: string;
   id: string;
   placeholder?: string;
   error?: boolean;
@@ -27,22 +27,32 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
 
   state = {
     focused: false,
-    date: null
+    date: undefined
   }
 
   static getDerivedStateFromProps(props: DatePickerProps, state: DatePickerState): Partial<DatePickerState> {
-    if (props.defaultDate && state.date === null) {
+    if (props.value && state.date === undefined) {
+      // allow date to be set initially to the props value
       return {
-        date: moment(props.defaultDate, 'DD-MM-YYYY')
+        date: moment(props.value)
+      }
+    }
+    else if (props.value && state.date && moment(props.value) !== state.date) {
+      // after the first time, only set date to the props value if date is not null, i.e. has a valid value
+      // this is to avoid issues when the user types in the date manually
+      return {
+        date: moment(props.value)
       }
     }
     return null;
   }
 
   _onChangeHandler(date: moment.Moment): void {
+    // if date is invalid it will be set to null
     this.setState({ date });
 
     if (date) {
+      // only call onChangeHandler when the date is valid
       this.props.onChangeHandler(moment(date).utc().format());
     }
   }

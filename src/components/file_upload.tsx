@@ -2,8 +2,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { I18n } from '../utils/i18n';
 
-import InfoLink from './info_link';
-
 export interface FileUploadProps {
   /** FileUpload id. Must be unique */
   id: string;
