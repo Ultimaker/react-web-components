@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { default as Button, ButtonStyle } from './button';
 
 
-export type FormValidationResponse = { [key: string]: any[] | string }
+export type FormValidationResponse = { [key: string]: any[] | string }; // can be any[] if returned from I18n.format
 
 export interface FormProps {
 	/** Primary button text */
@@ -22,7 +22,7 @@ export interface FormProps {
 	/** A url to link to instead of calling secondaryBtnHandler */
 	secondaryBtnLink?: string;
 	/** The form validation state and validation error messages */
-	formValidationErrors?: FormValidationResponse;
+	validationErrors?: FormValidationResponse;
 	/** Override the form validation and enable the primary button */
 	alwaysEnableSubmitButton?: boolean;
 }
@@ -68,9 +68,9 @@ export class Form extends React.Component<FormProps, FormState> {
 	 * @private
 	 */
 	private _renderChild(child: JSX.Element): JSX.Element {
-		const { formValidationErrors } = this.props;
+		const { validationErrors } = this.props;
 		const { submitted } = this.state;
-		const errors = formValidationErrors && child && child.props && formValidationErrors[child.props.id];
+		const errors = validationErrors && child && child.props && validationErrors[child.props.id];
 
 		return child && (
 			<div className="form__item">
@@ -83,7 +83,7 @@ export class Form extends React.Component<FormProps, FormState> {
 	}
 
 	render(): JSX.Element {
-		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, formValidationErrors,
+		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
 			secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
 		const { primaryBtnSpinner, secondaryBtnSpinner } = this.state;
 
@@ -96,7 +96,7 @@ export class Form extends React.Component<FormProps, FormState> {
 							<div className="btn__container">
 								<Button
 									style={primaryBtnStyle}
-									disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || formValidationErrors !== null}
+									disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || validationErrors !== null}
 									type="submit"
 									showSpinner={primaryBtnSpinner}>
 

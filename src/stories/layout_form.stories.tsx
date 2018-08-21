@@ -45,7 +45,7 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
             secondaryBtnText="Cancel"
             secondaryBtnHandler={action('clicked')}
             secondaryBtnStyle="quiet"
-            formValidationErrors={{
+            validationErrors={{
               id_1: 'Validation error',
               id_2: 'Validation error',
               id_3: 'Validation error',
