@@ -22,10 +22,8 @@ export interface InputFieldProps {
   className?: string;
   /** Input field will be centered if true. Useful for type image or checkbox */
   centerInputField?: boolean;
-  /** Input field will be displayed in the error state when true */
-  validationError?: boolean;
   /** Message to show for the validation error */
-  validationErrorMsg?: string;
+  validationError?: string;
   /** Called when the field changes */
   onChangeHandler: (id: string, value: InputFieldValue) => void;
   /** Input field value */
@@ -133,7 +131,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderInputElements() {
-    const { id, type, centerInputField, validationErrorMsg, value, min, max, placeholder,
+    const { id, type, centerInputField, validationError, value, min, max, placeholder,
       selectOptions, imageSize, staticField, imageShape, tagSuggestions,
       focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
 
@@ -141,7 +139,6 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
       type={type}
       id={id}
       centerInputField={centerInputField}
-      validationErrorMsg={validationErrorMsg}
       onChangeHandler={this._onChangeHandler}
       value={value}
       min={min}
@@ -162,11 +159,11 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderValidation(): JSX.Element {
-    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
+    const { validationError, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
 
-    if (this._showValidationError() && validationErrorMsg) {
+    if (this._showValidationError() && validationError) {
       return <InputFieldValidation
-        validationErrorMsg={validationErrorMsg}
+        validationError={validationError}
         labelLayoutWidth={labelLayoutWidth}
         labelWidthBreakpoint={labelWidthBreakpoint}
         required={required}

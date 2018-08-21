@@ -147,8 +147,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                 max={inputMax ? inputMax : null}
                 onChangeHandler={this._onChangeHandler}
                 placeholder={promptPlaceholder}
-                validationErrorMsg={validationErrorMsg}
-                validationError={validationErrorMsg && validationErrorMsg.length > 0}
+                validationError={validationErrorMsg}
                 submitted={validationErrorMsg && validationErrorMsg.length > 0}
                 focusOnLoad />
 

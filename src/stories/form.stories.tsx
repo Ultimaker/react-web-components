@@ -31,8 +31,7 @@ stories.add('Text field', withState({ value: null })
           onChangeHandler={(id, value) => store.set({ value })}
           placeholder={text('Placeholder text', 'Placeholder text')}
           focusOnLoad
-          validationError={boolean('Validation error', false)}
-          validationErrorMsg={text('Validation error message', 'Validation Error')} />
+          validationError={text('Validation error message', 'Validation Error')} />
       </div>
     )
   )
@@ -50,8 +49,7 @@ stories.add('Number field', withState({ value: 1 })
           max={100}
           onChangeHandler={(id, value) => store.set({ value })}
           focusOnLoad
-          validationError={boolean('Validation error', false)}
-          validationErrorMsg={text('Validation error message', 'Validation Error')} />
+          validationError={text('Validation error message', 'Validation Error')} />
       </div>
     )
   )
@@ -84,8 +82,7 @@ stories.add('Password field', withState({ value: null })
           label={text('Label', 'Enter your password')}
           onChangeHandler={(id, value) => store.set({ value })}
           focusOnLoad
-          validationError={boolean('Validation error', false)}
-          validationErrorMsg={text('Validation error message', 'Validation Error')} />
+          validationError={text('Validation error message', 'Validation Error')} />
       </div>
     )
   )
@@ -101,8 +98,7 @@ stories.add('Email field', withState({ value: null })
           label={text('Label', 'Enter your email address')}
           onChangeHandler={(id, value) => store.set({ value })}
           focusOnLoad
-          validationError={boolean('Validation error', false)}
-          validationErrorMsg={text('Validation error message', 'Validation Error')} />
+          validationError={text('Validation error message', 'Validation Error')} />
       </div>
     )
   )
@@ -129,8 +125,7 @@ stories.add('Select field', withState({ value: null })
           value={store.state.value}
           label={text('Label', 'Select an option')}
           onChangeHandler={(id, value) => { console.log('value', value); store.set({ value }) }}
-          validationError={boolean('Validation error', false)}
-          validationErrorMsg={text('Validation error message', 'Validation Error')}
+          validationError={text('Validation error message', 'Validation Error')}
           selectOptions={[
             { label: 'Option 1', value: 1 },
             { label: 'Option 2', value: 2, disabled: true },
@@ -202,8 +197,7 @@ stories.add('Upload file field', withState({ value: null })
           onChangeHandler={(id, value) => store.set({ value })}
           placeholder={text('Placeholder text', 'Placeholder text')}
           focusOnLoad
-          validationError={boolean('Validation error', false)}
-          validationErrorMsg={text('Validation error message', 'Validation Error')} />
+          validationError={text('Validation error message', 'Validation Error')} />
       </div>
     )
   )

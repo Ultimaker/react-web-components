@@ -100,7 +100,7 @@ export class I18n {
 	 * @param language - The language we're loading.
 	 * @param url - The url of the language source file.
 	 */
-	private static async _loadTranslation (language: Languages, url: string) {
+	private static async _loadTranslation (language: Languages, url: string): Promise<void> {
 		await fetch(url)
 			.then(response => response.text())
 			.then(text => I18n._parse(text))

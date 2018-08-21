@@ -23,8 +23,6 @@ export interface InputFieldInputProps {
   id: string;
   /** Input field will be centered if true. Useful for type image or checkbox */
   centerInputField?: boolean;
-  /** Message to show for the validation error */
-  validationErrorMsg?: string;
   /** Called when the field changes */
   onChangeHandler: (value: InputFieldInputValue) => void;
   /** Input field value */
