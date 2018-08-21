@@ -73,7 +73,11 @@ export class Popup extends React.Component<PopupProps, PopupState> {
   }
 
   componentDidMount(): void {
-    this.setState({ inputValue: this.props.inputDefaultValue.toString() })
+    const { inputDefaultValue } = this.props;
+
+    if (inputDefaultValue) {
+      this.setState({ inputValue: inputDefaultValue.toString() })
+    }
   }
 
   _primaryBtnHandler(e: React.FormEvent<HTMLFormElement>): void {
