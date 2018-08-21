@@ -50,20 +50,23 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
   }
 
   static getDerivedStateFromProps(props: TagsSelectorProps, state: TagsSelectorState): TagsSelectorState {
-    let suggestions = []
-    let tags = []
+    let newSuggestions: Tag[] = null;
+    let newTags: Tag[] = null;
 
-    if (props.suggestions && TagsSelector._convertStringsToTags(props.suggestions) !== state.suggestions) {
-      suggestions = TagsSelector._convertStringsToTags(props.suggestions)
+    const convertedSuggestionTags: Tag[] = props.suggestions && TagsSelector._convertStringsToTags(props.suggestions);
+    const convertedTags: Tag[] = props.value && TagsSelector._convertStringsToTags(props.value);
+
+    if (convertedSuggestionTags !== state.suggestions) {
+      newSuggestions = convertedSuggestionTags
     }
 
-    if (props.value && TagsSelector._convertStringsToTags(props.value) !== state.tags) {
-      tags = TagsSelector._convertStringsToTags(props.value)
+    if (convertedTags !== state.tags) {
+      newTags = convertedTags
     }
 
     return {
-      suggestions: suggestions,
-      tags: tags
+      suggestions: newSuggestions,
+      tags: newTags
     }
   }
 
