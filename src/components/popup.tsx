@@ -76,6 +76,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     const { inputDefaultValue } = this.props;
 
     if (inputDefaultValue){
+      // set the initial value of the prompt input field
       this.setState({inputValue: inputDefaultValue.toString()})
     }
   }
