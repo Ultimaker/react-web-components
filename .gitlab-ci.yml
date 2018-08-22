@@ -1,19 +1,26 @@
-image: docker:stable
-
-variables:
-  # Needed for Docker access in the container.
-  DOCKER_HOST: tcp://0.0.0.0:2375
-  DOCKER_DRIVER: overlay2
+image: node:8
 
 stages:
   - test
+  - deploy
+
+before_script:
+  - yarn install
 
 test:
   stage: test
-  services:
-    - docker:dind
-  tags:
-    - docker
-    - kubernetes
   script:
-    - docker build -t ultimaker/react-web-components:test .
+    # TODO: run actual tests here when we have them, but for now we just build storybook to test
+    - yarn build
+  except:
+    - master
+
+pages:
+  stage: deploy
+  script:
+    - yarn build
+  artifacts:
+    paths:
+    - public
+  only:
+    - master
