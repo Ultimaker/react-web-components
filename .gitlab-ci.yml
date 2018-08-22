@@ -22,6 +22,9 @@ test:
 
 pages:
   stage: deploy
+  tags:
+    - docker
+    - kubernetes
   script:
     - yarn build
   artifacts:
