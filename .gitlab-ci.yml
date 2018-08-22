@@ -23,6 +23,7 @@ test:
 pages:
   stage: deploy
   script:
+    - mkdir docs
     - yarn build
   artifacts:
     paths:
