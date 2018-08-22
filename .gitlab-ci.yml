@@ -9,9 +9,6 @@ before_script:
 
 test:
   stage: test
-  tags:
-    - docker
-    - kubernetes
   script:
     # TODO: run actual tests here when we have them, but for now we just build storybook to test
     - yarn build
@@ -22,9 +19,6 @@ test:
 
 pages:
   stage: deploy
-  tags:
-    - docker
-    - kubernetes
   script:
     - yarn build
   artifacts:
