@@ -1,0 +1,19 @@
+image: docker:stable
+
+variables:
+  # Needed for Docker access in the container.
+  DOCKER_HOST: tcp://0.0.0.0:2375
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - test
+
+test:
+  stage: test
+  services:
+    - docker:dind
+  tags:
+    - docker
+    - kubernetes
+  script:
+    - docker build -it ultimaker/react-web-components:test .
