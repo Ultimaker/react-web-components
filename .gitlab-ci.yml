@@ -14,8 +14,6 @@ test:
     - yarn build
   except:
     - master
-    # for testing only
-    - small-popup-fixes
 
 pages:
   stage: deploy
@@ -26,5 +24,3 @@ pages:
     - public
   only:
     - master
-    # for testing only
-    - small-popup-fixes
