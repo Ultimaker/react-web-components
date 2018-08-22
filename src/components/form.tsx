@@ -99,7 +99,7 @@ export class Form extends React.Component<FormProps, FormState> {
 				{primaryBtnText &&
 					<div className="form__actions">
 						{primaryBtnText &&
-							<div className="btn__container">
+							<div className="form__btn-container">
 								<Button
 									style={primaryBtnStyle}
 									disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || isValidationErrors}
@@ -112,7 +112,7 @@ export class Form extends React.Component<FormProps, FormState> {
 						}
 
 						{secondaryBtnText && !secondaryBtnLink &&
-							<div className="btn__container">
+							<div className="form__btn-container">
 								<Button
 									style={secondaryBtnStyle}
 									disabled={primaryBtnSpinner}
@@ -125,7 +125,7 @@ export class Form extends React.Component<FormProps, FormState> {
 						}
 
 						{secondaryBtnText && secondaryBtnLink &&
-							<div className="btn__container">
+							<div className="form__btn-container">
 								<Link to={secondaryBtnLink} className="btn btn--quiet">
 									<span className="text">{secondaryBtnText}</span>
 								</Link>
