@@ -16,4 +16,4 @@ test:
     - docker
     - kubernetes
   script:
-    - docker build ultimaker/react-web-components:test .
+    - docker build -t ultimaker/react-web-components:test .
