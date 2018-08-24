@@ -115,7 +115,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
           placeholder={placeholder}
           className={classes}
           ref={this.inputRef}
-          value={value !== null ? value.toString() : ''}
+          value={value != null ? value.toString() : ''}
           rows={3}
         />
       )
@@ -143,7 +143,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
     if (type === 'image') {
       return (
         <ImageUpload size={imageSize}
-          imageURL={value !== null ? value.toString() : null}
+          imageURL={value != null ? value.toString() : null}
           onFileSelection={onChangeHandler}
           shape={imageShape}
         />
@@ -154,7 +154,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         <DatePicker
           id={id}
           onChangeHandler={onChangeHandler}
-          value={value !== null ? value.toString() : null}
+          value={value != null ? value.toString() : null}
           error={showValidationError}
         />
       )
@@ -186,7 +186,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         max={max ? max : null}
         onChange={(e) => onChangeHandler(e.target.value)}
         placeholder={placeholder}
-        value={value !== null ? value.toString() : ''}
+        value={value != null ? value.toString() : ''}
         ref={this.inputRef}
       />
     )
