@@ -12,9 +12,6 @@ export interface TranslationListItem {
 	source: any
 }
 
-/** The translated text may be a string or a list of strings and elements (when interpolate is used) **/
-export type TranslatedText = string | (string | JSX.Element)[]
-
 /**
  * Assorted methods for translations.
  */
@@ -83,7 +80,7 @@ export class I18n {
 	 * @param text The text to translate and format.
 	 * @param parameters The parameters to insert in the text.
 	 */
-	public static format(context: string, text: string, parameters: {[key: string]: any}): TranslatedText {
+	public static format(context: string, text: string, parameters: object): string {
 		return I18n.interpolate(this.translate(context, text), parameters)
 	}
 
@@ -92,7 +89,29 @@ export class I18n {
 	 * @param text The text to interpolate.
 	 * @param parameters The parameters to insert in the text.
 	 */
-	public static interpolate(text: string, parameters: {[key: string]: any}): TranslatedText {
+	public static interpolate (text: string, parameters: object = {}): string {
+		return text.replace(/%{(\w+)}/g, (_, expr) => (parameters || window)[expr])
+	}
+
+	/**
+	 * Get a translated and formatted version of the given text, allowing elements as text parameters.
+	 * @param context Context markers for this text to help translators.
+	 * @param text The text to translate and format.
+	 * @param parameters The parameters to insert in the text.
+	 * @return A list of elements.
+	 */
+	public static formatElements(context: string, text: string,
+								 parameters: {[key: string]: string | JSX.Element}): JSX.Element[] {
+		return I18n.interpolateElements(this.translate(context, text), parameters)
+	}
+
+	/**
+	 * Replace all passed parameters in a text.
+	 * @param text The text to interpolate.
+	 * @param parameters The parameters to insert in the text.
+	 * @return A list of elements enclosed in spans.
+	 */
+	public static interpolateElements(text: string, parameters: {[key: string]: string | JSX.Element}): JSX.Element[] {
 		return text.split(/%{(\w+)}/g).map((part, i) => part &&
 			<span key={i}>{parameters[part] || part}</span>
 		)

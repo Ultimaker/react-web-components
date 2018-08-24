@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { default as Button, ButtonStyle } from './button';
-import {TranslatedText} from '../utils/i18n';
 
 
-export type FormValidationResponse = { [key: string]: TranslatedText | FormValidationResponse };
+/** The validation of each field may be a text, a list of elements or the validation of a sub-model **/
+export type FormValidationResponse = { [key: string]: string | JSX.Element[] | FormValidationResponse };
 
 export interface FormProps {
 	/** Primary button text */
