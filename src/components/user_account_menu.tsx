@@ -101,14 +101,16 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                   <div className="account-section__name">{displayName}</div>
                 </div>
 
-                <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
-                  {I18n.translate("User account menu button", "Manage account")} 
-                  <LinkIcon />
-                </Button>
+                <div className="account-section__buttons">
+                  <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
+                    {I18n.translate("User account menu button", "Manage account")}
+                    <LinkIcon />
+                  </Button>
 
-                <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
-                  {I18n.translate("User account menu button", "Sign out")}
-                </Button>
+                  <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
+                    {I18n.translate("User account menu button", "Sign out")}
+                  </Button>
+                </div>
               </div>
 
             </div>

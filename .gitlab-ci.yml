@@ -1,0 +1,26 @@
+image: node:8
+
+stages:
+  - test
+  - deploy
+
+before_script:
+  - yarn install
+
+test:
+  stage: test
+  script:
+    # TODO: run actual tests here when we have them, but for now we just build storybook to test
+    - yarn build
+  except:
+    - master
+
+pages:
+  stage: deploy
+  script:
+    - yarn build
+  artifacts:
+    paths:
+    - public
+  only:
+    - master

@@ -75,9 +75,9 @@ export class Popup extends React.Component<PopupProps, PopupState> {
   componentDidMount(): void {
     const { inputDefaultValue } = this.props;
 
-    if (inputDefaultValue){
+    if (inputDefaultValue) {
       // set the initial value of the prompt input field
-      this.setState({inputValue: inputDefaultValue.toString()})
+      this.setState({ inputValue: inputDefaultValue.toString() })
     }
   }
 
@@ -160,7 +160,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
         <div className="popup__actions">
 
-          <div className="btn__container">
+          <div className="popup__btn-container">
             <Button
               style={primaryBtnStyle}
               disabled={validationErrorMsg && validationErrorMsg.length > 0 || secondaryBtnSpinner}
@@ -172,7 +172,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
           </div>
 
           {secondaryBtnText &&
-            <div className="btn__container">
+            <div className="popup__btn-container">
               <Button
                 style={secondaryBtnStyle}
                 disabled={primaryBtnSpinner}
