@@ -1,10 +1,12 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import * as React from 'react'
+import { Link } from 'react-router-dom'
 
-import { default as Button, ButtonStyle } from './button';
+import { default as Button, ButtonStyle } from './button'
+import {TranslatedText} from '../utils/i18n'
 
 
-export type FormValidationResponse = { [key: string]: any[] | string }; // can be any[] if returned from I18n.format
+/** The form validation may be a translated text or the validation of a sub-model **/
+export type FormValidationResponse = { [key: string]: TranslatedText | FormValidationResponse };
 
 export interface FormProps {
 	/** Primary button text */
@@ -43,22 +45,22 @@ export class Form extends React.Component<FormProps, FormState> {
 	}
 
 	constructor(props) {
-		super(props);
+		super(props)
 
 		// bind callbacks once
-		this._onSubmitHandler = this._onSubmitHandler.bind(this);
-		this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
-		this._renderChild = this._renderChild.bind(this);
+		this._onSubmitHandler = this._onSubmitHandler.bind(this)
+		this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this)
+		this._renderChild = this._renderChild.bind(this)
 	}
 
 	_onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
-		e.preventDefault();
-		this.setState({ submitted: true });
-		this.props.onSubmitHandler();
+		e.preventDefault()
+		this.setState({ submitted: true })
+		this.props.onSubmitHandler()
 	}
 
 	_secondaryBtnHandler(): void {
-		this.props.secondaryBtnHandler();
+		this.props.secondaryBtnHandler()
 	}
 
 	/**
@@ -68,9 +70,9 @@ export class Form extends React.Component<FormProps, FormState> {
 	 * @private
 	 */
 	private _renderChild(child: JSX.Element): JSX.Element {
-		const { validationErrors } = this.props;
-		const { submitted } = this.state;
-		const errors = validationErrors && child && child.props && validationErrors[child.props.id];
+		const { validationErrors } = this.props
+		const { submitted } = this.state
+		const errors = validationErrors && child && child.props && validationErrors[child.props.id]
 
 		return child && (
 			<div className="form__item">
@@ -84,8 +86,8 @@ export class Form extends React.Component<FormProps, FormState> {
 
 	render(): JSX.Element {
 		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
-			secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
-		const { primaryBtnSpinner, secondaryBtnSpinner } = this.state;
+			secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props
+		const { primaryBtnSpinner, secondaryBtnSpinner } = this.state
 
 		return (
 			<form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -133,4 +135,4 @@ export class Form extends React.Component<FormProps, FormState> {
 	}
 }
 
-export default Form;
+export default Form

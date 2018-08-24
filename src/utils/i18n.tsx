@@ -12,6 +12,9 @@ export interface TranslationListItem {
 	source: any
 }
 
+/** The translated text may be a string or a list of strings and elements (when interpolate is used) **/
+export type TranslatedText = string | (string | JSX.Element)[]
+
 /**
  * Assorted methods for translations.
  */
@@ -80,7 +83,7 @@ export class I18n {
 	 * @param text The text to translate and format.
 	 * @param parameters The parameters to insert in the text.
 	 */
-	public static format (context: string, text: string, parameters: {[key: string]: any}): any[] {
+	public static format(context: string, text: string, parameters: {[key: string]: any}): TranslatedText {
 		return I18n.interpolate(this.translate(context, text), parameters)
 	}
 
@@ -89,7 +92,7 @@ export class I18n {
 	 * @param text The text to interpolate.
 	 * @param parameters The parameters to insert in the text.
 	 */
-	public static interpolate(text: string, parameters: {[key: string]: any}): any[] {
+	public static interpolate(text: string, parameters: {[key: string]: any}): TranslatedText {
 		return text.split(/%{(\w+)}/g).map((part, i) => part &&
 			<span key={i}>{parameters[part] || part}</span>
 		)
