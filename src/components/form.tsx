@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { default as Button, ButtonStyle } from './button';
 
 
-export type FormValidationResponse = { [key: string]: any[] | string }; // can be any[] if returned from I18n.format
+/** The validation of each field may be a text, a list of elements or the validation of a sub-model **/
+export type FormValidationResponse = { [key: string]: string | JSX.Element[] | FormValidationResponse };
 
 export interface FormProps {
 	/** Primary button text */
