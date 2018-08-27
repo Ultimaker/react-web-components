@@ -124,7 +124,11 @@ const defaultValue = 'round';
 stories.add('Image upload', withInfo(
   'Image drag and drop or click to upload'
 )(() =>
-  <ImageUpload shape={selectV2('Image shape', options, defaultValue)} onFileSelection={action('changed')} />
+  <ImageUpload
+    size={text('Size', '18rem')} 
+    shape={selectV2('Image shape', options, defaultValue)}
+    onFileSelection={action('changed')}
+    placeholderLabel={text('Placeholder Label', 'Upload an image')} />
 ));
 
 stories.add('Date picker', withInfo(

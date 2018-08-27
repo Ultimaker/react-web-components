@@ -158,6 +158,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
           defaultURL={defaultValue ? defaultValue.toString() : null}
           onFileSelection={onChangeHandler}
           shape={imageShape}
+          placeholderLabel={placeholder}
         />
       )
     }
