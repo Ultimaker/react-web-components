@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 
@@ -15,6 +15,14 @@ import PendingIcon from '../components/icons/pending_icon';
 import RejectedIcon from '../components/icons/rejected_icon';
 import WarningIcon from '../components/icons/warning_icon';
 import WebsiteIcon from '../components/icons/website_icon';
+import DownloadIcon from '../components/icons/download_icon';
+import UploadIcon from '../components/icons/upload_icon';
+import LinkIcon from '../components/icons/link_icon';
+import DraftIcon from '../components/icons/draft_icon';
+import PublishedIcon from '../components/icons/published_icon';
+import UnpublishedIcon from '../components/icons/unpublished_icon';
+import RequiredIcon from '../components/icons/required_icon';
+import ProfileIcon from '../components/icons/profile_icon';
 
 const stories = storiesOf('Icons', module);
 
@@ -72,6 +80,46 @@ stories.add('Icons', withInfo(
       <GridItem layoutWidth="fit">
         <Tooltip tooltipText="WebsiteIcon">
           <WebsiteIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="ProfileIcon">
+          <ProfileIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="DownloadIcon">
+          <DownloadIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="UploadIcon">
+          <UploadIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="LinkIcon">
+          <LinkIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="RequiredIcon">
+          <RequiredIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="DraftIcon">
+          <DraftIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="PublishedIcon">
+          <PublishedIcon />
+        </Tooltip>
+      </GridItem>
+      <GridItem layoutWidth="fit">
+        <Tooltip tooltipText="UnpublishedIcon">
+          <UnpublishedIcon />
         </Tooltip>
       </GridItem>
 
