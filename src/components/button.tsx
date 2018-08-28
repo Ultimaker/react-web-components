@@ -64,7 +64,8 @@ Button.defaultProps = {
   type: 'button',
   style: 'primary',
   shape: 'rectangle',
-  linkToNewTab: false
+  linkToNewTab: false,
+  className: ''
 };
 
 Button.displayName = "Button";
