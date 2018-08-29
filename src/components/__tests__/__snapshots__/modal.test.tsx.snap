@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Modal component should render 1`] = `
+<div
+  class="modal"
+  style="opacity:1"
+>
+  <div
+    class="modal__content"
+  />
+</div>
+`;
+
+exports[`The Modal component should render a TransitionMotion 1`] = `
 <TransitionMotion
   didLeave={[Function]}
   styles={
@@ -24,15 +35,4 @@ exports[`The Modal component should render 1`] = `
 >
   <Component />
 </TransitionMotion>
-`;
-
-exports[`The Modal component should render 2`] = `
-<div
-  class="modal"
-  style="opacity:1"
->
-  <div
-    class="modal__content"
-  />
-</div>
 `;
