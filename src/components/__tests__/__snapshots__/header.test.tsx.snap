@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Header component should render 1`] = `
+<header
+  className="app__header"
+>
+  <Link
+    className="logo"
+    replace={false}
+    to="/"
+  >
+    <CuraLogo />
+  </Link>
+  <div
+    className="navigation-container"
+  />
+</header>
+`;

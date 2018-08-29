@@ -29,7 +29,7 @@ const Header: React.StatelessComponent<HeaderProps> = ({ showNav, headerLogo, he
 
 Header.defaultProps = {
   showNav: true,
-  headerLogo:<CuraLogo />,
+  headerLogo: <CuraLogo />,
   headerLogoUrl: "/"
 }
 
