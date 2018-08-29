@@ -2,31 +2,6 @@
 
 exports[`The SlideInPanel component should render 1`] = `
 <div
-  className="slide-in-panel"
->
-  <div
-    className="slide-in-panel__overlay"
-    onClick={[Function]}
-  />
-  <Motion
-    style={
-      Object {
-        "x": Object {
-          "damping": 50,
-          "precision": 0.01,
-          "stiffness": 450,
-          "val": 100,
-        },
-      }
-    }
-  >
-    <Component />
-  </Motion>
-</div>
-`;
-
-exports[`The SlideInPanel component should render 2`] = `
-<div
   class="slide-in-panel"
 >
   <div
