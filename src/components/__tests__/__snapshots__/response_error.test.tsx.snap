@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ResponseError component should render 1`] = `
+<div
+  className="response-error"
+>
+  <Tile
+    alert={true}
+    align="center"
+    padding="md"
+  >
+    <div
+      className="response-error__msg"
+      key="12345"
+    >
+      There was a problem on the server: The server crashed hard (code randomError)
+    </div>
+  </Tile>
+</div>
+`;
