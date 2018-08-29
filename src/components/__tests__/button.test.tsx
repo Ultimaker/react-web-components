@@ -2,7 +2,7 @@
 import 'jest';
 import 'jsdom-global/register';
 import * as React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { shallow } from 'enzyme';
 
 // component
 import Button from '../button';
