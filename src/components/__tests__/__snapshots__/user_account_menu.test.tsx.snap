@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The UserAccountMenu component should render 1`] = `
+<div
+  className="user-account-menu"
+  onClick={[Function]}
+  tabIndex={1}
+>
+  <div
+    className="trigger"
+    onClick={[Function]}
+  >
+    <ProfileImage
+      size="3.6rem"
+    />
+  </div>
+  <div
+    className="container"
+  >
+    <div
+      className="menu"
+    >
+      <Collapse
+        fixedHeight={-1}
+        forceInitialAnimation={false}
+        hasNestedCollapse={false}
+        isOpened={false}
+        onMeasure={[Function]}
+        onRender={[Function]}
+        onRest={[Function]}
+        springConfig={
+          Object {
+            "damping": 32,
+            "stiffness": 390,
+          }
+        }
+        style={Object {}}
+        theme={
+          Object {
+            "collapse": "ReactCollapse--collapse",
+            "content": "ReactCollapse--content",
+          }
+        }
+      >
+        <div
+          className="sections"
+        >
+          <div
+            className="account-section"
+          >
+            <div
+              className="account-section__title"
+            >
+              My account
+            </div>
+            <div
+              className="account-section__profile"
+            >
+              <div
+                className="account-section__icon"
+              >
+                <ProfileImage
+                  size="10rem"
+                />
+              </div>
+              <div
+                className="account-section__name"
+              >
+                Test User
+              </div>
+            </div>
+            <div
+              className="account-section__buttons"
+            >
+              <Button
+                className=""
+                linkToNewTab={true}
+                linkURL="https://account-staging.ultimaker.com"
+                shape="rectangle"
+                style="secondary"
+                type="link"
+              >
+                Manage account
+                <LinkIcon />
+              </Button>
+              <Button
+                className=""
+                linkToNewTab={false}
+                onClickHandler={[Function]}
+                shape="rectangle"
+                style="secondary"
+                type="button"
+              >
+                Sign out
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Collapse>
+    </div>
+  </div>
+</div>
+`;
