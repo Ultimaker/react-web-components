@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ContextMenu component should render 1`] = `
+<div
+  className="context-menu context-menu--south"
+  onBlur={[Function]}
+  onClick={[Function]}
+  tabIndex={1}
+>
+  <div
+    className="trigger"
+    onClick={[Function]}
+    style={
+      Object {
+        "width": 45,
+      }
+    }
+  />
+  <div
+    className="container"
+    onClick={[Function]}
+  >
+    <div
+      className="menu"
+      style={
+        Object {
+          "right": -30,
+          "width": 200,
+        }
+      }
+    >
+      <Collapse
+        fixedHeight={-1}
+        forceInitialAnimation={false}
+        hasNestedCollapse={false}
+        isOpened={false}
+        onMeasure={[Function]}
+        onRender={[Function]}
+        onRest={[Function]}
+        springConfig={
+          Object {
+            "damping": 32,
+            "stiffness": 390,
+          }
+        }
+        style={Object {}}
+        theme={
+          Object {
+            "collapse": "ReactCollapse--collapse",
+            "content": "ReactCollapse--content",
+          }
+        }
+      >
+        <ul />
+      </Collapse>
+    </div>
+  </div>
+</div>
+`;
