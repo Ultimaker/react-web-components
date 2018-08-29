@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ContextMenuItem component should render 1`] = `
+<li
+  className=""
+  onClick={[Function]}
+>
+  Menu item
+</li>
+`;
