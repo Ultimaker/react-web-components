@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Loading component should render 1`] = `
+<div
+  className="loader"
+>
+  loading
+  <span>
+    <span
+      className="loader__dot"
+    >
+      .
+    </span>
+    <span
+      className="loader__dot"
+    >
+      .
+    </span>
+    <span
+      className="loader__dot"
+    >
+      .
+    </span>
+  </span>
+</div>
+`;
