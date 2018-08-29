@@ -61,15 +61,15 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     // if the tooltip is off the screen to the left, move it right
     if (tooltipWidth / 2 > tooltipTriggerCenter) {
       // move relative to tooltipTrigger left
-      tooltipOffset = (windowMargin - tooltipTriggerLeft) + tooltipWidth / 2
+      tooltipOffset = (windowMargin - tooltipTriggerLeft) + tooltipWidth / 2;
     }
     // if the tooltip is off the screen to the right, move it left
     else if (tooltipWidth / 2 > windowWidth - tooltipTriggerCenter) {
       // move move relative to tooltipTrigger right, then make negative so it can be applyed to the tooltip left
-      tooltipOffset = (tooltipWidth / 2 - tooltipTriggerWidth - (windowWidth - tooltipTriggerRight) + windowMargin) * -1
+      tooltipOffset = (tooltipWidth / 2 - tooltipTriggerWidth - (windowWidth - tooltipTriggerRight) + windowMargin) * -1;
     }
     else {
-      tooltipOffset = null
+      tooltipOffset = null;
     }
 
     this.setState({
@@ -109,7 +109,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
       {children}
 
-      <div ref='tooltip' className="tooltip" style={{ left: tooltipOffset }}>
+      <div ref='tooltip' className="tooltip" style={tooltipOffset ? { left: tooltipOffset } : undefined}>
         <div className="text">
           {splitTextByNewLine(tooltipText)}
         </div>
