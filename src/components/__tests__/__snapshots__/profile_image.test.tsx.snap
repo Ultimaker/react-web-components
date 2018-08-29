@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ProfileImage component should render 1`] = `
+<div
+  className="profile-image"
+>
+  <CircleIcon
+    disabled={true}
+    style="primary"
+  >
+    <ProfileIcon />
+  </CircleIcon>
+</div>
+`;
