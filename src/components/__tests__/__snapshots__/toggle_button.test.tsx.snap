@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Checkbox component should render 1`] = `
+<div
+  className="toggle-button-container"
+  onClick={[Function]}
+>
+  <input
+    checked={false}
+    className="toggle-button"
+    id="testToggleButton"
+    name="testToggleButton"
+    onChange={[Function]}
+    type="checkbox"
+  />
+  <label
+    htmlFor="testToggleButton"
+  />
+</div>
+`;

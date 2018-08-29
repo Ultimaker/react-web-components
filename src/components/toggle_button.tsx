@@ -4,14 +4,14 @@ export interface ToggleButtonProps {
   /** Checkbox id. Must be unique */
   id: string;
   /** Whether the checkbox is checked or not */
-  checked: boolean;
+  value: boolean;
   /** Called when the toggle is clicked */
   onChangeHandler: (checked: boolean) => void;
   /** Disables the toggle when true */
   disabled?: boolean;
 }
 
-export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({ id, checked, onChangeHandler, disabled }) => {
+export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({ id, value, onChangeHandler, disabled }) => {
 
   const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChangeHandler(e.currentTarget.checked);
@@ -28,7 +28,7 @@ export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({ id, 
         id={id}
         name={id}
         type="checkbox"
-        checked={checked}
+        checked={value !== null ? value : false}
         onChange={_onChangeHandler}
         disabled={disabled}
       />
@@ -38,7 +38,7 @@ export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({ id, 
 };
 
 ToggleButton.defaultProps = {
-  checked: false
+  value: false
 };
 
 ToggleButton.displayName = "ToggleButton";
