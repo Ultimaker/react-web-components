@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SelectList component should render 1`] = `
+<div
+  className="drop-down-menu"
+  onBlur={[Function]}
+  onClick={[Function]}
+  tabIndex={1}
+>
+  <div
+    className="label"
+    onClick={[Function]}
+  >
+    <div
+      className="layout layout--align-middle layout--gutter-none"
+    >
+      <div
+        className="layout__item u-fit"
+      >
+        <div
+          className="text"
+        >
+          Option 1
+        </div>
+      </div>
+      <div
+        className="layout__item u-fit layout__item--right"
+      >
+        <PanelArrow
+          active={false}
+          color="blue"
+          width="1.2rem"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="container"
+    onClick={[Function]}
+  >
+    <div
+      className="menu"
+    >
+      <UnmountClosed
+        isOpened={false}
+        springConfig={
+          Object {
+            "damping": 35,
+            "stiffness": 370,
+          }
+        }
+      >
+        <ul>
+          <SelectListItem
+            active={true}
+            key="0"
+            label="Option 1"
+            onChangeHandler={[MockFunction]}
+            value={1}
+          />
+          <SelectListItem
+            active={false}
+            disabled={true}
+            key="1"
+            label="Option 2"
+            onChangeHandler={[MockFunction]}
+            value={2}
+          />
+          <SelectListItem
+            active={false}
+            key="2"
+            label="Option 3"
+            onChangeHandler={[MockFunction]}
+            value={3}
+          />
+        </ul>
+      </UnmountClosed>
+    </div>
+  </div>
+</div>
+`;
