@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The DropDownMenu component should render 1`] = `
+<div
+  className="drop-down-menu"
+  onBlur={[Function]}
+  onClick={[Function]}
+  tabIndex={1}
+>
+  <div
+    className="label"
+    onClick={[Function]}
+  >
+    <div
+      className="layout layout--align-middle layout--gutter-none"
+    >
+      <div
+        className="layout__item u-fit"
+      >
+        <div
+          className="text"
+        >
+          Active label
+        </div>
+      </div>
+      <div
+        className="layout__item u-fit layout__item--right"
+      >
+        <PanelArrow
+          active={false}
+          color="blue"
+          width="1.2rem"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="container"
+    onClick={[Function]}
+  >
+    <div
+      className="menu"
+    >
+      <UnmountClosed
+        isOpened={false}
+        springConfig={
+          Object {
+            "damping": 35,
+            "stiffness": 370,
+          }
+        }
+      >
+        <ul />
+      </UnmountClosed>
+    </div>
+  </div>
+</div>
+`;
