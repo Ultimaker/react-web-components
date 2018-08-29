@@ -5,7 +5,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import ImageFile from '../image_upload';
+import ImageUpload from '../image_upload';
 
 describe('The ImageFile component', () => {
   let props;
@@ -15,7 +15,7 @@ describe('The ImageFile component', () => {
     props = {
       onFileSelection: jest.fn(),
     };
-    wrapper = shallow(<ImageFile {...props} />);
+    wrapper = shallow(<ImageUpload {...props} />);
   });
 
   it('should render', () => {
