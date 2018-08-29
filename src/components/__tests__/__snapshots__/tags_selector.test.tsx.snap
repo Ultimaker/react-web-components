@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The TagsSelector component should render 1`] = `
+<div
+  className="tags-selector"
+>
+  <DragDropContext(ReactTags)
+    autofocus={false}
+    delimiters={
+      Array [
+        188,
+        13,
+      ]
+    }
+    handleAddition={[Function]}
+    handleDelete={[Function]}
+    handleDrag={null}
+    maxLength={30}
+    suggestions={null}
+    tags={
+      Array [
+        Object {
+          "id": "tag 1",
+          "text": "tag 1",
+        },
+        Object {
+          "id": "tag 2",
+          "text": "tag 2",
+        },
+        Object {
+          "id": "tag 3",
+          "text": "tag 3",
+        },
+      ]
+    }
+  />
+</div>
+`;
