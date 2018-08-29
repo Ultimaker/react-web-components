@@ -11,7 +11,7 @@ import Spinner from '../spinner';
 // mocks
 import { mockClickEvent } from '../../__mocks__/clickMock'
 
-describe('The button component', () => {
+describe('The Button component', () => {
   let props;
   let wrapper;
 

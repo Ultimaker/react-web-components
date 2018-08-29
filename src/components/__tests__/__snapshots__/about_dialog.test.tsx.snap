@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The button component should render 1`] = `
+exports[`The AboutDialog component should render 1`] = `
 <div
   className="about-dialog"
 >

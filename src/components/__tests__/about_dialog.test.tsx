@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 // component
 import AboutDialog from '../about_dialog';
 
-describe('The button component', () => {
+describe('The AboutDialog component', () => {
   let props;
   let wrapper;
 
