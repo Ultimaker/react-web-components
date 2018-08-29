@@ -5,14 +5,14 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import Grid from '../grid';
+import GridItem from '../grid_item';
 
-describe('The Grid component', () => {
+describe('The GridItem component', () => {
   let props;
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Grid {...props} />);
+    wrapper = shallow(<GridItem {...props} />);
   });
 
   it('should render', () => {

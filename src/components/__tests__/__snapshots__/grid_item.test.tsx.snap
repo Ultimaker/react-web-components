@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The GridItem component should render 1`] = `
+<div
+  className="grid-component__item layout__item u-1/1"
+/>
+`;
