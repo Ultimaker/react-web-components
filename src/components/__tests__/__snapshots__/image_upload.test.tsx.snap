@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ImageFile component should render 1`] = `
+<Component
+  accept="image/jpeg, image/png"
+  className="image-upload"
+  multiple={false}
+  onDragEnter={[Function]}
+  onDragLeave={[Function]}
+  onDrop={[Function]}
+  style={
+    Object {
+      "height": "18rem",
+      "width": "18rem",
+    }
+  }
+>
+  <div
+    className="hover-area"
+  >
+    <div
+      className="hide"
+    >
+      <UploadIcon />
+    </div>
+  </div>
+  <div
+    className="placeholder placeholder--round"
+  />
+</Component>
+`;
