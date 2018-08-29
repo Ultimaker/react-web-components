@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The InputFieldInput component should render 1`] = `
+<Fragment>
+  <div
+    className="layout__item u-fill layout__item--middle"
+  >
+    <div
+      className="input-container layout layout--gutter-xs"
+    >
+      <div
+        className="layout__item u-fill"
+      >
+        <input
+          className="input"
+          id="testInputField"
+          max={null}
+          min={null}
+          name="testInputField"
+          onChange={[Function]}
+          type="text"
+          value="Test input"
+        />
+      </div>
+    </div>
+  </div>
+</Fragment>
+`;
