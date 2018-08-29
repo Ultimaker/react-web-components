@@ -36,14 +36,14 @@ export const Button: React.StatelessComponent<ButtonProps> =
     const classes = classNames(`btn btn--${style} btn--${shape} ${className}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
     const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
+      e.stopPropagation();
       if (onClickHandler) {
-        e.stopPropagation();
         onClickHandler();
       }
     }
 
     if (type === 'link') {
-      return <a id={id} className={classes} href={disabled || showSpinner ? null : linkURL} target={linkToNewTab ? '_blank' : null}>
+      return <a id={id} className={classes} href={disabled || showSpinner ? undefined : linkURL} target={linkToNewTab ? '_blank' : undefined}>
         <span className="text">{children}</span>
         {showSpinner &&
           <Spinner />

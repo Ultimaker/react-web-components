@@ -88,7 +88,8 @@
     "coverageDirectory": "coverage",
     "collectCoverageFrom": [
       "src/**/*.tsx",
-      "!stories/*"
+      "!src/components/icons/*.tsx",
+      "!src/stories/*"
     ],
     "testEnvironment": "node",
     "transform": {

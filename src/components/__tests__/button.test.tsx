@@ -18,19 +18,25 @@ describe('The button component', () => {
   beforeEach(() => {
     props = {
       onClickHandler: jest.fn(),
+      id: 'testButton'
     };
-    wrapper = shallow(<Button {...props} />);
+    wrapper = shallow(<Button {...props}>Button text</Button>);
   });
 
   it('should render', () => {
-    expect(wrapper).toBeDefined();
-    expect(props.onClickHandler).not.toHaveBeenCalled();
     expect(wrapper).toMatchSnapshot();
+    expect(props.onClickHandler).not.toHaveBeenCalled();
   });
 
   it('calls onClickHandler when it is clicked', () => {
     wrapper.simulate('click', mockClickEvent);
     expect(props.onClickHandler).toHaveBeenCalled();
+  });
+
+  it('does not call onClickHandler when it is clicked and onClickHandler is not passed', () => {
+    wrapper.setProps({ onClickHandler: null });
+    wrapper.simulate('click', mockClickEvent);
+    expect(props.onClickHandler).not.toHaveBeenCalled();
   });
 
   it('renders a button with type submit prop `type` is submit', () => {
@@ -39,14 +45,16 @@ describe('The button component', () => {
   });
 
   it('renders a anchor when prop `type` is link', () => {
-    wrapper.setProps({ type: 'link' });
-    expect(wrapper.find('a')).toHaveLength(1);
+    wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/' });
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('is disabled when prop `disabled` is true', () => {
     wrapper.setProps({ disabled: true });
     expect(wrapper.find('.disabled')).toHaveLength(1);
     expect(wrapper.find('[disabled]')).toHaveLength(1);
+    wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/' });
+    expect(wrapper.prop('href')).toBeUndefined();
   });
 
   it('renders a spinner and disables the button when prop `showSpinner` is true', () => {
@@ -54,6 +62,9 @@ describe('The button component', () => {
     expect(wrapper.find(Spinner)).toHaveLength(1);
     expect(wrapper.find('.waiting')).toHaveLength(1);
     expect(wrapper.find('[disabled]')).toHaveLength(1);
+    wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/' });
+    expect(wrapper.find(Spinner)).toHaveLength(1);
+    expect(wrapper.prop('href')).toBeUndefined();
   });
 
   it('applies the correct class when prop `style` is secondary', () => {
@@ -79,5 +90,15 @@ describe('The button component', () => {
   it('applies the correct class when prop `shape` is circle', () => {
     wrapper.setProps({ shape: 'pill' });
     expect(wrapper.find('.btn--pill')).toHaveLength(1);
+  });
+
+  it('can open a link in a new tab', () => {
+    wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/', linkToNewTab: true });
+    expect(wrapper.prop('target')).toEqual('_blank');
+  });
+
+  it('applies an additional class name when passed', () => {
+    wrapper.setProps({ className: 'additionalClass' });
+    expect(wrapper.find('.additionalClass')).toHaveLength(1);
   });
 })
