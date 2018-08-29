@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The App component should render 1`] = `
+<div
+  className="app app--fixed-header"
+/>
+`;
