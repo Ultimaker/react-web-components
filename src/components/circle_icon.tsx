@@ -15,10 +15,16 @@ export interface CircleIconProps {
 export const CircleIcon: React.StatelessComponent<CircleIconProps> = ({ style, disabled, size, children }) => {
 
   return (
-    <div className={classNames(`circle-icon icon icon--circle ${style}`, { 'disabled': disabled })} style={{ width: size, height: size }}>
+    <div className={classNames(`circle-icon icon icon--circle ${style}`, { 'disabled': disabled })}
+      style={size ? { width: size, height: size } : undefined}>
+
       {children}
     </div>
   );
+};
+
+CircleIcon.defaultProps = {
+  style: 'primary',
 };
 
 CircleIcon.displayName = "CircleIcon";
