@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The FileUpload component should render 1`] = `
+<div
+  className="file-upload"
+  onClick={[Function]}
+>
+  <input
+    id="testFileUpload"
+    name="testFileUpload"
+    onChange={[Function]}
+    type="file"
+  />
+  <div
+    className="layout layout--gutter-sm"
+  >
+    <div
+      className="layout__item u-fill file-upload__input-container"
+    >
+      <label
+        className="file-upload__input"
+        htmlFor="testFileUpload"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <label
+        className="btn btn--primary"
+        htmlFor="testFileUpload"
+      >
+        Choose file
+      </label>
+    </div>
+  </div>
+</div>
+`;
