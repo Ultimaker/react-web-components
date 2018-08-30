@@ -146,6 +146,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
           imageURL={value != null ? value.toString() : null}
           onFileSelection={onChangeHandler}
           shape={imageShape}
+          placeholderLabel={placeholder}
         />
       )
     }
