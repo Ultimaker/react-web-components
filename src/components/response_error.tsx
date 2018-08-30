@@ -24,7 +24,7 @@ export const getTranslatedError = (
     error: ResponseErrorObject,
     errorMessageTemplates: ErrorMessageTemplates,
     fieldTranslations: FieldTranslations
-): any[] => {
+): string => {
     let params = { ...error }
     if (params.meta) {
         Object.keys(error.meta).forEach(key => {
