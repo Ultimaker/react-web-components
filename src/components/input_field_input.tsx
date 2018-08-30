@@ -23,12 +23,10 @@ export interface InputFieldInputProps {
   id: string;
   /** Input field will be centered if true. Useful for type image or checkbox */
   centerInputField?: boolean;
-  /** Message to show for the validation error */
-  validationErrorMsg?: string;
   /** Called when the field changes */
   onChangeHandler: (value: InputFieldInputValue) => void;
-  /** Input field default value */
-  defaultValue?: InputFieldInputValue;
+  /** Input field value */
+  value: InputFieldInputValue;
   /** Minimum value for number field */
   min?: number;
   /** Maximum value for number field */
@@ -37,8 +35,6 @@ export interface InputFieldInputProps {
   placeholder?: string;
   /** If true, the field will be focused when loaded */
   focusOnLoad?: boolean;
-  /** Selected option for type select */
-  selectActiveOptionValue?: string | number;
   /** List of options for type select */
   selectOptions?: SelectOption[];
   /** Size of the image for type image. Include size unit */
@@ -71,7 +67,6 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
 
   componentDidMount(): void {
     this._focusOnPromptInput();
-    this._setDefaultValue();
   }
 
   _focusOnPromptInput(): void {
@@ -82,17 +77,9 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
     }
   }
 
-  _setDefaultValue() {
-    const { defaultValue, type } = this.props;
-
-    if (defaultValue && this.inputRef.current && (type === 'text' || type === 'number' || type === 'textarea' || type === 'password' || type === 'email' || type === 'url')) {
-      this.inputRef.current.value = defaultValue.toString();
-    }
-  }
-
 
   protected _renderInput() {
-    const { labelLayoutWidth, centerInputField, staticField, defaultValue, type } = this.props;
+    const { labelLayoutWidth, centerInputField, staticField, value, type } = this.props;
 
     const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
     const inputLayoutClasses = classNames(`layout__item u-${inputLayoutWidth} layout__item--middle`, { 'text-center': centerInputField });
@@ -105,13 +92,13 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         {this._renderPostInputElement()}
       </div>
 
-      {staticField && this._renderStaticValue(type, defaultValue)}
+      {staticField && this._renderStaticValue(type, value)}
     </div>
   }
 
   protected _renderInputElement(): React.ReactNode {
-    const { id, type, min, max, placeholder, selectActiveOptionValue, selectOptions,
-      defaultValue, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad,
+    const { id, type, min, max, placeholder, selectOptions,
+      value, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad,
       showValidationError, onChangeHandler, children } = this.props;
 
     const classes = classNames('input', { 'error': showValidationError })
@@ -128,6 +115,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
           placeholder={placeholder}
           className={classes}
           ref={this.inputRef}
+          value={value != null ? value.toString() : ''}
           rows={3}
         />
       )
@@ -136,7 +124,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
       return (
         <SelectList
           onChangeHandler={onChangeHandler}
-          activeOptionValue={selectActiveOptionValue}
+          value={typeof value === 'number' || typeof value === 'string' ? value : null}
           options={selectOptions}
           error={showValidationError}
         />
@@ -147,7 +135,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         <Checkbox
           id={id}
           onChangeHandler={onChangeHandler}
-          defaultValue={defaultValue === true}
+          value={value === true}
           disabled={staticField}
         />
       )
@@ -155,7 +143,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
     if (type === 'image') {
       return (
         <ImageUpload size={imageSize}
-          defaultURL={defaultValue ? defaultValue.toString() : null}
+          imageURL={value != null ? value.toString() : null}
           onFileSelection={onChangeHandler}
           shape={imageShape}
           placeholderLabel={placeholder}
@@ -167,7 +155,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         <DatePicker
           id={id}
           onChangeHandler={onChangeHandler}
-          defaultDate={defaultValue ? defaultValue.toString() : null}
+          value={value != null ? value.toString() : null}
           error={showValidationError}
         />
       )
@@ -177,7 +165,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         onChangeHandler={onChangeHandler}
         placeholder={placeholder}
         suggestions={tagSuggestions}
-        defaultTags={Array.isArray(defaultValue) && defaultValue}
+        value={Array.isArray(value) && value}
         disabled={staticField}
         autofocus={focusOnLoad}
       />
@@ -199,13 +187,14 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         max={max ? max : null}
         onChange={(e) => onChangeHandler(e.target.value)}
         placeholder={placeholder}
+        value={value != null ? value.toString() : ''}
         ref={this.inputRef}
       />
     )
   }
 
   protected _renderStaticValue(type: InputFieldInputType, value: InputFieldInputValue): JSX.Element | React.ReactNode | InputFieldInputValue {
-    const { selectOptions, selectActiveOptionValue, imageSize, imageShape } = this.props;
+    const { selectOptions, imageSize, imageShape } = this.props;
 
     if (type === 'url') {
       return <a href={value.toString()} target="_blank">{value}</a>
@@ -217,7 +206,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
       return moment(value).format('DD-MM-YYYY');
     }
     if (type === 'select') {
-      const option = selectOptions.find(option => option.value === selectActiveOptionValue);
+      const option = selectOptions.find(option => option.value === value);
       return option ? option.label : null;
     }
     if (type === 'image') {

@@ -22,14 +22,12 @@ export interface InputFieldProps {
   className?: string;
   /** Input field will be centered if true. Useful for type image or checkbox */
   centerInputField?: boolean;
-  /** Input field will be displayed in the error state when true */
-  validationError?: boolean;
-  /** Message to show for the validation error */
-  validationErrorMsg?: string;
+  /** Message to show for the validation error. Can be any[] if returned from I18n.format */
+  validationError?: string | any[];
   /** Called when the field changes */
   onChangeHandler: (id: string, value: InputFieldValue) => void;
-  /** Input field default value */
-  defaultValue?: InputFieldValue;
+  /** Input field value */
+  value: InputFieldValue;
   /** Minimum value for number field */
   min?: number;
   /** Maximum value for number field */
@@ -38,8 +36,6 @@ export interface InputFieldProps {
   placeholder?: string;
   /** If true, the field will be focused when loaded */
   focusOnLoad?: boolean;
-  /** Selected option for type select */
-  selectActiveOptionValue?: string | number;
   /** List of options for type select */
   selectOptions?: SelectOption[];
   /** Size of the image for type image. Include size unit */
@@ -97,7 +93,10 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     this.setState({ touched: true });
     const { onChangeHandler, id, type } = this.props;
 
-    if (type === 'number' && typeof value === 'string') {
+    if (value === '') {
+      value = null;
+    }
+    else if (type === 'number' && typeof value === 'string' && value.length > 0) {
       // convert value from and string to a number for number input fields
       value = parseFloat(value);
     }
@@ -132,22 +131,20 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderInputElements() {
-    const { id, type, centerInputField, validationErrorMsg, defaultValue, min, max, placeholder,
-      selectActiveOptionValue, selectOptions, imageSize, staticField, imageShape, tagSuggestions,
+    const { id, type, centerInputField, validationError, value, min, max, placeholder,
+      selectOptions, imageSize, staticField, imageShape, tagSuggestions,
       focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
 
     return <InputFieldInput
       type={type}
       id={id}
       centerInputField={centerInputField}
-      validationErrorMsg={validationErrorMsg}
       onChangeHandler={this._onChangeHandler}
-      defaultValue={defaultValue}
+      value={value}
       min={min}
       max={max}
       placeholder={placeholder}
       focusOnLoad={focusOnLoad}
-      selectActiveOptionValue={selectActiveOptionValue}
       selectOptions={selectOptions}
       imageSize={imageSize}
       imageShape={imageShape}
@@ -162,11 +159,11 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
   }
 
   protected _renderValidation(): JSX.Element {
-    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
+    const { validationError, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
 
-    if (this._showValidationError() && validationErrorMsg) {
+    if (this._showValidationError() && validationError) {
       return <InputFieldValidation
-        validationErrorMsg={validationErrorMsg}
+        validationError={validationError}
         labelLayoutWidth={labelLayoutWidth}
         labelWidthBreakpoint={labelWidthBreakpoint}
         required={required}

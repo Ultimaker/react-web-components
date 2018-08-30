@@ -3,11 +3,13 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
+import { withState } from '@dump247/storybook-state';
 
 // components
 import Form from '../components/form';
 import InputField from '../components/input_field';
 import Tile from '../components/tile';
+import { ImageFile } from '../components/image_upload';
 
 const stories = storiesOf('Example layouts', module);
 
@@ -32,83 +34,92 @@ const breakpointDefaultValue = 'sm';
 
 stories.addDecorator(withKnobs)
 
-stories.add('Form', withInfo(
-  'A example layout for a form'
-)(() =>
-  <div style={{ maxWidth: 550, margin: '2.4rem auto' }}>
-    <Tile padding="lg">
-      <Form primaryBtnText="Submit"
-        onSubmitHandler={action('submit')}
-        secondaryBtnText="Cancel"
-        secondaryBtnHandler={action('clicked')}
-        secondaryBtnStyle="quiet"
-        formValidation={{
-          success: boolean('Validation Success', true),
-          validationErrors: { id_1: 'Validation error', id_2: 'Validation error', id_3: 'Validation error', id_4: 'Validation error', id_5: 'Validation error' }
-        }}
-      >
 
-        <InputField type="image"
-          id="id_0"
-          labelLayoutWidth='fit'
-          centerInputField
-          onChangeHandler={action('changed')} />
+stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 1, selectValue: 1, checkboxValue: null, dateValue: null })
+  (withInfo('A example layout for a form')
+    (({ store }) =>
+      <div style={{ maxWidth: 550, margin: '2.4rem auto' }}>
+        <Tile padding="lg">
+          <Form primaryBtnText="Submit"
+            onSubmitHandler={action('submit')}
+            secondaryBtnText="Cancel"
+            secondaryBtnHandler={action('clicked')}
+            secondaryBtnStyle="quiet"
+            validationErrors={{
+              id_1: 'Validation error',
+              id_2: 'Validation error',
+              id_3: 'Validation error',
+              id_4: 'Validation error',
+              id_5: 'Validation error'
+            }}
+          >
 
-        <InputField type="text"
-          id="id_1"
-          label={text('Label 1', 'Text input field')}
-          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
-          onChangeHandler={action('changed')}
-          placeholder={text('Placeholder text', 'Placeholder text')}
-          infoText={text('Info text', 'Description of the input field')}
-          focusOnLoad
-          required
-          infoLinkURL="http://www.ultimaker.com" />
+            <InputField type="image"
+              id="id_0"
+              value={store.state.imageValue}
+              labelLayoutWidth='fit'
+              centerInputField
+              onChangeHandler={(id, value: ImageFile) => store.set({ imageValue: value.preview })} />
 
-        <InputField type="number"
-          id="id_2"
-          label={text('Label 2', 'Number input field')}
-          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
-          min={1}
-          max={100}
-          defaultValue={10}
-          onChangeHandler={action('changed')}
-          required />
+            <InputField type="text"
+              id="id_1"
+              value={store.state.textValue}
+              label={text('Label 1', 'Text input field')}
+              labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+              labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+              onChangeHandler={(id, value) => store.set({ textValue: value })}
+              placeholder={text('Placeholder text', 'Placeholder text')}
+              infoText={text('Info text', 'Description of the input field')}
+              focusOnLoad
+              required
+              infoLinkURL="http://www.ultimaker.com" />
 
-        <InputField type="select"
-          id="id_3"
-          label={text('Label 3', 'Select input field')}
-          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
-          onChangeHandler={action('changed')}
-          selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]}
-          required />
+            <InputField type="number"
+              id="id_2"
+              value={store.state.numberValue}
+              label={text('Label 2', 'Number input field')}
+              labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+              labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+              min={1}
+              max={100}
+              onChangeHandler={(id, value) => store.set({ numberValue: value })}
+              required />
 
-        <InputField type="checkbox"
-          id="id_4"
-          label={text('Label 4', 'Checkbox input field')}
-          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
-          onChangeHandler={action('changed')}
-          defaultValue={true}
-          required />
+            <InputField type="select"
+              id="id_3"
+              value={store.state.selectValue}
+              label={text('Label 3', 'Select input field')}
+              labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+              labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+              onChangeHandler={(id, value) => store.set({ selectValue: value })}
+              selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]}
+              required />
 
-        <InputField type="date"
-          id="id_5"
-          label={text('Label 5', 'Date input field')}
-          labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-          labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
-          onChangeHandler={action('changed')}
-          defaultValue="2019-02-08"
-          required />
+            <InputField type="checkbox"
+              id="id_4"
+              value={store.state.checkboxValue}
+              label={text('Label 4', 'Checkbox input field')}
+              labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+              labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+              onChangeHandler={(id, value) => store.set({ checkboxValue: value })}
+              required />
 
-        <div>
-          <a href="#link">Links</a>  or other elements may also be used.
+            <InputField type="date"
+              id="id_5"
+              value={store.state.dateValue}
+              label={text('Label 5', 'Date input field')}
+              labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+              labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+              onChangeHandler={(id, value) => store.set({ dateValue: value })}
+              required />
+
+            <div>
+              <a href="#link">Links</a>  or other elements may also be used.
         </div>
-      </Form>
+          </Form>
 
-    </Tile>
-  </div>
-));
+        </Tile>
+      </div>
+    )
+  )
+);

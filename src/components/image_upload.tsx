@@ -16,14 +16,13 @@ export interface ImageUploadProps {
   size?: string;
   /** Shape of the image: 'round' | 'square' */
   shape?: ImageShape;
-  /** Default image URL */
-  defaultURL?: string
+  /** Image URL */
+  imageURL?: string;
   /** Placeholder label */
-  placeholderLabel?: string
+  placeholderLabel?: string;
 }
 
 export interface ImageUploadState {
-  fileURL: string;
   dropActive: boolean;
 }
 
@@ -35,7 +34,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
   };
 
   state = {
-    fileURL: null,
     dropActive: false
   }
 
@@ -46,22 +44,12 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     this._onDragLeave = this._onDragLeave.bind(this);
   }
 
-  static getDerivedStateFromProps(props: ImageUploadProps, state: ImageUploadState): Partial<ImageUploadState> {
-    if (props.defaultURL && state.fileURL === null) {
-      return {
-        fileURL: props.defaultURL
-      }
-    }
-    return null;
-  }
-
   _onDropHandler(files: ImageFile[]): void {
     this.setState({
       dropActive: false
     });
 
     const file = files[0];
-    this.setState({ fileURL: file.preview });
     this.props.onFileSelection(file);
   }
 
@@ -78,10 +66,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
   }
 
   render(): JSX.Element {
-    const { size, shape, placeholderLabel } = this.props;
-    const { fileURL, dropActive } = this.state;
+    const { size, shape, imageURL, placeholderLabel } = this.props;
+    const { dropActive } = this.state;
 
-    const iconClasses = classNames({ 'hide-icon': fileURL !== null, 'icon-with-label': placeholderLabel });
+    const iconClasses = classNames({ 'hide': imageURL !== null });
     const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
 
     return <Dropzone className="image-upload" style={{ width: size, height: size }}
@@ -103,17 +91,17 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
           }
         </div>
 
-        {fileURL &&
+        {imageURL &&
           <div className={`cover cover--${shape}`}></div>
         }
       </div>
-
-      {!fileURL &&
+      
+      {!imageURL &&
         <div className={`placeholder placeholder--${shape}`}></div>
       }
-
-      {fileURL &&
-        <Image src={fileURL} shape={shape} size={size} />
+      
+      {imageURL &&
+        <Image src={imageURL} shape={shape} size={size} />
       }
 
     </Dropzone>

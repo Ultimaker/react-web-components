@@ -2,7 +2,10 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { default as Button, ButtonStyle } from './button';
-import InputField from './input_field'
+
+
+/** The validation of each field may be a text, a list of elements or the validation of a sub-model **/
+export type FormValidationResponse = { [key: string]: string | JSX.Element[] | FormValidationResponse };
 
 export interface FormProps {
 	/** Primary button text */
@@ -20,7 +23,7 @@ export interface FormProps {
 	/** A url to link to instead of calling secondaryBtnHandler */
 	secondaryBtnLink?: string;
 	/** The form validation state and validation error messages */
-	formValidation?: FormValidationResponse;
+	validationErrors?: FormValidationResponse;
 	/** Override the form validation and enable the primary button */
 	alwaysEnableSubmitButton?: boolean;
 }
@@ -29,11 +32,6 @@ export interface FormState {
 	primaryBtnSpinner: boolean;
 	secondaryBtnSpinner: boolean;
 	submitted: boolean;
-}
-
-export interface FormValidationResponse {
-	success: boolean;
-	validationErrors?: { [key: string]: string }
 }
 
 
@@ -71,15 +69,14 @@ export class Form extends React.Component<FormProps, FormState> {
 	 * @private
 	 */
 	private _renderChild(child: JSX.Element): JSX.Element {
-		const { formValidation } = this.props;
+		const { validationErrors } = this.props;
 		const { submitted } = this.state;
-		const errors = formValidation && child && child.props && formValidation.validationErrors[child.props.id];
+		const errors = validationErrors && child && child.props && validationErrors[child.props.id];
 
 		return child && (
 			<div className="form__item">
 				{React.cloneElement(child, errors && {
 					validationError: errors,
-					validationErrorMsg: errors,
 					submitted
 				})}
 			</div>
@@ -87,11 +84,9 @@ export class Form extends React.Component<FormProps, FormState> {
 	}
 
 	render(): JSX.Element {
-		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, formValidation,
+		const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
 			secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
 		const { primaryBtnSpinner, secondaryBtnSpinner } = this.state;
-
-		const isValidationErrors = formValidation && formValidation.success === false;
 
 		return (
 			<form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -102,7 +97,7 @@ export class Form extends React.Component<FormProps, FormState> {
 							<div className="form__btn-container">
 								<Button
 									style={primaryBtnStyle}
-									disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || isValidationErrors}
+									disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || validationErrors !== null}
 									type="submit"
 									showSpinner={primaryBtnSpinner}>
 

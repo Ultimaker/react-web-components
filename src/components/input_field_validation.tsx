@@ -4,8 +4,8 @@ export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill'
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface InputFieldValidationProps {
-  /** Message to show for the validation error */
-  validationErrorMsg: string;
+  /** Message to show for the validation error. Can be any[] if returned from I18n.format */
+  validationError: string | any[];
   /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
   labelLayoutWidth: LayoutWidth;
   /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
@@ -17,7 +17,7 @@ export interface InputFieldValidationProps {
 export class InputFieldValidation extends React.Component<InputFieldValidationProps, {}> {
 
   render(): JSX.Element {
-    const { validationErrorMsg, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
+    const { validationError, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
     let errorMsgOffsetClass = null;
     let errorMsgClass = null;
 
@@ -41,7 +41,7 @@ export class InputFieldValidation extends React.Component<InputFieldValidationPr
           <div className={`layout__item ${errorMsgOffsetClass}`}></div>
         }
         <div className={`layout__item u-fill ${errorMsgClass}`}>
-          <div className="input-field__error-message">{validationErrorMsg}</div>
+          <div className="input-field__error-message">{validationError}</div>
         </div>
       </div>
     </div>

@@ -161,7 +161,10 @@
       &:hover::after
         opacity: 1
   
-  &.disabled 
+  &.disabled
+    label:hover::after
+        opacity: 0
+
     label
       cursor: default
   

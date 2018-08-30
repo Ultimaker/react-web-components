@@ -11,10 +11,10 @@ export interface SelectListProps {
   /** The list of available options */
   options: SelectOption[];
   /** The value of the selected option */
-  activeOptionValue: string | number;
+  value: string | number;
   /** Called when an option is selected */
   onChangeHandler: (value: string | number) => void;
-  /** When true the error state will be enabled */
+  /** When true the error state will be displayed */
   error?: boolean;
 }
 
@@ -41,8 +41,8 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
   }
 
   _getActiveOptionLabel() {
-    const { options, activeOptionValue } = this.props;
-    const option = options.find(option => option.value === activeOptionValue);
+    const { options, value } = this.props;
+    const option = options.find(option => option.value === value);
     return option ? option.label : null;
   }
 
@@ -51,7 +51,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
   }
 
   render(): JSX.Element {
-    const { error, options, activeOptionValue, onChangeHandler } = this.props;
+    const { error, options, value, onChangeHandler } = this.props;
     const { showMenu } = this.state;
 
     const dropDownMenuClasses = classNames('drop-down-menu', { 'visible': showMenu });
@@ -79,7 +79,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
                 return <SelectListItem key={index} onChangeHandler={onChangeHandler}
                   label={option.label}
                   value={option.value}
-                  active={activeOptionValue === option.value}
+                  active={value === option.value}
                   disabled={option.disabled} />
               })}
             </ul>

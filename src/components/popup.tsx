@@ -76,6 +76,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     const { inputDefaultValue } = this.props;
 
     if (inputDefaultValue) {
+      // set the initial value of the prompt input field
       this.setState({ inputValue: inputDefaultValue.toString() })
     }
   }
@@ -124,8 +125,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
   render(): JSX.Element {
     const { type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
-      inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, inputDefaultValue, children } = this.props;
-    const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner } = this.state;
+      inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, children } = this.props;
+    const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner, inputValue } = this.state;
 
     return <Modal>
       <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
@@ -142,13 +143,12 @@ export class Popup extends React.Component<PopupProps, PopupState> {
               <InputField
                 id="prompt-input"
                 type={inputType ? inputType : null}
-                defaultValue={inputDefaultValue}
+                value={inputValue}
                 min={inputMin ? inputMin : null}
                 max={inputMax ? inputMax : null}
                 onChangeHandler={this._onChangeHandler}
                 placeholder={promptPlaceholder}
-                validationErrorMsg={validationErrorMsg}
-                validationError={validationErrorMsg && validationErrorMsg.length > 0}
+                validationError={validationErrorMsg}
                 submitted={validationErrorMsg && validationErrorMsg.length > 0}
                 focusOnLoad />
 
