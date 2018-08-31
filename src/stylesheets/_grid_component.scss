@@ -1,0 +1,29 @@
+.grid-component {
+    .grid-component__empty {
+        text-align: center;
+        padding: 2.4rem 1.8rem;
+        width: 100%;
+
+        @include respond-to(sm) {
+            padding: 2.4rem;
+        }
+    }
+
+    .grid-component__title {
+        width: 100%;
+        margin: 0;
+
+        @include font-size-header-2;
+
+        font-weight: normal;
+        font-family: $font-primary-medium;
+        padding: 0 1.8rem 1.2rem 1.8rem;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+
+        @include respond-to(sm) {
+            padding: 0 2.4rem 1.2rem 2.4rem;
+        }
+    }
+}

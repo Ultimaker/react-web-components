@@ -4,19 +4,19 @@ import GridItem from './grid_item';
 import Loading from "./loading";
 
 export interface GridEmptyProps {
-  label: string;
-  loading?: boolean;
+    label: string;
+    loading?: boolean;
 }
 
 const GridEmpty: React.StatelessComponent<GridEmptyProps> =
-  ({ label, loading }): JSX.Element => {
+    ({ label, loading }): JSX.Element => {
 
-    return <GridItem>
-      <div className="grid-component__empty">
-        {loading ? <Loading label={label}/> : label}
-      </div>
-    </GridItem>
-  }
+        return <GridItem>
+            <div className="grid-component__empty">
+                {loading ? <Loading label={label} /> : label}
+            </div>
+        </GridItem>
+    }
 
 GridEmpty.displayName = "GridEmpty";
 

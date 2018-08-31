@@ -12,114 +12,114 @@ import { I18n } from '../utils/i18n';
 
 
 export interface UserAccountMenuProps {
-  /** Called when the sign out button is clicked */
-  onSignOutClickHandler: () => void;
-  /** URL to the account management page */
-  manageAccountURL: string;
-  /** The display name of the user. */
-  displayName: string
-  /** An URL for the user profile image. */
-  imageURL?: string
+    /** Called when the sign out button is clicked */
+    onSignOutClickHandler: () => void;
+    /** URL to the account management page */
+    manageAccountURL: string;
+    /** The display name of the user. */
+    displayName: string
+    /** An URL for the user profile image. */
+    imageURL?: string
 }
 
 export interface UserAccountMenuState {
-  showMenu: boolean;
+    showMenu: boolean;
 }
 
 export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserAccountMenuState> {
 
-  private menuRef;
+    private menuRef;
 
-  state = {
-    showMenu: false
-  };
+    state = {
+        showMenu: false
+    };
 
-  constructor(props: UserAccountMenuProps) {
-    super(props);
-    this.menuRef = React.createRef();
-    this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
-  }
-
-  _setShowMenu(showMenu: boolean): void {
-    if (showMenu) {
-      document.addEventListener('mousedown', this._onOutsideClickHandler);
-    }
-    else {
-      document.removeEventListener('mousedown', this._onOutsideClickHandler);
+    constructor(props: UserAccountMenuProps) {
+        super(props);
+        this.menuRef = React.createRef();
+        this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
     }
 
-    this.setState({
-      showMenu: showMenu
-    });
-  }
+    _setShowMenu(showMenu: boolean): void {
+        if (showMenu) {
+            document.addEventListener('mousedown', this._onOutsideClickHandler);
+        }
+        else {
+            document.removeEventListener('mousedown', this._onOutsideClickHandler);
+        }
 
-  _onOutsideClickHandler() {
-    if (this.menuRef.current && !this.menuRef.current.contains(event.target)) {
-      this._setShowMenu(!this.state.showMenu);
+        this.setState({
+            showMenu: showMenu
+        });
     }
-  }
 
-  _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
-    e.stopPropagation();
-  }
+    _onOutsideClickHandler() {
+        if (this.menuRef.current && !this.menuRef.current.contains(event.target)) {
+            this._setShowMenu(!this.state.showMenu);
+        }
+    }
 
-  render(): JSX.Element {
+    _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+        e.stopPropagation();
+    }
 
-    const { onSignOutClickHandler, manageAccountURL, displayName, imageURL, children } = this.props;
-    const { showMenu } = this.state;
+    render(): JSX.Element {
 
-    const classes = classNames('user-account-menu', { 'visible': showMenu });
+        const { onSignOutClickHandler, manageAccountURL, displayName, imageURL, children } = this.props;
+        const { showMenu } = this.state;
 
-    return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this.menuRef}>
+        const classes = classNames('user-account-menu', { 'visible': showMenu });
 
-      <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
-        <ProfileImage imageURL={imageURL} size="3.6rem" />
-      </div>
+        return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this.menuRef}>
 
-      <div className='container'>
-        <div className="menu">
-          <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
-            <div className="sections">
-
-              {children &&
-                <div className="other-section">
-                  {React.Children.map(children, (child: JSX.Element) =>
-                    React.cloneElement(child, { onCloseMenuHandler: () => this._setShowMenu(false) })
-                  )}
-                </div>
-              }
-
-              <div className="account-section">
-                <div className="account-section__title">
-                  {I18n.translate("User account menu title", "My account")}
-                </div>
-
-                <div className="account-section__profile">
-                  <div className="account-section__icon">
-                    <ProfileImage imageURL={imageURL} size="10rem" />
-                  </div>
-                  <div className="account-section__name">{displayName}</div>
-                </div>
-
-                <div className="account-section__buttons">
-                  <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
-                    {I18n.translate("User account menu button", "Manage account")}
-                    <LinkIcon />
-                  </Button>
-
-                  <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
-                    {I18n.translate("User account menu button", "Sign out")}
-                  </Button>
-                </div>
-              </div>
-
+            <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
+                <ProfileImage imageURL={imageURL} size="3.6rem" />
             </div>
-          </Collapse>
-        </div>
-      </div>
 
-    </div>
-  }
+            <div className='container'>
+                <div className="menu">
+                    <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
+                        <div className="sections">
+
+                            {children &&
+                                <div className="other-section">
+                                    {React.Children.map(children, (child: JSX.Element) =>
+                                        React.cloneElement(child, { onCloseMenuHandler: () => this._setShowMenu(false) })
+                                    )}
+                                </div>
+                            }
+
+                            <div className="account-section">
+                                <div className="account-section__title">
+                                    {I18n.translate("User account menu title", "My account")}
+                                </div>
+
+                                <div className="account-section__profile">
+                                    <div className="account-section__icon">
+                                        <ProfileImage imageURL={imageURL} size="10rem" />
+                                    </div>
+                                    <div className="account-section__name">{displayName}</div>
+                                </div>
+
+                                <div className="account-section__buttons">
+                                    <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
+                                        {I18n.translate("User account menu button", "Manage account")}
+                                        <LinkIcon />
+                                    </Button>
+
+                                    <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
+                                        {I18n.translate("User account menu button", "Sign out")}
+                                    </Button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </Collapse>
+                </div>
+            </div>
+
+        </div>
+    }
 }
 
 export default UserAccountMenu;

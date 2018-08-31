@@ -14,185 +14,185 @@ import InfoLink from '../components/info_link';
 const stories = storiesOf('Button', module);
 
 stories.addDecorator(withKnobs)
-  .addDecorator(styles({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh'
-  }));
+    .addDecorator(styles({
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh'
+    }));
 
 stories.add('Rectangle', withInfo(
-  'Default button shape with three available styles.'
+    'Default button shape with three available styles.'
 )(() =>
-  <div className="layout">
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="primary"
-      >
-        {text('Text 1', 'Primary')}
-      </Button>
+    <div className="layout">
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="primary"
+            >
+                {text('Text 1', 'Primary')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="secondary"
+            >
+                {text('Text 2', 'Secondary')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="quiet"
+            >
+                {text('Text 3', 'Quiet')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="alert"
+            >
+                {text('Text 4', 'Alert')}
+            </Button>
+        </div>
     </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="secondary"
-      >
-        {text('Text 2', 'Secondary')}
-      </Button>
-    </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="quiet"
-      >
-        {text('Text 3', 'Quiet')}
-      </Button>
-    </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="alert"
-      >
-        {text('Text 4', 'Alert')}
-      </Button>
-    </div>
-  </div>
 )
 );
 
 stories.add('Circle', withInfo(
-  'Round button shape with three available styles. Can be used for action buttons on mobile.'
+    'Round button shape with three available styles. Can be used for action buttons on mobile.'
 )(() =>
-  <div className="layout">
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="primary"
-        shape="circle"
-      >
-        {text('Text 1', 'P')}
-      </Button>
+    <div className="layout">
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="primary"
+                shape="circle"
+            >
+                {text('Text 1', 'P')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="secondary"
+                shape="circle"
+            >
+                {text('Text 2', 'S')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="quiet"
+                shape="circle"
+            >
+                {text('Text 3', 'Q')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="alert"
+                shape="circle"
+            >
+                {text('Text 4', 'A')}
+            </Button>
+        </div>
     </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="secondary"
-        shape="circle"
-      >
-        {text('Text 2', 'S')}
-      </Button>
-    </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="quiet"
-        shape="circle"
-      >
-        {text('Text 3', 'Q')}
-      </Button>
-    </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="alert"
-        shape="circle"
-      >
-        {text('Text 4', 'A')}
-      </Button>
-    </div>
-  </div>
 ));
 
 stories.add('Pill', withInfo(
-  'Long rounded button shape with three available styles. Can be used for filter buttons.'
+    'Long rounded button shape with three available styles. Can be used for filter buttons.'
 )(() =>
-  <div className="layout">
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="primary"
-        shape="pill"
-      >
-        {text('Text 1', 'Primary')}
-      </Button>
+    <div className="layout">
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="primary"
+                shape="pill"
+            >
+                {text('Text 1', 'Primary')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="secondary"
+                shape="pill"
+            >
+                {text('Text 2', 'Secondary')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="quiet"
+                shape="pill"
+            >
+                {text('Text 3', 'Quiet')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="alert"
+                shape="pill"
+            >
+                {text('Text 3', 'Alert')}
+            </Button>
+        </div>
     </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="secondary"
-        shape="pill"
-      >
-        {text('Text 2', 'Secondary')}
-      </Button>
-    </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="quiet"
-        shape="pill"
-      >
-        {text('Text 3', 'Quiet')}
-      </Button>
-    </div>
-    <div className="layout__item u-fit">
-      <Button onClickHandler={action('clicked')}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="alert"
-        shape="pill"
-      >
-        {text('Text 3', 'Alert')}
-      </Button>
-    </div>
-  </div>
 ));
 
 stories.add('Toggle', withState({ checked: null })
-  (withInfo('Toggle switch button based on a checkbox. Can be used for turning on/off settings.')
-    (({ store }) =>
-      <ToggleButton
-        id="toggle"
-        value={store.state.value}
-        onChangeHandler={() => store.set({ value: !store.state.value })}
-        disabled={boolean('Disabled', false)} />
+    (withInfo('Toggle switch button based on a checkbox. Can be used for turning on/off settings.')
+        (({ store }) =>
+            <ToggleButton
+                id="toggle"
+                value={store.state.value}
+                onChangeHandler={() => store.set({ value: !store.state.value })}
+                disabled={boolean('Disabled', false)} />
+        )
     )
-  )
 );
 
 stories.add('Close', withInfo(
-  'Close button. Can be used for closing a container/panel.'
+    'Close button. Can be used for closing a container/panel.'
 )(() =>
-  <CloseButton onClickHandler={action('clicked')} />
+    <CloseButton onClickHandler={action('clicked')} />
 ));
 
 stories.add('Link', withInfo(
-  'An anchor styled as a button. Useful for page navigation'
+    'An anchor styled as a button. Useful for page navigation'
 )(() =>
-  <Button type="link"
-    linkURL="https://ultimaker.com/"
-    linkToNewTab={boolean('Link to new tab', false)}
-    showSpinner={boolean('Loading', false)}
-    disabled={boolean('Disabled', false)}
-    style="primary"
-  >
-    {text('Text 1', 'Link')}
-  </Button>
+    <Button type="link"
+        linkURL="https://ultimaker.com/"
+        linkToNewTab={boolean('Link to new tab', false)}
+        showSpinner={boolean('Loading', false)}
+        disabled={boolean('Disabled', false)}
+        style="primary"
+    >
+        {text('Text 1', 'Link')}
+    </Button>
 ));
 
 stories.add('Info link', withInfo(
-  'An info link to open an external page'
+    'An info link to open an external page'
 )(() =>
-  <InfoLink infoLinkURL={text('URL', 'https://ultimaker.com/')} />
+    <InfoLink infoLinkURL={text('URL', 'https://ultimaker.com/')} />
 ));

@@ -1,0 +1,85 @@
+.user-account-menu {
+    @extend .context-menu;
+
+    .trigger {
+        height: auto;
+
+        &:after {
+            content: none;
+        }
+    }
+
+    .container {
+        bottom: -0.7rem;
+    }
+
+    .menu {
+        right: calc(100% - 6rem);
+    }
+
+    .sections {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .account-section {
+        width: 28rem;
+        min-height: 37.8rem;
+        padding: 2.4rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        .account-section__profile {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .account-section__title {
+            @include font-size-header-2;
+
+            font-family: $font-primary-medium;
+            margin-bottom: 1.2rem;
+        }
+
+        .account-section__icon {
+            text-align: center;
+        }
+
+        .account-section__name {
+            font-family: $font-primary-medium;
+            text-align: center;
+            margin-top: 1.2rem;
+
+            @extend .truncate;
+        }
+
+        .account-section__buttons {
+            > .btn {
+                width: 100%;
+                margin-top: 1.2rem;
+            }
+        }
+    }
+
+    .other-section {
+        @extend .account-section;
+
+        border-right: 1px solid $color-border;
+    }
+
+    .icon--link {
+        position: absolute;
+        right: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    }
+}

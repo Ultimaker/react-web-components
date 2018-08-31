@@ -9,10 +9,10 @@ import Tile from './tile';
 import { I18n } from '../utils/i18n';
 
 // a mapping of error codes to translated error messages which may include the error parameters as replacement keys
-export type ErrorMessageTemplates = {[key: string]: string};
+export type ErrorMessageTemplates = { [key: string]: string };
 
 // a mapping of field names to translated versions
-export type FieldTranslations = {[key: string]: string};
+export type FieldTranslations = { [key: string]: string };
 
 /**
  * Gets a translated message for the given error.
@@ -42,7 +42,7 @@ export interface ResponseErrorObject {
     http_status: string;
     title: string;
     detail?: string;
-    meta?: {[key: string]: any};
+    meta?: { [key: string]: any };
 }
 
 export interface ResponseErrorProps {
@@ -82,7 +82,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
                         <div className="response-error__msg" key={error.id}>{getTranslatedError(error, errorMessageTemplates, fieldNames)}</div>
                     )}
                 </Tile>
-                { isServerError && this.state.showPopup && <Popup
+                {isServerError && this.state.showPopup && <Popup
                     type="prompt"
                     headerText={I18n.translate("error popup title", "Something went wrong at our end :(")}
                     bodyText={I18n.translate("error popup details",
@@ -96,7 +96,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
                     secondaryBtnHandler={this._closePopup}
                     inputType="textarea"
                     validationHandler={this._validate}
-                /> }
+                />}
             </div>
         )
     }
@@ -120,7 +120,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
             "currentTime": new Date().toISOString(),
             "language": navigator.language,
             "errors": this.props.errors
-        }, null, 4)], { type: "text/plain;charset=utf-8"});
+        }, null, 4)], { type: "text/plain;charset=utf-8" });
         const element = document.createElement('a');
         element.href = URL.createObjectURL(blob);
         element.download = "cura-cloud-error-" + this.props.errors[0].id + ".txt";

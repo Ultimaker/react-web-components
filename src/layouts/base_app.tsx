@@ -85,13 +85,13 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
         return (
             <App fixedHeader>
                 <Header headerLogo={<UltimakerLogo />} headerLogoUrl={this._getAppUrl()} showNav>
-                    { this._renderNavigation(routes)}
+                    {this._renderNavigation(routes)}
                 </Header>
                 <div className="content app__main" role="main">
-                    { this._renderRoutes(routes) }
+                    {this._renderRoutes(routes)}
                 </div>
                 <Footer>
-                    { this._renderFooter() }
+                    {this._renderFooter()}
                 </Footer>
             </App>
         )
@@ -103,7 +103,7 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
     protected _renderRoutes(routes: BaseAppRoute[]): JSX.Element {
         return (
             <Switch>
-                { routes.map(this._createRoute) }
+                {routes.map(this._createRoute)}
                 <Route component={PageNotFoundView} />
             </Switch>
         )
@@ -134,8 +134,8 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
      * @return The created route, or a redirect route if the user is denied access.
      */
     protected _createRoute(route: BaseAppRoute, key: number): JSX.Element {
-        const {path, scopes: requiredScopes, props, component: Component} = route
-        const {scopes: actualScopes, isLoggedIn} = this.state
+        const { path, scopes: requiredScopes, props, component: Component } = route
+        const { scopes: actualScopes, isLoggedIn } = this.state
 
         // by default we only have access if the component requires no additional scopes.
         let hasAccess = !requiredScopes;
@@ -146,10 +146,10 @@ export default abstract class BaseApp extends React.Component<{}, BaseAppState> 
         }
 
         // render will either show the login page or the component, passing on any parameters
-        const render = ({match: {params}}) => hasAccess ?
+        const render = ({ match: { params } }) => hasAccess ?
             <Component scopes={actualScopes} {...props} {...params} />
-                : isLoggedIn === null ? <LoadingPage />
-                    : <Redirect to={this._getLoginUrl()} />;
+            : isLoggedIn === null ? <LoadingPage />
+                : <Redirect to={this._getLoginUrl()} />;
 
         // return the rendered view
         return <Route key={key} render={render} path={path} exact />;

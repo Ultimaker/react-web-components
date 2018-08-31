@@ -16,4 +16,4 @@ const UploadIcon: React.StatelessComponent = (): JSX.Element => {
 
 UploadIcon.displayName = "UploadIcon";
 
-export default UploadIcon;
+export default UploadIcon; 
