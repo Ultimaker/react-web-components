@@ -14,34 +14,34 @@ const stories = storiesOf('Example layouts', module);
  */
 class StoriesApp extends BaseApp {
 
-  protected _fetchScopes(): void {
-    this._setAuth([]);
-  }
+    protected _fetchScopes(): void {
+        this._setAuth([]);
+    }
 
-  protected _getAppUrl(): string {
-    return "/app";
-  }
+    protected _getAppUrl(): string {
+        return "/app";
+    }
 
-  protected _getLoginUrl(): string {
-    return '/Sign In'
-  }
+    protected _getLoginUrl(): string {
+        return '/Sign In'
+    }
 
-  protected _getRoutes(): BaseAppRoute[] {
-    return [{
-      path: '/home',
-      label: 'Home',
-      visible: true,
-      component: Page
-    }]
-  }
+    protected _getRoutes(): BaseAppRoute[] {
+        return [{
+            path: '/home',
+            label: 'Home',
+            visible: true,
+            component: Page
+        }]
+    }
 }
 
 stories.addDecorator(withKnobs);
 
 stories.add('Base App', withInfo(
-  'A example layout for an application'
+    'A example layout for an application'
 )(() =>
-  <BrowserRouter>
-    <StoriesApp />
-  </BrowserRouter>
+    <BrowserRouter>
+        <StoriesApp />
+    </BrowserRouter>
 ));

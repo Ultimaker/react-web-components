@@ -27,102 +27,102 @@ import ProfileIcon from '../components/icons/profile_icon';
 const stories = storiesOf('Icons', module);
 
 stories.addDecorator(withKnobs)
-  .addDecorator(styles({
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '50px'
-  }));
+    .addDecorator(styles({
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '50px'
+    }));
 
 stories.add('Icons', withInfo(
-  'All icons'
+    'All icons'
 )(() =>
-  <div style={{ width: '80vw' }}>
-    <Grid>
-      <GridItem layoutWidth="1/1">
-        Icons
+    <div style={{ width: '80vw' }}>
+        <Grid>
+            <GridItem layoutWidth="1/1">
+                Icons
       </GridItem>
 
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="ApprovedIcon">
-          <ApprovedIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="PendingIcon">
-          <PendingIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="RejectedIcon">
-          <RejectedIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="WarningIcon">
-          <WarningIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="HighlightIcon">
-          <HighlightIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="EmailIcon">
-          <EmailIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="PasswordIcon">
-          <PasswordIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="WebsiteIcon">
-          <WebsiteIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="ProfileIcon">
-          <ProfileIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="DownloadIcon">
-          <DownloadIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="UploadIcon">
-          <UploadIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="LinkIcon">
-          <LinkIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="RequiredIcon">
-          <RequiredIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="DraftIcon">
-          <DraftIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="PublishedIcon">
-          <PublishedIcon />
-        </Tooltip>
-      </GridItem>
-      <GridItem layoutWidth="fit">
-        <Tooltip tooltipText="UnpublishedIcon">
-          <UnpublishedIcon />
-        </Tooltip>
-      </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="ApprovedIcon">
+                    <ApprovedIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="PendingIcon">
+                    <PendingIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="RejectedIcon">
+                    <RejectedIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="WarningIcon">
+                    <WarningIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="HighlightIcon">
+                    <HighlightIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="EmailIcon">
+                    <EmailIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="PasswordIcon">
+                    <PasswordIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="WebsiteIcon">
+                    <WebsiteIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="ProfileIcon">
+                    <ProfileIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="DownloadIcon">
+                    <DownloadIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="UploadIcon">
+                    <UploadIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="LinkIcon">
+                    <LinkIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="RequiredIcon">
+                    <RequiredIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="DraftIcon">
+                    <DraftIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="PublishedIcon">
+                    <PublishedIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="UnpublishedIcon">
+                    <UnpublishedIcon />
+                </Tooltip>
+            </GridItem>
 
-    </Grid>
-  </div>
+        </Grid>
+    </div>
 ));

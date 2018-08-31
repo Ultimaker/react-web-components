@@ -2,31 +2,31 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export interface ContextMenuItemProps {
-  /** Disables the menu item when true */
-  disabled?: boolean;
-  /** Called when the Button is clicked */
-  onClickHandler: () => void;
-  /** Label for the menu item */
-  label: string;
+    /** Disables the menu item when true */
+    disabled?: boolean;
+    /** Called when the Button is clicked */
+    onClickHandler: () => void;
+    /** Label for the menu item */
+    label: string;
 }
 
 export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> =
-  ({ disabled, onClickHandler, label }) => {
+    ({ disabled, onClickHandler, label }) => {
 
-    const _onClickHandler = (e) => {
-      if(disabled){
-        e.stopPropagation();
-      }
-      else{
-        onClickHandler();
-      }
-    }
+        const _onClickHandler = (e) => {
+            if (disabled) {
+                e.stopPropagation();
+            }
+            else {
+                onClickHandler();
+            }
+        }
 
-    return <li className={classNames({ disabled })} onClick={_onClickHandler}>
-      {label}
-    </li>
+        return <li className={classNames({ disabled })} onClick={_onClickHandler}>
+            {label}
+        </li>
 
-  };
+    };
 
 ContextMenuItem.displayName = "ContextMenuItem";
 

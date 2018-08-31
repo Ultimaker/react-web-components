@@ -1,30 +1,29 @@
-
 .drop-down-menu
-  @extend .context-menu
+    @extend .context-menu
 
-  .container
-    z-index: 99999
-    
-    &:before
-      right: 13px
-      left: auto
+    .container
+        z-index: 99999
 
-    .menu
-      right: 0
+        &:before
+            right: 13px
+            left: auto
 
-      li
-        white-space: nowrap
+        .menu
+            right: 0
 
-        &.active
-          color: $color-blue
+            li
+                white-space: nowrap
 
-  .label
-    cursor: pointer
-    padding: 1.2rem 1.8rem
+                &.active
+                    color: $color-blue
 
-    .text
-      display: inline-block
+    .label
+        cursor: pointer
+        padding: 1.2rem 1.8rem
 
-    .panel-arrow
-      opacity: 1
-      margin-left: 0.9rem
+        .text
+            display: inline-block
+
+        .panel-arrow
+            opacity: 1
+            margin-left: 0.9rem

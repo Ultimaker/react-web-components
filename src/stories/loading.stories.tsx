@@ -11,21 +11,21 @@ import Spinner from '../components/spinner';
 const stories = storiesOf('Loading', module);
 
 stories.addDecorator(withKnobs)
-  .addDecorator(styles({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
-  }));
+    .addDecorator(styles({
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+    }));
 
 stories.add('Loading text', withInfo(
-  'Loading text component'
+    'Loading text component'
 )(() =>
-  <Loading label={text('Label', 'Loading')} />
+    <Loading label={text('Label', 'Loading')} />
 ));
 
 stories.add('Loading page', withInfo(
-  'Full page loading spinner. To be used when the application is loading.'
+    'Full page loading spinner. To be used when the application is loading.'
 )(() =>
-  <LoadingPage />
+    <LoadingPage />
 ));

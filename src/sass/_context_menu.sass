@@ -1,136 +1,137 @@
 .context-menu
-  position: relative
-
-  &:focus
-    outline: none
-
-  .trigger
     position: relative
-    cursor: pointer
-    color: $context-menu-color-trigger
-    height: 4.4rem
-    text-align: center
-    display: inline-block
-    border-radius: 9999px
-    background-color: transparent
-    -webkit-user-select: none
-    -moz-user-select: none
-    -ms-user-select: none
-    user-select: none 
-    z-index: 99
 
-    &:after
-      content: ''
-      position: absolute
-      left: 50%
-      top: 50%
-      width: 2px
-      height: 2px
-      margin-left: -1px
-      margin-top: -1px
-      background-color: $context-menu-color-trigger
-      border-radius: 50%
-      box-shadow: 0 0 0 1px $context-menu-color-trigger, 0 8px 0 1px $context-menu-color-trigger, 0 -8px 0 1px $context-menu-color-trigger
-
-  .trigger, .label
-
-    &:hover, &:focus
-      background-color: $context-menu-color-hover
-      transition: all 0.2s ease-out
-
-  .trigger
-    
-    &:hover, &:focus
-      color: $context-menu-color-trigger-hover
-
-  .container
-    visibility: hidden
-    position: absolute
-    bottom: 3px
-    width: 100%
-
-    &:before
-      background: white
-      border-top: 1px solid rgba(0, 0, 0, 0.075)
-      border-left: 1px solid rgba(0, 0, 0, 0.075)
-      border-width: 1px 0 0 1px
-      content: ''
-      height: 1rem
-      left: 50%
-      position: absolute
-      transform: translate(-50%, 0) rotate(45deg)
-      top: -6px
-      width: 1rem
-      z-index: 99999
-
-    .menu
-      background-color: $context-menu-color-background
-      line-height: 2.2rem
-      color: $context-menu-color-text
-      position: absolute
-      border-radius: 1px
-      z-index: 99998
-      box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow
-      @include font-size-text-2
-
-      ul
-       list-style: none
-       padding: 1rem 0
-       margin: 0
-
-      li
-        cursor: pointer
-        padding: 1.2rem 2.4rem
-
-        &:last-child
-          border-bottom: none
-
-        &:hover
-          background-color: $context-menu-color-hover
-          transition: background-color 0.2s ease-out
-
-        &.disabled
-          color: $color-text-lighter
-          transition: color 0.2s ease-out
-          cursor: default
-
-          &:hover
-            background-color: $context-menu-color-background
-            transition: background-color 0.2s ease-out
-
-        .additional-info
-          color: $color-text-lighter
-
-  &.context-menu--north
-    .container
-      bottom: auto
-      top: 0
-
-      &:before
-        top: -5px
-        border: none
-        border-bottom: 1px solid rgba(0, 0, 0, 0.075)
-        border-right: 1px solid rgba(0, 0, 0, 0.075)
-
-      .menu
-        transform: translate(0, calc(-100%))
-
-  &.visible
-
-    .container
-      visibility: visible
-    
-    .trigger, .label
-      &:hover, &:focus
-        background-color: transparent
-
-
-  &.context-menu--panel
-    position: absolute
-    top: 0
-    right: 0
-    bottom: 0
+    &:focus
+        outline: none
 
     .trigger
-      border-radius: 0
-      height: 100%
+        position: relative
+        cursor: pointer
+        color: $context-menu-color-trigger
+        height: 4.4rem
+        text-align: center
+        display: inline-block
+        border-radius: 9999px
+        background-color: transparent
+        -webkit-user-select: none
+        -moz-user-select: none
+        -ms-user-select: none
+        user-select: none
+        z-index: 99
+
+        &:after
+            content: ""
+            position: absolute
+            left: 50%
+            top: 50%
+            width: 2px
+            height: 2px
+            margin-left: -1px
+            margin-top: -1px
+            background-color: $context-menu-color-trigger
+            border-radius: 50%
+            box-shadow: 0 0 0 1px $context-menu-color-trigger, 0 8px 0 1px $context-menu-color-trigger, 0 -8px 0 1px $context-menu-color-trigger
+
+    .trigger, .label
+        &:hover, &:focus
+            background-color: $context-menu-color-hover
+            transition: all 0.2s ease-out
+
+    .trigger
+        &:hover, &:focus
+            color: $context-menu-color-trigger-hover
+
+    .container
+        visibility: hidden
+        position: absolute
+        bottom: 3px
+        width: 100%
+
+        &:before
+            background: white
+            border-top: 1px solid rgba(0, 0, 0, 0.075)
+            border-left: 1px solid rgba(0, 0, 0, 0.075)
+            border-width: 1px 0 0 1px
+            content: ""
+            height: 1rem
+            left: 50%
+            position: absolute
+            transform: translate(-50%, 0) rotate(45deg)
+            top: -6px
+            width: 1rem
+            z-index: 99999
+
+        .menu
+            background-color: $context-menu-color-background
+            line-height: 2.2rem
+            color: $context-menu-color-text
+            position: absolute
+            border-radius: 1px
+            z-index: 99998
+            box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow
+
+            +font-size-text-2
+
+            ul
+                list-style: none
+                padding: 1rem 0
+                margin: 0
+
+                li
+                    cursor: pointer
+                    padding: 1.2rem 2.4rem
+
+                    &:last-child
+
+                    border-bottom: none
+
+                    &:hover
+
+                    background-color: $context-menu-color-hover
+                    transition: background-color 0.2s ease-out
+
+                    &.disabled
+
+                    color: $color-text-lighter
+                    transition: color 0.2s ease-out
+                    cursor: default
+
+                    &:hover
+                        background-color: $context-menu-color-background
+                        transition: background-color 0.2s ease-out
+
+                    .additional-info
+
+                    color: $color-text-lighter
+
+    &.context-menu--north
+        .container
+            bottom: auto
+            top: 0
+
+            &:before
+                top: -5px
+                border: none
+                border-bottom: 1px solid rgba(0, 0, 0, 0.075)
+                border-right: 1px solid rgba(0, 0, 0, 0.075)
+
+            .menu
+                transform: translate(0, calc(-100%))
+
+    &.visible
+        .container
+            visibility: visible
+
+        .trigger, .label
+            &:hover, &:focus
+                background-color: transparent
+
+    &.context-menu--panel
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+
+        .trigger
+            border-radius: 0
+            height: 100%

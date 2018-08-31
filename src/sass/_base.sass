@@ -1,38 +1,41 @@
 *
-  box-sizing: border-box
+    box-sizing: border-box
 
 html
-  font-size: 62.5%
-  -webkit-tap-highlight-color: transparent
+    font-size: 62.5%
+    -webkit-tap-highlight-color: transparent
 
 body
-  background-color: $color-body
-  color: $color-text
-  font-family: $font-primary
-  @include font-size-text-1
-  line-height: 2.2rem
-  width: 100vw
-  overflow-x: hidden
+    background-color: $color-body
+    color: $color-text
+    font-family: $font-primary
+
+    +font-size-text-1
+
+    line-height: 2.2rem
+    width: 100vw
+    overflow-x: hidden
 
 .app
-  display: flex
-  min-height: 100vh
-  min-width: $min-window-width
-  flex-direction: column
+    display: flex
+    min-height: 100vh
+    min-width: $min-window-width
+    flex-direction: column
 
 .app__main
-  flex: 1
+    flex: 1
 
 .app--fixed-header .app__main
-  @include respond-to(sm)
-    padding-top: 5rem
+    +respond-to(sm)
+        padding-top: 5rem
 
-  @include respond-to(md)
-    padding-top: 6rem
+
+    +respond-to(md)
+        padding-top: 6rem
 
 .noscroll
-  overflow: hidden
-  top: 0
-  left: 0
-  right: 0
-  bottom: 0
+    overflow: hidden
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0

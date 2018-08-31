@@ -9,23 +9,23 @@ import classNames from 'classnames';
  * @interface AppProps
  */
 export interface AppProps {
-	fixedHeader?: boolean;
+    fixedHeader?: boolean;
 }
 
 /**
  * Application wrapper component that applies the correct CSS classes.
  */
-const App: React.StatelessComponent<AppProps> = 
-	({ fixedHeader, children }) => {
+const App: React.StatelessComponent<AppProps> =
+    ({ fixedHeader, children }) => {
 
-		const classes = classNames('app', { 'app--fixed-header': fixedHeader });
-		
-		return (
-			<div className={classes}>
-				{children}
-			</div>
-		)
-	}
+        const classes = classNames('app', { 'app--fixed-header': fixedHeader });
+
+        return (
+            <div className={classes}>
+                {children}
+            </div>
+        )
+    }
 
 App.displayName = "App";
 

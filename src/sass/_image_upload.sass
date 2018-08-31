@@ -1,83 +1,83 @@
 .image-upload
-  position: relative
-  display: inline-block
-  vertical-align: bottom
-
-  .hover-area
-    cursor: pointer
-    z-index: 2
-    position: absolute
-    top: 0
-    bottom: 0
-    right: 0
-    left: 0
-
-    &:hover, &.show
-      .cover, .icon, .placeholder-label
-        visibility: visible !important
-        opacity: 1 !important
-      
-      .cover
-        background-color: rgba(255, 255, 255, 0.5)
-
-      .icon svg
-        fill: $input-field-color-border-hover
-
-      .placeholder-label
-        color: $color-text 
-
-  .cover
-    background-color: rgba(255, 255, 255, 0)
-    position: absolute
-    top: 0
-    bottom: 0
-    right: 0
-    left: 0
-    transition: background-color 0.2s ease-out
-
-    &.cover--round
-      border-radius: 9999px
-
-  .placeholder
-    border: 2px dashed $input-field-color-placeholder
     position: relative
-    height: 100%
-    width: 100%
-    
-    &.placeholder--round
-      border-radius: 9999px
+    display: inline-block
+    vertical-align: bottom
 
-  .placeholder-label
-    position: absolute
-    top: 65%
-    left: 50%
-    transform: translate(-50%, 0)
-    color: $color-text-light
-    width: 80%
-    text-align: center
-    z-index: 1
+    .hover-area
+        cursor: pointer
+        z-index: 2
+        position: absolute
+        top: 0
+        bottom: 0
+        right: 0
+        left: 0
 
-  .icon
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    width: 50%
-    height: 50%
-    z-index: 1
-    opacity: 0.5
-    transition: opacity 0.2s ease-out
+        &:hover, &.show
+            .cover, .icon, .placeholder-label
+                visibility: visible !important
+                opacity: 1 !important
 
-  .icon-with-label
+            .cover
+                background-color: rgba(255, 255, 255, 0.5)
+
+            .icon svg
+                fill: $input-field-color-border-hover
+
+            .placeholder-label
+                color: $color-text
+
+    .cover
+        background-color: rgba(255, 255, 255, 0)
+        position: absolute
+        top: 0
+        bottom: 0
+        right: 0
+        left: 0
+        transition: background-color 0.2s ease-out
+
+        &.cover--round
+            border-radius: 9999px
+
+    .placeholder
+        border: 2px dashed $input-field-color-placeholder
+        position: relative
+        height: 100%
+        width: 100%
+
+        &.placeholder--round
+            border-radius: 9999px
+
+    .placeholder-label
+        position: absolute
+        top: 65%
+        left: 50%
+        transform: translate(-50%, 0)
+        color: $color-text-light
+        width: 80%
+        text-align: center
+        z-index: 1
+
     .icon
-      top: 40%
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        width: 50%
+        height: 50%
+        z-index: 1
+        opacity: 0.5
+        transition: opacity 0.2s ease-out
 
-  .hide-icon
-    .icon, .placeholder-label
-      visibility: hidden
-      opacity: 0
-      transition: opacity 0.2s ease-out
+    .icon-with-label
+        .icon
+            top: 40%
 
-    svg
-      transition: fill 0.2s ease-out
-      width: 100%
+    .hide-icon
+        .icon, .placeholder-label
+            visibility: hidden
+            opacity: 0
+            transition: opacity 0.2s ease-out
+
+        svg
+            transition: fill 0.2s ease-out
+            width: 100%
