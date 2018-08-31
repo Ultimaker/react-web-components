@@ -19,23 +19,12 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.sass$/,
+                test: /\.scss$/,
                 use: [
-                    {
-                        loader: "style-loader"
-                    },
-                    {
-                        loader: "css-loader",
-                    },
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            data: "$static_url: " + JSON.stringify(static_url)
-                        }
-                    }
-                ],
-                include: path.resolve(__dirname, '../src'),
-                exclude: /node_modules/
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                    "sass-loader" // compiles Sass to CSS, using Node Sass by default
+                ]
             },
             {
                 test: /\.css$/,
