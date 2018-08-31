@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Footer component should render 1`] = `
+<footer
+  className="app__footer"
+>
+  About
+</footer>
+`;

@@ -27,7 +27,8 @@ export const Grid: React.StatelessComponent<GridProps> =
 
 Grid.defaultProps = {
   align: 'left',
-  gutter: 'md'
+  gutter: 'md',
+  position: 'top'
 }
 
 Grid.displayName = "Grid"

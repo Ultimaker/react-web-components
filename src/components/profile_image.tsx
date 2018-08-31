@@ -5,7 +5,9 @@ import ProfileIcon from './icons/profile_icon';
 import Image from './image';
 
 export interface CircleIconProps {
+  /** Size of the profile image. Include unit */
   size: string;
+  /** URL of the image. If not provided, a default image will be displayed */
   imageURL?: string;
 }
 

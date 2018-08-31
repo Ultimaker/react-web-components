@@ -8,7 +8,11 @@
   },
   "scripts": {
     "start": "STATIC_URL=http://localhost:9001 start-storybook -p 9001 -c .storybook",
-    "build": "STATIC_URL=https://ultimaker.github.io/react-web-components build-storybook -c .storybook -o public"
+    "build": "STATIC_URL=https://ultimaker.github.io/react-web-components build-storybook -c .storybook -o public",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:debug": "echo 'Open chrome://inspect to debug'; node --inspect-brk node_modules/.bin/jest --runInBand --watch"
   },
   "repository": {
     "type": "git",
@@ -58,6 +62,8 @@
     "@storybook/addon-viewport": "^3.4.7",
     "@storybook/addons": "^3.3.0",
     "@storybook/react": "^3.2.3",
+    "@types/enzyme": "^3.1.13",
+    "@types/jest": "^23.3.1",
     "@types/storybook__addon-actions": "^3.0.3",
     "@types/storybook__addon-links": "^3.3.1",
     "@types/storybook__react": "^3.0.7",
@@ -67,6 +73,57 @@
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "sass-loader": "^7.0.3",
     "storybook-addon-jsx": "^5.3.0",
-    "webpack": "3.11.0"
+    "webpack": "3.11.0",
+    "enzyme": "3.4.1",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^23.4.2",
+    "jsdom": "^11.12.0",
+    "jsdom-global": "^3.0.2",
+    "react-test-renderer": "^16.4.1",
+    "react-web-components": "https://github.com/Ultimaker/react-web-components.git#v1.0.4",
+    "ts-jest": "^23.0.1"
+  },
+  "jest": {
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.tsx",
+      "!src/components/icons/*.tsx",
+      "!src/stories/*"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 73,
+        "branches": 39,
+        "functions": 49,
+        "lines": 68
+      }
+    },
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-web-components)/)"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/testFileStub.tsx",
+      "\\.(css|sass)$": "<rootDir>/src/__mocks__/emptyModule.tsx"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "setupFiles": [
+      "./src/jestsetup.tsx"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }

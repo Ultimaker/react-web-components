@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Grid component should render 1`] = `
+<div
+  className="grid-component layout layout--align-left layout--gutter-md layout--align-top layout--gutter-md--above layout--gutter-md--below"
+/>
+`;

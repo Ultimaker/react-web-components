@@ -47,8 +47,6 @@ export interface ResponseErrorObject {
 
 export interface ResponseErrorProps {
     errors: ResponseErrorObject[];
-    linkTo?: string;
-    linkText?: string;
     errorMessageTemplates?: ErrorMessageTemplates;
     fieldNames?: FieldTranslations;
 }
@@ -81,7 +79,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
             <div className="response-error">
                 <Tile align="center" alert>
                     {errors.map(error =>
-                        <div key={error.id}>{getTranslatedError(error, errorMessageTemplates, fieldNames)}</div>
+                        <div className="response-error__msg" key={error.id}>{getTranslatedError(error, errorMessageTemplates, fieldNames)}</div>
                     )}
                 </Tile>
                 { isServerError && this.state.showPopup && <Popup

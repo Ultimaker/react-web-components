@@ -36,6 +36,10 @@ const delimiters = [keyCodes.comma, keyCodes.enter];
 
 export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelectorState> {
 
+  static defaultProps = {
+    autofocus: false,
+  };
+
   state = {
     tags: [],
     suggestions: []
@@ -72,11 +76,14 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
   }
 
   static _convertStringsToTags(strings: string[]): Tag[] {
-    let tags: Tag[] = [];
-    strings.forEach(string => {
-      tags.push({ id: string, text: string });
-    })
-    return tags
+    if (strings) {
+      let tags: Tag[] = [];
+      strings.forEach(string => {
+        tags.push({ id: string, text: string });
+      })
+      return tags
+    }
+    return null;
   }
 
   static _convertTagsToStrings(tags: Tag[]): string[] {

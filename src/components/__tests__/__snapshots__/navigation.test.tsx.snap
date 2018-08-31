@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Navigation component should render 1`] = `
+<nav
+  class="navigation"
+>
+  <div
+    class="nav-links-container"
+  >
+    <div
+      class="burger-menu show-xs"
+    >
+      <button
+        class="btn btn--primary btn--circle "
+        type="button"
+      >
+        <span
+          class="text"
+        >
+          <div
+            class="burger-menu__icon"
+          />
+        </span>
+      </button>
+    </div>
+    <ul>
+      <li
+        style="top:0px"
+      >
+        <a
+          href="/home"
+        >
+          <span
+            class="label"
+          >
+            Home
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;

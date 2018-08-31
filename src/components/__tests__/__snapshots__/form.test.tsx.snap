@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Form component should render 1`] = `
+<form
+  className="form"
+  noValidate={true}
+  onSubmit={[Function]}
+/>
+`;

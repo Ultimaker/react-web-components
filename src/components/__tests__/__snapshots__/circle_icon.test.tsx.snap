@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The CircleIcon component should render 1`] = `
+<div
+  className="circle-icon icon icon--circle primary"
+>
+  1
+</div>
+`;

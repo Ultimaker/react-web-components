@@ -69,7 +69,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     const { size, shape, imageURL, placeholderLabel } = this.props;
     const { dropActive } = this.state;
 
-    const iconClasses = classNames({ 'hide': imageURL !== null });
+    const iconClasses = classNames({ 'hide': imageURL !== null, 'icon-with-label': placeholderLabel });
     const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
 
     return <Dropzone className="image-upload" style={{ width: size, height: size }}

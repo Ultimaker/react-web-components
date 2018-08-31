@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The InputFieldValidation component should render 1`] = `
+<div
+  className="layout__item u-full input-field__validation"
+>
+  <div
+    className="layout"
+  >
+    <div
+      className="layout__item u-fill null"
+    >
+      <div
+        className="input-field__error-message"
+      >
+        Validation error
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Image component should render 1`] = `
+<img
+  className="image image--round"
+  src="./test_image.png"
+  style={
+    Object {
+      "height": "18rem",
+      "width": "18rem",
+    }
+  }
+/>
+`;

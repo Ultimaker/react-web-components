@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SlideInPanel component should render 1`] = `
+<div
+  class="slide-in-panel"
+>
+  <div
+    class="slide-in-panel__overlay"
+  />
+  <div
+    class="slide-in-panel__container"
+    style="transform:translate3d(100%,0,0)"
+  >
+    <div
+      class="slide-in-panel__header"
+    >
+      <div
+        class="layout"
+      >
+        <div
+          class="layout__item u-fill"
+        >
+          Panel title
+        </div>
+      </div>
+    </div>
+    <div
+      class="slide-in-panel__content"
+    >
+      <div>
+        Body
+      </div>
+    </div>
+  </div>
+</div>
+`;

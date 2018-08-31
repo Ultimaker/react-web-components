@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Popup component should render a confirm popup 1`] = `
+<Modal>
+  <form
+    className="popup"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="popup__header"
+    >
+      Popup header
+    </div>
+    <div
+      className="popup__body"
+    >
+      <p
+        key="0"
+      >
+        Popup body
+      </p>
+    </div>
+    <div
+      className="popup__actions"
+    >
+      <div
+        className="popup__btn-container"
+      >
+        <Button
+          className=""
+          disabled={false}
+          linkToNewTab={false}
+          shape="rectangle"
+          showSpinner={false}
+          style="primary"
+          type="submit"
+        >
+          Primary button
+        </Button>
+      </div>
+    </div>
+  </form>
+</Modal>
+`;
+
+exports[`The Popup component should render a prompt popup 1`] = `
+<Modal>
+  <form
+    className="popup"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="popup__header"
+    >
+      Popup header
+    </div>
+    <div
+      className="popup__body"
+    >
+      <p
+        key="0"
+      >
+        Popup body
+      </p>
+      <div
+        className="prompt-input"
+      >
+        <InputField
+          focusOnLoad={true}
+          id="prompt-input"
+          labelLayoutWidth="1/1"
+          labelWidthBreakpoint="sm"
+          max={null}
+          min={null}
+          onChangeHandler={[Function]}
+          type={null}
+        />
+      </div>
+    </div>
+    <div
+      className="popup__actions"
+    >
+      <div
+        className="popup__btn-container"
+      >
+        <Button
+          className=""
+          disabled={false}
+          linkToNewTab={false}
+          shape="rectangle"
+          showSpinner={false}
+          style="primary"
+          type="submit"
+        >
+          Primary button
+        </Button>
+      </div>
+    </div>
+  </form>
+</Modal>
+`;

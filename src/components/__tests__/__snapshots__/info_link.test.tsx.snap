@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The InfoLink component should render 1`] = `
+<div
+  className="info-link"
+>
+  <a
+    className="icon icon--circle"
+    href="https://ultimaker.com/"
+    target="_blank"
+  >
+    <LinkIcon />
+  </a>
+</div>
+`;

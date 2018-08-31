@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ProgressBar component should render 1`] = `
+<div
+  className="progress-bar"
+>
+  <span
+    className="progress-bar__progress-indicator"
+    style={
+      Object {
+        "height": "0.6rem",
+        "width": "50%",
+      }
+    }
+  />
+  <span
+    className="progress-bar__empty"
+    style={
+      Object {
+        "height": "0.6rem",
+        "width": "50%",
+      }
+    }
+  />
+</div>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The InputFieldLabel component should render 1`] = `
+<div
+  className="input-field__label layout__item u-1/1-sm"
+>
+  <div
+    className="layout layout--gutter-sm"
+  >
+    <div
+      className="layout__item u-fit"
+    >
+      <label
+        htmlFor="testInputField"
+      >
+        Input label
+      </label>
+    </div>
+  </div>
+</div>
+`;

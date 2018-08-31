@@ -36,14 +36,14 @@ export const Button: React.StatelessComponent<ButtonProps> =
     const classes = classNames(`btn btn--${style} btn--${shape} ${className}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
     const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
-      if (onClickHandler) {
-        e.stopPropagation();
+      e.stopPropagation();
+      if (onClickHandler && !(disabled || showSpinner)) {
         onClickHandler();
       }
     }
 
     if (type === 'link') {
-      return <a id={id} className={classes} href={disabled || showSpinner ? null : linkURL} target={linkToNewTab ? '_blank' : null}>
+      return <a id={id} className={classes} href={disabled || showSpinner ? undefined : linkURL} target={linkToNewTab ? '_blank' : undefined}>
         <span className="text">{children}</span>
         {showSpinner &&
           <Spinner />
@@ -64,7 +64,8 @@ Button.defaultProps = {
   type: 'button',
   style: 'primary',
   shape: 'rectangle',
-  linkToNewTab: false
+  linkToNewTab: false,
+  className: ''
 };
 
 Button.displayName = "Button";

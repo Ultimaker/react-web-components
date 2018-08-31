@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The GridEmpty component should render 1`] = `
+<GridItem
+  breakpoint="xs"
+  layoutWidth="1/1"
+>
+  <div
+    className="grid-component__empty"
+  >
+    Empty grid
+  </div>
+</GridItem>
+`;
