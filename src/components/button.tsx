@@ -37,7 +37,7 @@ export const Button: React.StatelessComponent<ButtonProps> =
 
     const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();
-      if (onClickHandler) {
+      if (onClickHandler && !(disabled || showSpinner)) {
         onClickHandler();
       }
     }

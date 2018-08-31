@@ -53,6 +53,8 @@ describe('The Button component', () => {
     wrapper.setProps({ disabled: true });
     expect(wrapper.find('.disabled')).toHaveLength(1);
     expect(wrapper.find('[disabled]')).toHaveLength(1);
+    wrapper.simulate('click', mockClickEvent);
+    expect(props.onClickHandler).not.toHaveBeenCalled();
     wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/' });
     expect(wrapper.prop('href')).toBeUndefined();
   });

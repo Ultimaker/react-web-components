@@ -91,6 +91,14 @@
       "!src/components/icons/*.tsx",
       "!src/stories/*"
     ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 73,
+        "branches": 39,
+        "functions": 49,
+        "lines": 68
+      }
+    },
     "testEnvironment": "node",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
