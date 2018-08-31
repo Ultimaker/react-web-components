@@ -150,7 +150,8 @@ stories.add('Image upload', withState({ value: null })
           id="id_8"
           value={store.state.value}
           onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
-          imageShape={selectV2('Image shape', options, defaultValue)} />
+          imageShape={selectV2('Image shape', options, defaultValue)}
+          placeholder={text('Placeholder Label', 'Upload an image')} />
       </div>
     )
   )

@@ -17,7 +17,9 @@ export interface ImageUploadProps {
   /** Shape of the image: 'round' | 'square' */
   shape?: ImageShape;
   /** Image URL */
-  imageURL?: string
+  imageURL?: string;
+  /** Placeholder label */
+  placeholderLabel?: string;
 }
 
 export interface ImageUploadState {
@@ -46,7 +48,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     this.setState({
       dropActive: false
     });
-    
+
     const file = files[0];
     this.props.onFileSelection(file);
   }
@@ -64,15 +66,15 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
   }
 
   render(): JSX.Element {
-    const { size, shape, imageURL } = this.props;
+    const { size, shape, imageURL, placeholderLabel } = this.props;
     const { dropActive } = this.state;
 
     const iconClasses = classNames({ 'hide': imageURL !== null });
     const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
 
     return <Dropzone className="image-upload" style={{ width: size, height: size }}
-      accept="image/jpeg, image/png" 
-      multiple={false} 
+      accept="image/jpeg, image/png"
+      multiple={false}
       onDragEnter={this._onDragEnter}
       onDragLeave={this._onDragLeave}
       onDrop={(files) => this._onDropHandler(files)}
@@ -81,6 +83,12 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
       <div className={hoverAreaClasses}>
         <div className={iconClasses}>
           <UploadIcon />
+
+          {placeholderLabel &&
+            <div className="placeholder-label">
+              {placeholderLabel}
+            </div>
+          }
         </div>
 
         {imageURL &&
@@ -95,7 +103,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
       {imageURL &&
         <Image src={imageURL} shape={shape} size={size} />
       }
-      
+
     </Dropzone>
   }
 }
