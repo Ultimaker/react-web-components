@@ -164,7 +164,7 @@ stories.add('Toggle', withState({ checked: null })
     (({ store }) =>
       <ToggleButton
         id="toggle"
-        checked={store.state.value}
+        value={store.state.value}
         onChangeHandler={() => store.set({ value: !store.state.value })}
         disabled={boolean('Disabled', false)} />
     )
