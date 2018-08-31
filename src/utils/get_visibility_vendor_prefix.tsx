@@ -1,3 +1,6 @@
+/**
+ * Gets browser prefix needed to support Document.hidden 
+ */
 function getVisibilityVendorPrefix(): string {
     const prefixes = ['webkit', 'moz', 'ms', 'o'];
 

@@ -1,5 +1,9 @@
 import getVisibilityVendorPrefix from './get_visibility_vendor_prefix';
 
+/**
+ * Detect whether the browser window is hidden, 
+ * i.e. the tab is not active or the window is not open 
+ */
 function isBrowserWindowHidden(): boolean {
     if (getVisibilityVendorPrefix() === null) {
         return false;
