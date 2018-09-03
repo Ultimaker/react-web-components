@@ -1,6 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The InputFieldInput component should render 1`] = `
+exports[`The InputFieldInput component should render a static text field 1`] = `
+<Fragment>
+  <div
+    className="layout__item u-fit layout__item--middle"
+  >
+    Test input
+  </div>
+</Fragment>
+`;
+
+exports[`The InputFieldInput component should render a text input 1`] = `
 <Fragment>
   <div
     className="layout__item u-fill layout__item--middle"
