@@ -19,7 +19,7 @@ export class InputFieldValidation extends React.Component<InputFieldValidationPr
     render(): JSX.Element {
         const { validationError, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
         let errorMsgOffsetClass = null;
-        let errorMsgClass = null;
+        let errorMsgClass = '';
 
         if (labelLayoutWidth !== 'fill' && labelLayoutWidth !== 'fit' && labelLayoutWidth !== '1/1') {
             // align validation message under input (after label width)
