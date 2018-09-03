@@ -36,3 +36,37 @@ exports[`The InputFieldInput component should render a text input 1`] = `
   </div>
 </Fragment>
 `;
+
+exports[`The InputFieldInput component should render children after the input 1`] = `
+<Fragment>
+  <div
+    className="layout__item u-fill layout__item--middle"
+  >
+    <div
+      className="input-container layout layout--gutter-xs"
+    >
+      <div
+        className="layout__item u-fill"
+      >
+        <input
+          className="input"
+          id="testInputField"
+          max={null}
+          min={null}
+          name="testInputField"
+          onChange={[Function]}
+          type="text"
+          value="Test input"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="layout__item u-fit"
+  >
+    <div
+      className="child"
+    />
+  </div>
+</Fragment>
+`;

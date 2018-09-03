@@ -63,7 +63,7 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
         const { id, label, labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
 
         const classes = classNames(`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`,
-            { 'tag-selector-label': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
+            { 'tag-label-position-override': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
 
         return (
             <div className={classes}>

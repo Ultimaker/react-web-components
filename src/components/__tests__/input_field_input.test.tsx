@@ -186,7 +186,7 @@ describe('The InputFieldInput component', () => {
     it('should render children after the input', () => {
         wrapper.setProps({ children: <div className="child"></div> });
         expect(wrapper.find('input').exists()).toEqual(true);
-        expect(wrapper.find('.child')).toHaveLength(1);
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should handle an input change', () => {

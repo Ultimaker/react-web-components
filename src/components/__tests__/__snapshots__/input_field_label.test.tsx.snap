@@ -19,3 +19,84 @@ exports[`The InputFieldLabel component should render 1`] = `
   </div>
 </div>
 `;
+
+exports[`The InputFieldLabel component should render info link 1`] = `
+<div
+  className="input-field__label layout__item u-1/1-sm"
+>
+  <div
+    className="layout layout--gutter-sm"
+  >
+    <div
+      className="layout__item u-fit"
+    >
+      <label
+        htmlFor="testInputField"
+      >
+        Input label
+      </label>
+    </div>
+    <div
+      className="layout__item u-fit input-field__label-addition"
+    >
+      <InfoLink
+        infoLinkURL="https://ultimaker.com/"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The InputFieldLabel component should render info tooltip 1`] = `
+<div
+  className="input-field__label layout__item u-1/1-sm"
+>
+  <div
+    className="layout layout--gutter-sm"
+  >
+    <div
+      className="layout__item u-fit"
+    >
+      <label
+        htmlFor="testInputField"
+      >
+        Input label
+      </label>
+    </div>
+    <div
+      className="layout__item u-fit input-field__label-addition"
+    >
+      <InfoTooltip
+        infoText="Test tooltip text"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The InputFieldLabel component should render pre label element before the label 1`] = `
+<div
+  className="input-field__label layout__item u-1/1-sm"
+>
+  <div
+    className="layout layout--gutter-sm"
+  >
+    <div
+      className="layout__item u-fit input-field__pre-element"
+    >
+      <div
+        className="pre-label-element"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <label
+        htmlFor="testInputField"
+      >
+        Input label
+      </label>
+    </div>
+  </div>
+</div>
+`;
