@@ -55,12 +55,12 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const contextMenuElement = this.menuRef.current;
 
         // get element position
-        const contextMenuLeft = contextMenuElement.getBoundingClientRect().left;
+        const contextMenuLeft = contextMenuElement ? contextMenuElement.getBoundingClientRect().left : null;
 
         const leftOffset = menuOffsetDefault - windowMargin;
         const rightOffset = (triggerWidth + menuOffsetDefault) - windowMargin;
 
-        let menuOffset: number;
+        let menuOffset: number = null;
 
         if (menuOffsetDirection === 'right') {
             // if the menu will appear outside the window on the right side, move it left
@@ -79,9 +79,6 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
                 menuOffset = windowWidth - (contextMenuLeft + menuWidth + windowMargin);
             }
 
-        }
-        else {
-            menuOffset = null;
         }
 
         this.setState({

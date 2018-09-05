@@ -72,16 +72,19 @@ describe('The Button component', () => {
   it('applies the correct class when prop `style` is secondary', () => {
     wrapper.setProps({ style: 'secondary' });
     expect(wrapper.find('.btn--secondary')).toHaveLength(1);
+    expect(wrapper.find('.btn--primary').exists()).toEqual(false);
   });
 
   it('applies the correct class when prop `style` is quiet', () => {
     wrapper.setProps({ style: 'quiet' });
     expect(wrapper.find('.btn--quiet')).toHaveLength(1);
+    expect(wrapper.find('.btn--primary').exists()).toEqual(false);
   });
 
   it('applies the correct class when prop `style` is alert', () => {
     wrapper.setProps({ style: 'alert' });
     expect(wrapper.find('.btn--alert')).toHaveLength(1);
+    expect(wrapper.find('.btn--primary').exists()).toEqual(false);
   });
 
   it('applies the correct class when prop `shape` is circle', () => {
