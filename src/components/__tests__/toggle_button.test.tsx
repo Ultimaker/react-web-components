@@ -8,21 +8,21 @@ import { shallow } from 'enzyme';
 import ToggleButton from '../toggle_button';
 
 describe('The Checkbox component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      id: 'testToggleButton',
-      value: false,
-      onChangeHandler: jest.fn(),
-    };
-    wrapper = shallow(<ToggleButton {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            id: 'testToggleButton',
+            value: false,
+            onChangeHandler: jest.fn(),
+        };
+        wrapper = shallow(<ToggleButton {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-    expect(props.onChangeHandler).not.toHaveBeenCalled();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+    });
 
 });

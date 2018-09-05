@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import InfoLink from '../info_link';
 
 describe('The InfoLink component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      infoLinkURL: 'https://ultimaker.com/'
-    };
-    wrapper = shallow(<InfoLink {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            infoLinkURL: 'https://ultimaker.com/'
+        };
+        wrapper = shallow(<InfoLink {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import ProfileImage from '../profile_image';
 
 describe('The ProfileImage component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      width: '20px'
-    };
-    wrapper = shallow(<ProfileImage {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            width: '20px'
+        };
+        wrapper = shallow(<ProfileImage {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

@@ -8,22 +8,22 @@ import { shallow } from 'enzyme';
 import SlideInPanel from '../slide_in_panel';
 
 describe('The SlideInPanel component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      headerTitle: 'Panel title',
-      isOpen: false,
-    };
-    wrapper = shallow(<SlideInPanel {...props}>
-      <div>Body</div>
-      <div>Footer</div>
-    </SlideInPanel>);
-  });
+    beforeEach(() => {
+        props = {
+            headerTitle: 'Panel title',
+            isOpen: false,
+        };
+        wrapper = shallow(<SlideInPanel {...props}>
+            <div>Body</div>
+            <div>Footer</div>
+        </SlideInPanel>);
+    });
 
-  it('should render', () => {
-    expect(wrapper.render()).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper.render()).toMatchSnapshot();
+    });
 
 });

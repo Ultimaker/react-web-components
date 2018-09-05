@@ -8,15 +8,15 @@ import { shallow } from 'enzyme';
 import Page from '../page';
 
 describe('The Page component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Page {...props} />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Page {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

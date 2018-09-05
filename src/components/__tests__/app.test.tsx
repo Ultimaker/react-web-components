@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import App from '../app';
 
 describe('The App component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      fixedHeader: true
-    };
-    wrapper = shallow(<App {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            fixedHeader: true
+        };
+        wrapper = shallow(<App {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

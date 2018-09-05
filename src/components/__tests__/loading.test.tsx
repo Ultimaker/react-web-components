@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import Loading from '../loading';
 
 describe('The Loading component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      label: 'loading',
-    };
-    wrapper = shallow(<Loading {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            label: 'loading',
+        };
+        wrapper = shallow(<Loading {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

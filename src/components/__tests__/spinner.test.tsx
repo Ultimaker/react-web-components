@@ -8,14 +8,14 @@ import { shallow } from 'enzyme';
 import Spinner from '../spinner';
 
 describe('The Spinner component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Spinner />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Spinner />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

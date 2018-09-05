@@ -8,14 +8,14 @@ import { shallow } from 'enzyme';
 import Tile from '../tile';
 
 describe('The Tile component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Tile />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Tile />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

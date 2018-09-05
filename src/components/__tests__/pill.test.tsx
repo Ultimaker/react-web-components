@@ -8,14 +8,14 @@ import { shallow } from 'enzyme';
 import Pill from '../pill';
 
 describe('The Pill component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Pill />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Pill />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

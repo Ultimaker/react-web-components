@@ -8,15 +8,15 @@ import { shallow } from 'enzyme';
 import Divider from '../divider';
 
 describe('The Divider component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Divider {...props} />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Divider {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

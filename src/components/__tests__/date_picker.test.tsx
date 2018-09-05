@@ -8,21 +8,21 @@ import { shallow } from 'enzyme';
 import DatePicker from '../date_picker';
 
 describe('The DatePicker component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      id: 'testDatePicker',
-      value: false,
-      onChangeHandler: jest.fn(),
-    };
-    wrapper = shallow(<DatePicker {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            id: 'testDatePicker',
+            value: false,
+            onChangeHandler: jest.fn(),
+        };
+        wrapper = shallow(<DatePicker {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-    expect(props.onChangeHandler).not.toHaveBeenCalled();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+    });
 
 });

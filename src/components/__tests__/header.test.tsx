@@ -8,14 +8,14 @@ import { shallow } from 'enzyme';
 import Header from '../header';
 
 describe('The Header component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Header />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Header />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

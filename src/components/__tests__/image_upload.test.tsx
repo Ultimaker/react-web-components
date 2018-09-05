@@ -8,19 +8,19 @@ import { shallow } from 'enzyme';
 import ImageUpload from '../image_upload';
 
 describe('The ImageFile component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      onFileSelection: jest.fn(),
-    };
-    wrapper = shallow(<ImageUpload {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            onFileSelection: jest.fn(),
+        };
+        wrapper = shallow(<ImageUpload {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-    expect(props.onFileSelection).not.toHaveBeenCalled();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+        expect(props.onFileSelection).not.toHaveBeenCalled();
+    });
 
 });

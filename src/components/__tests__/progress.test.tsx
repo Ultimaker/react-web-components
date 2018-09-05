@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import ProgressBar from '../progress_bar';
 
 describe('The ProgressBar component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      progressPercentage: 50
-    };
-    wrapper = shallow(<ProgressBar {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            progressPercentage: 50
+        };
+        wrapper = shallow(<ProgressBar {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

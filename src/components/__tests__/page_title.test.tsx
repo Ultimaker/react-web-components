@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import PageTitle from '../page_title';
 
 describe('The PageTitle component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      label: 'Page title'
-    };
-    wrapper = shallow(<PageTitle {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            label: 'Page title'
+        };
+        wrapper = shallow(<PageTitle {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

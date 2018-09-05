@@ -12,25 +12,25 @@ import Navigation from '../navigation';
 import PageNotFoundView from '../../views/page_not_found';
 
 describe('The Navigation component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      navLinks: [
-        {
-          path: '/home',
-          label: 'Home',
-          visible: true,
-          component: PageNotFoundView
-        }
-      ]
-    };
-    wrapper = shallow(<BrowserRouter><Navigation {...props} /></BrowserRouter>);
-  });
+    beforeEach(() => {
+        props = {
+            navLinks: [
+                {
+                    path: '/home',
+                    label: 'Home',
+                    visible: true,
+                    component: PageNotFoundView
+                }
+            ]
+        };
+        wrapper = shallow(<BrowserRouter><Navigation {...props} /></BrowserRouter>);
+    });
 
-  it('should render', () => {
-    expect(wrapper.render()).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper.render()).toMatchSnapshot();
+    });
 
 });

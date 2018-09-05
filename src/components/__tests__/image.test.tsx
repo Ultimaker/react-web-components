@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import Image from '../image';
 
 describe('The Image component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      src: './test_image.png'
-    };
-    wrapper = shallow(<Image {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            src: './test_image.png'
+        };
+        wrapper = shallow(<Image {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

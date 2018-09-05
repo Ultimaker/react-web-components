@@ -8,19 +8,19 @@ import { shallow } from 'enzyme';
 import CloseButton from '../close_button';
 
 describe('The CloseButton component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      onClickHandler: jest.fn(),
-    };
-    wrapper = shallow(<CloseButton {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            onClickHandler: jest.fn(),
+        };
+        wrapper = shallow(<CloseButton {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-    expect(props.onClickHandler).not.toHaveBeenCalled();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+        expect(props.onClickHandler).not.toHaveBeenCalled();
+    });
 
 });

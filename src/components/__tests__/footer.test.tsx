@@ -8,14 +8,14 @@ import { shallow } from 'enzyme';
 import Footer from '../footer';
 
 describe('The Footer component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Footer>About</Footer>);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Footer>About</Footer>);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

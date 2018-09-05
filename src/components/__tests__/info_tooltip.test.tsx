@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import InfoTooltip from '../info_tooltip';
 
 describe('The InfoTooltip component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      infoText: 'Tooltip text'
-    };
-    wrapper = shallow(<InfoTooltip {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            infoText: 'Tooltip text'
+        };
+        wrapper = shallow(<InfoTooltip {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

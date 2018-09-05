@@ -8,15 +8,15 @@ import { shallow } from 'enzyme';
 import GridItem from '../grid_item';
 
 describe('The GridItem component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<GridItem {...props} />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<GridItem {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

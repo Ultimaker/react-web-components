@@ -8,18 +8,18 @@ import { shallow } from 'enzyme';
 import PanelArrow from '../panel_arrow';
 
 describe('The PanelArrow component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      width: '20px'
-    };
-    wrapper = shallow(<PanelArrow {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            width: '20px'
+        };
+        wrapper = shallow(<PanelArrow {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

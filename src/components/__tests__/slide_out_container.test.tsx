@@ -8,20 +8,20 @@ import { shallow } from 'enzyme';
 import SlideOutContainer from '../slide_out_container';
 
 describe('The SlideOutContainer component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      isOpen: false,
-      onChangeHandler: jest.fn(),
-    };
-    wrapper = shallow(<SlideOutContainer {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            isOpen: false,
+            onChangeHandler: jest.fn(),
+        };
+        wrapper = shallow(<SlideOutContainer {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-    expect(props.onChangeHandler).not.toHaveBeenCalled();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+    });
 
 });

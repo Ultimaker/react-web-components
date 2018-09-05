@@ -8,14 +8,14 @@ import { shallow } from 'enzyme';
 import LoadingPage from '../loading_page';
 
 describe('The LoadingPage component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<LoadingPage />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<LoadingPage />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });
