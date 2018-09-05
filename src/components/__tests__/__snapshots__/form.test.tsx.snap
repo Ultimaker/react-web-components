@@ -1,9 +1,191 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`The Form component should call secondaryBtnHandler when secondary button is clicked 1`] = `
+<Form
+  onSubmitHandler={[MockFunction]}
+  primaryBtnText="primaryBtnText"
+  secondaryBtnHandler={[MockFunction]}
+  secondaryBtnStyle="secondary"
+  secondaryBtnText="secondaryBtnText"
+>
+  <form
+    className="form"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form__actions"
+    >
+      <div
+        className="form__btn-container"
+      >
+        <Button
+          className=""
+          disabled={true}
+          linkToNewTab={false}
+          shape="rectangle"
+          showSpinner={false}
+          style="primary"
+          type="submit"
+        >
+          <button
+            className="btn btn--primary btn--rectangle  disabled"
+            disabled={true}
+            onClick={[Function]}
+            type="submit"
+          >
+            <span
+              className="text"
+            >
+              primaryBtnText
+            </span>
+          </button>
+        </Button>
+      </div>
+      <div
+        className="form__btn-container"
+      >
+        <Button
+          className=""
+          disabled={false}
+          linkToNewTab={false}
+          onClickHandler={[Function]}
+          shape="rectangle"
+          showSpinner={false}
+          style="secondary"
+          type="button"
+        >
+          <button
+            className="btn btn--secondary btn--rectangle "
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              className="text"
+            >
+              secondaryBtnText
+            </span>
+          </button>
+        </Button>
+      </div>
+    </div>
+  </form>
+</Form>
+`;
+
 exports[`The Form component should render 1`] = `
 <form
   className="form"
   noValidate={true}
   onSubmit={[Function]}
-/>
+>
+  <div
+    className="form__actions"
+  >
+    <div
+      className="form__btn-container"
+    >
+      <Button
+        className=""
+        disabled={true}
+        linkToNewTab={false}
+        shape="rectangle"
+        style="primary"
+        type="submit"
+      >
+        primaryBtnText
+      </Button>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`The Form component should render with a form item 1`] = `
+<Form
+  onSubmitHandler={[MockFunction]}
+  primaryBtnText="primaryBtnText"
+>
+  <form
+    className="form"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form__item"
+      key=".0"
+    >
+      <InputField
+        id="test"
+        labelLayoutWidth="1/1"
+        labelWidthBreakpoint="sm"
+        type="text"
+      >
+        <div
+          className="input-field input-field--text layout"
+        >
+          <InputFieldInput
+            id="test"
+            labelLayoutWidth="1/1"
+            labelWidthBreakpoint="sm"
+            onChangeHandler={[Function]}
+            type="text"
+          >
+            <div
+              className="layout__item u-fill layout__item--middle"
+            >
+              <div
+                className="input-container layout layout--gutter-xs"
+              >
+                <div
+                  className="layout__item u-fill"
+                >
+                  <input
+                    className="input"
+                    id="test"
+                    max={null}
+                    min={null}
+                    name="test"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </InputFieldInput>
+        </div>
+      </InputField>
+    </div>
+    <div
+      className="form__actions"
+    >
+      <div
+        className="form__btn-container"
+      >
+        <Button
+          className=""
+          disabled={true}
+          linkToNewTab={false}
+          shape="rectangle"
+          style="primary"
+          type="submit"
+        >
+          <button
+            className="btn btn--primary btn--rectangle  disabled"
+            disabled={true}
+            onClick={[Function]}
+            type="submit"
+          >
+            <span
+              className="text"
+            >
+              primaryBtnText
+            </span>
+          </button>
+        </Button>
+      </div>
+    </div>
+  </form>
+</Form>
 `;

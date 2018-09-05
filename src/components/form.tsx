@@ -29,8 +29,6 @@ export interface FormProps {
 }
 
 export interface FormState {
-    primaryBtnSpinner: boolean;
-    secondaryBtnSpinner: boolean;
     submitted: boolean;
 }
 
@@ -86,7 +84,6 @@ export class Form extends React.Component<FormProps, FormState> {
     render(): JSX.Element {
         const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
             secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
-        const { primaryBtnSpinner, secondaryBtnSpinner } = this.state;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -97,9 +94,8 @@ export class Form extends React.Component<FormProps, FormState> {
                             <div className="form__btn-container">
                                 <Button
                                     style={primaryBtnStyle}
-                                    disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || validationErrors !== null}
-                                    type="submit"
-                                    showSpinner={primaryBtnSpinner}>
+                                    disabled={alwaysEnableSubmitButton ? false : validationErrors !== null}
+                                    type="submit" >
 
                                     {primaryBtnText}
                                 </Button>
@@ -110,9 +106,7 @@ export class Form extends React.Component<FormProps, FormState> {
                             <div className="form__btn-container">
                                 <Button
                                     style={secondaryBtnStyle}
-                                    disabled={primaryBtnSpinner}
                                     onClickHandler={this._secondaryBtnHandler}
-                                    showSpinner={secondaryBtnSpinner}
                                 >
                                     {secondaryBtnText}
                                 </Button>
