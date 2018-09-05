@@ -8,7 +8,7 @@ import { shallow, mount } from 'enzyme';
 import ContextMenu from '../context_menu';
 
 // mocks
-import { mockClickEvent } from '../../__mocks__/clickMock'
+import { mockClickEvent } from '../../__mocks__/clickMock';
 
 
 describe('The ContextMenu component', () => {
