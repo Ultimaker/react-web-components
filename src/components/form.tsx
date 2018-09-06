@@ -20,7 +20,7 @@ export interface FormProps {
     secondaryBtnHandler?: () => void;
     /** Primary button style type */
     secondaryBtnStyle?: ButtonStyle;
-    /** A url to link to instead of calling secondaryBtnHandler */
+    /** An internal url link to be used instead of calling secondaryBtnHandler */
     secondaryBtnLink?: string;
     /** The form validation state and validation error messages */
     validationErrors?: FormValidationResponse;
@@ -46,7 +46,6 @@ export class Form extends React.Component<FormProps, FormState> {
 
         // bind callbacks once
         this._onSubmitHandler = this._onSubmitHandler.bind(this);
-        this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
         this._renderChild = this._renderChild.bind(this);
     }
 
@@ -54,10 +53,6 @@ export class Form extends React.Component<FormProps, FormState> {
         e.preventDefault();
         this.setState({ submitted: true });
         this.props.onSubmitHandler();
-    }
-
-    _secondaryBtnHandler(): void {
-        this.props.secondaryBtnHandler();
     }
 
 	/**
@@ -83,7 +78,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
     render(): JSX.Element {
         const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
-            secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
+            secondaryBtnHandler, secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -106,7 +101,7 @@ export class Form extends React.Component<FormProps, FormState> {
                             <div className="form__btn-container">
                                 <Button
                                     style={secondaryBtnStyle}
-                                    onClickHandler={this._secondaryBtnHandler}
+                                    onClickHandler={secondaryBtnHandler}
                                 >
                                     {secondaryBtnText}
                                 </Button>

@@ -45,6 +45,7 @@ exports[`The Form component should render with a form item 1`] = `
         id="test"
         labelLayoutWidth="1/1"
         labelWidthBreakpoint="sm"
+        onChangeHandler={[MockFunction]}
         type="text"
       >
         <div
