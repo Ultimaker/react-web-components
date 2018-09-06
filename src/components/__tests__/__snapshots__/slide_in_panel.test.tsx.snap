@@ -31,6 +31,78 @@ exports[`The SlideInPanel component should render 1`] = `
         Body
       </div>
     </div>
+    <div
+      class="slide-in-panel__footer"
+    >
+      <div>
+        Footer
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The SlideInPanel component should render header labels 1`] = `
+<div
+  class="slide-in-panel"
+>
+  <div
+    class="slide-in-panel__overlay"
+  />
+  <div
+    class="slide-in-panel__container"
+    style="transform:translate3d(100%,0,0)"
+  >
+    <div
+      class="slide-in-panel__header"
+    >
+      <div
+        class="layout"
+      >
+        <div
+          class="layout__item u-fill"
+        >
+          Panel title
+        </div>
+        <div
+          class="layout__item u-fit"
+        >
+          <div
+            class="header-label"
+          >
+            Test label
+          </div>
+        </div>
+        <div
+          class="layout__item u-fit"
+        >
+          <div
+            class="header-label"
+          >
+            Test label with info
+            <span
+              class="header-label__info"
+            >
+              Test info
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="slide-in-panel__content"
+    >
+      <div>
+        Body
+      </div>
+    </div>
+    <div
+      class="slide-in-panel__footer"
+    >
+      <div>
+        Footer
+      </div>
+    </div>
   </div>
 </div>
 `;

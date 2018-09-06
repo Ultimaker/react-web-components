@@ -35,6 +35,7 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
                 document.body.classList.remove('noscroll');
             }
         }
+        
     }
 
     componentWillUnmount(): void {
