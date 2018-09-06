@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import { default as Button, ButtonStyle } from './button';
 
@@ -96,23 +95,16 @@ export class Form extends React.Component<FormProps, FormState> {
                                 </Button>
                             </div>
                         }
-
-                        {secondaryBtnText && !secondaryBtnLink &&
+                        {secondaryBtnText &&
                             <div className="form__btn-container">
                                 <Button
                                     style={secondaryBtnStyle}
                                     onClickHandler={secondaryBtnHandler}
+                                    type={secondaryBtnLink ? 'link' : 'button'}
+                                    linkURL={secondaryBtnLink}
                                 >
                                     {secondaryBtnText}
                                 </Button>
-                            </div>
-                        }
-
-                        {secondaryBtnText && secondaryBtnLink &&
-                            <div className="form__btn-container">
-                                <Link to={secondaryBtnLink} className="btn btn--quiet">
-                                    <span className="text">{secondaryBtnText}</span>
-                                </Link>
                             </div>
                         }
 

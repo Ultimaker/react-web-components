@@ -46,10 +46,19 @@ describe('The Form component', () => {
         expect(wrapper.find(Button)).toHaveLength(2);
     });
 
+    it('should render a secondary button link', () => {
+        wrapper.setProps({
+            secondaryBtnText: 'secondaryBtnText',
+            secondaryBtnLink: 'https://ultimaker.com/',
+            secondaryBtnStyle: 'secondary'
+        });
+        expect(wrapper.find(Button).at(1).prop('type')).toEqual('link');
+    });
+
     it('should render with a form item', () => {
         const mountedWrapper = mount(
             <Form {...props}>
-                <InputField id="test" onChangeHandler={jest.fn()} />
+                <InputField id="test" onChangeHandler={jest.fn()} value={null} />
             </Form>
         );
         expect(mountedWrapper).toMatchSnapshot();
@@ -58,11 +67,21 @@ describe('The Form component', () => {
     it('should pass validation error to form item', () => {
         const mountedWrapper = mount(
             <Form {...props} validationErrors={{ test: 'Validation error' }}>
-                <InputField id="test" onChangeHandler={jest.fn()} />
+                <InputField id="test" onChangeHandler={jest.fn()} value={null} />
             </Form>
         );
         expect(mountedWrapper.find(InputField).prop('validationError')).toEqual('Validation error');
         expect(mountedWrapper.find(Button).prop('disabled')).toEqual(true);
+    });
+
+    it('should submit button should ignore validation when always enabled', () => {
+        const mountedWrapper = mount(
+            <Form {...props} validationErrors={{ test: 'Validation error' }}>
+                <InputField id="test" onChangeHandler={jest.fn()} value={null} />
+            </Form>
+        );
+        mountedWrapper.setProps({ alwaysEnableSubmitButton: true });
+        expect(mountedWrapper.find(Button).prop('disabled')).toEqual(false);
     });
 
 });

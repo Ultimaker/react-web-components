@@ -10,6 +10,7 @@ import Button from '../components/button';
 import ToggleButton from '../components/toggle_button';
 import CloseButton from '../components/close_button';
 import InfoLink from '../components/info_link';
+import { BrowserRouter } from 'react-router-dom';
 
 const stories = storiesOf('Button', module);
 
@@ -180,15 +181,17 @@ stories.add('Close', withInfo(
 stories.add('Link', withInfo(
     'An anchor styled as a button. Useful for page navigation'
 )(() =>
-    <Button type="link"
-        linkURL="https://ultimaker.com/"
-        linkToNewTab={boolean('Link to new tab', false)}
-        showSpinner={boolean('Loading', false)}
-        disabled={boolean('Disabled', false)}
-        style="primary"
-    >
-        {text('Text 1', 'Link')}
-    </Button>
+    <BrowserRouter>
+        <Button type="link"
+            linkURL={text('Link URL', 'https://ultimaker.com/')}
+            linkToNewTab={boolean('Link to new tab', false)}
+            showSpinner={boolean('Loading', false)}
+            disabled={boolean('Disabled', false)}
+            style="primary"
+        >
+            {text('Text 1', 'Link')}
+        </Button>
+    </BrowserRouter>
 ));
 
 stories.add('Info link', withInfo(

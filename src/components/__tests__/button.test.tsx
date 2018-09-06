@@ -44,8 +44,13 @@ describe('The Button component', () => {
         expect(wrapper.find('[type="submit"]')).toHaveLength(1);
     });
 
-    it('renders a anchor when prop `type` is link', () => {
+    it('renders a anchor when prop `type` is link and an external link is given', () => {
         wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/' });
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('renders a link when prop `type` is link and an internal link is given', () => {
+        wrapper.setProps({ type: 'link', linkURL: '/print_jobs' });
         expect(wrapper).toMatchSnapshot();
     });
 

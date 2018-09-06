@@ -47,6 +47,7 @@ exports[`The Form component should render with a form item 1`] = `
         labelWidthBreakpoint="sm"
         onChangeHandler={[MockFunction]}
         type="text"
+        value={null}
       >
         <div
           className="input-field input-field--text layout"
@@ -57,6 +58,7 @@ exports[`The Form component should render with a form item 1`] = `
             labelWidthBreakpoint="sm"
             onChangeHandler={[Function]}
             type="text"
+            value={null}
           >
             <div
               className="layout__item u-fill layout__item--middle"
