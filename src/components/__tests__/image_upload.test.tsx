@@ -23,4 +23,18 @@ describe('The ImageFile component', () => {
         expect(props.onFileSelection).not.toHaveBeenCalled();
     });
 
+    it('should handle dropping a file', () => {
+        wrapper.instance()._onDropHandler(['file']);
+        expect(wrapper.state().dropActive).toEqual(false);
+        expect(props.onFileSelection).toHaveBeenCalledWith('file');
+    });
+
+    it('should handle drag enter and leave', () => {
+        wrapper.instance()._onDragEnter();
+        expect(wrapper.state().dropActive).toEqual(true);
+        wrapper.instance()._onDragLeave();
+        expect(wrapper.state().dropActive).toEqual(false);
+        expect(props.onFileSelection).not.toHaveBeenCalled();
+    });
+
 });
