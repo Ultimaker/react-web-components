@@ -4,6 +4,34 @@ exports[`The SlideOutContainer component should render 1`] = `
 <div
   className="slide-out-container"
 >
+  <div
+    className="slide-out-container__header"
+    onClick={[Function]}
+  >
+    <div
+      className="layout"
+    >
+      <div
+        className="layout__item u-fill"
+        style={
+          Object {
+            "textAlign": "left",
+          }
+        }
+      >
+        Test panel
+      </div>
+      <div
+        className="layout__item arrow-column"
+      >
+        <PanelArrow
+          active={false}
+          color="black"
+          width="1.6rem"
+        />
+      </div>
+    </div>
+  </div>
   <UnmountClosed
     isOpened={false}
   >
