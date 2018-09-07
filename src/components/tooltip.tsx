@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import splitTextByNewLine from '../utils/split_text_by_new_line';
@@ -24,6 +23,8 @@ const windowMargin = 10;
 
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
+    private tooltipRef;
+
     static defaultProps = {
         direction: 'north'
     };
@@ -36,6 +37,8 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     constructor(props) {
         super(props);
 
+        this.tooltipRef = React.createRef();
+
         this._showTooltip = this._showTooltip.bind(this);
         this._hideTooltip = this._hideTooltip.bind(this);
     }
@@ -44,8 +47,9 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         // get browser page width
         const windowWidth = window.innerWidth;
 
-        // get dom elements
-        const tooltipElement = ReactDOM.findDOMNode(this.refs.tooltip);
+        // get dom element
+        const tooltipElement = this.tooltipRef.current;
+        // get parent element
         const tooltipTriggerElement = tooltipElement.parentNode;
 
         // get element positions
@@ -75,7 +79,6 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         this.setState({
             tooltipOffset: tooltipOffset
         });
-
     }
 
     private _getElementDetails(el: any): any {
@@ -109,7 +112,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
             {children}
 
-            <div ref='tooltip' className="tooltip" style={tooltipOffset ? { left: tooltipOffset } : undefined}>
+            <div ref={this.tooltipRef} className="tooltip" style={tooltipOffset ? { left: tooltipOffset } : undefined}>
                 <div className="text">
                     {splitTextByNewLine(tooltipText)}
                 </div>

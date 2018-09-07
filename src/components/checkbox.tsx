@@ -33,7 +33,6 @@ export const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, value, o
             checked={value !== null ? value : false}
             onChange={_onChangeHandler}
             disabled={disabled}
-            ref={this.inputRef}
         />
         <label htmlFor={id}></label>
     </div>
