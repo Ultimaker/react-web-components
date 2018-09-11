@@ -1,6 +1,4 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import 'jest';
-import 'jsdom-global/register';
 
 // util
 import getVisibilityVendorPrefix from '../get_visibility_vendor_prefix';

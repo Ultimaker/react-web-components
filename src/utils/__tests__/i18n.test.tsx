@@ -1,6 +1,4 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import 'jest';
-import 'jsdom-global/register';
 
 // util
 import { I18n } from '../i18n';

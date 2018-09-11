@@ -1,6 +1,4 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import 'jest';
-import 'jsdom-global/register';
 import * as React from 'react';
 import { shallow, mount } from 'enzyme';
 

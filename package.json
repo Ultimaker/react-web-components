@@ -99,7 +99,6 @@
                 "lines": 80
             }
         },
-        "testEnvironment": "node",
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
         },
