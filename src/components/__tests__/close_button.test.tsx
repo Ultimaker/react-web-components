@@ -5,6 +5,10 @@ import { shallow } from 'enzyme';
 // component
 import CloseButton from '../close_button';
 
+// mocks
+import { mockClickEvent } from '../../__mocks__/clickMock';
+
+
 describe('The CloseButton component', () => {
     let props;
     let wrapper;
@@ -19,6 +23,16 @@ describe('The CloseButton component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
         expect(props.onClickHandler).not.toHaveBeenCalled();
+    });
+
+    it('should call onClickHandler when clicked', () => {
+        wrapper.simulate('click', mockClickEvent);
+        expect(props.onClickHandler).toHaveBeenCalled();
+    });
+
+    it('should not propagate click when clicked', () => {
+        wrapper.simulate('click', mockClickEvent);
+        expect(mockClickEvent.stopPropagation).toBeCalled();
     });
 
 });
