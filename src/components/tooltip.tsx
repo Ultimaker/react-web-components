@@ -59,7 +59,6 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         const tooltipTriggerRight = this._getElementDetails(tooltipTriggerElement).right;
         const tooltipTriggerCenter = this._getElementDetails(tooltipTriggerElement).center;
 
-
         let tooltipOffset: number;
 
         // if the tooltip is off the screen to the left, move it right
@@ -69,7 +68,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         }
         // if the tooltip is off the screen to the right, move it left
         else if (tooltipWidth / 2 > windowWidth - tooltipTriggerCenter) {
-            // move move relative to tooltipTrigger right, then make negative so it can be applyed to the tooltip left
+            // move move relative to tooltipTrigger right, then make negative so it can be applied to the tooltip left
             tooltipOffset = (tooltipWidth / 2 - tooltipTriggerWidth - (windowWidth - tooltipTriggerRight) + windowMargin) * -1;
         }
         else {
