@@ -7,7 +7,7 @@ import Button from '../button';
 import Spinner from '../spinner';
 
 // mocks
-import { mockClickEvent } from '../../__mocks__/clickMock'
+import { mockClickEvent } from '../../__mocks__/clickMock';
 
 describe('The Button component', () => {
     let props;
