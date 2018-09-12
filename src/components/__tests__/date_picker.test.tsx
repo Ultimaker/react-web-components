@@ -1,6 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
+import moment = require('moment');
 
 // component
 import DatePicker from '../date_picker';
@@ -21,6 +22,11 @@ describe('The DatePicker component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
         expect(props.onChangeHandler).not.toHaveBeenCalled();
+    });
+
+    it('should display an error state', () => {
+        wrapper.setProps({ error: true });
+        expect(wrapper.find('.error')).toHaveLength(1);
     });
 
 });
