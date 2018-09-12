@@ -31,11 +31,31 @@ describe('The Tooltip component', () => {
         expect(wrapper.find('.disabled')).toHaveLength(1);
     });
 
-    it('should show and hide the tooltip', () => {
+    it('should show the tooltip when hovered', () => {
+        const mountedWrapper = mount(<Tooltip {...props} />);
+        mountedWrapper.simulate('pointerEnter');
+        expect(mountedWrapper.find('.show')).toHaveLength(1);
+    });
+
+    it('should hide the tooltip when no longer hovered', () => {
         const mountedWrapper = mount(<Tooltip {...props} />);
         mountedWrapper.simulate('pointerEnter');
         expect(mountedWrapper.find('.show')).toHaveLength(1);
         mountedWrapper.simulate('pointerLeave');
+        expect(mountedWrapper.find('.show').exists()).toEqual(false);
+    });
+
+    it('should show the tooltip when selected on touch device', () => {
+        const mountedWrapper = mount(<Tooltip {...props} />);
+        mountedWrapper.simulate('touchStart');
+        expect(mountedWrapper.find('.show')).toHaveLength(1);
+    });
+
+    it('should hide the tooltip when unselected on touch device', () => {
+        const mountedWrapper = mount(<Tooltip {...props} />);
+        mountedWrapper.simulate('touchStart');
+        expect(mountedWrapper.find('.show')).toHaveLength(1);
+        mountedWrapper.simulate('touchEnd');
         expect(mountedWrapper.find('.show').exists()).toEqual(false);
     });
 

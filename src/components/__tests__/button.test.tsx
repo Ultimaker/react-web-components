@@ -52,12 +52,16 @@ describe('The Button component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('is disabled when prop `disabled` is true', () => {
+    it('is disabled the button when prop `disabled` is true', () => {
         wrapper.setProps({ disabled: true });
         expect(wrapper.find('.disabled')).toHaveLength(1);
         expect(wrapper.find('[disabled]')).toHaveLength(1);
         wrapper.simulate('click', mockClickEvent);
         expect(props.onClickHandler).not.toHaveBeenCalled();
+    });
+
+    it('is disabled the link when prop `disabled` is true', () => {
+        wrapper.setProps({ disabled: true });
         wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/' });
         expect(wrapper.prop('href')).toBeUndefined();
     });
@@ -67,6 +71,10 @@ describe('The Button component', () => {
         expect(wrapper.find(Spinner)).toHaveLength(1);
         expect(wrapper.find('.waiting')).toHaveLength(1);
         expect(wrapper.find('[disabled]')).toHaveLength(1);
+    });
+
+    it('renders a spinner and disables the link when prop `showSpinner` is true', () => {
+        wrapper.setProps({ showSpinner: true });
         wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/' });
         expect(wrapper.find(Spinner)).toHaveLength(1);
         expect(wrapper.prop('href')).toBeUndefined();
