@@ -46,7 +46,7 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
         const { label, id } = this.props;
 
         if (label) {
-            <div className="layout__item u-fit">
+            return <div className="layout__item u-fit">
                 <label htmlFor={id}>{label}</label>
             </div>
         }
