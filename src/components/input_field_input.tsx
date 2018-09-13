@@ -11,14 +11,14 @@ import TagsSelector from './tags_selector';
 import FileUpload from './file_upload';
 import RequiredIcon from './icons/required_icon';
 
-export type InputFieldInputType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 export type InputFieldInputValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
 
 export interface InputFieldInputProps {
     /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
-    type: InputFieldInputType;
+    type: InputFieldType;
     /** Input field id. Must be unique */
     id: string;
     /** Input field will be centered if true. Useful for type image or checkbox */
@@ -196,7 +196,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         )
     }
 
-    protected _renderStaticValue(type: InputFieldInputType, value: InputFieldInputValue): JSX.Element | React.ReactNode | InputFieldInputValue {
+    protected _renderStaticValue(type: InputFieldType, value: InputFieldInputValue): JSX.Element | React.ReactNode | InputFieldInputValue {
         const { selectOptions, imageSize, imageShape } = this.props;
 
         if (type === 'url') {

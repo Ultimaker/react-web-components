@@ -22,7 +22,7 @@ export interface ButtonProps {
     style?: ButtonStyle;
     /** Visual shape of the Button: 'rectangle' | 'circle' | 'pill' */
     shape?: ButtonShape;
-    /** Replaces the Button text for an SVG spinner when true */
+    /** Replaces the Button text with a spinner when true */
     showSpinner?: boolean;
     /** URL to link to for type link */
     linkURL?: string;
