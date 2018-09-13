@@ -55,7 +55,10 @@ stories.add('Prompt popup', withInfo(
         secondaryBtnHandler={action('clicked')}
         secondaryBtnStyle="quiet"
         inputDefaultValue={10}
-        validationHandler={validation} />
+        validationHandler={validation}
+        inputType="number"
+        inputMin={1}
+        inputMax={100} />
 ));
 
 function validation(quantity: string | number): string {
