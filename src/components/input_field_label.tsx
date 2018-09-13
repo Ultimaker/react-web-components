@@ -14,7 +14,7 @@ export interface InputFieldProps {
     /** Input field id. Must be unique */
     id: string;
     /** Input field label */
-    label: string | JSX.Element;
+    label?: string | JSX.Element;
     /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
     labelLayoutWidth: LayoutWidth;
     /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
@@ -42,6 +42,17 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
         return null
     }
 
+    protected _renderLabelElement(): JSX.Element {
+        const { label, id } = this.props;
+
+        if (label) {
+            <div className="layout__item u-fit">
+                <label htmlFor={id}>{label}</label>
+            </div>
+        }
+        return null
+    }
+
     protected _renderPostLabelElement(): JSX.Element {
         const { infoText, infoLinkURL } = this.props;
 
@@ -60,7 +71,7 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
 
 
     render(): JSX.Element {
-        const { id, label, labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
+        const { labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
 
         const classes = classNames(`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`,
             { 'tag-label-position-override': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
@@ -69,9 +80,7 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
             <div className={classes}>
                 <div className="layout layout--gutter-sm" >
                     {this._renderPreLabelElement()}
-                    <div className="layout__item u-fit">
-                        <label htmlFor={id}>{label}</label>
-                    </div>
+                    {this._renderLabelElement()}
                     {this._renderPostLabelElement()}
                 </div>
             </div>

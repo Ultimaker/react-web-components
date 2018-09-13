@@ -115,7 +115,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     protected _renderLabel(): JSX.Element {
         const { id, label, labelLayoutWidth, labelWidthBreakpoint, type, preLabelElement, infoText, infoLinkURL } = this.props;
 
-        if (label) {
+        if (label || preLabelElement) {
             return <InputFieldLabel
                 type={type}
                 id={id}
@@ -131,7 +131,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
     }
 
     protected _renderInputElements() {
-        const { id, type, centerInputField, validationError, value, min, max, placeholder,
+        const { id, type, centerInputField, value, min, max, placeholder,
             selectOptions, imageSize, staticField, imageShape, tagSuggestions,
             focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
 
