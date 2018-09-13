@@ -92,6 +92,10 @@
     }
 
     &.input-field--checkbox {
+        .input-field__label {
+            margin-top: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
         .input-field__field-addition {
             .icon--required {
                 margin-top: 0.9rem;
