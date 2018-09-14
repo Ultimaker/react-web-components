@@ -32,7 +32,7 @@ describe('The SlideInPanel component', () => {
 
     it('should show a footer', () => {
         wrapper.setProps({ includeFooter: false });
-        expect(wrapper.find('.slide-in-panel__footer').exists()).toEqual(false);
+        expect(wrapper.find('.slide-in-panel__footer').exists()).toBe(false);
     });
 
     it('should call onOverlayClickHandler when the overlay is clicked', () => {
@@ -57,11 +57,11 @@ describe('The SlideInPanel component', () => {
     });
 
     it('should not allow the background to scroll when open', () => {
-        expect(document.body.classList.contains('noscroll')).toEqual(false);
+        expect(document.body.classList.contains('noscroll')).toBe(false);
         wrapper.setProps({ isOpen: true });
-        expect(document.body.classList.contains('noscroll')).toEqual(true);
+        expect(document.body.classList.contains('noscroll')).toBe(true);
         wrapper.setProps({ isOpen: false });
-        expect(document.body.classList.contains('noscroll')).toEqual(false);
+        expect(document.body.classList.contains('noscroll')).toBe(false);
     });
 
     it('should allow the background to scroll after unmount', () => {
@@ -70,9 +70,9 @@ describe('The SlideInPanel component', () => {
             <div>Footer</div>
         </SlideInPanel>);
         mountedWrapper.setProps({ isOpen: true });
-        expect(document.body.classList.contains('noscroll')).toEqual(true);
+        expect(document.body.classList.contains('noscroll')).toBe(true);
         mountedWrapper.unmount();
-        expect(document.body.classList.contains('noscroll')).toEqual(false);
+        expect(document.body.classList.contains('noscroll')).toBe(false);
     });
 
 });

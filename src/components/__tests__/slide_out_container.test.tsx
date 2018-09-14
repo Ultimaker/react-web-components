@@ -40,12 +40,12 @@ describe('The SlideOutContainer component', () => {
 
     it('should open the panel', () => {
         wrapper.setProps({ isOpen: true });
-        expect(wrapper.find(UnmountClosed).prop('isOpened')).toEqual(true);
+        expect(wrapper.find(UnmountClosed).prop('isOpened')).toBe(true);
     });
 
     it('should hide the header panel', () => {
         wrapper.setProps({ headerText: null });
-        expect(wrapper.find('.slide-out-container__header').exists()).toEqual(false);
+        expect(wrapper.find('.slide-out-container__header').exists()).toBe(false);
     });
 
 });

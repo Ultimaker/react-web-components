@@ -41,7 +41,7 @@ describe('The InputFieldLabel component', () => {
 
     it('should apply a special class for the tags selector label', () => {
         wrapper.setProps({ type: 'tags' });
-        expect(wrapper.find('.tag-label-position-override').exists()).toEqual(false);
+        expect(wrapper.find('.tag-label-position-override').exists()).toBe(false);
         wrapper.setProps({ labelLayoutWidth: '1/3' });
         expect(wrapper.find('.tag-label-position-override')).toHaveLength(1);
     });

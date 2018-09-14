@@ -32,19 +32,19 @@ describe('The InputField component', () => {
 
     it('should render a validation error', () => {
         wrapper.setProps({ validationError: 'Test validation error' });
-        expect(wrapper.find(InputFieldValidation).exists()).toEqual(false);
+        expect(wrapper.find(InputFieldValidation).exists()).toBe(false);
         wrapper.setState({ touched: true }); // only show validation message if the field has been edited ('touched')
         expect(wrapper.find(InputFieldValidation)).toHaveLength(1);
         wrapper.setState({ touched: false });
-        expect(wrapper.find(InputFieldValidation).exists()).toEqual(false);
+        expect(wrapper.find(InputFieldValidation).exists()).toBe(false);
         wrapper.setProps({ submitted: true }); // or if the form has been submitted
         expect(wrapper.find(InputFieldValidation)).toHaveLength(1);
     });
 
     it('should handle the user input', () => {
-        expect(wrapper.state('touched')).toEqual(false);
+        expect(wrapper.state('touched')).toBe(false);
         wrapper.instance()._onChangeHandler('Test input');
-        expect(wrapper.state('touched')).toEqual(true);
+        expect(wrapper.state('touched')).toBe(true);
         expect(props.onChangeHandler).toHaveBeenCalledWith('testInputField', 'Test input');
     });
 

@@ -30,7 +30,7 @@ describe('The Form component', () => {
     it('should call onSubmitHandler when form is submitted', () => {
         wrapper.simulate('submit', mockClickEvent);
         expect(props.onSubmitHandler).toHaveBeenCalled();
-        expect(wrapper.state().submitted).toEqual(true);
+        expect(wrapper.state('submitted')).toBe(true);
         expect(mockClickEvent.preventDefault).toBeCalled();
     });
 
@@ -50,7 +50,7 @@ describe('The Form component', () => {
             secondaryBtnLink: 'https://ultimaker.com/',
             secondaryBtnStyle: 'secondary'
         });
-        expect(wrapper.find(Button).at(1).prop('type')).toEqual('link');
+        expect(wrapper.find(Button).at(1).prop('type')).toBe('link');
     });
 
     it('should render with a form item', () => {
@@ -68,8 +68,8 @@ describe('The Form component', () => {
                 <InputField id="test" onChangeHandler={jest.fn()} value={null} />
             </Form>
         );
-        expect(mountedWrapper.find(InputField).prop('validationError')).toEqual('Validation error');
-        expect(mountedWrapper.find(Button).prop('disabled')).toEqual(true);
+        expect(mountedWrapper.find(InputField).prop('validationError')).toBe('Validation error');
+        expect(mountedWrapper.find(Button).prop('disabled')).toBe(true);
     });
 
     it('should submit button should ignore validation when always enabled', () => {
@@ -79,7 +79,7 @@ describe('The Form component', () => {
             </Form>
         );
         mountedWrapper.setProps({ alwaysEnableSubmitButton: true });
-        expect(mountedWrapper.find(Button).prop('disabled')).toEqual(false);
+        expect(mountedWrapper.find(Button).prop('disabled')).toBe(false);
     });
 
 });

@@ -20,7 +20,7 @@ describe('The TagsSelector component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        expect(wrapper.state().tags).toEqual([
+        expect(wrapper.state('tags')).toEqual([
             {
                 id: 'tag 1',
                 text: 'tag 1'
@@ -34,7 +34,7 @@ describe('The TagsSelector component', () => {
 
     it('should add suggestions', () => {
         wrapper.setProps({ suggestions: ['suggestion tag 1', 'suggestion tag 2'] });
-        expect(wrapper.state().suggestions).toEqual([
+        expect(wrapper.state('suggestions')).toEqual([
             {
                 id: 'suggestion tag 1',
                 text: 'suggestion tag 1'

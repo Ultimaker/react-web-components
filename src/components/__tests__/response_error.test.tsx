@@ -51,7 +51,7 @@ describe('The ResponseError component', () => {
             }]
         });
         expect(wrapper.find('.response-error__msg')).toHaveLength(1);
-        expect(wrapper.find('.response-error__msg').text()).toEqual('username was invalid: Field was invalid.');
+        expect(wrapper.find('.response-error__msg').text()).toBe('username was invalid: Field was invalid.');
     });
 
 });

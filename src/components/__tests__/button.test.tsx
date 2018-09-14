@@ -55,7 +55,7 @@ describe('The Button component', () => {
     it('is disabled the button when prop `disabled` is true', () => {
         wrapper.setProps({ disabled: true });
         expect(wrapper.find('.disabled')).toHaveLength(1);
-        expect(wrapper.find('[disabled]')).toHaveLength(1);
+        expect(wrapper.prop('disabled')).toBe(true);
         wrapper.simulate('click', mockClickEvent);
         expect(props.onClickHandler).not.toHaveBeenCalled();
     });
@@ -70,7 +70,7 @@ describe('The Button component', () => {
         wrapper.setProps({ showSpinner: true });
         expect(wrapper.find(Spinner)).toHaveLength(1);
         expect(wrapper.find('.waiting')).toHaveLength(1);
-        expect(wrapper.find('[disabled]')).toHaveLength(1);
+        expect(wrapper.prop('disabled')).toBe(true);
     });
 
     it('renders a spinner and disables the link when prop `showSpinner` is true', () => {
@@ -83,19 +83,19 @@ describe('The Button component', () => {
     it('applies the correct class when prop `style` is secondary', () => {
         wrapper.setProps({ style: 'secondary' });
         expect(wrapper.find('.btn--secondary')).toHaveLength(1);
-        expect(wrapper.find('.btn--primary').exists()).toEqual(false);
+        expect(wrapper.find('.btn--primary').exists()).toBe(false);
     });
 
     it('applies the correct class when prop `style` is quiet', () => {
         wrapper.setProps({ style: 'quiet' });
         expect(wrapper.find('.btn--quiet')).toHaveLength(1);
-        expect(wrapper.find('.btn--primary').exists()).toEqual(false);
+        expect(wrapper.find('.btn--primary').exists()).toBe(false);
     });
 
     it('applies the correct class when prop `style` is alert', () => {
         wrapper.setProps({ style: 'alert' });
         expect(wrapper.find('.btn--alert')).toHaveLength(1);
-        expect(wrapper.find('.btn--primary').exists()).toEqual(false);
+        expect(wrapper.find('.btn--primary').exists()).toBe(false);
     });
 
     it('applies the correct class when prop `shape` is circle', () => {
@@ -110,7 +110,7 @@ describe('The Button component', () => {
 
     it('can open a link in a new tab', () => {
         wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/', linkToNewTab: true });
-        expect(wrapper.prop('target')).toEqual('_blank');
+        expect(wrapper.prop('target')).toBe('_blank');
     });
 
     it('applies an additional class name when passed', () => {

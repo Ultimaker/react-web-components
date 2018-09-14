@@ -23,7 +23,7 @@ describe('The Tooltip component', () => {
     it('should render to north', () => {
         wrapper.setProps({ direction: 'north' });
         expect(wrapper.find('.tooltip-trigger--north')).toHaveLength(1);
-        expect(wrapper.find('.tooltip-trigger--south').exists()).toEqual(false);
+        expect(wrapper.find('.tooltip-trigger--south').exists()).toBe(false);
     });
 
     it('should disable the tooltip', () => {
@@ -42,7 +42,7 @@ describe('The Tooltip component', () => {
         mountedWrapper.simulate('pointerEnter');
         expect(mountedWrapper.find('.show')).toHaveLength(1);
         mountedWrapper.simulate('pointerLeave');
-        expect(mountedWrapper.find('.show').exists()).toEqual(false);
+        expect(mountedWrapper.find('.show').exists()).toBe(false);
     });
 
     it('should show the tooltip when selected on touch device', () => {
@@ -56,11 +56,11 @@ describe('The Tooltip component', () => {
         mountedWrapper.simulate('touchStart');
         expect(mountedWrapper.find('.show')).toHaveLength(1);
         mountedWrapper.simulate('touchEnd');
-        expect(mountedWrapper.find('.show').exists()).toEqual(false);
+        expect(mountedWrapper.find('.show').exists()).toBe(false);
     });
 
     it('should offset the tooltip', () => {
         wrapper.setState({ tooltipOffset: 100 });
-        expect(wrapper.find('.tooltip').prop('style')).toHaveProperty('left', 100);
+        expect(wrapper.find('.tooltip').prop('style').left).toBe(100);
     });
 });

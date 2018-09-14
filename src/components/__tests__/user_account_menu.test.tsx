@@ -29,12 +29,12 @@ describe('The UserAccountMenu component', () => {
 
     it('should toggle the menu visibility when clicking the trigger', () => {
         wrapper.find('.trigger').simulate('click', mockClickEvent);
-        expect(wrapper.state('showMenu')).toEqual(true);
+        expect(wrapper.state('showMenu')).toBe(true);
         expect(wrapper.find('.visible')).toHaveLength(1);
 
         wrapper.find('.trigger').simulate('click', mockClickEvent);
-        expect(wrapper.state('showMenu')).toEqual(false);
-        expect(wrapper.find('.visible').exists()).toEqual(false);
+        expect(wrapper.state('showMenu')).toBe(false);
+        expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
     it('should add _onOutsideClickHandler event listener', () => {

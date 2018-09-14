@@ -26,14 +26,14 @@ describe('The ContextMenu component', () => {
 
     it('should render to right', () => {
         wrapper.setProps({ menuOffsetDirection: 'right' });
-        expect(wrapper.find('.menu').prop('style')).toHaveProperty('left', -30);
-        expect(wrapper.find('.menu').prop('style')).toHaveProperty('right', undefined);
+        expect(wrapper.find('.menu').prop('style').left).toBe(-30);
+        expect(wrapper.find('.menu').prop('style').right).toBeUndefined();
     });
 
     it('should render to north', () => {
         wrapper.setProps({ menuDirection: 'north' });
         expect(wrapper.find('.context-menu--north')).toHaveLength(1);
-        expect(wrapper.find('.context-menu--south').exists()).toEqual(false);
+        expect(wrapper.find('.context-menu--south').exists()).toBe(false);
     });
 
     it('should render for a panel', () => {
@@ -50,21 +50,21 @@ describe('The ContextMenu component', () => {
         wrapper.find('.trigger').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
         wrapper.find('.trigger').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible').exists()).toEqual(false);
+        expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
     it('should hide menu on blur', () => {
         wrapper.find('.trigger').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
         wrapper.simulate('blur');
-        expect(wrapper.find('.visible').exists()).toEqual(false);
+        expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
     it('should hide menu on menu click', () => {
         wrapper.find('.trigger').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
         wrapper.find('.container').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible').exists()).toEqual(false);
+        expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
     it('should not propagate click', () => {

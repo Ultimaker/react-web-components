@@ -44,17 +44,17 @@ describe('The Modal component', () => {
     });
 
     it('should set isOpen to true after mounting', () => {
-        expect(wrapper.state('isOpen')).toEqual(true);
+        expect(wrapper.state('isOpen')).toBe(true);
     });
 
     it('should not allow the background to scroll when open', () => {
-        expect(document.body.classList.contains('noscroll')).toEqual(true);
+        expect(document.body.classList.contains('noscroll')).toBe(true);
     });
 
     it('should allow the background to scroll after unmount', () => {
         const mountedWrapper = mount(<Modal {...props} />);
         mountedWrapper.unmount();
-        expect(document.body.classList.contains('noscroll')).toEqual(false);
+        expect(document.body.classList.contains('noscroll')).toBe(false);
     });
 
 });

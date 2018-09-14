@@ -34,7 +34,7 @@ describe('The Checkbox component', () => {
 
     it('should render a checked checkbox', () => {
         wrapper.setProps({ value: true });
-        expect(wrapper.find('input').props().checked).toEqual(true);
+        expect(wrapper.find('input').props().checked).toBe(true);
     });
 
 });

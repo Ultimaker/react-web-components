@@ -4,5 +4,5 @@
 import isBrowserWindowHidden from '../is_browser_window_hidden';
 
 test('Browser window is visible', () => {
-    expect(isBrowserWindowHidden()).toEqual(false);
+    expect(isBrowserWindowHidden()).toBe(false);
 })
