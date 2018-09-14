@@ -231,9 +231,13 @@
     }
 }
 
-textarea {
-    vertical-align: top;
-    height: auto;
+.textarea{
+    .input{
+        @extend %input-style;
+        vertical-align: top;
+        height: auto;
+        min-height: 9.2rem;
+    }
 }
 
 .date-picker {

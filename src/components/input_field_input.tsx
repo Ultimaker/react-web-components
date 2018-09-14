@@ -10,6 +10,7 @@ import DatePicker from './date_picker';
 import TagsSelector from './tags_selector';
 import FileUpload from './file_upload';
 import RequiredIcon from './icons/required_icon';
+import Textarea from './textarea';
 
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
@@ -53,7 +54,8 @@ export interface InputFieldInputProps {
     labelLayoutWidth: LayoutWidth;
     /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
     labelWidthBreakpoint: Breakpoint;
-    /** JSX Element, such as an icon, to be shown before the input label */
+    /** Whether the textarea should grow horizontally with user input */
+    textareaAutoGrow?: boolean;
 }
 
 export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
@@ -102,7 +104,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
     protected _renderInputElement(): React.ReactNode {
         const { id, type, min, max, placeholder, selectOptions,
             value, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad,
-            showValidationError, onChangeHandler, children } = this.props;
+            showValidationError, onChangeHandler, textareaAutoGrow, children } = this.props;
 
         const classes = classNames('input', { 'error': showValidationError })
 
@@ -110,58 +112,46 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
             return children;
         }
         if (type === 'textarea') {
-            return (
-                <textarea
-                    id={id}
-                    name={id}
-                    onChange={(e) => onChangeHandler(e.target.value)}
-                    placeholder={placeholder}
-                    className={classes}
-                    ref={this.inputRef}
-                    value={value != null ? value.toString() : ''}
-                    rows={3}
-                />
-            )
+            return <Textarea
+                id={id}
+                onChangeHandler={onChangeHandler}
+                placeholder={placeholder}
+                value={value != null ? value.toString() : ''}
+                autofocus={focusOnLoad}
+                autoGrow={textareaAutoGrow}
+            />
         }
         if (type === 'select') {
-            return (
-                <SelectList
-                    onChangeHandler={onChangeHandler}
-                    value={typeof value === 'number' || typeof value === 'string' ? value : null}
-                    options={selectOptions}
-                    error={showValidationError}
-                />
-            )
+            return <SelectList
+                onChangeHandler={onChangeHandler}
+                value={typeof value === 'number' || typeof value === 'string' ? value : null}
+                options={selectOptions}
+                error={showValidationError}
+            />
         }
         if (type === 'checkbox') {
-            return (
-                <Checkbox
-                    id={id}
-                    onChangeHandler={onChangeHandler}
-                    value={value === true}
-                    disabled={staticField}
-                />
-            )
+            return <Checkbox
+                id={id}
+                onChangeHandler={onChangeHandler}
+                value={value === true}
+                disabled={staticField}
+            />
         }
         if (type === 'image') {
-            return (
-                <ImageUpload size={imageSize}
-                    imageURL={value != null ? value.toString() : null}
-                    onFileSelection={onChangeHandler}
-                    shape={imageShape}
-                    placeholderLabel={placeholder}
-                />
-            )
+            return <ImageUpload size={imageSize}
+                imageURL={value != null ? value.toString() : null}
+                onFileSelection={onChangeHandler}
+                shape={imageShape}
+                placeholderLabel={placeholder}
+            />
         }
         if (type === 'date') {
-            return (
-                <DatePicker
-                    id={id}
-                    onChangeHandler={onChangeHandler}
-                    value={value != null ? value.toString() : null}
-                    error={showValidationError}
-                />
-            )
+            return <DatePicker
+                id={id}
+                onChangeHandler={onChangeHandler}
+                value={value != null ? value.toString() : null}
+                error={showValidationError}
+            />
         }
         if (type === 'tags') {
             return <TagsSelector
@@ -180,20 +170,18 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
                 disabled={staticField}
             />
         }
-        return (
-            <input
-                id={id}
-                className={classes}
-                name={id}
-                type={type}
-                min={min ? min : null}
-                max={max ? max : null}
-                onChange={(e) => onChangeHandler(e.target.value)}
-                placeholder={placeholder}
-                value={value != null ? value.toString() : ''}
-                ref={this.inputRef}
-            />
-        )
+        return <input
+            id={id}
+            className={classes}
+            name={id}
+            type={type}
+            min={min ? min : null}
+            max={max ? max : null}
+            onChange={(e) => onChangeHandler(e.target.value)}
+            placeholder={placeholder}
+            value={value != null ? value.toString() : ''}
+            ref={this.inputRef}
+        />
     }
 
     protected _renderStaticValue(type: InputFieldType, value: InputFieldInputValue): JSX.Element | React.ReactNode | InputFieldInputValue {

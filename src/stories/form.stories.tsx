@@ -56,7 +56,7 @@ stories.add('Number field', withState({ value: 1 })
 );
 
 stories.add('Text area', withState({ value: null })
-    (withInfo('Number input field')
+    (withInfo('Textarea input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
                 <InputField
@@ -65,7 +65,8 @@ stories.add('Text area', withState({ value: null })
                     value={store.state.value}
                     focusOnLoad
                     onChangeHandler={(id, value) => store.set({ value })}
-                    placeholder="Textarea" />
+                    placeholder="Textarea"
+                    textareaAutoGrow={boolean('Auto grow', true)} />
             </div>
         )
     )

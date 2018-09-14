@@ -12,6 +12,7 @@ import FileUpload from '../file_upload';
 import TagsSelector from '../tags_selector';
 import RequiredIcon from '../icons/required_icon';
 import Image from '../image';
+import Textarea from '../textarea';
 
 describe('The InputFieldInput component', () => {
     let props;
@@ -45,7 +46,7 @@ describe('The InputFieldInput component', () => {
     it('should render a textarea', () => {
         wrapper.setProps({ type: 'textarea' });
         expect(wrapper.find('input').exists()).toBe(false);
-        expect(wrapper.find('textarea')).toHaveLength(1);
+        expect(wrapper.find(Textarea)).toHaveLength(1);
         expect(props.onChangeHandler).not.toHaveBeenCalled();
     });
 
@@ -189,12 +190,6 @@ describe('The InputFieldInput component', () => {
 
     it('should handle an input change', () => {
         wrapper.find('input').simulate('change', { target: { value: 'update' } });
-        expect(props.onChangeHandler).toHaveBeenCalledWith('update');
-    });
-
-    it('should handle an textarea input change', () => {
-        wrapper.setProps({ type: 'textarea' });
-        wrapper.find('textarea').simulate('change', { target: { value: 'update' } });
         expect(props.onChangeHandler).toHaveBeenCalledWith('update');
     });
 

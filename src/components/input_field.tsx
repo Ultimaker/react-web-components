@@ -62,7 +62,8 @@ export interface InputFieldProps {
     infoText?: string
     /** The URL of the link to be shown next to the input field */
     infoLinkURL?: string
-    /** A list of suggestions for tags input field */
+    /** Whether the textarea should grow horizontally with user input */
+    textareaAutoGrow?: boolean;
 }
 
 export interface InputFieldState {
@@ -132,7 +133,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
 
     protected _renderInputElements() {
         const { id, type, centerInputField, value, min, max, placeholder,
-            selectOptions, imageSize, staticField, imageShape, tagSuggestions,
+            selectOptions, imageSize, staticField, imageShape, tagSuggestions, textareaAutoGrow,
             focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
 
         return <InputFieldInput
@@ -154,6 +155,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
             showValidationError={this._showValidationError()}
             labelLayoutWidth={labelLayoutWidth}
             labelWidthBreakpoint={labelWidthBreakpoint}
+            textareaAutoGrow={textareaAutoGrow}
             children={children}
         />
     }
