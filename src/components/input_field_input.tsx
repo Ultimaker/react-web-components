@@ -85,12 +85,15 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         const inputLayoutClasses = classNames(`layout__item u-${inputLayoutWidth} layout__item--middle`, { 'text-center': centerInputField });
 
         return <div className={inputLayoutClasses}>
-            <div className="input-container layout layout--gutter-xs">
-                <div className="layout__item u-fill">
-                    {this._renderInputElement()}
+
+            {!staticField &&
+                <div className="input-container layout layout--gutter-xs">
+                    <div className="layout__item u-fill">
+                        {this._renderInputElement()}
+                    </div>
+                    {this._renderPostInputElement()}
                 </div>
-                {this._renderPostInputElement()}
-            </div>
+            }
 
             {staticField && this._renderStaticValue(type, value)}
         </div>

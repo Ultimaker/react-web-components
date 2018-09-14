@@ -5,5 +5,116 @@ exports[`The Form component should render 1`] = `
   className="form"
   noValidate={true}
   onSubmit={[Function]}
-/>
+>
+  <div
+    className="form__actions"
+  >
+    <div
+      className="form__btn-container"
+    >
+      <Button
+        className=""
+        disabled={true}
+        linkToNewTab={false}
+        shape="rectangle"
+        style="primary"
+        type="submit"
+      >
+        primaryBtnText
+      </Button>
+    </div>
+  </div>
+</form>
+`;
+
+exports[`The Form component should render with a form item 1`] = `
+<Form
+  onSubmitHandler={[MockFunction]}
+  primaryBtnText="primaryBtnText"
+>
+  <form
+    className="form"
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form__item"
+      key=".0"
+    >
+      <InputField
+        id="test"
+        labelLayoutWidth="1/1"
+        labelWidthBreakpoint="sm"
+        onChangeHandler={[MockFunction]}
+        type="text"
+        value={null}
+      >
+        <div
+          className="input-field input-field--text layout"
+        >
+          <InputFieldInput
+            id="test"
+            labelLayoutWidth="1/1"
+            labelWidthBreakpoint="sm"
+            onChangeHandler={[Function]}
+            type="text"
+            value={null}
+          >
+            <div
+              className="layout__item u-fill layout__item--middle"
+            >
+              <div
+                className="input-container layout layout--gutter-xs"
+              >
+                <div
+                  className="layout__item u-fill"
+                >
+                  <input
+                    className="input"
+                    id="test"
+                    max={null}
+                    min={null}
+                    name="test"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </InputFieldInput>
+        </div>
+      </InputField>
+    </div>
+    <div
+      className="form__actions"
+    >
+      <div
+        className="form__btn-container"
+      >
+        <Button
+          className=""
+          disabled={true}
+          linkToNewTab={false}
+          shape="rectangle"
+          style="primary"
+          type="submit"
+        >
+          <button
+            className="btn btn--primary btn--rectangle  disabled"
+            disabled={true}
+            onClick={[Function]}
+            type="submit"
+          >
+            <span
+              className="text"
+            >
+              primaryBtnText
+            </span>
+          </button>
+        </Button>
+      </div>
+    </div>
+  </form>
+</Form>
 `;

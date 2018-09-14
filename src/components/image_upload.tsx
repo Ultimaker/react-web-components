@@ -1,9 +1,15 @@
 import * as React from 'react';
-import Dropzone from 'react-dropzone';
 import classNames from 'classnames';
 
+// needs to be imported this way to keep jest happy
+let Dropzone = require('react-dropzone');
+if ('default' in Dropzone) {
+  Dropzone = Dropzone.default;
+}
+
+// components
 import { Image, ImageShape } from './image';
-import UploadIcon from './icons/upload_icon'
+import UploadIcon from './icons/upload_icon';
 
 export interface ImageFile extends File {
     preview?: string;

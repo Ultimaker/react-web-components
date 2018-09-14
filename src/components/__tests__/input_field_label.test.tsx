@@ -1,6 +1,4 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import 'jest';
-import 'jsdom-global/register';
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
@@ -8,22 +6,44 @@ import { shallow } from 'enzyme';
 import InputFieldLabel from '../input_field_label';
 
 describe('The InputFieldLabel component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      id: 'testInputField',
-      type: 'text',
-      label: 'Input label',
-      labelLayoutWidth: '1/1',
-      labelWidthBreakpoint: 'sm'
-    };
-    wrapper = shallow(<InputFieldLabel {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            id: 'testInputField',
+            type: 'text',
+            label: 'Input label',
+            labelLayoutWidth: '1/1',
+            labelWidthBreakpoint: 'sm'
+        };
+        wrapper = shallow(<InputFieldLabel {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render pre label element before the label', () => {
+        wrapper.setProps({ preLabelElement: <div className="pre-label-element"></div> });
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render info tooltip', () => {
+        wrapper.setProps({ infoText: 'Test tooltip text' });
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render info link', () => {
+        wrapper.setProps({ infoLinkURL: 'https://ultimaker.com/' });
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should apply a special class for the tags selector label', () => {
+        wrapper.setProps({ type: 'tags' });
+        expect(wrapper.find('.tag-label-position-override').exists()).toBe(false);
+        wrapper.setProps({ labelLayoutWidth: '1/3' });
+        expect(wrapper.find('.tag-label-position-override')).toHaveLength(1);
+    });
 
 });

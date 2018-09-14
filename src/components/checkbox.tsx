@@ -14,26 +14,16 @@ export interface CheckboxProps {
 
 export const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, value, onChangeHandler, disabled }) => {
 
-    const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeHandler(e.currentTarget.checked);
-    }
-
-    const _stopPropagation = (e: React.MouseEvent<EventTarget>) => {
-        e.stopPropagation()
-    }
-
-
     const classes = classNames('checkbox', { disabled });
 
-    return <div className={classes} onClick={_stopPropagation} >
+    return <div className={classes} onClick={(e) => e.stopPropagation()} >
         <input
             id={id}
             name={id}
             type="checkbox"
             checked={value !== null ? value : false}
-            onChange={_onChangeHandler}
+            onChange={(e) => onChangeHandler(e.currentTarget.checked)}
             disabled={disabled}
-            ref={this.inputRef}
         />
         <label htmlFor={id}></label>
     </div>

@@ -27,10 +27,6 @@ exports[`The TagsSelector component should render 1`] = `
           "id": "tag 2",
           "text": "tag 2",
         },
-        Object {
-          "id": "tag 3",
-          "text": "tag 3",
-        },
       ]
     }
   />

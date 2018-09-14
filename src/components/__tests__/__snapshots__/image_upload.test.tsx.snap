@@ -1,13 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The ImageFile component should render 1`] = `
-<Component
+<t
   accept="image/jpeg, image/png"
   className="image-upload"
+  disableClick={false}
+  disablePreview={false}
+  disabled={false}
+  getDataTransferItems={[Function]}
+  inputProps={Object {}}
+  maxSize={Infinity}
+  minSize={0}
   multiple={false}
   onDragEnter={[Function]}
   onDragLeave={[Function]}
   onDrop={[Function]}
+  preventDropOnDocument={true}
   style={
     Object {
       "height": "18rem",
@@ -27,5 +35,5 @@ exports[`The ImageFile component should render 1`] = `
   <div
     className="placeholder placeholder--round"
   />
-</Component>
+</t>
 `;

@@ -2,12 +2,20 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { Motion, spring } from 'react-motion';
-import { BaseAppRoute } from '../layouts/base_app';
 
 import Button from './button';
 
+export interface NavRoute {
+    path: string;
+    label: string;
+    visible?: boolean;
+    component: React.ComponentClass | React.StatelessComponent;
+    scopes?: string[];
+    props?: object;
+}
+
 export interface NavigationProps {
-    navLinks: BaseAppRoute[];
+    navLinks: NavRoute[];
 }
 
 export interface NavigationState {

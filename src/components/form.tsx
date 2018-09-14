@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import { default as Button, ButtonStyle } from './button';
 
@@ -20,7 +19,7 @@ export interface FormProps {
     secondaryBtnHandler?: () => void;
     /** Primary button style type */
     secondaryBtnStyle?: ButtonStyle;
-    /** A url to link to instead of calling secondaryBtnHandler */
+    /** An internal url link to be used instead of calling secondaryBtnHandler */
     secondaryBtnLink?: string;
     /** The form validation state and validation error messages */
     validationErrors?: FormValidationResponse;
@@ -29,8 +28,6 @@ export interface FormProps {
 }
 
 export interface FormState {
-    primaryBtnSpinner: boolean;
-    secondaryBtnSpinner: boolean;
     submitted: boolean;
 }
 
@@ -48,7 +45,6 @@ export class Form extends React.Component<FormProps, FormState> {
 
         // bind callbacks once
         this._onSubmitHandler = this._onSubmitHandler.bind(this);
-        this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
         this._renderChild = this._renderChild.bind(this);
     }
 
@@ -56,10 +52,6 @@ export class Form extends React.Component<FormProps, FormState> {
         e.preventDefault();
         this.setState({ submitted: true });
         this.props.onSubmitHandler();
-    }
-
-    _secondaryBtnHandler(): void {
-        this.props.secondaryBtnHandler();
     }
 
 	/**
@@ -85,8 +77,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
     render(): JSX.Element {
         const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
-            secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
-        const { primaryBtnSpinner, secondaryBtnSpinner } = this.state;
+            secondaryBtnHandler, secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -97,33 +88,23 @@ export class Form extends React.Component<FormProps, FormState> {
                             <div className="form__btn-container">
                                 <Button
                                     style={primaryBtnStyle}
-                                    disabled={alwaysEnableSubmitButton ? false : secondaryBtnSpinner || validationErrors !== null}
-                                    type="submit"
-                                    showSpinner={primaryBtnSpinner}>
+                                    disabled={alwaysEnableSubmitButton ? false : validationErrors !== null}
+                                    type="submit" >
 
                                     {primaryBtnText}
                                 </Button>
                             </div>
                         }
-
-                        {secondaryBtnText && !secondaryBtnLink &&
+                        {secondaryBtnText &&
                             <div className="form__btn-container">
                                 <Button
                                     style={secondaryBtnStyle}
-                                    disabled={primaryBtnSpinner}
-                                    onClickHandler={this._secondaryBtnHandler}
-                                    showSpinner={secondaryBtnSpinner}
+                                    onClickHandler={secondaryBtnHandler}
+                                    type={secondaryBtnLink ? 'link' : 'button'}
+                                    linkURL={secondaryBtnLink}
                                 >
                                     {secondaryBtnText}
                                 </Button>
-                            </div>
-                        }
-
-                        {secondaryBtnText && secondaryBtnLink &&
-                            <div className="form__btn-container">
-                                <Link to={secondaryBtnLink} className="btn btn--quiet">
-                                    <span className="text">{secondaryBtnText}</span>
-                                </Link>
                             </div>
                         }
 

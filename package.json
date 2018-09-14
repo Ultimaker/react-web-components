@@ -93,13 +93,12 @@
         ],
         "coverageThreshold": {
             "global": {
-                "statements": 73,
-                "branches": 39,
-                "functions": 49,
-                "lines": 68
+                "statements": 80,
+                "branches": 80,
+                "functions": 80,
+                "lines": 80
             }
         },
-        "testEnvironment": "node",
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
         },
@@ -109,7 +108,7 @@
         "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
         "moduleNameMapper": {
             "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/testFileStub.tsx",
-            "\\.(css|sass)$": "<rootDir>/src/__mocks__/emptyModule.tsx"
+            "\\.(css|scss)$": "<rootDir>/src/__mocks__/emptyModule.tsx"
         },
         "moduleFileExtensions": [
             "ts",

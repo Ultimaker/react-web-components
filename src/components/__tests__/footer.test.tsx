@@ -1,6 +1,4 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import 'jest';
-import 'jsdom-global/register';
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
@@ -8,14 +6,14 @@ import { shallow } from 'enzyme';
 import Footer from '../footer';
 
 describe('The Footer component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Footer>About</Footer>);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Footer>About</Footer>);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

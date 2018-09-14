@@ -1,6 +1,4 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import 'jest';
-import 'jsdom-global/register';
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
@@ -8,18 +6,18 @@ import { shallow } from 'enzyme';
 import GridEmpty from '../grid_empty';
 
 describe('The GridEmpty component', () => {
-  let props;
-  let wrapper;
+    let props;
+    let wrapper;
 
-  beforeEach(() => {
-    props = {
-      label: 'Empty grid'
-    };
-    wrapper = shallow(<GridEmpty {...props} />);
-  });
+    beforeEach(() => {
+        props = {
+            label: 'Empty grid'
+        };
+        wrapper = shallow(<GridEmpty {...props} />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });

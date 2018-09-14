@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 import splitTextByNewLine from '../utils/split_text_by_new_line';
@@ -24,6 +23,8 @@ const windowMargin = 10;
 
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
+    private tooltipRef;
+
     static defaultProps = {
         direction: 'north'
     };
@@ -36,6 +37,8 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     constructor(props) {
         super(props);
 
+        this.tooltipRef = React.createRef();
+
         this._showTooltip = this._showTooltip.bind(this);
         this._hideTooltip = this._hideTooltip.bind(this);
     }
@@ -44,8 +47,9 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         // get browser page width
         const windowWidth = window.innerWidth;
 
-        // get dom elements
-        const tooltipElement = ReactDOM.findDOMNode(this.refs.tooltip);
+        // get dom element
+        const tooltipElement = this.tooltipRef.current;
+        // get parent element
         const tooltipTriggerElement = tooltipElement.parentNode;
 
         // get element positions
@@ -54,7 +58,6 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         const tooltipTriggerLeft = this._getElementDetails(tooltipTriggerElement).left;
         const tooltipTriggerRight = this._getElementDetails(tooltipTriggerElement).right;
         const tooltipTriggerCenter = this._getElementDetails(tooltipTriggerElement).center;
-
 
         let tooltipOffset: number;
 
@@ -65,7 +68,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         }
         // if the tooltip is off the screen to the right, move it left
         else if (tooltipWidth / 2 > windowWidth - tooltipTriggerCenter) {
-            // move move relative to tooltipTrigger right, then make negative so it can be applyed to the tooltip left
+            // move move relative to tooltipTrigger right, then make negative so it can be applied to the tooltip left
             tooltipOffset = (tooltipWidth / 2 - tooltipTriggerWidth - (windowWidth - tooltipTriggerRight) + windowMargin) * -1;
         }
         else {
@@ -75,7 +78,6 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         this.setState({
             tooltipOffset: tooltipOffset
         });
-
     }
 
     private _getElementDetails(el: any): any {
@@ -109,7 +111,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
             {children}
 
-            <div ref='tooltip' className="tooltip" style={tooltipOffset ? { left: tooltipOffset } : undefined}>
+            <div ref={this.tooltipRef} className="tooltip" style={tooltipOffset ? { left: tooltipOffset } : undefined}>
                 <div className="text">
                     {splitTextByNewLine(tooltipText)}
                 </div>

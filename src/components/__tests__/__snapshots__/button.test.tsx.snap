@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The Button component renders a anchor when prop \`type\` is link 1`] = `
+exports[`The Button component renders a anchor when prop \`type\` is link and an external link is given 1`] = `
 <a
   className="btn btn--primary btn--rectangle "
   href="https://ultimaker.com/"
@@ -12,6 +12,20 @@ exports[`The Button component renders a anchor when prop \`type\` is link 1`] = 
     Button text
   </span>
 </a>
+`;
+
+exports[`The Button component renders a link when prop \`type\` is link and an internal link is given 1`] = `
+<Link
+  className="btn btn--primary btn--rectangle "
+  replace={false}
+  to="/print_jobs"
+>
+  <span
+    className="text"
+  >
+    Button text
+  </span>
+</Link>
 `;
 
 exports[`The Button component should render 1`] = `

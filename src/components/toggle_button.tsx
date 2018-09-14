@@ -13,23 +13,15 @@ export interface ToggleButtonProps {
 
 export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({ id, value, onChangeHandler, disabled }) => {
 
-    const _onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChangeHandler(e.currentTarget.checked);
-    }
-
-    const _stopPropagation = (e: React.MouseEvent<EventTarget>) => {
-        e.stopPropagation()
-    }
-
     return (
-        <div className="toggle-button-container" onClick={_stopPropagation}>
+        <div className="toggle-button-container" onClick={(e) => e.stopPropagation()}>
             <input
                 className="toggle-button"
                 id={id}
                 name={id}
                 type="checkbox"
                 checked={value !== null ? value : false}
-                onChange={_onChangeHandler}
+                onChange={(e) => onChangeHandler(e.currentTarget.checked)}
                 disabled={disabled}
             />
             <label htmlFor={id}></label>

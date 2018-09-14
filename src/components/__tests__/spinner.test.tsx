@@ -1,6 +1,4 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import 'jest';
-import 'jsdom-global/register';
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
@@ -8,14 +6,14 @@ import { shallow } from 'enzyme';
 import Spinner from '../spinner';
 
 describe('The Spinner component', () => {
-  let wrapper;
+    let wrapper;
 
-  beforeEach(() => {
-    wrapper = shallow(<Spinner />);
-  });
+    beforeEach(() => {
+        wrapper = shallow(<Spinner />);
+    });
 
-  it('should render', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+    it('should render', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 
 });
