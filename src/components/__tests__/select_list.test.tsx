@@ -42,22 +42,28 @@ describe('The SelectList component', () => {
     });
 
     it('should hide menu when the label is clicked', () => {
+        // first open the menu
         wrapper.find('.label').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
+        // then close it
         wrapper.find('.label').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
     it('should hide menu on blur', () => {
+        // first open the menu
         wrapper.find('.label').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
+        // then close it
         wrapper.simulate('blur');
         expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
     it('should hide menu on menu click', () => {
+        // first open the menu
         wrapper.find('.label').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
+        // then close it
         wrapper.find('.container').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible').exists()).toBe(false);
     });
