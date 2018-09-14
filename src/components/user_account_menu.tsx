@@ -20,6 +20,10 @@ export interface UserAccountMenuProps {
     displayName: string
     /** An URL for the user profile image. */
     imageURL?: string
+    /** The width of the clickable area around the profile picture */
+    triggerWidth?: string;
+    /** The height of the clickable area around the profile picture */
+    triggerHeight?: string;
 }
 
 export interface UserAccountMenuState {
@@ -65,14 +69,19 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
     render(): JSX.Element {
 
-        const { onSignOutClickHandler, manageAccountURL, displayName, imageURL, children } = this.props;
+        const { onSignOutClickHandler, manageAccountURL, displayName, imageURL,
+            triggerWidth, triggerHeight, children } = this.props;
         const { showMenu } = this.state;
 
         const classes = classNames('user-account-menu', { 'visible': showMenu });
+        const triggerClasses = classNames('trigger', { 'trigger--rectangle': triggerWidth || triggerHeight });
 
         return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this.menuRef}>
 
-            <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
+            <div className={triggerClasses}
+                onClick={() => this._setShowMenu(!showMenu)}
+                style={{ width: triggerWidth, height: triggerHeight }}
+            >
                 <ProfileImage imageURL={imageURL} size="3.6rem" />
             </div>
 
