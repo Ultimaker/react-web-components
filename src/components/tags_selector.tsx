@@ -30,9 +30,10 @@ export interface Tag {
 const keyCodes = {
     comma: 188,
     enter: 13,
+    space: 32,
 };
 
-const delimiters = [keyCodes.comma, keyCodes.enter];
+const delimiters = [keyCodes.comma, keyCodes.enter, keyCodes.space];
 
 export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelectorState> {
 
@@ -132,6 +133,12 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     render(): JSX.Element {
         const { tags, suggestions } = this.state;
         const { placeholder, disabled, autofocus } = this.props;
+
+        const Keys = {
+            TAB: 9,
+            SPACE: 32,
+            COMMA: 188,
+        };
 
         const classes = classNames('tags-selector', { disabled });
 
