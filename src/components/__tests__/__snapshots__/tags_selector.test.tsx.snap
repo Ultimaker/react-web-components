@@ -10,6 +10,7 @@ exports[`The TagsSelector component should render 1`] = `
       Array [
         188,
         13,
+        32,
       ]
     }
     handleAddition={[Function]}
