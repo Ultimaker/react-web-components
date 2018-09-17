@@ -35,7 +35,7 @@ const breakpointDefaultValue = 'sm';
 stories.addDecorator(withKnobs)
 
 
-stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 1, selectValue: 1, checkboxValue: null, dateValue: null })
+stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 1, selectValue: 1, checkboxValue: null, dateValue: null, customValue: null })
     (withInfo('A example layout for a form')
         (({ store }) =>
             <div style={{ maxWidth: 550, margin: '2.4rem auto' }}>
@@ -46,11 +46,12 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
                         secondaryBtnHandler={action('clicked')}
                         secondaryBtnStyle="quiet"
                         validationErrors={{
-                            id_1: 'Validation error',
-                            id_2: 'Validation error',
-                            id_3: 'Validation error',
-                            id_4: 'Validation error',
-                            id_5: 'Validation error'
+                            id_1: 'Validation error 1',
+                            id_2: 'Validation error 2',
+                            id_3: 'Validation error 3',
+                            id_4: 'Validation error 4',
+                            id_5: 'Validation error 5',
+                            id_6: 'Validation error 6'
                         }}
                     >
 
@@ -115,7 +116,23 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
 
                         <div>
                             <a href="#link">Links</a>  or other elements may also be used.
-        </div>
+                        </div>
+
+                        <InputField
+                            value={null}
+                            type="children"
+                            id="id_6"
+                            label={text('Label', 'Custom input field')}
+                            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                            onChangeHandler={() => { }}
+                            submitted={typeof store.state.value === 'string'}
+                        >
+                            <input
+                                onChange={(e) => store.set({ customValue: e.target.value })}
+                                value={store.state.customValue}
+                            />
+                        </InputField>
                     </Form>
 
                 </Tile>

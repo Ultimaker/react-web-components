@@ -204,3 +204,26 @@ stories.add('Upload file field', withState({ value: null })
         )
     )
 );
+
+stories.add('Custom input field', withState({ value: null })
+    (withInfo('Custom input field')
+        (({ store }) =>
+            <div style={{ width: 250 }}>
+                <InputField
+                    value={null}
+                    type="children"
+                    id="id_12"
+                    label={text('Label', 'Input field')}
+                    onChangeHandler={() => {}}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    submitted={typeof store.state.value === 'string'}
+                >
+                    <input
+                        onChange={(e) => store.set({ value: e.target.value })}
+                        value={store.state.value}
+                    />
+                </InputField>
+            </div>
+        )
+    )
+);

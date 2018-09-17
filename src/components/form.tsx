@@ -85,16 +85,15 @@ export class Form extends React.Component<FormProps, FormState> {
             <div className="form__item">
                 {React.cloneElement(child, errors && {
                     validationError: errors,
-                    submitted
+                    submitted: child.props.submitted || submitted
                 })}
             </div>
         )
     }
 
     render(): JSX.Element {
-        const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
-            secondaryBtnHandler, secondaryBtnLink, alwaysEnableSubmitButton,
-            primaryBtnShowSpinner, secondaryBtnShowSpinner, children } = this.props;
+        const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler,
+            secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner, children } = this.props;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
