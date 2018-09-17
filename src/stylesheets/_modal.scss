@@ -21,7 +21,7 @@
         max-height: 90vh;
         margin: (-2vh) 3vw 0;
         background-color: $color-background;
-        box-shadow: 0 1.2rem 2.2rem 0 rgba(0, 0, 0, 0.21);
+        box-shadow: 0 1.2rem 2.2rem 0 $color-shadow-dark;
         overflow: auto;
     }
 }

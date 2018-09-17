@@ -5,10 +5,10 @@
     .progress-bar__progress-indicator {
         height: 2px;
         display: inline-block;
-        background: $color-progress;
+        background: $progress-bar-color;
 
         &.stopped {
-            background: $color-progress-paused;
+            background: $progress-bar-color-paused;
         }
     }
 

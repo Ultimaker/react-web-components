@@ -16,10 +16,6 @@
         transition: transform 100ms ease-out;
     }
 
-    &.panel-arrow--blue path {
-        fill: $color-blue;
-    }
-
     svg {
         display: block;
     }

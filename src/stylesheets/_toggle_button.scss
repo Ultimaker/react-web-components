@@ -9,7 +9,7 @@
 }
 
 .toggle-button + label:before {
-    background-color: #d8d8d8;
+    background-color: $toggle-button-color-background;
     border-radius: 9999px;
     content: "";
     cursor: pointer;
@@ -25,11 +25,11 @@
 }
 
 .toggle-button:checked + label:before {
-    background-color: $color-anchor;
+    background-color: $toggle-button-color-active;
 }
 
 .toggle-button + label:after {
-    background-color: #fff;
+    background-color: $toggle-button-color;
     border-radius: 50%;
     content: "";
     cursor: pointer;
@@ -42,7 +42,7 @@
     top: 50%;
     transform: translate(0, -50%);
     width: 3rem;
-    box-shadow: 0 0.1rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.1rem 0.5rem 0 $color-shadow-light;
 }
 
 .toggle-button:checked + label:after {

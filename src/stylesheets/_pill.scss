@@ -6,11 +6,11 @@
 
     border-radius: 9999px;
     line-height: 2.6rem;
-    background-color: $color-grey;
+    background-color: $pill-color-background;
     display: inline-block;
 
     &.active {
         color: white;
-        background-color: $color-blue;
+        background-color: $pill-color-background-active;
     }
 }

@@ -155,7 +155,7 @@
             }
 
             &.error {
-                border-bottom-color: $color-red;
+                border-bottom-color: $color-border-error;
             }
         }
     }
@@ -276,7 +276,7 @@
     }
 
     .DateInput_fangStroke {
-        stroke: $color-shadow-chevron;
+        stroke: $context-menu-color-chevron-shadow;
     }
 
     .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
