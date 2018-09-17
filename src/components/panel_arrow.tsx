@@ -1,6 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+// components
+import SingleArrowIcon from '../components/icons/single_arrow_icon';
+
 export type ArrowColor = 'black' | 'blue';
 
 export interface PanelArrowProps {
@@ -18,7 +21,7 @@ const PanelArrow: React.StatelessComponent<PanelArrowProps> = ({ active, width, 
 
     return (
         <div className={classes} style={{ width: width }}>
-            <svg viewBox="0 0 11 7"><path d=" M 5.5 4.172 L 9.5 0.172 L 10.914 1.586 L 6.914 5.586 L 5.5 7 L 0.086 1.586 L 1.5 0.172 L 5.5 4.172 Z " fill="rgb(0,0,0)" /></svg>
+            <SingleArrowIcon />
         </div>
     );
 };

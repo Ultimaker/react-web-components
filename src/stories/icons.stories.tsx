@@ -23,6 +23,20 @@ import PublishedIcon from '../components/icons/published_icon';
 import UnpublishedIcon from '../components/icons/unpublished_icon';
 import RequiredIcon from '../components/icons/required_icon';
 import ProfileIcon from '../components/icons/profile_icon';
+import BuildPlateIcon from '../components/icons/build_plate_icon';
+import CameraIcon from '../components/icons/camera_icon';
+import DeleteIcon from '../components/icons/delete_icon';
+import DisabledIcon from '../components/icons/disabled_icon';
+import TransferIcon from '../components/icons/transfer_icon';
+import MaintenanceIcon from '../components/icons/maintenance_icon';
+import SingleArrowIcon from '../components/icons/single_arrow_icon';
+import DoubleArrowIcon from '../components/icons/double_arrow_icon';
+import PausedIcon from '../components/icons/paused_icon';
+import SegmentIcon from '../components/icons/segment_icon';
+import SettingsIcon from '../components/icons/settings_icon';
+import Um3PrinterIcon from '../components/icons/um3_printer_icon';
+import Um3xPrinterIcon from '../components/icons/um3x_printer_icon';
+import Ums5PrinterIcon from '../components/icons/ums5_printer_icon';
 
 const stories = storiesOf('Icons', module);
 
@@ -55,6 +69,21 @@ stories.add('Icons', withInfo(
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="RejectedIcon">
                     <RejectedIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="PausedIcon">
+                    <PausedIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="DisabledIcon">
+                    <DisabledIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="TransferIcon">
+                    <TransferIcon />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
@@ -122,7 +151,63 @@ stories.add('Icons', withInfo(
                     <UnpublishedIcon />
                 </Tooltip>
             </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="BuildPlateIcon">
+                    <BuildPlateIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="CameraIcon">
+                    <CameraIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="DeleteIcon">
+                    <DeleteIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="MaintenanceIcon">
+                    <MaintenanceIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="SingleArrowIcon">
+                    <SingleArrowIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="DoubleArrowIcon">
+                    <DoubleArrowIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="SegmentIcon">
+                    <SegmentIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="SettingsIcon">
+                    <SettingsIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="Um3PrinterIcon">
+                    <Um3PrinterIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="Um3xPrinterIcon">
+                    <Um3xPrinterIcon />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="Ums5PrinterIcon">
+                    <Ums5PrinterIcon />
+                </Tooltip>
+            </GridItem>
 
+            
         </Grid>
     </div>
 ));
