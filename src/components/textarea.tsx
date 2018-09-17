@@ -46,29 +46,16 @@ export class Textarea extends React.Component<TextareaProps, {}> {
 
         return (
             <div className="textarea">
-                {autoGrow &&
-                    <TextareaAutosize
-                        id={id}
-                        value={value}
-                        className={classes}
-                        placeholder={placeholder}
-                        minRows={3}
-                        autoFocus={autofocus}
-                        onChange={e => onChangeHandler(e.target.value)}
-                    />
-                }
-                {!autoGrow &&
-                    <textarea
-                        id={id}
-                        name={id}
-                        onChange={e => onChangeHandler(e.target.value)}
-                        placeholder={placeholder}
-                        className={classes}
-                        ref={this.inputRef}
-                        value={value}
-                        rows={3}
-                    />
-                }
+                <TextareaAutosize
+                    id={id}
+                    value={value}
+                    className={classes}
+                    placeholder={placeholder}
+                    minRows={3}
+                    maxRows={autoGrow ? null : 3}
+                    autoFocus={autofocus}
+                    onChange={e => onChangeHandler(e.target.value)}
+                />
             </div>
         )
     }

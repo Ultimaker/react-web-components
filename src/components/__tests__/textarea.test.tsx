@@ -20,26 +20,12 @@ describe('The Textarea component', () => {
 
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should render with auto grow', () => {
-        wrapper.setProps({ autoGrow: 'true' });
-        expect(wrapper).toMatchSnapshot();
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
     });
 
     it('should display an error state', () => {
         wrapper.setProps({ error: 'true' });
         expect(wrapper.find('.error')).toHaveLength(1);
-    });
-
-    it('should display an error state with auto grow', () => {
-        wrapper.setProps({ error: 'true', autoGrow: 'true' });
-        expect(wrapper.find('.error')).toHaveLength(1);
-    });
-
-    it('should handle an textarea input change', () => {
-        wrapper.find('textarea').simulate('change', { target: { value: 'update' } });
-        expect(props.onChangeHandler).toHaveBeenCalledWith('update');
     });
 
 });
