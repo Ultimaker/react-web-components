@@ -1,7 +1,12 @@
 import * as React from 'react';
+import IconWrapper from './icon_wrapper';
 
-const UnpublishedIcon: React.StatelessComponent = (): JSX.Element => (
-    <div className="icon icon--unpublished">
+export interface Props {
+    className?: string;
+}
+
+const UnpublishedIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+    <div className={`${className} icon--unpublished`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M8.5,14a7.34,7.34,0,0,1,.84-3.43A19.46,19.46,0,0,0,3.09,16a20.79,20.79,0,0,0,4.38,4.28L9.7,18.06A7.42,7.42,0,0,1,8.5,14Z" fill="none" />
             <path d="M23.5,14A7.5,7.5,0,0,1,16,21.5a7.36,7.36,0,0,1-1.16-.1l-1.48,1.48a13.74,13.74,0,0,0,2.64.26c4.78,0,9.36-2.53,12.91-7.14a20.79,20.79,0,0,0-4.38-4.28L23.4,12.84A7.36,7.36,0,0,1,23.5,14Z" fill="none" />
@@ -15,4 +20,4 @@ const UnpublishedIcon: React.StatelessComponent = (): JSX.Element => (
 
 UnpublishedIcon.displayName = "UnpublishedIcon";
 
-export default UnpublishedIcon;
+export default IconWrapper(UnpublishedIcon);

@@ -1,7 +1,12 @@
 import * as React from 'react';
+import IconWrapper from './icon_wrapper';
 
-const SegmentIcon: React.StatelessComponent = (): JSX.Element => (
-    <div className="icon icon--segment">
+export interface Props {
+    className?: string;
+}
+
+const SegmentIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+    <div className={`${className} icon--segment`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="25" height="25">
             <path d=" M 17.87 15.66 L 21.68 19.47 C 22.905 17.879 23.685 15.991 23.94 14 L 18.55 14 C 18.41 14.585 18.18 15.145 17.87 15.66 Z " fill="none" />
             <path d=" M 12.53 18.69 C 9.406 18.673 6.78 16.341 6.392 13.242 C 6.005 10.142 7.977 7.236 11 6.45 L 11 1.06 C 6.207 1.704 2.326 5.274 1.284 9.997 C 0.243 14.72 2.263 19.591 6.341 22.191 C 10.419 24.791 15.687 24.567 19.53 21.63 L 15.71 17.81 C 14.751 18.389 13.651 18.693 12.53 18.69 Z " fill="none" />
@@ -14,4 +19,4 @@ const SegmentIcon: React.StatelessComponent = (): JSX.Element => (
 
 SegmentIcon.displayName = "SegmentIcon";
 
-export default SegmentIcon;
+export default IconWrapper(SegmentIcon);

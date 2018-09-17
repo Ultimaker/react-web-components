@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { withKnobs, selectV2 } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 
@@ -47,6 +47,23 @@ stories.addDecorator(withKnobs)
         marginTop: '50px'
     }));
 
+const colorOptions = {
+    'black': 'black',
+    'blue': 'blue',
+    'red': 'red',
+    'green': 'green',
+    'orange': 'orange',
+    'grey': 'grey'
+};
+const colorDefaultValue = 'black';
+
+const sizeOptions = {
+    'sm': 'sm',
+    'md': 'md',
+    'lg': 'lg'
+};
+const sizeDefaultValue = 'sm';
+
 stories.add('Icons', withInfo(
     'All icons'
 )(() =>
@@ -54,160 +71,160 @@ stories.add('Icons', withInfo(
         <Grid>
             <GridItem layoutWidth="1/1">
                 Icons
-      </GridItem>
+            </GridItem>
 
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="ApprovedIcon">
-                    <ApprovedIcon />
+                    <ApprovedIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="PendingIcon">
-                    <PendingIcon />
+                    <PendingIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="RejectedIcon">
-                    <RejectedIcon />
+                    <RejectedIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="PausedIcon">
-                    <PausedIcon />
+                    <PausedIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="DisabledIcon">
-                    <DisabledIcon />
+                    <DisabledIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="TransferIcon">
-                    <TransferIcon />
+                    <TransferIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="WarningIcon">
-                    <WarningIcon />
+                    <WarningIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="HighlightIcon">
-                    <HighlightIcon />
+                    <HighlightIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="EmailIcon">
-                    <EmailIcon />
+                    <EmailIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="PasswordIcon">
-                    <PasswordIcon />
+                    <PasswordIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="WebsiteIcon">
-                    <WebsiteIcon />
+                    <WebsiteIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="ProfileIcon">
-                    <ProfileIcon />
+                    <ProfileIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="DownloadIcon">
-                    <DownloadIcon />
+                    <DownloadIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="UploadIcon">
-                    <UploadIcon />
+                    <UploadIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="LinkIcon">
-                    <LinkIcon />
+                    <LinkIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="RequiredIcon">
-                    <RequiredIcon />
+                    <RequiredIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="DraftIcon">
-                    <DraftIcon />
+                    <DraftIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="PublishedIcon">
-                    <PublishedIcon />
+                    <PublishedIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="UnpublishedIcon">
-                    <UnpublishedIcon />
+                    <UnpublishedIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="BuildPlateIcon">
-                    <BuildPlateIcon />
+                    <BuildPlateIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="CameraIcon">
-                    <CameraIcon />
+                    <CameraIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="DeleteIcon">
-                    <DeleteIcon />
+                    <DeleteIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="MaintenanceIcon">
-                    <MaintenanceIcon />
+                    <MaintenanceIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="SingleArrowIcon">
-                    <SingleArrowIcon />
+                    <SingleArrowIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="DoubleArrowIcon">
-                    <DoubleArrowIcon />
+                    <DoubleArrowIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="SegmentIcon">
-                    <SegmentIcon />
+                    <SegmentIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="SettingsIcon">
-                    <SettingsIcon />
+                    <SettingsIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="Um3PrinterIcon">
-                    <Um3PrinterIcon />
+                    <Um3PrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="Um3xPrinterIcon">
-                    <Um3xPrinterIcon />
+                    <Um3xPrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="Ums5PrinterIcon">
-                    <Ums5PrinterIcon />
+                    <Ums5PrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
 
-            
+
         </Grid>
     </div>
 ));

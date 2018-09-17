@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, text, selectV2 } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 

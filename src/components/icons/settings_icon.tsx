@@ -1,13 +1,18 @@
 import * as React from 'react';
+import IconWrapper from './icon_wrapper';
 
-const CameraIcon: React.StatelessComponent = (): JSX.Element => (
-    <div className="icon icon--settings">
+export interface Props {
+    className?: string;
+}
+
+const SettingsIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+    <div className={`${className} icon--settings`}>
         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20">
             <path fill="none" stroke="#000000" strokeWidth="1.2" d="M3.494 11.975c.16.547.381 1.075.661 1.57l-.798 1.007a.827.827 0 0 0 .062 1.095l1.375 1.375a.823.823 0 0 0 1.094.062l1-.792a7.266 7.266 0 0 0 1.633.691l.15 1.287c.049.417.4.73.817.73h1.945a.824.824 0 0 0 .818-.73l.143-1.241a7.35 7.35 0 0 0 1.75-.707l.968.765a.826.826 0 0 0 1.094-.062l1.375-1.375a.823.823 0 0 0 .062-1.095l-.753-.954c.313-.541.558-1.118.72-1.72l1.16-.134c.417-.05.73-.401.73-.818V8.983a.824.824 0 0 0-.73-.818l-1.143-.133a7.228 7.228 0 0 0-.691-1.701l.704-.89a.827.827 0 0 0-.062-1.095l-1.372-1.371a.823.823 0 0 0-1.094-.062l-.864.684a7.25 7.25 0 0 0-1.788-.75l-.13-1.117a.824.824 0 0 0-.818-.73H9.567a.824.824 0 0 0-.818.73l-.13 1.118a7.22 7.22 0 0 0-1.835.775l-.896-.71a.826.826 0 0 0-1.094.062L3.419 4.35a.823.823 0 0 0-.062 1.095l.75.948a7.09 7.09 0 0 0-.678 1.717l-1.2.137a.824.824 0 0 0-.729.818v1.945c0 .417.313.77.73.818l1.264.147zM10.5 6.25A3.755 3.755 0 0 1 14.25 10a3.755 3.755 0 0 1-3.75 3.75A3.755 3.755 0 0 1 6.75 10a3.755 3.755 0 0 1 3.75-3.75z" />
         </svg>
     </div>
 )
 
-CameraIcon.displayName = "CameraIcon";
+SettingsIcon.displayName = "SettingsIcon";
 
-export default CameraIcon;
+export default IconWrapper(SettingsIcon);

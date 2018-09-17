@@ -1,7 +1,12 @@
 import * as React from 'react';
+import IconWrapper from './icon_wrapper';
 
-const Um3xPrinterIcon: React.StatelessComponent = (): JSX.Element => (
-    <div className="icon icon--um3x-printer">
+export interface Props {
+    className?: string;
+}
+
+const Um3xPrinterIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+    <div className={`${className} icon--um3x-printer`}>
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46.16 58">
             <path id="Shape" d="M18.4,12.2h9.26c.1,0,.1,0,.2-.2l1.73-4.27a.22.22,0,0,0-.2-.2H16.67a.22.22,0,0,0-.2.2L18.2,12C18.3,12.2,18.3,12.2,18.4,12.2Z" />
             <path id="Shape-2" data-name="Shape" d="M38.33,45.08H7.72a.48.48,0,0,0-.5.51V47a.48.48,0,0,0,.5.51H38.44a.48.48,0,0,0,.5-.51V45.59A.64.64,0,0,0,38.33,45.08Z" />
@@ -12,4 +17,4 @@ const Um3xPrinterIcon: React.StatelessComponent = (): JSX.Element => (
 
 Um3xPrinterIcon.displayName = "Um3xPrinterIcon";
 
-export default Um3xPrinterIcon;
+export default IconWrapper(Um3xPrinterIcon);

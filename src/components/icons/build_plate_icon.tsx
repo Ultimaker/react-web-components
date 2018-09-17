@@ -1,7 +1,12 @@
 import * as React from 'react';
+import IconWrapper from './icon_wrapper';
 
-const BuildPlateIcon: React.StatelessComponent = (): JSX.Element => (
-    <div className="icon icon--build_plate">
+export interface Props {
+    className?: string;
+}
+
+const BuildPlateIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+    <div className={`${className} icon--build_plate`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M.4,23.7l15.3,7.7h.6l15.3-7.7a.6.6,0,0,0,.3-.9.6.6,0,0,0-.8-.3L16,30.1.9,22.5a.6.6,0,0,0-.8.3A.6.6,0,0,0,.4,23.7Z" />
             <path d="M.4,19.9l15.3,7.6h.6l15.3-7.6a.6.6,0,0,0,.3-.9.6.6,0,0,0-.8-.3L16,26.2.9,18.7a.6.6,0,0,0-.8.3A.6.6,0,0,0,.4,19.9Z" />
@@ -13,4 +18,4 @@ const BuildPlateIcon: React.StatelessComponent = (): JSX.Element => (
 
 BuildPlateIcon.displayName = "BuildPlateIcon";
 
-export default BuildPlateIcon;
+export default IconWrapper(BuildPlateIcon);
