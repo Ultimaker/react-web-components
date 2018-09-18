@@ -84,7 +84,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
             })
             return tags
         }
-        return null;
+        return [];
     }
 
     static _convertTagsToStrings(tags: Tag[]): string[] {
@@ -133,12 +133,6 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     render(): JSX.Element {
         const { tags, suggestions } = this.state;
         const { placeholder, disabled, autofocus } = this.props;
-
-        const Keys = {
-            TAB: 9,
-            SPACE: 32,
-            COMMA: 188,
-        };
 
         const classes = classNames('tags-selector', { disabled });
 
