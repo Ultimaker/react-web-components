@@ -37,7 +37,7 @@ export const Button: React.StatelessComponent<ButtonProps> =
 
         const classes = classNames(`btn btn--${style} btn--${shape} ${className}`, { 'disabled': disabled }, { 'waiting': showSpinner });
 
-        const isLinkExternal = linkURL && /^https?:\/\//.test(linkURL);
+        const isLinkInternal = linkURL && !(/^https?:\/\//.test(linkURL));
 
         const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
             e.stopPropagation();
@@ -46,18 +46,18 @@ export const Button: React.StatelessComponent<ButtonProps> =
             }
         }
 
-        if (type === 'link' && isLinkExternal) {
+        if (type === 'link' && isLinkInternal) {
+            return <Link to={linkURL} className={classes}>
+                <span className="text">{children}</span>
+            </Link>
+        }
+        else if (type === 'link') {
             return <a id={id} className={classes} href={disabled || showSpinner ? undefined : linkURL} target={linkToNewTab ? '_blank' : undefined}>
                 <span className="text">{children}</span>
                 {showSpinner &&
                     <Spinner />
                 }
             </a>
-        }
-        else if (type === 'link') {
-            return <Link to={linkURL} className={classes}>
-                <span className="text">{children}</span>
-            </Link>
         }
         else {
             return <button id={id} className={classes} onClick={_onClickHandler} disabled={disabled || showSpinner} type={type}>
