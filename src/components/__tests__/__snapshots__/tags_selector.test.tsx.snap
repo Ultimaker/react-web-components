@@ -17,7 +17,7 @@ exports[`The TagsSelector component should render 1`] = `
     handleDelete={[Function]}
     handleDrag={null}
     maxLength={30}
-    suggestions={null}
+    suggestions={Array []}
     tags={
       Array [
         Object {
