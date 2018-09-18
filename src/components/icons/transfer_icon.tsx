@@ -1,11 +1,7 @@
 import * as React from 'react';
-import IconWrapper from './icon_wrapper';
+import {IconWrapper, IconProps} from './icon_wrapper';
 
-export interface Props {
-    className?: string;
-}
-
-const TransferIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+const TransferIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--transfer`}>
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
             <g>

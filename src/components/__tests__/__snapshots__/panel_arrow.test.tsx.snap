@@ -9,6 +9,6 @@ exports[`The PanelArrow component should render 1`] = `
     }
   }
 >
-  <SingleArrowIcon />
+  <Icon(SingleArrowIcon) />
 </div>
 `;

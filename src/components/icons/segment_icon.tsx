@@ -1,11 +1,7 @@
 import * as React from 'react';
-import IconWrapper from './icon_wrapper';
+import {IconWrapper, IconProps} from './icon_wrapper';
 
-export interface Props {
-    className?: string;
-}
-
-const SegmentIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+const SegmentIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--segment`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="25" height="25">
             <path d=" M 17.87 15.66 L 21.68 19.47 C 22.905 17.879 23.685 15.991 23.94 14 L 18.55 14 C 18.41 14.585 18.18 15.145 17.87 15.66 Z " fill="none" />

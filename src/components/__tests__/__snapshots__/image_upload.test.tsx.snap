@@ -29,7 +29,7 @@ exports[`The ImageFile component should render 1`] = `
     <div
       className="hide"
     >
-      <UploadIcon />
+      <Icon(UploadIcon) />
     </div>
   </div>
   <div

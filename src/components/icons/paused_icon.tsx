@@ -1,11 +1,7 @@
 import * as React from 'react';
-import IconWrapper from './icon_wrapper';
+import {IconWrapper, IconProps} from './icon_wrapper';
 
-export interface Props {
-    className?: string;
-}
-
-const PausedIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+const PausedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--paused`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M16,0A16,16,0,1,0,32,16,16,16,0,0,0,16,0Zm0,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29Z" />

@@ -9,7 +9,7 @@ exports[`The InfoLink component should render 1`] = `
     href="https://ultimaker.com/"
     target="_blank"
   >
-    <LinkIcon />
+    <Icon(LinkIcon) />
   </a>
 </div>
 `;

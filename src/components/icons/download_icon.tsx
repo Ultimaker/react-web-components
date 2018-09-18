@@ -1,11 +1,7 @@
 import * as React from 'react';
-import IconWrapper from './icon_wrapper';
+import {IconWrapper, IconProps} from './icon_wrapper';
 
-export interface Props {
-    className?: string;
-}
-
-const DownloadIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+const DownloadIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--download`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
             <path d="M1.59,7H4.28V5.5H7.73V7h2.68L8.71,8.71,8.41,9H9.5A1.51,1.51,0,0,0,11,7.5,1.49,1.49,0,0,0,9.61,6L8.85,6l-.16-.75a2.74,2.74,0,0,0-5.12-.74L3.32,5,2.78,5A2,2,0,0,0,3,9h.59l-.3-.29Z" fill="none" />

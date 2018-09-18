@@ -1,11 +1,7 @@
 import * as React from 'react';
-import IconWrapper from './icon_wrapper';
+import {IconWrapper, IconProps} from './icon_wrapper';
 
-export interface Props {
-    className?: string;
-}
-
-const BuildPlateIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+const BuildPlateIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--build_plate`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M.4,23.7l15.3,7.7h.6l15.3-7.7a.6.6,0,0,0,.3-.9.6.6,0,0,0-.8-.3L16,30.1.9,22.5a.6.6,0,0,0-.8.3A.6.6,0,0,0,.4,23.7Z" />

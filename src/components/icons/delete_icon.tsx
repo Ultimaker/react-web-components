@@ -1,11 +1,7 @@
 import * as React from 'react';
-import IconWrapper from './icon_wrapper';
+import {IconWrapper, IconProps} from './icon_wrapper';
 
-export interface Props {
-    className?: string;
-}
-
-const DeleteIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+const DeleteIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--delete`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" width="22" height="22">
             <path d=" M 21 4 L 16 4 L 15.1 1.3 C 14.8 0.5 14 0 13.2 0 L 8.8 0 C 8 0 7.2 0.5 6.9 1.3 L 6 4 L 1 4 C 0.4 4 0 4.4 0 5 C 0 5.6 0.4 6 1 6 L 2.5 6 L 2.5 20 C 2.5 21.1 3.4 22 4.5 22 L 17.6 22 C 18.7 22 19.5 21.1 19.6 20 L 19.6 6 L 21 6 C 21.6 6 22 5.6 22 5 C 22 4.4 21.6 4 21 4 Z  M 8.8 2 L 13.1 2 L 13.8 4 L 8.1 4 L 8.8 2 L 8.8 2 Z  M 17.5 20.1 L 4.4 20.1 L 4.4 6 L 17.5 6 L 17.5 20.1 L 17.5 20.1 Z " />

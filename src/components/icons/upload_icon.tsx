@@ -1,11 +1,7 @@
 import * as React from 'react';
-import IconWrapper from './icon_wrapper';
+import {IconWrapper, IconProps} from './icon_wrapper';
 
-export interface Props {
-    className?: string;
-}
-
-const UploadIcon: React.StatelessComponent<Props> = ({ className }): JSX.Element => (
+const UploadIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
 	<div className={`${className} icon--upload`}>
 		<svg viewBox="0 0 24 24">
             <g>
