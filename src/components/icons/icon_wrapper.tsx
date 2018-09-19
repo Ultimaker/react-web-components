@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames';
 
 export type Size = 'sm' | 'md' | 'lg';
 export type Color = 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey';
@@ -20,9 +21,14 @@ export interface IconProps {
  * @param color - The color of the icon.
  */
 export function IconWrapper (Svg: React.StatelessComponent<IconProps>) {
-    const Icon: React.StatelessComponent<IconWrapperProps> = ({ size, color }): JSX.Element => (
-        <Svg className={`icon icon--${size} icon--${color}`} />
-    );
+    const Icon: React.StatelessComponent<IconWrapperProps> = ({ size, color }): JSX.Element => {
+
+        const sizeClass = `icon--${size}`;
+        const colorClass = `icon--${color}`;
+        const classes = classNames('icon', { [sizeClass]: size }, { [colorClass]: color });
+
+        return <Svg className={classes} />
+    };
     Icon.displayName = `Icon(${Svg.displayName})`;
     return Icon;
 }
