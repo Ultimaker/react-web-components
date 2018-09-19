@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import splitTextByNewLine from '../utils/split_text_by_new_line';
+// components
 import Modal from './modal';
 import { Form, FormValidationResponse } from './form';
 import { ButtonStyle } from './button';
 
-export type PopupType = 'confirm' | 'prompt' | 'children';
+// utils
+import splitTextByNewLine from '../utils/split_text_by_new_line';
 
 export interface PopupProps {
     /** Popup header text */

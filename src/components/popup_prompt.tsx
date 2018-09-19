@@ -1,10 +1,9 @@
 import * as React from 'react';
 
+// components
 import Popup from './popup';
 import { InputField, InputFieldType, InputFieldValue } from './input_field';
 import { ButtonStyle } from './button';
-
-export type PopupPromptType = 'confirm' | 'prompt' | 'children';
 
 export interface PopupPromptProps {
     /** Input type for popups of type prompt */
