@@ -53,7 +53,8 @@ const colorOptions = {
     'red': 'red',
     'green': 'green',
     'orange': 'orange',
-    'grey': 'grey'
+    'grey': 'grey',
+    'white': 'white'
 };
 const colorDefaultValue = 'black';
 

@@ -92,6 +92,10 @@
         fill: $color-grey-darker;
     }
 
+    &.icon--white svg {
+        fill: $color-white;
+    }
+
     &.icon--md {
         width: 3.6rem;
         height: 3.6rem;

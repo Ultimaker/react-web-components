@@ -2,12 +2,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export type Size = 'sm' | 'md' | 'lg';
-export type Color = 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey';
+export type Color = 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';
 
 export interface IconWrapperProps {
     /** The size of the icon: 'sm' | 'md' | 'lg' */
     size?: Size;
-    /** The color of the icon: 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey' */
+    /** The color of the icon: 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white' */
     color?: Color;
 }
 
