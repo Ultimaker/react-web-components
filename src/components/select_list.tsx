@@ -8,6 +8,8 @@ import PanelArrow from './panel_arrow';
 export type MenuDirection = 'left' | 'right';
 
 export interface SelectListProps {
+    /** Select list id */
+    id?: string;
     /** The list of available options */
     options: SelectOption[];
     /** The value of the selected option */
@@ -51,13 +53,13 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
     }
 
     render(): JSX.Element {
-        const { error, options, value, onChangeHandler } = this.props;
+        const { id, error, options, value, onChangeHandler } = this.props;
         const { showMenu } = this.state;
 
         const dropDownMenuClasses = classNames('drop-down-menu', { 'visible': showMenu });
         const labelClasses = classNames('label', { 'active': showMenu, error });
 
-        return <div className={dropDownMenuClasses} tabIndex={1}
+        return <div id={id} className={dropDownMenuClasses} tabIndex={1}
             onClick={this._stopPropagation} onBlur={() => this._setShowMenu(false)}>
 
             <div className={labelClasses} onClick={() => this._setShowMenu(!showMenu)} >

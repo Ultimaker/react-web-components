@@ -1,39 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The ImageFile component should render 1`] = `
-<t
-  accept="image/jpeg, image/png"
-  className="image-upload"
-  disableClick={false}
-  disablePreview={false}
-  disabled={false}
-  getDataTransferItems={[Function]}
-  inputProps={Object {}}
-  maxSize={Infinity}
-  minSize={0}
-  multiple={false}
-  onDragEnter={[Function]}
-  onDragLeave={[Function]}
-  onDrop={[Function]}
-  preventDropOnDocument={true}
-  style={
-    Object {
-      "height": "18rem",
-      "width": "18rem",
+<div>
+  <t
+    accept="image/jpeg, image/png"
+    className="image-upload"
+    disableClick={false}
+    disablePreview={false}
+    disabled={false}
+    getDataTransferItems={[Function]}
+    inputProps={Object {}}
+    maxSize={Infinity}
+    minSize={0}
+    multiple={false}
+    onDragEnter={[Function]}
+    onDragLeave={[Function]}
+    onDrop={[Function]}
+    preventDropOnDocument={true}
+    style={
+      Object {
+        "height": "18rem",
+        "width": "18rem",
+      }
     }
-  }
->
-  <div
-    className="hover-area"
   >
     <div
-      className="hide"
+      className="hover-area"
     >
-      <Icon(UploadIcon) />
+      <div
+        className="hide"
+      >
+        <Icon(UploadIcon) />
+      </div>
     </div>
-  </div>
-  <div
-    className="placeholder placeholder--round"
-  />
-</t>
+    <div
+      className="placeholder placeholder--round"
+    />
+  </t>
+</div>
 `;

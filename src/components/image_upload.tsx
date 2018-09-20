@@ -4,7 +4,7 @@ import classNames from 'classnames';
 // needs to be imported this way to keep jest happy
 let Dropzone = require('react-dropzone');
 if ('default' in Dropzone) {
-  Dropzone = Dropzone.default;
+    Dropzone = Dropzone.default;
 }
 
 // components
@@ -16,6 +16,8 @@ export interface ImageFile extends File {
 }
 
 export interface ImageUploadProps {
+    /** The ImageUpload list id */
+    id?: string;
     /** Called when a image has been selected */
     onFileSelection: (file: ImageFile) => void;
     /** Size of the image. Include size unit */
@@ -72,43 +74,45 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     render(): JSX.Element {
-        const { size, shape, imageURL, placeholderLabel } = this.props;
+        const { id, size, shape, imageURL, placeholderLabel } = this.props;
         const { dropActive } = this.state;
 
         const iconClasses = classNames({ 'hide': imageURL !== null, 'icon-with-label': placeholderLabel });
         const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
 
-        return <Dropzone className="image-upload" style={{ width: size, height: size }}
-            accept="image/jpeg, image/png"
-            multiple={false}
-            onDragEnter={this._onDragEnter}
-            onDragLeave={this._onDragLeave}
-            onDrop={(files) => this._onDropHandler(files)}
-        >
-            <div className={hoverAreaClasses}>
-                <div className={iconClasses}>
-                    <UploadIcon />
+        return <div id={id}>
+            <Dropzone className="image-upload" style={{ width: size, height: size }}
+                accept="image/jpeg, image/png"
+                multiple={false}
+                onDragEnter={this._onDragEnter}
+                onDragLeave={this._onDragLeave}
+                onDrop={(files) => this._onDropHandler(files)}
+            >
+                <div className={hoverAreaClasses}>
+                    <div className={iconClasses}>
+                        <UploadIcon />
 
-                    {placeholderLabel &&
-                        <div className="placeholder-label">
-                            {placeholderLabel}
-                        </div>
+                        {placeholderLabel &&
+                            <div className="placeholder-label">
+                                {placeholderLabel}
+                            </div>
+                        }
+                    </div>
+
+                    {imageURL &&
+                        <div className={`cover cover--${shape}`}></div>
                     }
                 </div>
 
-                {imageURL &&
-                    <div className={`cover cover--${shape}`}></div>
+                {!imageURL &&
+                    <div className={`placeholder placeholder--${shape}`}></div>
                 }
-            </div>
 
-            {!imageURL &&
-                <div className={`placeholder placeholder--${shape}`}></div>
-            }
-
-            {imageURL &&
-                <Image src={imageURL} shape={shape} size={size} />
-            }
-        </Dropzone>
+                {imageURL &&
+                    <Image src={imageURL} shape={shape} size={size} />
+                }
+            </Dropzone>
+        </div>
     }
 }
 

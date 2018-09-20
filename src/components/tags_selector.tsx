@@ -3,7 +3,9 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import classNames from 'classnames';
 
 export interface TagsSelectorProps {
-    /**  */
+    /** The TagsSelector id */
+    id?: string;
+    /** An array of suggested tags used for the autocomplete */
     suggestions?: string[];
     /** Called when the tag is selected */
     onChangeHandler: (tags: string[]) => void;
@@ -132,11 +134,11 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
     render(): JSX.Element {
         const { tags, suggestions } = this.state;
-        const { placeholder, disabled, autofocus } = this.props;
+        const { id, placeholder, disabled, autofocus } = this.props;
 
         const classes = classNames('tags-selector', { disabled });
 
-        return <div className={classes}>
+        return <div id={id} className={classes}>
             <ReactTags tags={tags}
                 suggestions={suggestions}
                 handleDelete={this._handleDelete}
