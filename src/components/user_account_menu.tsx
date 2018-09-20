@@ -32,7 +32,7 @@ export interface UserAccountMenuState {
 
 export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserAccountMenuState> {
 
-    private menuRef;
+    private _menuRef;
 
     state = {
         showMenu: false
@@ -40,11 +40,11 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
     constructor(props: UserAccountMenuProps) {
         super(props);
-        this.menuRef = React.createRef();
+        this._menuRef = React.createRef();
         this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
     }
 
-    _setShowMenu(showMenu: boolean): void {
+    private _setShowMenu(showMenu: boolean): void {
         if (showMenu) {
             document.addEventListener('mousedown', this._onOutsideClickHandler);
         }
@@ -57,13 +57,13 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         });
     }
 
-    _onOutsideClickHandler() {
-        if (this.menuRef.current && !this.menuRef.current.contains(event.target)) {
+    private _onOutsideClickHandler() {
+        if (this._menuRef.current && !this._menuRef.current.contains(event.target)) {
             this._setShowMenu(false);
         }
     }
 
-    _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+    private _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
         e.stopPropagation();
     }
 
@@ -76,7 +76,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         const classes = classNames('user-account-menu', { 'visible': showMenu });
         const triggerClasses = classNames('trigger', { 'trigger--rectangle': triggerWidth || triggerHeight });
 
-        return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this.menuRef}>
+        return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this._menuRef}>
 
             <div className={triggerClasses}
                 onClick={() => this._setShowMenu(!showMenu)}

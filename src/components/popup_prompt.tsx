@@ -66,7 +66,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
         }
     }
 
-    _onChangeHandler(id: string, value: InputFieldValue): void {
+    private _onChangeHandler(id: string, value: InputFieldValue): void {
         this.setState({ inputValue: value });
         
         if (this.props.validationHandler) {
@@ -74,7 +74,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
         }
     }
 
-    _isInputValid(): boolean {
+    private _isInputValid(): boolean {
         const { validationHandler } = this.props;
         const { inputValue } = this.state;
 
@@ -87,7 +87,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
         }
     }
 
-    _primaryBtnHandler(): void {
+    private _primaryBtnHandler(): void {
         const { inputValue } = this.state;
 
         if (this._isInputValid()) {

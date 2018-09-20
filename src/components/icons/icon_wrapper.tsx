@@ -1,14 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-export type Size = 'sm' | 'md' | 'lg';
-export type Color = 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';
+export type IconSize = 'sm' | 'md' | 'lg';
+export type IconColor = 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';
 
 export interface IconWrapperProps {
     /** The size of the icon: 'sm' | 'md' | 'lg' */
-    size?: Size;
+    size?: IconSize;
     /** The color of the icon: 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white' */
-    color?: Color;
+    color?: IconColor;
 }
 
 export interface IconProps {

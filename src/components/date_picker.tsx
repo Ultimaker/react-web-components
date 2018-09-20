@@ -52,7 +52,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
         return null;
     }
 
-    _onChangeHandler(date: moment.Moment): void {
+    private _onChangeHandler(date: moment.Moment): void {
         // if date is invalid it will be set to null
         this.setState({ date });
 

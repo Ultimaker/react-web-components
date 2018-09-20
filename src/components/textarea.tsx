@@ -21,22 +21,22 @@ export interface TextareaProps {
 
 export class Textarea extends React.Component<TextareaProps, {}> {
 
-    private inputRef;
+    private _inputRef;
 
     constructor(props) {
         super(props);
-        this.inputRef = React.createRef();
+        this._inputRef = React.createRef();
     }
 
     componentDidMount(): void {
         this._focusOnPromptInput();
     }
 
-    _focusOnPromptInput(): void {
+    private _focusOnPromptInput(): void {
         const { autofocus } = this.props;
 
-        if (this.inputRef.current && autofocus) {
-            this.inputRef.current.focus();
+        if (this._inputRef.current && autofocus) {
+            this._inputRef.current.focus();
         }
     }
 

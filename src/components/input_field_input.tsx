@@ -60,27 +60,27 @@ export interface InputFieldInputProps {
 
 export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
 
-    private inputRef;
+    private _inputRef;
 
     constructor(props) {
         super(props);
-        this.inputRef = React.createRef();
+        this._inputRef = React.createRef();
     }
 
     componentDidMount(): void {
         this._focusOnPromptInput();
     }
 
-    _focusOnPromptInput(): void {
+    private _focusOnPromptInput(): void {
         const { focusOnLoad } = this.props;
 
-        if (this.inputRef.current && focusOnLoad) {
-            this.inputRef.current.focus();
+        if (this._inputRef.current && focusOnLoad) {
+            this._inputRef.current.focus();
         }
     }
 
 
-    protected _renderInput() {
+    private _renderInput() {
         const { labelLayoutWidth, centerInputField, staticField, value, type } = this.props;
 
         const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
@@ -101,7 +101,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         </div>
     }
 
-    protected _renderInputElement(): React.ReactNode {
+    private _renderInputElement(): React.ReactNode {
         const { id, type, min, max, placeholder, selectOptions,
             value, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad,
             showValidationError, onChangeHandler, textareaAutoGrow, children } = this.props;
@@ -180,11 +180,11 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
             onChange={(e) => onChangeHandler(e.target.value)}
             placeholder={placeholder}
             value={value != null ? value.toString() : ''}
-            ref={this.inputRef}
+            ref={this._inputRef}
         />
     }
 
-    protected _renderStaticValue(type: InputFieldType, value: InputFieldInputValue): JSX.Element | React.ReactNode | InputFieldInputValue {
+    private _renderStaticValue(type: InputFieldType, value: InputFieldInputValue): JSX.Element | React.ReactNode | InputFieldInputValue {
         const { selectOptions, imageSize, imageShape } = this.props;
 
         if (type === 'url') {
@@ -210,7 +210,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         return value
     }
 
-    protected _renderPostInputElement() {
+    private _renderPostInputElement() {
         const { required } = this.props;
 
         if (required) {
@@ -221,7 +221,7 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         return null;
     }
 
-    protected _renderChildren(): JSX.Element {
+    private _renderChildren(): JSX.Element {
         const { type, children } = this.props;
 
         if (type !== 'children' && children) {

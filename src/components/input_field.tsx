@@ -113,7 +113,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         return validationError && (touched || submitted)
     }
 
-    protected _renderLabel(): JSX.Element {
+    private _renderLabel(): JSX.Element {
         const { id, label, labelLayoutWidth, labelWidthBreakpoint, type, preLabelElement, infoText, infoLinkURL } = this.props;
 
         if (label || preLabelElement) {
@@ -131,7 +131,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         return null;
     }
 
-    protected _renderInputElements() {
+    private _renderInputElements() {
         const { id, type, centerInputField, value, min, max, placeholder,
             selectOptions, imageSize, staticField, imageShape, tagSuggestions, textareaAutoGrow,
             focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
@@ -160,7 +160,7 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         />
     }
 
-    protected _renderValidation(): JSX.Element {
+    private _renderValidation(): JSX.Element {
         const { validationError, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
 
         if (this._showValidationError() && validationError) {

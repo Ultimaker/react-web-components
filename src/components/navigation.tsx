@@ -30,7 +30,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
         showNav: false
     }
 
-    _toggleShowNav(showNav: boolean): void {
+    private _toggleShowNav(showNav: boolean): void {
         if (showNav) {
             document.body.classList.add('noscroll');
         }

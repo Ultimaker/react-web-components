@@ -62,12 +62,12 @@ export class Popup extends React.Component<PopupProps, PopupState> {
         return null;
     }
 
-    _primaryBtnHandler(): void {
+    private _primaryBtnHandler(): void {
         this.props.primaryBtnHandler();
         this.setState({ primaryBtnShowSpinner: true });
     }
 
-    _secondaryBtnHandler(): void {
+    private _secondaryBtnHandler(): void {
         this.props.secondaryBtnHandler();
         this.setState({ secondaryBtnShowSpinner: true });
     }

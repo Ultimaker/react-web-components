@@ -34,19 +34,19 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         showMenu: false
     }
 
-    _setShowMenu(showMenu: boolean): void {
+    private _setShowMenu(showMenu: boolean): void {
         this.setState({
             showMenu: showMenu
         });
     }
 
-    _getActiveOptionLabel() {
+    private _getActiveOptionLabel() {
         const { options, value } = this.props;
         const option = options.find(option => option.value === value);
         return option ? option.label : null;
     }
 
-    _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
+    private _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
         e.stopPropagation()
     }
 

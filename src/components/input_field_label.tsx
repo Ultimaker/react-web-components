@@ -31,7 +31,7 @@ export interface InputFieldProps {
 
 export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
 
-    protected _renderPreLabelElement(): JSX.Element {
+    private _renderPreLabelElement(): JSX.Element {
         const { preLabelElement } = this.props;
 
         if (preLabelElement) {
@@ -42,7 +42,7 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
         return null
     }
 
-    protected _renderLabelElement(): JSX.Element {
+    private _renderLabelElement(): JSX.Element {
         const { label, id } = this.props;
 
         if (label) {
@@ -53,7 +53,7 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
         return null
     }
 
-    protected _renderPostLabelElement(): JSX.Element {
+    private _renderPostLabelElement(): JSX.Element {
         const { infoText, infoLinkURL } = this.props;
 
         if (infoText || infoLinkURL) {

@@ -52,13 +52,13 @@ export class Form extends React.Component<FormProps, FormState> {
         this._renderChild = this._renderChild.bind(this);
     }
 
-    _onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
+    private _onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
         this.setState({ submitted: true });
         this.props.onSubmitHandler();
     }
 
-    _isPrimaryBtnDisabled() {
+    private _isPrimaryBtnDisabled() {
         const { validationErrors, alwaysEnableSubmitButton, secondaryBtnShowSpinner } = this.props;
 
         if (secondaryBtnShowSpinner) {

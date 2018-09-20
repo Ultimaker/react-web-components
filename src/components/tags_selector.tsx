@@ -59,8 +59,8 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         let updatedTags: Tag[] = null;
 
         // convert tag strings to tag objects
-        const convertedSuggestionTags: Tag[] = TagsSelector._convertStringsToTags(props.suggestions);
-        const convertedTags: Tag[] = TagsSelector._convertStringsToTags(props.value);
+        const convertedSuggestionTags: Tag[] = TagsSelector.convertStringsToTags(props.suggestions);
+        const convertedTags: Tag[] = TagsSelector.convertStringsToTags(props.value);
 
         if (convertedSuggestionTags !== state.suggestions) {
             updatedSuggestions = convertedSuggestionTags;
@@ -76,7 +76,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         }
     }
 
-    static _convertStringsToTags(strings: string[]): Tag[] {
+    static convertStringsToTags(strings: string[]): Tag[] {
         if (strings) {
             let tags: Tag[] = [];
             strings.forEach(string => {
@@ -87,7 +87,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         return [];
     }
 
-    static _convertTagsToStrings(tags: Tag[]): string[] {
+    static convertTagsToStrings(tags: Tag[]): string[] {
         let strings: string[] = [];
         tags.forEach(tag => {
             strings.push(tag.text)
@@ -101,7 +101,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         if (!disabled) {
             const { tags } = this.state;
             const updatedTags = tags.filter((tag, index) => index !== i);
-            this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
@@ -111,7 +111,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         if (!disabled) {
             const { tags } = this.state;
             const updatedTags = [...tags, tag];
-            this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
@@ -125,7 +125,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
             updatedTags.splice(currPos, 1);
             updatedTags.splice(newPos, 0, tag);
 
-            this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
