@@ -83,7 +83,7 @@ button {
         }
 
         .spinner .path {
-            stroke: white;
+            stroke: $primary-btn-color-text;
         }
     }
 
@@ -106,7 +106,7 @@ button {
         }
 
         .spinner .path {
-            stroke: black;
+            stroke: $secondary-btn-color-text;
         }
     }
 
@@ -124,6 +124,10 @@ button {
         &.disabled, &.disabled:hover, &.disabled:active {
             background-color: transparent;
             color: $quiet-btn-color-disabled-text;
+        }
+
+        .spinner .path {
+            stroke: $quiet-btn-color-text;
         }
     }
 
@@ -147,7 +151,7 @@ button {
         }
 
         .spinner .path {
-            stroke: white;
+            stroke: $alert-btn-color-text;
         }
     }
 
