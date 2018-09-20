@@ -208,7 +208,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-lightest"></div>
+                    <div className="color-square color-transparent-grey-lighter"></div>
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.03)</div>
@@ -220,7 +220,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-lighter"></div>
+                    <div className="color-square color-transparent-grey-light"></div>
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.06)</div>
@@ -232,7 +232,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-light"></div>
+                    <div className="color-square color-transparent-grey-mid"></div>
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.09)</div>
@@ -244,7 +244,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-mid"></div>
+                    <div className="color-square color-transparent-grey-dark"></div>
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.16)</div>
@@ -256,7 +256,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-dark"></div>
+                    <div className="color-square color-transparent-grey-darker"></div>
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.25)</div>
