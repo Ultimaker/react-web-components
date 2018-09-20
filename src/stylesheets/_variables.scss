@@ -13,12 +13,11 @@ $color-grey-lighter: #e6e6e6;
 $color-grey-lightest: #f3f3f3;
 $color-white: #ffffff;
 $color-transparent: rgba(0, 0, 0, 0);
-$color-transparent-grey-lightest: rgba(0, 0, 0, 0.0075);
-$color-transparent-grey-lighter: rgba(0, 0, 0, 0.03);
-$color-transparent-grey-light: rgba(0, 0, 0, 0.06);
-$color-transparent-grey-mid: rgba(0, 0, 0, 0.09);
-$color-transparent-grey-dark: rgba(0, 0, 0, 0.16);
-$color-transparent-grey-darker: rgba(0, 0, 0, 0.25);
+$color-transparent-grey-lightest: rgba(0, 0, 0, 0.03);
+$color-transparent-grey-lighter: rgba(0, 0, 0, 0.06);
+$color-transparent-grey-light: rgba(0, 0, 0, 0.09);
+$color-transparent-grey-mid: rgba(0, 0, 0, 0.16);
+$color-transparent-grey-dark: rgba(0, 0, 0, 0.25);
 $color-transparent-grey-darkest: rgba(0, 0, 0, 0.85);
 $color-transparent-blue: rgba(0, 167, 233, 0.06);
 
@@ -96,7 +95,7 @@ $context-menu-color-text: $color-black;
 $context-menu-color-trigger: $color-grey-dark;
 $context-menu-color-trigger-hover: $color-background-darker;
 $context-menu-color-hover: $color-background-darker;
-$context-menu-color-chevron-shadow: $color-transparent-grey-lightest;
+$context-menu-color-chevron-shadow: $color-transparent-grey-light;
 
 $drop-down-menu-color-text-active: $color-blue;
 
