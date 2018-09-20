@@ -57,8 +57,8 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         });
     }
 
-    private _onOutsideClickHandler() {
-        if (this._menuRef.current && !this._menuRef.current.contains(event.target)) {
+    private _onOutsideClickHandler(e: any): void {
+        if (this._menuRef.current && !this._menuRef.current.contains(e.target)) {
             this._setShowMenu(false);
         }
     }
