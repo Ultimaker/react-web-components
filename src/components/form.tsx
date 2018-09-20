@@ -21,10 +21,14 @@ export interface FormProps {
     secondaryBtnStyle?: ButtonStyle;
     /** An internal url link to be used instead of calling secondaryBtnHandler */
     secondaryBtnLink?: string;
-    /** The form validation state and validation error messages */
+    /** The form validation error messages */
     validationErrors?: FormValidationResponse;
     /** Override the form validation and enable the primary button */
     alwaysEnableSubmitButton?: boolean;
+    /** Replaces the primary button text with a spinner when true */
+    primaryBtnShowSpinner?: boolean;
+    /** Replaces the secondary button text with a spinner when true */
+    secondaryBtnShowSpinner?: boolean;
 }
 
 export interface FormState {
@@ -48,15 +52,27 @@ export class Form extends React.Component<FormProps, FormState> {
         this._renderChild = this._renderChild.bind(this);
     }
 
-    _onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
+    private _onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
         e.preventDefault();
         this.setState({ submitted: true });
         this.props.onSubmitHandler();
     }
 
+    private _isPrimaryBtnDisabled() {
+        const { validationErrors, alwaysEnableSubmitButton, secondaryBtnShowSpinner } = this.props;
+
+        if (secondaryBtnShowSpinner) {
+            return true;
+        }
+        if (alwaysEnableSubmitButton) {
+            return false;
+        }
+        return validationErrors !== null;
+    }
+
 	/**
- * Renders a single child of the form component. If the child has the `id` props, we will check for errors in the
- * form validation, any errors are passed as extra props to the child.
+     * Renders a single child of the form component. If the child has the `id` props, we will check for errors in the
+     * form validation, any errors are passed as extra props to the child.
 	 * @param child - The child element to be rendered.
 	 * @private
 	 */
@@ -69,15 +85,15 @@ export class Form extends React.Component<FormProps, FormState> {
             <div className="form__item">
                 {React.cloneElement(child, errors && {
                     validationError: errors,
-                    submitted
+                    submitted: child.props.submitted || submitted
                 })}
             </div>
         )
     }
 
     render(): JSX.Element {
-        const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, validationErrors,
-            secondaryBtnHandler, secondaryBtnLink, alwaysEnableSubmitButton, children } = this.props;
+        const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler,
+            secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner, children } = this.props;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -88,7 +104,8 @@ export class Form extends React.Component<FormProps, FormState> {
                             <div className="form__btn-container">
                                 <Button
                                     style={primaryBtnStyle}
-                                    disabled={alwaysEnableSubmitButton ? false : validationErrors !== null}
+                                    showSpinner={primaryBtnShowSpinner}
+                                    disabled={this._isPrimaryBtnDisabled()}
                                     type="submit" >
 
                                     {primaryBtnText}
@@ -99,6 +116,8 @@ export class Form extends React.Component<FormProps, FormState> {
                             <div className="form__btn-container">
                                 <Button
                                     style={secondaryBtnStyle}
+                                    showSpinner={secondaryBtnShowSpinner}
+                                    disabled={primaryBtnShowSpinner}
                                     onClickHandler={secondaryBtnHandler}
                                     type={secondaryBtnLink ? 'link' : 'button'}
                                     linkURL={secondaryBtnLink}

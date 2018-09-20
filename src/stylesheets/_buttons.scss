@@ -66,88 +66,92 @@ button {
     }
 
     &.btn--primary {
-        color: $color-primary-btn-text;
-        background-color: $color-primary-btn;
+        color: $primary-btn-color-text;
+        background-color: $primary-btn-color;
 
         &:hover {
-            background-color: $color-primary-btn-hover;
+            background-color: $primary-btn-color-hover;
         }
 
         &:active, &.waiting, &.waiting:hover {
-            background-color: $color-primary-btn-active;
+            background-color: $primary-btn-color-active;
         }
 
         &.disabled, .disabled:hover, .disabled:active {
-            background-color: $color-primary-btn-disabled;
-            color: $color-primary-btn-disabled-text;
+            background-color: $primary-btn-color-disabled;
+            color: $primary-btn-color-disabled-text;
         }
 
         .spinner .path {
-            stroke: white;
+            stroke: $primary-btn-color-text;
         }
     }
 
     &.btn--secondary {
-        border: 1px solid $color-secondary-btn-border;
+        border: 1px solid $secondary-btn-color-border;
         padding: 0.8rem 3.5rem 1rem;
-        color: $color-secondary-btn-text;
+        color: $secondary-btn-color-text;
 
         &:hover {
-            background-color: $color-secondary-btn-hover;
+            background-color: $secondary-btn-color-hover;
         }
 
         &:active, &.waiting, &.waiting:hover {
-            background-color: $color-secondary-btn-active;
+            background-color: $secondary-btn-color-active;
         }
 
         &.disabled, &.disabled:hover, &.disabled:active {
-            background-color: $color-secondary-btn-disabled;
-            color: $color-secondary-btn-disabled-text;
+            background-color: $secondary-btn-color-disabled;
+            color: $secondary-btn-color-disabled-text;
         }
 
         .spinner .path {
-            stroke: black;
+            stroke: $secondary-btn-color-text;
         }
     }
 
     &.btn--quiet {
-        color: $color-quiet-btn-text;
+        color: $quiet-btn-color-text;
 
         &:hover {
-            background-color: $color-quiet-btn-hover;
+            background-color: $quiet-btn-color-hover;
         }
 
         &:active, &.waiting, &.waiting:hover {
-            background-color: $color-quiet-btn-active;
+            background-color: $quiet-btn-color-active;
         }
 
         &.disabled, &.disabled:hover, &.disabled:active {
             background-color: transparent;
-            color: $color-quiet-btn-disabled-text;
+            color: $quiet-btn-color-disabled-text;
+        }
+
+        .spinner .path {
+            stroke: $quiet-btn-color-text;
         }
     }
 
     &.btn--alert {
-        border: 1px solid $color-alert-btn-border;
+        border: 1px solid $alert-btn-color-border;
         padding: 0.8rem 3.5rem 1rem;
-        color: $color-alert-btn-text;
-        background-color: $color-alert-btn;
+        color: $alert-btn-color-text;
+        background-color: $alert-btn-color;
 
         &:hover {
-            background-color: $color-alert-btn-hover;
+            background-color: $alert-btn-color-hover;
         }
 
         &:active, &.waiting, &.waiting:hover {
-            background-color: $color-alert-btn-active;
+            background-color: $alert-btn-color-active;
         }
 
         &.disabled, .disabled:hover, .disabled:active {
-            background-color: $color-alert-btn-disabled;
-            color: $color-alert-btn-disabled-text;
+            background-color: $alert-btn-color-disabled;
+            color: $alert-btn-color-disabled-text;
         }
 
         .spinner .path {
-            stroke: white;
+            stroke: $alert-btn-color-text;
         }
     }
 
@@ -164,7 +168,7 @@ button {
         font-size: 1.6rem;
         padding: 0.6rem 2.4rem;
 
-        &.btn--secondary {
+        &.btn--secondary, &.btn--alert {
             padding: 0.5rem 2.3rem;
         }
     }

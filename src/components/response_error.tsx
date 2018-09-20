@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 // components
-import Popup from './popup';
+import { PopupPrompt } from './popup_prompt';
 import Tile from './tile';
 
 // utils
@@ -82,8 +82,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
                         <div className="response-error__msg" key={error.id}>{getTranslatedError(error, errorMessageTemplates, fieldNames)}</div>
                     )}
                 </Tile>
-                {isServerError && this.state.showPopup && <Popup
-                    type="prompt"
+                {isServerError && this.state.showPopup && <PopupPrompt
                     headerText={I18n.translate("error popup title", "Something went wrong at our end :(")}
                     bodyText={I18n.translate("error popup details",
                         "Please describe here what you were doing that caused the error to happen. " +
@@ -95,7 +94,7 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
                     secondaryBtnStyle="quiet"
                     secondaryBtnHandler={this._closePopup}
                     inputType="textarea"
-                    validationHandler={this._validate}
+                    validationHandler={this._validate} 
                 />}
             </div>
         )

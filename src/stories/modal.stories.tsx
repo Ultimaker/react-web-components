@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
@@ -8,6 +8,7 @@ import { withInfo } from '@storybook/addon-info';
 import Modal from '../components/modal';
 import Popup from '../components/popup';
 import AboutDialog from '../components/about_dialog';
+import { PopupPrompt } from '../components/popup_prompt';
 
 const stories = storiesOf('Modal', module);
 
@@ -31,7 +32,6 @@ stories.add('Confirm popup', withInfo(
     'Popup modal for confirmation'
 )(() =>
     <Popup
-        type="confirm"
         headerText="Confirm popup"
         bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         primaryBtnText="Confirm"
@@ -45,8 +45,7 @@ stories.add('Confirm popup', withInfo(
 stories.add('Prompt popup', withInfo(
     'Popup modal for user input'
 )(() =>
-    <Popup
-        type="prompt"
+    <PopupPrompt
         headerText="Prompt popup"
         bodyText="Input a number:"
         primaryBtnText="Confirm"
@@ -55,11 +54,21 @@ stories.add('Prompt popup', withInfo(
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
         secondaryBtnStyle="quiet"
-        inputType="number"
         inputDefaultValue={10}
+        validationHandler={validation}
+        inputType="number"
         inputMin={1}
         inputMax={100} />
 ));
+
+function validation(quantity: string | number): string {
+    const quantityInt = Number(quantity);
+
+    if (!quantityInt) {
+        return 'Please enter a number';
+    }
+    return null;
+}
 
 stories.add('About dialog', withInfo(
     'About dialog modal for providing information about the application'

@@ -10,13 +10,14 @@ exports[`The TagsSelector component should render 1`] = `
       Array [
         188,
         13,
+        32,
       ]
     }
     handleAddition={[Function]}
     handleDelete={[Function]}
     handleDrag={null}
     maxLength={30}
-    suggestions={null}
+    suggestions={Array []}
     tags={
       Array [
         Object {

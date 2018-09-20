@@ -1,101 +1,29 @@
 $color-blue: #00a7e9;
+$color-blue-light: #24bcf3;
+$color-blue-lighter: #46C4F2;
 $color-red: #ef5b5b;
-$color-grey: #f3f3f3;
 $color-green: #23aa1d;
 $color-orange: #fbb045;
+$color-black: #000000;
+$color-grey-darker: #666666;
+$color-grey-dark: #999999;
+$color-grey-mid: #b7b7b7;
+$color-grey-light: #dcdcdc;
+$color-grey-lighter: #e6e6e6;
+$color-grey-lightest: #f3f3f3;
+$color-white: #ffffff;
+$color-transparent: rgba(0, 0, 0, 0);
+$color-transparent-grey-lighter: rgba(0, 0, 0, 0.03);
+$color-transparent-grey-light: rgba(0, 0, 0, 0.06);
+$color-transparent-grey-mid: rgba(0, 0, 0, 0.09);
+$color-transparent-grey-dark: rgba(0, 0, 0, 0.16);
+$color-transparent-grey-darker: rgba(0, 0, 0, 0.25);
+$color-transparent-grey-darkest: rgba(0, 0, 0, 0.85);
+$color-transparent-blue: rgba(0, 167, 233, 0.06);
 
 $font-primary: "NotoSans-Regular", sans-serif;
 $font-primary-medium: "NotoSans-Medium", sans-serif;
-$font-primary-bold: "Noto Sans-bold", sans-serif;
-
-$color-text: #000000;
-$color-text-light: #666666;
-$color-text-lighter: #999999;
-
-$color-body: $color-grey;
-$color-background: white;
-$color-background-dark: rgba(0, 0, 0, 0.03);
-$color-background-darker: rgba(0, 0, 0, 0.06);
-$color-background-darkest: rgba(0, 0, 0, 0.09);
-$color-background-selected: rgba(0, 167, 233, 0.06);
-$color-background-alert: $color-red;
-$color-background-success: $color-green;
-
-$color-border: #dcdcdc;
-$color-border-dark: #4a4a4a;
-$color-border-light: #e6e6e6;
-$color-border-active: $color-blue;
-
-$color-progress: $color-blue;
-$color-progress-paused: #b7b7b7;
-$color-progress-background: $color-grey;
-
-$color-shadow: rgba(0, 0, 0, 0.15);
-$color-shadow-dark: rgba(0, 0, 0, 0.25);
-$color-shadow-chevron: rgba(0, 0, 0, 0.05);
-
-$border-radius: 3px;
-
-$color-anchor: $color-blue;
-
-$color-primary-btn: $color-blue;
-$color-primary-btn-text: white;
-$color-primary-btn-hover: #24bcf3;
-$color-primary-btn-active: #46C4F2;
-$color-primary-btn-disabled: $color-background-darker;
-$color-primary-btn-disabled-text: $color-text-lighter;
-
-$color-secondary-btn: rgba(0, 0, 0, 0);
-$color-secondary-btn-text: $color-text;
-$color-secondary-btn-border: black;
-$color-secondary-btn-hover: $color-background-darker;
-$color-secondary-btn-active: $color-background-darkest;
-$color-secondary-btn-disabled: $color-background-darker;
-$color-secondary-btn-disabled-text: $color-text-lighter;
-
-$color-quiet-btn-text: $color-blue;
-$color-quiet-btn-hover: $color-background-darker;
-$color-quiet-btn-active: $color-background-darkest;
-$color-quiet-btn-disabled-text: $color-text-lighter;
-
-$color-alert-btn: rgba(0, 0, 0, 0);
-$color-alert-btn-text: $color-red;
-$color-alert-btn-border: $color-red;
-$color-alert-btn-hover: $color-background-darker;
-$color-alert-btn-active: $color-background-darkest;
-$color-alert-btn-disabled: $color-background-darker;
-$color-alert-btn-disabled-text: $color-text-lighter;
-
-$context-menu-color-background: white;
-$context-menu-color-text: rgba(0, 0, 0, 1);
-$context-menu-color-trigger: rgba(31, 36, 39, 0.4);
-$context-menu-color-trigger-hover: $color-background-darker;
-$context-menu-color-hover: $color-background-darker;
-
-$checkbox-color-background-active: $color-primary-btn;
-$checkbox-color-border-active: $color-primary-btn;
-$checkbox-color-tick-active: white;
-$checkbox-color-border: $color-secondary-btn-border;
-$checkbox-color-tick-hover: $color-border;
-
-$tooltip-color-background: $color-blue;
-$tooltip-dark-color-background: #666666;
-$tooltip-color-text: white;
-$tooltip-arrow-size: 15px;
-
-$input-field-color-border: rgba(0, 0, 0, 0.15);
-$input-field-color-border-hover: rgba(0, 0, 0, 0.8);
-$input-field-color-border-active: $color-blue;
-$input-field-color-border-error: $color-red;
-$input-field-color-placeholder: rgba(0, 0, 0, 0.25);
-
-$slide-out-color-background: white;
-
-$modal-overlay-color: rgba(48, 52, 53, 0.4);
-$modal-overlay-color-light: rgba(48, 52, 53, 0.1);
-$modal-overlay-color-dark: rgba(0, 0, 0, 0.85);
-
-$toolbar-color-background: $color-blue;
+$font-primary-bold: "NotoSans-bold", sans-serif;
 
 $min-window-width: 320px;
 
@@ -103,3 +31,111 @@ $layout-breakpoints: (lg: 1025px, md: 800px, sm: 620px);
 $layout-fractions: 1 2 3 4 5;
 $layout-spacing: (lg: 3.6rem, md: 2.4rem, sm: 1.2rem, xs: 0.6rem, none: 0);
 $layout-gutter-default: 2.4rem;
+
+$border-radius: 3px;
+
+$color-text: $color-black;
+$color-text-light: $color-grey-darker;
+$color-text-lighter: $color-grey-dark;
+
+$color-body: $color-grey-lightest;
+$color-background: $color-white;
+$color-background-dark: $color-transparent-grey-lighter;
+$color-background-darker: $color-transparent-grey-light;
+$color-background-darkest: $color-transparent-grey-mid;
+$color-background-selected: $color-transparent-blue;
+$color-background-alert: $color-red;
+$color-background-success: $color-green;
+
+$color-border: $color-grey-light;
+$color-border-light: $color-grey-lighter;
+$color-border-active: $color-blue;
+$color-border-error: $color-red;
+
+$color-shadow-light: $color-transparent-grey-lighter;
+$color-shadow: $color-transparent-grey-dark;
+$color-shadow-dark: $color-transparent-grey-darker;
+
+$color-anchor: $color-blue;
+
+$primary-btn-color: $color-blue;
+$primary-btn-color-text: $color-white;
+$primary-btn-color-hover: $color-blue-light;
+$primary-btn-color-active: $color-blue-lighter;
+$primary-btn-color-disabled: $color-background-darker;
+$primary-btn-color-disabled-text: $color-text-lighter;
+
+$secondary-btn-color: $color-transparent;
+$secondary-btn-color-text: $color-text;
+$secondary-btn-color-border: $color-black;
+$secondary-btn-color-hover: $color-background-darker;
+$secondary-btn-color-active: $color-background-darkest;
+$secondary-btn-color-disabled: $color-background-darker;
+$secondary-btn-color-disabled-text: $color-text-lighter;
+
+$quiet-btn-color-text: $color-blue;
+$quiet-btn-color-hover: $color-background-darker;
+$quiet-btn-color-active: $color-background-darkest;
+$quiet-btn-color-disabled-text: $color-text-lighter;
+
+$alert-btn-color: $color-transparent;
+$alert-btn-color-text: $color-red;
+$alert-btn-color-border: $color-red;
+$alert-btn-color-hover: $color-background-darker;
+$alert-btn-color-active: $color-background-darkest;
+$alert-btn-color-disabled: $color-background-darker;
+$alert-btn-color-disabled-text: $color-text-lighter;
+
+$progress-bar-color: $color-blue;
+$progress-bar-color-paused: $color-grey-mid;
+$progress-bar-color-background: $color-grey-lightest;
+
+$context-menu-color-background: $color-white;
+$context-menu-color-text: $color-black;
+$context-menu-color-trigger: $color-grey-dark;
+$context-menu-color-trigger-hover: $color-background-darker;
+$context-menu-color-hover: $color-background-darker;
+$context-menu-color-chevron-shadow: $color-transparent-grey-light;
+
+$drop-down-menu-color-text-active: $color-blue;
+
+$checkbox-color-background-active: $primary-btn-color;
+$checkbox-color-border-active: $primary-btn-color;
+$checkbox-color-tick-active: $color-white;
+$checkbox-color-border: $secondary-btn-color-border;
+$checkbox-color-tick-hover: $color-border;
+
+$tooltip-color-background: $color-blue;
+$tooltip-dark-color-background: $color-grey-darker;
+$tooltip-color-text: $color-white;
+$tooltip-arrow-size: 15px;
+
+$input-field-color-border: $color-transparent-grey-dark;
+$input-field-color-border-hover: $color-transparent-grey-mid;
+$input-field-color-border-active: $color-blue;
+$input-field-color-border-error: $color-red;
+$input-field-color-placeholder: $color-transparent-grey-darker;
+
+$slide-out-color-background: $color-white;
+
+$modal-overlay-color: $color-transparent-grey-darker;
+$modal-overlay-color-light: $color-transparent-grey-mid;
+$modal-overlay-color-dark: $color-transparent-grey-darkest;
+
+$toolbar-color-background: $color-blue;
+
+$tags-color-hover: $color-grey-darker;
+$tags-color-close-text: $color-white;
+$tags-color-close-background: $color-grey-dark;
+
+$pill-color-background: $color-grey-lighter;
+$pill-color-background-active: $color-blue;
+
+$spinner-color: $color-blue;
+
+$toggle-button-color: $color-white;
+$toggle-button-color-background: $color-grey-light;
+$toggle-button-color-active: $color-blue;
+
+$panel-arrow-color-blue: $color-blue;
+$panel-arrow-color-black: $color-black;

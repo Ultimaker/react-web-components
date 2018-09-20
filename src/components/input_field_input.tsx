@@ -10,15 +10,16 @@ import DatePicker from './date_picker';
 import TagsSelector from './tags_selector';
 import FileUpload from './file_upload';
 import RequiredIcon from './icons/required_icon';
+import Textarea from './textarea';
 
-export type InputFieldInputType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 export type InputFieldInputValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
 
 export interface InputFieldInputProps {
     /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
-    type: InputFieldInputType;
+    type: InputFieldType;
     /** Input field id. Must be unique */
     id: string;
     /** Input field will be centered if true. Useful for type image or checkbox */
@@ -53,32 +54,33 @@ export interface InputFieldInputProps {
     labelLayoutWidth: LayoutWidth;
     /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
     labelWidthBreakpoint: Breakpoint;
-    /** JSX Element, such as an icon, to be shown before the input label */
+    /** Whether the textarea should grow horizontally with user input */
+    textareaAutoGrow?: boolean;
 }
 
 export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
 
-    private inputRef;
+    private _inputRef;
 
     constructor(props) {
         super(props);
-        this.inputRef = React.createRef();
+        this._inputRef = React.createRef();
     }
 
     componentDidMount(): void {
         this._focusOnPromptInput();
     }
 
-    _focusOnPromptInput(): void {
+    private _focusOnPromptInput(): void {
         const { focusOnLoad } = this.props;
 
-        if (this.inputRef.current && focusOnLoad) {
-            this.inputRef.current.focus();
+        if (this._inputRef.current && focusOnLoad) {
+            this._inputRef.current.focus();
         }
     }
 
 
-    protected _renderInput() {
+    private _renderInput() {
         const { labelLayoutWidth, centerInputField, staticField, value, type } = this.props;
 
         const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || type === 'checkbox' ? 'fit' : 'fill';
@@ -95,134 +97,186 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
                 </div>
             }
 
-            {staticField && this._renderStaticValue(type, value)}
+            {staticField && this._renderStaticValue()}
         </div>
     }
 
-    protected _renderInputElement(): React.ReactNode {
-        const { id, type, min, max, placeholder, selectOptions,
-            value, imageSize, staticField, imageShape, tagSuggestions, focusOnLoad,
-            showValidationError, onChangeHandler, children } = this.props;
+    private _renderInputElement(): React.ReactNode {
+        const { type, children } = this.props;
 
-        const classes = classNames('input', { 'error': showValidationError })
-
-        if (type === 'children') {
-            return children;
+        switch (type) {
+            case 'children':
+                return children;
+            case 'textarea':
+                return this._renderTextarea();
+            case 'select':
+                return this._renderSelectList();
+            case 'checkbox':
+                return this._renderCheckbox();
+            case 'image':
+                return this._renderImageUpload();
+            case 'date':
+                return this._renderDatePicker();
+            case 'tags':
+                return this._renderTagsSelector();
+            case 'file':
+                return this._renderFileUpload();
+            default:
+                return this._renderDefaultInput();
         }
-        if (type === 'textarea') {
-            return (
-                <textarea
-                    id={id}
-                    name={id}
-                    onChange={(e) => onChangeHandler(e.target.value)}
-                    placeholder={placeholder}
-                    className={classes}
-                    ref={this.inputRef}
-                    value={value != null ? value.toString() : ''}
-                    rows={3}
-                />
-            )
-        }
-        if (type === 'select') {
-            return (
-                <SelectList
-                    onChangeHandler={onChangeHandler}
-                    value={typeof value === 'number' || typeof value === 'string' ? value : null}
-                    options={selectOptions}
-                    error={showValidationError}
-                />
-            )
-        }
-        if (type === 'checkbox') {
-            return (
-                <Checkbox
-                    id={id}
-                    onChangeHandler={onChangeHandler}
-                    value={value === true}
-                    disabled={staticField}
-                />
-            )
-        }
-        if (type === 'image') {
-            return (
-                <ImageUpload size={imageSize}
-                    imageURL={value != null ? value.toString() : null}
-                    onFileSelection={onChangeHandler}
-                    shape={imageShape}
-                    placeholderLabel={placeholder}
-                />
-            )
-        }
-        if (type === 'date') {
-            return (
-                <DatePicker
-                    id={id}
-                    onChangeHandler={onChangeHandler}
-                    value={value != null ? value.toString() : null}
-                    error={showValidationError}
-                />
-            )
-        }
-        if (type === 'tags') {
-            return <TagsSelector
-                onChangeHandler={onChangeHandler}
-                placeholder={placeholder}
-                suggestions={tagSuggestions}
-                value={Array.isArray(value) && value}
-                disabled={staticField}
-                autofocus={focusOnLoad}
-            />
-        }
-        if (type === 'file') {
-            return <FileUpload
-                id={id}
-                onChangeHandler={onChangeHandler}
-                disabled={staticField}
-            />
-        }
-        return (
-            <input
-                id={id}
-                className={classes}
-                name={id}
-                type={type}
-                min={min ? min : null}
-                max={max ? max : null}
-                onChange={(e) => onChangeHandler(e.target.value)}
-                placeholder={placeholder}
-                value={value != null ? value.toString() : ''}
-                ref={this.inputRef}
-            />
-        )
     }
 
-    protected _renderStaticValue(type: InputFieldInputType, value: InputFieldInputValue): JSX.Element | React.ReactNode | InputFieldInputValue {
-        const { selectOptions, imageSize, imageShape } = this.props;
+    private _renderTextarea() {
+        const { id, placeholder, value, focusOnLoad, onChangeHandler, textareaAutoGrow } = this.props;
 
-        if (type === 'url') {
-            return <a href={value.toString()} target="_blank">{value}</a>
+        return <Textarea
+            id={id}
+            onChangeHandler={onChangeHandler}
+            placeholder={placeholder}
+            value={value != null ? value.toString() : ''}
+            autofocus={focusOnLoad}
+            autoGrow={textareaAutoGrow}
+        />
+    }
+
+    private _renderSelectList() {
+        const { id, selectOptions, value, onChangeHandler, showValidationError } = this.props;
+
+        return <SelectList
+            id={id}
+            onChangeHandler={onChangeHandler}
+            value={typeof value === 'number' || typeof value === 'string' ? value : null}
+            options={selectOptions}
+            error={showValidationError}
+        />
+    }
+
+    private _renderCheckbox() {
+        const { id, staticField, value, onChangeHandler } = this.props;
+
+        return <Checkbox
+            id={id}
+            onChangeHandler={onChangeHandler}
+            value={value === true}
+            disabled={staticField}
+        />
+    }
+
+    private _renderImageUpload() {
+        const { id, imageSize, imageShape, placeholder, value, onChangeHandler } = this.props;
+
+        return <ImageUpload
+            id={id}
+            size={imageSize}
+            imageURL={value != null ? value.toString() : null}
+            onFileSelection={onChangeHandler}
+            shape={imageShape}
+            placeholderLabel={placeholder}
+        />
+    }
+
+    private _renderDatePicker() {
+        const { id, showValidationError, value, onChangeHandler } = this.props;
+
+        return <DatePicker
+            id={id}
+            onChangeHandler={onChangeHandler}
+            value={value != null ? value.toString() : null}
+            error={showValidationError}
+        />
+    }
+
+    private _renderTagsSelector() {
+        const { id, placeholder, value, onChangeHandler, tagSuggestions, staticField, focusOnLoad } = this.props;
+
+        return <TagsSelector
+            id={id}
+            onChangeHandler={onChangeHandler}
+            placeholder={placeholder}
+            suggestions={tagSuggestions}
+            value={Array.isArray(value) && value}
+            disabled={staticField}
+            autofocus={focusOnLoad}
+        />
+    }
+
+    private _renderFileUpload() {
+        const { id, onChangeHandler, staticField } = this.props;
+
+        return <FileUpload
+            id={id}
+            onChangeHandler={onChangeHandler}
+            disabled={staticField}
+        />
+    }
+
+    private _renderDefaultInput() {
+        const { id, type, min, max, placeholder, value,
+            showValidationError, onChangeHandler } = this.props;
+
+        const classes = classNames('input', { 'error': showValidationError });
+
+        return <input
+            id={id}
+            className={classes}
+            name={id}
+            type={type}
+            min={min ? min : null}
+            max={max ? max : null}
+            onChange={(e) => onChangeHandler(e.target.value)}
+            placeholder={placeholder}
+            value={value != null ? value.toString() : ''}
+            ref={this._inputRef}
+        />
+    }
+
+    private _renderStaticValue(): JSX.Element | React.ReactNode | InputFieldInputValue {
+        const { type, value } = this.props;
+
+        switch (type) {
+            case 'url':
+                return this._renderStaticUrl();
+            case 'email':
+                return this._renderStaticEmail();
+            case 'date':
+                return this._renderStaticDate();
+            case 'select':
+                return this._renderStaticSelectList();
+            case 'image':
+                return this._renderStaticImage();
+            case 'checkbox':
+            case 'tags':
+                return this._renderInputElement();
+            default:
+                return value;
         }
-        if (type === 'email') {
-            return <a href={`mailto:${value}`} target="_top">{value}</a>
-        }
-        if (type === 'date' && typeof value === 'string') {
+    }
+
+    private _renderStaticUrl() {
+        const { value } = this.props;
+        return <a href={value.toString()} target="_blank">{value}</a>
+    }
+
+    private _renderStaticEmail() {
+        const { value } = this.props;
+        return <a href={`mailto:${value}`} target="_top">{value}</a>
+    }
+
+    private _renderStaticDate() {
+        const { value } = this.props;
+        if (typeof value === 'string') {
             return moment(value).format('DD-MM-YYYY');
         }
-        if (type === 'select') {
-            const option = selectOptions.find(option => option.value === value);
-            return option ? option.label : null;
-        }
-        if (type === 'image') {
-            return <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
-        }
-        if (type === 'checkbox' || type === 'tags') {
-            return this._renderInputElement();
-        }
-
-        return value
+        return null;
     }
 
-    protected _renderPostInputElement() {
+    private _renderStaticSelectList() {
+        const { value, selectOptions } = this.props;
+        const option = selectOptions.find(option => option.value === value);
+        return option ? option.label : null;
+    }
+
+    private _renderPostInputElement() {
         const { required } = this.props;
 
         if (required) {
@@ -233,7 +287,12 @@ export class InputFieldInput extends React.Component<InputFieldInputProps, {}> {
         return null;
     }
 
-    protected _renderChildren(): JSX.Element {
+    private _renderStaticImage() {
+        const { value, imageSize, imageShape } = this.props;
+        return <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape} />
+    }
+
+    private _renderChildren(): JSX.Element {
         const { type, children } = this.props;
 
         if (type !== 'children' && children) {

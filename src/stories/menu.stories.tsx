@@ -64,5 +64,7 @@ stories.add('User account menu', withInfo(
         onSignOutClickHandler={action('clicked')}
         manageAccountURL="https://account-staging.ultimaker.com"
         displayName="Test User"
+        triggerWidth={text('Trigger width', null)}
+        triggerHeight={text('Trigger height', null)}
     ></UserAccountMenu>
 ));

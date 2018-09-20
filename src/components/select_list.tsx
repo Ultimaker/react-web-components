@@ -8,6 +8,8 @@ import PanelArrow from './panel_arrow';
 export type MenuDirection = 'left' | 'right';
 
 export interface SelectListProps {
+    /** Select list id */
+    id?: string;
     /** The list of available options */
     options: SelectOption[];
     /** The value of the selected option */
@@ -34,30 +36,30 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         showMenu: false
     }
 
-    _setShowMenu(showMenu: boolean): void {
+    private _setShowMenu(showMenu: boolean): void {
         this.setState({
             showMenu: showMenu
         });
     }
 
-    _getActiveOptionLabel() {
+    private _getActiveOptionLabel() {
         const { options, value } = this.props;
         const option = options.find(option => option.value === value);
         return option ? option.label : null;
     }
 
-    _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
+    private _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
         e.stopPropagation()
     }
 
     render(): JSX.Element {
-        const { error, options, value, onChangeHandler } = this.props;
+        const { id, error, options, value, onChangeHandler } = this.props;
         const { showMenu } = this.state;
 
         const dropDownMenuClasses = classNames('drop-down-menu', { 'visible': showMenu });
         const labelClasses = classNames('label', { 'active': showMenu, error });
 
-        return <div className={dropDownMenuClasses} tabIndex={1}
+        return <div id={id} className={dropDownMenuClasses} tabIndex={1}
             onClick={this._stopPropagation} onBlur={() => this._setShowMenu(false)}>
 
             <div className={labelClasses} onClick={() => this._setShowMenu(!showMenu)} >

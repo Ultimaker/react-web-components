@@ -33,7 +33,7 @@
     font-size: 1.6rem;
     line-height: 2.2rem;
     outline: none;
-    transition: all 0.2s ease-out;
+    transition: border 0.2s ease-out;
     border-radius: 0;
     font-family: $font-primary;
 
@@ -92,6 +92,10 @@
     }
 
     &.input-field--checkbox {
+        .input-field__label {
+            margin-top: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
         .input-field__field-addition {
             .icon--required {
                 margin-top: 0.9rem;
@@ -151,7 +155,7 @@
             }
 
             &.error {
-                border-bottom-color: $color-red;
+                border-bottom-color: $color-border-error;
             }
         }
     }
@@ -227,9 +231,13 @@
     }
 }
 
-textarea {
-    vertical-align: top;
-    height: auto;
+.textarea{
+    .input{
+        @extend %input-style;
+        vertical-align: top;
+        height: auto;
+        min-height: 9.2rem;
+    }
 }
 
 .date-picker {
@@ -268,7 +276,7 @@ textarea {
     }
 
     .DateInput_fangStroke {
-        stroke: $color-shadow-chevron;
+        stroke: $context-menu-color-chevron-shadow;
     }
 
     .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {

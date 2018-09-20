@@ -23,7 +23,7 @@ const windowMargin = 10;
 
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
-    private tooltipRef;
+    private _tooltipRef;
 
     static defaultProps = {
         direction: 'north'
@@ -37,7 +37,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     constructor(props) {
         super(props);
 
-        this.tooltipRef = React.createRef();
+        this._tooltipRef = React.createRef();
 
         this._showTooltip = this._showTooltip.bind(this);
         this._hideTooltip = this._hideTooltip.bind(this);
@@ -48,7 +48,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         const windowWidth = window.innerWidth;
 
         // get dom element
-        const tooltipElement = this.tooltipRef.current;
+        const tooltipElement = this._tooltipRef.current;
         // get parent element
         const tooltipTriggerElement = tooltipElement.parentNode;
 
@@ -111,7 +111,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
             {children}
 
-            <div ref={this.tooltipRef} className="tooltip" style={tooltipOffset ? { left: tooltipOffset } : undefined}>
+            <div ref={this._tooltipRef} className="tooltip" style={tooltipOffset ? { left: tooltipOffset } : undefined}>
                 <div className="text">
                     {splitTextByNewLine(tooltipText)}
                 </div>

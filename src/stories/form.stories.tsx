@@ -56,7 +56,7 @@ stories.add('Number field', withState({ value: 1 })
 );
 
 stories.add('Text area', withState({ value: null })
-    (withInfo('Number input field')
+    (withInfo('Textarea input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
                 <InputField
@@ -65,7 +65,8 @@ stories.add('Text area', withState({ value: null })
                     value={store.state.value}
                     focusOnLoad
                     onChangeHandler={(id, value) => store.set({ value })}
-                    placeholder="Textarea" />
+                    placeholder="Textarea"
+                    textareaAutoGrow={boolean('Auto grow', true)} />
             </div>
         )
     )
@@ -199,6 +200,29 @@ stories.add('Upload file field', withState({ value: null })
                     placeholder={text('Placeholder text', 'Placeholder text')}
                     focusOnLoad
                     validationError={text('Validation error message', 'Validation Error')} />
+            </div>
+        )
+    )
+);
+
+stories.add('Custom input field', withState({ value: null })
+    (withInfo('Custom input field')
+        (({ store }) =>
+            <div style={{ width: 250 }}>
+                <InputField
+                    value={null}
+                    type="children"
+                    id="id_12"
+                    label={text('Label', 'Input field')}
+                    onChangeHandler={() => {}}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    submitted={typeof store.state.value === 'string'}
+                >
+                    <input
+                        onChange={(e) => store.set({ value: e.target.value })}
+                        value={store.state.value}
+                    />
+                </InputField>
             </div>
         )
     )

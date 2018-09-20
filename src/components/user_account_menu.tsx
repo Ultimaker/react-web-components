@@ -20,6 +20,10 @@ export interface UserAccountMenuProps {
     displayName: string
     /** An URL for the user profile image. */
     imageURL?: string
+    /** The width of the clickable area around the profile picture */
+    triggerWidth?: string;
+    /** The height of the clickable area around the profile picture */
+    triggerHeight?: string;
 }
 
 export interface UserAccountMenuState {
@@ -28,7 +32,7 @@ export interface UserAccountMenuState {
 
 export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserAccountMenuState> {
 
-    private menuRef;
+    private _menuRef;
 
     state = {
         showMenu: false
@@ -36,11 +40,11 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
     constructor(props: UserAccountMenuProps) {
         super(props);
-        this.menuRef = React.createRef();
+        this._menuRef = React.createRef();
         this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
     }
 
-    _setShowMenu(showMenu: boolean): void {
+    private _setShowMenu(showMenu: boolean): void {
         if (showMenu) {
             document.addEventListener('mousedown', this._onOutsideClickHandler);
         }
@@ -53,26 +57,31 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         });
     }
 
-    _onOutsideClickHandler() {
-        if (this.menuRef.current && !this.menuRef.current.contains(event.target)) {
+    private _onOutsideClickHandler(e: any): void {
+        if (this._menuRef.current && !this._menuRef.current.contains(e.target)) {
             this._setShowMenu(false);
         }
     }
 
-    _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+    private _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
         e.stopPropagation();
     }
 
     render(): JSX.Element {
 
-        const { onSignOutClickHandler, manageAccountURL, displayName, imageURL, children } = this.props;
+        const { onSignOutClickHandler, manageAccountURL, displayName, imageURL,
+            triggerWidth, triggerHeight, children } = this.props;
         const { showMenu } = this.state;
 
         const classes = classNames('user-account-menu', { 'visible': showMenu });
+        const triggerClasses = classNames('trigger', { 'trigger--rectangle': triggerWidth || triggerHeight });
 
-        return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this.menuRef}>
+        return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this._menuRef}>
 
-            <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}>
+            <div className={triggerClasses}
+                onClick={() => this._setShowMenu(!showMenu)}
+                style={triggerWidth || triggerHeight ? { width: triggerWidth, height: triggerHeight } : undefined}
+            >
                 <ProfileImage imageURL={imageURL} size="3.6rem" />
             </div>
 

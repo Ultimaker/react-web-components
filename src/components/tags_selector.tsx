@@ -3,7 +3,9 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import classNames from 'classnames';
 
 export interface TagsSelectorProps {
-    /**  */
+    /** The TagsSelector id */
+    id?: string;
+    /** An array of suggested tags used for the autocomplete */
     suggestions?: string[];
     /** Called when the tag is selected */
     onChangeHandler: (tags: string[]) => void;
@@ -30,9 +32,10 @@ export interface Tag {
 const keyCodes = {
     comma: 188,
     enter: 13,
+    space: 32,
 };
 
-const delimiters = [keyCodes.comma, keyCodes.enter];
+const delimiters = [keyCodes.comma, keyCodes.enter, keyCodes.space];
 
 export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelectorState> {
 
@@ -58,8 +61,8 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         let updatedTags: Tag[] = null;
 
         // convert tag strings to tag objects
-        const convertedSuggestionTags: Tag[] = TagsSelector._convertStringsToTags(props.suggestions);
-        const convertedTags: Tag[] = TagsSelector._convertStringsToTags(props.value);
+        const convertedSuggestionTags: Tag[] = TagsSelector.convertStringsToTags(props.suggestions);
+        const convertedTags: Tag[] = TagsSelector.convertStringsToTags(props.value);
 
         if (convertedSuggestionTags !== state.suggestions) {
             updatedSuggestions = convertedSuggestionTags;
@@ -75,7 +78,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         }
     }
 
-    static _convertStringsToTags(strings: string[]): Tag[] {
+    static convertStringsToTags(strings: string[]): Tag[] {
         if (strings) {
             let tags: Tag[] = [];
             strings.forEach(string => {
@@ -83,10 +86,10 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
             })
             return tags
         }
-        return null;
+        return [];
     }
 
-    static _convertTagsToStrings(tags: Tag[]): string[] {
+    static convertTagsToStrings(tags: Tag[]): string[] {
         let strings: string[] = [];
         tags.forEach(tag => {
             strings.push(tag.text)
@@ -100,7 +103,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         if (!disabled) {
             const { tags } = this.state;
             const updatedTags = tags.filter((tag, index) => index !== i);
-            this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
@@ -110,7 +113,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         if (!disabled) {
             const { tags } = this.state;
             const updatedTags = [...tags, tag];
-            this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
@@ -124,18 +127,18 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
             updatedTags.splice(currPos, 1);
             updatedTags.splice(newPos, 0, tag);
 
-            this.props.onChangeHandler(TagsSelector._convertTagsToStrings(updatedTags));
+            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
 
     render(): JSX.Element {
         const { tags, suggestions } = this.state;
-        const { placeholder, disabled, autofocus } = this.props;
+        const { id, placeholder, disabled, autofocus } = this.props;
 
         const classes = classNames('tags-selector', { disabled });
 
-        return <div className={classes}>
+        return <div id={id} className={classes}>
             <ReactTags tags={tags}
                 suggestions={suggestions}
                 handleDelete={this._handleDelete}

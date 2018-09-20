@@ -91,7 +91,7 @@ exports[`The UserAccountMenu component should display child section 1`] = `
                 type="link"
               >
                 Manage account
-                <LinkIcon />
+                <Icon(LinkIcon) />
               </Button>
               <Button
                 className=""
@@ -193,7 +193,7 @@ exports[`The UserAccountMenu component should render 1`] = `
                 type="link"
               >
                 Manage account
-                <LinkIcon />
+                <Icon(LinkIcon) />
               </Button>
               <Button
                 className=""

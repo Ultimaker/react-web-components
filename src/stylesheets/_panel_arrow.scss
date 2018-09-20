@@ -17,7 +17,11 @@
     }
 
     &.panel-arrow--blue path {
-        fill: $color-blue;
+        fill: $panel-arrow-color-blue;
+    }
+
+    &.panel-arrow--black path {
+        fill: $panel-arrow-color-black;
     }
 
     svg {

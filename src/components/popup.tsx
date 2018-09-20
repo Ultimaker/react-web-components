@@ -1,34 +1,24 @@
 import * as React from 'react';
 
-import splitTextByNewLine from '../utils/split_text_by_new_line';
+// components
 import Modal from './modal';
-import { default as Button, ButtonStyle } from './button';
-import { default as InputField, InputFieldType } from './input_field';
+import { Form, FormValidationResponse } from './form';
+import { ButtonStyle } from './button';
 
-export type PopupType = 'confirm' | 'prompt' | 'children';
+// utils
+import splitTextByNewLine from '../utils/split_text_by_new_line';
 
 export interface PopupProps {
-    /** Type of popup: 'confirm' | 'prompt' | 'children' */
-    type: PopupType;
     /** Popup header text */
     headerText: string;
     /** Popup body text */
     bodyText: string;
-    /** Input type for popups of type prompt */
-    inputType?: InputFieldType;
-    /** Input default value for popups of type prompt */
-    inputDefaultValue?: string | number;
-    /** Input minimum value for popups of type prompt */
-    inputMin?: number;
-    /** Input max value for popups of type prompt */
-    inputMax?: number;
-    /** If passed, the validationHandler is called when the primary button is clicked. 
-     * The primaryBtnHandler is then only called if no error message is returned. */
-    validationHandler?: (value: string | number) => string;
+    /** The form validation error messages */
+    validationErrors?: FormValidationResponse;
     /** Primary button text */
     primaryBtnText: string;
-    /** Called when the primary button is clicked (after validationHandler) */
-    primaryBtnHandler: (value: string | number) => void;
+    /** Called when the primary button is clicked */
+    primaryBtnHandler: () => void;
     /** Primary button style */
     primaryBtnStyle?: ButtonStyle;
     /** Secondary button text */
@@ -42,151 +32,78 @@ export interface PopupProps {
 }
 
 export interface PopupState {
-    inputValue: string;
-    previousInputValue: string;
-    validationErrorMsg: string;
-    primaryBtnSpinner: boolean;
-    secondaryBtnSpinner: boolean;
+    primaryBtnShowSpinner: boolean;
+    secondaryBtnShowSpinner: boolean;
 }
 
 export class Popup extends React.Component<PopupProps, PopupState> {
 
     state = {
-        inputValue: undefined,
-        previousInputValue: undefined,
-        validationErrorMsg: undefined,
-        primaryBtnSpinner: false,
-        secondaryBtnSpinner: false,
+        primaryBtnShowSpinner: false,
+        secondaryBtnShowSpinner: false,
     }
-
-    private popupBodyRef: React.RefObject<HTMLDivElement>;;
 
     constructor(props) {
         super(props);
 
-        this.popupBodyRef = React.createRef();
-
         // bind callbacks once
-        this._onChangeHandler = this._onChangeHandler.bind(this);
         this._primaryBtnHandler = this._primaryBtnHandler.bind(this);
         this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
     }
 
-    componentDidMount(): void {
-        const { inputDefaultValue } = this.props;
-
-        if (inputDefaultValue) {
-            // set the initial value of the prompt input field
-            this.setState({ inputValue: inputDefaultValue.toString() })
+    static getDerivedStateFromProps(props: PopupProps): Partial<PopupState> {
+        if (props.validationErrors != null) {
+            // if there are validation errors, reset the button spinners
+            return {
+                primaryBtnShowSpinner: false,
+                secondaryBtnShowSpinner: false
+            };
         }
+        return null;
     }
 
-    _primaryBtnHandler(e: React.FormEvent<HTMLFormElement>): void {
-        e.preventDefault();
-
-        const inputValue = this.state.inputValue;
-
-        this.setState({ previousInputValue: inputValue });
-
-        if (this.props.validationHandler) {
-            if (this._isValidInput()) {
-                this.props.primaryBtnHandler(inputValue);
-                this.setState({ primaryBtnSpinner: true });
-            }
-        }
-        else {
-            this.props.primaryBtnHandler(inputValue);
-            this.setState({ primaryBtnSpinner: true });
-        }
+    private _primaryBtnHandler(): void {
+        this.props.primaryBtnHandler();
+        this.setState({ primaryBtnShowSpinner: true });
     }
 
-    _isValidInput(): boolean {
-        const inputValue = this.state.inputValue;
-
-        const validationErrorMsg = this.props.validationHandler(inputValue);
-
-        if (!validationErrorMsg) {
-            return true;
-        }
-        else {
-            this.setState({ validationErrorMsg: validationErrorMsg });
-            return false;
-        }
-    }
-
-    _secondaryBtnHandler(): void {
+    private _secondaryBtnHandler(): void {
         this.props.secondaryBtnHandler();
-        this.setState({ secondaryBtnSpinner: true });
-    }
-
-    _onChangeHandler(id: string, value: string): void {
-        this.setState({ inputValue: value, validationErrorMsg: null });
+        this.setState({ secondaryBtnShowSpinner: true });
     }
 
     render(): JSX.Element {
-        const { type, headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
-            inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, children } = this.props;
-        const { validationErrorMsg, primaryBtnSpinner, secondaryBtnSpinner, inputValue } = this.state;
+        const { headerText, bodyText, primaryBtnText, secondaryBtnText,
+            primaryBtnStyle, secondaryBtnStyle, validationErrors, children } = this.props;
+        const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
         return <Modal>
-            <form noValidate className="popup" onSubmit={this._primaryBtnHandler}>
-
+            <div className="popup">
                 <div className="popup__header">
                     {headerText}
                 </div>
 
-                <div className="popup__body" ref={this.popupBodyRef} >
+                <div className="popup__body">
                     {splitTextByNewLine(bodyText)}
 
-                    {type === 'prompt' &&
-                        <div className="prompt-input">
-                            <InputField
-                                id="prompt-input"
-                                type={inputType ? inputType : null}
-                                value={inputValue}
-                                min={inputMin ? inputMin : null}
-                                max={inputMax ? inputMax : null}
-                                onChangeHandler={this._onChangeHandler}
-                                placeholder={promptPlaceholder}
-                                validationError={validationErrorMsg}
-                                submitted={validationErrorMsg && validationErrorMsg.length > 0}
-                                focusOnLoad />
+                    <Form
+                        primaryBtnText={primaryBtnText}
+                        primaryBtnStyle={primaryBtnStyle}
+                        onSubmitHandler={this._primaryBtnHandler}
+                        primaryBtnShowSpinner={primaryBtnShowSpinner}
+                        secondaryBtnText={secondaryBtnText}
+                        secondaryBtnStyle={secondaryBtnStyle}
+                        secondaryBtnHandler={this._secondaryBtnHandler}
+                        secondaryBtnShowSpinner={secondaryBtnShowSpinner}
+                        validationErrors={validationErrors}
+                        alwaysEnableSubmitButton={true}
+                    >
 
-                        </div>
-                    }
+                        {children}
 
-                    {type === 'children' && children}
+                    </Form>
                 </div>
-
-                <div className="popup__actions">
-
-                    <div className="popup__btn-container">
-                        <Button
-                            style={primaryBtnStyle}
-                            disabled={validationErrorMsg && validationErrorMsg.length > 0 || secondaryBtnSpinner}
-                            type="submit"
-                            showSpinner={primaryBtnSpinner}>
-
-                            {primaryBtnText}
-                        </Button>
-                    </div>
-
-                    {secondaryBtnText &&
-                        <div className="popup__btn-container">
-                            <Button
-                                style={secondaryBtnStyle}
-                                disabled={primaryBtnSpinner}
-                                onClickHandler={this._secondaryBtnHandler}
-                                showSpinner={secondaryBtnSpinner}>
-
-                                {secondaryBtnText}
-                            </Button>
-                        </div>
-                    }
-
-                </div>
-
-            </form>
+            </div>
         </Modal>
     };
 }

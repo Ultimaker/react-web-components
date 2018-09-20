@@ -35,10 +35,10 @@
                 border-radius: 9999px;
                 height: 1.8rem;
                 width: 1.8rem;
-                background: #858585;
+                background: $tags-color-close-background;
                 line-height: 1.8rem;
                 text-align: center;
-                color: #ffffff;
+                color: $tags-color-close-text;
                 visibility: visible;
                 font-size: 1rem;
             }
@@ -47,7 +47,7 @@
                 &::after {
                     text-decoration: none;
                     transition: background-color 0.2s ease-out;
-                    background-color: #6a6a6a;
+                    background-color: $tags-color-hover;
                 }
             }
         }
@@ -87,7 +87,7 @@
                 }
 
                 .ReactTags__activeSuggestion {
-                    background: #b7cfe0;
+                    background: $context-menu-color-hover;
                     cursor: pointer;
                 }
             }

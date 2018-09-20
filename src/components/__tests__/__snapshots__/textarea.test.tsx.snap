@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Textarea component should render 1`] = `
+<div
+  className="textarea"
+>
+  <TextareaAutosize
+    className="input"
+    id="testTextarea"
+    inputRef={[Function]}
+    maxRows={3}
+    minRows={3}
+    onChange={[Function]}
+    onHeightChange={[Function]}
+    useCacheForDOMMeasurements={false}
+    value=""
+  />
+</div>
+`;

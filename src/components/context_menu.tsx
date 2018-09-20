@@ -27,7 +27,7 @@ const windowMargin = 10;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
 
-    private menuRef;
+    private _menuRef;
 
     public static defaultProps: Partial<ContextMenuProps> = {
         menuOffsetDirection: 'left',
@@ -41,10 +41,10 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
     constructor(props: ContextMenuProps) {
         super(props);
-        this.menuRef = React.createRef();
+        this._menuRef = React.createRef();
     }
 
-    _setMenuOffset(): void {
+    private _setMenuOffset(): void {
 
         const { menuWidth, menuOffsetDirection } = this.props;
 
@@ -52,7 +52,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const windowWidth = window.innerWidth;
 
         // get dom element
-        const contextMenuElement = this.menuRef.current;
+        const contextMenuElement = this._menuRef.current;
 
         // get element position
         const contextMenuLeft = contextMenuElement ? contextMenuElement.getBoundingClientRect().left : null;
@@ -87,14 +87,14 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
     }
 
-    _setShowMenu(showMenu: boolean): void {
+    private _setShowMenu(showMenu: boolean): void {
         this._setMenuOffset();
         this.setState({
             showMenu: showMenu
         });
     }
 
-    _getMenuStyle(menuOffset: number, menuOffsetDirection: MenuOffsetDirection, menuWidth: number): React.CSSProperties {
+    private _getMenuStyle(menuOffset: number, menuOffsetDirection: MenuOffsetDirection, menuWidth: number): React.CSSProperties {
         let offset = -menuOffsetDefault;
         let direction: MenuOffsetDirection = 'left';
 
@@ -112,7 +112,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         return menuStyle;
     }
 
-    _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+    private _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
         e.stopPropagation()
     }
 
@@ -123,7 +123,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu }, { 'context-menu--panel': positionMenuInPanel });
         const menuStyle = this._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
-        return <div ref={this.menuRef} className={classes} tabIndex={1}
+        return <div ref={this._menuRef} className={classes} tabIndex={1}
             onClick={this._stopPropagation} onBlur={() => this._setShowMenu(false)}>
 
             <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}

@@ -62,7 +62,8 @@ export interface InputFieldProps {
     infoText?: string
     /** The URL of the link to be shown next to the input field */
     infoLinkURL?: string
-    /** A list of suggestions for tags input field */
+    /** Whether the textarea should grow horizontally with user input */
+    textareaAutoGrow?: boolean;
 }
 
 export interface InputFieldState {
@@ -112,10 +113,10 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         return validationError && (touched || submitted)
     }
 
-    protected _renderLabel(): JSX.Element {
+    private _renderLabel(): JSX.Element {
         const { id, label, labelLayoutWidth, labelWidthBreakpoint, type, preLabelElement, infoText, infoLinkURL } = this.props;
 
-        if (label) {
+        if (label || preLabelElement) {
             return <InputFieldLabel
                 type={type}
                 id={id}
@@ -130,9 +131,9 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
         return null;
     }
 
-    protected _renderInputElements() {
-        const { id, type, centerInputField, validationError, value, min, max, placeholder,
-            selectOptions, imageSize, staticField, imageShape, tagSuggestions,
+    private _renderInputElements() {
+        const { id, type, centerInputField, value, min, max, placeholder,
+            selectOptions, imageSize, staticField, imageShape, tagSuggestions, textareaAutoGrow,
             focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
 
         return <InputFieldInput
@@ -154,11 +155,12 @@ export class InputField extends React.Component<InputFieldProps, InputFieldState
             showValidationError={this._showValidationError()}
             labelLayoutWidth={labelLayoutWidth}
             labelWidthBreakpoint={labelWidthBreakpoint}
+            textareaAutoGrow={textareaAutoGrow}
             children={children}
         />
     }
 
-    protected _renderValidation(): JSX.Element {
+    private _renderValidation(): JSX.Element {
         const { validationError, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
 
         if (this._showValidationError() && validationError) {

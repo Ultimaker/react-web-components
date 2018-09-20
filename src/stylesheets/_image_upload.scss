@@ -18,12 +18,8 @@
                 opacity: 1 !important;
             }
 
-            .cover {
-                background-color: rgba(255, 255, 255, 0.5);
-            }
-
             .icon svg {
-                fill: $input-field-color-border-hover;
+                fill: $color-text;
             }
 
             .placeholder-label {
@@ -33,7 +29,7 @@
     }
 
     .cover {
-        background-color: rgba(255, 255, 255, 0);
+        background-color: $color-transparent;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -66,6 +62,8 @@
         width: 80%;
         text-align: center;
         z-index: 1;
+
+        transition: color 0.2s ease-out;
     }
 
     .icon {
@@ -76,8 +74,11 @@
         width: 50%;
         height: 50%;
         z-index: 1;
-        opacity: 0.5;
-        transition: opacity 0.2s ease-out;
+
+        svg {
+            transition: fill 0.2s ease-out;
+            fill: $color-text-light;
+        }
     }
 
     .icon-with-label {
@@ -86,7 +87,7 @@
         }
     }
 
-    .hide-icon {
+    .hide {
         .icon, .placeholder-label {
             visibility: hidden;
             opacity: 0;

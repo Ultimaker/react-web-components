@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The PopupPrompt component should render a prompt popup 1`] = `
+<Popup
+  bodyText="PopupPrompt body"
+  headerText="PopupPrompt header"
+  primaryBtnHandler={[Function]}
+  primaryBtnText="Primary button"
+  validationErrors={null}
+>
+  <InputField
+    focusOnLoad={true}
+    id="promptInput"
+    labelLayoutWidth="1/1"
+    labelWidthBreakpoint="sm"
+    onChangeHandler={[Function]}
+    type="text"
+  />
+</Popup>
+`;

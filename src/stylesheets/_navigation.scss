@@ -74,7 +74,7 @@
                 box-shadow: 0 2px 3px 0 $color-shadow-dark;
                 display: inline-block;
                 text-decoration: none;
-                color: $color-secondary-btn-text;
+                color: $secondary-btn-color-text;
                 position: relative;
                 width: 46px;
                 height: 46px;
@@ -112,7 +112,7 @@
 
                 &.active {
                     color: white;
-                    background: $color-primary-btn;
+                    background: $primary-btn-color;
 
                     @include respond-to(sm) {
                         border-bottom-color: $color-border-active;
