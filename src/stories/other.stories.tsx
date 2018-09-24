@@ -11,6 +11,10 @@ import Divider from '../components/divider';
 import Pill from '../components/pill';
 import CircleIcon from '../components/circle_icon';
 
+import Ratings from '../components/ratings';
+import HighlightIcon from '../components/icons/highlight_icon';
+import ApprovedIcon from '../components/icons/approved_icon';
+
 const stories = storiesOf('Other', module);
 
 stories.addDecorator(withKnobs)
@@ -20,6 +24,22 @@ stories.addDecorator(withKnobs)
         justifyContent: 'center',
         height: '100vh',
     }));
+
+stories.add('Ratings', withInfo(
+    'Ratings component'
+)(() =>
+    <div style={{ width: 200 }} >
+        <Ratings max={5} rating={4.3} Icon={HighlightIcon} />
+
+        <Ratings max={10} rating={4.3} Icon={HighlightIcon} />
+
+        <Ratings max={10} rating={0} Icon={HighlightIcon} />
+
+        <Ratings max={5} rating={3.5} Icon={ApprovedIcon} />
+
+        <Ratings max={5} rating={5 / 3} Icon={ApprovedIcon} />
+    </div>
+));
 
 stories.add('Progress bar', withInfo(
     'Progress bar component'

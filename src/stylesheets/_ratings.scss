@@ -1,0 +1,19 @@
+.ratings {
+    display: inline-block;
+    position: relative;
+
+    .ratings--background {
+        white-space: nowrap;
+    }
+
+    .ratings--foreground {
+        position: absolute;
+        top: 0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .icon {
+        display: inline-block;
+    }
+}
