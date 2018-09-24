@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 
 // component
 import Ratings from '../ratings';
-import HighlightIcon from '../icons/highlight_icon'
-import ApprovedIcon from '../icons/approved_icon'
+import HighlightIcon from '../icons/highlight_icon';
+import ApprovedIcon from '../icons/approved_icon';
 
 describe('The Ratings component', () => {
     it('should render 4.3 of 5 highlight icons', () => {
