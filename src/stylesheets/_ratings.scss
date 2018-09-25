@@ -1,0 +1,58 @@
+.ratings {
+    display: inline-block;
+    position: relative;
+
+
+    .ratings--foreground, .ratings--background {
+        white-space: nowrap;
+        overflow: hidden;
+        svg {
+            padding: 0.1rem;
+        }
+    }
+
+    .ratings--foreground {
+        position: absolute;
+        top: 0;
+    }
+
+    .icon {
+        display: inline-block;
+        margin: 0 0.3rem;
+    }
+
+    // we add a stroke to all foreground icons because otherwise you can see the border of the background icons.
+    // to keep the background with the same size we also add a stroke but set the opacity lower.
+    .ratings--background svg {
+        fill-opacity: 0.8;
+        stroke-opacity: 0.4;
+    }
+
+    .icon--blue svg {
+        stroke: $color-blue;
+    }
+
+    .icon--black svg {
+        stroke: $color-black;
+    }
+
+    .icon--green svg {
+        stroke: $color-green;
+    }
+
+    .icon--red svg {
+        stroke: $color-red;
+    }
+
+    .icon--orange svg {
+        stroke: $color-orange;
+    }
+
+    .icon--grey svg {
+        stroke: $color-grey-darker;
+    }
+
+    .icon--white svg {
+        stroke: $color-white;
+    }
+}
