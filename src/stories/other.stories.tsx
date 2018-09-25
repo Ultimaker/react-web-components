@@ -38,6 +38,8 @@ stories.add('Ratings', withInfo(
         <Ratings max={5} rating={3.5} Icon={ApprovedIcon} />
 
         <Ratings max={5} rating={5 / 3} Icon={ApprovedIcon} />
+
+        <Ratings max={5} rating={null} Icon={ApprovedIcon} />
     </div>
 ));
 

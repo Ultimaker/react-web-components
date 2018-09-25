@@ -13,6 +13,11 @@ describe('The Ratings component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should render only background if the rating is null', () => {
+        let wrapper = shallow(<Ratings max={5} rating={null} Icon={HighlightIcon} />);
+        expect(wrapper).toMatchSnapshot();
+    });
+
     it('should render a third of 10 approved icons', () => {
         let wrapper = shallow(<Ratings max={10} rating={10 / 3} Icon={ApprovedIcon} />);
         expect(wrapper).toMatchSnapshot();

@@ -5,7 +5,7 @@ import _ = require('lodash');
 
 export interface RatingsProps {
     max: number;
-    rating: number;
+    rating: number | null;
     Icon: React.StatelessComponent<IconWrapperProps>;
     formatDecimals?: number;
     foregroundColor?: IconColor;
@@ -26,13 +26,15 @@ export const Ratings: React.StatelessComponent<RatingsProps> = (
     { max, rating, Icon, foregroundColor = "orange", backgroundColor = "grey", formatDecimals = 2 }
 ) => {
     return (
-        <div className="ratings" title={rating.toFixed(formatDecimals) + " / " + max.toFixed(formatDecimals)}>
+        <div className="ratings" title={rating && rating.toFixed(formatDecimals) + " / " + max.toFixed(formatDecimals)}>
             <div className="ratings--background">
                 {_.times(max, i => <Icon key={i} color={backgroundColor} />)}
             </div>
-            <div className="ratings--foreground" style={{width: (100 * rating / max) + "%"}}>
-                {_.times(max, i => <Icon key={i} color={foregroundColor} />)}
-            </div>
+            {rating &&
+                <div className="ratings--foreground" style={{width: (100 * rating / max) + "%"}}>
+                    {_.times(max, i => <Icon key={i} color={foregroundColor}/>)}
+                </div>
+            }
         </div>
     );
 };
