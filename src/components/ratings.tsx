@@ -7,7 +7,6 @@ export interface RatingsProps {
     max: number;
     rating: number | null;
     Icon: React.StatelessComponent<IconWrapperProps>;
-    formatDecimals?: number;
     foregroundColor?: IconColor;
     backgroundColor?: IconColor;
 }
@@ -19,14 +18,13 @@ export interface RatingsProps {
  * @param Icon - The icon class to use. It should be wrapped by `IconWrapper`.
  * @param foregroundColor - The color of the foreground icons. Defaults to 'orange'.
  * @param backgroundColor - The color of the background icons. Defaults to 'grey'.
- * @param formatDecimals - How many decimals the numbers should be formatted with, in the title of the component.
  * @constructor
  */
 export const Ratings: React.StatelessComponent<RatingsProps> = (
-    { max, rating, Icon, foregroundColor = "orange", backgroundColor = "grey", formatDecimals = 2 }
+    { max, rating, Icon, foregroundColor = "orange", backgroundColor = "grey" }
 ) => {
     return (
-        <div className="ratings" title={rating && rating.toFixed(formatDecimals) + " / " + max.toFixed(formatDecimals)}>
+        <div className="ratings">
             <div className="ratings--background">
                 {_.times(max, i => <Icon key={i} color={backgroundColor} />)}
             </div>

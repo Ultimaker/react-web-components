@@ -3,7 +3,6 @@
 exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
 <div
   className="ratings"
-  title="4.30 / 5.00"
 >
   <div
     className="ratings--background"
@@ -64,7 +63,6 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
 exports[`The Ratings component should render a third of 10 approved icons 1`] = `
 <div
   className="ratings"
-  title="3.33 / 10.00"
 >
   <div
     className="ratings--background"
@@ -157,6 +155,37 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
     <Icon(ApprovedIcon)
       color="orange"
       key="9"
+    />
+  </div>
+</div>
+`;
+
+exports[`The Ratings component should render only background if the rating is null 1`] = `
+<div
+  className="ratings"
+>
+  <div
+    className="ratings--background"
+  >
+    <Icon(HighlightIcon)
+      color="grey"
+      key="0"
+    />
+    <Icon(HighlightIcon)
+      color="grey"
+      key="1"
+    />
+    <Icon(HighlightIcon)
+      color="grey"
+      key="2"
+    />
+    <Icon(HighlightIcon)
+      color="grey"
+      key="3"
+    />
+    <Icon(HighlightIcon)
+      color="grey"
+      key="4"
     />
   </div>
 </div>
