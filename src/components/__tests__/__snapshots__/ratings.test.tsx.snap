@@ -10,22 +10,27 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
     <Icon(HighlightIcon)
       color="grey"
       key="0"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="1"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="2"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="3"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="4"
+      size="sm"
     />
   </div>
   <div
@@ -39,22 +44,27 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
     <Icon(HighlightIcon)
       color="orange"
       key="0"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="orange"
       key="1"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="orange"
       key="2"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="orange"
       key="3"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="orange"
       key="4"
+      size="sm"
     />
   </div>
 </div>
@@ -70,42 +80,52 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
     <Icon(ApprovedIcon)
       color="grey"
       key="0"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="1"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="2"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="3"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="4"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="5"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="6"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="7"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="8"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="grey"
       key="9"
+      size="sm"
     />
   </div>
   <div
@@ -119,42 +139,52 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
     <Icon(ApprovedIcon)
       color="orange"
       key="0"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="1"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="2"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="3"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="4"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="5"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="6"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="7"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="8"
+      size="sm"
     />
     <Icon(ApprovedIcon)
       color="orange"
       key="9"
+      size="sm"
     />
   </div>
 </div>
@@ -170,22 +200,27 @@ exports[`The Ratings component should render only background if the rating is nu
     <Icon(HighlightIcon)
       color="grey"
       key="0"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="1"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="2"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="3"
+      size="sm"
     />
     <Icon(HighlightIcon)
       color="grey"
       key="4"
+      size="sm"
     />
   </div>
 </div>
