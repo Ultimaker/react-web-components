@@ -1,16 +1,13 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import InfoTooltip from './info_tooltip';
-import InfoLink from './info_link';
+import InfoTooltip from '../info_tooltip';
+import InfoLink from '../info_link';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
-export interface InputFieldProps {
-    /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
-    type: InputFieldType;
+export interface InputFieldLabelProps {
     /** Input field id. Must be unique */
     id: string;
     /** Input field label */
@@ -25,11 +22,11 @@ export interface InputFieldProps {
     infoText?: string
     /** The URL of the link to be shown next to the input field */
     infoLinkURL?: string
-    /** A list of suggestions for tags input field */
+    /** whether this is  */
 }
 
 
-export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
+export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
 
     private _renderPreLabelElement(): JSX.Element {
         const { preLabelElement } = this.props;
@@ -71,10 +68,11 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
 
 
     render(): JSX.Element {
-        const { labelLayoutWidth, labelWidthBreakpoint, type } = this.props;
+        const { labelLayoutWidth, labelWidthBreakpoint } = this.props;
 
-        const classes = classNames(`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`,
-            { 'tag-label-position-override': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
+        const classes = classNames(`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`);
+        // TODO: Implement in CSS:
+        // { 'tag-label-position-override': type === 'tags' && labelLayoutWidth && labelLayoutWidth !== '1/1' });
 
         return (
             <div className={classes}>
@@ -86,6 +84,6 @@ export class InputFieldLabel extends React.Component<InputFieldProps, {}> {
             </div>
         )
     };
-};
+}
 
 export default InputFieldLabel;

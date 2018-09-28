@@ -46,6 +46,6 @@ export class InputFieldValidation extends React.Component<InputFieldValidationPr
             </div>
         </div>
     };
-};
+}
 
 export default InputFieldValidation;
