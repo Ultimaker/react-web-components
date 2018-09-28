@@ -1,22 +1,16 @@
-import * as React from 'react'
-import classNames from 'classnames'
+import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
-import FileUpload from '../file_upload'
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import FileUpload from '../file_upload';
 
 
-export const FileUploadField: React.StatelessComponent<InputFieldProps> = ({}) => <div />;
+export const FileUploadField: React.StatelessComponent<InputFieldProps> = ({id, onChangeHandler}) =>
+    <FileUpload
+        id={id}
+        onChangeHandler={inputElement => onChangeHandler(id, inputElement)}
+        disabled={false}
+    />;
 
 FileUploadField.displayName = "FileUploadField";
-
-        private _renderFileUpload() {
-            const {id, onChangeHandler, staticField} = this.props;
-
-            return <FileUpload
-                id={id}
-                onChangeHandler={onChangeHandler}
-                disabled={staticField}
-            />
-        }
 
 export default InputFieldWrapper(FileUploadField);

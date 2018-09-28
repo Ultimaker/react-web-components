@@ -4,11 +4,12 @@ import classNames from 'classnames'
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
 
 
-
+interface DateFieldProps extends InputFieldProps {
     /** Minimum value for number field */
     min?: number;
     /** Maximum value for number field */
     max?: number;
+}
 
 function _parseValue(value: string | number): number {
     if (typeof value === 'string') {
@@ -17,7 +18,7 @@ function _parseValue(value: string | number): number {
     return value;
 }
 
-const NumberField: React.StatelessComponent<InputFieldProps> = ({
+const NumberField: React.StatelessComponent<DateFieldProps> = ({
     id, min, max, placeholder, value, showValidationError, onChangeHandler, inputRef
 }) =>
     <input

@@ -3,19 +3,13 @@ import classNames from 'classnames';
 
 import InputFieldLabel from './input_field_label';
 import InputFieldValidation from './input_field_validation';
-import {SelectList, SelectOption} from '../select_list'
-import {ImageFile, ImageUpload} from '../image_upload'
-import {Image, ImageShape} from '../image'
-import Checkbox from '../checkbox'
-import DatePicker from '../date_picker'
-import TagsSelector from '../tags_selector'
-import FileUpload from '../file_upload'
+import {ImageFile} from '../image_upload'
 import RequiredIcon from '../icons/required_icon'
 import {RefObject} from 'react'
 
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
-export type InputFieldValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
+export type InputFieldValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;  // TODO: Make this a generic parameter
 
 export interface StaticFieldProps {
     /** Input field value */
@@ -49,8 +43,6 @@ export interface InputFieldWrapperProps extends StaticFieldProps {
     submitted?: boolean
     /** Message to show for the validation error. Can be any[] if returned from I18n.format */
     validationError?: string | any[];
-    /** Whether the validation error should be shown */
-    showValidationError: boolean;
     /** Displays the required icon when true */
     required?: boolean
     /** If true, the field will be focused when loaded */
@@ -65,7 +57,9 @@ export interface InputFieldProps extends StaticFieldProps {
     /** html placeholder text */
     placeholder?: string;
     // TODO: See if we can get rid of this
-    inputRef: RefObject<any>
+    inputRef: RefObject<any>;
+    /** Whether the validation error should be shown */
+    showValidationError: boolean;
 }
 
 export interface InputFieldWrapperState {
@@ -76,8 +70,7 @@ export interface InputFieldWrapperState {
 function InputFieldWrapper<T extends InputFieldProps, U extends StaticFieldProps>(
     Field: React.StatelessComponent<T>,
     StaticField?: React.StatelessComponent<U>
-): React.Component<InputFieldWrapperProps, InputFieldWrapperState> {
-
+): any {  // TODO: improve the return type.
     class Wrapper extends React.Component<InputFieldWrapperProps, InputFieldWrapperState> {
         private readonly _inputRef;
 
@@ -171,7 +164,9 @@ function InputFieldWrapper<T extends InputFieldProps, U extends StaticFieldProps
         }
 
         private _renderInput() {
-            const {labelLayoutWidth, centerInputField, staticField, onChangeHandler, ...fieldProps} = this.props;
+            const {
+                labelLayoutWidth, centerInputField, staticField, onChangeHandler, validationError, ...fieldProps
+            } = this.props;
 
             // TODO: Move this to CSS.
             const inputLayoutWidth = labelLayoutWidth === 'fill' ? 'fit' : staticField || Field.displayName === 'CheckboxField' ? 'fit' : 'fill';
@@ -181,7 +176,12 @@ function InputFieldWrapper<T extends InputFieldProps, U extends StaticFieldProps
                 {!staticField &&
                 <div className="input-container layout layout--gutter-xs">
                     <div className="layout__item u-fill">
-                        <Field inputRef={this._inputRef} onChangeHandler={this._onChangeHandler} {...fieldProps} />
+                        <Field
+                            inputRef={this._inputRef}
+                            onChangeHandler={this._onChangeHandler}
+                            showValidationError={Boolean(validationError)}
+                            {...fieldProps}
+                        />
                     </div>
                     {this._renderPostInputElement()}
                 </div>

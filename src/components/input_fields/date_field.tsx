@@ -1,29 +1,31 @@
-import * as React from 'react'
-import classNames from 'classnames'
+import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
-import DatePicker from '../date_picker'
+import InputFieldWrapper, {InputFieldProps, StaticFieldProps} from './input_field_wrapper';
+import DatePicker from '../date_picker';
+import moment = require('moment');
 
+export const DateField: React.StatelessComponent<InputFieldProps> = (
+    {id, showValidationError, value, onChangeHandler}
+) =>
+    <DatePicker
+        id={id}
+        onChangeHandler={date => onChangeHandler(id, date)}
+        value={value != null ? value.toString() : null}
+        error={showValidationError}
+    />;
 
-export const DateField: React.StatelessComponent<InputFieldProps> = ({}) => <div />
+DateField.displayName = "DateField";
 
-        private _renderDatePicker() {
-            const {id, showValidationError, value, onChangeHandler} = this.props;
+export interface StaticDateFieldProps extends StaticFieldProps {
+    format: string;
+}
 
-            return <DatePicker
-                id={id}
-                onChangeHandler={onChangeHandler}
-                value={value != null ? value.toString() : null}
-                error={showValidationError}
-            />
-        }
+export const StaticDateField: React.StatelessComponent<StaticDateFieldProps> = ({value, format}) =>
+    <React.Fragment>{typeof value === 'string' &&  moment(value).format(format)}</React.Fragment>
 
-        private _renderStaticDate() {
-            const {value} = this.props;
-            if (typeof value === 'string') {
-                return moment(value).format('DD-MM-YYYY');
-            }
-            return null;
-        }
+StaticDateField.defaultProps = {
+    format: 'DD-MM-YYYY',
+};
+StaticDateField.displayName = "StaticDateField";
 
-export default InputFieldWrapper(DateField)
+export default InputFieldWrapper(DateField, StaticDateField);

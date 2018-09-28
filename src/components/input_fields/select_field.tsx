@@ -1,13 +1,16 @@
 import * as React from 'react'
-import classNames from 'classnames'
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
+import InputFieldWrapper, {InputFieldProps, StaticFieldProps} from './input_field_wrapper'
 import {SelectList, SelectOption} from '../select_list'
 
+interface BaseSelectFieldProps {
     /** List of options for type select */
     selectOptions?: SelectOption[];
+}
 
-const SelectField: React.StatelessComponent<InputFieldProps> = (
+interface SelectFieldProps extends InputFieldProps, BaseSelectFieldProps {}
+
+const SelectField: React.StatelessComponent<SelectFieldProps> = (
     {id, selectOptions, value, onChangeHandler, showValidationError}
 ) =>
     <SelectList
@@ -18,12 +21,15 @@ const SelectField: React.StatelessComponent<InputFieldProps> = (
         error={showValidationError}
     />
 
-        private _renderStaticSelectList() {
-            const {value, selectOptions} = this.props;
-            const option = selectOptions.find(option => option.value === value);
-            return option ? option.label : null;
-        }
+interface StaticSelectFieldProps extends StaticFieldProps, BaseSelectFieldProps {}
 
-SelectField.displayName = "SelectField";
+const StaticSelectField: React.StatelessComponent<StaticSelectFieldProps> = (
+    {value, selectOptions}
+) => {
+    const option = selectOptions.find(option => option.value === value);
+    return <React.Fragment>{option ? option.label : null}</React.Fragment>;
+}
 
-export default InputFieldWrapper(SelectField);
+StaticSelectField.displayName = "StaticSelectField";
+
+export default InputFieldWrapper(SelectField, StaticSelectField);
