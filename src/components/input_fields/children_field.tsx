@@ -1,9 +1,9 @@
-import * as React from 'react'
-import classNames from 'classnames'
+import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 
 
-export const ChildrenField: React.StatelessComponent<InputFieldProps> = ({}) => <div />
+export const ChildrenField: React.StatelessComponent<InputFieldProps> = ({children}) =>
+    <React.Fragment>{children}</React.Fragment>
 
 export default InputFieldWrapper(ChildrenField)
