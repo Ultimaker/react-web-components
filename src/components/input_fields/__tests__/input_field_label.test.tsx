@@ -25,7 +25,7 @@ describe('The InputFieldLabel component', () => {
     });
 
     it('should render pre label element before the label', () => {
-        wrapper.setProps({ preLabelElement: <div className="pre-label-element"></div> });
+        wrapper.setProps({ preLabelElement: <div className="pre-label-element" /> });
         expect(wrapper).toMatchSnapshot();
     });
 

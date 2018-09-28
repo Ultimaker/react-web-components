@@ -57,9 +57,9 @@ export interface InputFieldProps extends StaticFieldProps {
     /** html placeholder text */
     placeholder?: string;
     // TODO: See if we can get rid of this
-    inputRef: RefObject<any>;
+    inputRef?: RefObject<any>;
     /** Whether the validation error should be shown */
-    showValidationError: boolean;
+    showValidationError?: boolean;
 }
 
 export interface InputFieldWrapperState {

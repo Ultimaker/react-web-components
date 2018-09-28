@@ -4,8 +4,6 @@ import InputFieldWrapper, {InputFieldProps, StaticFieldProps} from './input_fiel
 import {ImageUpload} from '../image_upload'
 import {Image, ImageShape} from '../image'
 
-
-
 interface BaseImageFieldProps {
     /** Size of the image for type image. Include size unit */
     imageSize?: string;
