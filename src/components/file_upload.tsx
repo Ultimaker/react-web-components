@@ -15,7 +15,7 @@ export interface FileUploadState {
     selectedFileName: string
 }
 
-export class FileUpload extends React.Component<FileUploadProps, {}> {
+export class FileUpload extends React.Component<FileUploadProps, FileUploadState> {
 
     state = {
         selectedFileName: null
@@ -27,6 +27,7 @@ export class FileUpload extends React.Component<FileUploadProps, {}> {
     }
 
     _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+        console.log({target: e.target, filename: e.target.files[0].name})
         this.setState({ selectedFileName: e.target.files[0].name })
         this.props.onChangeHandler(e.target);
     }

@@ -86,9 +86,9 @@ function InputFieldWrapper<T extends InputFieldProps, U extends StaticFieldProps
             this._inputRef = React.createRef();
         }
 
-        _onChangeHandler(value: InputFieldValue): void {
+        _onChangeHandler(id: string, value: InputFieldValue): void {
             this.setState({touched: true});
-            const {onChangeHandler, id} = this.props;
+            const {onChangeHandler} = this.props;
             if (value === '') {
                 value = null;
             }
@@ -165,7 +165,8 @@ function InputFieldWrapper<T extends InputFieldProps, U extends StaticFieldProps
 
         private _renderInput() {
             const {
-                labelLayoutWidth, centerInputField, staticField, onChangeHandler, validationError, ...fieldProps
+                labelLayoutWidth, centerInputField, staticField, validationError,
+                onChangeHandler, ...fieldProps // match onChangeHandler to avoid duplicating props.
             } = this.props;
 
             // TODO: Move this to CSS.

@@ -7,7 +7,7 @@ import SelectField from './input_fields/select_field';
 import CheckboxField from './input_fields/checkbox_field';
 import ImageUploadField from './input_fields/image_upload_field';
 import DateField from './input_fields/date_field';
-import FileField from './input_fields/file_field';
+import FileUploadField from './input_fields/file_upload_field';
 import ChildrenField from './input_fields/children_field';
 import TagsField from './input_fields/tags_field';
 import TextField from './input_fields/text_field';
@@ -45,7 +45,7 @@ const input_fields = {
     checkbox: CheckboxField,
     image: ImageUploadField,
     date: DateField,
-    file: FileField,
+    file: FileUploadField,
     children: ChildrenField,
     tags: TagsField,
 }
