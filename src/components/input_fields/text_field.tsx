@@ -7,10 +7,23 @@ export interface TextFieldProps extends  InputFieldProps {
     type: 'text' | 'password' | 'email' | 'url';
 }
 
+function staticRender({type, value}) {
+    switch (type) {
+        case "email":
+            return <a href={`mailto:${value}`} target="_top">{value}</a>;
+        case "url":
+            return <a href={value.toString()} target="_blank">{value}</a>;
+        case "password":
+            return "*".repeat(typeof(value) === "string" ? value.length : 0);
+        default:
+            return value;
+    }
+}
+
 const TextField: React.StatelessComponent<TextFieldProps> = ({
     id, type, placeholder, value, showValidationError, onChangeHandler, inputRef, ...props
-}) => {
-    const textField = () =>
+}) =>
+    <InputFieldWrapper {...props} staticRender={staticRender}>{
         <input
             id={id}
             className={classNames('input', {'error': showValidationError})}
@@ -20,21 +33,8 @@ const TextField: React.StatelessComponent<TextFieldProps> = ({
             placeholder={placeholder}
             value={value != null ? value.toString() : ''}
             ref={inputRef}
-        />;
-    const staticTextField = () => {
-        switch (type) {
-            case "email":
-                return <a href={`mailto:${value}`} target="_top">{value}</a>;
-            case "url":
-                return <a href={value.toString()} target="_blank">{value}</a>;
-            case "password":
-                return <React.Fragment>{"*".repeat(typeof(value) === "string" ? value.length : 0)}</React.Fragment>;
-            default:
-                return <React.Fragment>{value}</React.Fragment>;
-        }
-    }
-    return <InputFieldWrapper {...props} staticRender={staticTextField()}>{textField()}</InputFieldWrapper>
-}
+        />}
+    </InputFieldWrapper>
 
 TextField.displayName = "TextField";
 
