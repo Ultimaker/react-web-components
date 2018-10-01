@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The tags field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  className="input-field--tags"
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <TagsSelector
+    autofocus={false}
+    disabled={false}
+    id="testInputField"
+    onChangeHandler={[Function]}
+    placeholder="placeholder text"
+    suggestions={
+      Array [
+        "tag3",
+        "tag4",
+      ]
+    }
+    value={
+      Array [
+        "tag1",
+        "tag2",
+      ]
+    }
+  />
+</InputFieldWrapper>
+`;

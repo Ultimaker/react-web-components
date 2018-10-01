@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import TagsSelector from '../tags_selector';
 
-interface SelectFieldProps extends InputFieldProps {
+export interface TagsFieldProps extends InputFieldProps {
     /** Input field value */
     value: string[];
     /** Called when the field changes */
@@ -18,7 +18,7 @@ interface SelectFieldProps extends InputFieldProps {
     placeholder?: string;
 }
 
-export interface SelectFieldState {
+export interface TagsFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
 }
@@ -27,9 +27,9 @@ export interface SelectFieldState {
  * Class that adds an input wrapper around a TagsSelector component.
  * TODO: merge the two components
  */
-class TagsField extends React.Component<SelectFieldProps, SelectFieldState> {
+class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
     state = {
-        touched: false
+        touched: false,
     }
 
     constructor(props) {
