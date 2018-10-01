@@ -14,6 +14,10 @@ export interface NumberFieldProps extends  InputFieldProps {
     focusOnLoad?: boolean;
     /** html placeholder text */
     placeholder?: string;
+    /** Minimum value for number field */
+    min?: number;
+    /** Maximum value for number field */
+    max?: number;
 }
 
 const NumberField: React.StatelessComponent<NumberFieldProps> = ({

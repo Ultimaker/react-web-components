@@ -19,6 +19,8 @@ describe('The number field component', () => {
             labelWidthBreakpoint: 'sm',
             staticField: false,
             placeholder: "placeholder text",
+            min: 2000,
+            max: 2100,
         };
         wrapper = shallow(<NumberField {...props} />);
     });
@@ -41,10 +43,12 @@ describe('The number field component', () => {
     it('should render a wrapped input', () => {
         expect(wrapper.find(WrappedInputField).props()).toEqual({
             id: "testInputField",
-            onChangeHandler: expect.any(Function),
             labelLayoutWidth: props.labelLayoutWidth,
             labelWidthBreakpoint: props.labelWidthBreakpoint,
             staticField: props.staticField,
+            min: props.min,
+            max: props.max,
+            onChangeHandler: expect.any(Function),
             type: "number",
             value: "2018",
         });

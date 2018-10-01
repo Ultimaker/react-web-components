@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The wrapped input field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  focusOnLoad={true}
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <input
+    className="input"
+    id="testInputField"
+    max={1000}
+    min={1}
+    name="testInputField"
+    onChange={[Function]}
+    placeholder="placeholder text"
+    type="text"
+    value="2018"
+  />
+</InputFieldWrapper>
+`;

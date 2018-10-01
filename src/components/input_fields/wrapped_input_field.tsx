@@ -26,17 +26,17 @@ export interface WrappedInputFieldProps extends InputFieldProps {
 export interface WrappedInputFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
-    /** A reference object to set the focus on load if required **/
-    inputRef: RefObject<HTMLInputElement>;
 }
 
 /**
  * Class that adds an input wrapper around a HTML input component.
  */
 class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedInputFieldState> {
+    /** A reference object to set the focus on load if required **/
+    private readonly _inputRef: RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
+
     state = {
         touched: false,
-        inputRef: React.createRef<HTMLInputElement>(),
     }
 
     static defaultProps = {
@@ -47,7 +47,6 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
         super(props);
         // bind callbacks once
         this._onChange = this._onChange.bind(this);
-        this._staticRender = this._staticRender.bind(this);
     }
 
     componentDidMount(): void {
@@ -56,9 +55,8 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
 
     private _focusOnPromptInput(): void {
         const {focusOnLoad} = this.props;
-        const {inputRef} = this.state;
-        if (inputRef.current && focusOnLoad) {
-            inputRef.current.focus();
+        if (this._inputRef.current && focusOnLoad) {
+            this._inputRef.current.focus();
         }
     }
 
@@ -67,23 +65,10 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
         this.props.onChangeHandler(this.props.id, e.target.value === '' ? null : e.target.value);
     }
 
-    private _staticRender(type: string, value: string): JSX.Element | string {
-        switch (type) {
-            case "email":
-                return <a href={`mailto:${value}`} target="_top">{value}</a>;
-            case "url":
-                return <a href={value.toString()} target="_blank">{value}</a>;
-            case "password":
-                return "*".repeat(typeof(value) === "string" ? value.length : 0);
-            default:
-                return value;
-        }
-    }
-
     render() {
         const {type, value, placeholder, min, max, children, ...wrapperProps} = this.props;
         const {id, validationError, submitted, staticField} = wrapperProps;
-        const {touched, inputRef} = this.state;
+        const {touched} = this.state;
         return <InputFieldWrapper touched={touched} {...wrapperProps}>{
             staticField ? children || value :
             <input
@@ -96,7 +81,7 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
                 onChange={this._onChange}
                 placeholder={placeholder}
                 value={value != null ? value.toString() : ''}
-                ref={inputRef}
+                ref={this._inputRef}
             />
         }</InputFieldWrapper>;
     }
