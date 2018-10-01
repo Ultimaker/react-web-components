@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 
 // component
 import DateField, {DateFieldProps} from '../date_field';
-import InputFieldWrapper from '../input_field_wrapper'
-import DatePicker from '../../date_picker'
+import InputFieldWrapper from '../input_field_wrapper';
+import DatePicker from '../../date_picker';
 
 describe('The date field component', () => {
     let props: DateFieldProps;

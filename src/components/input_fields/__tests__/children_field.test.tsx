@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import ChildrenField, {ChildrenFieldProps} from '../children_field'
+import ChildrenField, {ChildrenFieldProps} from '../children_field';
 
 describe('The children field component', () => {
     let children;
