@@ -27,7 +27,6 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
     }
 
     _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-        console.log({target: e.target, filename: e.target.files[0].name})
         this.setState({ selectedFileName: e.target.files[0].name })
         this.props.onChangeHandler(e.target);
     }

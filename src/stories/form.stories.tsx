@@ -196,8 +196,8 @@ stories.add('Upload file field', withState({ value: null })
                     id="id_11"
                     label={text('Label', 'Upload file')}
                     value={store.state.value}
-                    onChangeHandler={(id, value) => store.set({ value })}
-                    placeholder={text('Placeholder text', 'Placeholder text')}
+                    onChangeHandler={(id, value) => store.set({ value: value["files"][0]["name"] })}
+                    placeholder={text('Placeholder text', 'Placeholder text')}  // TODO: Support placeholder
                     focusOnLoad
                     validationError={text('Validation error message', 'Validation Error')} />
             </div>
