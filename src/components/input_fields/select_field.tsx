@@ -4,7 +4,7 @@ import * as React from 'react'
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
 import {SelectList, SelectOption} from '../select_list'
 
-interface SelectFieldProps extends InputFieldProps {
+export interface SelectFieldProps extends InputFieldProps {
     /** The value of the option currently selected **/
     value: string | number;
     /** List of options for type select */
@@ -42,7 +42,7 @@ class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
     private _staticRender(): JSX.Element | string {
         const {value, selectOptions} = this.props;
         const option = selectOptions.find(option => option.value === value);
-        return <React.Fragment>{option ? option.label : null}</React.Fragment>;
+        return option && option.label;
     }
 
     render() {
