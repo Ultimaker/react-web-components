@@ -49,16 +49,16 @@ exports[`The Form component should render with a form item 1`] = `
         type="text"
         value={null}
       >
-        <div
-          className="input-field input-field--text layout"
+        <Wrapper
+          id="test"
+          labelLayoutWidth="1/1"
+          labelWidthBreakpoint="sm"
+          onChangeHandler={[MockFunction]}
+          type="text"
+          value={null}
         >
-          <InputFieldInput
-            id="test"
-            labelLayoutWidth="1/1"
-            labelWidthBreakpoint="sm"
-            onChangeHandler={[Function]}
-            type="text"
-            value={null}
+          <div
+            className="input-field input-field--TextField layout"
           >
             <div
               className="layout__item u-fill layout__item--middle"
@@ -69,21 +69,39 @@ exports[`The Form component should render with a form item 1`] = `
                 <div
                   className="layout__item u-fill"
                 >
-                  <input
-                    className="input"
+                  <TextField
                     id="test"
-                    max={null}
-                    min={null}
-                    name="test"
-                    onChange={[Function]}
+                    inputRef={
+                      Object {
+                        "current": <input
+                          class="input"
+                          id="test"
+                          name="test"
+                          type="text"
+                          value=""
+                        />,
+                      }
+                    }
+                    labelWidthBreakpoint="sm"
+                    onChangeHandler={[Function]}
+                    showValidationError={false}
                     type="text"
-                    value=""
-                  />
+                    value={null}
+                  >
+                    <input
+                      className="input"
+                      id="test"
+                      name="test"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </TextField>
                 </div>
               </div>
             </div>
-          </InputFieldInput>
-        </div>
+          </div>
+        </Wrapper>
       </InputField>
     </div>
     <div
