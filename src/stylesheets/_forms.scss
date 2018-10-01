@@ -159,7 +159,8 @@
             margin-bottom: -1.2rem;
         }
 
-        .input-field__label:not(".u-1/1") {
+        // TODO: This should not apply when labelLayoutWidth=='1/1'
+        .input-field__label {
             align-self: flex-end;
             margin-bottom: 1.3rem;
             margin-top: 0.6rem;
