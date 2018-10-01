@@ -5,9 +5,16 @@ import {InputFieldProps} from './input_field_wrapper';
 import WrappedInputField from './wrapped_input_field';
 
 export interface TextFieldProps extends InputFieldProps {
-    type: 'text' | 'password' | 'email' | 'url';
+    /** Type of the input field */
+    type?: 'text' | 'password' | 'email' | 'url';
+    /** Input field value */
     value: string;
+    /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
+    /** If true, the field will be focused when loaded */
+    focusOnLoad?: boolean;
+    /** html placeholder text */
+    placeholder?: string;
 }
 
 function staticRender(type: string, value: string): JSX.Element | string {
@@ -28,8 +35,11 @@ const TextField: React.StatelessComponent<TextFieldProps> = ({
 }) =>
     <WrappedInputField {...wrapperProps}>
         {staticRender(wrapperProps.type, wrapperProps.value)}
-    </WrappedInputField>
+    </WrappedInputField>;
 
 TextField.displayName = "TextField";
+TextField.defaultProps = {
+    type: 'text',
+};
 
 export default TextField;

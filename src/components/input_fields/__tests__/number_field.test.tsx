@@ -33,17 +33,12 @@ describe('The number field component', () => {
         expect(wrapper.find(WrappedInputField).prop("value")).toEqual("0")
     })
 
-    it('should render a zero', () => {
-        wrapper.setProps({value: 0})
-        expect(wrapper.find(WrappedInputField).prop("value")).toEqual("0")
-    })
-
     it('should render a null', () => {
         wrapper.setProps({value: null})
         expect(wrapper.find(WrappedInputField).prop("value")).toBeNull()
     })
 
-    it('should render a number picker', () => {
+    it('should render a wrapped input', () => {
         expect(wrapper.find(WrappedInputField).props()).toEqual({
             id: "testInputField",
             onChangeHandler: expect.any(Function),

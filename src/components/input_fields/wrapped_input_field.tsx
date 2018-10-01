@@ -7,7 +7,7 @@ import {RefObject} from 'react'
 
 export interface WrappedInputFieldProps extends InputFieldProps {
     /** Type of the input field */
-    type: 'text' | 'password' | 'email' | 'url' | 'number';
+    type?: 'text' | 'password' | 'email' | 'url' | 'number';
     /** Input field value */
     value: string;
     /** Called when the field changes */
@@ -37,6 +37,10 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
     state = {
         touched: false,
         inputRef: React.createRef<HTMLInputElement>(),
+    }
+
+    static defaultProps = {
+        type: 'text',
     }
 
     constructor(props) {
