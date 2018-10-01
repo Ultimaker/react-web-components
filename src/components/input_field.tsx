@@ -76,7 +76,7 @@ export class InputField extends React.Component<OldInputFieldProps, {}> {
     render() {
         const {type, value, children, ...wrapperProps} = this.props;
         if (type === 'text' || type === 'password' || type === 'email' || type === 'url') {
-            return <TextField value={value && value.toString()} type={type} {...wrapperProps} />;
+            return <TextField value={value && value.toString()} type={type} {...wrapperProps}>{children}</TextField>;
         } else {
             const Component = this.input_fields[type];
             return <Component value={value} {...wrapperProps}>{children}</Component>;

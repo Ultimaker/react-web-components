@@ -38,12 +38,4 @@ describe('The InputFieldLabel component', () => {
         wrapper.setProps({ infoLinkURL: 'https://ultimaker.com/' });
         expect(wrapper).toMatchSnapshot();
     });
-
-    it('should apply a special class for the tags selector label', () => {
-        wrapper.setProps({ type: 'tags' });
-        expect(wrapper.find('.tag-label-position-override').exists()).toBe(false);
-        wrapper.setProps({ labelLayoutWidth: '1/3' });
-        expect(wrapper.find('.tag-label-position-override')).toHaveLength(1);
-    });
-
 });
