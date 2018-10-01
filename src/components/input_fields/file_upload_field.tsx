@@ -24,7 +24,7 @@ export interface FileUploadFieldState {
 class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFieldState> {
     state = {
         touched: false
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -40,9 +40,9 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
         }
         if (onReadHandler) {
             const reader = new FileReader()
-            reader.onload = () => onReadHandler(id, reader.result as string)
-            reader.onerror = console.error // TODO
-            reader.readAsDataURL(target.files[0])
+            reader.onload = () => onReadHandler(id, reader.result as string);
+            reader.onerror = console.error; // TODO
+            reader.readAsDataURL(target.files[0]);
         }
     }
 
@@ -56,7 +56,7 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
                 onChangeHandler={this._onChange}
                 disabled={staticField}
             />
-        </InputFieldWrapper>
+        </InputFieldWrapper>;
     }
 }
 

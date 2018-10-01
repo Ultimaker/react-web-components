@@ -38,7 +38,7 @@ export interface ImageUploadFieldState {
 class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploadFieldState> {
     state = {
         touched: false
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -53,10 +53,10 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
             onChangeHandler(id, value);
         }
         if (onReadHandler) {
-            const reader = new FileReader()
-            reader.onload = () => onReadHandler(id, reader.result as string)
-            reader.onerror = console.error // TODO
-            reader.readAsDataURL(value)
+            const reader = new FileReader();
+            reader.onload = () => onReadHandler(id, reader.result as string);
+            reader.onerror = console.error; // TODO
+            reader.readAsDataURL(value);
         }
     }
 

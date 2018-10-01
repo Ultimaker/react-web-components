@@ -2,8 +2,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
-import {RefObject} from 'react'
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import {RefObject} from 'react';
 
 export interface WrappedInputFieldProps extends InputFieldProps {
     /** Type of the input field */
@@ -21,6 +21,9 @@ export interface WrappedInputFieldProps extends InputFieldProps {
     min?: number;
     /** Maximum value for number field */
     max?: number;
+
+    /** The children are used in the static view only! Defaults to props.value. **/
+    children?: any;
 }
 
 export interface WrappedInputFieldState {
@@ -30,6 +33,7 @@ export interface WrappedInputFieldState {
 
 /**
  * Class that adds an input wrapper around a HTML input component.
+ * The children passed are used only in the static view!
  */
 class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedInputFieldState> {
     /** A reference object to set the focus on load if required **/

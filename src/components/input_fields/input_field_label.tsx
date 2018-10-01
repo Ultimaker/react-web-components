@@ -18,12 +18,11 @@ export interface InputFieldLabelProps {
     /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
     labelWidthBreakpoint: Breakpoint;
     /** JSX Element, such as an icon, to be shown before the input label */
-    preLabelElement?: JSX.Element
+    preLabelElement?: JSX.Element;
     /** Description of the fields to be shown in a tooltip */
     infoText?: string
     /** The URL of the link to be shown next to the input field */
-    infoLinkURL?: string
-    /** whether this is  */
+    infoLinkURL?: string;
 }
 
 
@@ -35,9 +34,9 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
         if (preLabelElement) {
             return <div className="layout__item u-fit input-field__pre-element">
                 {preLabelElement}
-            </div>
+            </div>;
         }
-        return null
+        return null;
     }
 
     private _renderLabelElement(): JSX.Element {
@@ -46,9 +45,9 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
         if (label) {
             return <div className="layout__item u-fit">
                 <label htmlFor={id}>{label}</label>
-            </div>
+            </div>;
         }
-        return null
+        return null;
     }
 
     private _renderPostLabelElement(): JSX.Element {
@@ -62,7 +61,7 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
                 {infoLinkURL && !infoText && // can't have both an InfoTooltip and a InfoLink
                     <InfoLink infoLinkURL={infoLinkURL} />
                 }
-            </div>
+            </div>;
         }
         return null;
     }
@@ -75,13 +74,13 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
 
         return (
             <div className={classes}>
-                <div className="layout layout--gutter-sm" >
+                <div className="layout layout--gutter-sm">
                     {this._renderPreLabelElement()}
                     {this._renderLabelElement()}
                     {this._renderPostLabelElement()}
                 </div>
             </div>
-        )
+        );
     };
 }
 

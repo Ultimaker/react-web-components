@@ -1,8 +1,8 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import * as React from 'react'
+import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
-import {SelectList, SelectOption} from '../select_list'
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import {SelectList, SelectOption} from '../select_list';
 
 export interface SelectFieldProps extends InputFieldProps {
     /** The value of the option currently selected **/
@@ -25,7 +25,7 @@ export interface SelectFieldState {
 class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
     state = {
         touched: false
-    }
+    };
 
     constructor(props) {
         super(props);

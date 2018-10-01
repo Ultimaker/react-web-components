@@ -12,7 +12,7 @@ export interface InputFieldValidationProps {
     /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
     labelWidthBreakpoint: Breakpoint;
     /** Displays the required icon when true */
-    required?: boolean
+    required?: boolean;
 }
 
 export class InputFieldValidation extends React.Component<InputFieldValidationProps, {}> {
@@ -45,7 +45,7 @@ export class InputFieldValidation extends React.Component<InputFieldValidationPr
                     <div className="input-field__error-message">{validationError}</div>
                 </div>
             </div>
-        </div>
+        </div>;
     };
 }
 

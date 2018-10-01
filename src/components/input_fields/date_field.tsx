@@ -28,12 +28,12 @@ export interface DateFieldState {
 class DateField extends React.Component<DateFieldProps, DateFieldState> {
     state = {
         touched: false
-    }
+    };
 
     static defaultProps = {
         format: DatePicker.defaultProps.format,
         placeholder: DatePicker.defaultProps.placeholder,
-    }
+    };
 
     constructor(props) {
         super(props);

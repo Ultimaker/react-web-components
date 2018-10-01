@@ -30,7 +30,7 @@ export interface TagsFieldState {
 class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
     state = {
         touched: false,
-    }
+    };
 
     constructor(props) {
         super(props);

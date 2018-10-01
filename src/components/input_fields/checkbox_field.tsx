@@ -58,4 +58,4 @@ class CheckboxField extends React.Component<CheckboxFieldProps, CheckboxFieldSta
     }
 }
 
-export default CheckboxField
+export default CheckboxField;

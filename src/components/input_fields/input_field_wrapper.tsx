@@ -37,6 +37,9 @@ export interface InputFieldProps {
     submitted?: boolean;
     /** Message to show for the validation error. Can be any[] if returned from I18n.format */
     validationError?: string | any[];
+
+    /** Children are required and must include the input field both in static and non-static mode. **/
+    children: any;
 }
 
 interface InputFieldWrapperProps extends InputFieldProps {
@@ -46,8 +49,8 @@ interface InputFieldWrapperProps extends InputFieldProps {
 
 class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
     state = {
-        touched: false
-    }
+        touched: false,
+    };
 
     static defaultProps = {
         labelLayoutWidth: '1/1',
@@ -63,7 +66,7 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
 
     private _showValidationError(): boolean {
         const {validationError, submitted, touched} = this.props;
-        return validationError && (touched || submitted)
+        return validationError && (touched || submitted);
     }
 
     private _renderLabel(): JSX.Element {
@@ -78,7 +81,7 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
                 preLabelElement={preLabelElement}
                 infoText={infoText}
                 infoLinkURL={infoLinkURL}
-            />
+            />;
         }
         return null;
     }
@@ -92,7 +95,7 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
                 labelLayoutWidth={labelLayoutWidth}
                 labelWidthBreakpoint={labelWidthBreakpoint}
                 required={required}
-            />
+            />;
         }
         return null;
     }
@@ -101,7 +104,7 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
     render(): JSX.Element {
         const {className, staticField} = this.props;
 
-        // TODO: Change CSS rules to use displayName.
+        // TODO: Check with Alan if the CSS rules are still working.
         const inputClasses = classNames(`input-field layout`, className, {'hide-input': staticField});
 
         return (
@@ -110,13 +113,13 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
                 {this._renderInput()}
                 {this._renderValidation()}
             </div>
-        )
+        );
     };
 
     private _renderInput() {
         const {labelLayoutWidth, centerInputField, staticField, className, children} = this.props;
 
-        // TODO: Move this to CSS.
+        // TODO: Check with Alan if the CSS rules are still working.
         const inputLayoutWidth = staticField || labelLayoutWidth === 'fill' ? 'fit' : 'fill';
         const inputLayoutClasses = classNames(
             `layout__item u-${inputLayoutWidth} layout__item--middle`,
@@ -135,7 +138,7 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
             }
 
             {staticField && children}
-        </div>
+        </div>;
     }
 
     private _renderPostInputElement() {
@@ -143,7 +146,7 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
         if (required) {
             return <div className="layout__item u-fit input-field__field-addition">
                 <RequiredIcon/>
-            </div>
+            </div>;
         }
         return null;
     }

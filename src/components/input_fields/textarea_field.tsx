@@ -28,8 +28,8 @@ export interface TextareaFieldState {
  */
 class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldState> {
     state = {
-        touched: false
-    }
+        touched: false,
+    };
 
     constructor(props) {
         super(props);
