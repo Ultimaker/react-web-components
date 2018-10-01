@@ -22,6 +22,9 @@ export type InputFieldValue = string | number | boolean | ImageFile | string[] |
 export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' |
     'image' | 'date' | 'file' | 'tags' | 'children';
 
+/**
+ * This components includes the custom props of all supported fields.
+ */
 export interface OldInputFieldProps extends InputFieldProps {
     /** The current value of the field */
     value: InputFieldValue;
@@ -50,8 +53,9 @@ export interface OldInputFieldProps extends InputFieldProps {
 }
 
 /**
- * Class that adds an input wrapper around a ImageUpload component.
- * TODO: merge the two components
+ * This class is used in projects as a generic input field.
+ * Now all fields are in separate components and should be used by themselves.
+ * However this component is still available to be backwards compatible.
  */
 export class InputField extends React.Component<OldInputFieldProps, {}> {
     static defaultProps = {

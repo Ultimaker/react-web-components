@@ -9,6 +9,10 @@ import RequiredIcon from '../icons/required_icon'
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
 
+/**
+ * The props in this interface are available in all the input fields.
+ * They are used in the input field wrapper to define how the input field will look like.
+ */
 export interface InputFieldProps {
     /** Input field id. Must be unique */
     id: string;
@@ -37,14 +41,17 @@ export interface InputFieldProps {
     submitted?: boolean;
     /** Message to show for the validation error. Can be any[] if returned from I18n.format */
     validationError?: string | any[];
-
-    /** Children are required and must include the input field both in static and non-static mode. **/
-    children: any;
 }
 
+/**
+ * The input field wrapper has also some properties that must be passed by the input fields themselves.
+ */
 interface InputFieldWrapperProps extends InputFieldProps {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
+
+    /** Children are required and must include the input field both in static and non-static mode. **/
+    children: any;
 }
 
 class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
