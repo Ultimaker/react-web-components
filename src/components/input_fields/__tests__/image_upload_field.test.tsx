@@ -6,6 +6,7 @@ import { shallow } from 'enzyme';
 import ImageUploadField, {ImageUploadFieldProps} from '../image_upload_field';
 import InputFieldWrapper from '../input_field_wrapper';
 import ImageUpload from '../../image_upload';
+import {Image} from '../../image'
 
 describe('The image upload field component', () => {
     let props: ImageUploadFieldProps;
@@ -33,7 +34,9 @@ describe('The image upload field component', () => {
     });
 
     it('should render a static image', () => {
-
+        wrapper.setProps({staticField: true})
+        expect(wrapper.find(ImageUpload)).toHaveLength(0)
+        expect(wrapper.find(Image).props()).toEqual({src: props.value, size: props.imageSize, shape: props.imageShape})
     })
 
     it('should render a image upload', () => {
@@ -63,5 +66,16 @@ describe('The image upload field component', () => {
         const expected = 'data:image/jpeg;base64,' + btoa('A+test+string+for+testing+image');
         expect(props.onReadHandler).toHaveBeenCalledWith(props.id, expected);
         expect(wrapper.find(InputFieldWrapper).prop("touched")).toEqual(true);
+    });
+
+    it('should ignore empty callbacks', async () => {
+        wrapper.setProps({onChangeHandler: null, onReadHandler: null})
+
+        wrapper.find(ImageUpload).prop("onFileSelection")(
+            new Blob(["A+test+string+for+testing+image"], {type: 'image/jpeg'})
+        );
+
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+        expect(props.onReadHandler).not.toHaveBeenCalled();
     });
 });

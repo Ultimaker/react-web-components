@@ -33,7 +33,12 @@ describe('The file upload field component', () => {
             disabled: false,
             id: "testInputField",
             onChangeHandler: wrapper.instance()._onChange,
-      });
+        });
+    })
+
+    it('should render an empty URL', () => {
+        wrapper.setProps({value: null});
+        expect(wrapper.find(FileUpload).prop('imageURL')).toBeUndefined();
     })
 
     it('should call the callback', async () => {
@@ -52,5 +57,13 @@ describe('The file upload field component', () => {
         const expected = 'data:application/zip;base64,' + btoa('A+test+string+for+testing+sources');
         expect(props.onReadHandler).toHaveBeenCalledWith(props.id, expected);
         expect(wrapper.find(InputFieldWrapper).prop("touched")).toEqual(true);
+    });
+
+    it('should ignore empty callbacks', async () => {
+        wrapper.setProps({onChangeHandler: null, onReadHandler: null})
+        const file = new Blob(["A+test+string+for+testing+sources"], {type: 'application/zip'});
+        wrapper.find(FileUpload).prop("onChangeHandler")({value: 'c/my/file.zip', files: [file]});
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+        expect(props.onReadHandler).not.toHaveBeenCalled();
     });
 });

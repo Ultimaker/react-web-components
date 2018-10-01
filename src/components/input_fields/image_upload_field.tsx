@@ -70,7 +70,7 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
                 <ImageUpload
                     id={id}
                     size={imageSize}
-                    imageURL={value != null ? value.toString() : null}
+                    imageURL={value && value.toString()}
                     onFileSelection={this._onChange}
                     shape={imageShape}
                     placeholderLabel={placeholder}

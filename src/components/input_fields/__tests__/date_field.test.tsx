@@ -40,6 +40,22 @@ describe('The date field component', () => {
       });
     })
 
+    it('should render an empty date', () => {
+        wrapper.setProps({value: null})
+        expect(wrapper.find(DatePicker).prop("value")).toBeNull()
+    })
+
+    it('should render a static date', () => {
+        wrapper.setProps({staticField: true})
+        expect(wrapper.find(DatePicker)).toHaveLength(0);
+        expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual("31-12-2018");
+    })
+
+    it('should render an error', () => {
+        wrapper.setProps({validationError: "validation error", submitted: true})
+        expect(wrapper.find(DatePicker).prop("error")).toEqual(true);
+    })
+
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
         wrapper.find(DatePicker).prop("onChangeHandler")("2016-02-29")

@@ -21,7 +21,7 @@ const NumberField: React.StatelessComponent<NumberFieldProps> = ({
 }) =>
     <WrappedInputField
         type="number"
-        value={value ? value.toString() : null}
+        value={value || value === 0 ? value.toString() : null}
         onChangeHandler={(id, val) => onChangeHandler(id, val ? parseFloat(val) : null)}
         {...wrapperProps}
     />

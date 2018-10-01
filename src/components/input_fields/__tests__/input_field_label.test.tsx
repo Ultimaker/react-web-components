@@ -29,6 +29,11 @@ describe('The InputFieldLabel component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should not render empty label', () => {
+        wrapper.setProps({ label: null });
+        expect(wrapper.text()).toEqual("");
+    });
+
     it('should render info tooltip', () => {
         wrapper.setProps({ infoText: 'Test tooltip text' });
         expect(wrapper).toMatchSnapshot();

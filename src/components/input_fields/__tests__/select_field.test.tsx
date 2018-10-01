@@ -43,6 +43,12 @@ describe('The select field component', () => {
       });
     })
 
+    it('should not pass invalid values', () => {
+        wrapper.setProps({value: {}, submitted: true, validationError: "Invalid value"})
+        expect(wrapper.find(SelectList).prop("value")).toBeNull();
+        expect(wrapper.find(SelectList).prop("error")).toEqual(true);
+    })
+
     it('should render a static value', () => {
         wrapper.setProps({staticField: true})
         expect(wrapper.find(SelectList)).toHaveLength(0)

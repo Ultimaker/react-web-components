@@ -4,8 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import NumberField, {NumberFieldProps} from '../number_field';
-import InputFieldWrapper from '../input_field_wrapper';
-import WrappedInputField from '../wrapped_input_field'
+import WrappedInputField from '../wrapped_input_field';
 
 describe('The number field component', () => {
     let props: NumberFieldProps;
@@ -29,6 +28,21 @@ describe('The number field component', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
     });
 
+    it('should render a zero', () => {
+        wrapper.setProps({value: 0})
+        expect(wrapper.find(WrappedInputField).prop("value")).toEqual("0")
+    })
+
+    it('should render a zero', () => {
+        wrapper.setProps({value: 0})
+        expect(wrapper.find(WrappedInputField).prop("value")).toEqual("0")
+    })
+
+    it('should render a null', () => {
+        wrapper.setProps({value: null})
+        expect(wrapper.find(WrappedInputField).prop("value")).toBeNull()
+    })
+
     it('should render a number picker', () => {
         expect(wrapper.find(WrappedInputField).props()).toEqual({
             id: "testInputField",
@@ -38,7 +52,7 @@ describe('The number field component', () => {
             staticField: props.staticField,
             type: "number",
             value: "2018",
-      });
+        });
     })
 
     it('should call the callback', () => {
