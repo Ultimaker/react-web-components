@@ -2,9 +2,8 @@ import * as React from 'react';
 
 // components
 import Popup from './popup';
-import { InputField, InputFieldType } from './input_field';
+import { InputField, InputFieldType, InputFieldValue } from './input_field';
 import { ButtonStyle } from './button';
-import {InputFieldValue} from './input_fields/input_field_wrapper'
 
 export interface PopupPromptProps {
     /** Input type for popups of type prompt */

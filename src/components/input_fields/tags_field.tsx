@@ -1,46 +1,69 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
+import classNames from 'classnames';
 
-import InputFieldWrapper, {InputFieldProps, StaticFieldProps} from './input_field_wrapper';
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import TagsSelector from '../tags_selector';
 
-interface TagsFieldProps extends InputFieldProps {
+interface SelectFieldProps extends InputFieldProps {
+    /** Input field value */
+    value: string[];
+    /** Called when the field changes */
+    onChangeHandler: (id: string, value: string[]) => any;
     /** A list of suggestions for tags input field */
     tagSuggestions?: string[];
     /** If true, the field will be focused when loaded */
     focusOnLoad?: boolean;
+    /** html placeholder text */
+    placeholder?: string;
 }
 
-export const TagsField: React.StatelessComponent<TagsFieldProps> = (
-    {id, placeholder, value, onChangeHandler, tagSuggestions, focusOnLoad}
-) =>
-    <TagsSelector
-        id={id}
-        onChangeHandler={tags => onChangeHandler(id, tags)}
-        placeholder={placeholder}
-        suggestions={tagSuggestions}
-        value={Array.isArray(value) && value}
-        disabled={false}
-        autofocus={focusOnLoad}
-    />
-
-TagsField.displayName = "TagsField";
-
-interface StaticTagsFieldProps extends StaticFieldProps {
-    /** placeholder text */
-    placeholder?: string; // TODO: Is the placeholder used in the static view?
+export interface SelectFieldState {
+    /** Indicates if the field has been touched (changed) or not from the default value. */
+    touched: boolean;
 }
 
-export const StaticTagsField: React.StatelessComponent<StaticTagsFieldProps> = ({value, placeholder}) =>
-    <TagsSelector
-        id={null}
-        onChangeHandler={null}
-        placeholder={placeholder}
-        suggestions={[]}
-        value={Array.isArray(value) && value}
-        disabled={true}
-        autofocus={false}
-    />
+/**
+ * Class that adds an input wrapper around a TagsSelector component.
+ * TODO: merge the two components
+ */
+class TagsField extends React.Component<SelectFieldProps, SelectFieldState> {
+    state = {
+        touched: false
+    }
 
-StaticTagsField.displayName = "StaticTagsField";
+    constructor(props) {
+        super(props);
+        // bind callbacks once
+        this._onChange = this._onChange.bind(this);
+    }
 
-export default InputFieldWrapper(TagsField, StaticTagsField);
+    private _onChange(value: string[]): void {
+        this.setState({touched: true});
+        this.props.onChangeHandler(this.props.id, value);
+    }
+
+    render() {
+        const {placeholder, value, tagSuggestions, focusOnLoad, className, ...wrapperProps} = this.props;
+        const {id, staticField} = wrapperProps;
+        const {touched} = this.state;
+        return (
+            <InputFieldWrapper
+                className={classNames(className, "input-field--tags")}
+                touched={touched}
+                {...wrapperProps}>
+                <TagsSelector
+                    id={id}
+                    onChangeHandler={this._onChange}
+                    placeholder={placeholder}
+                    suggestions={tagSuggestions}
+                    value={Array.isArray(value) && value}
+                    disabled={staticField}
+                    autofocus={focusOnLoad}
+                />
+            </InputFieldWrapper>
+        );
+    }
+}
+
+export default TagsField;

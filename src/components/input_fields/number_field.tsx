@@ -1,38 +1,30 @@
-import * as React from 'react'
-import classNames from 'classnames'
+// Copyright (c) 2018 Ultimaker B.V.
+import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
+import WrappedInputField from './wrapped_input_field';
+import {InputFieldProps} from './input_field_wrapper';
 
 
-interface DateFieldProps extends InputFieldProps {
-    /** Minimum value for number field */
-    min?: number;
-    /** Maximum value for number field */
-    max?: number;
+export interface NumberFieldProps extends  InputFieldProps {
+    /** Input field value */
+    value: number | null;
+    /** Called when the field changes */
+    onChangeHandler: (id: string, value: number | null) => any;
+    /** If true, the field will be focused when loaded */
+    focusOnLoad?: boolean;
+    /** html placeholder text */
+    placeholder?: string;
 }
 
-function _parseValue(value: string | number): number {
-    if (typeof value === 'string') {
-        return value.length ? parseFloat(value) : null;
-    }
-    return value;
-}
-
-const NumberField: React.StatelessComponent<DateFieldProps> = ({
-    id, min, max, placeholder, value, showValidationError, onChangeHandler, inputRef
+const NumberField: React.StatelessComponent<NumberFieldProps> = ({
+    value, onChangeHandler, focusOnLoad, placeholder, ...wrapperProps
 }) =>
-    <input
-        id={id}
-        className={classNames('input', {'error': showValidationError})}
-        name={id}
+    <WrappedInputField
         type="number"
-        min={min ? min : null}
-        max={max ? max : null}
-        onChange={(e) => onChangeHandler(id, _parseValue(e.target.value))}
-        placeholder={placeholder}
-        value={value != null ? value.toString() : ''}
-        ref={inputRef}
+        value={value ? value.toString() : null}
+        onChangeHandler={(id, val) => onChangeHandler(id, val ? parseFloat(val) : null)}
+        {...wrapperProps}
     />
 
 
-export default InputFieldWrapper(NumberField)
+export default NumberField

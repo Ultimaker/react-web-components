@@ -1,27 +1,61 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-
-import InputFieldWrapper, {InputFieldProps, StaticFieldProps} from './input_field_wrapper';
+import classNames from 'classnames';
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import Checkbox from '../checkbox';
 
 
-export const CheckboxField: React.StatelessComponent<InputFieldProps> = (
-    {id, value, onChangeHandler}
-) =>
-    <Checkbox
-        id={id}
-        onChangeHandler={value => onChangeHandler(id, value)}
-        value={value === true}
-        disabled={false}
-    />
+interface CheckboxFieldProps extends InputFieldProps {
+    /** Whether the checkbox is selected **/
+    value: boolean;
+    /** Called when the field changes */
+    onChangeHandler: (id: string, value: boolean) => any;
+}
 
-export const StaticCheckboxField: React.StatelessComponent<StaticFieldProps> = (
-    {value}
-) =>
-    <Checkbox
-        id={null}
-        onChangeHandler={null}
-        value={value === true}
-        disabled={true}
-    />
+export interface CheckboxFieldState {
+    /** Indicates if the field has been touched (changed) or not from the default value. */
+    touched: boolean;
+}
 
-export default InputFieldWrapper(CheckboxField, StaticCheckboxField)
+/**
+ * Class that adds an input wrapper around a Checkbox component.
+ * TODO: merge the two components
+ */
+class CheckboxField extends React.Component<CheckboxFieldProps, CheckboxFieldState> {
+    state = {
+        touched: false
+    }
+
+    constructor(props) {
+        super(props);
+        // bind callbacks once
+        this._onChange = this._onChange.bind(this);
+    }
+
+    private _onChange(value: boolean): void {
+        this.setState({touched: true});
+        this.props.onChangeHandler(this.props.id, value);
+    }
+
+    render() {
+        const {value, className, labelLayoutWidth, ...wrapperProps} = this.props;
+        const {id, staticField} = wrapperProps;
+        const {touched} = this.state;
+        return (
+            <InputFieldWrapper
+                touched={touched}
+                className={classNames(className, "input-field--checkbox")}
+                labelLayoutWidth="fill"
+                {...wrapperProps}>
+                <Checkbox
+                    id={id}
+                    onChangeHandler={this._onChange}
+                    value={value === true}
+                    disabled={staticField}
+                />
+            </InputFieldWrapper>
+        );
+    }
+}
+
+export default CheckboxField

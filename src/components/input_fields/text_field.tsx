@@ -1,13 +1,16 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import classNames from 'classnames';
 
-import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
+import {InputFieldProps} from './input_field_wrapper';
+import WrappedInputField from './wrapped_input_field';
 
-export interface TextFieldProps extends  InputFieldProps {
+export interface TextFieldProps extends InputFieldProps {
     type: 'text' | 'password' | 'email' | 'url';
+    value: string;
+    onChangeHandler: (id: string, value: string) => any;
 }
 
-function staticRender({type, value}) {
+function staticRender(type: string, value: string): JSX.Element | string {
     switch (type) {
         case "email":
             return <a href={`mailto:${value}`} target="_top">{value}</a>;
@@ -21,20 +24,11 @@ function staticRender({type, value}) {
 }
 
 const TextField: React.StatelessComponent<TextFieldProps> = ({
-    id, type, placeholder, value, showValidationError, onChangeHandler, inputRef, ...props
+    ...wrapperProps
 }) =>
-    <InputFieldWrapper {...props} staticRender={staticRender}>{
-        <input
-            id={id}
-            className={classNames('input', {'error': showValidationError})}
-            name={id}
-            type={type}
-            onChange={(e) => onChangeHandler(id, e.target.value)}
-            placeholder={placeholder}
-            value={value != null ? value.toString() : ''}
-            ref={inputRef}
-        />}
-    </InputFieldWrapper>
+    <WrappedInputField {...wrapperProps}>
+        {staticRender(wrapperProps.type, wrapperProps.value)}
+    </WrappedInputField>
 
 TextField.displayName = "TextField";
 

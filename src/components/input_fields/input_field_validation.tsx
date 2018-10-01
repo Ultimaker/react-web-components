@@ -1,3 +1,4 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
@@ -38,7 +39,7 @@ export class InputFieldValidation extends React.Component<InputFieldValidationPr
         return <div className="layout__item u-full input-field__validation">
             <div className="layout">
                 {errorMsgOffsetClass &&
-                    <div className={`layout__item ${errorMsgOffsetClass}`}></div>
+                    <div className={`layout__item ${errorMsgOffsetClass}`} />
                 }
                 <div className={`layout__item u-fill ${errorMsgClass}`}>
                     <div className="input-field__error-message">{validationError}</div>

@@ -1,40 +1,82 @@
-import * as React from 'react'
+// Copyright (c) 2018 Ultimaker B.V.
+import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps, StaticFieldProps} from './input_field_wrapper'
-import {ImageUpload} from '../image_upload'
-import {Image, ImageShape} from '../image'
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import ImageUpload, {ImageFile} from '../image_upload';
+import {Image, ImageShape} from '../image';
 
-interface BaseImageFieldProps {
+
+interface ImageUploadFieldProps extends InputFieldProps {
     /** Size of the image for type image. Include size unit */
     imageSize?: string;
+
     /** Shape of the image for type image: 'round' | 'square' */
     imageShape?: ImageShape;
+
+    /** Called when the field changes */
+    onChangeHandler: (id: string, value: ImageFile) => void;
+
+    /** Called when an image file is read */
+    onReadHandler: (id: string, value: string) => Promise<any>;
+
+    /** html placeholder text */
+    placeholder?: string;
+
+    /** The file URL or preview URL **/
+    value: string;
 }
 
-interface ImageFieldProps extends InputFieldProps, BaseImageFieldProps {}
+export interface ImageUploadFieldState {
+    /** Indicates if the field has been touched (changed) or not from the default value. */
+    touched: boolean;
+}
 
-export const ImageUploadField: React.StatelessComponent<ImageFieldProps> = (
-    {id, imageSize, imageShape, placeholder, value, onChangeHandler}
-) =>
-    <ImageUpload
-        id={id}
-        size={imageSize}
-        imageURL={value != null ? value.toString() : null}
-        onFileSelection={value => onChangeHandler(id, value)}
-        shape={imageShape}
-        placeholderLabel={placeholder}
-    />
+/**
+ * Class that adds an input wrapper around a ImageUpload component.
+ * TODO: merge the two components
+ */
+class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploadFieldState> {
+    state = {
+        touched: false
+    }
 
-ImageUploadField.displayName = "ImageUploadField";
+    constructor(props) {
+        super(props);
+        // bind callbacks once
+        this._onChange = this._onChange.bind(this);
+    }
 
+    private _onChange(value: ImageFile): void {
+        this.setState({touched: true});
+        const {onChangeHandler, onReadHandler, id} = this.props;
+        if (onChangeHandler) {
+            onChangeHandler(id, value);
+        }
+        if (onReadHandler) {
+            const reader = new FileReader()
+            reader.onload = () => onReadHandler(id, reader.result as string)
+            reader.onerror = console.error // TODO
+            reader.readAsDataURL(value)
+        }
+    }
 
-interface StaticImageFieldProps extends StaticFieldProps, BaseImageFieldProps {}
+    render() {
+        const {imageSize, imageShape, placeholder, value, ...wrapperProps} = this.props;
+        const {id, staticField} = wrapperProps;
+        const {touched} = this.state;
+        return <InputFieldWrapper touched={touched} {...wrapperProps}>{
+            staticField ?
+                <Image src={value} size={imageSize} shape={imageShape}/> :
+                <ImageUpload
+                    id={id}
+                    size={imageSize}
+                    imageURL={value != null ? value.toString() : null}
+                    onFileSelection={this._onChange}
+                    shape={imageShape}
+                    placeholderLabel={placeholder}
+                />
+        }</InputFieldWrapper>;
+    }
+}
 
-export const StaticImageField: React.StatelessComponent<StaticImageFieldProps> = (
-    {value, imageSize, imageShape}
-) =>
-    <Image src={value ? value.toString() : null} size={imageSize} shape={imageShape}/>;
-
-StaticImageField.displayName = "StaticImageField";
-
-export default InputFieldWrapper(ImageUploadField, StaticImageField)
+export default ImageUploadField;

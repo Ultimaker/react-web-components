@@ -46,62 +46,65 @@ exports[`The Form component should render with a form item 1`] = `
         labelLayoutWidth="1/1"
         labelWidthBreakpoint="sm"
         onChangeHandler={[MockFunction]}
+        staticField={false}
         type="text"
         value={null}
       >
-        <Wrapper
+        <TextField
           id="test"
           labelLayoutWidth="1/1"
           labelWidthBreakpoint="sm"
           onChangeHandler={[MockFunction]}
+          staticField={false}
           type="text"
           value={null}
         >
-          <div
-            className="input-field input-field--TextField layout"
+          <WrappedInputField
+            id="test"
+            labelLayoutWidth="1/1"
+            labelWidthBreakpoint="sm"
+            onChangeHandler={[MockFunction]}
+            staticField={false}
+            type="text"
+            value={null}
           >
-            <div
-              className="layout__item u-fill layout__item--middle"
+            <InputFieldWrapper
+              id="test"
+              labelLayoutWidth="1/1"
+              labelWidthBreakpoint="sm"
+              onChangeHandler={[MockFunction]}
+              staticField={false}
+              touched={false}
             >
               <div
-                className="input-container layout layout--gutter-xs"
+                className="input-field layout"
               >
                 <div
-                  className="layout__item u-fill"
+                  className="layout__item u-fill layout__item--middle"
                 >
-                  <TextField
-                    id="test"
-                    inputRef={
-                      Object {
-                        "current": <input
-                          class="input"
-                          id="test"
-                          name="test"
-                          type="text"
-                          value=""
-                        />,
-                      }
-                    }
-                    labelWidthBreakpoint="sm"
-                    onChangeHandler={[Function]}
-                    showValidationError={false}
-                    type="text"
-                    value={null}
+                  <div
+                    className="input-container layout layout--gutter-xs"
                   >
-                    <input
-                      className="input"
-                      id="test"
-                      name="test"
-                      onChange={[Function]}
-                      type="text"
-                      value=""
-                    />
-                  </TextField>
+                    <div
+                      className="layout__item u-fill"
+                    >
+                      <input
+                        className="input"
+                        id="test"
+                        max={null}
+                        min={null}
+                        name="test"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </Wrapper>
+            </InputFieldWrapper>
+          </WrappedInputField>
+        </TextField>
       </InputField>
     </div>
     <div

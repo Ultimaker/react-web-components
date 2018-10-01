@@ -47,6 +47,7 @@ stories.add('Number field', withState({ value: 1 })
                     id="id_2"
                     min={1}
                     max={100}
+                    label={text('Label', 'Number field label')}
                     onChangeHandler={(id, value) => store.set({ value })}
                     focusOnLoad
                     validationError={text('Validation error message', 'Validation Error')} />
@@ -64,6 +65,7 @@ stories.add('Text area', withState({ value: null })
                     id="id_3"
                     value={store.state.value}
                     focusOnLoad
+                    label={text('Label', 'Textarea label')}
                     onChangeHandler={(id, value) => store.set({ value })}
                     placeholder="Textarea"
                     textareaAutoGrow={boolean('Auto grow', true)} />
@@ -111,6 +113,7 @@ stories.add('Checkbox', withState({ value: null })
             <InputField type="checkbox"
                 id="id_6"
                 value={store.state.value}
+                label={text('Label', 'Checkbox label')}
                 onChangeHandler={(id, value) => store.set({ value })}
                 staticField={boolean('Disabled', false)} />
         )
@@ -220,7 +223,7 @@ stories.add('Custom input field', withState({ value: null })
                 >
                     <input
                         onChange={(e) => store.set({ value: e.target.value })}
-                        value={store.state.value}
+                        value={store.state.value || ""}
                     />
                 </InputField>
             </div>

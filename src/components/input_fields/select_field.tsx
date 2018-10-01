@@ -1,35 +1,65 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react'
 
-import InputFieldWrapper, {InputFieldProps, StaticFieldProps} from './input_field_wrapper'
+import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper'
 import {SelectList, SelectOption} from '../select_list'
 
-interface BaseSelectFieldProps {
+interface SelectFieldProps extends InputFieldProps {
+    /** The value of the option currently selected **/
+    value: string | number;
     /** List of options for type select */
     selectOptions?: SelectOption[];
+    /** Called when the field changes */
+    onChangeHandler: (id: string, value: string | number) => any;
 }
 
-interface SelectFieldProps extends InputFieldProps, BaseSelectFieldProps {}
-
-const SelectField: React.StatelessComponent<SelectFieldProps> = (
-    {id, selectOptions, value, onChangeHandler, showValidationError}
-) =>
-    <SelectList
-        id={id}
-        onChangeHandler={value => onChangeHandler(id, value)}
-        value={typeof value === 'number' || typeof value === 'string' ? value : null}
-        options={selectOptions}
-        error={showValidationError}
-    />
-
-interface StaticSelectFieldProps extends StaticFieldProps, BaseSelectFieldProps {}
-
-const StaticSelectField: React.StatelessComponent<StaticSelectFieldProps> = (
-    {value, selectOptions}
-) => {
-    const option = selectOptions.find(option => option.value === value);
-    return <React.Fragment>{option ? option.label : null}</React.Fragment>;
+export interface SelectFieldState {
+    /** Indicates if the field has been touched (changed) or not from the default value. */
+    touched: boolean;
 }
 
-StaticSelectField.displayName = "StaticSelectField";
+/**
+ * Class that adds an input wrapper around a SelectList component.
+ * TODO: Merge the two fields
+ */
+class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
+    state = {
+        touched: false
+    }
 
-export default InputFieldWrapper(SelectField, StaticSelectField);
+    constructor(props) {
+        super(props);
+        // bind callbacks once
+        this._onChange = this._onChange.bind(this);
+        this._staticRender = this._staticRender.bind(this);
+    }
+
+    private _onChange(value: string | number): void {
+        this.setState({touched: true});
+        this.props.onChangeHandler(this.props.id, value);
+    }
+
+    private _staticRender(): JSX.Element | string {
+        const {value, selectOptions} = this.props;
+        const option = selectOptions.find(option => option.value === value);
+        return <React.Fragment>{option ? option.label : null}</React.Fragment>;
+    }
+
+    render() {
+        const {value, selectOptions, ...wrapperProps} = this.props;
+        const {id, staticField, validationError, submitted} = wrapperProps;
+        const {touched} = this.state;
+        return <InputFieldWrapper touched={touched} {...wrapperProps}>{
+            staticField ? this._staticRender() :
+            <SelectList
+                id={id}
+                onChangeHandler={this._onChange}
+                value={typeof value === 'number' || typeof value === 'string' ? value : null}
+                options={selectOptions}
+                error={validationError && (touched || submitted)}
+            />
+        }</InputFieldWrapper>;
+    }
+}
+
+export default SelectField;

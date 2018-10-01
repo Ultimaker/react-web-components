@@ -100,12 +100,12 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                     </div>
 
                     {imageURL &&
-                        <div className={`cover cover--${shape}`}></div>
+                        <div className={`cover cover--${shape}`} />
                     }
                 </div>
 
                 {!imageURL &&
-                    <div className={`placeholder placeholder--${shape}`}></div>
+                    <div className={`placeholder placeholder--${shape}`} />
                 }
 
                 {imageURL &&
