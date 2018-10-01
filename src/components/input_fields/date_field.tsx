@@ -5,15 +5,15 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import DatePicker from '../date_picker';
 import moment = require('moment');
 
-interface DateFieldProps extends InputFieldProps {
+export interface DateFieldProps extends InputFieldProps {
     /** The date currently selected **/
     value: string;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
     /** The format to display the date, as specified by moment-js **/
-    format: string;
+    format?: string;
     /** Placeholder text */
-    placeholder: string;
+    placeholder?: string;
 }
 
 export interface DateFieldState {

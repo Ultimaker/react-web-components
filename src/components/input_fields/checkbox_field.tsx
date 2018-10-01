@@ -5,7 +5,7 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import Checkbox from '../checkbox';
 
 
-interface CheckboxFieldProps extends InputFieldProps {
+export interface CheckboxFieldProps extends InputFieldProps {
     /** Whether the checkbox is selected **/
     value: boolean;
     /** Called when the field changes */

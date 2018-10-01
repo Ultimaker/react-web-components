@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The file upload field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  onReadHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <FileUpload
+    disabled={false}
+    id="testInputField"
+    onChangeHandler={[Function]}
+  />
+</InputFieldWrapper>
+`;

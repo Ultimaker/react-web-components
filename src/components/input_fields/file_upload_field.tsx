@@ -5,11 +5,11 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import FileUpload from '../file_upload';
 
 
-interface FileUploadFieldProps extends InputFieldProps {
+export interface FileUploadFieldProps extends InputFieldProps {
     /** Called when a file is selected */
     onChangeHandler: (id: string, target: HTMLInputElement) => void;
     /** Called when a file is read */
-    onReadHandler: (id: string, value: string) => Promise<any>;
+    onReadHandler?: (id: string, value: string) => Promise<any>;
 }
 
 export interface FileUploadFieldState {
@@ -48,13 +48,13 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
 
     render() {
         const {...wrapperProps} = this.props;
-        const {id} = wrapperProps;
+        const {id, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper touched={touched} {...wrapperProps}>
             <FileUpload
                 id={id}
                 onChangeHandler={this._onChange}
-                disabled={false}
+                disabled={staticField}
             />
         </InputFieldWrapper>
     }

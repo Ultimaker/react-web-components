@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The date field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <DatePicker
+    format="DD-MM-YYYY"
+    id="testInputField"
+    onChangeHandler={[Function]}
+    placeholder="placeholder text"
+    value="2018-12-31"
+  />
+</InputFieldWrapper>
+`;

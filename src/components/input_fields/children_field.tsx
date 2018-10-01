@@ -4,7 +4,7 @@ import * as React from 'react';
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 
 
-interface ChildrenFieldProps extends InputFieldProps {
+export interface ChildrenFieldProps extends InputFieldProps {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched?: boolean;
 }

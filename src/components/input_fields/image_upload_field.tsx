@@ -6,12 +6,12 @@ import ImageUpload, {ImageFile} from '../image_upload';
 import {Image, ImageShape} from '../image';
 
 
-interface ImageUploadFieldProps extends InputFieldProps {
+export interface ImageUploadFieldProps extends InputFieldProps {
     /** Size of the image for type image. Include size unit */
-    imageSize?: string;
+    imageSize: string;
 
     /** Shape of the image for type image: 'round' | 'square' */
-    imageShape?: ImageShape;
+    imageShape: ImageShape;
 
     /** Called when the field changes */
     onChangeHandler: (id: string, value: ImageFile) => void;
