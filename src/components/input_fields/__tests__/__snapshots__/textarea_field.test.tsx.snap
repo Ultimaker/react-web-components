@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The textarea field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <Textarea
+    id="testInputField"
+    onChangeHandler={[Function]}
+    placeholder="placeholder textarea"
+    value="2018"
+  />
+</InputFieldWrapper>
+`;

@@ -4,7 +4,7 @@ import * as React from 'react';
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import Textarea from '../textarea';
 
-interface TextareaFieldProps extends InputFieldProps {
+export interface TextareaFieldProps extends InputFieldProps {
     /** The text **/
     value: string;
     /** Whether the textarea should grow horizontally with user input */
@@ -47,12 +47,12 @@ class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldSta
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper touched={touched} {...wrapperProps}>{
-            staticField ? {value} :
+            staticField ? value :
             <Textarea
                 id={id}
                 onChangeHandler={this._onChange}
                 placeholder={placeholder}
-                value={value != null ? value.toString() : ''}
+                value={value}
                 autofocus={focusOnLoad}
                 autoGrow={textareaAutoGrow}
             />
