@@ -9,6 +9,7 @@ exports[`The FileUpload component should render 1`] = `
     id="testFileUpload"
     name="testFileUpload"
     onChange={[Function]}
+    placeholder="A text placeholder"
     type="file"
   />
   <div

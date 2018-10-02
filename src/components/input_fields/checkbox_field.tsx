@@ -5,6 +5,9 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import Checkbox from '../checkbox';
 
 
+/**
+ * The checkbox field provides these props in addition to those supported by all input fields.
+ */
 export interface CheckboxFieldProps extends InputFieldProps {
     /** Whether the checkbox is selected **/
     value: boolean;
@@ -12,6 +15,9 @@ export interface CheckboxFieldProps extends InputFieldProps {
     onChangeHandler: (id: string, value: boolean) => any;
 }
 
+/**
+ * The checkbox field keeps track of whether it has been touched.
+ */
 export interface CheckboxFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;

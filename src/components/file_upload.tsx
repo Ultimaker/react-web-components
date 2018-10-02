@@ -1,6 +1,8 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import classNames from 'classnames';
 import { I18n } from '../utils/i18n';
+import Spinner from './spinner';
 
 export interface FileUploadProps {
     /** FileUpload id. Must be unique */
@@ -9,6 +11,10 @@ export interface FileUploadProps {
     onChangeHandler: (value: HTMLInputElement) => void;
     /** Disables the file upload when true */
     disabled?: boolean;
+    /** Whether the file is being uploaded (so the upload button is disabled) **/
+    uploading?: boolean;
+    /** Placeholder text */
+    placeholder?: string;
 }
 
 export interface FileUploadState {
@@ -36,7 +42,7 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
     }
 
     render(): JSX.Element {
-        const { id, disabled } = this.props;
+        const { id, disabled, placeholder, uploading } = this.props;
         const { selectedFileName } = this.state;
 
         const classes = classNames('file-upload', { disabled });
@@ -49,13 +55,18 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
                 type="file"
                 onChange={this._onChangeHandler}
                 disabled={disabled}
+                placeholder={placeholder}
             />
             <div className="layout layout--gutter-sm">
                 <div className="layout__item u-fill file-upload__input-container">
                     <label className={inputClasses} htmlFor={id}>{selectedFileName}</label>
                 </div>
                 <div className="layout__item u-fit">
-                    <label className='btn btn--primary' htmlFor={id}>{I18n.translate('file upload button', 'Choose file')}</label>
+                    <label className='btn btn--primary' htmlFor={id}>
+                        {I18n.translate('file upload button', 'Choose file')}
+                        {/* TODO: Check with Alan which classes we need to have the spinner keep the button size */}
+                        {uploading && <Spinner />}
+                    </label>
                 </div>
             </div>
         </div>

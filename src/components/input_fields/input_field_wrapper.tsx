@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import InputFieldLabel from './input_field_label';
 import InputFieldValidation from './input_field_validation';
-import RequiredIcon from '../icons/required_icon'
+import RequiredIcon from '../icons/required_icon';
 
 export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
@@ -34,19 +34,22 @@ export interface InputFieldProps {
     /** Description of the fields to be shown in a tooltip */
     infoText?: string;
     /** JSX Element, such as an icon, to be shown before the input label */
-    preLabelElement?: JSX.Element;
+    preLabelElement?: JSX.Element | string;
     /** Displays the required icon when true */
     required?: boolean;
     /** Whether the form has been submitted. This will be set by the Form component */
     submitted?: boolean;
-    /** Message to show for the validation error. Can be any[] if returned from I18n.format */
-    validationError?: string | any[];
+    /**
+     * Message to show for the validation error.
+     * It should be translated. Can be JSX.Element[] if returned from I18n.interpolateElements
+     **/
+    validationError?: string | JSX.Element[];
 }
 
 /**
  * The input field wrapper has also some properties that must be passed by the input fields themselves.
  */
-interface InputFieldWrapperProps extends InputFieldProps {
+export interface InputFieldWrapperProps extends InputFieldProps {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
 
@@ -54,7 +57,7 @@ interface InputFieldWrapperProps extends InputFieldProps {
     children: any;
 }
 
-class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
+export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
     state = {
         touched: false,
     };
@@ -96,7 +99,7 @@ class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
     private _renderValidation(): JSX.Element {
         const {validationError, labelLayoutWidth, labelWidthBreakpoint, required} = this.props;
 
-        if (this._showValidationError() && validationError) {
+        if (this._showValidationError()) {
             return <InputFieldValidation
                 validationError={validationError}
                 labelLayoutWidth={labelLayoutWidth}

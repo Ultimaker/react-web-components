@@ -17,8 +17,9 @@ describe('The children field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
+            children,
         };
-        wrapper = shallow(<ChildrenField {...props}>{children}</ChildrenField>);
+        wrapper = shallow(<ChildrenField {...props} />);
     });
 
     it('should render a wrapper', () => {

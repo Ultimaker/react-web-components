@@ -5,13 +5,24 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import FileUpload from '../file_upload';
 
 
+/**
+ * The checkbox field provides these props in addition to those supported by all input fields.
+ * Note that this field does not have a value prop.
+ */
 export interface FileUploadFieldProps extends InputFieldProps {
     /** Called when a file is selected */
-    onChangeHandler: (id: string, target: HTMLInputElement) => void;
-    /** Called when a file is read */
-    onReadHandler?: (id: string, value: string) => Promise<any>;
+    onChangeHandler?: (id: string, target: HTMLInputElement) => void;
+    /** Called when a file is read. The promise should be fulfilled when the file is ready uploading. */
+    onReadHandler?: (id: string, value: string) => void;
+    /** Placeholder text */
+    placeholder?: string;
+    /** Whether the file is being uploaded (so the upload button is disabled) **/
+    uploading?: boolean;
 }
 
+/**
+ * The file upload field keeps track of whether it has been touched.
+ */
 export interface FileUploadFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
@@ -23,8 +34,12 @@ export interface FileUploadFieldState {
  */
 class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFieldState> {
     state = {
-        touched: false
+        touched: false,
     };
+
+    static defaultProps = {
+        uploading: false,
+    }
 
     constructor(props) {
         super(props);
@@ -47,7 +62,7 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
     }
 
     render() {
-        const {...wrapperProps} = this.props;
+        const {placeholder, uploading, ...wrapperProps} = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper touched={touched} {...wrapperProps}>
@@ -55,6 +70,8 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
                 id={id}
                 onChangeHandler={this._onChange}
                 disabled={staticField}
+                uploading={uploading}
+                placeholder={placeholder}
             />
         </InputFieldWrapper>;
     }

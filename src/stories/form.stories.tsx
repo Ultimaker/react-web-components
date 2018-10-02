@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, number, selectV2 } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
@@ -8,6 +8,7 @@ import { withState } from '@dump247/storybook-state';
 import InputField from '../components/input_field';
 import { ImageFile } from '../components/image_upload';
 import { Tile } from '../components/tile';
+import FileUploadField from '../components/input_fields/file_upload_field';
 
 const stories = storiesOf('Forms', module);
 
@@ -193,16 +194,15 @@ stories.add('Tags selector', withState({ value: ['Manchester', 'Utrecht'] })
 
 stories.add('Upload file field', withState({ value: null })
     (withInfo('Upload file field')
-        (({ store }) =>
-            <div style={{ width: 350 }}>
-                <InputField type="file"
+        (() =>
+            <div style={{width: 350}}>
+                <FileUploadField
                     id="id_11"
                     label={text('Label', 'Upload file')}
-                    value={store.state.value}
-                    onChangeHandler={(id, value) => store.set({ value: value["files"][0]["name"] })}
-                    placeholder={text('Placeholder text', 'Placeholder text')}  // TODO: Support placeholder
-                    focusOnLoad
-                    validationError={text('Validation error message', 'Validation Error')} />
+                    uploading={boolean("Uploading", false)}
+                    placeholder={text('Placeholder text', 'Placeholder text')}
+                    validationError={text('Validation error message', 'Validation Error')}
+                />
             </div>
         )
     )

@@ -19,6 +19,8 @@ describe('The file upload field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
+            placeholder: "a text placeholder",
+            uploading: false,
         };
         wrapper = shallow(<FileUploadField {...props} />);
     });
@@ -30,9 +32,11 @@ describe('The file upload field component', () => {
 
     it('should render a file upload', () => {
         expect(wrapper.find(FileUpload).props()).toEqual({
-            disabled: false,
-            id: "testInputField",
             onChangeHandler: wrapper.instance()._onChange,
+            id: props.id,
+            disabled: props.staticField,
+            placeholder: props.placeholder,
+            uploading: props.uploading,
         });
     })
 

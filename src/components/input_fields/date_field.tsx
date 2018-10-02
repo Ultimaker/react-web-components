@@ -5,6 +5,9 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import DatePicker from '../date_picker';
 import moment = require('moment');
 
+/**
+ * The date field provides these props in addition to those supported by all input fields.
+ */
 export interface DateFieldProps extends InputFieldProps {
     /** The date currently selected **/
     value: string;
@@ -16,6 +19,9 @@ export interface DateFieldProps extends InputFieldProps {
     placeholder?: string;
 }
 
+/**
+ * The date field keeps track of whether it has been touched.
+ */
 export interface DateFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;

@@ -1,25 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The wrapped input field component should render a wrapper 1`] = `
-<InputFieldWrapper
-  focusOnLoad={true}
-  id="testInputField"
-  labelLayoutWidth="1/1"
-  labelWidthBreakpoint="sm"
-  onChangeHandler={[MockFunction]}
-  staticField={false}
-  touched={false}
+exports[`The input field wrapper component should render a static field 1`] = `
+<div
+  className="input-field layout test-input-class hide-input"
 >
-  <input
-    className="input"
-    id="testInputField"
-    max={1000}
-    min={1}
-    name="testInputField"
-    onChange={[Function]}
-    placeholder="placeholder text"
-    type="text"
-    value="2018"
+  <InputFieldLabel
+    id="testInputId"
+    infoLinkURL="http://info.url"
+    infoText="Click for more info"
+    label="Test Input Label"
+    labelLayoutWidth="1/2"
+    labelWidthBreakpoint="xs"
+    preLabelElement="*"
   />
-</InputFieldWrapper>
+  <div
+    className="layout__item u-fit layout__item--middle test-input-class text-center"
+  >
+    <div>
+      child
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The input field wrapper component should render a wrapper with all options 1`] = `
+<div
+  className="input-field layout test-input-class"
+>
+  <InputFieldLabel
+    id="testInputId"
+    infoLinkURL="http://info.url"
+    infoText="Click for more info"
+    label="Test Input Label"
+    labelLayoutWidth="1/2"
+    labelWidthBreakpoint="xs"
+    preLabelElement="*"
+  />
+  <div
+    className="layout__item u-fill layout__item--middle test-input-class text-center"
+  >
+    <div
+      className="input-container layout layout--gutter-xs"
+    >
+      <div
+        className="layout__item u-fill"
+      >
+        <div>
+          child
+        </div>
+      </div>
+      <div
+        className="layout__item u-fit input-field__field-addition"
+      >
+        <Icon(RequiredIcon) />
+      </div>
+    </div>
+  </div>
+  <InputFieldValidation
+    labelLayoutWidth="1/2"
+    labelWidthBreakpoint="xs"
+    required={true}
+    validationError="A validation error!"
+  />
+</div>
+`;
+
+exports[`The input field wrapper component should render a wrapper without any options 1`] = `
+<div
+  className="input-field layout"
+>
+  <div
+    className="layout__item u-fill layout__item--middle"
+  >
+    <div
+      className="input-container layout layout--gutter-xs"
+    >
+      <div
+        className="layout__item u-fill"
+      >
+        <div>
+          child
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

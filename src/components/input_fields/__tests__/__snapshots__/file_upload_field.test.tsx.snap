@@ -14,6 +14,8 @@ exports[`The file upload field component should render a wrapper 1`] = `
     disabled={false}
     id="testInputField"
     onChangeHandler={[Function]}
+    placeholder="a text placeholder"
+    uploading={false}
   />
 </InputFieldWrapper>
 `;

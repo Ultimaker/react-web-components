@@ -18,7 +18,7 @@ export interface InputFieldLabelProps {
     /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
     labelWidthBreakpoint: Breakpoint;
     /** JSX Element, such as an icon, to be shown before the input label */
-    preLabelElement?: JSX.Element;
+    preLabelElement?: JSX.Element | string;
     /** Description of the fields to be shown in a tooltip */
     infoText?: string
     /** The URL of the link to be shown next to the input field */

@@ -4,9 +4,11 @@ import * as React from 'react';
 import {InputFieldProps} from './input_field_wrapper';
 import WrappedInputField from './wrapped_input_field';
 
+export type TextFieldType = 'text' | 'password' | 'email' | 'url';
+
 export interface TextFieldProps extends InputFieldProps {
     /** Type of the input field */
-    type?: 'text' | 'password' | 'email' | 'url';
+    type?: TextFieldType;
     /** Input field value */
     value: string;
     /** Called when the field changes */
@@ -17,7 +19,12 @@ export interface TextFieldProps extends InputFieldProps {
     placeholder?: string;
 }
 
-function staticRender(type: string, value: string): JSX.Element | string {
+/**
+ * Renders the input field's value in static mode.
+ * @param type - The type of field.
+ * @param value - The value of the field.
+ */
+function staticRender(type: TextFieldType, value: string): JSX.Element | string {
     switch (type) {
         case "email":
             return <a href={`mailto:${value}`} target="_top">{value}</a>;
@@ -30,6 +37,11 @@ function staticRender(type: string, value: string): JSX.Element | string {
     }
 }
 
+/**
+ * The text field is a normal HTML input field that includes all the standard wrapping.
+ * @param wrapperProps - The properties to be passed to the wrapper.
+ * @constructor
+ */
 const TextField: React.StatelessComponent<TextFieldProps> = ({
     ...wrapperProps
 }) =>

@@ -6,6 +6,9 @@ import ImageUpload, {ImageFile} from '../image_upload';
 import {Image, ImageShape} from '../image';
 
 
+/**
+ * The image upload field provides these props in addition to those supported by all input fields.
+ */
 export interface ImageUploadFieldProps extends InputFieldProps {
     /** Size of the image for type image. Include size unit */
     imageSize: string;
@@ -26,6 +29,9 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     value: string;
 }
 
+/**
+ * The image upload field keeps track of whether it has been touched.
+ */
 export interface ImageUploadFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
