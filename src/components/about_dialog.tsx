@@ -41,7 +41,7 @@ export interface AboutDialogProps {
     supportLinkText?: string;
 }
 
-interface OpenSourceComponent {
+export interface OpenSourceComponent {
     name: string;
     license: string;
     url: string;
