@@ -64,7 +64,7 @@ describe('The text field component', () => {
 
     it('should render an empty password', () => {
         wrapper.setProps({staticField: true, type: "password", value: null})
-        expect(wrapper.find(WrappedInputField).prop("children")).toEqual('');
+        expect(wrapper.find(WrappedInputField).prop("children")).toEqual(null);
     })
 
     it('should call the callback', () => {

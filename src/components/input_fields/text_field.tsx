@@ -10,7 +10,7 @@ export interface TextFieldProps extends InputFieldProps {
     /** Type of the input field */
     type?: TextFieldType;
     /** Input field value */
-    value: string;
+    value: string | null;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
     /** If true, the field will be focused when loaded */
@@ -29,9 +29,9 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
         case "email":
             return <a href={`mailto:${value}`} target="_top">{value}</a>;
         case "url":
-            return <a href={value.toString()} target="_blank">{value}</a>;
+            return <a href={value} target="_blank">{value}</a>;
         case "password":
-            return "*".repeat(typeof(value) === "string" ? value.length : 0);
+            return "*".repeat(value.length);
         default:
             return value;
     }
@@ -46,7 +46,7 @@ const TextField: React.StatelessComponent<TextFieldProps> = ({
     ...wrapperProps
 }) =>
     <WrappedInputField {...wrapperProps}>
-        {staticRender(wrapperProps.type, wrapperProps.value)}
+        {wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
     </WrappedInputField>;
 
 TextField.displayName = "TextField";

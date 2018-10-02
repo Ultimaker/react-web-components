@@ -9,7 +9,7 @@ export interface WrappedInputFieldProps extends InputFieldProps {
     /** Type of the input field */
     type?: 'text' | 'password' | 'email' | 'url' | 'number';
     /** Input field value */
-    value: string;
+    value: string | null;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
     /** If true, the field will be focused when loaded */
@@ -84,7 +84,7 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
                 max={max ? max : null}
                 onChange={this._onChange}
                 placeholder={placeholder}
-                value={value != null ? value.toString() : ''}
+                value={value || ""}
                 ref={this._inputRef}
             />
         }</InputFieldWrapper>;
