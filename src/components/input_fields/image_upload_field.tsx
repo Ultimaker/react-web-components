@@ -17,10 +17,10 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     imageShape: ImageShape;
 
     /** Called when the field changes */
-    onChangeHandler: (id: string, value: ImageFile) => void;
+    onChangeHandler: (id: string, value: ImageFile) => any;
 
     /** Called when an image file is read */
-    onReadHandler: (id: string, value: string) => Promise<any>;
+    onReadHandler: (id: string, file: ImageFile, contents: string) => any;
 
     /** html placeholder text */
     placeholder?: string;
@@ -54,20 +54,14 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
 
     private _onChange(value: ImageFile): void {
         this.setState({touched: true});
-        const {onChangeHandler, onReadHandler, id} = this.props;
+        const {onChangeHandler, id} = this.props;
         if (onChangeHandler) {
             onChangeHandler(id, value);
-        }
-        if (onReadHandler) {
-            const reader = new FileReader();
-            reader.onload = () => onReadHandler(id, reader.result as string);
-            reader.onerror = console.error; // TODO
-            reader.readAsDataURL(value);
         }
     }
 
     render() {
-        const {imageSize, imageShape, placeholder, value, ...wrapperProps} = this.props;
+        const {imageSize, imageShape, placeholder, value, onReadHandler, ...wrapperProps} = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper touched={touched} {...wrapperProps}>{
@@ -78,6 +72,7 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
                     size={imageSize}
                     imageURL={value && value.toString()}
                     onFileSelection={this._onChange}
+                    onFileRead={(file, contents) => onReadHandler(id, file, contents)}
                     shape={imageShape}
                     placeholderLabel={placeholder}
                 />

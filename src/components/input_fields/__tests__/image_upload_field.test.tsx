@@ -43,6 +43,7 @@ describe('The image upload field component', () => {
         expect(wrapper.find(ImageUpload).props()).toEqual({
             id: "testInputField",
             onFileSelection: wrapper.instance()._onChange,
+            onFileRead: expect.any(Function),
             size: props.imageSize,
             imageURL: props.value,
             placeholderLabel: props.placeholder,
@@ -58,13 +59,10 @@ describe('The image upload field component', () => {
         wrapper.find(ImageUpload).prop("onFileSelection")(image);
 
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, image);
+        const contents = 'data:image/jpeg;base64,' + btoa('A+test+string+for+testing+image');
+        wrapper.find(ImageUpload).prop("onFileRead")(image, contents);
 
-        // wait for image to be read
-        await new Promise(setImmediate);
-        await new Promise(setImmediate);
-
-        const expected = 'data:image/jpeg;base64,' + btoa('A+test+string+for+testing+image');
-        expect(props.onReadHandler).toHaveBeenCalledWith(props.id, expected);
+        expect(props.onReadHandler).toHaveBeenCalledWith(props.id, image, contents);
         expect(wrapper.find(InputFieldWrapper).prop("touched")).toEqual(true);
     });
 
