@@ -20,7 +20,7 @@ export interface SelectFieldState {
 
 /**
  * Class that adds an input wrapper around a SelectList component.
- * TODO: Merge the two fields
+ * TODO: Merge SelectField and SelectList?
  */
 class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
     state = {

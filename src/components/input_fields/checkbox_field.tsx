@@ -25,7 +25,7 @@ export interface CheckboxFieldState {
 
 /**
  * Class that adds an input wrapper around a Checkbox component.
- * TODO: merge the two components
+ * TODO: merge Checkbox and CheckboxField?
  */
 class CheckboxField extends React.Component<CheckboxFieldProps, CheckboxFieldState> {
     state = {

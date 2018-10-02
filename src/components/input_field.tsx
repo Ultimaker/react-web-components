@@ -75,16 +75,16 @@ export class InputField extends React.Component<OldInputFieldProps, {}> {
         file: FileUploadField,
         children: ChildrenField,
         tags: TagsField,
+        text: TextField,
+        password: TextField,
+        email: TextField,
+        url: TextField,
     };
 
     render() {
-        const {type, value, children, ...wrapperProps} = this.props;
-        if (type === 'text' || type === 'password' || type === 'email' || type === 'url') {
-            return <TextField value={value && value.toString()} type={type} {...wrapperProps}>{children}</TextField>;
-        } else {
-            const Component = this.input_fields[type];
-            return <Component value={value} {...wrapperProps}>{children}</Component>;
-        }
+        const {children, ...wrapperProps} = this.props;
+        const Component = this.input_fields[wrapperProps.type];
+        return <Component {...wrapperProps}>{children}</Component>;
     }
 }
 

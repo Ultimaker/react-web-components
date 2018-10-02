@@ -44,6 +44,7 @@ describe('The InputField component', () => {
             children: undefined,
             id: "testInputField",
             min: 1,
+            type: "number",
             labelLayoutWidth: "1/1",
             labelWidthBreakpoint: "sm",
             onChangeHandler: props.onChangeHandler,

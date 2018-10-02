@@ -25,7 +25,7 @@ export interface TagsFieldState {
 
 /**
  * Class that adds an input wrapper around a TagsSelector component.
- * TODO: merge the two components
+ * TODO: merge TagsField and TagsSelector?
  */
 class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
     state = {

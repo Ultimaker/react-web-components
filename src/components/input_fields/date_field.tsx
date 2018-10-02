@@ -29,7 +29,7 @@ export interface DateFieldState {
 
 /**
  * Class that adds an input wrapper around a DatePicker component.
- * TODO: merge the two components
+ * TODO: merge DateField and DatePicker?
  */
 class DateField extends React.Component<DateFieldProps, DateFieldState> {
     state = {

@@ -39,7 +39,7 @@ export interface ImageUploadFieldState {
 
 /**
  * Class that adds an input wrapper around a ImageUpload component.
- * TODO: merge the two components
+ * TODO: merge ImageUpload and ImageUploadField?
  */
 class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploadFieldState> {
     state = {
