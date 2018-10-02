@@ -4,11 +4,21 @@ import { withKnobs, text, boolean, number, selectV2 } from '@storybook/addon-kno
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
+import { action } from '@storybook/addon-actions';
 
+// components
 import InputField from '../components/input_field';
 import { ImageFile } from '../components/image_upload';
 import { Tile } from '../components/tile';
 import FileUploadField from '../components/input_fields/file_upload_field';
+import TextField from '../components/input_fields/text_field';
+import NumberField from '../components/input_fields/number_field';
+import TextareaField from '../components/input_fields/textarea_field';
+import CheckboxField from '../components/input_fields/checkbox_field';
+import SelectField from '../components/input_fields/select_field';
+import ImageUploadField from '../components/input_fields/image_upload_field';
+import DateField from '../components/input_fields/date_field';
+import TagsField from '../components/input_fields/tags_field';
 
 const stories = storiesOf('Forms', module);
 
@@ -24,7 +34,7 @@ stories.add('Text field', withState({ value: null })
     (withInfo('Text input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField
+                <TextField
                     value={store.state.value}
                     type="text"
                     id="id_1"
@@ -42,9 +52,8 @@ stories.add('Number field', withState({ value: 1 })
     (withInfo('Number input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField
+                <NumberField
                     value={store.state.value}
-                    type="number"
                     id="id_2"
                     min={1}
                     max={100}
@@ -61,8 +70,7 @@ stories.add('Text area', withState({ value: null })
     (withInfo('Textarea input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField
-                    type="textarea"
+                <TextareaField
                     id="id_3"
                     value={store.state.value}
                     focusOnLoad
@@ -79,7 +87,7 @@ stories.add('Password field', withState({ value: null })
     (withInfo('Password input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField
+                <TextField
                     type="password"
                     id="id_4"
                     value={store.state.value}
@@ -96,7 +104,8 @@ stories.add('Email field', withState({ value: null })
     (withInfo('Email input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField type="email"
+                <TextField
+                    type="email"
                     id="id_5"
                     value={store.state.value}
                     label={text('Label', 'Enter your email address')}
@@ -111,7 +120,7 @@ stories.add('Email field', withState({ value: null })
 stories.add('Checkbox', withState({ value: null })
     (withInfo('Checkbox input field')
         (({ store }) =>
-            <InputField type="checkbox"
+            <CheckboxField
                 id="id_6"
                 value={store.state.value}
                 label={text('Label', 'Checkbox label')}
@@ -125,7 +134,7 @@ stories.add('Select field', withState({ value: null })
     (withInfo('Select input field')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField type="select"
+                <SelectField
                     id="id_7"
                     value={store.state.value}
                     label={text('Label', 'Select an option')}
@@ -151,10 +160,12 @@ stories.add('Image upload', withState({ value: null })
     (withInfo('Image drag and drop or click to upload')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField type="image"
+                <ImageUploadField
+                    imageSize="18rem"
                     id="id_8"
                     value={store.state.value}
                     onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
+                    onReadHandler={action('read')}
                     imageShape={selectV2('Image shape', options, defaultValue)}
                     placeholder={text('Placeholder Label', 'Upload an image')} />
             </div>
@@ -166,7 +177,7 @@ stories.add('Date picker', withState({ value: '10-10-2018' })
     (withInfo('Date selection field')
         (({ store }) =>
             <div style={{ width: 250 }}>
-                <InputField type="date"
+                <DateField
                     id="id_9"
                     value={store.state.value}
                     onChangeHandler={(id, value) => store.set({ value })} />
@@ -180,7 +191,7 @@ stories.add('Tags selector', withState({ value: ['Manchester', 'Utrecht'] })
         (({ store }) =>
             <Tile>
                 <div style={{ width: 350 }}>
-                    <InputField type="tags"
+                    <TagsField
                         id="id_10"
                         value={store.state.value}
                         onChangeHandler={(id, value) => store.set({ value })}
@@ -195,7 +206,7 @@ stories.add('Tags selector', withState({ value: ['Manchester', 'Utrecht'] })
 stories.add('Upload file field', withState({ value: null })
     (withInfo('Upload file field')
         (() =>
-            <div style={{width: 350}}>
+            <div style={{ width: 350 }}>
                 <FileUploadField
                     id="id_11"
                     label={text('Label', 'Upload file')}
@@ -217,7 +228,7 @@ stories.add('Custom input field', withState({ value: null })
                     type="children"
                     id="id_12"
                     label={text('Label', 'Input field')}
-                    onChangeHandler={() => {}}
+                    onChangeHandler={() => { }}
                     validationError={text('Validation error message', 'Validation Error')}
                     submitted={typeof store.state.value === 'string'}
                 >
