@@ -46,10 +46,10 @@ class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
     }
 
     render() {
-        const {value, selectOptions, ...wrapperProps} = this.props;
+        const {value, selectOptions, children, ...wrapperProps} = this.props;
         const {id, staticField, validationError, submitted} = wrapperProps;
         const {touched} = this.state;
-        return <InputFieldWrapper touched={touched} {...wrapperProps}>{
+        return <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>{
             staticField ? this._staticRender() :
             <SelectList
                 id={id}

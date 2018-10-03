@@ -23,6 +23,7 @@ describe('The wrapped input field component', () => {
             placeholder: 'placeholder text',
             min: 1,
             max: 1000,
+            inputChildren: null,
         };
         wrapper = shallow(<WrappedInputField {...props} />);
     });
@@ -45,6 +46,7 @@ describe('The wrapped input field component', () => {
             labelLayoutWidth: "1/1",
             labelWidthBreakpoint: "sm",
             onChangeHandler: props.onChangeHandler,
+            inputChildren: props.inputChildren,
             staticField: false,
             touched: false,
         });

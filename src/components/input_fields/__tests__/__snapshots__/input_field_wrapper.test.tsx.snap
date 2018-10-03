@@ -16,8 +16,12 @@ exports[`The input field wrapper component should render a static field 1`] = `
   <div
     className="layout__item u-fit layout__item--middle test-input-class text-center"
   >
-    <div>
-      child
+    <div
+      className="static-field"
+    >
+      <div>
+        child
+      </div>
     </div>
   </div>
 </div>

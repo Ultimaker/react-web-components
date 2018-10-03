@@ -17,6 +17,8 @@ export interface TextFieldProps extends InputFieldProps {
     focusOnLoad?: boolean;
     /** html placeholder text */
     placeholder?: string;
+    /** Optional extra elements to be displayed after the input **/
+    children?: any;
 }
 
 /**
@@ -46,9 +48,8 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
 const TextField: React.StatelessComponent<TextFieldProps> = ({
     children, ...wrapperProps
 }) =>
-    <WrappedInputField {...wrapperProps}>
+    <WrappedInputField inputChildren={children} {...wrapperProps}>
         {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
-        {children}
     </WrappedInputField>;
 
 TextField.displayName = "TextField";

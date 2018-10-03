@@ -51,7 +51,8 @@ describe('The number field component', () => {
             onChangeHandler: expect.any(Function),
             type: "number",
             value: "2018",
-            children: [false, undefined],
+            children: false,
+            inputChildren: undefined,
         });
     })
 

@@ -61,10 +61,10 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
     }
 
     render() {
-        const {imageSize, imageShape, placeholder, value, onReadHandler, ...wrapperProps} = this.props;
+        const {imageSize, imageShape, placeholder, value, onReadHandler, children, ...wrapperProps} = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
-        return <InputFieldWrapper touched={touched} {...wrapperProps}>{
+        return <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>{
             staticField ?
                 <Image src={value} size={imageSize} shape={imageShape}/> :
                 <ImageUpload

@@ -21,6 +21,9 @@ export interface WrappedInputFieldProps extends InputFieldProps {
     min?: number;
     /** Maximum value for number field */
     max?: number;
+
+    /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
+    inputChildren: any;
 }
 
 export interface WrappedInputFieldState {
@@ -66,10 +69,10 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
     }
 
     render() {
-        const {type, value, placeholder, min, max, children, ...wrapperProps} = this.props;
+        const {type, value, placeholder, min, max, children, inputChildren, ...wrapperProps} = this.props;
         const {id, validationError, submitted, staticField} = wrapperProps;
         const {touched} = this.state;
-        return <InputFieldWrapper touched={touched} {...wrapperProps}>
+        return <InputFieldWrapper touched={touched} inputChildren={inputChildren} {...wrapperProps}>
             {!staticField && <input
                 id={id}
                 className={classNames('input', {'error': validationError && (touched || submitted)})}

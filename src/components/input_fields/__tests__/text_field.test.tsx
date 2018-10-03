@@ -35,39 +35,46 @@ describe('The text field component', () => {
     })
 
     it('should render a wrapped input', () => {
-        props['staticField'] = true
+        props.staticField = true
+        props.children = 'a child'
         wrapper.setProps(props)
-        props['children'] = [props.value, undefined]
+        props['inputChildren'] = props['children']
+        props.children = props.value
         expect(wrapper.find(WrappedInputField).props()).toEqual(props);
     })
 
     it('should render a static text', () => {
         wrapper.setProps({staticField: true, children: "a child"})
-        expect(wrapper.find(WrappedInputField).prop("children")).toEqual([props.value, "a child"]);
+        expect(wrapper.find(WrappedInputField).prop("children")).toEqual(props.value);
+        expect(wrapper.find(WrappedInputField).prop("inputChildren")).toEqual("a child");
     })
 
     it('should render a static e-mail', () => {
         wrapper.setProps({staticField: true, type: "email"})
         expect(wrapper.find(WrappedInputField).prop("children")).toEqual(
-            [<a href={"mailto:" + props.value} target="_top">{props.value}</a>, undefined]
+            <a href={"mailto:" + props.value} target="_top">{props.value}</a>
         );
+        expect(wrapper.find(WrappedInputField).prop("inputChildren")).toBeUndefined();
     })
 
     it('should render a static URL', () => {
         wrapper.setProps({staticField: true, type: "url", children: <div>child</div>})
+        expect(wrapper.find(WrappedInputField).prop("inputChildren")).toEqual(<div>child</div>)
         expect(wrapper.find(WrappedInputField).prop("children")).toEqual(
-            [<a href={props.value} target="_blank">{props.value}</a>, <div>child</div>]
+            <a href={props.value} target="_blank">{props.value}</a>
         );
     })
 
     it('should render a static password', () => {
         wrapper.setProps({staticField: true, type: "password"})
-        expect(wrapper.find(WrappedInputField).prop("children")).toEqual(["****", undefined]);
+        expect(wrapper.find(WrappedInputField).prop("children")).toEqual("****");
+        expect(wrapper.find(WrappedInputField).prop("inputChildren")).toBeUndefined();
     })
 
     it('should render an empty password', () => {
         wrapper.setProps({staticField: true, type: "password", value: null})
-        expect(wrapper.find(WrappedInputField).prop("children")).toEqual([null, undefined]);
+        expect(wrapper.find(WrappedInputField).prop("children")).toEqual(null);
+        expect(wrapper.find(WrappedInputField).prop("inputChildren")).toBeUndefined();
     })
 
     it('should call the callback', () => {

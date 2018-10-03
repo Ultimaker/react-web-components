@@ -27,10 +27,10 @@ const NumberField: React.StatelessComponent<NumberFieldProps> = ({
         type="number"
         value={value || value === 0 ? value.toString() : null}
         onChangeHandler={(id, val) => onChangeHandler(id, val ? parseFloat(val) : null)}
+        inputChildren={children}
         {...wrapperProps}
     >
         {wrapperProps.staticField && value}
-        {children}
     </WrappedInputField>;
 
 
