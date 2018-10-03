@@ -117,9 +117,7 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
     render(): JSX.Element {
         const {className, staticField} = this.props;
 
-        // TODO: Check with Alan if the CSS rules are still working.
         const inputClasses = classNames(`input-field layout`, className, {'hide-input': staticField});
-
         return (
             <div className={inputClasses}>
                 {this._renderLabel()}
@@ -132,9 +130,8 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
     private _renderInputChildren(): JSX.Element {
         const { inputChildren } = this.props;
-
         if (inputChildren) {
-            return <div className="layout__item u-fit">
+            return <div className="layout__item u-fit input-children">
                 {inputChildren}
             </div>
         }
@@ -144,7 +141,6 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
     private _renderInput() {
         const {labelLayoutWidth, centerInputField, staticField, className, children} = this.props;
 
-        // TODO: Check with Alan if the CSS rules are still working.
         const inputLayoutWidth = staticField || labelLayoutWidth === 'fill' ? 'fit' : 'fill';
         const inputLayoutClasses = classNames(
             `layout__item u-${inputLayoutWidth} layout__item--middle`,
@@ -163,7 +159,6 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
             }
 
             {staticField && <div className="static-field">{children}</div>}
-
         </div>;
     }
 

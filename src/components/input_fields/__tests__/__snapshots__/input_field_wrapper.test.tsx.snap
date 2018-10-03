@@ -24,6 +24,13 @@ exports[`The input field wrapper component should render a static field 1`] = `
       </div>
     </div>
   </div>
+  <div
+    className="layout__item u-fit input-children"
+  >
+    <div>
+      input child
+    </div>
+  </div>
 </div>
 `;
 
@@ -60,6 +67,13 @@ exports[`The input field wrapper component should render a wrapper with all opti
       </div>
     </div>
   </div>
+  <div
+    className="layout__item u-fit input-children"
+  >
+    <div>
+      input child
+    </div>
+  </div>
   <InputFieldValidation
     labelLayoutWidth="1/2"
     labelWidthBreakpoint="xs"
@@ -81,11 +95,7 @@ exports[`The input field wrapper component should render a wrapper without any o
     >
       <div
         className="layout__item u-fill"
-      >
-        <div>
-          child
-        </div>
-      </div>
+      />
     </div>
   </div>
 </div>
