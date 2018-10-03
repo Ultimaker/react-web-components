@@ -40,13 +40,15 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
 /**
  * The text field is a normal HTML input field that includes all the standard wrapping.
  * @param wrapperProps - The properties to be passed to the wrapper.
+ * @param children - Any extra children to be displayed after the text.
  * @constructor
  */
 const TextField: React.StatelessComponent<TextFieldProps> = ({
-    ...wrapperProps
+    children, ...wrapperProps
 }) =>
     <WrappedInputField {...wrapperProps}>
-        {wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
+        {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
+        {children}
     </WrappedInputField>;
 
 TextField.displayName = "TextField";
