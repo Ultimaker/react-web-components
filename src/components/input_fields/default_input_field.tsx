@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import {RefObject} from 'react';
 
-export interface WrappedInputFieldProps extends InputFieldProps {
+export interface DefaultInputFieldProps extends InputFieldProps {
     /** Type of the input field */
     type?: 'text' | 'password' | 'email' | 'url' | 'number';
     /** Input field value */
@@ -21,9 +21,12 @@ export interface WrappedInputFieldProps extends InputFieldProps {
     min?: number;
     /** Maximum value for number field */
     max?: number;
+
+    /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
+    inputChildren: any;
 }
 
-export interface WrappedInputFieldState {
+export interface DefaultInputFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
 }
@@ -31,7 +34,7 @@ export interface WrappedInputFieldState {
 /**
  * Class that adds an input wrapper around a HTML input component.
  */
-class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedInputFieldState> {
+class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultInputFieldState> {
     /** A reference object to set the focus on load if required **/
     private readonly _inputRef: RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
 
@@ -66,10 +69,10 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
     }
 
     render() {
-        const {type, value, placeholder, min, max, children, ...wrapperProps} = this.props;
+        const {type, value, placeholder, min, max, children, inputChildren, ...wrapperProps} = this.props;
         const {id, validationError, submitted, staticField} = wrapperProps;
         const {touched} = this.state;
-        return <InputFieldWrapper touched={touched} {...wrapperProps}>
+        return <InputFieldWrapper touched={touched} inputChildren={inputChildren} {...wrapperProps}>
             {!staticField && <input
                 id={id}
                 className={classNames('input', {'error': validationError && (touched || submitted)})}
@@ -87,4 +90,4 @@ class WrappedInputField extends React.Component<WrappedInputFieldProps, WrappedI
     }
 }
 
-export default WrappedInputField;
+export default DefaultInputField;

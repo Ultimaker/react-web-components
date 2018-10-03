@@ -43,10 +43,10 @@ class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldSta
     }
 
     render() {
-        const {value, textareaAutoGrow, focusOnLoad, placeholder, ...wrapperProps} = this.props;
+        const {value, textareaAutoGrow, focusOnLoad, placeholder, children, ...wrapperProps} = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
-        return <InputFieldWrapper touched={touched} {...wrapperProps}>{
+        return <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>{
             staticField ? value :
             <Textarea
                 id={id}

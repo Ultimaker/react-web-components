@@ -4,6 +4,7 @@ exports[`The wrapped input field component should render a wrapper 1`] = `
 <InputFieldWrapper
   focusOnLoad={true}
   id="testInputField"
+  inputChildren={null}
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
   onChangeHandler={[MockFunction]}

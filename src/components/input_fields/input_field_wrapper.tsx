@@ -55,6 +55,9 @@ export interface InputFieldWrapperProps extends InputFieldProps {
 
     /** Children are required and must include the input field both in static and non-static mode. **/
     children: any;
+
+    /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
+    inputChildren: any;
 }
 
 export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
@@ -114,22 +117,30 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
     render(): JSX.Element {
         const {className, staticField} = this.props;
 
-        // TODO: Check with Alan if the CSS rules are still working.
         const inputClasses = classNames(`input-field layout`, className, {'hide-input': staticField});
-
         return (
             <div className={inputClasses}>
                 {this._renderLabel()}
                 {this._renderInput()}
+                {this._renderInputChildren()}
                 {this._renderValidation()}
             </div>
         );
     };
 
+    private _renderInputChildren(): JSX.Element {
+        const { inputChildren } = this.props;
+        if (inputChildren) {
+            return <div className="layout__item u-fit input-children">
+                {inputChildren}
+            </div>
+        }
+        return null;
+    }
+
     private _renderInput() {
         const {labelLayoutWidth, centerInputField, staticField, className, children} = this.props;
 
-        // TODO: Check with Alan if the CSS rules are still working.
         const inputLayoutWidth = staticField || labelLayoutWidth === 'fill' ? 'fit' : 'fill';
         const inputLayoutClasses = classNames(
             `layout__item u-${inputLayoutWidth} layout__item--middle`,
@@ -147,7 +158,7 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
             </div>
             }
 
-            {staticField && children}
+            {staticField && <div className="static-field">{children}</div>}
         </div>;
     }
 

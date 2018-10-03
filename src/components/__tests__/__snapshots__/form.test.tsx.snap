@@ -59,7 +59,7 @@ exports[`The Form component should render with a form item 1`] = `
           type="text"
           value={null}
         >
-          <WrappedInputField
+          <DefaultInputField
             id="test"
             labelLayoutWidth="1/1"
             labelWidthBreakpoint="sm"
@@ -103,7 +103,7 @@ exports[`The Form component should render with a form item 1`] = `
                 </div>
               </div>
             </InputFieldWrapper>
-          </WrappedInputField>
+          </DefaultInputField>
         </TextField>
       </InputField>
     </div>

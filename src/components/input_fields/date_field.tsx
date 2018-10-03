@@ -53,20 +53,21 @@ class DateField extends React.Component<DateFieldProps, DateFieldState> {
     }
 
     render() {
-        const {value, format, placeholder, ...wrapperProps} = this.props;
+        const {value, format, placeholder, children, ...wrapperProps} = this.props;
         const {id, staticField, validationError, submitted} = wrapperProps;
         const {touched} = this.state;
-        return <InputFieldWrapper touched={touched} {...wrapperProps}>{
-            staticField ? typeof value === 'string' && moment(value).format(format) :
-            <DatePicker
-                id={id}
-                onChangeHandler={this._onChange}
-                value={value != null ? value.toString() : null}
-                error={validationError && (touched || submitted)}
-                format={format}
-                placeholder={placeholder}
-            />
-        }</InputFieldWrapper>;
+        return <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
+            {staticField ?
+                typeof value === 'string' && moment(value).format(format) :
+                <DatePicker
+                    id={id}
+                    onChangeHandler={this._onChange}
+                    value={value != null ? value.toString() : null}
+                    error={validationError && (touched || submitted)}
+                    format={format}
+                    placeholder={placeholder}
+                />}
+        </InputFieldWrapper>;
     }
 }
 

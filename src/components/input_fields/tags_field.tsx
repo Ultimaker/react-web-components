@@ -44,13 +44,14 @@ class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
     }
 
     render() {
-        const {placeholder, value, tagSuggestions, focusOnLoad, className, ...wrapperProps} = this.props;
+        const {placeholder, value, tagSuggestions, focusOnLoad, className, children, ...wrapperProps} = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
         return (
             <InputFieldWrapper
                 className={classNames(className, "input-field--tags")}
                 touched={touched}
+                inputChildren={children}
                 {...wrapperProps}>
                 <TagsSelector
                     id={id}

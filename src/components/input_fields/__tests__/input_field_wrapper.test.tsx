@@ -25,7 +25,8 @@ describe('The input field wrapper component', () => {
             submitted: false,
             validationError: "A validation error!",
             touched: true,
-            children: <div>child</div>
+            children: <div>child</div>,
+            inputChildren: <div>input child</div>,
         };
         wrapper = shallow(<InputFieldWrapper {...props} />);
     });
@@ -43,7 +44,8 @@ describe('The input field wrapper component', () => {
         props = {
             id: 'testInputId',
             touched: true,
-            children: <div>child</div>
+            children: null,
+            inputChildren: null,
         };
         wrapper = shallow(<InputFieldWrapper {...props} />);
         expect(wrapper).toMatchSnapshot();

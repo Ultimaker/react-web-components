@@ -4,7 +4,7 @@ exports[`The checkbox field component should render a wrapper 1`] = `
 <InputFieldWrapper
   className="input-field--checkbox"
   id="testInputField"
-  labelLayoutWidth="fill"
+  labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
   onChangeHandler={[MockFunction]}
   staticField={false}
