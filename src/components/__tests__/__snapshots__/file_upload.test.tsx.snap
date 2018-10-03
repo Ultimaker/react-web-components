@@ -30,7 +30,11 @@ exports[`The FileUpload component should render 1`] = `
         className="btn btn--primary"
         htmlFor="testFileUpload"
       >
-        Choose file
+        <span
+          className="text"
+        >
+          Choose file
+        </span>
       </label>
     </div>
   </div>

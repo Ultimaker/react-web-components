@@ -62,9 +62,8 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
                     <label className={inputClasses} htmlFor={id}>{selectedFileName}</label>
                 </div>
                 <div className="layout__item u-fit">
-                    <label className='btn btn--primary' htmlFor={id}>
-                        {I18n.translate('file upload button', 'Choose file')}
-                        {/* TODO: Check with Alan which classes we need to have the spinner keep the button size */}
+                    <label className={classNames('btn btn--primary', {waiting: uploading})} htmlFor={id}>
+                        <span className="text">{I18n.translate('file upload button', 'Choose file')}</span>
                         {uploading && <Spinner />}
                     </label>
                 </div>
