@@ -63,13 +63,13 @@ describe('The wrapped input field component', () => {
     })
 
     it('should render a static field', () => {
-        wrapper.setProps({staticField: true})
-        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual(props.value);
+        wrapper.setProps({staticField: true, children: props.value})
+        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual([false, props.value]);
     })
 
     it('should render a custom static field', () => {
         wrapper.setProps({staticField: true, children: <div>static text</div>})
-        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual(<div>static text</div>);
+        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual([false, <div>static text</div>]);
     })
 
     it('should call the callback', () => {

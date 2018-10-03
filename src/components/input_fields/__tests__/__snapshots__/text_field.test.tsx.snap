@@ -10,7 +10,5 @@ exports[`The text field component should render a wrapper 1`] = `
   staticField={false}
   type="text"
   value="2018"
->
-  2018
-</WrappedInputField>
+/>
 `;
