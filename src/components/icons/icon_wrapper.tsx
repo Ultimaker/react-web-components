@@ -9,6 +9,7 @@ export interface IconWrapperProps {
     size?: IconSize;
     /** The color of the icon: 'black' | 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white' */
     color?: IconColor;
+    borderColor?: IconColor;
 }
 
 export interface IconProps {
@@ -19,11 +20,17 @@ export interface IconProps {
  * Creates classes based on the size and color props, and passes it to the wrapped svg as the className prop
  */
 export function IconWrapper (Svg: React.StatelessComponent<IconProps>) {
-    const Icon: React.StatelessComponent<IconWrapperProps> = ({ size, color }): JSX.Element => {
+    const Icon: React.StatelessComponent<IconWrapperProps> = ({ size, color, borderColor }): JSX.Element => {
 
         const sizeClass = `icon--${size}`;
         const colorClass = `icon--${color}`;
-        const classes = classNames('icon', { [sizeClass]: size }, { [colorClass]: color });
+        const borderClass = `icon--border-${borderColor}`;
+        const classes = classNames(
+            'icon',
+            { [sizeClass]: size },
+            { [colorClass]: color },
+            { [borderClass]: borderColor }
+        );
 
         return <Svg className={classes} />
     };

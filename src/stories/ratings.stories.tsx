@@ -73,6 +73,7 @@ const iconOptions = {
     ums5_printer: UMS5PrinterIcon,
 }
 const colorOptions = {
+    '': '',
     'black': 'black',
     'blue': 'blue',
     'red': 'red',
@@ -105,6 +106,8 @@ stories.add('Ratings', withInfo(
         Icon={iconOptions[selectV2("Icon", Object.keys(iconOptions), 'highlight')]}
         foregroundColor={selectV2("Foreground color", colorOptions, Ratings.defaultProps.foregroundColor)}
         backgroundColor={selectV2("Background color", colorOptions, Ratings.defaultProps.backgroundColor)}
+        foregroundBorder={selectV2("Foreground border", colorOptions, Ratings.defaultProps.foregroundBorder)}
+        backgroundBorder={selectV2("Background border", colorOptions, Ratings.defaultProps.backgroundBorder)}
         size={selectV2("Size", sizeOptions, Ratings.defaultProps.size)}
     />
 ));

@@ -8,26 +8,31 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
     className="ratings--background"
   >
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="0"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="1"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="2"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="3"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="4"
       size="sm"
@@ -42,26 +47,31 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
     }
   >
     <Icon(HighlightIcon)
+      borderColor="orange"
       color="orange"
       key="0"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="orange"
       color="orange"
       key="1"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="orange"
       color="orange"
       key="2"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="orange"
       color="orange"
       key="3"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="orange"
       color="orange"
       key="4"
       size="sm"
@@ -78,51 +88,61 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
     className="ratings--background"
   >
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="0"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="1"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="2"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="3"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="4"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="5"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="6"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="7"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="8"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="grey"
       color="grey"
       key="9"
       size="sm"
@@ -137,51 +157,61 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
     }
   >
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="0"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="1"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="2"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="3"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="4"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="5"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="6"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="7"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="8"
       size="sm"
     />
     <Icon(ApprovedIcon)
+      borderColor="orange"
       color="orange"
       key="9"
       size="sm"
@@ -198,26 +228,31 @@ exports[`The Ratings component should render only background if the rating is nu
     className="ratings--background"
   >
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="0"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="1"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="2"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="3"
       size="sm"
     />
     <Icon(HighlightIcon)
+      borderColor="grey"
       color="grey"
       key="4"
       size="sm"
