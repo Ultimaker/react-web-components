@@ -34,9 +34,9 @@ import DoubleArrowIcon from '../components/icons/double_arrow_icon';
 import PausedIcon from '../components/icons/paused_icon';
 import SegmentIcon from '../components/icons/segment_icon';
 import SettingsIcon from '../components/icons/settings_icon';
-import Um3PrinterIcon from '../components/icons/um3_printer_icon';
-import Um3xPrinterIcon from '../components/icons/um3x_printer_icon';
-import Ums5PrinterIcon from '../components/icons/ums5_printer_icon';
+import UM3PrinterIcon from '../components/icons/um3_printer_icon';
+import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
+import UMS5PrinterIcon from '../components/icons/ums5_printer_icon';
 
 const stories = storiesOf('Ratings', module);
 
@@ -68,9 +68,9 @@ const iconOptions = {
     paused: PausedIcon,
     segment: SegmentIcon,
     settings: SettingsIcon,
-    um3_printer: Um3PrinterIcon,
-    um3x_printer: Um3xPrinterIcon,
-    ums5_printer: Ums5PrinterIcon,
+    um3_printer: UM3PrinterIcon,
+    um3x_printer: UM3XPrinterIcon,
+    ums5_printer: UMS5PrinterIcon,
 }
 const colorOptions = {
     'black': 'black',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IconWrapper, IconProps} from './icon_wrapper';
 
-const Ums5PrinterIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const UMS5PrinterIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--ums5-printer`}>
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58">
             <path d="M33.83,12.33c-.1.2-.1.2-.2.2H24.37c-.1,0-.1,0-.2-.2L22.44,8.06a.22.22,0,0,1,.2-.2H35.36a.22.22,0,0,1,.2.2Z" />
@@ -11,6 +11,6 @@ const Ums5PrinterIcon: React.StatelessComponent<IconProps> = ({ className }): JS
     </div>
 )
 
-Ums5PrinterIcon.displayName = "Ums5PrinterIcon";
+UMS5PrinterIcon.displayName = "UMS5PrinterIcon";
 
-export default IconWrapper(Ums5PrinterIcon);
+export default IconWrapper(UMS5PrinterIcon);
