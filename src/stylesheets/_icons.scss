@@ -96,6 +96,34 @@
         fill: $color-white;
     }
 
+    &.icon--border-blue svg {
+        stroke: $color-blue;
+    }
+
+    &.icon--border-black svg {
+        stroke: $color-black;
+    }
+
+    &.icon--border-green svg {
+        stroke: $color-green;
+    }
+
+    &.icon--border-red svg {
+        stroke: $color-red;
+    }
+
+    &.icon--border-orange svg {
+        stroke: $color-orange;
+    }
+
+    &.icon--border-grey svg {
+        stroke: $color-grey-darker;
+    }
+
+    &.icon--border-white svg {
+        stroke: $color-white;
+    }
+
     &.icon--md {
         width: 3.6rem;
         height: 3.6rem;
