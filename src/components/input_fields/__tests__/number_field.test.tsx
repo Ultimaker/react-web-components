@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import NumberField, {NumberFieldProps} from '../number_field';
-import WrappedInputField from '../wrapped_input_field';
+import DefaultInputField from '../default_input_field';
 
 describe('The number field component', () => {
     let props: NumberFieldProps;
@@ -32,16 +32,16 @@ describe('The number field component', () => {
 
     it('should render a zero', () => {
         wrapper.setProps({value: 0})
-        expect(wrapper.find(WrappedInputField).prop("value")).toEqual("0")
+        expect(wrapper.find(DefaultInputField).prop("value")).toEqual("0")
     })
 
     it('should render a null', () => {
         wrapper.setProps({value: null})
-        expect(wrapper.find(WrappedInputField).prop("value")).toBeNull()
+        expect(wrapper.find(DefaultInputField).prop("value")).toBeNull()
     })
 
     it('should render a wrapped input', () => {
-        expect(wrapper.find(WrappedInputField).props()).toEqual({
+        expect(wrapper.find(DefaultInputField).props()).toEqual({
             id: "testInputField",
             labelLayoutWidth: props.labelLayoutWidth,
             labelWidthBreakpoint: props.labelWidthBreakpoint,
@@ -58,9 +58,9 @@ describe('The number field component', () => {
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find(WrappedInputField).prop("onChangeHandler")(props.id, "2016")
+        wrapper.find(DefaultInputField).prop("onChangeHandler")(props.id, "2016")
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, 2016);
-        wrapper.find(WrappedInputField).prop("onChangeHandler")(props.id, "")
+        wrapper.find(DefaultInputField).prop("onChangeHandler")(props.id, "")
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, null);
     });
 });

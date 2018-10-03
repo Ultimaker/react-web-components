@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import {InputFieldProps} from './input_field_wrapper';
-import WrappedInputField from './wrapped_input_field';
+import DefaultInputField from './default_input_field';
 
 export type TextFieldType = 'text' | 'password' | 'email' | 'url';
 
@@ -48,9 +48,9 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
 const TextField: React.StatelessComponent<TextFieldProps> = ({
     children, ...wrapperProps
 }) =>
-    <WrappedInputField inputChildren={children} {...wrapperProps}>
+    <DefaultInputField inputChildren={children} {...wrapperProps}>
         {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
-    </WrappedInputField>;
+    </DefaultInputField>;
 
 TextField.displayName = "TextField";
 TextField.defaultProps = {

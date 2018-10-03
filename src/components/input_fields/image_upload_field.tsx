@@ -11,10 +11,10 @@ import {Image, ImageShape} from '../image';
  */
 export interface ImageUploadFieldProps extends InputFieldProps {
     /** Size of the image for type image. Include size unit */
-    imageSize: string;
+    imageSize?: string;
 
     /** Shape of the image for type image: 'round' | 'square' */
-    imageShape: ImageShape;
+    imageShape?: ImageShape;
 
     /** Called when the field changes */
     onChangeHandler: (id: string, value: ImageFile) => any;
@@ -43,7 +43,7 @@ export interface ImageUploadFieldState {
  */
 class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploadFieldState> {
     state = {
-        touched: false
+        touched: false,
     };
 
     constructor(props) {

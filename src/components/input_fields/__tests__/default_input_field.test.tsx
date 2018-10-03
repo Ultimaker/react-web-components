@@ -3,11 +3,11 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import WrappedInputField, {WrappedInputFieldProps} from '../wrapped_input_field';
+import DefaultInputField, {DefaultInputFieldProps} from '../default_input_field';
 import InputFieldWrapper from '../input_field_wrapper';
 
 describe('The wrapped input field component', () => {
-    let props: WrappedInputFieldProps;
+    let props: DefaultInputFieldProps;
     let wrapper;
 
     beforeEach(() => {
@@ -25,7 +25,7 @@ describe('The wrapped input field component', () => {
             max: 1000,
             inputChildren: null,
         };
-        wrapper = shallow(<WrappedInputField {...props} />);
+        wrapper = shallow(<DefaultInputField {...props} />);
     });
 
     it('should render a wrapper', () => {
