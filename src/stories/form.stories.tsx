@@ -269,7 +269,7 @@ stories.add('Date picker', withState({ value: '10-10-2018' })
                     id="id_9"
                     value={store.state.value}
                     onChangeHandler={(id, value) => store.set({ value })}
-                    label={text('Label', 'Select an image')}
+                    label={text('Label', 'Select a date')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     staticField={boolean('Static field', false)}
@@ -294,7 +294,7 @@ stories.add('Tags selector', withState({ value: ['Manchester', 'Utrecht'] })
                         onChangeHandler={(id, value) => store.set({ value })}
                         placeholder="Tags"
                         tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']}
-                        label={text('Label', 'Select an image')}
+                        label={text('Label', 'Enter tags')}
                         labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                         labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                         staticField={boolean('Static field', false)}
@@ -340,7 +340,7 @@ stories.add('Custom input field', withState({ value: null })
                     type="children"
                     id="id_12"
                     onChangeHandler={() => { }}
-                    label={text('Label', 'Upload file')}
+                    label={text('Label', 'Custom input')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     validationError={text('Validation error message', 'Validation Error')}
