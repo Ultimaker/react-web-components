@@ -34,9 +34,9 @@ import DoubleArrowIcon from '../components/icons/double_arrow_icon';
 import PausedIcon from '../components/icons/paused_icon';
 import SegmentIcon from '../components/icons/segment_icon';
 import SettingsIcon from '../components/icons/settings_icon';
-import Um3PrinterIcon from '../components/icons/um3_printer_icon';
-import Um3xPrinterIcon from '../components/icons/um3x_printer_icon';
-import Ums5PrinterIcon from '../components/icons/ums5_printer_icon';
+import UM3PrinterIcon from '../components/icons/um3_printer_icon';
+import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
+import UMS5PrinterIcon from '../components/icons/ums5_printer_icon';
 import MultiplyIcon from '../components/icons/multiply_icon';
 import MoveUpIcon from '../components/icons/move_up_icon';
 
@@ -212,18 +212,18 @@ stories.add('Icons', withInfo(
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
-                <Tooltip tooltipText="Um3PrinterIcon">
-                    <Um3PrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
+                <Tooltip tooltipText="UM3PrinterIcon">
+                    <UM3PrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
-                <Tooltip tooltipText="Um3xPrinterIcon">
-                    <Um3xPrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
+                <Tooltip tooltipText="UM3XPrinterIcon">
+                    <UM3XPrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
-                <Tooltip tooltipText="Ums5PrinterIcon">
-                    <Ums5PrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
+                <Tooltip tooltipText="UMS5PrinterIcon">
+                    <UMS5PrinterIcon color={selectV2('Color', colorOptions, colorDefaultValue)} size={selectV2('Size', sizeOptions, sizeDefaultValue)} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">
