@@ -22,6 +22,25 @@ import TagsField from '../components/input_fields/tags_field';
 
 const stories = storiesOf('Forms', module);
 
+const widthFractionOptions = {
+    '1/1': '1/1',
+    '1/2': '1/2',
+    '1/3': '1/3',
+    '1/4': '1/4',
+    '1/5': '1/5',
+    'fill': 'fill',
+    'fit': 'fit'
+};
+const widthFractionDefaultValue = '1/1';
+
+const breakpointOptions = {
+    'xs': 'xs',
+    'sm': 'sm',
+    'md': 'md',
+    'lg': 'lg'
+};
+const breakpointDefaultValue = 'sm';
+
 stories.addDecorator(withKnobs)
     .addDecorator(styles({
         display: 'flex',
@@ -33,16 +52,24 @@ stories.addDecorator(withKnobs)
 stories.add('Text field', withState({ value: null })
     (withInfo('Text input field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <TextField
                     value={store.state.value}
                     type="text"
                     id="id_1"
-                    label={text('Label', 'Input field')}
                     onChangeHandler={(id, value) => store.set({ value })}
-                    placeholder={text('Placeholder text', 'Placeholder text')}
-                    focusOnLoad
-                    validationError={text('Validation error message', 'Validation Error')} />
+                    label={text('Label', 'Input field')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    placeholder={text('Placeholder', 'Text')}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    focusOnLoad={boolean('Focus on load', true)}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -51,16 +78,25 @@ stories.add('Text field', withState({ value: null })
 stories.add('Number field', withState({ value: 1 })
     (withInfo('Number input field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <NumberField
                     value={store.state.value}
                     id="id_2"
                     min={1}
                     max={100}
-                    label={text('Label', 'Number field label')}
                     onChangeHandler={(id, value) => store.set({ value })}
-                    focusOnLoad
-                    validationError={text('Validation error message', 'Validation Error')} />
+                    label={text('Label', 'Number field label')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    placeholder={text('Placeholder', 'Number')}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    focusOnLoad={boolean('Focus on load', true)}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -69,15 +105,24 @@ stories.add('Number field', withState({ value: 1 })
 stories.add('Text area', withState({ value: null })
     (withInfo('Textarea input field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <TextareaField
                     id="id_3"
                     value={store.state.value}
-                    focusOnLoad
-                    label={text('Label', 'Textarea label')}
                     onChangeHandler={(id, value) => store.set({ value })}
-                    placeholder="Textarea"
-                    textareaAutoGrow={boolean('Auto grow', true)} />
+                    label={text('Label', 'Textarea label')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    placeholder={text('Placeholder', 'Textarea')}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    textareaAutoGrow={boolean('Auto grow', true)}
+                    focusOnLoad={boolean('Focus on load', true)}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -86,15 +131,24 @@ stories.add('Text area', withState({ value: null })
 stories.add('Password field', withState({ value: null })
     (withInfo('Password input field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <TextField
                     type="password"
                     id="id_4"
                     value={store.state.value}
-                    label={text('Label', 'Enter your password')}
                     onChangeHandler={(id, value) => store.set({ value })}
-                    focusOnLoad
-                    validationError={text('Validation error message', 'Validation Error')} />
+                    label={text('Label', 'Enter your password')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    placeholder={text('Placeholder', 'Password')}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    focusOnLoad={boolean('Focus on load', true)}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -103,15 +157,24 @@ stories.add('Password field', withState({ value: null })
 stories.add('Email field', withState({ value: null })
     (withInfo('Email input field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <TextField
                     type="email"
                     id="id_5"
                     value={store.state.value}
-                    label={text('Label', 'Enter your email address')}
                     onChangeHandler={(id, value) => store.set({ value })}
-                    focusOnLoad
-                    validationError={text('Validation error message', 'Validation Error')} />
+                    label={text('Label', 'Enter your email address')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    placeholder={text('Placeholder', 'Email')}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    focusOnLoad={boolean('Focus on load', true)}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -123,9 +186,17 @@ stories.add('Checkbox', withState({ value: null })
             <CheckboxField
                 id="id_6"
                 value={store.state.value}
-                label={text('Label', 'Checkbox label')}
                 onChangeHandler={(id, value) => store.set({ value })}
-                staticField={boolean('Disabled', false)} />
+                label={text('Label', 'Checkbox label')}
+                labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                validationError={text('Validation error message', 'Validation Error')}
+                staticField={boolean('Static field', false)}
+                required={boolean('Required', false)}
+                infoLinkURL={text('Info link URL', '')}
+                infoText={text('Info text', '')}
+                preLabelElement={text('Pre label element', '')}
+            />
         )
     )
 );
@@ -133,18 +204,26 @@ stories.add('Checkbox', withState({ value: null })
 stories.add('Select field', withState({ value: null })
     (withInfo('Select input field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <SelectField
                     id="id_7"
                     value={store.state.value}
-                    label={text('Label', 'Select an option')}
-                    onChangeHandler={(id, value) => { console.log('value', value); store.set({ value }) }}
-                    validationError={text('Validation error message', 'Validation Error')}
+                    onChangeHandler={(id, value) => { store.set({ value }) }}
                     selectOptions={[
                         { label: 'Option 1', value: 1 },
                         { label: 'Option 2', value: 2, disabled: true },
                         { label: 'Option 3', value: 3 }
-                    ]} />
+                    ]}
+                    label={text('Label', 'Select an option')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    validationError={text('Validation error message', 'Validation Error')}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -159,15 +238,24 @@ const defaultValue = 'round';
 stories.add('Image upload', withState({ value: null })
     (withInfo('Image drag and drop or click to upload')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <ImageUploadField
-                    imageSize="18rem"
                     id="id_8"
                     value={store.state.value}
                     onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
                     onReadHandler={action('read')}
+                    label={text('Label', 'Select an image')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     imageShape={selectV2('Image shape', options, defaultValue)}
-                    placeholder={text('Placeholder Label', 'Upload an image')} />
+                    imageSize={text('Image size', '18rem')}
+                    placeholder={text('Placeholder Label', 'Upload an image')}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -176,11 +264,20 @@ stories.add('Image upload', withState({ value: null })
 stories.add('Date picker', withState({ value: '10-10-2018' })
     (withInfo('Date selection field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <DateField
                     id="id_9"
                     value={store.state.value}
-                    onChangeHandler={(id, value) => store.set({ value })} />
+                    onChangeHandler={(id, value) => store.set({ value })}
+                    label={text('Label', 'Select an image')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    staticField={boolean('Static field', false)}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
+                />
             </div>
         )
     )
@@ -196,7 +293,16 @@ stories.add('Tags selector', withState({ value: ['Manchester', 'Utrecht'] })
                         value={store.state.value}
                         onChangeHandler={(id, value) => store.set({ value })}
                         placeholder="Tags"
-                        tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']} />
+                        tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']}
+                        label={text('Label', 'Select an image')}
+                        labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                        labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                        staticField={boolean('Static field', false)}
+                        required={boolean('Required', false)}
+                        infoLinkURL={text('Info link URL', '')}
+                        infoText={text('Info text', '')}
+                        preLabelElement={text('Pre label element', '')}
+                    />
                 </div>
             </Tile>
         )
@@ -210,9 +316,15 @@ stories.add('Upload file field', withState({ value: null })
                 <FileUploadField
                     id="id_11"
                     label={text('Label', 'Upload file')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     uploading={boolean("Uploading", false)}
                     placeholder={text('Placeholder text', 'Placeholder text')}
                     validationError={text('Validation error message', 'Validation Error')}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
                 />
             </div>
         )
@@ -222,15 +334,21 @@ stories.add('Upload file field', withState({ value: null })
 stories.add('Custom input field', withState({ value: null })
     (withInfo('Custom input field')
         (({ store }) =>
-            <div style={{ width: 250 }}>
+            <div style={{ width: 350 }}>
                 <InputField
                     value={null}
                     type="children"
                     id="id_12"
-                    label={text('Label', 'Input field')}
                     onChangeHandler={() => { }}
+                    label={text('Label', 'Upload file')}
+                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     validationError={text('Validation error message', 'Validation Error')}
                     submitted={typeof store.state.value === 'string'}
+                    required={boolean('Required', false)}
+                    infoLinkURL={text('Info link URL', '')}
+                    infoText={text('Info text', '')}
+                    preLabelElement={text('Pre label element', '')}
                 >
                     <input
                         onChange={(e) => store.set({ value: e.target.value })}
