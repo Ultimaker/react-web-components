@@ -18,8 +18,10 @@ export interface ImageFile extends File {
 export interface ImageUploadProps {
     /** The ImageUpload list id */
     id?: string;
-    /** Called when a image has been selected */
-    onFileSelection: (file: ImageFile) => void;
+    /** Called when an image has been selected */
+    onFileSelection?: (file: ImageFile) => any;
+    /** Called when an image has been read */
+    onFileRead?: (file: ImageFile, fileContents: string) => any;
     /** Size of the image. Include size unit */
     size?: string;
     /** Shape of the image: 'round' | 'square' */
@@ -48,6 +50,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     constructor(props) {
         super(props);
 
+        this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
         this._onDragLeave = this._onDragLeave.bind(this);
     }
@@ -58,7 +61,17 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         });
 
         const file = files[0];
-        this.props.onFileSelection(file);
+
+        const {onFileRead, onFileSelection} = this.props;
+        if (onFileSelection) {
+            onFileSelection(file);
+        }
+        if (onFileRead) {
+            const reader = new FileReader();
+            reader.onload = () => onFileRead(file, reader.result as string);
+            reader.onerror = console.error; // TODO
+            reader.readAsDataURL(file);
+        }
     }
 
     _onDragEnter(): void {
@@ -86,7 +99,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 multiple={false}
                 onDragEnter={this._onDragEnter}
                 onDragLeave={this._onDragLeave}
-                onDrop={(files) => this._onDropHandler(files)}
+                onDrop={this._onDropHandler}
             >
                 <div className={hoverAreaClasses}>
                     <div className={iconClasses}>
@@ -100,12 +113,12 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                     </div>
 
                     {imageURL &&
-                        <div className={`cover cover--${shape}`}></div>
+                        <div className={`cover cover--${shape}`} />
                     }
                 </div>
 
                 {!imageURL &&
-                    <div className={`placeholder placeholder--${shape}`}></div>
+                    <div className={`placeholder placeholder--${shape}`} />
                 }
 
                 {imageURL &&

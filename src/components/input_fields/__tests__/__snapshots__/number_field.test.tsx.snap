@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The number field component should render a wrapper 1`] = `
+<DefaultInputField
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  max={2100}
+  min={2000}
+  onChangeHandler={[Function]}
+  staticField={false}
+  type="number"
+  value="2018"
+/>
+`;

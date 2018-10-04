@@ -1,39 +1,47 @@
+// Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import classNames from 'classnames';
 
-import InputFieldLabel from './input_field_label';
-import InputFieldInput from './input_field_input';
-import InputFieldValidation from './input_field_validation';
-import { SelectOption } from './select_list';
-import { ImageFile } from './image_upload';
-import { ImageShape } from './image';
+import NumberField from './input_fields/number_field';
+import TextareaField from './input_fields/textarea_field';
+import SelectField from './input_fields/select_field';
+import CheckboxField from './input_fields/checkbox_field';
+import ImageUploadField from './input_fields/image_upload_field';
+import DateField from './input_fields/date_field';
+import FileUploadField from './input_fields/file_upload_field';
+import ChildrenField from './input_fields/children_field';
+import TagsField from './input_fields/tags_field';
+import TextField from './input_fields/text_field';
 
-export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'tags' | 'children';
-export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
+import {SelectOption} from './select_list';
+import {ImageShape} from './image';
+import {ImageFile} from './image_upload';
+import {InputFieldProps} from './input_fields/input_field_wrapper';
+
+
 export type InputFieldValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
+export type InputFieldType = 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' |
+    'image' | 'date' | 'file' | 'tags' | 'children';
 
-export interface InputFieldProps {
-    /** Input field type: 'text' | 'number' | 'textarea' | 'password' | 'email' | 'url' | 'select' | 'checkbox' | 'image' | 'date' | 'file' | 'children' */
-    type?: InputFieldType;
-    /** Input field id. Must be unique */
-    id: string;
-    /** Additional classes for styling */
-    className?: string;
-    /** Input field will be centered if true. Useful for type image or checkbox */
-    centerInputField?: boolean;
-    /** Message to show for the validation error. Can be any[] if returned from I18n.format */
-    validationError?: string | any[];
+/**
+ * This components includes the custom props of all supported fields.
+ */
+export interface OldInputFieldProps extends InputFieldProps {
+    /** The current value of the field */
+    value: InputFieldValue;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: InputFieldValue) => void;
-    /** Input field value */
-    value: InputFieldValue;
+    /** html placeholder text */
+    placeholder?: string;
+    /** The type of the input **/
+    type?: InputFieldType;
     /** Minimum value for number field */
     min?: number;
     /** Maximum value for number field */
     max?: number;
-    /** html placeholder text */
-    placeholder?: string;
+    /** Whether the textarea should grow horizontally with user input */
+    textareaAutoGrow?: boolean;
+    /** A list of suggestions for tags input field */
+    tagSuggestions?: string[];
     /** If true, the field will be focused when loaded */
     focusOnLoad?: boolean;
     /** List of options for type select */
@@ -42,152 +50,42 @@ export interface InputFieldProps {
     imageSize?: string;
     /** Shape of the image for type image: 'round' | 'square' */
     imageShape?: ImageShape;
-    /** If true, the defaultValue is shown as plain text and the input hidden */
-    staticField?: boolean
-    /** A list of suggestions for tags input field */
-    tagSuggestions?: string[]
-    /** Displays the required icon when true */
-    required?: boolean
-    /** Whether the form has been submitted. This will be set by the Form component */
-    submitted?: boolean
-    /** Input field label */
-    label?: string | JSX.Element;
-    /** Input field label width: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' */
-    labelLayoutWidth?: LayoutWidth;
-    /** Input field label breakpoint: 'xs' | 'sm' | 'md' | 'lg' */
-    labelWidthBreakpoint?: Breakpoint;
-    /** JSX Element, such as an icon, to be shown before the input label */
-    preLabelElement?: JSX.Element
-    /** Description of the fields to be shown in a tooltip */
-    infoText?: string
-    /** The URL of the link to be shown next to the input field */
-    infoLinkURL?: string
-    /** Whether the textarea should grow horizontally with user input */
-    textareaAutoGrow?: boolean;
 }
 
-export interface InputFieldState {
-    /** Indicates if the field has been touched (changed) or not from the default value. */
-    touched: boolean;
-}
-
-export class InputField extends React.Component<InputFieldProps, InputFieldState> {
-
-    public static defaultProps: Partial<InputFieldProps> = {
+/**
+ * This class is used in projects as a generic input field.
+ * Now all fields are in separate components and should be used by themselves.
+ * However this component is still available to be backwards compatible.
+ */
+export class InputField extends React.Component<OldInputFieldProps, {}> {
+    static defaultProps = {
         type: 'text',
         labelLayoutWidth: '1/1',
-        labelWidthBreakpoint: 'sm'
+        labelWidthBreakpoint: 'sm',
+        staticField: false,
     };
 
-    state = {
-        touched: false
-    }
-
-    constructor(props) {
-        super(props);
-        // bind callbacks once
-        this._onChangeHandler = this._onChangeHandler.bind(this);
-        this._showValidationError = this._showValidationError.bind(this);
-    }
-
-    _onChangeHandler(value: InputFieldValue): void {
-        this.setState({ touched: true });
-        const { onChangeHandler, id, type } = this.props;
-
-        if (value === '') {
-            value = null;
-        }
-        else if (type === 'number' && typeof value === 'string' && value.length > 0) {
-            // convert value from and string to a number for number input fields
-            value = parseFloat(value);
-        }
-
-        if (onChangeHandler) {
-            onChangeHandler(id, value);
-        }
-    }
-
-    _showValidationError() {
-        const { validationError, submitted } = this.props;
-        const { touched } = this.state;
-        return validationError && (touched || submitted)
-    }
-
-    private _renderLabel(): JSX.Element {
-        const { id, label, labelLayoutWidth, labelWidthBreakpoint, type, preLabelElement, infoText, infoLinkURL } = this.props;
-
-        if (label || preLabelElement) {
-            return <InputFieldLabel
-                type={type}
-                id={id}
-                label={label}
-                labelLayoutWidth={labelLayoutWidth}
-                labelWidthBreakpoint={labelWidthBreakpoint}
-                preLabelElement={preLabelElement}
-                infoText={infoText}
-                infoLinkURL={infoLinkURL}
-            />
-        }
-        return null;
-    }
-
-    private _renderInputElements() {
-        const { id, type, centerInputField, value, min, max, placeholder,
-            selectOptions, imageSize, staticField, imageShape, tagSuggestions, textareaAutoGrow,
-            focusOnLoad, required, labelLayoutWidth, labelWidthBreakpoint, children } = this.props;
-
-        return <InputFieldInput
-            type={type}
-            id={id}
-            centerInputField={centerInputField}
-            onChangeHandler={this._onChangeHandler}
-            value={value}
-            min={min}
-            max={max}
-            placeholder={placeholder}
-            focusOnLoad={focusOnLoad}
-            selectOptions={selectOptions}
-            imageSize={imageSize}
-            imageShape={imageShape}
-            staticField={staticField}
-            tagSuggestions={tagSuggestions}
-            required={required}
-            showValidationError={this._showValidationError()}
-            labelLayoutWidth={labelLayoutWidth}
-            labelWidthBreakpoint={labelWidthBreakpoint}
-            textareaAutoGrow={textareaAutoGrow}
-            children={children}
-        />
-    }
-
-    private _renderValidation(): JSX.Element {
-        const { validationError, labelLayoutWidth, labelWidthBreakpoint, required } = this.props;
-
-        if (this._showValidationError() && validationError) {
-            return <InputFieldValidation
-                validationError={validationError}
-                labelLayoutWidth={labelLayoutWidth}
-                labelWidthBreakpoint={labelWidthBreakpoint}
-                required={required}
-            />
-        }
-        return null;
-    }
-
-
-    render(): JSX.Element {
-        const { className, staticField, type } = this.props;
-
-        const inputClasses = classNames(`input-field input-field--${type} layout`, className, { 'hide-input': staticField });
-
-        return (
-            <div className={inputClasses}>
-                {this._renderLabel()}
-                {this._renderInputElements()}
-                {this._renderValidation()}
-            </div>
-        )
+    private readonly input_fields = {
+        number: NumberField,
+        textarea: TextareaField,
+        select: SelectField,
+        checkbox: CheckboxField,
+        image: ImageUploadField,
+        date: DateField,
+        file: FileUploadField,
+        children: ChildrenField,
+        tags: TagsField,
+        text: TextField,
+        password: TextField,
+        email: TextField,
+        url: TextField,
     };
-};
+
+    render() {
+        const {children, ...wrapperProps} = this.props;
+        const Component = this.input_fields[wrapperProps.type];
+        return <Component {...wrapperProps}>{children}</Component>;
+    }
+}
 
 export default InputField;

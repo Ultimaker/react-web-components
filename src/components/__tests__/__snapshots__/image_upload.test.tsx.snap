@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The ImageFile component should render 1`] = `
+exports[`The image upload component should render 1`] = `
 <div>
   <t
     accept="image/jpeg, image/png"

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The image upload field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <ImageUpload
+    id="testInputField"
+    imageURL="http://image.ultimaker.com"
+    onFileRead={[Function]}
+    onFileSelection={[Function]}
+    placeholderLabel="A placeholder text"
+    shape="round"
+    size="100px"
+  />
+</InputFieldWrapper>
+`;

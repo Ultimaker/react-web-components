@@ -25,8 +25,13 @@ describe('The InputFieldLabel component', () => {
     });
 
     it('should render pre label element before the label', () => {
-        wrapper.setProps({ preLabelElement: <div className="pre-label-element"></div> });
+        wrapper.setProps({ preLabelElement: <div className="pre-label-element" /> });
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should not render empty label', () => {
+        wrapper.setProps({ label: null });
+        expect(wrapper.text()).toEqual("");
     });
 
     it('should render info tooltip', () => {
@@ -38,12 +43,4 @@ describe('The InputFieldLabel component', () => {
         wrapper.setProps({ infoLinkURL: 'https://ultimaker.com/' });
         expect(wrapper).toMatchSnapshot();
     });
-
-    it('should apply a special class for the tags selector label', () => {
-        wrapper.setProps({ type: 'tags' });
-        expect(wrapper.find('.tag-label-position-override').exists()).toBe(false);
-        wrapper.setProps({ labelLayoutWidth: '1/3' });
-        expect(wrapper.find('.tag-label-position-override')).toHaveLength(1);
-    });
-
 });

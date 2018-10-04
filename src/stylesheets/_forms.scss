@@ -108,12 +108,6 @@
 
         margin-bottom: 0.6rem;
         margin-top: 1.2rem;
-
-        &.tag-label-position-override {
-            align-self: flex-end;
-            margin-bottom: 1.3rem;
-            margin-top: 0.6rem;
-        }
     }
 
     .input-field__validation {
@@ -163,6 +157,12 @@
     &.input-field--tags {
         &.hide-input {
             margin-bottom: -1.2rem;
+        }
+
+        .input-field__label {
+            align-self: flex-end;
+            margin-bottom: 1.3rem;
+            margin-top: 0.6rem;
         }
     }
 }

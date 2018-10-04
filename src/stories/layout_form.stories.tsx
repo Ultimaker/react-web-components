@@ -6,10 +6,16 @@ import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 
 // components
-import Form from '../components/form';
 import InputField from '../components/input_field';
-import Tile from '../components/tile';
 import { ImageFile } from '../components/image_upload';
+import { Tile } from '../components/tile';
+import TextField from '../components/input_fields/text_field';
+import NumberField from '../components/input_fields/number_field';
+import CheckboxField from '../components/input_fields/checkbox_field';
+import SelectField from '../components/input_fields/select_field';
+import ImageUploadField from '../components/input_fields/image_upload_field';
+import DateField from '../components/input_fields/date_field';
+import Form from '../components/form';
 
 const stories = storiesOf('Example layouts', module);
 
@@ -55,14 +61,17 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
                         }}
                     >
 
-                        <InputField type="image"
+                        <ImageUploadField
                             id="id_0"
+                            imageSize="18rem"
+                            imageShape="round"
                             value={store.state.imageValue}
                             labelLayoutWidth='fit'
                             centerInputField
-                            onChangeHandler={(id, value: ImageFile) => store.set({ imageValue: value.preview })} />
+                            onChangeHandler={(id, value: ImageFile) => store.set({ imageValue: value.preview })}
+                            onReadHandler={action('read')} />
 
-                        <InputField type="text"
+                        <TextField
                             id="id_1"
                             value={store.state.textValue}
                             label={text('Label 1', 'Text input field')}
@@ -75,7 +84,7 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
                             required
                             infoLinkURL="http://www.ultimaker.com" />
 
-                        <InputField type="number"
+                        <NumberField
                             id="id_2"
                             value={store.state.numberValue}
                             label={text('Label 2', 'Number input field')}
@@ -86,7 +95,7 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
                             onChangeHandler={(id, value) => store.set({ numberValue: value })}
                             required />
 
-                        <InputField type="select"
+                        <SelectField
                             id="id_3"
                             value={store.state.selectValue}
                             label={text('Label 3', 'Select input field')}
@@ -96,7 +105,7 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
                             selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]}
                             required />
 
-                        <InputField type="checkbox"
+                        <CheckboxField
                             id="id_4"
                             value={store.state.checkboxValue}
                             label={text('Label 4', 'Checkbox input field')}
@@ -105,7 +114,7 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
                             onChangeHandler={(id, value) => store.set({ checkboxValue: value })}
                             required />
 
-                        <InputField type="date"
+                        <DateField
                             id="id_5"
                             value={store.state.dateValue}
                             label={text('Label 5', 'Date input field')}

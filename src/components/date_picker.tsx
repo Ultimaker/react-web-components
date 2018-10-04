@@ -8,7 +8,7 @@ import moment = require('moment');
 
 export interface DatePickerProps {
     /** Called when a date is selected */
-    onChangeHandler: (date) => void;
+    onChangeHandler: (date: string) => void;
     /** String date value to pre-fill or change the DatePicker date */
     value?: string;
     /** DatePicker id. Must be unique */
@@ -17,6 +17,8 @@ export interface DatePickerProps {
     placeholder?: string;
     /** When true the error state will be displayed */
     error?: boolean;
+    /** The format to display the date, as specified by moment-js **/
+    format: string;
 }
 
 export interface DatePickerState {
@@ -27,7 +29,8 @@ export interface DatePickerState {
 export class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
 
     static defaultProps = {
-        placeholder: ''
+        placeholder: '',
+        format: 'DD-MM-YYYY',
     };
 
     state = {
@@ -63,7 +66,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
     }
 
     render(): JSX.Element {
-        const { id, placeholder, error } = this.props;
+        const { id, placeholder, error, format } = this.props;
         const { date, focused } = this.state;
 
         const classes = classNames('date-picker', { error });
@@ -80,7 +83,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
                 hideKeyboardShortcutsPanel
                 numberOfMonths={1}
                 anchorDirection="left"
-                displayFormat="DD-MM-YYYY"
+                displayFormat={format}
                 enableOutsideDays
             />
         </div>

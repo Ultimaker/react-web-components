@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The checkbox field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  className="input-field--checkbox"
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <Checkbox
+    disabled={false}
+    id="testInputField"
+    onChangeHandler={[Function]}
+    value={true}
+  />
+</InputFieldWrapper>
+`;

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The select field component should render a wrapper 1`] = `
+<InputFieldWrapper
+  id="testInputField"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  onChangeHandler={[MockFunction]}
+  staticField={false}
+  touched={false}
+>
+  <SelectList
+    id="testInputField"
+    onChangeHandler={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "Option 1",
+          "value": 1,
+        },
+        Object {
+          "disabled": true,
+          "label": "Option 2",
+          "value": 2,
+        },
+        Object {
+          "label": "Option 3",
+          "value": 3,
+        },
+      ]
+    }
+    value={3}
+  />
+</InputFieldWrapper>
+`;

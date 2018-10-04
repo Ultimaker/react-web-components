@@ -101,7 +101,7 @@ export class Button extends React.Component<ButtonProps, {}> {
         const { disabled, type, style, shape, showSpinner, className } = this.props;
 
         const classes = classNames(`btn btn--${style} btn--${shape} ${className}`,
-            { 'disabled': disabled }, { 'waiting': showSpinner });
+            { disabled }, { waiting: showSpinner });
 
         if (type === 'link' && this._isLinkInternal()) {
             return this._renderInternalLink(classes);

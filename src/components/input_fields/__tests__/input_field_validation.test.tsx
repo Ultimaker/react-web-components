@@ -13,7 +13,7 @@ describe('The InputFieldValidation component', () => {
         props = {
             validationError: 'Validation error',
             labelLayoutWidth: '1/1',
-            labelWidthBreakpoint: 'sm'
+            labelWidthBreakpoint: 'sm',
         };
         wrapper = shallow(<InputFieldValidation {...props} />);
     });
@@ -36,5 +36,4 @@ describe('The InputFieldValidation component', () => {
         wrapper.setProps({ labelLayoutWidth: 'fit', required: true });
         expect(wrapper).toMatchSnapshot();
     });
-
 });

@@ -1,13 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The InputField component should render 1`] = `
-<TextField
+exports[`The text field component should render a wrapper 1`] = `
+<DefaultInputField
   id="testInputField"
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
   onChangeHandler={[MockFunction]}
+  placeholder="placeholder text"
   staticField={false}
   type="text"
-  value="Test input"
+  value="2018"
 />
 `;

@@ -9,6 +9,8 @@
 
         .ReactTags__tagInputField {
             @extend %input-style;
+
+            padding-top: 0.5rem;
         }
     }
 
@@ -17,7 +19,7 @@
             @extend .pill;
 
             margin-right: 0.6rem;
-            margin-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
         }
 
         .ReactTags__remove {
