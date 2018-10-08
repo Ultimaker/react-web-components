@@ -4,12 +4,14 @@ import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react
 import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
+import { withState } from '@dump247/storybook-state';
 
 import Tile from '../components/tile';
 import Grid from '../components/grid';
 import GridItem from '../components/grid_item';
 import SlideOutContainer from '../components/slide_out_container';
 import SlideInPanel from '../components/slide_in_panel';
+import SettingPanel from '../components/setting_panel';
 
 const stories = storiesOf('Layout', module);
 
@@ -141,3 +143,22 @@ stories.add('Slide in panel', withInfo(
         </SlideInPanel>
     </div>
 ));
+
+stories.add('Setting Panel', withState({ value: null })
+    (withInfo('Toggle setting with description')
+        (({ store }) =>
+            <div style={{ width: '50vw' }}>
+                <Tile padding="md">
+                    <SettingPanel
+                        toggleId="id"
+                        headerText="Share anonymous usage data with Ultimaker?"
+                        trueValueText="Yes, share usage data with Ultimaker"
+                        falseValueText="No, don't share usage data with Ultimaker"
+                        explanationText="In order to continuously improve Ultimaker products and your 3D printing experience, this 3D printer can share anonymous usage data with Ultimaker."
+                        settingValue={store.state.value}
+                        onChangeHandler={() => store.set({ value: !store.state.value })} />
+                </Tile>
+            </div>
+        )
+    )
+);
