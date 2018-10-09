@@ -297,7 +297,8 @@
 
 .file-upload {
     input {
-        display: none;
+        position: absolute;
+        opacity: 0;
     }
 
     .file-upload__input-container {
