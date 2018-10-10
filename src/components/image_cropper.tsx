@@ -1,26 +1,32 @@
 import * as React from 'react';
 import * as AvatarEditor from 'react-avatar-editor';
+import {ImageShape} from './image'
 let Dropzone = require('react-dropzone'); // needs to be imported this way to keep jest happy
 if ('default' in Dropzone) {
     Dropzone = Dropzone.default;
 }
 
 export interface ImageCropperProps {
+    /** Size of the image for type image. Include size unit */
+    imageSize?: string;
 
+    /** Shape of the image for type image: 'round' | 'square' */
+    imageShape?: ImageShape;
+
+    /** Whether the user allowed to zoom out the uploaded image **/
+    allowZoomOut?: boolean;
 }
 
 export interface ImageCropperState {
     image: string;
-    allowZoomOut: boolean;
     position: { x: number, y: number };
     scale: number;
-    rotate: number;
-    borderRadius: number;
     preview: {
         rect: {
           width: number,
           height: number,
         },
+        scale: number,
         image: string,
         width: number,
         height: number,
@@ -30,6 +36,20 @@ export interface ImageCropperState {
 }
 
 export class ImageCropper extends React.Component<ImageCropperProps, ImageCropperState> {
+    static defaultProps: ImageCropperProps = {
+        imageShape: 'square',
+        allowZoomOut: false,
+    }
+
+    state: ImageCropperState = {
+        image: 'https://react-avatar-editor.netlify.com/avatar.jpg',
+        position: {x: 0.5, y: 0.5},
+        scale: 1,
+        preview: null,
+        width: 200,
+        height: 200,
+    }
+
     editor: {
         getImage(): HTMLCanvasElement;
         getImageScaledToCanvas(): HTMLCanvasElement;
@@ -41,16 +61,8 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         }
     }
 
-    state = {
-        image: 'https://react-avatar-editor.netlify.com/avatar.jpg',
-        allowZoomOut: false,
-        position: {x: 0.5, y: 0.5},
-        scale: 1,
-        rotate: 0,
-        borderRadius: 0,
-        preview: null,
-        width: 200,
-        height: 200,
+    private get _borderRadius(): number {
+        return this.props.imageShape == 'round' ? 100 : 0
     }
 
     handleNewImage = e => {
@@ -68,7 +80,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
                 scale: this.state.scale,
                 width: this.state.width,
                 height: this.state.height,
-                borderRadius: this.state.borderRadius,
+                borderRadius: this._borderRadius,
             },
         })
     }
@@ -76,50 +88,6 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
     handleScale = e => {
         const scale = parseFloat(e.target.value)
         this.setState({scale})
-    }
-
-    handleAllowZoomOut = ({target: {checked: allowZoomOut}}) => {
-        this.setState({allowZoomOut})
-    }
-
-    rotateLeft = e => {
-        e.preventDefault()
-
-        this.setState({
-            rotate: this.state.rotate - 90,
-        })
-    }
-
-    rotateRight = e => {
-        e.preventDefault()
-        this.setState({
-            rotate: this.state.rotate + 90,
-        })
-    }
-
-    handleBorderRadius = e => {
-        const borderRadius = parseInt(e.target.value)
-        this.setState({borderRadius})
-    }
-
-    handleXPosition = e => {
-        const x = parseFloat(e.target.value)
-        this.setState({position: {...this.state.position, x}})
-    }
-
-    handleYPosition = e => {
-        const y = parseFloat(e.target.value)
-        this.setState({position: {...this.state.position, y}})
-    }
-
-    handleWidth = e => {
-        const width = parseInt(e.target.value)
-        this.setState({width})
-    }
-
-    handleHeight = e => {
-        const height = parseInt(e.target.value)
-        this.setState({height})
     }
 
     logCallback(e) {
@@ -156,8 +124,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
                             height={this.state.height}
                             position={this.state.position}
                             onPositionChange={this.handlePositionChange}
-                            rotate={this.state.rotate}
-                            borderRadius={this.state.width / (100 / this.state.borderRadius)}
+                            borderRadius={this._borderRadius}
                             onLoadFailure={this.logCallback.bind(this, 'onLoadFailed')}
                             onLoadSuccess={this.logCallback.bind(this, 'onLoadSuccess')}
                             onImageReady={this.logCallback.bind(this, 'onImageReady')}
@@ -175,93 +142,17 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
                     name="scale"
                     type="range"
                     onChange={this.handleScale}
-                    min={this.state.allowZoomOut ? '0.1' : '1'}
+                    min={this.props.allowZoomOut ? '0.1' : '1'}
                     max="2"
                     step="0.01"
                     defaultValue="1"
                 />
-                <br/>
-                {'Allow Scale < 1'}
-                <input
-                    name="allowZoomOut"
-                    type="checkbox"
-                    onChange={this.handleAllowZoomOut}
-                    checked={this.state.allowZoomOut}
-                />
-                <br/>
-                Border radius:
-                <input
-                    name="scale"
-                    type="range"
-                    onChange={this.handleBorderRadius}
-                    min="0"
-                    max="50"
-                    step="1"
-                    defaultValue="0"
-                />
-                <br/>
-                Avatar Width:
-                <input
-                    name="width"
-                    type="number"
-                    onChange={this.handleWidth}
-                    min="50"
-                    max="400"
-                    step="10"
-                    value={this.state.width}
-                />
-                <br/>
-                Avatar Height:
-                <input
-                    name="height"
-                    type="number"
-                    onChange={this.handleHeight}
-                    min="50"
-                    max="400"
-                    step="10"
-                    value={this.state.height}
-                />
-                <br/>
-                X Position:
-                <input
-                    name="scale"
-                    type="range"
-                    onChange={this.handleXPosition}
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value={this.state.position.x}
-                />
-                <br/>
-                Y Position:
-                <input
-                    name="scale"
-                    type="range"
-                    onChange={this.handleYPosition}
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    value={this.state.position.y}
-                />
-                <br/>
-                Rotate:
-                <button onClick={this.rotateLeft}>Left</button>
-                <button onClick={this.rotateRight}>Right</button>
-                <br/>
-                <br/>
                 <input type="button" onClick={this.handleSave} value="Preview"/>
                 <br/>
                 {!!this.state.preview && (
                     <img
-                        src={this.state.preview.img}
-                        style={{
-                            borderRadius: `${(Math.min(
-                                this.state.preview.height,
-                                this.state.preview.width
-                                ) +
-                                10) *
-                            (this.state.preview.borderRadius / 2 / 100)}px`,
-                        }}
+                        src={this.state.preview.image}
+                        style={{borderRadius: this._borderRadius.toString() + "%"}}
                     />
                 )}
                 {!!this.state.preview && (

@@ -268,7 +268,11 @@ stories.add('Image cropping', withState({ value: null })
     (withInfo('Image cropping')
         (({ store }) =>
             <div style={{ width: 350 }}>
-                <ImageCropper />
+                <ImageCropper
+                    imageShape={selectV2('Image shape', options, defaultValue)}
+                    imageSize={text('Image size', '18rem')}
+                    allowZoomOut={boolean('Allow zoom out', false)}
+                />
             </div>
         )
     )
