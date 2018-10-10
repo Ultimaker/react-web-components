@@ -2,7 +2,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 // dependencies
-import ReactCropper from 'react-cropper';
 let Dropzone = require('react-dropzone'); // needs to be imported this way to keep jest happy
 if ('default' in Dropzone) {
     Dropzone = Dropzone.default;
@@ -18,6 +17,7 @@ import {I18n} from '../utils/i18n';
 import Button from './button'
 import ApprovedIcon from './icons/approved_icon'
 import RejectedIcon from './icons/rejected_icon'
+import ImageCropper from './image_cropper'
 
 /**
  * This interface adds an image preview URL to blob files.
@@ -164,28 +164,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     private _renderCropper(): JSX.Element {
         const { file } = this.state;
         const { size } = this.props;
-        return <div className="image-upload--cropper-container">
-            <div className="image-upload--cropper">
-                <ReactCropper
-                    ref={input => this.cropperRef = input}
-                    src={file.preview}
-                    style={this._style}
-                    aspectRatio={1} // force a fixed aspect ratio of 1
-                    autoCropArea={1}  // by default select as much as possible of the image
-                    minContainerWidth={1}
-                />
-            </div>
-            <div className="image-upload--cropper-buttons">
-                <Button onClickHandler={this._onCrop}
-                        shape="circle">
-                    <ApprovedIcon color="white"/>
-                </Button>
-                <Button onClickHandler={this._onCropCancel}
-                        shape="circle">
-                    <RejectedIcon color="white"/>
-                </Button>
-            </div>
-        </div>;
+        return <ImageCropper />;
     }
 
     private _renderDropzone(): JSX.Element {

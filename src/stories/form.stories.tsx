@@ -19,6 +19,7 @@ import SelectField from '../components/input_fields/select_field';
 import ImageUploadField from '../components/input_fields/image_upload_field';
 import DateField from '../components/input_fields/date_field';
 import TagsField from '../components/input_fields/tags_field';
+import ImageCropper from '../components/image_cropper';
 
 const stories = storiesOf('Forms', module);
 
@@ -258,6 +259,16 @@ stories.add('Image upload', withState({ value: null })
                     allowCropping={boolean("Allow Cropping", true)}
                     maxBytes={number("Maximum bytes", 1024 * 1024)}
                 />
+            </div>
+        )
+    )
+);
+
+stories.add('Image cropping', withState({ value: null })
+    (withInfo('Image cropping')
+        (({ store }) =>
+            <div style={{ width: 350 }}>
+                <ImageCropper />
             </div>
         )
     )
