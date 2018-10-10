@@ -244,7 +244,7 @@ stories.add('Image upload', withState({ value: null })
                     id="id_8"
                     value={store.state.value}
                     onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
-                    onReadHandler={action('read')}
+                    onReadHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
                     label={text('Label', 'Select an image')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
@@ -269,9 +269,11 @@ stories.add('Image cropping', withState({ value: null })
         (({ store }) =>
             <div style={{ width: 350 }}>
                 <ImageCropper
-                    imageShape={selectV2('Image shape', options, defaultValue)}
-                    imageSize={text('Image size', '18rem')}
+                    shape={selectV2('Image shape', options, defaultValue)}
+                    size={text('Image size', '18rem')}
                     allowZoomOut={boolean('Allow zoom out', false)}
+                    onImageChanged={value => store.set({ value })}
+                    imageURL={store.value}
                 />
             </div>
         )

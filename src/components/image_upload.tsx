@@ -14,9 +14,6 @@ import UploadIcon from './icons/upload_icon';
 // utils
 import bytesToSize from '../utils/bytes_to_size'
 import {I18n} from '../utils/i18n';
-import Button from './button'
-import ApprovedIcon from './icons/approved_icon'
-import RejectedIcon from './icons/rejected_icon'
 import ImageCropper from './image_cropper'
 
 /**
@@ -50,14 +47,11 @@ export interface ImageUploadProps {
 
 export interface ImageUploadState {
     dropActive: boolean;
-    cropActive: boolean;
+    cropURL: string | null;
     errorMessage: string | null;
-    file: ImageFile | null;
 }
 
 export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
-
-    cropperRef = null;
 
     public static defaultProps: Partial<ImageUploadProps> = {
         shape: 'round',
@@ -66,7 +60,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     state = {
         dropActive: false,
-        cropActive: false,
+        cropURL: null,
         errorMessage: null,
         file: null,
     }
@@ -74,7 +68,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     constructor(props) {
         super(props);
 
-        this._onChange = this._onChange.bind(this);
         this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
         this._onDragLeave = this._onDragLeave.bind(this);
@@ -92,14 +85,12 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         this.setState({
             dropActive: false,
             errorMessage: null,
-            file: file,
         });
 
-        const {maxBytes, allowCropping} = this.props;
+        const {maxBytes, allowCropping, onFileSelection, onFileRead} = this.props;
 
         if (maxBytes && file.size > maxBytes) {
             return this.setState({
-                file: null,
                 errorMessage: I18n.format(
                     'image upload error',
                     'The image uploaded is larger than %{maxSize}.',
@@ -108,30 +99,20 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
             });
         }
 
-        if (allowCropping) {
-            return this.setState({cropActive: true});
-        }
-        this._onChange(file)
-    }
-
-    private _onChange(file: ImageFile, imageData?: string) {
-        const {onFileRead, onFileSelection} = this.props;
         if (onFileSelection) {
             onFileSelection(file);
         }
 
         if (onFileRead) {
-            if (imageData) {
-                onFileRead(file, imageData)
-            } else {
-                const reader = new FileReader();
-                reader.onload = () => onFileRead(file, reader.result as string);
-                reader.onerror = console.error; // TODO
-                reader.readAsDataURL(file);
-            }
+            const reader = new FileReader();
+            reader.onload = () => onFileRead(file, reader.result as string);
+            reader.onerror = console.error; // TODO
+            reader.readAsDataURL(file);
         }
 
-        this.setState({file: null, cropActive: false});
+        if (allowCropping) {
+            return this.setState({cropURL: file.preview});
+        }
     }
 
     private _onDragEnter(): void {
@@ -147,24 +128,26 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     private _onCropCancel(): void {
-        this.setState({cropActive: false})
+        this.setState({cropURL: null})
     }
 
-    private _onCrop(): void {
-        const {file} = this.state;
-        const cropped: HTMLCanvasElement = this.cropperRef.getCroppedCanvas()
-        cropped.toBlob(blob => {
-            const newFile = blob as ImageFile;
-            window.URL.revokeObjectURL(file.preview);
-            newFile.preview = window.URL.createObjectURL(blob, {oneTimeOnly: false});
-            this._onChange(newFile, cropped.toDataURL(file.type));
-        }, file.type);
+    private _onCrop(data: string): void {
+        const {onFileRead} = this.props;
+        if (onFileRead) {
+            const file = {preview: data} as ImageFile;
+            onFileRead(file, data)
+        }
     }
 
     private _renderCropper(): JSX.Element {
-        const { file } = this.state;
-        const { size } = this.props;
-        return <ImageCropper />;
+        const { size, shape } = this.props;
+        const { cropURL } = this.state;
+        return <ImageCropper
+            onImageChanged={this._onCrop}
+            imageURL={cropURL}
+            size={size}
+            shape={shape}
+        />;
     }
 
     private _renderDropzone(): JSX.Element {
@@ -210,9 +193,9 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     render(): JSX.Element {
         const { id } = this.props;
-        const { cropActive } = this.state;
+        const { cropURL } = this.state;
         return <div id={id} className="image-upload">
-            {cropActive ? this._renderCropper() : this._renderDropzone()}
+            {cropURL ? this._renderCropper() : this._renderDropzone()}
         </div>
     }
 }
