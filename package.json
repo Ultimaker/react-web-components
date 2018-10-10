@@ -45,6 +45,7 @@
         "parcel-plugin-typescript": "^1.0.0",
         "react": "^16.4.2",
         "react-collapse": "^4.0.3",
+        "react-cropper": "^1.0.1",
         "react-dates": "^17.0.0",
         "react-dev-utils": "^5.0.1",
         "react-dom": "^16.4.2",
