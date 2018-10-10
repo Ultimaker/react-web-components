@@ -42,7 +42,7 @@ describe('The image upload component', () => {
         await new Promise(setImmediate);
 
         const expected = 'data:image/jpeg;base64,' + btoa('A+test+string+for+testing+image');
-        expect(props.onFileRead).toHaveBeenCalledWith(image, expected);
+        expect(props.onFileRead).toHaveBeenCalledWith(expected);
     });
 
     it('should handle drag enter', () => {

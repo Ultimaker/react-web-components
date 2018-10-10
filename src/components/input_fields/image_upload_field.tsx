@@ -20,7 +20,7 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     onChangeHandler: (id: string, value: ImageFile) => any;
 
     /** Called when an image file is read */
-    onReadHandler: (id: string, file: ImageFile, contents: string) => any;
+    onReadHandler: (id: string, contents: string) => any;
 
     /** html placeholder text */
     placeholder?: string;
@@ -78,7 +78,7 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
                     size={imageSize}
                     imageURL={value && value.toString()}
                     onFileSelection={this._onChange}
-                    onFileRead={(file, contents) => onReadHandler(id, file, contents)}
+                    onFileRead={contents => onReadHandler(id, contents)}
                     shape={imageShape}
                     placeholderLabel={placeholder}
                     maxBytes={maxBytes}

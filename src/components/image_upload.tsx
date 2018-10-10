@@ -30,7 +30,7 @@ export interface ImageUploadProps {
     /** Called when an image has been selected */
     onFileSelection?: (file: ImageFile) => any;
     /** Called when an image has been read */
-    onFileRead?: (file: ImageFile, fileContents: string) => any;
+    onFileRead?: (data: string) => any;
     /** Size of the image. Include size unit */
     size?: string;
     /** Shape of the image: 'round' | 'square' */
@@ -71,7 +71,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
         this._onDragLeave = this._onDragLeave.bind(this);
-        this._onCrop = this._onCrop.bind(this);
         this._onCropCancel = this._onCropCancel.bind(this);
     }
 
@@ -105,7 +104,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
         if (onFileRead) {
             const reader = new FileReader();
-            reader.onload = () => onFileRead(file, reader.result as string);
+            reader.onload = () => onFileRead(reader.result as string);
             reader.onerror = console.error; // TODO
             reader.readAsDataURL(file);
         }
@@ -131,19 +130,11 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         this.setState({cropURL: null})
     }
 
-    private _onCrop(data: string): void {
-        const {onFileRead} = this.props;
-        if (onFileRead) {
-            const file = {preview: data} as ImageFile;
-            onFileRead(file, data)
-        }
-    }
-
     private _renderCropper(): JSX.Element {
         const { size, shape } = this.props;
         const { cropURL } = this.state;
         return <ImageCropper
-            onImageChanged={this._onCrop}
+            onImageChanged={this.props.onFileRead}
             imageURL={cropURL}
             size={size}
             shape={shape}

@@ -60,9 +60,9 @@ describe('The image upload field component', () => {
 
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, image);
         const contents = 'data:image/jpeg;base64,' + btoa('A+test+string+for+testing+image');
-        wrapper.find(ImageUpload).prop("onFileRead")(image, contents);
+        wrapper.find(ImageUpload).prop("onFileRead")(contents);
 
-        expect(props.onReadHandler).toHaveBeenCalledWith(props.id, image, contents);
+        expect(props.onReadHandler).toHaveBeenCalledWith(props.id, contents);
         expect(wrapper.find(InputFieldWrapper).prop("touched")).toEqual(true);
     });
 

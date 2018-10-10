@@ -65,20 +65,17 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
     _onImageChanged = debounce(() => {
         const canvas = this.editor.getImage();
         const imageData = canvas.toDataURL();
-        console.log("onImageChanged", imageData.length);
         this.props.onImageChanged(imageData);
     }, 100);
 
     private _onScaleChanged(e:  React.ChangeEvent<HTMLInputElement>): void {
         const scale = parseFloat(e.target.value)
         this.setState({scale})
-        console.log({scale})
         this._onImageChanged()
     }
 
     private _onPositionChanged(position: {x: number, y: number}): void {
         this.setState({position})
-        console.log({position})
         this._onImageChanged()
     }
 

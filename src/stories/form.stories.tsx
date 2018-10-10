@@ -4,7 +4,6 @@ import { withKnobs, text, boolean, number, selectV2 } from '@storybook/addon-kno
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
-import { action } from '@storybook/addon-actions';
 
 // components
 import InputField from '../components/input_field';
@@ -244,7 +243,7 @@ stories.add('Image upload', withState({ value: null })
                     id="id_8"
                     value={store.state.value}
                     onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
-                    onReadHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
+                    onReadHandler={(id, value: string) => store.set({ value })}
                     label={text('Label', 'Select an image')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
