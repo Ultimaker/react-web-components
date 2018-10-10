@@ -255,6 +255,8 @@ stories.add('Image upload', withState({ value: null })
                     infoLinkURL={text('Info link URL', '')}
                     infoText={text('Info text', '')}
                     preLabelElement={text('Pre label element', '')}
+                    allowCropping={boolean("Allow Cropping", true)}
+                    maxBytes={number("Maximum bytes", 1024 * 1024)}
                 />
             </div>
         )

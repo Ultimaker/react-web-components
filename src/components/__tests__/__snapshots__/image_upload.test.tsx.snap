@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The image upload component should render 1`] = `
-<div>
+<div
+  className="image-upload"
+>
   <t
     accept="image/jpeg, image/png"
-    className="image-upload"
     disableClick={false}
     disablePreview={false}
     disabled={false}
