@@ -259,6 +259,7 @@ stories.add('Image upload', withState({ value: null })
                     allowCropping={boolean("Allow Cropping", true)}
                     maxBytes={number("Maximum bytes", 1024 * 1024)}
                 />
+                <img src={store.state.value} width={100} height={100} />
             </div>
         )
     )

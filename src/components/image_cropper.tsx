@@ -67,7 +67,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         const imageData = canvas.toDataURL();
         console.log("onImageChanged", imageData.length);
         this.props.onImageChanged(imageData);
-    }, 1000);
+    }, 100);
 
     private _onScaleChanged(e:  React.ChangeEvent<HTMLInputElement>): void {
         const scale = parseFloat(e.target.value)
