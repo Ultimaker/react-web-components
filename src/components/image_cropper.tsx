@@ -1,9 +1,13 @@
 import * as React from 'react'
-import * as AvatarEditor from 'react-avatar-editor'
 import {ImageShape} from './image'
 import {debounce} from 'lodash'
 
-let Dropzone = require('react-dropzone') // needs to be imported this way to keep jest happy
+ // needs to be imported this way to keep jest happy
+let AvatarEditor = require('react-avatar-editor')
+if ('default' in AvatarEditor) {
+    AvatarEditor = AvatarEditor.default
+}
+let Dropzone = require('react-dropzone')
 if ('default' in Dropzone) {
     Dropzone = Dropzone.default
 }
