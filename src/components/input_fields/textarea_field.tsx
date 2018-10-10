@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import Textarea from '../textarea';
-import splitTextByNewLine from '../../utils/split_text_by_new_line'
+import splitTextByNewLine from '../../utils/split_text_by_new_line';
 
 export interface TextareaFieldProps extends InputFieldProps {
     /** The text **/
