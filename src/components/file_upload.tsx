@@ -15,6 +15,8 @@ export interface FileUploadProps {
     uploading?: boolean;
     /** Placeholder text */
     placeholder?: string;
+    /** What kinds of file extensions should be accepted client-side **/
+    accept?: string[];
 }
 
 export interface FileUploadState {
@@ -42,7 +44,7 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
     }
 
     render(): JSX.Element {
-        const { id, disabled, placeholder, uploading } = this.props;
+        const { id, disabled, placeholder, uploading, accept } = this.props;
         const { selectedFileName } = this.state;
 
         const classes = classNames('file-upload', { disabled });
@@ -56,6 +58,7 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
                 onChange={this._onChangeHandler}
                 disabled={disabled}
                 placeholder={placeholder}
+                accept={accept ? accept.join(",") : null}
             />
             <div className="layout layout--gutter-sm">
                 <div className="layout__item u-fill file-upload__input-container">

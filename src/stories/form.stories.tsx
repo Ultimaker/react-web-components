@@ -325,6 +325,7 @@ stories.add('Upload file field', withState({ value: null })
                     infoLinkURL={text('Info link URL', '')}
                     infoText={text('Info text', '')}
                     preLabelElement={text('Pre label element', '')}
+                    accept={text('Accept file types', '.pdf,.zip').split(",")}
                 />
             </div>
         )
