@@ -49,6 +49,11 @@ describe('The text field component', () => {
         expect(wrapper.find(DefaultInputField).prop("inputChildren")).toEqual("a child");
     })
 
+    it('should set the field maximum length', () => {
+        wrapper.setProps({maxLength: 100})
+        expect(wrapper.find(DefaultInputField).prop("maxLength")).toEqual(100);
+    })
+
     it('should render a static e-mail', () => {
         wrapper.setProps({staticField: true, type: "email"})
         expect(wrapper.find(DefaultInputField).prop("children")).toEqual(

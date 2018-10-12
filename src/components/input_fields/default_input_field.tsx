@@ -22,6 +22,9 @@ export interface DefaultInputFieldProps extends InputFieldProps {
     /** Maximum value for number field */
     max?: number;
 
+    /** Maximum amount of characters allowed in the field **/
+    maxLength?: number;
+
     /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
     inputChildren: any;
 }
@@ -69,7 +72,7 @@ class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultI
     }
 
     render() {
-        const {type, value, placeholder, min, max, children, inputChildren, ...wrapperProps} = this.props;
+        const {type, value, placeholder, min, max, maxLength, children, inputChildren, ...wrapperProps} = this.props;
         const {id, validationError, submitted, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper touched={touched} inputChildren={inputChildren} {...wrapperProps}>
@@ -80,6 +83,7 @@ class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultI
                 type={type}
                 min={min ? min : null}
                 max={max ? max : null}
+                maxLength={maxLength}
                 onChange={this._onChange}
                 placeholder={placeholder}
                 value={value || ""}

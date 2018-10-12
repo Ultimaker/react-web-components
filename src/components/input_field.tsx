@@ -50,6 +50,8 @@ export interface OldInputFieldProps extends InputFieldProps {
     imageSize?: string;
     /** Shape of the image for type image: 'round' | 'square' */
     imageShape?: ImageShape;
+    /** Maximum amount of characters allowed in the text field **/
+    maxLength?: number;
 }
 
 /**
