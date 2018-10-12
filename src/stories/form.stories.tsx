@@ -19,6 +19,7 @@ import ImageUploadField from '../components/input_fields/image_upload_field';
 import DateField from '../components/input_fields/date_field';
 import TagsField from '../components/input_fields/tags_field';
 import ImageCropper from '../components/image_cropper';
+import RangeSlider from '../components/range_slider'
 
 const stories = storiesOf('Forms', module);
 
@@ -259,7 +260,7 @@ stories.add('Image upload', withState({ value: null })
                     allowCropping={boolean("Allow Cropping", true)}
                     maxBytes={number("Maximum bytes", 1024 * 1024)}
                 />
-                <img src={store.state.value} width={100} height={100} />
+                {store.state.value && <img src={store.state.value} width={150} height={150} />}
             </div>
         )
     )
@@ -272,9 +273,30 @@ stories.add('Image cropping', withState({ value: null })
                 <ImageCropper
                     shape={selectV2('Image shape', options, defaultValue)}
                     size={text('Image size', '18rem')}
-                    allowZoomOut={boolean('Allow zoom out', false)}
-                    onImageChanged={value => store.set({ value })}
-                    imageURL={store.value}
+                    minScale={number('Minimum scale', 0.8)}
+                    maxScale={number('Maximum scale', 3)}
+                    scaleStep={number('Scale step', 0.2)}
+                    onImageChanged={value => store.set({
+                        value: value && value.length > 100 ? value.substr(0, 100) + "..." : value,
+                        bytes: value && value.length,
+                    })}
+                />
+            </div>
+        )
+    )
+);
+
+stories.add('Range slider', withState({ value: null })
+    (withInfo('Range slider')
+        (({ store }) =>
+            <div style={{ width: 350 }}>
+                <RangeSlider
+                    className="image-cropper--slider"
+                    onChange={value => store.set({ value })}
+                    min={number('Range start', RangeSlider.defaultProps.min)}
+                    max={number('Range end', RangeSlider.defaultProps.max)}
+                    step={number('Step', RangeSlider.defaultProps.step)}
+                    value={1}
                 />
             </div>
         )

@@ -329,3 +329,41 @@
         transform: translateY(-50%);
     }
 }
+
+.range-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 0.5rem;
+    background: $color-grey-light;
+    outline: none;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: $primary-btn-color;
+        cursor: pointer;
+        &:hover {
+            background: $primary-btn-color-hover;
+        }
+        &:active {
+            background: $primary-btn-color-active;
+        }
+    }
+
+    &::-moz-range-thumb {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background: $primary-btn-color;
+        cursor: pointer;
+        &:hover {
+            background: $primary-btn-color-hover;
+        }
+        &:active {
+            background: $primary-btn-color-active;
+        }
+    }
+}
