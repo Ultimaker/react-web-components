@@ -6,6 +6,7 @@ exports[`The FileUpload component should render 1`] = `
   onClick={[Function]}
 >
   <input
+    accept={null}
     id="testFileUpload"
     name="testFileUpload"
     onChange={[Function]}
