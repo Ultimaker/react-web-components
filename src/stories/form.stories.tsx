@@ -68,6 +68,7 @@ stories.add('Text field', withState({ value: null })
                     required={boolean('Required', false)}
                     infoLinkURL={text('Info link URL', '')}
                     infoText={text('Info text', '')}
+                    maxLength={number('Maximum length', 100)}
                     preLabelElement={text('Pre label element', '')}
                 />
             </div>
