@@ -11,6 +11,8 @@ export interface TextFieldProps extends InputFieldProps {
     type?: TextFieldType;
     /** Input field value */
     value: string | null;
+    /** Maximum amount of characters allowed in the field **/
+    maxLength?: number;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
     /** If true, the field will be focused when loaded */
