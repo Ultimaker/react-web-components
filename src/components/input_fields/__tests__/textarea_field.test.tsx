@@ -31,7 +31,7 @@ describe('The textarea field component', () => {
 
     it('should render a null', () => {
         wrapper.setProps({value: null})
-        expect(wrapper.find(Textarea).prop("value")).toBeNull()
+        expect(wrapper.find(Textarea).prop("value")).toEqual("")
     })
 
     it('should render a wrapped textarea', () => {

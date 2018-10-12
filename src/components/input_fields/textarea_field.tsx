@@ -53,7 +53,7 @@ class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldSta
                 id={id}
                 onChangeHandler={this._onChange}
                 placeholder={placeholder}
-                value={value}
+                value={value || ""}
                 autofocus={focusOnLoad}
                 autoGrow={textareaAutoGrow}
             />
