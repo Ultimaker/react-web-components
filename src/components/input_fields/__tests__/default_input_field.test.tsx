@@ -74,6 +74,11 @@ describe('The wrapped input field component', () => {
         expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual([false, <div>static text</div>]);
     })
 
+    it('should set the maxium input field length', () => {
+        wrapper.setProps({maxLength: 100})
+        expect(wrapper.find("input").prop("maxLength")).toEqual(100);
+    })
+
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
         wrapper.find("input").prop("onChange")({target: {value: "some text"}})
