@@ -30,8 +30,9 @@ export interface PopupProps {
     secondaryBtnStyle?: ButtonStyle;
     /** Placeholder text for the input for popups of type prompt */
     promptPlaceholder?: string;
-
+    /** The current step number of a multi-step popup */
     step?: number;
+    /** The total number of steps of a multi-step popup */
     totalSteps?: number;
 }
 
@@ -66,7 +67,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
             };
         }
         if (props.step !== state.storedStep) {
-            // if there are validation errors, reset the button spinners
+            // if the step changes, reset the button spinners
             return {
                 storedStep: props.step,
                 primaryBtnShowSpinner: false,
