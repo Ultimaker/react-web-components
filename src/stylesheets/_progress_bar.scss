@@ -1,11 +1,13 @@
 .progress-bar {
     width: 100%;
     position: relative;
+    line-height: 0;
 
     .progress-bar__progress-indicator {
         height: 2px;
         display: inline-block;
         background: $progress-bar-color;
+        transition: width 0.5s;
 
         &.stopped {
             background: $progress-bar-color-paused;
@@ -14,6 +16,7 @@
 
     .progress-bar__empty {
         height: 2px;
+        transition: width 0.5s;
         display: inline-block;
         background: white;
     }
