@@ -72,7 +72,7 @@ export class Button extends React.Component<ButtonProps, {}> {
             target={linkToNewTab ? '_blank' : undefined}
         >
             <span className="text">{children}</span>
-        </Link >
+        </Link>
     }
 
     private _renderExternalLink(classes: string): JSX.Element {
