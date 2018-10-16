@@ -15,6 +15,8 @@ import UploadIcon from './icons/upload_icon';
 import bytesToSize from '../utils/bytes_to_size'
 import {I18n} from '../utils/i18n';
 import ImageCropper from './image_cropper'
+import Button from './button'
+import RejectedIcon from './icons/rejected_icon'
 
 /**
  * This interface adds an image preview URL to blob files.
@@ -31,6 +33,8 @@ export interface ImageUploadProps {
     onFileSelection?: (file: ImageFile) => any;
     /** Called when an image has been read */
     onFileRead?: (data: string) => any;
+    /** If given, the user is allowed to remove the image. This callback is then called. **/
+    onFileRemoved?: () => any;
     /** Size of the image. Include size unit */
     size?: string;
     /** Shape of the image: 'round' | 'square' */
@@ -46,6 +50,7 @@ export interface ImageUploadProps {
 }
 
 export interface ImageUploadState {
+    /** Whether the user is currently dropping a file in this component **/
     dropActive: boolean;
     cropURL: string | null;
     errorMessage: string | null;
@@ -71,7 +76,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
         this._onDragLeave = this._onDragLeave.bind(this);
-        this._onCropCancel = this._onCropCancel.bind(this);
+        this._onFileRemoved = this._onFileRemoved.bind(this);
     }
 
     private get _style() {
@@ -126,8 +131,11 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         });
     }
 
-    private _onCropCancel(): void {
-        this.setState({cropURL: null})
+    private _onFileRemoved(): void {
+        this.props.onFileRemoved();
+        this.setState({
+            cropURL: null
+        })
     }
 
     private _renderCropper(): JSX.Element {
@@ -158,7 +166,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         >
             <div className={hoverAreaClasses}>
                 <div className={iconClasses}>
-                    <UploadIcon/>
+                    <UploadIcon />
                     {errorMessage ?
                         <div className="error-message">
                             {errorMessage}
@@ -183,10 +191,15 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     render(): JSX.Element {
-        const { id } = this.props;
+        const { id, onFileRemoved, imageURL } = this.props;
         const { cropURL } = this.state;
         return <div id={id} className="image-upload">
             {cropURL ? this._renderCropper() : this._renderDropzone()}
+            {onFileRemoved && imageURL &&
+                <Button onClickHandler={this._onFileRemoved} style="quiet" shape="pill" className="remove-image">
+                    <RejectedIcon size="lg" />
+                </Button>
+            }
         </div>
     }
 }

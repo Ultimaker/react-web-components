@@ -19,7 +19,9 @@ import ImageUploadField from '../components/input_fields/image_upload_field';
 import DateField from '../components/input_fields/date_field';
 import TagsField from '../components/input_fields/tags_field';
 import ImageCropper from '../components/image_cropper';
-import RangeSlider from '../components/range_slider'
+import RangeSlider from '../components/range_slider';
+import ProfileIcon from '../components/icons/profile_icon';
+import Image from '../components/image';
 
 const stories = storiesOf('Forms', module);
 
@@ -246,6 +248,7 @@ stories.add('Image upload', withState({ value: null })
                     value={store.state.value}
                     onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
                     onReadHandler={(id, value: string) => store.set({ value })}
+                    onRemoveHandler={() => store.set({ value: null })}
                     label={text('Label', 'Select an image')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
@@ -260,7 +263,14 @@ stories.add('Image upload', withState({ value: null })
                     allowCropping={boolean("Allow Cropping", true)}
                     maxBytes={number("Maximum bytes", 1024 * 1024)}
                 />
-                {store.state.value && <img src={store.state.value} width={150} height={150} />}
+                <br />
+                <Tile>
+                    <h3>Result</h3>
+                    {store.state.value ?
+                        <Image src={store.state.value} size="4.8rem" /> :
+                        <ProfileIcon size="lg" />}
+                    <br/>
+                </Tile>
             </div>
         )
     )

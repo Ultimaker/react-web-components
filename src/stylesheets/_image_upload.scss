@@ -66,7 +66,7 @@
         transition: color 0.2s ease-out;
     }
 
-    .icon {
+    .icon--upload {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -98,5 +98,12 @@
             transition: fill 0.2s ease-out;
             width: 100%;
         }
+    }
+
+    .remove-image {
+        position: absolute;
+        top: 0.3rem;
+        right: 0.2rem;
+        padding: 0;
     }
 }
