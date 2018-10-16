@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Image Cropper component should render 1`] = `
+<div
+  className="image-cropper--container"
+>
+  <d
+    border={25}
+    borderRadius={0}
+    className="editor-canvas"
+    color={
+      Array [
+        0,
+        0,
+        0,
+        0.5,
+      ]
+    }
+    disableBoundaryChecks={false}
+    height={150}
+    image="/images/Ultimaker-Resources.jpg"
+    onImageChange={[Function]}
+    onImageReady={[Function]}
+    onLoadFailure={[Function]}
+    onLoadSuccess={[Function]}
+    onMouseMove={[Function]}
+    onMouseUp={[Function]}
+    onPositionChange={[Function]}
+    position={
+      Object {
+        "x": 0.5,
+        "y": 0.5,
+      }
+    }
+    rotate={0}
+    scale={1}
+    style={Object {}}
+    width={150}
+  />
+  <RangeSlider
+    className="image-cropper--slider"
+    max={2.5}
+    min={1}
+    onChange={[Function]}
+    step={0.1}
+    value={1}
+  />
+</div>
+`;

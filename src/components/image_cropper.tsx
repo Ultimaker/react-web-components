@@ -9,6 +9,7 @@ import CrossIcon from './icons/cross_icon'
  // needs to be imported this way to keep jest happy
 let AvatarEditor = require('react-avatar-editor');
 if ('default' in AvatarEditor) {
+    /* istanbul ignore next */ // ignores coverage for this line.
     AvatarEditor = AvatarEditor.default;
 }
 
@@ -58,7 +59,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         scaleStep: 0.1,
         borderSize: 25,
         imageURL: '/images/Ultimaker-Resources.jpg', // TODO: Import file instead.
-        onImageChanged: () => { throw new Error("ImageCropper.onImageChanged not given.") },
+        onImageChanged: null,
     };
 
     /* The default state of the image cropper */
@@ -70,7 +71,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
     /**
      * A reference to the editor component. Typing added manually because the @types package is incorrect.
      */
-    editor: {
+    _editor: {
         getImage(): HTMLCanvasElement;
         getImageScaledToCanvas(): HTMLCanvasElement;
         getCroppingRect(): {
@@ -86,7 +87,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
      * often during zooming / scaling.
      */
     _onImageChanged = debounce(() => {
-        const canvas = this.editor.getImage();
+        const canvas = this._editor.getImage();
         const imageData = canvas.toDataURL();
         this.props.onImageChanged(imageData);
     }, 100);
@@ -113,7 +114,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         return (
             <div className="image-cropper--container">
                 <AvatarEditor
-                    ref={editor => this.editor = editor}
+                    ref={editor => this._editor = editor}
                     scale={scale}
                     border={borderSize}
                     width={sizePixels}
@@ -143,4 +144,5 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
     }
 }
 
+export {AvatarEditor}
 export default ImageCropper;
