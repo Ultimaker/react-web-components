@@ -17,6 +17,7 @@ exports[`The Button component renders a anchor when prop \`type\` is link and an
 exports[`The Button component renders a link when prop \`type\` is link and an internal link is given 1`] = `
 <Link
   className="btn btn--primary btn--rectangle "
+  id="testButton"
   replace={false}
   to="/print_jobs"
 >
