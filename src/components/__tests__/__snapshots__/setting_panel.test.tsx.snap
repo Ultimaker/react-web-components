@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SettingPanel component should render 1`] = `
+<div
+  className="setting-panel"
+>
+  <SelectListItem
+    headerText="header text"
+    headerTextAlignment="left"
+    isOpen={false}
+    onHeaderClick={[Function]}
+    showHeaderPanelArrow={true}
+  >
+    <div
+      className="setting-panel__explanation-text"
+    >
+      a brief explanation
+    </div>
+  </SelectListItem>
+  <div
+    className="layout setting-panel__option"
+  >
+    <div
+      className="layout__item u-fill"
+    >
+      <div
+        className="setting-panel__value-text"
+      >
+        false value text
+      </div>
+    </div>
+    <div
+      className="layout__item u-fit-sm"
+    >
+      <ToggleButton
+        disabled={false}
+        id="id"
+        onChangeHandler={[Function]}
+        value={false}
+      />
+    </div>
+  </div>
+</div>
+`;
