@@ -236,7 +236,10 @@
         @extend %input-style;
         vertical-align: top;
         height: auto;
+        min-width: 15rem;
+        max-width: 100%;
         min-height: 9.2rem;
+        max-height: 100vh;
     }
 }
 
@@ -297,7 +300,9 @@
 
 .file-upload {
     input {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        left: -9999px;
     }
 
     .file-upload__input-container {

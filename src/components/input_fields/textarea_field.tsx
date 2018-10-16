@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 import Textarea from '../textarea';
+import splitTextByNewLine from '../../utils/split_text_by_new_line';
 
 export interface TextareaFieldProps extends InputFieldProps {
     /** The text **/
@@ -47,12 +48,12 @@ class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldSta
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>{
-            staticField ? value :
+            staticField ? splitTextByNewLine(value) :
             <Textarea
                 id={id}
                 onChangeHandler={this._onChange}
                 placeholder={placeholder}
-                value={value}
+                value={value || ""}
                 autofocus={focusOnLoad}
                 autoGrow={textareaAutoGrow}
             />

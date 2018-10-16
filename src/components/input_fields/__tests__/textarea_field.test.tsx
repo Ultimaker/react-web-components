@@ -31,7 +31,7 @@ describe('The textarea field component', () => {
 
     it('should render a null', () => {
         wrapper.setProps({value: null})
-        expect(wrapper.find(Textarea).prop("value")).toBeNull()
+        expect(wrapper.find(Textarea).prop("value")).toEqual("")
     })
 
     it('should render a wrapped textarea', () => {
@@ -47,7 +47,7 @@ describe('The textarea field component', () => {
 
     it('should render a static textarea', () => {
         wrapper.setProps({staticField: true})
-        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual(props.value);
+        expect(wrapper.find(InputFieldWrapper).prop("children").map(c => c.props.children)).toEqual([props.value]);
     })
 
     it('should call the callback', () => {

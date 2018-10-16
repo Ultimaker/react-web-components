@@ -18,6 +18,8 @@ export interface FileUploadFieldProps extends InputFieldProps {
     placeholder?: string;
     /** Whether the file is being uploaded (so the upload button is disabled) **/
     uploading?: boolean;
+    /** What kinds of file extensions should be accepted client-side **/
+    accept?: string[];
 }
 
 /**
@@ -62,7 +64,7 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
     }
 
     render() {
-        const {placeholder, uploading, children, ...wrapperProps} = this.props;
+        const {placeholder, uploading, children, accept, ...wrapperProps} = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
@@ -72,6 +74,7 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
                 disabled={staticField}
                 uploading={uploading}
                 placeholder={placeholder}
+                accept={accept}
             />
         </InputFieldWrapper>;
     }

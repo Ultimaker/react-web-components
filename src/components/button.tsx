@@ -63,9 +63,14 @@ export class Button extends React.Component<ButtonProps, {}> {
     }
 
     private _renderInternalLink(classes: string): JSX.Element {
-        const { linkURL, children } = this.props;
+        const { id, disabled, showSpinner, linkURL, linkToNewTab, children } = this.props;
 
-        return <Link to={linkURL} className={classes}>
+        return <Link
+            id={id}
+            className={classes}
+            to={disabled || showSpinner ? undefined : linkURL}
+            target={linkToNewTab ? '_blank' : undefined}
+        >
             <span className="text">{children}</span>
         </Link>
     }
@@ -113,6 +118,6 @@ export class Button extends React.Component<ButtonProps, {}> {
             return this._renderButton(classes);
         }
     }
-};
+}
 
 export default Button;
