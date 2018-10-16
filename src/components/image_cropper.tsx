@@ -120,7 +120,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
                     width={sizePixels}
                     height={sizePixels}
                     position={position}
-                    onPositionChange={position => this.setState({position})}
+                    onPositionChange={position => this.setState({ position })}
                     onImageChange={() => this._onImageChanged()}
                     borderRadius={shape == 'round' ? sizePixels : 0}
                     image={imageURL}
@@ -144,5 +144,4 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
     }
 }
 
-export {AvatarEditor}
 export default ImageCropper;
