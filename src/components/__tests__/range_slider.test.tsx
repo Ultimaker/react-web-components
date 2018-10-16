@@ -10,14 +10,14 @@ describe('The Range Slider component', () => {
         const onChange = jest.fn();
         const wrapper = shallow(<RangeSlider onChange={onChange} value={0.5}/>);
         expect(wrapper).toMatchSnapshot();
-        expect(onChange).not.toHaveBeenCalled()
-    })
+        expect(onChange).not.toHaveBeenCalled();
+    });
 
     it('should parse the callback', () => {
         const onChange = jest.fn();
         const wrapper = shallow(<RangeSlider onChange={onChange} value={0.5}/>);
-        const inputChanged = wrapper.find("input").prop('onChange') as any
-        inputChanged({target: {value: "0.9"}})
-        expect(onChange).toHaveBeenCalledWith(0.9)
+        const inputChanged = wrapper.find("input").prop('onChange') as any;
+        inputChanged({target: {value: "0.9"}});
+        expect(onChange).toHaveBeenCalledWith(0.9);
     });
 });

@@ -91,7 +91,7 @@ describe('The image upload component', () => {
             onCropCancel: expect.any(Function),
         }));
 
-        wrapper.find(ImageCropper).prop('onCropCancel')()
+        wrapper.find(ImageCropper).prop('onCropCancel')();
         expect(wrapper.find(Dropzone)).toHaveLength(1);
         expect(wrapper.find(ImageCropper)).toHaveLength(0);
     });

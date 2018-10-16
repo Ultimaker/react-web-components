@@ -13,7 +13,7 @@ import { Image, ImageShape } from './image';
 import UploadIcon from './icons/upload_icon';
 
 // utils
-import ImageCropper from './image_cropper'
+import ImageCropper from './image_cropper';
 
 /**
  * This interface adds an image preview URL to blob files.
@@ -65,7 +65,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     state: ImageUploadState = {
         dropActive: false,
         cropURL: null,
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -108,7 +108,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     private _onCropCancel(): void {
         this.props.onFileRead(null);
-        this.setState({ cropURL: null })
+        this.setState({ cropURL: null });
     }
 
     private _renderCropper(): JSX.Element {
@@ -130,34 +130,36 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         const iconClasses = classNames({ 'hide': imageURL !== null, 'icon-with-label': placeholderLabel });
         const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
 
-        return <Dropzone
-            style={{ height: size, width: size }}
-            accept="image/jpeg, image/png"
-            multiple={false}
-            onDragEnter={this._onDragEnter}
-            onDragLeave={this._onDragLeave}
-            onDrop={this._onDropHandler}
-        >
-            <div className={hoverAreaClasses}>
-                <div className={iconClasses}>
-                    <UploadIcon />
-                    {placeholderLabel &&
-                        <div className="placeholder-label">
-                            {placeholderLabel}
-                        </div>
+        return (
+            <Dropzone
+                style={{ height: size, width: size }}
+                accept="image/jpeg, image/png"
+                multiple={false}
+                onDragEnter={this._onDragEnter}
+                onDragLeave={this._onDragLeave}
+                onDrop={this._onDropHandler}
+            >
+                <div className={hoverAreaClasses}>
+                    <div className={iconClasses}>
+                        <UploadIcon />
+                        {placeholderLabel &&
+                            <div className="placeholder-label">
+                                {placeholderLabel}
+                            </div>
+                        }
+                    </div>
+
+                    {imageURL &&
+                        <div className={`cover cover--${shape}`}/>
                     }
                 </div>
 
-                {imageURL &&
-                    <div className={`cover cover--${shape}`}/>
+                {imageURL ?
+                    <Image src={imageURL} shape={shape} size={size} />
+                    : <div className={`placeholder placeholder--${shape}`}/>
                 }
-            </div>
-
-            {imageURL ?
-                <Image src={imageURL} shape={shape} size={size} />
-                : <div className={`placeholder placeholder--${shape}`}/>
-            }
-        </Dropzone>
+            </Dropzone>
+        );
     }
 
     render(): JSX.Element {
@@ -165,7 +167,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         const { cropURL } = this.state;
         return <div id={id} className="image-upload">
             {cropURL ? this._renderCropper() : this._renderDropzone()}
-        </div>
+        </div>;
     }
 }
 

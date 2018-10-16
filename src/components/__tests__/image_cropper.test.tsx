@@ -23,21 +23,21 @@ describe('The Image Cropper component', () => {
         props = {
             onImageChanged: onImageChanged,
             onCropCancel: onCropCancel,
-        }
-    })
+        };
+    });
 
     const createWrapper = () => {
         const wrapper = shallow(<ImageCropper {...props} />);
         wrapper.instance()['_editor'] = editor;
         return wrapper;
-    }
+    };
 
     it('should render', () => {
         const wrapper = createWrapper();
         expect(wrapper).toMatchSnapshot();
         expect(onImageChanged).not.toHaveBeenCalled();
         expect(onCropCancel).not.toHaveBeenCalled();
-    })
+    });
 
     it('should give the avatar a border radius', async () => {
         props.shape = 'round';
@@ -49,8 +49,8 @@ describe('The Image Cropper component', () => {
             height: 140,
             border: 20,
             borderRadius: 140,
-        }))
-    })
+        }));
+    });
 
     it('should keep the range slider', async () => {
         const wrapper = createWrapper();
@@ -59,7 +59,7 @@ describe('The Image Cropper component', () => {
         wrapper.find(RangeSlider).prop('onChange')(0.5);
         expect(wrapper.find(RangeSlider).prop('value')).toEqual(0.5);
         expect(wrapper.find(AvatarEditor).prop('scale')).toEqual(0.5);
-    })
+    });
 
     it('should keep the image position', async () => {
         const wrapper = createWrapper();
@@ -67,7 +67,7 @@ describe('The Image Cropper component', () => {
         expect(avatarProps.position).toEqual({x: 0.5, y: 0.5});
         avatarProps.onPositionChange({x: 0, y: 1});
         expect(wrapper.find(AvatarEditor).prop('position')).toEqual({x: 0, y: 1});
-    })
+    });
 
     it('should parse the callback', async () => {
         const wrapper = createWrapper();
