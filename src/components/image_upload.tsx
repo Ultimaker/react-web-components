@@ -12,8 +12,6 @@ import { Image, ImageShape } from './image';
 import UploadIcon from './icons/upload_icon';
 
 // utils
-import bytesToSize from '../utils/bytes_to_size'
-import {I18n} from '../utils/i18n';
 import ImageCropper from './image_cropper'
 
 /**
@@ -30,7 +28,7 @@ export interface ImageUploadProps {
     /** Called when an image has been selected */
     onFileSelection?: (file: ImageFile) => any;
     /** Called when an image has been read */
-    onFileRead?: (data: string) => any;
+    onFileRead?: (dataURL: string) => any;
     /** Size of the image. Include size unit */
     size?: string;
     /** Shape of the image: 'round' | 'square' */
@@ -39,8 +37,6 @@ export interface ImageUploadProps {
     imageURL?: string;
     /** Placeholder label */
     placeholderLabel?: string;
-    /** Maximum size in bytes **/
-    maxBytes?: number;
     /**
      * Whether cropping should be enabled. If enabled, the user is allowed to choose what part of the image to use.
      * For every change, the `onFileRead` callback is called.
@@ -53,10 +49,11 @@ export interface ImageUploadState {
     dropActive: boolean;
     /** The URL the user started cropping with. This is used to keep the whole image even then the imageURL changed **/
     cropURL: string | null;
-    /** The error message displayed if the file is too large **/
-    errorMessage: string | null;
 }
 
+/**
+ * Component that allows a user to upload (and optionally crop) an image.
+ */
 export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
 
     public static defaultProps: Partial<ImageUploadProps> = {
@@ -67,7 +64,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     state: ImageUploadState = {
         dropActive: false,
         cropURL: null,
-        errorMessage: null,
     }
 
     constructor(props) {
@@ -81,21 +77,9 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     private _onDropHandler(files: ImageFile[]): void {
         const file = files[0];
-        this.setState({
-            dropActive: false,
-            errorMessage: null,
-        });
+        this.setState({ dropActive: false });
 
-        const {maxBytes, allowCropping, onFileSelection, onFileRead} = this.props;
-        if (maxBytes && file.size > maxBytes) {
-            return this.setState({
-                errorMessage: I18n.format(
-                    'image upload error',
-                    'The image uploaded is larger than %{maxSize}.',
-                    {maxSize: bytesToSize(maxBytes)}
-                )
-            });
-        }
+        const {allowCropping, onFileSelection, onFileRead} = this.props;
 
         if (onFileSelection) {
             onFileSelection(file);
@@ -104,12 +88,12 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         if (onFileRead) {
             const reader = new FileReader();
             reader.onload = () => onFileRead(reader.result as string);
-            reader.onerror = console.error; // TODO
+            reader.onerror = console.error;
             reader.readAsDataURL(file);
         }
 
         if (allowCropping) {
-            return this.setState({cropURL: file.preview});
+            return this.setState({ cropURL: file.preview });
         }
     }
 
@@ -140,12 +124,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     private _renderDropzone(): JSX.Element {
         const { size, shape, imageURL, placeholderLabel } = this.props;
-        const { dropActive, errorMessage } = this.state;
+        const { dropActive } = this.state;
 
         const iconClasses = classNames({ 'hide': imageURL !== null, 'icon-with-label': placeholderLabel });
         const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
-
-        // TODO: Fix style of errorMessage, check with UX!
 
         return <Dropzone
             style={{ height: size, width: size }}
@@ -158,11 +140,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
             <div className={hoverAreaClasses}>
                 <div className={iconClasses}>
                     <UploadIcon />
-                    {errorMessage ?
-                        <div className="error-message">
-                            {errorMessage}
-                        </div>
-                        : placeholderLabel &&
+                    {placeholderLabel &&
                         <div className="placeholder-label">
                             {placeholderLabel}
                         </div>
@@ -170,7 +148,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 </div>
 
                 {imageURL &&
-                <div className={`cover cover--${shape}`}/>
+                    <div className={`cover cover--${shape}`}/>
                 }
             </div>
 

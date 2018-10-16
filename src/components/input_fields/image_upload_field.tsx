@@ -20,16 +20,13 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     onChangeHandler?: (id: string, value: ImageFile) => any;
 
     /** Called when an image file is read */
-    onReadHandler?: (id: string, contents: string) => any;
+    onReadHandler?: (id: string, dataURL: string) => any;
 
     /** html placeholder text */
     placeholder?: string;
 
     /** The file URL or preview URL **/
     value: string;
-
-    /** Maximum size in bytes **/
-    maxBytes?: number;
 
     /** Whether cropping should be enabled **/
     allowCropping?: boolean;
@@ -68,7 +65,7 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
 
     render() {
         const {
-            imageSize, imageShape, placeholder, value, onReadHandler, children, maxBytes, allowCropping, ...wrapperProps
+            imageSize, imageShape, placeholder, value, onReadHandler, children, allowCropping, ...wrapperProps
         } = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
@@ -83,7 +80,6 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
                     onFileRead={contents => onReadHandler && onReadHandler(id, contents)}
                     shape={imageShape}
                     placeholderLabel={placeholder}
-                    maxBytes={maxBytes}
                     allowCropping={allowCropping}
                 />
         }</InputFieldWrapper>;
