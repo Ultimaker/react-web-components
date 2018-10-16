@@ -49,8 +49,8 @@ export class Button extends React.Component<ButtonProps, {}> {
     }
 
     private _isLinkInternal(): boolean {
-        const { linkURL } = this.props;
-        return linkURL && !(/^https?:\/\//.test(linkURL));
+        const { linkURL, linkToNewTab } = this.props;
+        return !linkToNewTab && linkURL && !(/^https?:\/\//.test(linkURL));
     }
 
     private _onClickHandler(e: React.MouseEvent<HTMLElement>): void {
@@ -63,13 +63,12 @@ export class Button extends React.Component<ButtonProps, {}> {
     }
 
     private _renderInternalLink(classes: string): JSX.Element {
-        const { id, disabled, showSpinner, linkURL, linkToNewTab, children } = this.props;
+        const { id, disabled, showSpinner, linkURL, children } = this.props;
 
         return <Link
             id={id}
             className={classes}
             to={disabled || showSpinner ? undefined : linkURL}
-            target={linkToNewTab ? '_blank' : undefined}
         >
             <span className="text">{children}</span>
         </Link>
