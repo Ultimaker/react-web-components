@@ -4,16 +4,16 @@ import classNames from 'classnames';
 
 export interface RangeSliderProps {
     /** The minimum in the range **/
-    min: number;
+    min?: number;
 
     /** The maximum in the range **/
-    max: number;
+    max?: number;
 
     /** How big each step will be **/
     step?: number;
 
     /** The current value **/
-    value?: number;
+    value: number;
 
     /** The name of the class to the element **/
     className?: string;
@@ -40,7 +40,7 @@ const RangeSlider: React.StatelessComponent<RangeSliderProps> = ({min, max, step
 RangeSlider.displayName = "RangeSlider";
 RangeSlider.defaultProps = {
     min: 0,
-    max: 2,
+    max: 1,
     value: 0.5,
     step: 0.1,
 };
