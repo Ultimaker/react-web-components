@@ -160,7 +160,7 @@ stories.add('Pill', withInfo(
     </div>
 ));
 
-stories.add('Toggle', withState({ checked: null })
+stories.add('Toggle', withState({ value: null })
     (withInfo('Toggle switch button based on a checkbox. Can be used for turning on/off settings.')
         (({ store }) =>
             <ToggleButton
