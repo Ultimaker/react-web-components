@@ -22,9 +22,6 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     /** Called when an image file is read */
     onReadHandler?: (id: string, contents: string) => any;
 
-    /** If given, the user is allowed to remove the image. This callback is then called. **/
-    onRemoveHandler?: () => any;
-
     /** html placeholder text */
     placeholder?: string;
 
@@ -71,8 +68,7 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
 
     render() {
         const {
-            imageSize, imageShape, placeholder, value, onReadHandler, onRemoveHandler, children, maxBytes, allowCropping,
-            ...wrapperProps
+            imageSize, imageShape, placeholder, value, onReadHandler, children, maxBytes, allowCropping, ...wrapperProps
         } = this.props;
         const {id, staticField} = wrapperProps;
         const {touched} = this.state;
@@ -85,7 +81,6 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
                     imageURL={value && value.toString()}
                     onFileSelection={this._onChange}
                     onFileRead={contents => onReadHandler && onReadHandler(id, contents)}
-                    onFileRemoved={onRemoveHandler}
                     shape={imageShape}
                     placeholderLabel={placeholder}
                     maxBytes={maxBytes}

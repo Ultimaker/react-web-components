@@ -248,7 +248,6 @@ stories.add('Image upload', withState({ value: null })
                     value={store.state.value}
                     onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
                     onReadHandler={(id, value: string) => store.set({ value })}
-                    onRemoveHandler={() => store.set({ value: null })}
                     label={text('Label', 'Select an image')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
@@ -271,26 +270,6 @@ stories.add('Image upload', withState({ value: null })
                         <ProfileIcon size="lg" />}
                     <br/>
                 </Tile>
-            </div>
-        )
-    )
-);
-
-stories.add('Image cropping', withState({ value: null })
-    (withInfo('Image cropping')
-        (({ store }) =>
-            <div style={{ width: 350 }}>
-                <ImageCropper
-                    shape={selectV2('Image shape', options, defaultValue)}
-                    size={text('Image size', '18rem')}
-                    minScale={number('Minimum scale', 0.8)}
-                    maxScale={number('Maximum scale', 3)}
-                    scaleStep={number('Scale step', 0.2)}
-                    onImageChanged={value => store.set({
-                        value: value && value.length > 100 ? value.substr(0, 100) + "..." : value,
-                        bytes: value && value.length,
-                    })}
-                />
             </div>
         )
     )

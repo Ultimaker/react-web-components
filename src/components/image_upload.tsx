@@ -15,8 +15,6 @@ import UploadIcon from './icons/upload_icon';
 import bytesToSize from '../utils/bytes_to_size'
 import {I18n} from '../utils/i18n';
 import ImageCropper from './image_cropper'
-import Button from './button'
-import RejectedIcon from './icons/rejected_icon'
 
 /**
  * This interface adds an image preview URL to blob files.
@@ -28,13 +26,11 @@ export interface ImageFile extends File {
 
 export interface ImageUploadProps {
     /** The ImageUpload list id */
-    id: string;
+    id?: string;
     /** Called when an image has been selected */
     onFileSelection?: (file: ImageFile) => any;
     /** Called when an image has been read */
     onFileRead?: (data: string) => any;
-    /** If given, the user is allowed to remove the image. This callback is then called. **/
-    onFileRemoved?: () => any;
     /** Size of the image. Include size unit */
     size?: string;
     /** Shape of the image: 'round' | 'square' */
@@ -45,14 +41,19 @@ export interface ImageUploadProps {
     placeholderLabel?: string;
     /** Maximum size in bytes **/
     maxBytes?: number;
-    /** Whether cropping should be enabled **/
+    /**
+     * Whether cropping should be enabled. If enabled, the user is allowed to choose what part of the image to use.
+     * For every change, the `onFileRead` callback is called.
+     **/
     allowCropping?: boolean;
 }
 
 export interface ImageUploadState {
     /** Whether the user is currently dropping a file in this component **/
     dropActive: boolean;
+    /** The URL the user started cropping with. This is used to keep the whole image even then the imageURL changed **/
     cropURL: string | null;
+    /** The error message displayed if the file is too large **/
     errorMessage: string | null;
 }
 
@@ -63,11 +64,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         size: '18rem',
     };
 
-    state = {
+    state: ImageUploadState = {
         dropActive: false,
         cropURL: null,
         errorMessage: null,
-        file: null,
     }
 
     constructor(props) {
@@ -76,12 +76,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
         this._onDragLeave = this._onDragLeave.bind(this);
-        this._onFileRemoved = this._onFileRemoved.bind(this);
-    }
-
-    private get _style() {
-        const size = this.props.size;
-        return {height: size, width: size}
+        this._onCropCancel = this._onCropCancel.bind(this);
     }
 
     private _onDropHandler(files: ImageFile[]): void {
@@ -92,7 +87,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         });
 
         const {maxBytes, allowCropping, onFileSelection, onFileRead} = this.props;
-
         if (maxBytes && file.size > maxBytes) {
             return this.setState({
                 errorMessage: I18n.format(
@@ -120,40 +114,28 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     private _onDragEnter(): void {
-        this.setState({
-            dropActive: true
-        });
+        this.setState({ dropActive: true });
     }
 
     private _onDragLeave(): void {
-        this.setState({
-            dropActive: false
-        });
+        this.setState({ dropActive: false });
     }
 
-    private _onFileRemoved(): void {
-        this.props.onFileRemoved();
-        this.setState({
-            cropURL: null
-        })
+    private _onCropCancel(): void {
+        this.props.onFileRead(null);
+        this.setState({ cropURL: null })
     }
 
     private _renderCropper(): JSX.Element {
-        const { size, shape, onFileRemoved, onFileRead } = this.props;
+        const { size, shape, onFileRead } = this.props;
         const { cropURL } = this.state;
-        return <React.Fragment>
-            <ImageCropper
-                onImageChanged={onFileRead}
-                imageURL={cropURL}
-                size={size}
-                shape={shape}
-            />
-            {onFileRemoved &&
-                <Button onClickHandler={this._onFileRemoved} style="quiet" shape="pill" className="remove-image">
-                    <RejectedIcon size="lg" />
-                </Button>
-            }
-        </React.Fragment>;
+        return <ImageCropper
+            onImageChanged={onFileRead}
+            imageURL={cropURL}
+            size={size}
+            shape={shape}
+            onCropCancel={() => this._onCropCancel()}
+        />;
     }
 
     private _renderDropzone(): JSX.Element {
@@ -163,8 +145,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         const iconClasses = classNames({ 'hide': imageURL !== null, 'icon-with-label': placeholderLabel });
         const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
 
+        // TODO: Fix style of errorMessage, check with UX!
+
         return <Dropzone
-            style={this._style}
+            style={{ height: size, width: size }}
             accept="image/jpeg, image/png"
             multiple={false}
             onDragEnter={this._onDragEnter}

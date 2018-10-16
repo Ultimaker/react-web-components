@@ -53,7 +53,7 @@
         }
     }
 
-    .placeholder-label {
+    .placeholder-label, .error-message {
         position: absolute;
         top: 65%;
         left: 50%;
@@ -98,12 +98,5 @@
             transition: fill 0.2s ease-out;
             width: 100%;
         }
-    }
-
-    .remove-image {
-        position: absolute;
-        top: 0.3rem;
-        right: 0.2rem;
-        padding: 0;
     }
 }
