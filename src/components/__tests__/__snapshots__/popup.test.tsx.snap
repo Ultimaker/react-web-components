@@ -1,32 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Popup component should render a confirm popup 1`] = `
-<Modal>
-  <div
-    className="popup"
-  >
-    <div
-      className="popup__header"
-    >
-      Popup header
-    </div>
-    <div
-      className="popup__body"
-    >
-      <p
-        key="0"
+<div
+  className="popup"
+>
+  <Modal>
+    <div>
+      <div
+        className="popup__content"
       >
-        Popup body
-      </p>
-      <Form
-        alwaysEnableSubmitButton={true}
-        onSubmitHandler={[Function]}
-        primaryBtnShowSpinner={false}
-        primaryBtnText="Primary button"
-        secondaryBtnHandler={[Function]}
-        secondaryBtnShowSpinner={false}
-      />
+        <div
+          className="popup__header"
+        >
+          Popup header
+        </div>
+        <div
+          className="popup__body"
+        >
+          <p
+            key="0"
+          >
+            Popup body
+          </p>
+          <Form
+            alwaysEnableSubmitButton={true}
+            onSubmitHandler={[Function]}
+            primaryBtnShowSpinner={false}
+            primaryBtnText="Primary button"
+            secondaryBtnHandler={[Function]}
+            secondaryBtnShowSpinner={false}
+          />
+        </div>
+      </div>
     </div>
-  </div>
-</Modal>
+  </Modal>
+</div>
 `;
