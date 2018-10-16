@@ -24,6 +24,10 @@ export interface SettingPanelState {
     showExplanation: boolean;
 }
 
+/**
+ * The SettingPanel component displays a toggle setting and label, with 
+ * a slide out container that shows further description about the setting
+ */
 export class SettingPanel extends React.Component<SettingPanelProps, SettingPanelState> {
 
     constructor(props) {
