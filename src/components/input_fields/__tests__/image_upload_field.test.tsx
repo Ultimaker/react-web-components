@@ -1,5 +1,4 @@
-// Copyright (c) 2018 Ultimaker B.V.
-import * as React from 'react';
+/* Copyright (c) 2018 Ultimaker B.V.*/import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
@@ -17,6 +16,7 @@ describe('The image upload field component', () => {
             id: 'testInputField',
             onChangeHandler: jest.fn(),
             onReadHandler: jest.fn(),
+            onRemoveHandler: jest.fn(),
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
@@ -44,6 +44,7 @@ describe('The image upload field component', () => {
             id: "testInputField",
             onFileSelection: wrapper.instance()._onChange,
             onFileRead: expect.any(Function),
+            onFileRemoved: props.onRemoveHandler,
             size: props.imageSize,
             imageURL: props.value,
             placeholderLabel: props.placeholder,

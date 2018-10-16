@@ -13,6 +13,7 @@ exports[`The image upload field component should render a wrapper 1`] = `
     id="testInputField"
     imageURL="http://image.ultimaker.com"
     onFileRead={[Function]}
+    onFileRemoved={[MockFunction]}
     onFileSelection={[Function]}
     placeholderLabel="A placeholder text"
     shape="round"

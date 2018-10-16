@@ -139,14 +139,21 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     private _renderCropper(): JSX.Element {
-        const { size, shape } = this.props;
+        const { size, shape, onFileRemoved, onFileRead } = this.props;
         const { cropURL } = this.state;
-        return <ImageCropper
-            onImageChanged={this.props.onFileRead}
-            imageURL={cropURL}
-            size={size}
-            shape={shape}
-        />;
+        return <React.Fragment>
+            <ImageCropper
+                onImageChanged={onFileRead}
+                imageURL={cropURL}
+                size={size}
+                shape={shape}
+            />
+            {onFileRemoved &&
+                <Button onClickHandler={this._onFileRemoved} style="quiet" shape="pill" className="remove-image">
+                    <RejectedIcon size="lg" />
+                </Button>
+            }
+        </React.Fragment>;
     }
 
     private _renderDropzone(): JSX.Element {
@@ -191,15 +198,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     render(): JSX.Element {
-        const { id, onFileRemoved, imageURL } = this.props;
+        const { id } = this.props;
         const { cropURL } = this.state;
         return <div id={id} className="image-upload">
             {cropURL ? this._renderCropper() : this._renderDropzone()}
-            {onFileRemoved && imageURL &&
-                <Button onClickHandler={this._onFileRemoved} style="quiet" shape="pill" className="remove-image">
-                    <RejectedIcon size="lg" />
-                </Button>
-            }
         </div>
     }
 }
