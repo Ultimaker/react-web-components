@@ -3,9 +3,13 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
+import RangeSlider from '../range_slider';
 import ImageCropper from '../image_cropper';
 let AvatarEditor = require('react-avatar-editor');
-import RangeSlider from '../range_slider';
+if ('default' in AvatarEditor) {
+    /* istanbul ignore next */ // ignores coverage for this line.
+    AvatarEditor = AvatarEditor.default;
+}
 
 describe('The Image Cropper component', () => {
     let props;

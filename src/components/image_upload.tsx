@@ -4,6 +4,7 @@ import classNames from 'classnames';
 // dependencies
 let Dropzone = require('react-dropzone'); // needs to be imported this way to keep jest happy
 if ('default' in Dropzone) {
+    /* istanbul ignore next */ // ignores coverage for this line.
     Dropzone = Dropzone.default;
 }
 
