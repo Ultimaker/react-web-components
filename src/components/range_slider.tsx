@@ -37,7 +37,7 @@ const RangeSlider: React.StatelessComponent<RangeSliderProps> = ({min, max, step
         defaultValue={value && value.toString()}
     />;
 
-RangeSlider.displayName = "RangeSlider";
+RangeSlider.displayName = 'RangeSlider';
 RangeSlider.defaultProps = {
     min: 0,
     max: 1,
