@@ -4,10 +4,13 @@
         max-height: 100%;
     }
 
+    .popup__container {
+        width: 100%;
+    }
+
     .popup__content {
         display: flex;
         flex-direction: column;
-        max-width: 33.6rem;
         overflow: auto;
         max-height: 90vh;
     }

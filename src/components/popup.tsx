@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // components
-import Modal from './modal';
+import { Modal, ModalWidth } from './modal';
 import { Form, FormValidationResponse } from './form';
 import { ButtonStyle } from './button';
 import { ProgressBar } from './progress_bar';
@@ -30,6 +30,8 @@ export interface PopupProps {
     secondaryBtnStyle?: ButtonStyle;
     /** Placeholder text for the input for popups of type prompt */
     promptPlaceholder?: string;
+    /** The width of the popup: 'sm' | 'md' */
+    width?: ModalWidth;
     /** The current step number of a multi-step popup */
     step?: number;
     /** The total number of steps of a multi-step popup */
@@ -43,6 +45,10 @@ export interface PopupState {
 }
 
 export class Popup extends React.Component<PopupProps, PopupState> {
+
+    static defaultProps = {
+        width: 'sm'
+    }
 
     state = {
         primaryBtnShowSpinner: false,
@@ -89,12 +95,12 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     render(): JSX.Element {
         const { headerText, bodyText, primaryBtnText, secondaryBtnText,
-            primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, children } = this.props;
+            primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, width, children } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
         return <div className="popup">
-            <Modal>
-                <div>
+            <Modal width={width}>
+                <div className="popup__container">
                     <div className="popup__content">
                         <div className="popup__header">
                             {headerText}

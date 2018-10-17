@@ -4,8 +4,12 @@ exports[`The Popup component should render a confirm popup 1`] = `
 <div
   className="popup"
 >
-  <Modal>
-    <div>
+  <Modal
+    width="sm"
+  >
+    <div
+      className="popup__container"
+    >
       <div
         className="popup__content"
       >

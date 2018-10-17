@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, selectV2 } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
@@ -21,6 +21,12 @@ stories.addDecorator(withKnobs)
         height: '100vh',
     }));
 
+const widthOptions = {
+    sm: 'sm',
+    md: 'md',
+};
+const widthDefaultValue = 'sm';
+
 stories.add('Modal', withInfo(
     'Basic Modal'
 )(() =>
@@ -40,7 +46,8 @@ stories.add('Confirm popup', withInfo(
         primaryBtnStyle="primary"
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
-        secondaryBtnStyle="quiet" />
+        secondaryBtnStyle="quiet"
+        width={selectV2('Popup width', widthOptions, widthDefaultValue)} />
 ));
 
 stories.add('Prompt popup', withInfo(
@@ -71,11 +78,11 @@ function validation(quantity: string | number): string {
     return null;
 }
 
-stories.add('Multi popup', withState({ step: 1 })
-    (withInfo('Multi step popup modal')
+stories.add('Multi-step popup', withState({ step: 1 })
+    (withInfo('Multi-step popup modal')
         (({ store }) =>
             <Popup
-                headerText={'Multi step popup ' + store.state.step} 
+                headerText={'Multi-step popup ' + store.state.step}
                 bodyText={getBodyText(store.state.step)}
                 primaryBtnText={getPrimaryBtnText(store.state.step)}
                 primaryBtnHandler={() => store.set({ step: validateStep(store.state.step + 1, 3) })}
@@ -84,7 +91,8 @@ stories.add('Multi popup', withState({ step: 1 })
                 secondaryBtnHandler={() => store.set({ step: validateStep(store.state.step - 1, 3) })}
                 secondaryBtnStyle="quiet"
                 step={store.state.step}
-                totalSteps={3} />
+                totalSteps={3}
+                width={selectV2('Popup width', widthOptions, widthDefaultValue)} />
         )
     )
 );
