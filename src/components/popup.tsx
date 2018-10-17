@@ -41,6 +41,7 @@ export interface PopupProps {
 export interface PopupState {
     primaryBtnShowSpinner: boolean;
     secondaryBtnShowSpinner: boolean;
+    /** Saved solely to be used as a comparison in getDerivedStateFromProps to check whether the step prop has changed */
     storedStep: number;
 }
 
