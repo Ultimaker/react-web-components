@@ -100,7 +100,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
      * @return The size in pixels.
      */
     private _calculateSize(size: string, borderSize: number): number {
-        const sizeScale = size.endsWith("rem") ? 10 : 1;
+        const sizeScale = size.endsWith('rem') ? 10 : 1;
         return parseFloat(size) * sizeScale - borderSize * 2;
     }
 
