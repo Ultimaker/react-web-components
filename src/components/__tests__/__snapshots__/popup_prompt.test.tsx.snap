@@ -7,6 +7,7 @@ exports[`The PopupPrompt component should render a prompt popup 1`] = `
   primaryBtnHandler={[Function]}
   primaryBtnText="Primary button"
   validationErrors={null}
+  width="sm"
 >
   <InputField
     focusOnLoad={true}

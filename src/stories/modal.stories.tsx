@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, selectV2 } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
+import { withState } from '@dump247/storybook-state';
 
 import Modal from '../components/modal';
 import Popup from '../components/popup';
@@ -19,6 +20,12 @@ stories.addDecorator(withKnobs)
         justifyContent: 'center',
         height: '100vh',
     }));
+
+const widthOptions = {
+    sm: 'sm',
+    md: 'md',
+};
+const widthDefaultValue = 'sm';
 
 stories.add('Modal', withInfo(
     'Basic Modal'
@@ -39,7 +46,8 @@ stories.add('Confirm popup', withInfo(
         primaryBtnStyle="primary"
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
-        secondaryBtnStyle="quiet" />
+        secondaryBtnStyle="quiet"
+        width={selectV2('Popup width', widthOptions, widthDefaultValue)} />
 ));
 
 stories.add('Prompt popup', withInfo(
@@ -68,6 +76,64 @@ function validation(quantity: string | number): string {
         return 'Please enter a number';
     }
     return null;
+}
+
+stories.add('Multi-step popup', withState({ step: 1 })
+    (withInfo('Multi-step popup modal')
+        (({ store }) =>
+            <Popup
+                headerText={'Multi-step popup ' + store.state.step}
+                bodyText={getBodyText(store.state.step)}
+                primaryBtnText={getPrimaryBtnText(store.state.step)}
+                primaryBtnHandler={() => store.set({ step: validateStep(store.state.step + 1, 3) })}
+                primaryBtnStyle="primary"
+                secondaryBtnText={getSecondaryBtnText(store.state.step)}
+                secondaryBtnHandler={() => store.set({ step: validateStep(store.state.step - 1, 3) })}
+                secondaryBtnStyle="quiet"
+                step={store.state.step}
+                totalSteps={3}
+                width={selectV2('Popup width', widthOptions, widthDefaultValue)} />
+        )
+    )
+);
+
+function getBodyText(step: number): string {
+    switch (step) {
+        case 1:
+            return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        case 2:
+            return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        case 3:
+            return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur lectus lorem, id consectetur tellus sollicitudin eu. Curabitur nec metus nibh. Sed sagittis mi nisi, sollicitudin viverra magna malesuada nec. Morbi porttitor, nunc nec mollis feugiat, ex felis commodo sapien, vitae porta sapien magna sit amet nibh. Fusce quis porttitor massa. Pellentesque ornare risus at elementum tempor. Sed convallis odio tellus. Aenean tincidunt purus ut nisl ultrices, sit amet auctor odio porta. Mauris euismod ligula luctus semper dictum. Nulla orci leo, facilisis ac dapibus vitae, consequat ut sem.'
+    }
+}
+
+function getPrimaryBtnText(step: number): string {
+    switch (step) {
+        case 1: case 2:
+            return 'Next'
+        case 3:
+            return 'Confirm'
+    }
+}
+
+function getSecondaryBtnText(step: number): string {
+    switch (step) {
+        case 1:
+            return 'Cancel'
+        case 2: case 3:
+            return 'Back'
+    }
+}
+
+function validateStep(step: number, totalSteps: number) {
+    if (step < 1) {
+        return 1;
+    }
+    if (step > totalSteps) {
+        return totalSteps;
+    }
+    return step;
 }
 
 stories.add('About dialog', withInfo(

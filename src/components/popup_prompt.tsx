@@ -111,6 +111,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
             secondaryBtnHandler={secondaryBtnHandler}
             secondaryBtnStyle={secondaryBtnStyle}
             validationErrors={validationError ? { promptInput: validationError } : null}
+            width="sm"
         >
             <InputField
                 id="promptInput"

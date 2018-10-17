@@ -1,7 +1,19 @@
 .popup {
-    display: flex;
-    flex-direction: column;
-    max-width: 33.6rem;
+    .modal__content {
+        overflow: visible;
+        max-height: 100%;
+    }
+
+    .popup__container {
+        width: 100%;
+    }
+
+    .popup__content {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        max-height: 90vh;
+    }
 
     .popup__header {
         flex: 0 0 auto;
@@ -52,5 +64,9 @@
 
     .form__actions {
         padding-bottom: 0.8rem;
+    }
+
+    .progress-bar {
+        margin-top: 0.6rem;
     }
 }

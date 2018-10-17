@@ -23,5 +23,13 @@
         background-color: $color-background;
         box-shadow: 0 1.2rem 2.2rem 0 $color-shadow-dark;
         overflow: auto;
+
+        &.modal__content--sm {
+            width: 33.6rem;
+        }
+
+        &.modal__content--md {
+            width: 67.2rem;
+        }
     }
 }

@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { TransitionMotion, spring } from 'react-motion';
+import classNames = require('classnames');
+
+export type ModalWidth = 'sm' | 'md';
 
 export interface ModalProps {
     /** Called when the background overlay is clicked */
     onOverlayClickHandler?: Function;
+    /** The width of the modal: 'sm' | 'md' */
+    width?: ModalWidth;
 }
 
 export interface ModalState {
@@ -46,11 +51,13 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     }
 
     _renderModal(key: string, style: MotionStyle): JSX.Element {
-        const { children } = this.props;
+        const { width, children } = this.props;
+
+        const classes = classNames('modal__content', width ? `modal__content--${width}` : undefined);
 
         return (
             <div className="modal" onClick={(e) => this._handleOverlayClick(e)} key={key} style={{ ...style }}>
-                <div className="modal__content" onClick={this._stopPropagation}>
+                <div className={classes} onClick={this._stopPropagation}>
                     {children}
                 </div>
             </div>

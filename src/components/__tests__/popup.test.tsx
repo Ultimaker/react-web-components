@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import Popup from '../popup';
+import ProgressBar from '../progress_bar';
 
 describe('The Popup component', () => {
     let props;
@@ -44,14 +45,19 @@ describe('The Popup component', () => {
     });
 
     it('should reset primary button spinner when there are validation errors', () => {
-        wrapper.setState({primaryBtnShowSpinner: true});
-        wrapper.setProps({validationErrors: {}})
+        wrapper.setState({ primaryBtnShowSpinner: true });
+        wrapper.setProps({ validationErrors: {} });
         expect(wrapper.state('primaryBtnShowSpinner')).toBe(false);
     });
 
     it('should reset secondary button spinner when there are validation errors', () => {
-        wrapper.setState({secondaryBtnShowSpinner: true});
-        wrapper.setProps({validationErrors: {}})
+        wrapper.setState({ secondaryBtnShowSpinner: true });
+        wrapper.setProps({ validationErrors: {} });
         expect(wrapper.state('secondaryBtnShowSpinner')).toBe(false);
+    });
+
+    it('should render a progress bar for multi-step popups', () => {
+        wrapper.setProps({ step: 1, totalSteps: 3 });
+        expect(wrapper.find(ProgressBar)).toHaveLength(1);
     });
 });
