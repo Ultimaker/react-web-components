@@ -46,13 +46,13 @@ describe('The Popup component', () => {
 
     it('should reset primary button spinner when there are validation errors', () => {
         wrapper.setState({ primaryBtnShowSpinner: true });
-        wrapper.setProps({ validationErrors: {} })
+        wrapper.setProps({ validationErrors: {} });
         expect(wrapper.state('primaryBtnShowSpinner')).toBe(false);
     });
 
     it('should reset secondary button spinner when there are validation errors', () => {
         wrapper.setState({ secondaryBtnShowSpinner: true });
-        wrapper.setProps({ validationErrors: {} })
+        wrapper.setProps({ validationErrors: {} });
         expect(wrapper.state('secondaryBtnShowSpinner')).toBe(false);
     });
 
