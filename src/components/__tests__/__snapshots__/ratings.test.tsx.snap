@@ -5,7 +5,7 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
   className="ratings"
 >
   <div
-    className="ratings--background"
+    className="ratings__background"
   >
     <Icon(HighlightIcon)
       borderColor="grey"
@@ -39,7 +39,7 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
     />
   </div>
   <div
-    className="ratings--foreground"
+    className="ratings__foreground"
     style={
       Object {
         "width": "86%",
@@ -85,7 +85,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
   className="ratings"
 >
   <div
-    className="ratings--background"
+    className="ratings__background"
   >
     <Icon(ApprovedIcon)
       borderColor="grey"
@@ -149,7 +149,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
     />
   </div>
   <div
-    className="ratings--foreground"
+    className="ratings__foreground"
     style={
       Object {
         "width": "33.333333333333336%",
@@ -225,7 +225,7 @@ exports[`The Ratings component should render only background if the rating is nu
   className="ratings"
 >
   <div
-    className="ratings--background"
+    className="ratings__background"
   >
     <Icon(HighlightIcon)
       borderColor="grey"

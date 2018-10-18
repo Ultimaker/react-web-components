@@ -45,18 +45,9 @@ exports[`The Image Cropper component should render 1`] = `
     step={0.1}
     value={1}
   />
-  <Button
-    className="remove-image"
-    linkToNewTab={false}
+  <CloseButton
+    color="white"
     onClickHandler={[MockFunction]}
-    shape="pill"
-    style="quiet"
-    type="button"
-  >
-    <Icon(CrossIcon)
-      color="white"
-      size="sm"
-    />
-  </Button>
+  />
 </div>
 `;

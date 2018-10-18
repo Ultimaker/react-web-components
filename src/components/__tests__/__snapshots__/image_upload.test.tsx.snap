@@ -14,9 +14,11 @@ exports[`The image upload component should render 1`] = `
     maxSize={Infinity}
     minSize={0}
     multiple={false}
+    onBlur={[Function]}
     onDragEnter={[Function]}
     onDragLeave={[Function]}
     onDrop={[Function]}
+    onFocus={[Function]}
     preventDropOnDocument={true}
     style={
       Object {
