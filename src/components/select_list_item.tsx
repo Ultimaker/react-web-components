@@ -7,26 +7,28 @@ export interface SelectListItemProps {
     /** Disables the menu item when true */
     disabled?: boolean;
     /** Called when the menu item is clicked */
-    onChangeHandler: (value: string | number) => void;
+    onChangeHandler: (value: string | number, disabled: boolean) => void;
     /** The label for the menu item */
     label: string;
     /** The value of the menu item */
     value: string | number;
+    /** Whether the item is focused */
+    focused: boolean;
 }
 
 export const SelectListItem: React.StatelessComponent<SelectListItemProps> =
-    ({ active, disabled, onChangeHandler, label, value }) => {
+    ({ active, disabled, onChangeHandler, label, value, focused }) => {
 
         const _onClickHandler = (e: React.MouseEvent<HTMLLIElement>) => {
             if (disabled) {
                 e.stopPropagation();
             }
             else {
-                onChangeHandler(value);
+                onChangeHandler(value, disabled);
             }
         }
 
-        return <li className={classNames({ disabled, active })} onClick={_onClickHandler}>
+        return <li className={classNames({ disabled, active, focused })} onClick={_onClickHandler}>
             {label}
         </li>
 
