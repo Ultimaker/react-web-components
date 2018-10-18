@@ -280,7 +280,7 @@
 }
 
 .file-upload {
-    input {
+    input[type=file] {
         position: absolute;
         opacity: 0;
         left: -9999px;
@@ -308,5 +308,9 @@
         right: 0.3rem;
         top: 50%;
         transform: translateY(-50%);
+    }
+
+    input[type=file]:focus + label {
+        background-color: $primary-btn-color-hover;
     }
 }
