@@ -25,17 +25,18 @@ export interface RangeSliderProps {
 /**
  * A range slider component that allows users to choose a number in a range.
  */
-const RangeSlider: React.StatelessComponent<RangeSliderProps> = ({min, max, step, className, onChange, value}) =>
-    <input
-        name="scale"
-        type="range"
-        className={classNames("range-slider", className)}
-        onChange={e => onChange(parseFloat(e.target.value))}
-        min={min}
-        max={max}
-        step={step}
-        defaultValue={value && value.toString()}
-    />;
+const RangeSlider: React.StatelessComponent<RangeSliderProps> = ({ min, max, step, className, onChange, value }) =>
+    <div className={classNames("range-slider", className)}>
+        <input
+            name="scale"
+            type="range"
+            onChange={e => onChange(parseFloat(e.target.value))}
+            min={min}
+            max={max}
+            step={step}
+            defaultValue={value && value.toString()}
+        />
+    </div>;
 
 RangeSlider.displayName = 'RangeSlider';
 RangeSlider.defaultProps = {

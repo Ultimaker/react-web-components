@@ -1,0 +1,307 @@
+%input-style {
+    background-color: white;
+    width: 100%;
+    padding: 1.2rem 0.9rem;
+    border: none;
+    border-bottom: 2px solid $input-field-color-border;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    outline: none;
+    transition: border 0.2s ease-out;
+    border-radius: 0;
+    font-family: $font-primary;
+
+    &.pad-right {
+        padding-right: 2.5rem;
+    }
+
+    &:hover {
+        border-bottom-color: $input-field-color-border-hover;
+    }
+
+    &:focus, &:active {
+        border-bottom-color: $input-field-color-border-active;
+    }
+
+    &.error {
+        border-bottom-color: $input-field-color-border-error;
+    }
+
+    &::placeholder {
+        color: $input-field-color-placeholder;
+    }
+}
+
+.input-field {
+    &.hide-input {
+        .input-container, .input-field__error-message {
+            display: none;
+        }
+
+        .input-field__label {
+            margin: 0;
+        }
+    }
+
+    .input-container {
+        position: relative;
+    }
+
+    .input {
+        @extend %input-style;
+    }
+
+    .input-field__field-addition {
+        .icon--required {
+            margin-top: 1.8rem;
+            width: 1rem;
+            height: 1rem;
+
+            svg {
+                width: 1rem;
+                height: 1rem;
+                fill: $color-text-light;
+            }
+        }
+    }
+
+    &.input-field--checkbox {
+        .input-field__label {
+            margin-top: 0.9rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .input-field__field-addition {
+            .icon--required {
+                margin-top: 0.9rem;
+            }
+        }
+    }
+
+    .input-field__label {
+        @include font-size-text-2;
+
+        margin-bottom: 0.6rem;
+        margin-top: 1.2rem;
+    }
+
+    .input-field__validation {
+        .offset-for-required {
+            margin-right: 1.6rem;
+        }
+    }
+
+    .input-field__error-message {
+        margin-top: 0.6rem;
+        color: $input-field-color-border-error;
+
+        @include font-size-text-2;
+    }
+
+    .input-field__post-text {
+        color: $color-text-light;
+    }
+
+    .drop-down-menu {
+        &.visible {
+            .label:hover {
+                background-color: white;
+            }
+        }
+
+        .menu {
+            min-width: 100%;
+        }
+
+        .label {
+            padding: 1.2rem 1.8rem 1.2rem 0.9rem;
+            background-color: white;
+            border-bottom: 2px solid $input-field-color-border;
+
+            &:hover, &:focus, &:active, &.active {
+                background-color: white;
+                border-bottom-color: $input-field-color-border-hover;
+            }
+
+            &.error {
+                border-bottom-color: $color-border-error;
+            }
+        }
+    }
+
+    &.input-field--tags {
+        &.hide-input {
+            margin-bottom: -1.2rem;
+        }
+
+        .input-field__label {
+            align-self: flex-end;
+            margin-bottom: 1.3rem;
+            margin-top: 0.6rem;
+        }
+    }
+}
+
+.checkbox {
+    position: relative;
+    width: 2.8rem;
+    height: 2.8rem;
+
+    label {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 2px;
+        border: 1px solid $checkbox-color-border;
+        transition: all 0.2s ease-out;
+
+        &:after {
+            content: "";
+            width: 1.2rem;
+            height: 0.6rem;
+            position: absolute;
+            top: 0.6rem;
+            left: 0.6rem;
+            border: 3px solid $checkbox-color-tick-hover;
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            opacity: 0;
+            transform: rotate(-45deg);
+            transition: all 0.1s ease-out;
+        }
+
+        @include respond-to(sm) {
+            &:hover::after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.disabled {
+        label:hover::after {
+            opacity: 0;
+        }
+
+        label {
+            cursor: default;
+        }
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+
+        &:checked + label {
+            background: $checkbox-color-background-active;
+            border-color: $checkbox-color-border-active;
+        }
+
+        &:checked + label:after {
+            opacity: 1;
+            border-color: $checkbox-color-tick-active;
+        }
+    }
+}
+
+.textarea {
+    .input {
+        @extend %input-style;
+
+        vertical-align: top;
+        height: auto;
+        min-width: 15rem;
+        max-width: 100%;
+        min-height: 9.2rem;
+        max-height: 100vh;
+    }
+}
+
+.date-picker {
+    .SingleDatePicker {
+        width: 100%;
+    }
+
+    .SingleDatePicker_picker {
+        top: 46px !important;
+    }
+
+    .SingleDatePickerInput {
+        width: 100%;
+    }
+
+    .DateInput {
+        width: 100%;
+    }
+
+    .DateInput_input {
+        @extend %input-style;
+
+        color: $color-text;
+        font-weight: 400;
+    }
+
+    &.error {
+        .DateInput_input {
+            border-bottom-color: $input-field-color-border-error;
+        }
+    }
+
+    .DateInput_fang {
+        top: 38px !important;
+        height: 0.75rem;
+    }
+
+    .DateInput_fangStroke {
+        stroke: $context-menu-color-chevron-shadow;
+    }
+
+    .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+        background: $input-field-color-border-active;
+        border-color: $input-field-color-border-active;
+    }
+
+    .CalendarDay__default:hover {
+        background: $context-menu-color-hover;
+        border-color: $context-menu-color-hover;
+    }
+
+    .DayPicker__withBorder {
+        box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
+        border-radius: 1px;
+    }
+}
+
+.file-upload {
+    input {
+        position: absolute;
+        opacity: 0;
+        left: -9999px;
+    }
+
+    .file-upload__input-container {
+        position: relative;
+    }
+
+    .file-upload__input {
+        @extend %input-style;
+
+        @extend .truncate;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        cursor: pointer;
+    }
+
+    .info-link {
+        position: absolute;
+        right: 0.3rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
