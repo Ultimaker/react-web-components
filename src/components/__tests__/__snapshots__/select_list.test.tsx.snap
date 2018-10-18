@@ -4,7 +4,8 @@ exports[`The SelectList component should render 1`] = `
 <div
   className="drop-down-menu"
   onBlur={[Function]}
-  onClick={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
   tabIndex={1}
 >
   <div
@@ -36,7 +37,6 @@ exports[`The SelectList component should render 1`] = `
   </div>
   <div
     className="container"
-    onClick={[Function]}
   >
     <div
       className="menu"
@@ -53,24 +53,27 @@ exports[`The SelectList component should render 1`] = `
         <ul>
           <SelectListItem
             active={true}
+            focused={false}
             key="0"
             label="Option 1"
-            onChangeHandler={[MockFunction]}
+            onChangeHandler={[Function]}
             value={1}
           />
           <SelectListItem
             active={false}
             disabled={true}
+            focused={false}
             key="1"
             label="Option 2"
-            onChangeHandler={[MockFunction]}
+            onChangeHandler={[Function]}
             value={2}
           />
           <SelectListItem
             active={false}
+            focused={false}
             key="2"
             label="Option 3"
-            onChangeHandler={[MockFunction]}
+            onChangeHandler={[Function]}
             value={3}
           />
         </ul>
