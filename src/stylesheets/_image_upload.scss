@@ -28,6 +28,21 @@
         }
     }
 
+    input[type=range]:focus + .hover-area {
+        .cover, .icon, .placeholder-label {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .icon svg {
+            fill: $color-text;
+        }
+
+        .placeholder-label {
+            color: $color-text;
+        }
+    }
+
     .cover {
         background-color: $color-transparent;
         position: absolute;
@@ -62,7 +77,6 @@
         width: 80%;
         text-align: center;
         z-index: 1;
-
         transition: color 0.2s ease-out;
     }
 

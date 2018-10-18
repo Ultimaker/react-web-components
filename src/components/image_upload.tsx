@@ -50,6 +50,8 @@ export interface ImageUploadState {
     dropActive: boolean;
     /** The URL the user started cropping with. This is used to keep the whole image even then the imageURL changed **/
     cropURL: string | null;
+    /** Whether the component is focused using the keyboard */
+    dropFocus: boolean;
 }
 
 /**
@@ -65,6 +67,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     state: ImageUploadState = {
         dropActive: false,
         cropURL: null,
+        dropFocus: false
     };
 
     constructor(props) {
@@ -74,6 +77,8 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         this._onDragEnter = this._onDragEnter.bind(this);
         this._onDragLeave = this._onDragLeave.bind(this);
         this._onCropCancel = this._onCropCancel.bind(this);
+        this._onDragFocus = this._onDragFocus.bind(this);
+        this._onDragBlur = this._onDragBlur.bind(this);
     }
 
     private _onDropHandler(files: ImageFile[]): void {
@@ -106,6 +111,14 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         this.setState({ dropActive: false });
     }
 
+    private _onDragFocus(): void {
+        this.setState({ dropFocus: true });
+    }
+
+    private _onDragBlur(): void {
+        this.setState({ dropFocus: false });
+    }
+
     private _onCropCancel(): void {
         this.props.onFileRead(null);
         this.setState({ cropURL: null });
@@ -125,10 +138,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     private _renderDropzone(): JSX.Element {
         const { size, shape, imageURL, placeholderLabel } = this.props;
-        const { dropActive } = this.state;
+        const { dropActive, dropFocus } = this.state;
 
         const iconClasses = classNames({ 'hide': imageURL !== null, 'icon-with-label': placeholderLabel });
-        const hoverAreaClasses = classNames('hover-area', { 'show': dropActive });
+        const hoverAreaClasses = classNames('hover-area', { 'show': dropActive || dropFocus });
 
         return (
             <Dropzone
@@ -138,6 +151,8 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 onDragEnter={this._onDragEnter}
                 onDragLeave={this._onDragLeave}
                 onDrop={this._onDropHandler}
+                onFocus={this._onDragFocus}
+                onBlur={this._onDragBlur}
             >
                 <div className={hoverAreaClasses}>
                     <div className={iconClasses}>
