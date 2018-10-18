@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const CrossIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element =>
-    <div className={`${className} icon--rejected`}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="9 9 14 14">
-            <polygon points="11.4 22.72 16 18.12 20.6 22.72 22.72 20.6 18.12 16 22.72 11.4 20.6 9.28 16 13.88 11.4 9.28 9.28 11.4 13.88 16 9.28 20.6 11.4 22.72" />
+    <div className={`${className} icon--cross`}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+            <path d="M12.41,10.81l5.66-5.65a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L11,9.4,5.34,3.74a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l5.66,5.65L3.93,16.47a1,1,0,0,0,1.41,1.41L11,12.23l5.66,5.65a1,1,0,0,0,1.41-1.41Z" />
         </svg>
     </div>
 

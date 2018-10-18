@@ -3,8 +3,7 @@ import * as React from 'react';
 import {ImageShape} from './image';
 import {debounce} from 'lodash';
 import RangeSlider from './range_slider';
-import Button from './button';
-import CrossIcon from './icons/cross_icon';
+import CloseButton from './close_button';
 
  // needs to be imported this way to keep jest happy
 let AvatarEditor = require('react-avatar-editor');
@@ -135,9 +134,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
                     value={scale}
                 />
                 {onCropCancel &&
-                    <Button onClickHandler={onCropCancel} style="quiet" shape="pill" className="remove-image">
-                        <CrossIcon size="sm" color="white" />
-                    </Button>
+                    <CloseButton onClickHandler={onCropCancel} color="white"/>
                 }
             </div>
         );
