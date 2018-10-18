@@ -69,11 +69,11 @@ button {
         color: $primary-btn-color-text;
         background-color: $primary-btn-color;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $primary-btn-color-hover;
         }
 
-        &:active, &:focus, &.waiting, &.waiting:hover {
+        &:active, &.waiting, &.waiting:hover {
             background-color: $primary-btn-color-active;
         }
 
@@ -92,11 +92,11 @@ button {
         padding: 0.8rem 3.5rem 1rem;
         color: $secondary-btn-color-text;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $secondary-btn-color-hover;
         }
 
-        &:active, &:focus, &.waiting, &.waiting:hover {
+        &:active, &.waiting, &.waiting:hover {
             background-color: $secondary-btn-color-active;
         }
 
@@ -113,11 +113,11 @@ button {
     &.btn--quiet {
         color: $quiet-btn-color-text;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $quiet-btn-color-hover;
         }
 
-        &:active, &:focus, &.waiting, &.waiting:hover {
+        &:active, &.waiting, &.waiting:hover {
             background-color: $quiet-btn-color-active;
         }
 
@@ -137,11 +137,11 @@ button {
         color: $alert-btn-color-text;
         background-color: $alert-btn-color;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $alert-btn-color-hover;
         }
 
-        &:active, &:focus, &.waiting, &.waiting:hover {
+        &:active, &.waiting, &.waiting:hover {
             background-color: $alert-btn-color-active;
         }
 
@@ -157,8 +157,8 @@ button {
 
     &.btn--circle {
         border-radius: 50%;
-        height: 5rem;
-        width: 5rem;
+        height: 4.4rem;
+        width: 4.4rem;
         padding: 0;
     }
 
