@@ -48,3 +48,11 @@
 .toggle-button:checked + label:after {
     right: 0;
 }
+
+.toggle-button:focus + label:before {
+    background-color: $toggle-button-color-background-focus
+}
+
+.toggle-button:focus:checked + label:before {
+    background-color: $toggle-button-color-active-focus
+}
