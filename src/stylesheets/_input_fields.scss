@@ -175,14 +175,14 @@
         }
 
         @include respond-to(sm) {
-            &:hover::after {
+            &:hover:after {
                 opacity: 1;
             }
         }
     }
 
     &.disabled {
-        label:hover::after {
+        label:hover:after {
             opacity: 0;
         }
 
@@ -192,7 +192,8 @@
     }
 
     input[type=checkbox] {
-        visibility: hidden;
+        left: -9999px;
+        position: absolute;
 
         &:checked + label {
             background: $checkbox-color-background-active;
@@ -203,6 +204,10 @@
             opacity: 1;
             border-color: $checkbox-color-tick-active;
         }
+    }
+
+    input[type=checkbox]:focus + label:after {
+        opacity: 1;
     }
 }
 
