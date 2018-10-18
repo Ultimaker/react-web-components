@@ -3,6 +3,7 @@ import * as React from 'react';
 // components
 import CrossIcon from './icons/cross_icon';
 import { IconColor } from './icons/icon_wrapper';
+import Button from './button';
 
 export interface CloseButtonProps {
     /** Called when the Button is clicked */
@@ -13,15 +14,14 @@ export interface CloseButtonProps {
 
 export const CloseButton: React.StatelessComponent<CloseButtonProps> = ({ onClickHandler, color }) => {
 
-    const _onClickHandler = (e: React.MouseEvent<HTMLElement>) => {
-        e.stopPropagation();
+    const _onClickHandler = (): void => {
         onClickHandler();
     }
 
     return (
-        <div className="close-button" onClick={_onClickHandler}>
+        <Button className="close-button" onClickHandler={_onClickHandler} style="quiet" shape="circle">
             <CrossIcon color={color} />
-        </div>
+        </Button>
     );
 };
 
