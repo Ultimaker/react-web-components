@@ -1,10 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The CloseButton component should render 1`] = `
-<div
+<Button
   className="close-button"
-  onClick={[Function]}
+  linkToNewTab={false}
+  onClickHandler={[Function]}
+  shape="circle"
+  style="quiet"
+  type="button"
 >
   <Icon(CrossIcon) />
-</div>
+</Button>
 `;

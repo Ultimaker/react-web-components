@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import CloseButton from '../close_button';
 
 // mocks
-import { mockClickEvent } from '../../__mocks__/clickMock';
+import Button from '../button'
 
 
 describe('The CloseButton component', () => {
@@ -26,13 +26,7 @@ describe('The CloseButton component', () => {
     });
 
     it('should call onClickHandler when clicked', () => {
-        wrapper.simulate('click', mockClickEvent);
+        wrapper.find(Button).prop('onClickHandler')();
         expect(props.onClickHandler).toHaveBeenCalled();
     });
-
-    it('should not propagate click when clicked', () => {
-        wrapper.simulate('click', mockClickEvent);
-        expect(mockClickEvent.stopPropagation).toBeCalled();
-    });
-
 });
