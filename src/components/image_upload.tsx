@@ -99,7 +99,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         }
 
         if (allowCropping) {
-            return this.setState({ cropURL: file.preview });
+            this.setState({ cropURL: file.preview });
         }
     }
 
