@@ -57,7 +57,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         maxScale: 2.5,
         scaleStep: 0.1,
         borderSize: 25,
-        imageURL: '/images/Ultimaker-Resources.jpg', // TODO: Import file instead.
+        imageURL: null,
         onImageChanged: null,
     };
 
