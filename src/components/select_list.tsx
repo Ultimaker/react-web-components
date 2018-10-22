@@ -57,6 +57,14 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         return option ? option.label : null;
     }
 
+    /**
+     * Handle clicking on a menu item. If the the clicked option is not disabled, 
+     * call the onChangeHandler from the props, 
+     * clear the stored focused index,
+     * and close the menu.
+     * @param value - the value of the selected meu item
+     * @param disabled - whether the selected item is disabled
+     */
     private _onClickHandler(value, disabled) {
         const { onChangeHandler } = this.props;
         
@@ -67,18 +75,23 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         }
     }
 
+    /**
+     * Updates the focusedIndex and validates it
+     * @param changeByValue - value to adjust the focusedIndex by
+     */
     private _updateFocusedIndex(changeByValue: number): void {
         const { options } = this.props;
         const { focusedIndex } = this.state;
 
-        this._setShowMenu(true);
-
+        // if the focusedIndex has not been set, set it to 0, otherwise adjust it by the value of the changeByValue
         let newIndex = focusedIndex !== null ? focusedIndex + changeByValue : 0;
 
+        // if the user presses down on the last item, go to the first
         if (newIndex > options.length - 1) {
             newIndex = 0;
         }
 
+        // if the user presses up on the first item, go the last
         if (newIndex < 0) {
             newIndex = options.length - 1;
         }
@@ -92,9 +105,11 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
 
         switch (e.key) {
             case 'ArrowDown':
+                this._setShowMenu(true);
                 this._updateFocusedIndex(1);
                 break;
             case 'ArrowUp':
+                this._setShowMenu(true);
                 this._updateFocusedIndex(-1);
                 break;
             case 'Enter':
