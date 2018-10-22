@@ -172,6 +172,18 @@ button {
             padding: 0.5rem 2.3rem;
         }
     }
+    
+    .icon--link {
+        position: absolute;
+        right: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    }
 }
 
 .close-button {
