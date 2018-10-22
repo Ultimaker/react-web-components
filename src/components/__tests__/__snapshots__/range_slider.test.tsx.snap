@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Range Slider component should render 1`] = `
+<div
+  className="range-slider"
+>
+  <input
+    defaultValue="0.5"
+    max={1}
+    min={0}
+    name="scale"
+    onChange={[Function]}
+    step={0.1}
+    type="range"
+  />
+</div>
+`;

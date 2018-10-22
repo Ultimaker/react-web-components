@@ -7,6 +7,7 @@ import { withInfo } from '@storybook/addon-info';
 import Grid from '../components/grid';
 import GridItem from '../components/grid_item';
 import Tooltip from '../components/tooltip'
+import CrossIcon from '../components/icons/cross_icon';
 import ApprovedIcon from '../components/icons/approved_icon';
 import EmailIcon from '../components/icons/email_icon';
 import HighlightIcon from '../components/icons/highlight_icon';
@@ -96,6 +97,11 @@ stories.add('Icons', withInfo(
             <GridItem layoutWidth="fit">
                 <Tooltip tooltipText="RejectedIcon">
                     <RejectedIcon {...props} />
+                </Tooltip>
+            </GridItem>
+            <GridItem layoutWidth="fit">
+                <Tooltip tooltipText="CrossIcon">
+                    <CrossIcon {...props} />
                 </Tooltip>
             </GridItem>
             <GridItem layoutWidth="fit">

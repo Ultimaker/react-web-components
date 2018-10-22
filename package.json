@@ -44,6 +44,7 @@
         "parcel-plugin-json-url-loader": "^0.1.1",
         "parcel-plugin-typescript": "^1.0.0",
         "react": "^16.4.2",
+        "react-avatar-editor": "^11.0.4",
         "react-collapse": "^4.0.3",
         "react-dates": "^17.0.0",
         "react-dev-utils": "^5.0.1",

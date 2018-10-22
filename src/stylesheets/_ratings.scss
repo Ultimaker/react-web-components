@@ -3,7 +3,7 @@
     position: relative;
 
 
-    .ratings--foreground, .ratings--background {
+    .ratings__foreground, .ratings__background {
         white-space: nowrap;
         overflow: hidden;
         svg {
@@ -11,7 +11,7 @@
         }
     }
 
-    .ratings--foreground {
+    .ratings__foreground {
         position: absolute;
         top: 0;
     }

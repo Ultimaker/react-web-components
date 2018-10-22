@@ -69,7 +69,7 @@ button {
         color: $primary-btn-color-text;
         background-color: $primary-btn-color;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $primary-btn-color-hover;
         }
 
@@ -77,7 +77,7 @@ button {
             background-color: $primary-btn-color-active;
         }
 
-        &.disabled, .disabled:hover, .disabled:active {
+        &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
             background-color: $primary-btn-color-disabled;
             color: $primary-btn-color-disabled-text;
         }
@@ -92,7 +92,7 @@ button {
         padding: 0.8rem 3.5rem 1rem;
         color: $secondary-btn-color-text;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $secondary-btn-color-hover;
         }
 
@@ -100,7 +100,7 @@ button {
             background-color: $secondary-btn-color-active;
         }
 
-        &.disabled, &.disabled:hover, &.disabled:active {
+        &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
             background-color: $secondary-btn-color-disabled;
             color: $secondary-btn-color-disabled-text;
         }
@@ -113,7 +113,7 @@ button {
     &.btn--quiet {
         color: $quiet-btn-color-text;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $quiet-btn-color-hover;
         }
 
@@ -121,7 +121,7 @@ button {
             background-color: $quiet-btn-color-active;
         }
 
-        &.disabled, &.disabled:hover, &.disabled:active {
+        &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
             background-color: transparent;
             color: $quiet-btn-color-disabled-text;
         }
@@ -137,7 +137,7 @@ button {
         color: $alert-btn-color-text;
         background-color: $alert-btn-color;
 
-        &:hover {
+        &:hover, &:focus {
             background-color: $alert-btn-color-hover;
         }
 
@@ -145,7 +145,7 @@ button {
             background-color: $alert-btn-color-active;
         }
 
-        &.disabled, .disabled:hover, .disabled:active {
+        &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
             background-color: $alert-btn-color-disabled;
             color: $alert-btn-color-disabled-text;
         }
@@ -157,8 +157,8 @@ button {
 
     &.btn--circle {
         border-radius: 50%;
-        height: 5rem;
-        width: 5rem;
+        height: 4.4rem;
+        width: 4.4rem;
         padding: 0;
     }
 

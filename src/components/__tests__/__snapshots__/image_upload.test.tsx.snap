@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The image upload component should render 1`] = `
-<div>
+<div
+  className="image-upload"
+>
   <t
     accept="image/jpeg, image/png"
-    className="image-upload"
     disableClick={false}
     disablePreview={false}
     disabled={false}
@@ -13,9 +14,11 @@ exports[`The image upload component should render 1`] = `
     maxSize={Infinity}
     minSize={0}
     multiple={false}
+    onBlur={[Function]}
     onDragEnter={[Function]}
     onDragLeave={[Function]}
     onDrop={[Function]}
+    onFocus={[Function]}
     preventDropOnDocument={true}
     style={
       Object {

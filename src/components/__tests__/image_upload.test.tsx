@@ -8,6 +8,8 @@ if ('default' in Dropzone) {
 
 // component
 import ImageUpload from '../image_upload';
+import ImageCropper from '../image_cropper';
+import { Image } from '../image';
 
 describe('The image upload component', () => {
     let props;
@@ -42,7 +44,7 @@ describe('The image upload component', () => {
         await new Promise(setImmediate);
 
         const expected = 'data:image/jpeg;base64,' + btoa('A+test+string+for+testing+image');
-        expect(props.onFileRead).toHaveBeenCalledWith(image, expected);
+        expect(props.onFileRead).toHaveBeenCalledWith(expected);
     });
 
     it('should handle drag enter', () => {
@@ -57,10 +59,40 @@ describe('The image upload component', () => {
         expect(props.onFileSelection).not.toHaveBeenCalled();
     });
 
+    it('should display the placeholder', () => {
+        wrapper.setProps({ placeholderLabel: 'Upload your image' });
+        expect(wrapper.find('.placeholder-label').text()).toEqual('Upload your image');
+    });
+
+    it('should display the image', () => {
+        wrapper.setProps({ imageURL: 'a/image/url' });
+        expect(wrapper.find(Image).prop('src')).toEqual('a/image/url');
+        expect(wrapper.find('.cover')).toHaveLength(1);
+    });
+
     it('should ignore empty callbacks', () => {
         wrapper.setProps({onFileSelection: null, onFileRead: null})
         wrapper.find(Dropzone).prop("onDrop")([image]);
         expect(props.onFileSelection).not.toHaveBeenCalled();
         expect(props.onFileRead).not.toHaveBeenCalled();
+    });
+
+    it('should allow for cropping', () => {
+        wrapper.setProps({allowCropping: true});
+        expect(wrapper.find(Dropzone)).toHaveLength(1);
+        expect(wrapper.find(ImageCropper)).toHaveLength(0);
+        wrapper.find(Dropzone).prop('onDrop')([image]);
+
+        expect(wrapper.find(Dropzone)).toHaveLength(0);
+
+        expect(wrapper.find(ImageCropper).props()).toEqual(expect.objectContaining({
+            onImageChanged: props.onFileRead,
+            imageURL: image.preview,
+            onCropCancel: expect.any(Function),
+        }));
+
+        wrapper.find(ImageCropper).prop('onCropCancel')();
+        expect(wrapper.find(Dropzone)).toHaveLength(1);
+        expect(wrapper.find(ImageCropper)).toHaveLength(0);
     });
 });

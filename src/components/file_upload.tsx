@@ -51,21 +51,21 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
         const inputClasses = classNames('file-upload__input');
 
         return <div className={classes} onClick={this._stopPropagation} >
-            <input
-                id={id}
-                name={id}
-                type="file"
-                onChange={this._onChangeHandler}
-                disabled={disabled}
-                placeholder={placeholder}
-                accept={accept ? accept.join(",") : null}
-            />
             <div className="layout layout--gutter-sm">
                 <div className="layout__item u-fill file-upload__input-container">
                     <label className={inputClasses} htmlFor={id}>{selectedFileName}</label>
                 </div>
                 <div className="layout__item u-fit">
-                    <label className={classNames('btn btn--primary', {waiting: uploading})} htmlFor={id}>
+                    <input
+                        id={id}
+                        name={id}
+                        type="file"
+                        onChange={this._onChangeHandler}
+                        disabled={disabled}
+                        placeholder={placeholder}
+                        accept={accept ? accept.join(",") : null}
+                    />
+                    <label className={classNames('btn btn--primary', { waiting: uploading })} htmlFor={id}>
                         <span className="text">{I18n.translate('file upload button', 'Choose file')}</span>
                         {uploading && <Spinner />}
                     </label>

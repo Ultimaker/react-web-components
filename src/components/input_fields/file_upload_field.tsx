@@ -6,7 +6,7 @@ import FileUpload from '../file_upload';
 
 
 /**
- * The checkbox field provides these props in addition to those supported by all input fields.
+ * The file upload field provides these props in addition to those supported by all input fields.
  * Note that this field does not have a value prop.
  */
 export interface FileUploadFieldProps extends InputFieldProps {

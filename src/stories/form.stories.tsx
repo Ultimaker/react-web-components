@@ -4,7 +4,6 @@ import { withKnobs, text, boolean, number, selectV2 } from '@storybook/addon-kno
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
-import { action } from '@storybook/addon-actions';
 
 // components
 import InputField from '../components/input_field';
@@ -19,6 +18,10 @@ import SelectField from '../components/input_fields/select_field';
 import ImageUploadField from '../components/input_fields/image_upload_field';
 import DateField from '../components/input_fields/date_field';
 import TagsField from '../components/input_fields/tags_field';
+import ImageCropper from '../components/image_cropper';
+import RangeSlider from '../components/range_slider';
+import ProfileIcon from '../components/icons/profile_icon';
+import Image from '../components/image';
 
 const stories = storiesOf('Forms', module);
 
@@ -244,7 +247,7 @@ stories.add('Image upload', withState({ value: null })
                     id="id_8"
                     value={store.state.value}
                     onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
-                    onReadHandler={action('read')}
+                    onReadHandler={(id, value: string) => store.set({ value })}
                     label={text('Label', 'Select an image')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
@@ -256,6 +259,32 @@ stories.add('Image upload', withState({ value: null })
                     infoLinkURL={text('Info link URL', '')}
                     infoText={text('Info text', '')}
                     preLabelElement={text('Pre label element', '')}
+                    allowCropping={boolean("Allow Cropping", true)}
+                />
+                <br />
+                <Tile>
+                    <h3>Result</h3>
+                    {store.state.value ?
+                        <Image src={store.state.value} size="4.8rem" /> :
+                        <ProfileIcon size="lg" />}
+                    <br/>
+                </Tile>
+            </div>
+        )
+    )
+);
+
+stories.add('Range slider', withState({ value: null })
+    (withInfo('Range slider')
+        (({ store }) =>
+            <div style={{ width: 350 }}>
+                <RangeSlider
+                    className="image-cropper--slider"
+                    onChange={value => store.set({ value })}
+                    min={number('Range start', RangeSlider.defaultProps.min)}
+                    max={number('Range end', RangeSlider.defaultProps.max)}
+                    step={number('Step', RangeSlider.defaultProps.step)}
+                    value={1}
                 />
             </div>
         )
