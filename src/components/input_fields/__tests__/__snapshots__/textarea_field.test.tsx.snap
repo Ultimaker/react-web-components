@@ -2,6 +2,7 @@
 
 exports[`The textarea field component should render a wrapper 1`] = `
 <InputFieldWrapper
+  className="input-field--textarea"
   id="testInputField"
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
