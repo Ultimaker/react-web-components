@@ -112,6 +112,7 @@ exports[`The Form component should render with a form item 1`] = `
           <Button
             className=""
             disabled={true}
+            key=".0"
             linkToNewTab={false}
             shape="rectangle"
             style="primary"

@@ -4,79 +4,68 @@ exports[`The AboutDialog component should render 1`] = `
 <div
   className="about-dialog"
 >
-  <Modal
-    onOverlayClickHandler={[MockFunction]}
+  <popupBase
+    headerText="About test app"
+    width="md"
   >
-    <Tile
-      align="left"
-      padding="md"
+    <p>
+      Version: 1.0.0
+    </p>
+    <p>
+      For support visit:
+         
+      <a
+        href="https://ultimaker.support.com/"
+        target="_blank"
+      >
+        Support link
+      </a>
+    </p>
+    <p>
+      test app uses the following Open Source components:
+    </p>
+    <table
+      className="about-components-list"
     >
-      <div
-        className="about-dialog__header"
-      >
-        About test app
-      </div>
-      <p>
-        Version: 1.0.0
-      </p>
-      <p>
-        For support visit:
-           
-        <a
-          href="https://ultimaker.support.com/"
-          target="_blank"
+      <tbody>
+        <tr
+          key="testComponent"
         >
-          Support link
-        </a>
-      </p>
-      <p>
-        test app uses the following Open Source components:
-      </p>
-      <table
-        className="about-components-list"
-      >
-        <tbody>
-          <tr
-            key="testComponent"
+          <td
+            className="about-component-name"
           >
-            <td
-              className="about-component-name"
+            <a
+              href="https://ultimaker.com/"
+              target="_blank"
             >
-              <a
-                href="https://ultimaker.com/"
-                target="_blank"
-              >
-                testComponent
-              </a>
-            </td>
-            <td
-              className="about-component-license"
+              testComponent
+            </a>
+          </td>
+          <td
+            className="about-component-license"
+          >
+            <a
+              href="https://spdx.org/licenses/MIT.html"
+              target="_blank"
             >
-              <a
-                href="https://spdx.org/licenses/MIT.html"
-                target="_blank"
-              >
-                license MIT
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div
-        className="about-dialog__btn"
+              license MIT
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <FormActions>
+      <Button
+        className=""
+        linkToNewTab={false}
+        onClickHandler={[MockFunction]}
+        shape="rectangle"
+        style="primary"
+        type="button"
       >
-        <Button
-          className=""
-          linkToNewTab={false}
-          onClickHandler={[MockFunction]}
-          shape="rectangle"
-          style="primary"
-          type="button"
-        >
-          Close
-        </Button>
-      </div>
-    </Tile>
-  </Modal>
+        Close
+      </Button>
+    </FormActions>
+  </popupBase>
 </div>
 `;

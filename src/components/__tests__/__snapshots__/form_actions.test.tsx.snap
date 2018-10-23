@@ -10,6 +10,7 @@ exports[`The form actions component should render its children 1`] = `
   >
     <Button
       className=""
+      key=".0"
       linkToNewTab={false}
       shape="rectangle"
       style="primary"
@@ -24,6 +25,7 @@ exports[`The form actions component should render its children 1`] = `
   >
     <Button
       className=""
+      key=".1"
       linkToNewTab={false}
       shape="rectangle"
       style="primary"

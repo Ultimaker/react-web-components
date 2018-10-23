@@ -2,7 +2,7 @@ import * as React from 'react'
 
 export interface FormActionsProps {
     /** typically the form actions are a list of buttons **/
-    children: JSX.Element[]
+    children: JSX.Element[] | JSX.Element;
 }
 
 /**
@@ -10,7 +10,7 @@ export interface FormActionsProps {
  */
 export const FormActions: React.StatelessComponent<FormActionsProps> = ({ children }) =>
     <div className="form__actions">
-        {children.map((child, index) => child &&
+        {React.Children.toArray(children).map((child, index) => child &&
             <div key={index} className="form__btn-container">{child}</div>
         )}
     </div>;

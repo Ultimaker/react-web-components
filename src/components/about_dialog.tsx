@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { I18n } from '../utils/i18n';
 
+// components
+import PopupBase from './popup_base';
 import Button from './button';
-import Modal from "./modal";
-import Tile from "./tile";
+import FormActions from './form_actions';
 
 
 /**
@@ -69,24 +70,21 @@ const AboutDialog: React.StatelessComponent<AboutDialogProps> =
 
         return (
             <div className="about-dialog">
-                <Modal onOverlayClickHandler={closeHandler}>
-                    <Tile>
-                        <div className="about-dialog__header">{T.aboutApp(appName)}</div>
-                        <p>{T.version(versionNumber)}</p>
-                        {supportLinkURL &&
-                            <p>{T.forSupport}&nbsp;&nbsp;&nbsp;<a href={supportLinkURL} target="_blank">{supportLinkText}</a></p>
-                        }
-                        <p>{T.appUses(appName)}</p>
-                        <table className="about-components-list">
-                            <tbody>
-                                {licenseList(componentsList)}
-                            </tbody>
-                        </table>
-                        <div className="about-dialog__btn">
-                            <Button onClickHandler={closeHandler}>Close</Button>
-                        </div>
-                    </Tile>
-                </Modal>
+                <PopupBase headerText={T.aboutApp(appName)} width="md">
+                    <p>{T.version(versionNumber)}</p>
+                    {supportLinkURL &&
+                        <p>{T.forSupport}&nbsp;&nbsp;&nbsp;<a href={supportLinkURL} target="_blank">{supportLinkText}</a></p>
+                    }
+                    <p>{T.appUses(appName)}</p>
+                    <table className="about-components-list">
+                        <tbody>
+                            {licenseList(componentsList)}
+                        </tbody>
+                    </table>
+                    <FormActions>
+                        <Button onClickHandler={closeHandler}>Close</Button>
+                    </FormActions>
+                </PopupBase>
             </div>
         );
     };
