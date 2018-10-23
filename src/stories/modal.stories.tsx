@@ -24,6 +24,7 @@ stories.addDecorator(withKnobs)
 const widthOptions = {
     sm: 'sm',
     md: 'md',
+    lg: 'lg',
 };
 const widthDefaultValue = 'sm';
 

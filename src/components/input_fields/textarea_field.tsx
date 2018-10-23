@@ -1,7 +1,8 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
+import classNames from 'classnames';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 import Textarea from '../textarea';
 import splitTextByNewLine from '../../utils/split_text_by_new_line';
 
@@ -39,25 +40,30 @@ class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldSta
     }
 
     private _onChange(value: string): void {
-        this.setState({touched: true});
+        this.setState({ touched: true });
         this.props.onChangeHandler(this.props.id, value);
     }
 
     render() {
-        const {value, textareaAutoGrow, focusOnLoad, placeholder, children, ...wrapperProps} = this.props;
-        const {id, staticField} = wrapperProps;
-        const {touched} = this.state;
-        return <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>{
-            staticField ? splitTextByNewLine(value) :
-            <Textarea
-                id={id}
-                onChangeHandler={this._onChange}
-                placeholder={placeholder}
-                value={value || ""}
-                autofocus={focusOnLoad}
-                autoGrow={textareaAutoGrow}
-            />
-        }</InputFieldWrapper>;
+        const { value, textareaAutoGrow, focusOnLoad, placeholder, className, children, ...wrapperProps } = this.props;
+        const { id, staticField } = wrapperProps;
+        const { touched } = this.state;
+        return <InputFieldWrapper
+            touched={touched}
+            className={classNames(className, "input-field--textarea")}
+            inputChildren={children}
+            {...wrapperProps}
+        >
+            {staticField ? splitTextByNewLine(value) :
+                <Textarea
+                    id={id}
+                    onChangeHandler={this._onChange}
+                    placeholder={placeholder}
+                    value={value || ""}
+                    autofocus={focusOnLoad}
+                    autoGrow={textareaAutoGrow}
+                />
+            }</InputFieldWrapper>;
     }
 }
 

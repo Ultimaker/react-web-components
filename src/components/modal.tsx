@@ -2,12 +2,12 @@ import * as React from 'react';
 import { TransitionMotion, spring } from 'react-motion';
 import classNames = require('classnames');
 
-export type ModalWidth = 'sm' | 'md';
+export type ModalWidth = 'sm' | 'md' | 'lg';
 
 export interface ModalProps {
     /** Called when the background overlay is clicked */
     onOverlayClickHandler?: Function;
-    /** The width of the modal: 'sm' | 'md' */
+    /** The width of the modal: 'sm' | 'md' | 'lg' */
     width?: ModalWidth;
 }
 
