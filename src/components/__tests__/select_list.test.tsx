@@ -36,18 +36,14 @@ describe('The SelectList component', () => {
         expect(wrapper.find('.visible')).toHaveLength(1);
     });
 
+    it('should show menu when focused', () => {
+        wrapper.simulate('focus');
+        expect(wrapper.find('.visible')).toHaveLength(1);
+    });
+
     it('should not render a label when value is null', () => {
         wrapper.setProps({ value: null });
         expect(wrapper.find('.text').text()).toBe('');
-    });
-
-    it('should hide menu when the label is clicked', () => {
-        // first open the menu
-        wrapper.find('.label').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible')).toHaveLength(1);
-        // then close it
-        wrapper.find('.label').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
     it('should hide menu on blur', () => {
@@ -59,18 +55,31 @@ describe('The SelectList component', () => {
         expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
-    it('should hide menu on menu click', () => {
+    it('should hide menu when item is clicked', () => {
         // first open the menu
         wrapper.find('.label').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
-        // then close it
-        wrapper.find('.container').simulate('click', mockClickEvent);
+        // select an item
+        wrapper.instance()._onClickHandler('1', false);
         expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
-    it('should not propagate click', () => {
-        wrapper.simulate('click', mockClickEvent);
-        expect(mockClickEvent.stopPropagation).toBeCalled();
+    it('should select item with the keyboard', () => {
+        // increase selected item
+        wrapper.instance()._updateFocusedIndex(+1);
+        expect(wrapper.state('focusedIndex')).toBe(0);
+        wrapper.instance()._updateFocusedIndex(+1);
+        expect(wrapper.state('focusedIndex')).toBe(1);
+        wrapper.instance()._updateFocusedIndex(+1);
+        expect(wrapper.state('focusedIndex')).toBe(2);
+        // index should be circular, so after 2 it goes back to 0
+        wrapper.instance()._updateFocusedIndex(+1);
+        expect(wrapper.state('focusedIndex')).toBe(0);
+        // decrease selected item, again should be circular
+        wrapper.instance()._updateFocusedIndex(-1);
+        expect(wrapper.state('focusedIndex')).toBe(2);
+        wrapper.instance()._updateFocusedIndex(-1);
+        expect(wrapper.state('focusedIndex')).toBe(1);
     });
 
 });

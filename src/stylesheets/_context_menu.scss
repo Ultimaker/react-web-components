@@ -93,7 +93,7 @@
                         border-bottom: none;
                     }
 
-                    &:hover {
+                    &:hover, &.focused {
                         background-color: $context-menu-color-hover;
                         transition: background-color 0.2s ease-out;
                     }
