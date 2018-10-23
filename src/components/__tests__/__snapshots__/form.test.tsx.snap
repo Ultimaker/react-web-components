@@ -6,24 +6,18 @@ exports[`The Form component should render 1`] = `
   noValidate={true}
   onSubmit={[Function]}
 >
-  <div
-    className="form__actions"
-  >
-    <div
-      className="form__btn-container"
+  <FormActions>
+    <Button
+      className=""
+      disabled={true}
+      linkToNewTab={false}
+      shape="rectangle"
+      style="primary"
+      type="submit"
     >
-      <Button
-        className=""
-        disabled={true}
-        linkToNewTab={false}
-        shape="rectangle"
-        style="primary"
-        type="submit"
-      >
-        primaryBtnText
-      </Button>
-    </div>
-  </div>
+      primaryBtnText
+    </Button>
+  </FormActions>
 </form>
 `;
 
@@ -107,35 +101,38 @@ exports[`The Form component should render with a form item 1`] = `
         </TextField>
       </InputField>
     </div>
-    <div
-      className="form__actions"
-    >
+    <FormActions>
       <div
-        className="form__btn-container"
+        className="form__actions"
       >
-        <Button
-          className=""
-          disabled={true}
-          linkToNewTab={false}
-          shape="rectangle"
-          style="primary"
-          type="submit"
+        <div
+          className="form__btn-container"
+          key="0"
         >
-          <button
-            className="btn btn--primary btn--rectangle  disabled"
+          <Button
+            className=""
             disabled={true}
-            onClick={[Function]}
+            linkToNewTab={false}
+            shape="rectangle"
+            style="primary"
             type="submit"
           >
-            <span
-              className="text"
+            <button
+              className="btn btn--primary btn--rectangle  disabled"
+              disabled={true}
+              onClick={[Function]}
+              type="submit"
             >
-              primaryBtnText
-            </span>
-          </button>
-        </Button>
+              <span
+                className="text"
+              >
+                primaryBtnText
+              </span>
+            </button>
+          </Button>
+        </div>
       </div>
-    </div>
+    </FormActions>
   </form>
 </Form>
 `;

@@ -13,8 +13,13 @@ export interface PopupBaseProps {
     step?: number;
     /** The total number of steps of a multi-step popup */
     totalSteps?: number;
+    /** The content of the popup **/
+    children: any
 }
 
+/**
+ * The popup base component is a simple modal with a title, content and optionally a progress bar.
+ */
 export const PopupBase: React.StatelessComponent<PopupBaseProps> = (
     { headerText, step, totalSteps, width, children }
 ) =>
