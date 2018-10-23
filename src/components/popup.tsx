@@ -28,6 +28,8 @@ export interface PopupProps {
     secondaryBtnHandler?: () => void;
     /** Secondary button style */
     secondaryBtnStyle?: ButtonStyle;
+    /** Disables the secondary button when true */
+    secondaryBtnDisabled?: boolean;
     /** Placeholder text for the input for popups of type prompt */
     promptPlaceholder?: string;
     /** The width of the popup: 'sm' | 'md' */
@@ -95,7 +97,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     }
 
     render(): JSX.Element {
-        const { headerText, bodyText, primaryBtnText, secondaryBtnText,
+        const { headerText, bodyText, primaryBtnText, secondaryBtnText, secondaryBtnDisabled,
             primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, width, children } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
@@ -119,6 +121,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                                 secondaryBtnStyle={secondaryBtnStyle}
                                 secondaryBtnHandler={this._secondaryBtnHandler}
                                 secondaryBtnShowSpinner={secondaryBtnShowSpinner}
+                                secondaryBtnDisabled={secondaryBtnDisabled}
                                 validationErrors={validationErrors}
                                 alwaysEnableSubmitButton={true}
                             >
