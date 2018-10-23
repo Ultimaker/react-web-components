@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { default as Button, ButtonStyle } from './button';
+import FormActions from './form_actions'
 
 
 /** The validation of each field may be a text, a list of elements or the validation of a sub-model **/
@@ -21,14 +22,14 @@ export interface FormProps {
     secondaryBtnStyle?: ButtonStyle;
     /** An internal url link to be used instead of calling secondaryBtnHandler */
     secondaryBtnLink?: string;
+    /** Replaces the secondary button text with a spinner when true */
+    secondaryBtnShowSpinner?: boolean;
     /** The form validation error messages */
     validationErrors?: FormValidationResponse;
     /** Override the form validation and enable the primary button */
     alwaysEnableSubmitButton?: boolean;
     /** Replaces the primary button text with a spinner when true */
     primaryBtnShowSpinner?: boolean;
-    /** Replaces the secondary button text with a spinner when true */
-    secondaryBtnShowSpinner?: boolean;
 }
 
 export interface FormState {
@@ -99,35 +100,30 @@ export class Form extends React.Component<FormProps, FormState> {
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
                 {React.Children.map(children, this._renderChild)}
                 {primaryBtnText &&
-                    <div className="form__actions">
+                    <FormActions>
                         {primaryBtnText &&
-                            <div className="form__btn-container">
-                                <Button
-                                    style={primaryBtnStyle}
-                                    showSpinner={primaryBtnShowSpinner}
-                                    disabled={this._isPrimaryBtnDisabled()}
-                                    type="submit" >
+                            <Button
+                                style={primaryBtnStyle}
+                                showSpinner={primaryBtnShowSpinner}
+                                disabled={this._isPrimaryBtnDisabled()}
+                                type="submit" >
 
-                                    {primaryBtnText}
-                                </Button>
-                            </div>
+                                {primaryBtnText}
+                            </Button>
                         }
                         {secondaryBtnText &&
-                            <div className="form__btn-container">
-                                <Button
-                                    style={secondaryBtnStyle}
-                                    showSpinner={secondaryBtnShowSpinner}
-                                    disabled={primaryBtnShowSpinner}
-                                    onClickHandler={secondaryBtnHandler}
-                                    type={secondaryBtnLink ? 'link' : 'button'}
-                                    linkURL={secondaryBtnLink}
-                                >
-                                    {secondaryBtnText}
-                                </Button>
-                            </div>
+                            <Button
+                                style={secondaryBtnStyle}
+                                showSpinner={secondaryBtnShowSpinner}
+                                disabled={primaryBtnShowSpinner}
+                                onClickHandler={secondaryBtnHandler}
+                                type={secondaryBtnLink ? 'link' : 'button'}
+                                linkURL={secondaryBtnLink}
+                            >
+                                {secondaryBtnText}
+                            </Button>
                         }
-
-                    </div>
+                    </FormActions>
                 }
             </form>
         )

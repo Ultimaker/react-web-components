@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The form actions component should render its children 1`] = `
+<div
+  className="form__actions"
+>
+  <div
+    className="form__btn-container"
+    key="0"
+  >
+    <Button
+      className=""
+      key=".0"
+      linkToNewTab={false}
+      shape="rectangle"
+      style="primary"
+      type="button"
+    >
+      First Button
+    </Button>
+  </div>
+  <div
+    className="form__btn-container"
+    key="1"
+  >
+    <Button
+      className=""
+      key=".1"
+      linkToNewTab={false}
+      shape="rectangle"
+      style="primary"
+      type="button"
+    >
+      Second Button
+    </Button>
+  </div>
+</div>
+`;

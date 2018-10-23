@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import Popup from '../popup';
-import ProgressBar from '../progress_bar';
+import PopupBase from '../popup_base';
 
 describe('The Popup component', () => {
     let props;
@@ -58,6 +58,12 @@ describe('The Popup component', () => {
 
     it('should render a progress bar for multi-step popups', () => {
         wrapper.setProps({ step: 1, totalSteps: 3 });
-        expect(wrapper.find(ProgressBar)).toHaveLength(1);
+        expect(wrapper.find(PopupBase).props()).toEqual({
+            headerText: props.headerText,
+            step: 1,
+            totalSteps: 3,
+            width: 'sm',
+            children: expect.any(Array),
+        });
     });
 });

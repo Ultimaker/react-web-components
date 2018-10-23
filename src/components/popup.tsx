@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // components
-import { Modal, ModalWidth } from './modal';
+import { ModalWidth } from './modal';
 import { Form, FormValidationResponse } from './form';
 import { ButtonStyle } from './button';
-import { ProgressBar } from './progress_bar';
+import PopupBase from './popup_base'
 
 // utils
 import splitTextByNewLine from '../utils/split_text_by_new_line';
@@ -99,41 +99,25 @@ export class Popup extends React.Component<PopupProps, PopupState> {
             primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, width, children } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
-        return <div className="popup">
-            <Modal width={width}>
-                <div className="popup__container">
-                    <div className="popup__content">
-                        <div className="popup__header">
-                            {headerText}
-                        </div>
-
-                        <div className="popup__body">
-                            {splitTextByNewLine(bodyText)}
-
-                            <Form
-                                primaryBtnText={primaryBtnText}
-                                primaryBtnStyle={primaryBtnStyle}
-                                onSubmitHandler={this._primaryBtnHandler}
-                                primaryBtnShowSpinner={primaryBtnShowSpinner}
-                                secondaryBtnText={secondaryBtnText}
-                                secondaryBtnStyle={secondaryBtnStyle}
-                                secondaryBtnHandler={this._secondaryBtnHandler}
-                                secondaryBtnShowSpinner={secondaryBtnShowSpinner}
-                                validationErrors={validationErrors}
-                                alwaysEnableSubmitButton={true}
-                            >
-
-                                {children}
-
-                            </Form>
-                        </div>
-                    </div>
-                    {step && totalSteps &&
-                        <ProgressBar progressPercentage={step / totalSteps * 100} barHeight="0.9rem" />
-                    }
-                </div>
-            </Modal>
-        </div>
+        return (
+            <PopupBase headerText={headerText} step={step} totalSteps={totalSteps} width={width}>
+                {splitTextByNewLine(bodyText)}
+                <Form
+                    primaryBtnText={primaryBtnText}
+                    primaryBtnStyle={primaryBtnStyle}
+                    onSubmitHandler={this._primaryBtnHandler}
+                    primaryBtnShowSpinner={primaryBtnShowSpinner}
+                    secondaryBtnText={secondaryBtnText}
+                    secondaryBtnStyle={secondaryBtnStyle}
+                    secondaryBtnHandler={this._secondaryBtnHandler}
+                    secondaryBtnShowSpinner={secondaryBtnShowSpinner}
+                    validationErrors={validationErrors}
+                    alwaysEnableSubmitButton={true}
+                >
+                    {children}
+                </Form>
+            </PopupBase>
+        )
     };
 }
 
