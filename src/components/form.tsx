@@ -21,14 +21,16 @@ export interface FormProps {
     secondaryBtnStyle?: ButtonStyle;
     /** An internal url link to be used instead of calling secondaryBtnHandler */
     secondaryBtnLink?: string;
+    /** Replaces the secondary button text with a spinner when true */
+    secondaryBtnShowSpinner?: boolean;
+    /** Disables the secondary button when true */
+    secondaryBtnDisabled?: boolean;
     /** The form validation error messages */
     validationErrors?: FormValidationResponse;
     /** Override the form validation and enable the primary button */
     alwaysEnableSubmitButton?: boolean;
     /** Replaces the primary button text with a spinner when true */
     primaryBtnShowSpinner?: boolean;
-    /** Replaces the secondary button text with a spinner when true */
-    secondaryBtnShowSpinner?: boolean;
 }
 
 export interface FormState {
@@ -93,7 +95,8 @@ export class Form extends React.Component<FormProps, FormState> {
 
     render(): JSX.Element {
         const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler,
-            secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner, children } = this.props;
+            secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner, secondaryBtnDisabled, children
+        } = this.props;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -117,7 +120,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                 <Button
                                     style={secondaryBtnStyle}
                                     showSpinner={secondaryBtnShowSpinner}
-                                    disabled={primaryBtnShowSpinner}
+                                    disabled={primaryBtnShowSpinner || secondaryBtnDisabled}
                                     onClickHandler={secondaryBtnHandler}
                                     type={secondaryBtnLink ? 'link' : 'button'}
                                     linkURL={secondaryBtnLink}

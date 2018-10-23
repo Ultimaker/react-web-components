@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, text, selectV2, boolean } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 
@@ -51,6 +51,7 @@ stories.add('Form', withState({ imageValue: null, textValue: null, numberValue: 
                         secondaryBtnText="Cancel"
                         secondaryBtnHandler={action('clicked')}
                         secondaryBtnStyle="quiet"
+                        secondaryBtnDisabled={boolean('Disable cancel button', false)}
                         validationErrors={{
                             id_1: 'Validation error 1',
                             id_2: 'Validation error 2',
