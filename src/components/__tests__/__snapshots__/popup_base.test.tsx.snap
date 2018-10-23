@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The PopupBase component should render a modal 1`] = `
+<div
+  className="popup"
+>
+  <Modal
+    width="sm"
+  >
+    <div
+      className="popup__container"
+    >
+      <div
+        className="popup__content"
+      >
+        <div
+          className="popup__header"
+        >
+          PopupBase header
+        </div>
+        <div
+          className="popup__body"
+        />
+      </div>
+    </div>
+  </Modal>
+</div>
+`;

@@ -23,8 +23,6 @@ export interface FormProps {
     secondaryBtnLink?: string;
     /** Replaces the secondary button text with a spinner when true */
     secondaryBtnShowSpinner?: boolean;
-    /** Disables the secondary button when true */
-    secondaryBtnDisabled?: boolean;
     /** The form validation error messages */
     validationErrors?: FormValidationResponse;
     /** Override the form validation and enable the primary button */
@@ -95,8 +93,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
     render(): JSX.Element {
         const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler,
-            secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner, secondaryBtnDisabled, children
-        } = this.props;
+            secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner, children } = this.props;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
@@ -120,7 +117,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                 <Button
                                     style={secondaryBtnStyle}
                                     showSpinner={secondaryBtnShowSpinner}
-                                    disabled={primaryBtnShowSpinner || secondaryBtnDisabled}
+                                    disabled={primaryBtnShowSpinner}
                                     onClickHandler={secondaryBtnHandler}
                                     type={secondaryBtnLink ? 'link' : 'button'}
                                     linkURL={secondaryBtnLink}
