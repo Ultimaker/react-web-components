@@ -78,6 +78,13 @@
         }
     }
 
+    &.input-field--textarea {
+        .static-field p {
+            margin: 0;
+            min-height: 2.2rem;
+        }
+    }
+
     .input-field__label {
         @include font-size-text-2;
 
