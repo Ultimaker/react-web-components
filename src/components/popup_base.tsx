@@ -46,6 +46,6 @@ PopupBase.defaultProps = {
     width: 'sm',
 };
 
-PopupBase.displayName = 'popupBase';
+PopupBase.displayName = 'PopupBase';
 
 export default PopupBase;

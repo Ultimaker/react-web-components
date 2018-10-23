@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Popup component should render a confirm popup 1`] = `
-<popupBase
+<PopupBase
   headerText="Popup header"
   width="sm"
 >
@@ -18,5 +18,5 @@ exports[`The Popup component should render a confirm popup 1`] = `
     secondaryBtnHandler={[Function]}
     secondaryBtnShowSpinner={false}
   />
-</popupBase>
+</PopupBase>
 `;

@@ -58,7 +58,7 @@ stories.add('Basic popup', withInfo(
     <PopupBase
         headerText="Basic popup"
         width={selectV2('Popup width', widthOptions, widthDefaultValue)}>
-        <div style={{ background: 'white', height: 200, width: 300 }}>
+        <div style={{ height: 200 }}>
             Content of the popup.
         </div>
     </PopupBase>

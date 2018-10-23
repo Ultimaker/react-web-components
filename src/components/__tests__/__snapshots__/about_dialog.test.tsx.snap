@@ -4,7 +4,7 @@ exports[`The AboutDialog component should render 1`] = `
 <div
   className="about-dialog"
 >
-  <popupBase
+  <PopupBase
     headerText="About test app"
     width="md"
   >
@@ -66,6 +66,6 @@ exports[`The AboutDialog component should render 1`] = `
         Close
       </Button>
     </FormActions>
-  </popupBase>
+  </PopupBase>
 </div>
 `;
