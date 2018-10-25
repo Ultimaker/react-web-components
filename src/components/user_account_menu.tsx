@@ -12,6 +12,10 @@ import { I18n } from '../utils/i18n';
 
 
 export interface UserAccountMenuProps {
+    /** Whether the user is signed out */
+    signedOut?: boolean;
+    /** Called when the sign in button is clicked */
+    onSignInClickHandler?: () => void;
     /** Called when the sign out button is clicked */
     onSignOutClickHandler: () => void;
     /** URL to the account management page */
@@ -24,9 +28,6 @@ export interface UserAccountMenuProps {
     triggerWidth?: string;
     /** The height of the clickable area around the profile picture */
     triggerHeight?: string;
-
-    signedOut?: boolean;
-    onSignInClickHandler?: () => void;
 }
 
 export interface UserAccountMenuState {

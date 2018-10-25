@@ -9,6 +9,8 @@
 
     .burger-menu {
         > .btn {
+            height: 5rem;
+            width: 5rem;
             top: 0.9rem;
             box-shadow: 0 2px 3px 0 $color-shadow;
             z-index: 999999;
