@@ -17,7 +17,9 @@ describe('The UserAccountMenu component', () => {
         props = {
             manageAccountURL: 'https://account-staging.ultimaker.com',
             onSignOutClickHandler: jest.fn(),
-            displayName: 'Test User'
+            onSignInClickHandler: jest.fn(),
+            displayName: 'Test User',
+            signedOut: false,
         };
         wrapper = shallow(<UserAccountMenu {...props} />);
     });
@@ -61,6 +63,12 @@ describe('The UserAccountMenu component', () => {
     it('should display child section', () => {
         wrapper.setProps({ children: <div>Child section</div> });
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render sign in button', () => {
+        wrapper.setProps({ signedOut: 'true' });
+        expect(wrapper).toMatchSnapshot();
+        expect(props.onSignInClickHandler).not.toHaveBeenCalled();
     });
 
 });

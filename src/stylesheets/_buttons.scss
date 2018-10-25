@@ -218,6 +218,8 @@ button {
     }
 
     .floating-action-btn--trigger {
+        height: 5rem;
+        width: 5rem;
         position: relative;
         z-index: 99;
         font-size: 2rem;

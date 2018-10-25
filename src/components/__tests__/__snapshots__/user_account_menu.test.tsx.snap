@@ -213,3 +213,69 @@ exports[`The UserAccountMenu component should render 1`] = `
   </div>
 </div>
 `;
+
+exports[`The UserAccountMenu component should render sign in button 1`] = `
+<div
+  className="user-account-menu"
+  onClick={[Function]}
+  tabIndex={1}
+>
+  <div
+    className="trigger"
+    onClick={[Function]}
+  >
+    <ProfileImage
+      size="3.6rem"
+    />
+  </div>
+  <div
+    className="container"
+  >
+    <div
+      className="menu"
+    >
+      <Collapse
+        fixedHeight={-1}
+        forceInitialAnimation={false}
+        hasNestedCollapse={false}
+        isOpened={false}
+        onMeasure={[Function]}
+        onRender={[Function]}
+        onRest={[Function]}
+        springConfig={
+          Object {
+            "damping": 32,
+            "stiffness": 390,
+          }
+        }
+        style={Object {}}
+        theme={
+          Object {
+            "collapse": "ReactCollapse--collapse",
+            "content": "ReactCollapse--content",
+          }
+        }
+      >
+        <div
+          className="sections"
+        >
+          <div
+            className="account-section"
+          >
+            <Button
+              className=""
+              linkToNewTab={false}
+              onClickHandler={[Function]}
+              shape="rectangle"
+              style="secondary"
+              type="button"
+            >
+              Sign in
+            </Button>
+          </div>
+        </div>
+      </Collapse>
+    </div>
+  </div>
+</div>
+`;

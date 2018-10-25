@@ -9,9 +9,25 @@
 
     .burger-menu {
         > .btn {
+            height: 5rem;
+            width: 5rem;
             top: 0.9rem;
             box-shadow: 0 2px 3px 0 $color-shadow;
             z-index: 999999;
+        }
+    }
+
+    .user-account-menu {
+        .trigger {
+            height: 4.6rem;
+
+            @include respond-to(sm) {
+                height: 5rem;
+            }
+
+            @include respond-to(md) {
+                height: 6rem;
+            }
         }
     }
 
@@ -67,7 +83,7 @@
                 margin: 0;
             }
 
-            a {
+            > a {
                 border-radius: 9999px;
                 background: white;
                 font-size: 1.6rem;
@@ -76,8 +92,8 @@
                 text-decoration: none;
                 color: $secondary-btn-color-text;
                 position: relative;
-                width: 46px;
-                height: 46px;
+                width: 4.6rem;
+                height: 4.6rem;
 
                 @include respond-to(sm) {
                     border-radius: 0;

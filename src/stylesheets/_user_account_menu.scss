@@ -32,7 +32,6 @@
 
     .account-section {
         width: 28rem;
-        min-height: 37.8rem;
         padding: 2.4rem;
         display: flex;
         flex-direction: column;
@@ -44,6 +43,7 @@
             flex-wrap: nowrap;
             justify-content: center;
             flex-grow: 1;
+            padding: 3.6rem 0;
         }
 
         .account-section__title {

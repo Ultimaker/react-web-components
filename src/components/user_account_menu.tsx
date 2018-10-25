@@ -12,6 +12,10 @@ import { I18n } from '../utils/i18n';
 
 
 export interface UserAccountMenuProps {
+    /** Whether the user is signed out */
+    signedOut?: boolean;
+    /** Called when the sign in button is clicked */
+    onSignInClickHandler?: () => void;
     /** Called when the sign out button is clicked */
     onSignOutClickHandler: () => void;
     /** URL to the account management page */
@@ -70,7 +74,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
     render(): JSX.Element {
 
         const { onSignOutClickHandler, manageAccountURL, displayName, imageURL,
-            triggerWidth, triggerHeight, children } = this.props;
+            triggerWidth, triggerHeight, signedOut, onSignInClickHandler, children } = this.props;
         const { showMenu } = this.state;
 
         const classes = classNames('user-account-menu', { 'visible': showMenu });
@@ -99,27 +103,36 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                             }
 
                             <div className="account-section">
-                                <div className="account-section__title">
-                                    {I18n.translate("User account menu title", "My account")}
-                                </div>
+                                {!signedOut &&
+                                    <React.Fragment>
+                                        <div className="account-section__title">
+                                            {I18n.translate("User account menu title", "My account")}
+                                        </div>
 
-                                <div className="account-section__profile">
-                                    <div className="account-section__icon">
-                                        <ProfileImage imageURL={imageURL} size="10rem" />
-                                    </div>
-                                    <div className="account-section__name">{displayName}</div>
-                                </div>
+                                        <div className="account-section__profile">
+                                            <div className="account-section__icon">
+                                                <ProfileImage imageURL={imageURL} size="10rem" />
+                                            </div>
+                                            <div className="account-section__name">{displayName}</div>
+                                        </div>
 
-                                <div className="account-section__buttons">
-                                    <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
-                                        {I18n.translate("User account menu button", "Manage account")}
-                                        <LinkIcon />
+                                        <div className="account-section__buttons">
+                                            <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
+                                                {I18n.translate("User account menu button", "Manage account")}
+                                                <LinkIcon />
+                                            </Button>
+
+                                            <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
+                                                {I18n.translate("User account menu button", "Sign out")}
+                                            </Button>
+                                        </div>
+                                    </React.Fragment>
+                                }
+                                {signedOut &&
+                                    <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignInClickHandler() }}>
+                                        {I18n.translate("User account menu button", "Sign in")}
                                     </Button>
-
-                                    <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
-                                        {I18n.translate("User account menu button", "Sign out")}
-                                    </Button>
-                                </div>
+                                }
                             </div>
 
                         </div>

@@ -66,5 +66,7 @@ stories.add('User account menu', withInfo(
         displayName="Test User"
         triggerWidth={text('Trigger width', null)}
         triggerHeight={text('Trigger height', null)}
+        signedOut={boolean('Sign out', false)}
+        onSignInClickHandler={action('clicked')}
     ></UserAccountMenu>
 ));
