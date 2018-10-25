@@ -62,11 +62,11 @@ stories.add('User account menu', withInfo(
 )(() =>
     <UserAccountMenu
         onSignOutClickHandler={action('clicked')}
-        manageAccountURL="https://account-staging.ultimaker.com"
+        manageAccountURL={text('Account Management URL', 'https://account.ultimaker.com')}
         displayName="Test User"
         triggerWidth={text('Trigger width', null)}
         triggerHeight={text('Trigger height', null)}
         signedOut={boolean('Sign out', false)}
         onSignInClickHandler={action('clicked')}
-    ></UserAccountMenu>
+    />
 ));
