@@ -19,7 +19,7 @@ export interface UserAccountMenuProps {
     /** Called when the sign out button is clicked */
     onSignOutClickHandler: () => void;
     /** URL to the account management page */
-    manageAccountURL: string;
+    manageAccountURL?: string;
     /** The display name of the user. */
     displayName: string
     /** An URL for the user profile image. */
@@ -117,10 +117,10 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                         </div>
 
                                         <div className="account-section__buttons">
-                                            <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
+                                            {manageAccountURL && <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
                                                 {I18n.translate("User account menu button", "Manage account")}
                                                 <LinkIcon />
-                                            </Button>
+                                            </Button>}
 
                                             <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
                                                 {I18n.translate("User account menu button", "Sign out")}
