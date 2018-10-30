@@ -9,16 +9,25 @@ export interface GridItemProps {
     layoutWidth?: LayoutWidth;
     /** Breakpoint at which the widthFraction will be applied: 'xs' | 'sm' | 'md' | 'lg' */
     breakpoint?: Breakpoint;
+    /** Optional ID for the grid item */
+    id?: string;
+    /** Optional class for the grid item */
+    className?: string;
 }
 
 export const GridItem: React.StatelessComponent<GridItemProps> =
-    ({ layoutWidth, breakpoint, children }): JSX.Element => {
+    ({ layoutWidth, breakpoint, id, className, children }): JSX.Element => {
 
         const breakpointClass = breakpoint === 'xs' ? '' : '-' + breakpoint;
 
-        const classes = classNames('grid-component__item', 'layout__item', `u-${layoutWidth}${breakpointClass}`);
+        const classes = classNames(
+            'grid-component__item',
+            'layout__item',
+            `u-${layoutWidth}${breakpointClass}`,
+            className,
+        );
 
-        return <div className={classes}>
+        return <div className={classes} id={id}>
             {children}
         </div>
     }

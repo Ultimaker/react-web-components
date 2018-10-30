@@ -84,6 +84,7 @@ exports[`The UserAccountMenu component should display child section 1`] = `
             >
               <Button
                 className=""
+                id="account-menu-manage-button"
                 linkToNewTab={true}
                 linkURL="https://account-staging.ultimaker.com"
                 shape="rectangle"
@@ -95,6 +96,7 @@ exports[`The UserAccountMenu component should display child section 1`] = `
               </Button>
               <Button
                 className=""
+                id="account-menu-sign-out-button"
                 linkToNewTab={false}
                 onClickHandler={[Function]}
                 shape="rectangle"
@@ -186,6 +188,7 @@ exports[`The UserAccountMenu component should render 1`] = `
             >
               <Button
                 className=""
+                id="account-menu-manage-button"
                 linkToNewTab={true}
                 linkURL="https://account-staging.ultimaker.com"
                 shape="rectangle"
@@ -197,6 +200,7 @@ exports[`The UserAccountMenu component should render 1`] = `
               </Button>
               <Button
                 className=""
+                id="account-menu-sign-out-button"
                 linkToNewTab={false}
                 onClickHandler={[Function]}
                 shape="rectangle"
@@ -264,6 +268,7 @@ exports[`The UserAccountMenu component should render sign in button 1`] = `
           >
             <Button
               className=""
+              id="account-menu-sign-in-button"
               linkToNewTab={false}
               onClickHandler={[Function]}
               shape="rectangle"
