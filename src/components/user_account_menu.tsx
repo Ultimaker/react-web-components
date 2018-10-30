@@ -46,6 +46,8 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         super(props);
         this._menuRef = React.createRef();
         this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
+        this._onSignIn = this._onSignIn.bind(this);
+        this._onSignOut = this._onSignOut.bind(this);
     }
 
     private _setShowMenu(showMenu: boolean): void {
@@ -71,14 +73,25 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         e.stopPropagation();
     }
 
+    private _onSignOut() {
+        this._setShowMenu(false);
+        this.props.onSignOutClickHandler();
+    }
+
+    private _onSignIn() {
+        this._setShowMenu(false);
+        this.props.onSignInClickHandler();
+    }
+
     render(): JSX.Element {
 
-        const { onSignOutClickHandler, manageAccountURL, displayName, imageURL,
-            triggerWidth, triggerHeight, signedOut, onSignInClickHandler, children } = this.props;
+        const { manageAccountURL, displayName, imageURL, triggerWidth, triggerHeight, signedOut, children } = this.props;
         const { showMenu } = this.state;
 
         const classes = classNames('user-account-menu', { 'visible': showMenu });
         const triggerClasses = classNames('trigger', { 'trigger--rectangle': triggerWidth || triggerHeight });
+
+        const childProps = children && { onCloseMenuHandler: () => this._setShowMenu(false) }
 
         return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this._menuRef}>
 
@@ -97,7 +110,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                             {children &&
                                 <div className="other-section">
                                     {React.Children.map(children, (child: JSX.Element) =>
-                                        React.cloneElement(child, { onCloseMenuHandler: () => this._setShowMenu(false) })
+                                        React.cloneElement(child, childProps)
                                     )}
                                 </div>
                             }
@@ -117,19 +130,31 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                         </div>
 
                                         <div className="account-section__buttons">
-                                            {manageAccountURL && <Button style="secondary" type="link" linkURL={manageAccountURL} linkToNewTab>
+                                            {manageAccountURL &&
+                                            <Button style="secondary"
+                                                    type="link"
+                                                    id="account-menu-manage-button"
+                                                    linkURL={manageAccountURL}
+                                                    linkToNewTab
+                                            >
                                                 {I18n.translate("User account menu button", "Manage account")}
                                                 <LinkIcon />
                                             </Button>}
 
-                                            <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignOutClickHandler() }}>
+                                            <Button style="secondary"
+                                                    onClickHandler={this._onSignOut}
+                                                    id="account-menu-sign-out-button"
+                                            >
                                                 {I18n.translate("User account menu button", "Sign out")}
                                             </Button>
                                         </div>
                                     </React.Fragment>
                                 }
                                 {signedOut &&
-                                    <Button style="secondary" onClickHandler={() => { this._setShowMenu(false); onSignInClickHandler() }}>
+                                    <Button style="secondary"
+                                            id="account-menu-sign-in-button"
+                                            onClickHandler={this._onSignIn}
+                                    >
                                         {I18n.translate("User account menu button", "Sign in")}
                                     </Button>
                                 }

@@ -8,10 +8,14 @@ export interface ContextMenuItemProps {
     onClickHandler: () => void;
     /** Label for the menu item */
     label: string;
+    /** Optional ID for the menu item */
+    id?: string;
+    /** Optional class for the menu item */
+    className?: string;
 }
 
 export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> =
-    ({ disabled, onClickHandler, label }) => {
+    ({ disabled, onClickHandler, label, id, className }) => {
 
         const _onClickHandler = (e) => {
             if (disabled) {
@@ -22,7 +26,7 @@ export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> =
             }
         }
 
-        return <li className={classNames({ disabled })} onClick={_onClickHandler}>
+        return <li id={id} className={classNames({ disabled }, className)} onClick={_onClickHandler}>
             {label}
         </li>
 
