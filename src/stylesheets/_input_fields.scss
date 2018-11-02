@@ -321,3 +321,20 @@
         background-color: $primary-btn-color-hover;
     }
 }
+
+.search-field {
+    .input-container {
+        .layout__item {
+            display: flex;
+            flex-direction: row-reverse;
+            button {
+                background: none;
+                padding: 0;
+            }
+            .icon {
+                margin: 1.2rem 0.9rem;
+                line-height: 2.4rem;
+            }
+        }
+    }
+}
