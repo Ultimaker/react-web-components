@@ -323,18 +323,16 @@
 }
 
 .search-field {
-    .input-container {
-        .layout__item {
-            display: flex;
-            flex-direction: row-reverse;
-            button {
-                background: none;
-                padding: 0;
-            }
-            .icon {
-                margin: 1.2rem 0.9rem;
-                line-height: 2.4rem;
-            }
+    .input {
+        padding-left: 4rem;
+    }
+    .search-button {
+        position: absolute;
+        left: 0.8rem;
+        top: 1.2rem;
+        padding: 0;
+        &.btn--quiet:hover {
+            background-color: transparent;
         }
     }
 }

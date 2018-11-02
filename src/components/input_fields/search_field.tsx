@@ -50,13 +50,17 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
     }
 
     render() {
-        const {children, ...wrapperProps} = this.props;
-        const {} = wrapperProps;
+        const { children, ...wrapperProps } = this.props;
+        const { staticField, value } = wrapperProps;
         return <div className="search-field">
             <DefaultInputField inputChildren={children} {...wrapperProps} inputRef={this._inputRef}>
-                {wrapperProps.staticField ? wrapperProps.value :
-                    <Button onClickHandler={wrapperProps.value ? this._onResetHandler : this._focus}>
-                        {wrapperProps.value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}
+                {staticField ? value :
+                    <Button
+                        onClickHandler={value ? this._onResetHandler : this._focus}
+                        style="quiet"
+                        className="search-button"
+                    >
+                        {value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}
                     </Button>
                 }
             </DefaultInputField>
