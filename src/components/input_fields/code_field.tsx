@@ -171,19 +171,22 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
                 <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
                     {staticField ? (type === "password" ? _.repeat('*', maxLength) : value) :
                         _.range(0, maxLength).map(index =>
-                            <input
-                                id={id + "__" + index.toString()}
-                                key={index}
-                                className={className}
-                                name={id}
-                                type={type}
-                                maxLength={1}
-                                onChange={e => this._onChange(index, e.target.value)}
-                                onKeyDown={e => this._onKeyDown(index, e)}
-                                placeholder={value ? null : placeholder && placeholder[index]}
-                                value={this._isEmpty(index) ? "" : value[index]}
-                                ref={ref => this._inputRefs[index] = ref}
-                            />
+                            <React.Fragment>
+                                {index > 0 && <span className="separator">-</span>}
+                                <input
+                                    id={id + "__" + index.toString()}
+                                    key={index}
+                                    className={className}
+                                    name={id}
+                                    type={type}
+                                    maxLength={1}
+                                    onChange={e => this._onChange(index, e.target.value)}
+                                    onKeyDown={e => this._onKeyDown(index, e)}
+                                    placeholder={value ? null : placeholder && placeholder[index]}
+                                    value={this._isEmpty(index) ? "" : value[index]}
+                                    ref={ref => this._inputRefs[index] = ref}
+                                />
+                            </React.Fragment>
                     )}
                 </InputFieldWrapper>
             </div>

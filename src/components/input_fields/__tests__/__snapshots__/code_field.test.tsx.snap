@@ -26,6 +26,11 @@ exports[`The code input field component should render a wrapper 1`] = `
       type="text"
       value="2"
     />
+    <span
+      className="separator"
+    >
+      -
+    </span>
     <input
       className="input"
       id="testInputField__1"
@@ -38,6 +43,11 @@ exports[`The code input field component should render a wrapper 1`] = `
       type="text"
       value="0"
     />
+    <span
+      className="separator"
+    >
+      -
+    </span>
     <input
       className="input"
       id="testInputField__2"
@@ -50,6 +60,11 @@ exports[`The code input field component should render a wrapper 1`] = `
       type="text"
       value="1"
     />
+    <span
+      className="separator"
+    >
+      -
+    </span>
     <input
       className="input"
       id="testInputField__3"
@@ -62,6 +77,11 @@ exports[`The code input field component should render a wrapper 1`] = `
       type="text"
       value="8"
     />
+    <span
+      className="separator"
+    >
+      -
+    </span>
     <input
       className="input"
       id="testInputField__4"
@@ -74,6 +94,11 @@ exports[`The code input field component should render a wrapper 1`] = `
       type="text"
       value=""
     />
+    <span
+      className="separator"
+    >
+      -
+    </span>
     <input
       className="input"
       id="testInputField__5"

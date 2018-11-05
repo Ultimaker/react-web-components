@@ -338,12 +338,17 @@
 }
 
 .code-field {
-    .input {
-        width: 3rem;
-        text-align: center;
-    }
     .input-wrapper-children {
         display: flex;
         justify-content: space-between;
+        .input {
+            width: 3rem;
+            text-align: center;
+        }
+        .separator {
+            line-height: 4.8rem;
+            vertical-align: middle;
+            display: inline-block;
+        }
     }
 }

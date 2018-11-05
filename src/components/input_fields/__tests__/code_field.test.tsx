@@ -51,13 +51,14 @@ describe('The code input field component', () => {
             staticField: false,
             touched: false,
         });
-        expect(wrapper.find(InputFieldWrapper).children()).toHaveLength(props.maxLength)
+        expect(wrapper.find(InputFieldWrapper).children()).toHaveLength(2 * props.maxLength - 1)
+        expect(wrapper.find(InputFieldWrapper).find("input")).toHaveLength(props.maxLength)
 
         const commonProps = {
             onChange: expect.any(Function), onKeyDown: expect.any(Function),
             name: 'testInputField', maxLength: 1, className: 'input', type: 'text', placeholder: null,
         }
-        expect(wrapper.find(InputFieldWrapper).children().map(i => i.props())).toEqual([
+        expect(wrapper.find(InputFieldWrapper).find("input").map(i => i.props())).toEqual([
             {id: 'testInputField__0', value: '2', ...commonProps},
             {id: 'testInputField__1', value: '0', ...commonProps},
             {id: 'testInputField__2', value: '1', ...commonProps},
