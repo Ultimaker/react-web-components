@@ -19,9 +19,11 @@ import ImageUploadField from '../components/input_fields/image_upload_field';
 import DateField from '../components/input_fields/date_field';
 import TagsField from '../components/input_fields/tags_field';
 import SearchField from '../components/input_fields/search_field';
+import CodeField from '../components/input_fields/code_field';
 import RangeSlider from '../components/range_slider';
 import ProfileIcon from '../components/icons/profile_icon';
 import Image from '../components/image';
+import enumerate = Reflect.enumerate
 
 const stories = storiesOf('Forms', module);
 
@@ -352,6 +354,35 @@ stories.add('Search field', withState({ value: null })
                         labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                         labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                         placeholder={text('Placeholder', 'Search')}
+                        validationError={text('Validation error message', '')}
+                        focusOnLoad={boolean('Focus on load', true)}
+                        staticField={boolean('Static field', false)}
+                        required={boolean('Required', false)}
+                        infoLinkURL={text('Info link URL', '')}
+                        infoText={text('Info text', '')}
+                        preLabelElement={text('Pre label element', '')}
+                    />
+                </div>
+            </Tile>
+        )
+    )
+);
+
+stories.add('Code field', withState({ value: "" })
+    (withInfo('Code field')
+        (({ store }) =>
+            <Tile>
+                <div style={{ width: 350 }}>
+                    <CodeField
+                        id="code_field"
+                        value={store.state.value}
+                        type={selectV2('Type', ['text', 'number', 'password'])}
+                        maxLength={number('Character count', 6) || 0}
+                        onChangeHandler={(id, value) => store.set({ value })}
+                        label={text('Label', 'Code')}
+                        labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                        labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                        placeholder={text('Placeholder', 'Code')}
                         validationError={text('Validation error message', '')}
                         focusOnLoad={boolean('Focus on load', true)}
                         staticField={boolean('Static field', false)}

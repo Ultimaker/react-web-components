@@ -80,7 +80,7 @@ exports[`The Form component should render with a form item 1`] = `
                     className="input-container layout layout--gutter-xs"
                   >
                     <div
-                      className="layout__item u-fill"
+                      className="input-wrapper-children layout__item u-fill"
                     >
                       <input
                         className="input"
