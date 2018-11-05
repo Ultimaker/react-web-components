@@ -1,8 +1,8 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import {mount, shallow} from 'enzyme'
 
-// component
+// components
 import CodeField, {CodeFieldProps} from '../code_field';
 import InputFieldWrapper from '../input_field_wrapper';
 
@@ -19,28 +19,30 @@ describe('The code input field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
-            focusOnLoad: true,
+            focusOnLoad: false,
             placeholder: 'placeholder',
             maxLength: 6,
         };
-        wrapper = shallow(<CodeField {...props} />);
     });
 
     it('should render a wrapper', () => {
+        wrapper = shallow(<CodeField {...props} />);
         expect(wrapper).toMatchSnapshot();
         expect(props.onChangeHandler).not.toHaveBeenCalled();
     });
 
     it('should render a null', () => {
+        wrapper = shallow(<CodeField {...props} />);
         wrapper.setProps({value: null});
         expect(wrapper.find(InputFieldWrapper).prop("value")).toBeUndefined();
-    })
+    });
 
     it('should render a wrapped field', () => {
+        wrapper = shallow(<CodeField {...props} />);
         expect(wrapper.find(InputFieldWrapper).props()).toEqual({
             id: "testInputField",
             children: expect.any(Object),
-            focusOnLoad: true,
+            focusOnLoad: false,
             labelLayoutWidth: "1/1",
             labelWidthBreakpoint: "sm",
             onChangeHandler: props.onChangeHandler,
@@ -52,44 +54,112 @@ describe('The code input field component', () => {
 
         const commonProps = {
             onChange: expect.any(Function), onKeyDown: expect.any(Function),
-            name: "testInputField", maxLength: 1, className: "input", type: "text",
+            name: "testInputField", maxLength: 1, className: "input", type: "text", placeholder: null,
         }
         expect(wrapper.find(InputFieldWrapper).children().map(i => i.props())).toEqual([
-            {id: "testInputField__0", placeholder: "p", value: "2", ...commonProps},
-            {id: "testInputField__1", placeholder: "l", value: "0", ...commonProps},
-            {id: "testInputField__2", placeholder: "a", value: "1", ...commonProps},
-            {id: "testInputField__3", placeholder: "c", value: "8", ...commonProps},
-            {id: "testInputField__4", placeholder: "e", value: "", ...commonProps},
-            {id: "testInputField__5", placeholder: "h", value: "", ...commonProps},
+            {id: "testInputField__0", value: "2", ...commonProps},
+            {id: "testInputField__1", value: "0", ...commonProps},
+            {id: "testInputField__2", value: "1", ...commonProps},
+            {id: "testInputField__3", value: "8", ...commonProps},
+            {id: "testInputField__4", value: "", ...commonProps},
+            {id: "testInputField__5", value: "", ...commonProps},
         ]);
-    })
+    });
 
     it('should render a static field', () => {
+        wrapper = shallow(<CodeField {...props} />);
         wrapper.setProps({staticField: true})
         expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual(props.value);
-    })
+    });
 
     it('should render a static password', () => {
-        wrapper.setProps({staticField: true, type: "password"})
-        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual("****");
-    })
+        props.staticField = true;
+        props.type = "password";
+        props.maxLength = 8;
+        props.value = "Password";
+        wrapper = shallow(<CodeField {...props} />);
+        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual("********");
+    });
 
     it('should set the maximum input field length', () => {
+        wrapper = shallow(<CodeField {...props} />);
         wrapper.setProps({maxLength: 10})
         expect(wrapper.find("input")).toHaveLength(10);
         wrapper.find("input").map(i => expect(i.prop('maxLength')).toEqual(1));
-    })
+    });
 
     it('should allow an empty placeholder', () => {
+        wrapper = shallow(<CodeField {...props} />);
         wrapper.setProps({placeholder: null})
-    })
+    });
 
     it('should call the callback', () => {
+        wrapper = mount(<CodeField {...props} />);
+
+        expect(document.activeElement.id).toEqual('');
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find("input").at(4).prop("onChange")({target: {value: "1"}})
+
+        wrapper.find("input").at(4).prop("onChange")({target: {value: "1"}});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "20181");
         expect(wrapper.state("touched")).toEqual(true);
-        wrapper.find("input").at(3).prop("onChange")({target: {value: "2"}})
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "20121");
+        expect(document.activeElement.id).toEqual('testInputField__5');
+
+        wrapper.find("input").at(3).prop("onChange")({target: {value: ""}});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "201\t1");
+        expect(document.activeElement.id).toEqual('testInputField__5');
+
+        wrapper.find("input").at(3).prop("onChange")({target: {value: "7"}});
+        expect(document.activeElement.id).toEqual('testInputField__4');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "20171");
+
+        wrapper.find("input").at(5).prop("onChange")({target: {value: "7"}});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "201717");
+    });
+
+    it('should handle key down', () => {
+        props.focusOnLoad = true;
+        wrapper = mount(<CodeField {...props} />);
+        expect(document.activeElement.id).toEqual('testInputField__4');
+        const preventDefault = jest.fn();
+
+         // arrow left
+        wrapper.find("input").at(3).prop("onKeyDown")({key: "ArrowLeft", preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__2');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+
+        // arrow right
+        wrapper.find("input").at(2).prop("onKeyDown")({key: "ArrowRight", preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__3');
+        expect(preventDefault).toHaveBeenCalledTimes(2);
+
+        // home
+        wrapper.find("input").at(2).prop("onKeyDown")({key: "Home", preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__0');
+        expect(preventDefault).toHaveBeenCalledTimes(3);
+
+        // end
+        wrapper.find("input").at(0).prop("onKeyDown")({key: "End", preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__5');
+        expect(preventDefault).toHaveBeenCalledTimes(4);
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+
+        wrapper.setProps({value: '2018\t0'});
+
+        // Backspace
+        wrapper.find("input").at(4).prop("onKeyDown")({key: "Backspace", preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__3');
+        expect(preventDefault).toHaveBeenCalledTimes(4);
+
+        // Delete
+        wrapper.find("input").at(4).prop("onKeyDown")({key: "Delete", preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__3');
+        expect(preventDefault).toHaveBeenCalledTimes(5);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2018');
+
+        // same value again
+        wrapper.find("input").at(0).prop("onKeyDown")({key: "2", preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__1');
+
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
     });
 });

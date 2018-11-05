@@ -60,10 +60,10 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      * Focuses on the input field if required.
      */
     componentDidMount(): void {
-        const { focusOnLoad, value, maxLength } = this.props;
+        const { focusOnLoad, value } = this.props;
         if (focusOnLoad) {
             // focus on the next input field to be filled in (or the 1st if all chars are filled in).
-            this._focusOnPromptInput(value.length === maxLength ? 0 : value.length);
+            this._focusOnPromptInput(value.length);
         }
     }
 
@@ -137,9 +137,10 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
                 if (this._isEmpty(index)) {
                     // we search for the next input field with a value
                     const charsAfter: string[] = Array.from(value.substring(index + 1));
-                    const deleteIndex: number = charsAfter.findIndex((v, i) => !this._isEmpty(i));
+                    const deleteIndex: number = charsAfter.findIndex((_, i) => !this._isEmpty(index + i + 1));
                     if (deleteIndex >= 0) {
-                        return !this._onChange(deleteIndex + index + 1, null);
+                        this._onChange(deleteIndex + index + 1, null);
+                        return true;
                     }
                 }
             },
@@ -179,7 +180,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
                                 maxLength={1}
                                 onChange={e => this._onChange(index, e.target.value)}
                                 onKeyDown={e => this._onKeyDown(index, e)}
-                                placeholder={placeholder && placeholder[index]}
+                                placeholder={value ? null : placeholder && placeholder[index]}
                                 value={this._isEmpty(index) ? "" : value[index]}
                                 ref={ref => this._inputRefs[index] = ref}
                             />

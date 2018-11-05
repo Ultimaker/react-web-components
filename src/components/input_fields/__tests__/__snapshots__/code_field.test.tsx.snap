@@ -6,7 +6,7 @@ exports[`The code input field component should render a wrapper 1`] = `
   id="testInputField"
 >
   <InputFieldWrapper
-    focusOnLoad={true}
+    focusOnLoad={false}
     id="testInputField"
     labelLayoutWidth="1/1"
     labelWidthBreakpoint="sm"
@@ -22,7 +22,7 @@ exports[`The code input field component should render a wrapper 1`] = `
       name="testInputField"
       onChange={[Function]}
       onKeyDown={[Function]}
-      placeholder="p"
+      placeholder={null}
       type="text"
       value="2"
     />
@@ -34,7 +34,7 @@ exports[`The code input field component should render a wrapper 1`] = `
       name="testInputField"
       onChange={[Function]}
       onKeyDown={[Function]}
-      placeholder="l"
+      placeholder={null}
       type="text"
       value="0"
     />
@@ -46,7 +46,7 @@ exports[`The code input field component should render a wrapper 1`] = `
       name="testInputField"
       onChange={[Function]}
       onKeyDown={[Function]}
-      placeholder="a"
+      placeholder={null}
       type="text"
       value="1"
     />
@@ -58,7 +58,7 @@ exports[`The code input field component should render a wrapper 1`] = `
       name="testInputField"
       onChange={[Function]}
       onKeyDown={[Function]}
-      placeholder="c"
+      placeholder={null}
       type="text"
       value="8"
     />
@@ -70,7 +70,7 @@ exports[`The code input field component should render a wrapper 1`] = `
       name="testInputField"
       onChange={[Function]}
       onKeyDown={[Function]}
-      placeholder="e"
+      placeholder={null}
       type="text"
       value=""
     />
@@ -82,7 +82,7 @@ exports[`The code input field component should render a wrapper 1`] = `
       name="testInputField"
       onChange={[Function]}
       onKeyDown={[Function]}
-      placeholder="h"
+      placeholder={null}
       type="text"
       value=""
     />
