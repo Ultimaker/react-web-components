@@ -171,11 +171,10 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
                 <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
                     {staticField ? (type === "password" ? _.repeat('*', maxLength) : value) :
                         _.range(0, maxLength).map(index =>
-                            <React.Fragment>
+                            <React.Fragment key={index}>
                                 {index > 0 && <span className="separator">-</span>}
                                 <input
                                     id={id + "__" + index.toString()}
-                                    key={index}
                                     className={className}
                                     name={id}
                                     type={type}

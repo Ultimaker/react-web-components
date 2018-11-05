@@ -17,7 +17,6 @@ exports[`The code input field component should render a wrapper 1`] = `
     <input
       className="input"
       id="testInputField__0"
-      key="0"
       maxLength={1}
       name="testInputField"
       onChange={[Function]}
@@ -34,7 +33,6 @@ exports[`The code input field component should render a wrapper 1`] = `
     <input
       className="input"
       id="testInputField__1"
-      key="1"
       maxLength={1}
       name="testInputField"
       onChange={[Function]}
@@ -51,7 +49,6 @@ exports[`The code input field component should render a wrapper 1`] = `
     <input
       className="input"
       id="testInputField__2"
-      key="2"
       maxLength={1}
       name="testInputField"
       onChange={[Function]}
@@ -68,7 +65,6 @@ exports[`The code input field component should render a wrapper 1`] = `
     <input
       className="input"
       id="testInputField__3"
-      key="3"
       maxLength={1}
       name="testInputField"
       onChange={[Function]}
@@ -85,7 +81,6 @@ exports[`The code input field component should render a wrapper 1`] = `
     <input
       className="input"
       id="testInputField__4"
-      key="4"
       maxLength={1}
       name="testInputField"
       onChange={[Function]}
@@ -102,7 +97,6 @@ exports[`The code input field component should render a wrapper 1`] = `
     <input
       className="input"
       id="testInputField__5"
-      key="5"
       maxLength={1}
       name="testInputField"
       onChange={[Function]}
