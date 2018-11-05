@@ -1,6 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import classNames from 'classnames'
+import _ = require('lodash');
+import classNames from 'classnames';
 
 // components
 import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
@@ -102,10 +103,9 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      */
     private _onChange(index: number, charValue: string): void {
         const { onChangeHandler, value, maxLength, id } = this.props;
-        // create an array with all char indexes
-        const range: number[] = Array.from(Array(maxLength).keys());
+
         // calculate the chars we will use, default to _emptyChar for inputs without a value
-        const chars: string[] = range.map(i => (i === index ? charValue : value[i]) || this._emptyChar);
+        const chars: string[] = _.range(0, maxLength).map(i => (i === index ? charValue : value[i]) || this._emptyChar);
         // now we have a string with the maximum length, remove the empty spaces in the end
         const newValue: string = chars.join("").replace(/\s+$/g, "");
 
@@ -169,8 +169,8 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         return (
             <div className="code-field" id={id}>
                 <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
-                    {staticField ? (type === "password" ? Array.from(value).map(c => c ? "*" : "").join("") : value) :
-                        Array.from(Array(maxLength).keys()).map(index =>
+                    {staticField ? (type === "password" ? _.repeat('*', maxLength) : value) :
+                        _.range(0, maxLength).map(index =>
                             <input
                                 id={id + "__" + index.toString()}
                                 key={index}
