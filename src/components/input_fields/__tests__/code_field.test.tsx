@@ -24,6 +24,7 @@ describe('The code input field component', () => {
             placeholder: 'placeholder',
             maxLength: 6,
         };
+        document.activeElement.id = "";
     });
 
     it('should render a wrapper', () => {
@@ -101,6 +102,22 @@ describe('The code input field component', () => {
         wrapper.setProps({validationError: 'An error', submitted: true});
         expect(wrapper.find(InputFieldWrapper).prop('validationError')).toEqual('An error');
         expect(wrapper.find('input').map(i => i.prop('className'))).toEqual(_.times(6, () => 'input error'));
+    });
+
+    it('should only call the callback with numbers', () => {
+        props.type = 'number';
+        wrapper = mount(<CodeField {...props} />);
+
+        expect(document.activeElement.id).toEqual('');
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+
+        wrapper.find('input').at(4).prop('onChange')({target: {value: 'a'}});
+        expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, props.value);
+        expect(document.activeElement.id).toEqual('');
+
+        wrapper.find('input').at(4).prop('onChange')({target: {value: '1'}});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, props.value + '1');
+        expect(document.activeElement.id).toEqual('testInputField__5');
     });
 
     it('should call the callback', () => {

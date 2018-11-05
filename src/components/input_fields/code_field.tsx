@@ -102,7 +102,12 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      * @private
      */
     private _onChange(index: number, charValue: string): void {
-        const { onChangeHandler, value, maxLength, id } = this.props;
+        const { onChangeHandler, value, type, maxLength, id } = this.props;
+
+        // only allow digits to be added when the type is number
+        if (type === 'number' && (charValue < "0" || charValue > "9")) {
+            charValue = null;
+        }
 
         // calculate the chars we will use, default to _emptyChar for inputs without a value
         const chars: string[] = _.range(0, maxLength).map(i => (i === index ? charValue : value[i]) || this._emptyChar);
