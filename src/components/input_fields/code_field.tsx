@@ -69,12 +69,13 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
 
     /**
      * Checks whether the given string value is empty, considering whether it's set to the empty character.
-     * @param value - The value to be checked.
+     * @param index - The value to be checked.
      * @return Whether the value is empty or not.
      * @private
      */
-    private _isEmpty(value: string): boolean {
-        return !value || value == this._emptyChar;
+    private _isEmpty(index: number): boolean {
+        const { value } = this.props;
+        return !value || !value[index] || value[index] == this._emptyChar;
     }
 
     /**
@@ -131,11 +132,12 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
             ArrowRight: () => this._focusOnPromptInput(index + 1),
             Home: () => this._focusOnPromptInput(0),
             End: () => this._focusOnPromptInput(maxLength - 1),
-            Backspace: () => this._isEmpty(value[index]) && !this._focusOnPromptInput(index - 1),
+            Backspace: () => this._isEmpty(index) && !this._focusOnPromptInput(index - 1),
             Delete: () => {
-                if (this._isEmpty(value[index])) {
+                if (this._isEmpty(index)) {
                     // we search for the next input field with a value
-                    const deleteIndex: number = Array.from(value.substring(index + 1)).findIndex(v => !this._isEmpty(v));
+                    const charsAfter: string[] = Array.from(value.substring(index + 1));
+                    const deleteIndex: number = charsAfter.findIndex((v, i) => !this._isEmpty(i));
                     if (deleteIndex >= 0) {
                         return !this._onChange(deleteIndex + index + 1, null);
                     }
@@ -178,7 +180,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
                                 onChange={e => this._onChange(index, e.target.value)}
                                 onKeyDown={e => this._onKeyDown(index, e)}
                                 placeholder={placeholder && placeholder[index]}
-                                value={this._isEmpty(value[index]) ? "" : value[index]}
+                                value={this._isEmpty(index) ? "" : value[index]}
                                 ref={ref => this._inputRefs[index] = ref}
                             />
                     )}

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The search field component should render a wrapper 1`] = `
+<div
+  className="search-field"
+>
+  <DefaultInputField
+    id="testInputField"
+    inputRef={
+      Object {
+        "current": Object {
+          "focus": [MockFunction],
+        },
+      }
+    }
+    labelLayoutWidth="1/1"
+    labelWidthBreakpoint="sm"
+    onChangeHandler={[MockFunction]}
+    placeholder="placeholder text"
+    staticField={false}
+    type="text"
+    value="2018"
+  >
+    <Button
+      className="search-button"
+      linkToNewTab={false}
+      onClickHandler={[Function]}
+      shape="rectangle"
+      style="quiet"
+      type="button"
+    >
+      <Icon(RejectedIcon)
+        size="sm"
+      />
+    </Button>
+  </DefaultInputField>
+</div>
+`;

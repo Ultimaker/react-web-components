@@ -1,13 +1,17 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
+import {RefObject} from 'react';
 
+// components
 import {InputFieldProps} from './input_field_wrapper';
-import DefaultInputField from './default_input_field'
+import DefaultInputField from './default_input_field';
 import Button from '../button';
 import RejectedIcon from '../icons/rejected_icon';
 import PendingIcon from '../icons/pending_icon';
-import {RefObject} from 'react'
 
+/**
+ * The props used in the search field.
+ */
 export interface SearchFieldProps extends InputFieldProps {
     /** Input field value */
     value: string | null;
@@ -38,17 +42,27 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
         this._focus = this._focus.bind(this);
     }
 
-
+    /**
+     * Focuses on this field.
+     * @private
+     */
     private _focus(): void {
         this._inputRef.current.focus();
     }
 
+    /**
+     * Resets the value of the search and re-focuses on the input.
+     * @private
+     */
     private _onResetHandler(): void {
         const { onChangeHandler, id } = this.props;
         onChangeHandler(id, null);
         this._focus();
     }
 
+    /**
+     * Renders the search field.
+     */
     render() {
         const { children, ...wrapperProps } = this.props;
         const { staticField, value } = wrapperProps;
