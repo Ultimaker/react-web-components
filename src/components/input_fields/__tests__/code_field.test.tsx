@@ -62,6 +62,8 @@ describe('The code input field component', () => {
 
         const commonProps = {
             onKeyDown: expect.any(Function),
+            onChange: expect.any(Function),
+            onPaste: expect.any(Function),
             name: 'testInputField',
             maxLength: 1,
             className: 'input',
@@ -120,13 +122,15 @@ describe('The code input field component', () => {
         expect(document.activeElement.id).toEqual('');
         expect(props.onChangeHandler).not.toHaveBeenCalled();
 
-        wrapper.find('input').at(4).prop('onKeyDown')({key: 'a'});
+        wrapper.find('input').at(4).prop('onKeyDown')({key: 'a', preventDefault});
         expect(props.onChangeHandler).not.toHaveBeenCalled();
         expect(document.activeElement.id).toEqual('');
 
-        wrapper.find('input').at(4).prop('onKeyDown')({key: '1'});
+        wrapper.find('input').at(4).prop('onKeyDown')({key: '1', preventDefault});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, props.value + '1');
         expect(document.activeElement.id).toEqual('testInputField__5');
+
+        expect(preventDefault).toHaveBeenCalledTimes(2);
     });
 
     it('should call the callback', () => {
@@ -136,24 +140,31 @@ describe('The code input field component', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
 
         // add a new character
-        wrapper.find('input').at(4).prop('onKeyDown')({key: '1'});
+        wrapper.find('input').at(4).prop('onChange')({target: {value: '1'}, preventDefault});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20181');
         expect(wrapper.state('touched')).toEqual(true);
         expect(document.activeElement.id).toEqual('testInputField__5');
 
         // a key that does nothing
-        wrapper.find('input').at(3).prop('onKeyDown')({key: ' '});
+        wrapper.find('input').at(3).prop('onKeyDown')({key: ' ', preventDefault});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20181');
         expect(document.activeElement.id).toEqual('testInputField__5');
 
         // replace a character
-        wrapper.find('input').at(3).prop('onKeyDown')({key: '7'});
+        wrapper.find('input').at(3).prop('onPaste')({clipboardData: {getData: () => '7'}, preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__4');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20171');
+
+        // same character again
+        wrapper.find('input').at(3).prop('onKeyDown')({key: '7', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__4');
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20171');
 
         // finish the input
-        wrapper.find('input').at(5).prop('onKeyDown')({key: '7'});
+        wrapper.find('input').at(5).prop('onKeyDown')({key: '7', preventDefault});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201717');
+
+        expect(preventDefault).toHaveBeenCalledTimes(5);
     });
 
     it('should set focus on load', () => {
