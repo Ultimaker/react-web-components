@@ -133,38 +133,72 @@ describe('The code input field component', () => {
         expect(preventDefault).toHaveBeenCalledTimes(2);
     });
 
-    it('should call the callback', () => {
+    it('should add a character', () => {
         wrapper = mount(<CodeField {...props} />);
-
-        expect(document.activeElement.id).toEqual('');
-        expect(props.onChangeHandler).not.toHaveBeenCalled();
-
-        // add a new character
         wrapper.find('input').at(4).prop('onChange')({target: {value: '1'}, preventDefault});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20181');
         expect(wrapper.state('touched')).toEqual(true);
         expect(document.activeElement.id).toEqual('testInputField__5');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
 
-        // a key that does nothing
+    it('should ignore bad keys', () => {
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(3).prop('onKeyDown')({key: ' ', preventDefault});
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20181');
-        expect(document.activeElement.id).toEqual('testInputField__5');
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+        expect(document.activeElement.id).toEqual('');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
 
-        // replace a character
+    it('should not prevent default when ctrl is pressed', () => {
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(4).prop('onKeyDown')({key: '1', ctrlKey: true, preventDefault});
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+        expect(document.activeElement.id).toEqual('');
+        expect(preventDefault).toHaveBeenCalledTimes(0);
+    });
+
+    it('should replace a character', () => {
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(3).prop('onPaste')({clipboardData: {getData: () => '7'}, preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__4');
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20171');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2017');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
 
-        // same character again
-        wrapper.find('input').at(3).prop('onKeyDown')({key: '7', preventDefault});
-        expect(document.activeElement.id).toEqual('testInputField__4');
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20171');
+    it('should ignore an empty clipboard', () => {
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(3).prop('onPaste')({clipboardData: {getData: () => null}, preventDefault});
+        expect(document.activeElement.id).toEqual('');
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
 
-        // finish the input
+    it('should ignore invalid characters in clipboard', () => {
+        props.value = '';
+        props.type = 'number';
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(1).prop('onPaste')({clipboardData: {getData: () => '123 test 45'}, preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__5');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '\t12345');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
+
+    it('should ignore the same character', () => {
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(3).prop('onKeyDown')({key: '8', preventDefault});
+        expect(document.activeElement.id).toEqual('');
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
+
+    it('should finish the input', () => {
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(4).prop('onKeyDown')({key: '1', preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__5');
         wrapper.find('input').at(5).prop('onKeyDown')({key: '7', preventDefault});
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201717');
-
-        expect(preventDefault).toHaveBeenCalledTimes(5);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201817');
+        expect(preventDefault).toHaveBeenCalledTimes(2);
     });
 
     it('should set focus on load', () => {
