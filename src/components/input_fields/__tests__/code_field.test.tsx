@@ -56,8 +56,12 @@ describe('The code input field component', () => {
         expect(wrapper.find(InputFieldWrapper).find("input")).toHaveLength(props.maxLength)
 
         const commonProps = {
-            onChange: expect.any(Function), onKeyDown: expect.any(Function),
-            name: 'testInputField', maxLength: 1, className: 'input', type: 'text', placeholder: null,
+            onKeyDown: expect.any(Function),
+            name: 'testInputField',
+            maxLength: 1,
+            className: 'input',
+            type: 'text',
+            placeholder: null,
         }
         expect(wrapper.find(InputFieldWrapper).find("input").map(i => i.props())).toEqual([
             {id: 'testInputField__0', value: '2', ...commonProps},
@@ -111,11 +115,11 @@ describe('The code input field component', () => {
         expect(document.activeElement.id).toEqual('');
         expect(props.onChangeHandler).not.toHaveBeenCalled();
 
-        wrapper.find('input').at(4).prop('onChange')({target: {value: 'a'}});
-        expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, props.value);
+        wrapper.find('input').at(4).prop('onKeyDown')({key: 'a'});
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
         expect(document.activeElement.id).toEqual('');
 
-        wrapper.find('input').at(4).prop('onChange')({target: {value: '1'}});
+        wrapper.find('input').at(4).prop('onKeyDown')({key: '1'});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, props.value + '1');
         expect(document.activeElement.id).toEqual('testInputField__5');
     });
@@ -126,20 +130,24 @@ describe('The code input field component', () => {
         expect(document.activeElement.id).toEqual('');
         expect(props.onChangeHandler).not.toHaveBeenCalled();
 
-        wrapper.find('input').at(4).prop('onChange')({target: {value: '1'}});
+        // add a new character
+        wrapper.find('input').at(4).prop('onKeyDown')({key: '1'});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20181');
         expect(wrapper.state('touched')).toEqual(true);
         expect(document.activeElement.id).toEqual('testInputField__5');
 
-        wrapper.find('input').at(3).prop('onChange')({target: {value: ''}});
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201\t1');
+        // a key that does nothing
+        wrapper.find('input').at(3).prop('onKeyDown')({key: ' '});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20181');
         expect(document.activeElement.id).toEqual('testInputField__5');
 
-        wrapper.find('input').at(3).prop('onChange')({target: {value: '7'}});
+        // replace a character
+        wrapper.find('input').at(3).prop('onKeyDown')({key: '7'});
         expect(document.activeElement.id).toEqual('testInputField__4');
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20171');
 
-        wrapper.find('input').at(5).prop('onChange')({target: {value: '7'}});
+        // finish the input
+        wrapper.find('input').at(5).prop('onKeyDown')({key: '7'});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201717');
     });
 
@@ -168,36 +176,44 @@ describe('The code input field component', () => {
         wrapper.find('input').at(0).prop('onKeyDown')({key: 'End', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__5');
         expect(preventDefault).toHaveBeenCalledTimes(4);
-        expect(props.onChangeHandler).not.toHaveBeenCalled();
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(0);
 
         wrapper.setProps({value: '2018\t0'});
 
         // Backspace
         wrapper.find('input').at(4).prop('onKeyDown')({key: 'Backspace', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__3');
-        expect(preventDefault).toHaveBeenCalledTimes(4);
+        expect(preventDefault).toHaveBeenCalledTimes(5);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201\t\t0');
+
         wrapper.setProps({value: '2018\t0'});
 
         // Delete on empty input
         wrapper.find('input').at(4).prop('onKeyDown')({key: 'Delete', preventDefault});
-        expect(document.activeElement.id).toEqual('testInputField__3');
-        expect(preventDefault).toHaveBeenCalledTimes(5);
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2018');
+        expect(document.activeElement.id).toEqual('testInputField__4');
+        expect(preventDefault).toHaveBeenCalledTimes(6);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(2);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20180');
 
         // Delete on last empty input
         wrapper.find('input').at(5).prop('onKeyDown')({key: 'Delete', preventDefault});
-        expect(document.activeElement.id).toEqual('testInputField__3');
-        expect(preventDefault).toHaveBeenCalledTimes(5);
+        expect(document.activeElement.id).toEqual('testInputField__5');
+        expect(preventDefault).toHaveBeenCalledTimes(7);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(3);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20180');
 
         // Delete on input with value
         wrapper.find('input').at(0).prop('onKeyDown')({key: 'Delete', preventDefault});
-        expect(document.activeElement.id).toEqual('testInputField__3');
-        expect(preventDefault).toHaveBeenCalledTimes(5);
+        expect(document.activeElement.id).toEqual('testInputField__0');
+        expect(preventDefault).toHaveBeenCalledTimes(8);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(4);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '0180');
 
-        // same value again
+        // type a number now
         wrapper.find('input').at(0).prop('onKeyDown')({key: '2', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__1');
-
-        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(5);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2180');
     });
 });

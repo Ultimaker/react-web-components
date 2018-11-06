@@ -376,7 +376,7 @@ stories.add('Code field', withState({ value: "" })
                     <CodeField
                         id="code_field"
                         value={store.state.value}
-                        type={selectV2('Type', ['text', 'number', 'password'])}
+                        type={selectV2('Type', ['number', 'text', 'password'])}
                         maxLength={number('Character count', 6) || 0}
                         onChangeHandler={(id, value) => store.set({ value })}
                         label={text('Label', 'Code')}
