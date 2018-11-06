@@ -10,6 +10,9 @@ import InputFieldWrapper from '../input_field_wrapper';
 describe('The code input field component', () => {
     let props: CodeFieldProps;
     let wrapper;
+    const preventDefault = jest.fn();
+
+    const oldEventListeners = [document.addEventListener, document.removeEventListener];
 
     beforeEach(() => {
         props = {
@@ -25,6 +28,8 @@ describe('The code input field component', () => {
             maxLength: 6,
         };
         document.activeElement.id = "";
+        preventDefault.mockReset();
+        [document.addEventListener, document.removeEventListener] = oldEventListeners;
     });
 
     it('should render a wrapper', () => {
@@ -151,69 +156,161 @@ describe('The code input field component', () => {
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201717');
     });
 
-    it('should handle key down', () => {
+    it('should set focus on load', () => {
         props.focusOnLoad = true;
         wrapper = mount(<CodeField {...props} />);
         expect(document.activeElement.id).toEqual('testInputField__4');
-        const preventDefault = jest.fn();
+    });
 
-         // arrow left
+    it('should handle arrow left key', () => {
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(3).prop('onKeyDown')({key: 'ArrowLeft', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__2');
         expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
 
-        // arrow right
+    it('should handle arrow right key', () => {
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(2).prop('onKeyDown')({key: 'ArrowRight', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__3');
-        expect(preventDefault).toHaveBeenCalledTimes(2);
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
 
-        // home
+    it('should handle arrow up key for numbers', () => {
+        props.type = 'number';
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(3).prop('onKeyDown')({key: 'ArrowUp', preventDefault});
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2019');
+    });
+
+    it('should handle arrow down key for numbers', () => {
+        props.type = 'number';
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(2).prop('onKeyDown')({key: 'ArrowDown', preventDefault});
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2008');
+    });
+
+    it('should handle arrow up key for text', () => {
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(3).prop('onKeyDown')({key: 'ArrowUp', preventDefault});
+        expect(preventDefault).toHaveBeenCalledTimes(0);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(0);
+    });
+
+    it('should handle arrow down key for text', () => {
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(2).prop('onKeyDown')({key: 'ArrowDown', preventDefault});
+        expect(preventDefault).toHaveBeenCalledTimes(0);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(0);
+    });
+
+    it('should handle home key', () => {
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(2).prop('onKeyDown')({key: 'Home', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__0');
-        expect(preventDefault).toHaveBeenCalledTimes(3);
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+    });
 
-        // end
+    it('should handle end key', () => {
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(0).prop('onKeyDown')({key: 'End', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__5');
-        expect(preventDefault).toHaveBeenCalledTimes(4);
+        expect(preventDefault).toHaveBeenCalledTimes(1);
         expect(props.onChangeHandler).toHaveBeenCalledTimes(0);
+    });
 
-        wrapper.setProps({value: '2018\t0'});
+    it('should handle backspace on a field with value', () => {
+        props.value = '2018\t0';
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(5).prop('onKeyDown')({key: 'Backspace', preventDefault});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2018');
+        expect(document.activeElement.id).toEqual('testInputField__5');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
+    });
 
-        // Backspace
+    it('should handle backspace on empty field', () => {
+        props.value = '2018\t0';
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(4).prop('onKeyDown')({key: 'Backspace', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__3');
-        expect(preventDefault).toHaveBeenCalledTimes(5);
+        expect(preventDefault).toHaveBeenCalledTimes(1);
         expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '201\t\t0');
+    });
 
-        wrapper.setProps({value: '2018\t0'});
-
-        // Delete on empty input
+    it('should handle delete on empty input', () => {
+        props.value = '2018\t0';
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(4).prop('onKeyDown')({key: 'Delete', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__4');
-        expect(preventDefault).toHaveBeenCalledTimes(6);
-        expect(props.onChangeHandler).toHaveBeenCalledTimes(2);
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20180');
+    });
 
-        // Delete on last empty input
+    it('should handle delete on last input', () => {
+        props.value = '201811';
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(5).prop('onKeyDown')({key: 'Delete', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__5');
-        expect(preventDefault).toHaveBeenCalledTimes(7);
-        expect(props.onChangeHandler).toHaveBeenCalledTimes(3);
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20180');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '20181');
 
-        // Delete on input with value
+    });
+
+    it('should handle delete on input with a value', () => {
+        wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(0).prop('onKeyDown')({key: 'Delete', preventDefault});
         expect(document.activeElement.id).toEqual('testInputField__0');
-        expect(preventDefault).toHaveBeenCalledTimes(8);
-        expect(props.onChangeHandler).toHaveBeenCalledTimes(4);
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '0180');
-
-        // type a number now
-        wrapper.find('input').at(0).prop('onKeyDown')({key: '2', preventDefault});
-        expect(document.activeElement.id).toEqual('testInputField__1');
-        expect(props.onChangeHandler).toHaveBeenCalledTimes(5);
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2180');
+        expect(preventDefault).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '018');
     });
+
+    it('should handle a number', () => {
+        wrapper = mount(<CodeField {...props} />);
+        wrapper.find('input').at(3).prop('onKeyDown')({key: '9', preventDefault});
+        expect(document.activeElement.id).toEqual('testInputField__4');
+        expect(props.onChangeHandler).toHaveBeenCalledTimes(1);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2019');
+    });
+
+    it('should select the current field if unselected', async () => {
+        const [addEventListener, removeEventListener] = [jest.fn(), jest.fn()];
+        document.addEventListener = addEventListener;
+        document.removeEventListener = removeEventListener;
+
+        wrapper = mount(<CodeField {...props} />);
+        expect(addEventListener).toHaveBeenCalledWith('selectionchange', expect.any(Function));
+        const onSelection = addEventListener.mock.calls[0][1];
+
+        const ref = wrapper.instance()._inputRefs[0];
+        ref.select = jest.fn();
+
+        // the backspace should delete the current content, but then the select cannot be called again
+        wrapper.find('input').at(0).prop('onKeyDown')({key: 'Backspace', preventDefault});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '\t018');
+        ref.value = '';
+        expect(document.activeElement).toEqual(ref);
+        expect(ref.select).toHaveBeenCalledTimes(1);
+        onSelection();
+        expect(ref.select).toHaveBeenCalledTimes(1);
+
+        // the backspace should set the current content to another one, ref.select() should be called again
+        wrapper.find('input').at(0).prop('onKeyDown')({key: 'Delete', preventDefault});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '018');
+        ref.value = '0';
+        expect(document.activeElement).toEqual(ref);
+        expect(ref.select).toHaveBeenCalledTimes(2);
+        onSelection();
+        expect(ref.select).toHaveBeenCalledTimes(3);
+
+        expect(removeEventListener).not.toHaveBeenCalled();
+        wrapper.unmount();
+        expect(removeEventListener).toHaveBeenCalledWith('selectionchange', onSelection);
+    })
 });

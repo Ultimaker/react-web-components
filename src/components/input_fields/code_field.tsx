@@ -87,11 +87,12 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
 
     /**
      * Handles changes to the text selection in the document.
-     * If the currently focused element is one of the refs in this class, we select its text.
+     * Without this function, if the value of the field changes (with delete for example) we lose the selection.
+     * To fix it, if the currently focused element is one of the refs in this class, we select its text.
      */
     private _onSelectionChanged() {
         const ref = this._inputRefs && this._inputRefs.find(r => r === document.activeElement);
-        if (ref && ref.value) {
+        if (ref && ref.value.length) {
             ref.select();
         }
     }
@@ -182,9 +183,9 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
             ArrowRight: () => this._focusOnPromptInput(index + 1),
             // arrow up / down let you increase / decrease numbers
             ArrowUp: () => type == 'number' &&
-                !this._change(index, value[index] && String.fromCharCode(value[index].charCodeAt(0) + 1), index),
+                !this._change(index, value[index] && String.fromCharCode(value[index].charCodeAt(0) + 1), -1),
             ArrowDown: () => type == 'number' &&
-                !this._change(index, value[index] && String.fromCharCode(value[index].charCodeAt(0) - 1), index),
+                !this._change(index, value[index] && String.fromCharCode(value[index].charCodeAt(0) - 1), -1),
             // home/end let you go to the beginning and end of the code.
             Home: () => this._focusOnPromptInput(0),
             End: () => this._focusOnPromptInput(maxLength - 1),
