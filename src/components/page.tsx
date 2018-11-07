@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PageTitle from './page_title';
-import classNames = require('classnames')
+import classNames = require('classnames');
 
 export interface PageProps {
     title?: string;
@@ -14,7 +14,7 @@ const Page: React.StatelessComponent<PageProps> =
         <div id={id} className={classNames("page", className)} style={{ maxWidth: maxWidth }}>
             {title && <PageTitle title={title} />}
             {children}
-        </div>
+        </div>;
 
 Page.defaultProps = {
     maxWidth: "100%"

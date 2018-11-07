@@ -11,8 +11,8 @@ import FileUploadField from './input_fields/file_upload_field';
 import ChildrenField from './input_fields/children_field';
 import TagsField from './input_fields/tags_field';
 import TextField from './input_fields/text_field';
-import CodeField from './input_fields/code_field'
-import SearchField from './input_fields/search_field'
+import CodeField from './input_fields/code_field';
+import SearchField from './input_fields/search_field';
 
 import {SelectOption} from './select_list';
 import {ImageShape} from './image';

@@ -65,23 +65,23 @@ describe('The wrapped input field component', () => {
     })
 
     it('should render a static field', () => {
-        wrapper.setProps({staticField: true, children: props.value})
+        wrapper.setProps({staticField: true, children: props.value});
         expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual([false, props.value]);
     })
 
     it('should render a custom static field', () => {
-        wrapper.setProps({staticField: true, children: <div>static text</div>})
+        wrapper.setProps({staticField: true, children: <div>static text</div>});
         expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual([false, <div>static text</div>]);
     })
 
     it('should set the maximum input field length', () => {
-        wrapper.setProps({maxLength: 100})
+        wrapper.setProps({maxLength: 100});
         expect(wrapper.find("input").prop("maxLength")).toEqual(100);
     })
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find("input").prop("onChange")({target: {value: "some text"}})
+        wrapper.find("input").prop("onChange")({target: {value: "some text"}});
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "some text");
         expect(wrapper.state("touched")).toEqual(true);
         wrapper.find("input").prop("onChange")({target: {value: ""}})

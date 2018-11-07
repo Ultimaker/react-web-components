@@ -50,7 +50,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
     /** The default props **/
     static defaultProps = {
         type: 'number',
-    }
+    };
 
     /** The default state **/
     state = {
@@ -97,7 +97,11 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         const { value, maxLength } = props;
         const valueStr = value || "";
         // we use space values to hide
-        return {values: _.range(0, maxLength).map(i => valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')}
+        return {
+            values: _.range(0, maxLength).map(i =>
+                valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || ''
+            ),
+        };
     }
 
     /**
@@ -172,7 +176,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         const newValue: string = values.map(v => v || CodeField._emptyChar).join("").replace(/\s+$/g, "");
         onChangeHandler(id, newValue);
 
-        this.setState({ touched: true, values })
+        this.setState({ touched: true, values });
         this._focusOnPromptInput(focusOnIndex >= 0 ? focusOnIndex : index);
         return true;
     }
