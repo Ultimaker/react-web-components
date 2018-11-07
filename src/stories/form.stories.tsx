@@ -23,7 +23,6 @@ import CodeField from '../components/input_fields/code_field';
 import RangeSlider from '../components/range_slider';
 import ProfileIcon from '../components/icons/profile_icon';
 import Image from '../components/image';
-import enumerate = Reflect.enumerate
 
 const stories = storiesOf('Forms', module);
 
@@ -356,8 +355,6 @@ stories.add('Search field', withState({ value: null })
                         placeholder={text('Placeholder', 'Search')}
                         validationError={text('Validation error message', '')}
                         focusOnLoad={boolean('Focus on load', true)}
-                        staticField={boolean('Static field', false)}
-                        required={boolean('Required', false)}
                         infoLinkURL={text('Info link URL', '')}
                         infoText={text('Info text', '')}
                         preLabelElement={text('Pre label element', '')}

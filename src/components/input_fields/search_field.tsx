@@ -43,6 +43,15 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
     }
 
     /**
+     * Focuses on this field during mount if required.
+     */
+    componentDidMount(): void {
+        if (this.props.focusOnLoad) {
+            this._focus();
+        }
+    }
+
+    /**
      * Focuses on this field.
      * @private
      */

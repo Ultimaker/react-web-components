@@ -1,6 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import {mount, shallow} from 'enzyme'
 
 // component
 import SearchField, {SearchFieldProps} from '../search_field';
@@ -17,12 +17,12 @@ describe('The search field component', () => {
     beforeEach(() => {
         props = {
             id: 'testInputField',
-            value: "2018",
+            value: '2018',
             onChangeHandler: jest.fn().mockImplementation((id, value) => props.id === id && wrapper.setProps({value})),
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
-            placeholder: "placeholder text",
+            placeholder: 'placeholder text',
         };
         inputRef = {focus: jest.fn()}
 
@@ -39,7 +39,7 @@ describe('The search field component', () => {
 
     it('should render a null', () => {
         wrapper.setProps({value: null});
-        expect(wrapper.find(DefaultInputField).prop("value")).toBeNull();
+        expect(wrapper.find(DefaultInputField).prop('value')).toBeNull();
         expect(wrapper.find(PendingIcon)).toHaveLength(1);
         wrapper.find(Button).prop('onClickHandler')();
         expect(inputRef.focus).toHaveBeenCalled();
@@ -66,21 +66,27 @@ describe('The search field component', () => {
     })
 
     it('should render a static text', () => {
-        wrapper.setProps({staticField: true, children: "a child"})
-        expect(wrapper.find(DefaultInputField).prop("children")).toEqual(props.value);
-        expect(wrapper.find(DefaultInputField).prop("inputChildren")).toEqual("a child");
+        wrapper.setProps({staticField: true, children: 'a child'})
+        expect(wrapper.find(DefaultInputField).prop('children')).toEqual(props.value);
+        expect(wrapper.find(DefaultInputField).prop('inputChildren')).toEqual('a child');
     })
 
     it('should set the field maximum length', () => {
         wrapper.setProps({maxLength: 100});
-        expect(wrapper.find(DefaultInputField).prop("maxLength")).toEqual(100);
+        expect(wrapper.find(DefaultInputField).prop('maxLength')).toEqual(100);
+    })
+
+    it('should focus on mount', () => {
+        props.focusOnLoad = true;
+        wrapper = mount(<SearchField {...props} />);
+        expect(document.activeElement.id).toEqual(props.id);
     })
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find(DefaultInputField).prop("onChangeHandler")(props.id, "2016");
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "2016");
-        wrapper.find(DefaultInputField).prop("onChangeHandler")(props.id, "");
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "");
+        wrapper.find(DefaultInputField).prop('onChangeHandler')(props.id, '2016');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2016');
+        wrapper.find(DefaultInputField).prop('onChangeHandler')(props.id, '');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '');
     });
 });

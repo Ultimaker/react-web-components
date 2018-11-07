@@ -225,16 +225,20 @@ describe('The code input field component', () => {
         props.type = 'number';
         wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(3).prop('onKeyDown')({key: 'ArrowUp', preventDefault});
-        expect(preventDefault).toHaveBeenCalledTimes(1);
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2019');
+        wrapper.find('input').at(3).prop('onKeyDown')({key: 'ArrowUp', preventDefault});
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2010');
+        expect(preventDefault).toHaveBeenCalledTimes(2);
     });
 
     it('should handle arrow down key for numbers', () => {
         props.type = 'number';
         wrapper = mount(<CodeField {...props} />);
         wrapper.find('input').at(2).prop('onKeyDown')({key: 'ArrowDown', preventDefault});
-        expect(preventDefault).toHaveBeenCalledTimes(1);
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2008');
+        wrapper.find('input').at(2).prop('onKeyDown')({key: 'ArrowDown', preventDefault});
+        expect(preventDefault).toHaveBeenCalledTimes(2);
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '2098');
     });
 
     it('should handle arrow up key for text', () => {
