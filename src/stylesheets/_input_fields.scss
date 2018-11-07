@@ -321,3 +321,42 @@
         background-color: $primary-btn-color-hover;
     }
 }
+
+.search-field {
+    .input {
+        padding-left: 4rem;
+    }
+    .search-button {
+        position: absolute;
+        left: 0.8rem;
+        top: 1.2rem;
+        padding: 0;
+        &.btn--quiet:hover {
+            background-color: transparent;
+        }
+    }
+}
+
+.code-field {
+    .input-wrapper-children {
+        display: flex;
+        justify-content: space-between;
+        .input {
+            width: 3rem;
+            text-align: center;
+        }
+        .separator {
+            line-height: 4.8rem;
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+}

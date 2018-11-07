@@ -10,8 +10,8 @@ export interface SlideOutContainerProps {
     isOpen: boolean;
     /** Called when the container header is clicked */
     onHeaderClick?: () => void;
-    /** Text to be displayed above the slide out content */
-    headerText?: string;
+    /** Text to be displayed above the slide out content. May be JSX.Elements in case created by I18n.formatElements */
+    headerText?: string | JSX.Element[];
     /** The text alignment of the header */
     headerTextAlignment?: TextAlign;
     /** Whether the PanelArrow should be displayed */

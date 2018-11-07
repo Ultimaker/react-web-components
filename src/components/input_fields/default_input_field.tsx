@@ -27,6 +27,9 @@ export interface DefaultInputFieldProps extends InputFieldProps {
 
     /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
     inputChildren: any;
+
+    /** Optional reference object in case the caller wants more control of the input's focus **/
+    inputRef?: RefObject<HTMLInputElement>;
 }
 
 export interface DefaultInputFieldState {
@@ -72,7 +75,7 @@ class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultI
     }
 
     render() {
-        const {type, value, placeholder, min, max, maxLength, children, inputChildren, ...wrapperProps} = this.props;
+        const {type, value, placeholder, min, max, maxLength, children, inputChildren, inputRef, ...wrapperProps} = this.props;
         const {id, validationError, submitted, staticField} = wrapperProps;
         const {touched} = this.state;
         return <InputFieldWrapper touched={touched} inputChildren={inputChildren} {...wrapperProps}>
@@ -87,7 +90,7 @@ class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultI
                 onChange={this._onChange}
                 placeholder={placeholder}
                 value={value || ""}
-                ref={this._inputRef}
+                ref={inputRef || this._inputRef}
             />}
             {children}
         </InputFieldWrapper>;
