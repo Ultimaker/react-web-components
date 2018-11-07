@@ -12,7 +12,7 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 export interface CodeFieldProps extends InputFieldProps {
     /** Input field value */
     value: string | null;
-    /** Amount of characters required in the field **/
+    /** Amount of characters in the field **/
     maxLength: number;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
@@ -41,7 +41,11 @@ export interface CodeFieldState {
  */
 export default class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
 
-    /** references to the input fields to focus on them **/
+    /**
+     * References to the input fields to focus on them.
+     * Note that we don't use React.CreateRef because that would require some extra code for re-initializing the array
+     * whenever {maxLength} changes.
+     **/
     private readonly _inputRefs: HTMLInputElement[] = [];
 
     /** if the user wrote one of the later characters but not earlier ones, we add this character as filler **/
@@ -61,8 +65,8 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
     constructor(props) {
         super(props);
         // bind callbacks once
-        this._change = this._change.bind(this);
-        this._change = this._change.bind(this);
+        this._changeValue = this._changeValue.bind(this);
+        this._changeValue = this._changeValue.bind(this);
         this._onKeyDown = this._onKeyDown.bind(this);
         this._isKeyAllowed = this._isKeyAllowed.bind(this);
         this._onSelectionChanged = this._onSelectionChanged.bind(this);
@@ -148,13 +152,13 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
     }
 
     /**
-     * Change the value in one of the code inputs.
+     * Actually changes the value of of the code inputs.
      * @param index - The index of the field.
-     * @param charValue - The value of the character typed. Pass null to completely remove the item.
+     * @param charValue - The value of the character typed. Empty string is fine. Null will completely remove the value.
      * @param focusOnIndex - The next input field to be selected. -1 to default it to {index}.
      * @return - Whether the change was successful.
      */
-    private _change(index: number, charValue: string, focusOnIndex: number): boolean {
+    private _changeValue(index: number, charValue: string, focusOnIndex: number): boolean {
         const { onChangeHandler, id } = this.props;
         const { values } = this.state;
 
@@ -198,16 +202,16 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
             ArrowRight: () => this._focusOnPromptInput(index + 1),
             // arrow up / down let you increase / decrease numbers
             ArrowUp: () => type == 'number' &&
-                this._change(index, values[index] && String.fromCharCode(values[index].charCodeAt(0) + 1), -1),
+                this._changeValue(index, values[index] && String.fromCharCode(values[index].charCodeAt(0) + 1), -1),
             ArrowDown: () => type == 'number' &&
-                this._change(index, values[index] && String.fromCharCode(values[index].charCodeAt(0) - 1), -1),
+                this._changeValue(index, values[index] && String.fromCharCode(values[index].charCodeAt(0) - 1), -1),
             // home/end let you go to the beginning and end of the code.
             Home: () => this._focusOnPromptInput(0),
             End: () => this._focusOnPromptInput(maxLength - 1),
             // Backspace deletes the current item, or the previous item if the current item is empty
-            Backspace: () => this._change(values[index] ? index : index - 1, '', -1),
+            Backspace: () => this._changeValue(values[index] ? index : index - 1, '', -1),
             // Delete removes the next input field with a value
-            Delete: () => this._change(index, null, -1),
+            Delete: () => this._changeValue(index, null, -1),
         }[key];
     }
 
@@ -222,7 +226,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
             handler() && event.preventDefault();
         } else if (event.key.length == 1 && !event.ctrlKey) {
             // call the onchange manually, prevent the default
-            this._change(index, event.key, index + 1);
+            this._changeValue(index, event.key, index + 1);
             event.preventDefault();
         }
     }
@@ -234,7 +238,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      * @param event - The change event.
      */
     private _onChange(index: number, event: React.ChangeEvent<HTMLInputElement>) {
-        this._change(index, event.target.value, index + 1);
+        this._changeValue(index, event.target.value, index + 1);
         event.preventDefault();
     }
 
@@ -246,7 +250,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
     private _onPaste(index: number, event: React.ClipboardEvent<HTMLInputElement>) {
         const text = event.clipboardData.getData('Text');
         Array.from(text || "").forEach(char => {
-            if (this._change(index, char, index + 1)) {
+            if (this._changeValue(index, char, index + 1)) {
                 index += 1;
             }
         });
