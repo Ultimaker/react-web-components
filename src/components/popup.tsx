@@ -98,9 +98,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     render(): JSX.Element {
         const {
-            headerText, bodyText, primaryBtnText, secondaryBtnText,
-            primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, width, children,
-            footer
+            headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle,
+            validationErrors, step, totalSteps, width, children, footer
         } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
@@ -122,7 +121,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                     {children}
                 </Form>
             </PopupBase>
-        )
+        );
     };
 }
 

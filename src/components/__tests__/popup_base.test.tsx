@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 // component
 import PopupBase from '../popup_base';
 import ProgressBar from '../progress_bar';
-import Popup from '../popup'
+
 
 describe('The PopupBase component', () => {
     let props;
