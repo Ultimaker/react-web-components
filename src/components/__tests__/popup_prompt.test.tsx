@@ -44,8 +44,10 @@ describe('The PopupPrompt component', () => {
     });
 
     it('should call primaryBtnHandler', () => {
-        wrapper.instance()._primaryBtnHandler();
+        props.primaryBtnHandler.mockReturnValue(1234);
+        expect(wrapper.find(Popup).prop('primaryBtnHandler')()).toEqual(1234);
         expect(props.primaryBtnHandler).toHaveBeenCalled();
+        expect(wrapper.find(Popup).prop('secondaryBtnHandler')).toEqual(props.secondaryBtnHandler);
     });
 
     it('should not call primaryBtnHandler when there is a validation error', () => {
