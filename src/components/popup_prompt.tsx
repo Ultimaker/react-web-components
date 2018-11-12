@@ -35,6 +35,8 @@ export interface PopupPromptProps {
     secondaryBtnStyle?: ButtonStyle;
     /** Placeholder text for the input for popups of type prompt */
     promptPlaceholder?: string;
+    /** A component or text to be rendered in the footer of the popup **/
+    footer?: any;
 }
 
 export interface PopupPromptState {
@@ -98,7 +100,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
 
     render(): JSX.Element {
         const { headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
-            inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler } = this.props;
+            inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler, footer } = this.props;
         const { inputValue, validationError } = this.state;
 
         return <Popup
@@ -112,6 +114,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
             secondaryBtnStyle={secondaryBtnStyle}
             validationErrors={validationError ? { promptInput: validationError } : null}
             width="sm"
+            footer={footer}
         >
             <InputField
                 id="promptInput"

@@ -36,6 +36,8 @@ export interface PopupProps {
     step?: number;
     /** The total number of steps of a multi-step popup */
     totalSteps?: number;
+    /** A component or text to be rendered in the footer of the popup **/
+    footer?: any;
 }
 
 export interface PopupState {
@@ -66,7 +68,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     }
 
     static getDerivedStateFromProps(props: PopupProps, state: PopupState): Partial<PopupState> {
-        if (props.validationErrors != null) {
+        if (props.validationErrors) {
             // if there are validation errors, reset the button spinners
             return {
                 primaryBtnShowSpinner: false,
@@ -95,12 +97,15 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     }
 
     render(): JSX.Element {
-        const { headerText, bodyText, primaryBtnText, secondaryBtnText,
-            primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, width, children } = this.props;
+        const {
+            headerText, bodyText, primaryBtnText, secondaryBtnText,
+            primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, width, children,
+            footer
+        } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
         return (
-            <PopupBase headerText={headerText} step={step} totalSteps={totalSteps} width={width}>
+            <PopupBase headerText={headerText} step={step} totalSteps={totalSteps} width={width} footer={footer}>
                 {splitTextByNewLine(bodyText)}
                 <Form
                     primaryBtnText={primaryBtnText}

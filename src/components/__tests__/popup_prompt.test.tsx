@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import PopupPrompt from '../popup_prompt';
+import Popup from '../popup';
 
 describe('The PopupPrompt component', () => {
     let props;
@@ -53,4 +54,8 @@ describe('The PopupPrompt component', () => {
         expect(props.primaryBtnHandler).not.toHaveBeenCalled();
     });
 
+    it('should pass a footer to the popup', () => {
+        wrapper.setProps({ footer: 'An error occurred!' });
+        expect(wrapper.find(Popup).prop('footer')).toEqual('An error occurred!');
+    })
 });

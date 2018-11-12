@@ -66,4 +66,9 @@ describe('The Popup component', () => {
             children: expect.any(Array),
         });
     });
+
+    it('should pass a footer to the popup base', () => {
+        wrapper.setProps({ footer: "An error occurred!" });
+        expect(wrapper.find(PopupBase).prop('footer')).toEqual("An error occurred!");
+    })
 });

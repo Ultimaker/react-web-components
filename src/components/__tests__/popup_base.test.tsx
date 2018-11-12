@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 // component
 import PopupBase from '../popup_base';
 import ProgressBar from '../progress_bar';
+import Popup from '../popup'
 
 describe('The PopupBase component', () => {
     let props;
@@ -30,4 +31,9 @@ describe('The PopupBase component', () => {
         wrapper.setProps({ step: 1, totalSteps: 3 });
         expect(wrapper.find(ProgressBar)).toHaveLength(1);
     });
+    
+    it('should render a footer', () => {
+        wrapper.setProps({ footer: 'An error occurred!' });
+        expect(wrapper.find('.popup__footer').prop('children')).toEqual('An error occurred!');
+    })
 });
