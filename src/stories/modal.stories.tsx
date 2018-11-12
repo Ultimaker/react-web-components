@@ -50,7 +50,7 @@ stories.add('Confirm popup', withInfo(
         secondaryBtnHandler={action('clicked')}
         secondaryBtnStyle="quiet"
         width={selectV2('Popup width', widthOptions, widthDefaultValue)}
-        footer={text("Footer")}
+        footer={text('Footer')}
     />
 ));
 
@@ -60,7 +60,7 @@ stories.add('Basic popup', withInfo(
     <PopupBase
         headerText="Basic popup"
         width={selectV2('Popup width', widthOptions, widthDefaultValue)}
-        footer={text("Footer")}
+        footer={text('Footer')}
     >
         <div style={{ height: 200 }}>
             Content of the popup.
@@ -85,7 +85,7 @@ stories.add('Prompt popup', withInfo(
         inputType="number"
         inputMin={1}
         inputMax={100}
-        footer={text("Footer")}
+        footer={text('Footer')}
     />
 ));
 
@@ -113,7 +113,7 @@ stories.add('Multi-step popup', withState({ step: 1 })
                 step={store.state.step}
                 totalSteps={3}
                 width={selectV2('Popup width', widthOptions, widthDefaultValue)}
-                footer={text("Footer")}
+                footer={text('Footer')}
             />
         )
     )
