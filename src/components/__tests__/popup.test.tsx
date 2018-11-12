@@ -2,9 +2,10 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
 
-// component
+// components
 import Popup from '../popup';
 import PopupBase from '../popup_base';
+import Form from '../form';
 
 describe('The Popup component', () => {
     let props;
@@ -54,6 +55,30 @@ describe('The Popup component', () => {
         wrapper.setState({ secondaryBtnShowSpinner: true });
         wrapper.setProps({ validationErrors: {} });
         expect(wrapper.state('secondaryBtnShowSpinner')).toBe(false);
+    });
+
+    it('should reset primary button spinner when the promise is done', async () => {
+        const promise = new Promise((resolve, reject) => reject("promise rejected"));
+        props.primaryBtnHandler.mockReturnValue(promise);
+        expect(wrapper.find(Form).prop('primaryBtnShowSpinner')).toBeFalsy();
+        wrapper.find(Form).prop('onSubmitHandler')();
+        expect(wrapper.find(Form).prop('primaryBtnShowSpinner')).toBeTruthy();
+        try {
+            await promise;
+        } catch (e) {
+            expect(e).toEqual("promise rejected");
+        }
+        expect(wrapper.find(Form).prop('primaryBtnShowSpinner')).toBeFalsy();
+    });
+
+    it('should reset secondary button spinner when the promise is done', async () => {
+        const promise = new Promise(resolve => resolve("resolved"));
+        props.secondaryBtnHandler.mockReturnValue(promise);
+        expect(wrapper.find(Form).prop('secondaryBtnShowSpinner')).toBeFalsy();
+        wrapper.find(Form).prop('secondaryBtnHandler')();
+        expect(wrapper.find(Form).prop('secondaryBtnShowSpinner')).toBeTruthy();
+        await promise;
+        expect(wrapper.find(Form).prop('secondaryBtnShowSpinner')).toBeFalsy();
     });
 
     it('should render a progress bar for multi-step popups', () => {

@@ -18,14 +18,14 @@ export interface PopupProps {
     validationErrors?: FormValidationResponse;
     /** Primary button text */
     primaryBtnText: string;
-    /** Called when the primary button is clicked */
-    primaryBtnHandler: () => void;
+    /** Called when the primary button is clicked. If it returns a promise, the spinner is hidden when it is done */
+    primaryBtnHandler: () => void | Promise<any>;
     /** Primary button style */
     primaryBtnStyle?: ButtonStyle;
     /** Secondary button text */
     secondaryBtnText?: string;
-    /** Called when the secondary button is clicked */
-    secondaryBtnHandler?: () => void;
+    /** Called when the secondary button is clicked. If it returns a promise, the spinner is hidden when it is done */
+    secondaryBtnHandler?: () => void | Promise<any>;
     /** Secondary button style */
     secondaryBtnStyle?: ButtonStyle;
     /** Placeholder text for the input for popups of type prompt */
@@ -51,13 +51,13 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     static defaultProps = {
         width: 'sm'
-    }
+    };
 
     state = {
         primaryBtnShowSpinner: false,
         secondaryBtnShowSpinner: false,
         storedStep: null
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -86,14 +86,28 @@ export class Popup extends React.Component<PopupProps, PopupState> {
         return null;
     }
 
+    /**
+     * Handles a click on the primary button
+     */
     private _primaryBtnHandler(): void {
-        this.props.primaryBtnHandler();
+        const promise = this.props.primaryBtnHandler();
         this.setState({ primaryBtnShowSpinner: true });
+        if (promise) {
+            const hideSpinner = () => this.setState({ primaryBtnShowSpinner: false });
+            promise.then(hideSpinner, hideSpinner);
+        }
     }
 
+    /**
+     * Handles a click on the secondary button
+     */
     private _secondaryBtnHandler(): void {
-        this.props.secondaryBtnHandler();
+        const promise = this.props.secondaryBtnHandler();
         this.setState({ secondaryBtnShowSpinner: true });
+        if (promise) {
+            const hideSpinner = () => this.setState({ secondaryBtnShowSpinner: false });
+            promise.then(hideSpinner, hideSpinner);
+        }
     }
 
     render(): JSX.Element {
