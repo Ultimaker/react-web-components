@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import PopupPrompt from '../popup_prompt';
+import Popup from '../popup';
 
 describe('The PopupPrompt component', () => {
     let props;
@@ -43,8 +44,10 @@ describe('The PopupPrompt component', () => {
     });
 
     it('should call primaryBtnHandler', () => {
-        wrapper.instance()._primaryBtnHandler();
+        props.primaryBtnHandler.mockReturnValue(1234);
+        expect(wrapper.find(Popup).prop('primaryBtnHandler')()).toEqual(1234);
         expect(props.primaryBtnHandler).toHaveBeenCalled();
+        expect(wrapper.find(Popup).prop('secondaryBtnHandler')).toEqual(props.secondaryBtnHandler);
     });
 
     it('should not call primaryBtnHandler when there is a validation error', () => {
@@ -53,4 +56,8 @@ describe('The PopupPrompt component', () => {
         expect(props.primaryBtnHandler).not.toHaveBeenCalled();
     });
 
+    it('should pass a footer to the popup', () => {
+        wrapper.setProps({ footer: 'An error occurred!' });
+        expect(wrapper.find(Popup).prop('footer')).toEqual('An error occurred!');
+    })
 });

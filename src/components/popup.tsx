@@ -18,14 +18,14 @@ export interface PopupProps {
     validationErrors?: FormValidationResponse;
     /** Primary button text */
     primaryBtnText: string;
-    /** Called when the primary button is clicked */
-    primaryBtnHandler: () => void;
+    /** Called when the primary button is clicked. If it returns a promise, the spinner is hidden when it is done */
+    primaryBtnHandler: () => void | Promise<any>;
     /** Primary button style */
     primaryBtnStyle?: ButtonStyle;
     /** Secondary button text */
     secondaryBtnText?: string;
-    /** Called when the secondary button is clicked */
-    secondaryBtnHandler?: () => void;
+    /** Called when the secondary button is clicked. If it returns a promise, the spinner is hidden when it is done */
+    secondaryBtnHandler?: () => void | Promise<any>;
     /** Secondary button style */
     secondaryBtnStyle?: ButtonStyle;
     /** Placeholder text for the input for popups of type prompt */
@@ -36,6 +36,8 @@ export interface PopupProps {
     step?: number;
     /** The total number of steps of a multi-step popup */
     totalSteps?: number;
+    /** A component or text to be rendered in the footer of the popup **/
+    footer?: any;
 }
 
 export interface PopupState {
@@ -49,13 +51,13 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     static defaultProps = {
         width: 'sm'
-    }
+    };
 
     state = {
         primaryBtnShowSpinner: false,
         secondaryBtnShowSpinner: false,
         storedStep: null
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -66,7 +68,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     }
 
     static getDerivedStateFromProps(props: PopupProps, state: PopupState): Partial<PopupState> {
-        if (props.validationErrors != null) {
+        if (props.validationErrors) {
             // if there are validation errors, reset the button spinners
             return {
                 primaryBtnShowSpinner: false,
@@ -84,23 +86,39 @@ export class Popup extends React.Component<PopupProps, PopupState> {
         return null;
     }
 
+    /**
+     * Handles a click on the primary button
+     */
     private _primaryBtnHandler(): void {
-        this.props.primaryBtnHandler();
+        const promise = this.props.primaryBtnHandler();
         this.setState({ primaryBtnShowSpinner: true });
+        if (promise) {
+            const hideSpinner = () => this.setState({ primaryBtnShowSpinner: false });
+            promise.then(hideSpinner, hideSpinner);
+        }
     }
 
+    /**
+     * Handles a click on the secondary button
+     */
     private _secondaryBtnHandler(): void {
-        this.props.secondaryBtnHandler();
+        const promise = this.props.secondaryBtnHandler();
         this.setState({ secondaryBtnShowSpinner: true });
+        if (promise) {
+            const hideSpinner = () => this.setState({ secondaryBtnShowSpinner: false });
+            promise.then(hideSpinner, hideSpinner);
+        }
     }
 
     render(): JSX.Element {
-        const { headerText, bodyText, primaryBtnText, secondaryBtnText,
-            primaryBtnStyle, secondaryBtnStyle, validationErrors, step, totalSteps, width, children } = this.props;
+        const {
+            headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle,
+            validationErrors, step, totalSteps, width, children, footer
+        } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
         return (
-            <PopupBase headerText={headerText} step={step} totalSteps={totalSteps} width={width}>
+            <PopupBase headerText={headerText} step={step} totalSteps={totalSteps} width={width} footer={footer}>
                 {splitTextByNewLine(bodyText)}
                 <Form
                     primaryBtnText={primaryBtnText}
@@ -117,7 +135,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                     {children}
                 </Form>
             </PopupBase>
-        )
+        );
     };
 }
 

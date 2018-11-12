@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, selectV2, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
@@ -49,7 +49,9 @@ stories.add('Confirm popup', withInfo(
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
         secondaryBtnStyle="quiet"
-        width={selectV2('Popup width', widthOptions, widthDefaultValue)} />
+        width={selectV2('Popup width', widthOptions, widthDefaultValue)}
+        footer={text('Footer')}
+    />
 ));
 
 stories.add('Basic popup', withInfo(
@@ -57,7 +59,9 @@ stories.add('Basic popup', withInfo(
 )(() =>
     <PopupBase
         headerText="Basic popup"
-        width={selectV2('Popup width', widthOptions, widthDefaultValue)}>
+        width={selectV2('Popup width', widthOptions, widthDefaultValue)}
+        footer={text('Footer')}
+    >
         <div style={{ height: 200 }}>
             Content of the popup.
         </div>
@@ -80,7 +84,9 @@ stories.add('Prompt popup', withInfo(
         validationHandler={validation}
         inputType="number"
         inputMin={1}
-        inputMax={100} />
+        inputMax={100}
+        footer={text('Footer')}
+    />
 ));
 
 function validation(quantity: string | number): string {
@@ -106,7 +112,9 @@ stories.add('Multi-step popup', withState({ step: 1 })
                 secondaryBtnStyle="quiet"
                 step={store.state.step}
                 totalSteps={3}
-                width={selectV2('Popup width', widthOptions, widthDefaultValue)} />
+                width={selectV2('Popup width', widthOptions, widthDefaultValue)}
+                footer={text('Footer')}
+            />
         )
     )
 );

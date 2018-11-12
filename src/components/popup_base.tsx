@@ -14,14 +14,16 @@ export interface PopupBaseProps {
     /** The total number of steps of a multi-step popup */
     totalSteps?: number;
     /** The content of the popup **/
-    children: any
+    children: any;
+    /** A component or text to be rendered in the footer of the popup **/
+    footer?: any;
 }
 
 /**
  * The popup base component is a simple modal with a title, content and optionally a progress bar.
  */
 export const PopupBase: React.StatelessComponent<PopupBaseProps> = (
-    { headerText, step, totalSteps, width, children }
+    { headerText, step, totalSteps, width, children, footer }
 ) =>
     <div className="popup">
         <Modal width={width}>
@@ -38,6 +40,7 @@ export const PopupBase: React.StatelessComponent<PopupBaseProps> = (
                 {step && totalSteps &&
                     <ProgressBar progressPercentage={step / totalSteps * 100} barHeight="0.9rem" />
                 }
+                {footer && <div className="popup__footer">{footer}</div>}
             </div>
         </Modal>
     </div>;

@@ -23,18 +23,20 @@ export interface PopupPromptProps {
     validationHandler?: (value: InputFieldValue) => string;
     /** Primary button text */
     primaryBtnText: string;
-    /** Called when the primary button is clicked */
-    primaryBtnHandler: (value: InputFieldValue) => void;
+    /** Called when the primary button is clicked. If it returns a promise, the spinner is hidden when it is done. */
+    primaryBtnHandler: (value: InputFieldValue) => void | Promise<any>;
     /** Primary button style */
     primaryBtnStyle?: ButtonStyle;
     /** Secondary button text */
     secondaryBtnText?: string;
-    /** Called when the secondary button is clicked */
-    secondaryBtnHandler?: () => void;
+    /** Called when the secondary button is clicked. If it returns a promise, the spinner is hidden when it is done. */
+    secondaryBtnHandler?: () => void | Promise<any>;
     /** Secondary button style */
     secondaryBtnStyle?: ButtonStyle;
     /** Placeholder text for the input for popups of type prompt */
     promptPlaceholder?: string;
+    /** A component or text to be rendered in the footer of the popup **/
+    footer?: any;
 }
 
 export interface PopupPromptState {
@@ -78,27 +80,24 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
         const { validationHandler } = this.props;
         const { inputValue } = this.state;
 
-        if (validationHandler && this.props.validationHandler(inputValue)) {
-            this.setState({ validationError: this.props.validationHandler(inputValue) });
+        const validationError = validationHandler && validationHandler(inputValue);
+        if (validationError) {
+            this.setState({ validationError });
             return false;
         }
-        else {
-            return true;
-        }
+        return true;
     }
 
-    private _primaryBtnHandler(): void {
-        const { inputValue } = this.state;
-
+    private _primaryBtnHandler(): void | Promise<any> {
         if (this._isInputValid()) {
             // only call primaryBtnHandler if there are no validation errors
-            this.props.primaryBtnHandler(inputValue);
+            return this.props.primaryBtnHandler(this.state.inputValue);
         }
     }
 
     render(): JSX.Element {
         const { headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
-            inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler } = this.props;
+            inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler, footer } = this.props;
         const { inputValue, validationError } = this.state;
 
         return <Popup
@@ -112,6 +111,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
             secondaryBtnStyle={secondaryBtnStyle}
             validationErrors={validationError ? { promptInput: validationError } : null}
             width="sm"
+            footer={footer}
         >
             <InputField
                 id="promptInput"
