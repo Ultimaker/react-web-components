@@ -6,7 +6,7 @@ import InputFieldWrapper from './input_field_wrapper'
 
 export interface StaticFieldProps extends InputFieldProps {
     /** Input field value */
-    value: any;
+    value?: any;
     /** Optional extra elements to be displayed after the input **/
     children?: any;
 }
