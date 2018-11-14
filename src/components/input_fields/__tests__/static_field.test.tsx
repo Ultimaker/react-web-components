@@ -25,7 +25,8 @@ describe('The static field component', () => {
     });
 
     it("should render it's value and its children", () => {
-        expect(wrapper.children().map(c => c.text())).toEqual(["2018", "child"]);
+        expect(wrapper.children().text()).toEqual("2018");
+        expect(wrapper.find(InputFieldWrapper).prop('inputChildren')).toEqual("child");
     });
 
     it('should render a null', () => {

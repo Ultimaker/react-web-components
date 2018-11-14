@@ -11,6 +11,5 @@ exports[`The static field component should render an input wrapper 1`] = `
   value="2018"
 >
   2018
-  child
 </InputFieldWrapper>
 `;

@@ -20,7 +20,6 @@ const StaticField: React.StatelessComponent<StaticFieldProps> = ({
 }) =>
     <InputFieldWrapper touched={false} staticField={true} inputChildren={children} {...wrapperProps}>
         {wrapperProps.value}
-        {children}
     </InputFieldWrapper>;
 
 StaticField.displayName = "StaticField";
