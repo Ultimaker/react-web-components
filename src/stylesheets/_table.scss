@@ -131,10 +131,16 @@
     @extend .table;
     @extend .table--responsive;
 
+    tr {
+        border: none;
+    }
+
+    th {
+        padding: 0;
+    }
+
     tr.tile-table__tile {
         @extend .tile;
-
-        border: none;
     }
 
     td.tile-table__tile-cell {
