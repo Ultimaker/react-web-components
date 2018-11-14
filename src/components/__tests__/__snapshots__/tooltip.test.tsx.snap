@@ -3,8 +3,8 @@
 exports[`The Tooltip component should render 1`] = `
 <div
   className="tooltip-trigger tooltip-trigger--north"
-  onPointerEnter={[Function]}
-  onPointerLeave={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
   onTouchEnd={[Function]}
   onTouchStart={[Function]}
 >
