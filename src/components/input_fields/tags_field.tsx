@@ -9,7 +9,7 @@ export interface TagsFieldProps extends InputFieldProps {
     /** Input field value */
     value: string[];
     /** Called when the field changes */
-    onChangeHandler: (id: string, value: string[]) => any;
+    onChangeHandler?: (id: string, value: string[]) => any;
     /** A list of suggestions for tags input field */
     tagSuggestions?: string[];
     /** If true, the field will be focused when loaded */
