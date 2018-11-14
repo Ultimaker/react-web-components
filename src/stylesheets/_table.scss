@@ -90,7 +90,7 @@
         content: none;
     }
 
-    .truncate-cell {
+    td.truncate-cell {
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -129,6 +129,7 @@
 
 .tile-table {
     @extend .table;
+    @extend .table--responsive;
 
     tr.tile-table__tile {
         @extend .tile;
@@ -161,4 +162,5 @@
         border: none;
         padding: 0.6rem 0;
     }
+
 }
