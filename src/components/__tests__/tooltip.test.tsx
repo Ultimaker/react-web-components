@@ -33,15 +33,15 @@ describe('The Tooltip component', () => {
 
     it('should show the tooltip when hovered', () => {
         const mountedWrapper = mount(<Tooltip {...props} />);
-        mountedWrapper.simulate('pointerEnter');
+        mountedWrapper.simulate('mouseEnter');
         expect(mountedWrapper.find('.show')).toHaveLength(1);
     });
 
     it('should hide the tooltip when no longer hovered', () => {
         const mountedWrapper = mount(<Tooltip {...props} />);
-        mountedWrapper.simulate('pointerEnter');
+        mountedWrapper.simulate('mouseEnter');
         expect(mountedWrapper.find('.show')).toHaveLength(1);
-        mountedWrapper.simulate('pointerLeave');
+        mountedWrapper.simulate('mouseLeave');
         expect(mountedWrapper.find('.show').exists()).toBe(false);
     });
 

@@ -68,7 +68,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         }
         // if the tooltip is off the screen to the right, move it left
         else if (tooltipWidth / 2 > windowWidth - tooltipTriggerCenter) {
-            // move move relative to tooltipTrigger right, then make negative so it can be applied to the tooltip left
+            // move relative to tooltipTrigger right, then make negative so it can be applied to the tooltip left
             tooltipOffset = (tooltipWidth / 2 - tooltipTriggerWidth - (windowWidth - tooltipTriggerRight) + windowMargin) * -1;
         }
         else {
@@ -92,6 +92,7 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     }
 
     private _showTooltip(): void {
+        // It does need to know about the page dimensions and it's position every time it opens, because it's sometimes hidden on page load. That's why it's not done with css.
         this._setTooltipOffset();
         this.setState({ showTooltip: true });
     }
@@ -106,8 +107,15 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
 
         const classes = classNames('tooltip-trigger', 'tooltip-trigger--' + direction, { 'disabled': disableTooltip }, { 'show': showTooltip });
 
-        return <div className={classes} onTouchStart={this._showTooltip} onTouchEnd={this._hideTooltip}
-            onPointerEnter={this._showTooltip} onPointerLeave={this._hideTooltip}>
+        return <div className={classes}
+            onTouchStart={this._showTooltip}
+            onTouchEnd={this._hideTooltip}
+            // had to change these until pointer event support arrives to safari
+            // onPointerEnter={this._showTooltip}
+            // onPointerLeave={this._hideTooltip}
+            onMouseEnter={this._showTooltip}
+            onMouseLeave={this._hideTooltip}
+            >
 
             {children}
 
