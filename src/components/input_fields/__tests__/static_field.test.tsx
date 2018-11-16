@@ -13,7 +13,7 @@ describe('The static field component', () => {
     beforeEach(() => {
         props = {
             id: 'testInputField',
-            value: "2018",
+            value: '2018',
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
         };
@@ -24,13 +24,13 @@ describe('The static field component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it("should render it's value and its children", () => {
-        expect(wrapper.children().text()).toEqual("2018");
-        expect(wrapper.find(InputFieldWrapper).prop('inputChildren')).toEqual("child");
+    it('should render its value and its children', () => {
+        expect(wrapper.children().text()).toEqual('2018');
+        expect(wrapper.find(InputFieldWrapper).prop('inputChildren')).toEqual('child');
     });
 
     it('should render a null', () => {
         wrapper.setProps({value: null})
-        expect(wrapper.find(InputFieldWrapper).prop("value")).toBeNull();
+        expect(wrapper.find(InputFieldWrapper).prop('value')).toBeNull();
     })
 });
