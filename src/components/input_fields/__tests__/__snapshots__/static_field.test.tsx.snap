@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The static field component should render an input wrapper 1`] = `
+<InputFieldWrapper
+  id="testInputField"
+  inputChildren="child"
+  labelLayoutWidth="1/1"
+  labelWidthBreakpoint="sm"
+  staticField={true}
+  touched={false}
+  value="2018"
+>
+  2018
+</InputFieldWrapper>
+`;

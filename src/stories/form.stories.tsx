@@ -6,7 +6,6 @@ import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 
 // components
-import InputField from '../components/input_field';
 import { ImageFile } from '../components/image_upload';
 import { Tile } from '../components/tile';
 import FileUploadField from '../components/input_fields/file_upload_field';
@@ -23,6 +22,7 @@ import CodeField from '../components/input_fields/code_field';
 import RangeSlider from '../components/range_slider';
 import ProfileIcon from '../components/icons/profile_icon';
 import Image from '../components/image';
+import StaticField from '../components/input_fields/static_field';
 
 const stories = storiesOf('Forms', module);
 
@@ -417,30 +417,22 @@ stories.add('Upload file field', withState({ value: null })
     )
 );
 
-stories.add('Custom input field', withState({ value: null })
-    (withInfo('Custom input field')
+stories.add('Static input field', withState({ })
+    (withInfo('Static input field')
         (({ store }) =>
             <div style={{ width: 350 }}>
-                <InputField
-                    value={null}
-                    type="children"
+                <StaticField
                     id="id_12"
-                    onChangeHandler={() => { }}
-                    label={text('Label', 'Custom input')}
+                    value={text('Value', 'Value')}
+                    label={text('Label', 'Label')}
                     labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
                     labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
-                    validationError={text('Validation error message', 'Validation Error')}
-                    submitted={typeof store.state.value === 'string'}
-                    required={boolean('Required', false)}
                     infoLinkURL={text('Info link URL', '')}
                     infoText={text('Info text', '')}
                     preLabelElement={text('Pre label element', '')}
                 >
-                    <input
-                        onChange={(e) => store.set({ value: e.target.value })}
-                        value={store.state.value || ""}
-                    />
-                </InputField>
+                    {text('Children')}
+                </StaticField>
             </div>
         )
     )
