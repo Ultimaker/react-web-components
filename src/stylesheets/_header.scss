@@ -1,4 +1,5 @@
 .app__header {
+    min-width: $min-window-width;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
