@@ -30,6 +30,7 @@
     .slide-in-panel__container {
         position: fixed;
         max-width: 100%;
+        min-width: $min-window-width;
         height: 100%;
         top: 0;
         right: 0;

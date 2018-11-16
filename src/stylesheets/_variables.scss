@@ -1,147 +1,147 @@
-$color-blue: #00a7e9;
-$color-blue-light: #24bcf3;
-$color-blue-lighter: #46C4F2;
-$color-red: #ef5b5b;
-$color-green: #23aa1d;
-$color-orange: #fbb045;
-$color-black: #000000;
-$color-grey-darker: #666666;
-$color-grey-dark: #999999;
-$color-grey-mid: #b7b7b7;
-$color-grey-light: #dcdcdc;
-$color-grey-lighter: #e6e6e6;
-$color-grey-lightest: #f3f3f3;
-$color-white: #ffffff;
-$color-transparent: rgba(0, 0, 0, 0);
-$color-transparent-grey-lighter: rgba(0, 0, 0, 0.03);
-$color-transparent-grey-light: rgba(0, 0, 0, 0.06);
-$color-transparent-grey-mid: rgba(0, 0, 0, 0.09);
-$color-transparent-grey-dark: rgba(0, 0, 0, 0.16);
-$color-transparent-grey-darker: rgba(0, 0, 0, 0.25);
-$color-transparent-grey-darkest: rgba(0, 0, 0, 0.85);
-$color-transparent-blue: rgba(0, 167, 233, 0.06);
+$color-blue: #00a7e9 !default;
+$color-blue-light: #24bcf3 !default;
+$color-blue-lighter: #46C4F2 !default;
+$color-red: #ef5b5b !default;
+$color-green: #23aa1d !default;
+$color-orange: #fbb045 !default;
+$color-black: #000000 !default;
+$color-grey-darker: #666666 !default;
+$color-grey-dark: #999999 !default;
+$color-grey-mid: #b7b7b7 !default;
+$color-grey-light: #dcdcdc !default;
+$color-grey-lighter: #e6e6e6 !default;
+$color-grey-lightest: #f3f3f3 !default;
+$color-white: #ffffff !default;
+$color-transparent: rgba(0, 0, 0, 0) !default;
+$color-transparent-grey-lighter: rgba(0, 0, 0, 0.03) !default;
+$color-transparent-grey-light: rgba(0, 0, 0, 0.06) !default;
+$color-transparent-grey-mid: rgba(0, 0, 0, 0.09) !default;
+$color-transparent-grey-dark: rgba(0, 0, 0, 0.16) !default;
+$color-transparent-grey-darker: rgba(0, 0, 0, 0.25) !default;
+$color-transparent-grey-darkest: rgba(0, 0, 0, 0.85) !default;
+$color-transparent-blue: rgba(0, 167, 233, 0.06) !default;
 
-$font-primary: "NotoSans-Regular", sans-serif;
-$font-primary-medium: "NotoSans-Medium", sans-serif;
-$font-primary-bold: "NotoSans-bold", sans-serif;
+$font-primary: "NotoSans-Regular", sans-serif !default;
+$font-primary-medium: "NotoSans-Medium", sans-serif !default;
+$font-primary-bold: "NotoSans-bold", sans-serif !default;
 
-$min-window-width: 320px;
+$min-window-width: 320px !default;
 
-$layout-breakpoints: (lg: 1025px, md: 800px, sm: 620px);
-$layout-fractions: 1 2 3 4 5;
-$layout-spacing: (lg: 3.6rem, md: 2.4rem, sm: 1.2rem, xs: 0.6rem, none: 0);
-$layout-gutter-default: 2.4rem;
+$layout-breakpoints: (lg: 1025px, md: 800px, sm: 620px) !default;
+$layout-fractions: 1 2 3 4 5 !default;
+$layout-spacing: (lg: 3.6rem, md: 2.4rem, sm: 1.2rem, xs: 0.6rem, none: 0) !default;
+$layout-gutter-default: 2.4rem !default;
 
-$border-radius: 3px;
+$border-radius: 3px !default;
 
-$color-text: $color-black;
-$color-text-light: $color-grey-darker;
-$color-text-lighter: $color-grey-dark;
+$color-text: $color-black !default;
+$color-text-light: $color-grey-darker !default;
+$color-text-lighter: $color-grey-dark !default;
 
-$color-body: $color-grey-lightest;
-$color-background: $color-white;
-$color-background-dark: $color-transparent-grey-lighter;
-$color-background-darker: $color-transparent-grey-light;
-$color-background-darkest: $color-transparent-grey-mid;
-$color-background-selected: $color-transparent-blue;
-$color-background-alert: $color-red;
-$color-background-success: $color-green;
+$color-body: $color-grey-lightest !default;
+$color-background: $color-white !default;
+$color-background-dark: $color-transparent-grey-lighter !default;
+$color-background-darker: $color-transparent-grey-light !default;
+$color-background-darkest: $color-transparent-grey-mid !default;
+$color-background-selected: $color-transparent-blue !default;
+$color-background-alert: $color-red !default;
+$color-background-success: $color-green !default;
 
-$color-border: $color-grey-light;
-$color-border-light: $color-grey-lighter;
-$color-border-active: $color-blue;
-$color-border-error: $color-red;
+$color-border: $color-grey-light !default;
+$color-border-light: $color-grey-lighter !default;
+$color-border-active: $color-blue !default;
+$color-border-error: $color-red !default;
 
-$color-shadow-light: $color-transparent-grey-lighter;
-$color-shadow: $color-transparent-grey-dark;
-$color-shadow-dark: $color-transparent-grey-darker;
+$color-shadow-light: $color-transparent-grey-lighter !default;
+$color-shadow: $color-transparent-grey-dark !default;
+$color-shadow-dark: $color-transparent-grey-darker !default;
 
-$color-anchor: $color-blue;
+$color-anchor: $color-blue !default;
 
-$primary-btn-color: $color-blue;
-$primary-btn-color-text: $color-white;
-$primary-btn-color-hover: $color-blue-light;
-$primary-btn-color-active: $color-blue-lighter;
-$primary-btn-color-disabled: $color-background-darker;
-$primary-btn-color-disabled-text: $color-text-lighter;
+$primary-btn-color: $color-blue !default;
+$primary-btn-color-text: $color-white !default;
+$primary-btn-color-hover: $color-blue-light !default;
+$primary-btn-color-active: $color-blue-lighter !default;
+$primary-btn-color-disabled: $color-background-darker !default;
+$primary-btn-color-disabled-text: $color-text-lighter !default;
 
-$secondary-btn-color: $color-transparent;
-$secondary-btn-color-text: $color-text;
-$secondary-btn-color-border: $color-black;
-$secondary-btn-color-hover: $color-background-darker;
-$secondary-btn-color-active: $color-background-darkest;
-$secondary-btn-color-disabled: $color-background-darker;
-$secondary-btn-color-disabled-text: $color-text-lighter;
+$secondary-btn-color: $color-transparent !default;
+$secondary-btn-color-text: $color-text !default;
+$secondary-btn-color-border: $color-black !default;
+$secondary-btn-color-hover: $color-background-darker !default;
+$secondary-btn-color-active: $color-background-darkest !default;
+$secondary-btn-color-disabled: $color-background-darker !default;
+$secondary-btn-color-disabled-text: $color-text-lighter !default;
 
-$quiet-btn-color-text: $color-blue;
-$quiet-btn-color-hover: $color-background-darker;
-$quiet-btn-color-active: $color-background-darkest;
-$quiet-btn-color-disabled-text: $color-text-lighter;
+$quiet-btn-color-text: $color-blue !default;
+$quiet-btn-color-hover: $color-background-darker !default;
+$quiet-btn-color-active: $color-background-darkest !default;
+$quiet-btn-color-disabled-text: $color-text-lighter !default;
 
-$alert-btn-color: $color-transparent;
-$alert-btn-color-text: $color-red;
-$alert-btn-color-border: $color-red;
-$alert-btn-color-hover: $color-background-darker;
-$alert-btn-color-active: $color-background-darkest;
-$alert-btn-color-disabled: $color-background-darker;
-$alert-btn-color-disabled-text: $color-text-lighter;
+$alert-btn-color: $color-transparent !default;
+$alert-btn-color-text: $color-red !default;
+$alert-btn-color-border: $color-red !default;
+$alert-btn-color-hover: $color-background-darker !default;
+$alert-btn-color-active: $color-background-darkest !default;
+$alert-btn-color-disabled: $color-background-darker !default;
+$alert-btn-color-disabled-text: $color-text-lighter !default;
 
-$progress-bar-color: $color-blue;
-$progress-bar-color-paused: $color-grey-mid;
-$progress-bar-color-background: $color-grey-lightest;
+$progress-bar-color: $color-blue !default;
+$progress-bar-color-paused: $color-grey-mid !default;
+$progress-bar-color-background: $color-grey-lightest !default;
 
-$context-menu-color-background: $color-white;
-$context-menu-color-text: $color-black;
-$context-menu-color-trigger: $color-grey-dark;
-$context-menu-color-trigger-hover: $color-background-darker;
-$context-menu-color-hover: $color-background-darker;
-$context-menu-color-chevron-shadow: $color-transparent-grey-light;
+$context-menu-color-background: $color-white !default;
+$context-menu-color-text: $color-black !default;
+$context-menu-color-trigger: $color-grey-dark !default;
+$context-menu-color-trigger-hover: $color-background-darker !default;
+$context-menu-color-hover: $color-background-darker !default;
+$context-menu-color-chevron-shadow: $color-transparent-grey-light !default;
 
-$drop-down-menu-color-text-active: $color-blue;
+$drop-down-menu-color-text-active: $color-blue !default;
 
-$checkbox-color-background-active: $primary-btn-color;
-$checkbox-color-border-active: $primary-btn-color;
-$checkbox-color-tick-active: $color-white;
-$checkbox-color-border: $secondary-btn-color-border;
-$checkbox-color-tick-hover: $color-border;
+$checkbox-color-background-active: $primary-btn-color !default;
+$checkbox-color-border-active: $primary-btn-color !default;
+$checkbox-color-tick-active: $color-white !default;
+$checkbox-color-border: $secondary-btn-color-border !default;
+$checkbox-color-tick-hover: $color-border !default;
 
-$tooltip-color-background: $color-blue;
-$tooltip-dark-color-background: $color-grey-darker;
-$tooltip-color-text: $color-white;
-$tooltip-arrow-size: 15px;
+$tooltip-color-background: $color-blue !default;
+$tooltip-dark-color-background: $color-grey-darker !default;
+$tooltip-color-text: $color-white !default;
+$tooltip-arrow-size: 15px !default;
 
-$input-field-color-border: $color-transparent-grey-dark;
-$input-field-color-border-hover: $color-transparent-grey-mid;
-$input-field-color-border-active: $color-blue;
-$input-field-color-border-error: $color-red;
-$input-field-color-placeholder: $color-transparent-grey-darker;
+$input-field-color-border: $color-transparent-grey-dark !default;
+$input-field-color-border-hover: $color-transparent-grey-mid !default;
+$input-field-color-border-active: $color-blue !default;
+$input-field-color-border-error: $color-red !default;
+$input-field-color-placeholder: $color-transparent-grey-darker !default;
 
-$slide-out-color-background: $color-white;
+$slide-out-color-background: $color-white !default;
 
-$modal-overlay-color: $color-transparent-grey-darker;
-$modal-overlay-color-light: $color-transparent-grey-mid;
-$modal-overlay-color-dark: $color-transparent-grey-darkest;
+$modal-overlay-color: $color-transparent-grey-darker !default;
+$modal-overlay-color-light: $color-transparent-grey-mid !default;
+$modal-overlay-color-dark: $color-transparent-grey-darkest !default;
 
-$toolbar-color-background: $color-blue;
+$toolbar-color-background: $color-blue !default;
 
-$tags-color-hover: $color-grey-darker;
-$tags-color-close-text: $color-white;
-$tags-color-close-background: $color-grey-dark;
+$tags-color-hover: $color-grey-darker !default;
+$tags-color-close-text: $color-white !default;
+$tags-color-close-background: $color-grey-dark !default;
 
-$pill-color-background: $color-grey-lighter;
-$pill-color-background-active: $color-blue;
+$pill-color-background: $color-grey-lighter !default;
+$pill-color-background-active: $color-blue !default;
 
-$spinner-color: $color-blue;
+$spinner-color: $color-blue !default;
 
-$toggle-button-color: $color-white;
-$toggle-button-color-background: $color-grey-light;
-$toggle-button-color-active: $color-blue;
-$toggle-button-color-background-focus: $color-grey-lighter;
-$toggle-button-color-active-focus: $color-blue-lighter;
+$toggle-button-color: $color-white !default;
+$toggle-button-color-background: $color-grey-light !default;
+$toggle-button-color-active: $color-blue !default;
+$toggle-button-color-background-focus: $color-grey-lighter !default;
+$toggle-button-color-active-focus: $color-blue-lighter !default;
 
-$range-slider-color: $color-white;
-$range-slider-color-background-focus: $color-grey-lighter;
-$range-slider-color-background: $color-grey-light;
+$range-slider-color: $color-white !default;
+$range-slider-color-background-focus: $color-grey-lighter !default;
+$range-slider-color-background: $color-grey-light !default;
 
-$panel-arrow-color-blue: $color-blue;
-$panel-arrow-color-black: $color-black;
+$panel-arrow-color-blue: $color-blue !default;
+$panel-arrow-color-black: $color-black !default;
