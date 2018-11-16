@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, text, number } from '@storybook/addon-knobs/react';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
 
 import Loading from '../components/loading';
 import LoadingPage from '../components/loading_page';
-import Spinner from '../components/spinner';
 
 const stories = storiesOf('Loading', module);
 
@@ -26,6 +25,8 @@ stories.add('Loading text', withInfo(
 
 stories.add('Loading page', withInfo(
     'Full page loading spinner. To be used when the application is loading.'
-)(() =>
-    <LoadingPage />
-));
+)(() => {
+    // pass the timeout as key so that it gets remounted when it changes.
+    const timeout = number('Timeout to show spinner', 500);
+    return <LoadingPage timeoutMs={timeout} key={timeout} />;
+}));
