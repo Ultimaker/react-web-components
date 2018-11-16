@@ -4,16 +4,24 @@ import { shallow } from 'enzyme';
 
 // component
 import LoadingPage from '../loading_page';
+import Spinner from '../spinner';
 
 describe('The LoadingPage component', () => {
     let wrapper;
 
     beforeEach(() => {
+        jest.useFakeTimers();
         wrapper = shallow(<LoadingPage />);
     });
 
-    it('should render', () => {
-        expect(wrapper).toMatchSnapshot();
+    afterEach(() => {
+        jest.useRealTimers();
+    })
+
+    it('should spinner after timeout', () => {
+        expect(wrapper.find(Spinner)).toHaveLength(0);
+        jest.runOnlyPendingTimers();
+        expect(wrapper.find(Spinner)).toHaveLength(1);
     });
 
 });

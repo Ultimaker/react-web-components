@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`The LoadingPage component should render 1`] = `
-<div
-  className="loading-page"
->
-  <Spinner />
-</div>
-`;
