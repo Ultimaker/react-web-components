@@ -12,6 +12,7 @@ import GridItem from '../components/grid_item';
 import SlideOutContainer from '../components/slide_out_container';
 import SlideInPanel from '../components/slide_in_panel';
 import SettingPanel from '../components/setting_panel';
+import Carousel from '../components/carousel'
 
 const stories = storiesOf('Layout', module);
 
@@ -114,6 +115,24 @@ stories.add('Grid', withInfo(
                 <div style={{ background: 'grey', height: '100px' }}></div>
             </GridItem>
         </ Grid>
+    </div>
+));
+
+stories.add('Carousel', withInfo(
+    'A carrousel component'
+)(() =>
+    <div style={{ width: '80vw' }}>
+        <Carousel
+            showItems={4}
+            align={selectV2('Align', alignOptions, alignDefaultValue)}
+            gutter={selectV2('Gutter', spacingOptions, spacingDefaultValue)}
+        >
+            {Array.from(Array(15).keys()).map(i =>
+                <Tile key={i}>
+                    <div style={{ height: '100px' }}>{i}</div>
+                </Tile>
+            )}
+        </Carousel>
     </div>
 ));
 
