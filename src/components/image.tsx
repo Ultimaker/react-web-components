@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classNames = require('classnames')
+import classNames = require('classnames');
 
 export type ImageShape = 'round' | 'square';
 
@@ -17,7 +17,7 @@ export interface ImageProps {
 }
 
 export const Image: React.StatelessComponent<ImageProps> = ({ shape, src, size, id, className }) => {
-    const classes = classNames(`image image--${shape}`, className)
+    const classes = classNames(`image image--${shape}`, className);
     return (
         <img id={id} src={src} className={classes} style={{ width: size, height: size }} />
     );
