@@ -40,9 +40,9 @@ stories.add('Context menu', withInfo(
         menuWidth={200}
         menuDirection={selectV2('Menu Direction', directionOptions, directionDefaultValue)}
         menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}>
-        <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />
-        <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
-        <ContextMenuItem onClickHandler={action('clicked')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
+        <ContextMenuItem onClickHandler={action('clicked 1')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />
+        <ContextMenuItem onClickHandler={action('clicked 2')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
+        <ContextMenuItem onClickHandler={action('clicked 3')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
     </ContextMenu>
 ));
 

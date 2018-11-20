@@ -42,6 +42,13 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     constructor(props: ContextMenuProps) {
         super(props);
         this._menuRef = React.createRef();
+        this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
+    }
+
+    private _onOutsideClickHandler(event) {
+        if (this._menuRef && !this._menuRef.current.contains(event.target)) {
+            this._setShowMenu(false);
+        }
     }
 
     private _setMenuOffset(): void {
@@ -89,6 +96,14 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
     private _setShowMenu(showMenu: boolean): void {
         this._setMenuOffset();
+
+        if (showMenu) {
+            document.addEventListener('mousedown', this._onOutsideClickHandler);
+        }
+        else {
+            document.removeEventListener('mousedown', this._onOutsideClickHandler);
+        }
+
         this.setState({
             showMenu: showMenu
         });
@@ -123,8 +138,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu }, { 'context-menu--panel': positionMenuInPanel });
         const menuStyle = this._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
-        return <div ref={this._menuRef} className={classes} tabIndex={1}
-            onClick={this._stopPropagation} onBlur={() => this._setShowMenu(false)}>
+        return <div ref={this._menuRef} className={classes} tabIndex={1} onClick={this._stopPropagation}>
 
             <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}
                 style={{ width: triggerWidth }}></div>
