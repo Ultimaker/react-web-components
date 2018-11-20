@@ -15,7 +15,7 @@ export interface PopupProps {
     /** Popup header text */
     headerText?: string;
     /** Popup body text */
-    bodyText: string;
+    bodyText?: string;
     /** The form validation error messages */
     validationErrors?: FormValidationResponse;
     /** Primary button text */
@@ -121,7 +121,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
         return (
             <PopupBase headerElement={headerElement} headerText={headerText} step={step} totalSteps={totalSteps} width={width} footer={footer}>
-                {splitTextByNewLine(bodyText)}
+                {bodyText && splitTextByNewLine(bodyText)}
                 <Form
                     primaryBtnText={primaryBtnText}
                     primaryBtnStyle={primaryBtnStyle}
