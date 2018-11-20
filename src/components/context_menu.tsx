@@ -42,18 +42,10 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     constructor(props: ContextMenuProps) {
         super(props);
         this._menuRef = React.createRef();
-        this._handleClickOutside = this._handleClickOutside.bind(this);
+        this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
     }
 
-    componentDidMount() {
-        document.addEventListener('mousedown', this._handleClickOutside);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('mousedown', this._handleClickOutside);
-    }
-
-    private _handleClickOutside(event) {
+    private _onOutsideClickHandler(event) {
         if (this._menuRef && !this._menuRef.current.contains(event.target)) {
             this._setShowMenu(false);
         }
@@ -104,6 +96,14 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
     private _setShowMenu(showMenu: boolean): void {
         this._setMenuOffset();
+
+        if (showMenu) {
+            document.addEventListener('mousedown', this._onOutsideClickHandler);
+        }
+        else {
+            document.removeEventListener('mousedown', this._onOutsideClickHandler);
+        }
+
         this.setState({
             showMenu: showMenu
         });

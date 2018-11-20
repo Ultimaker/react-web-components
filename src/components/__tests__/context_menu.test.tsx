@@ -24,6 +24,20 @@ describe('The ContextMenu component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should add _onOutsideClickHandler event listener', () => {
+        document.addEventListener = jest.fn();
+        expect(document.addEventListener).not.toHaveBeenCalled();
+        wrapper.instance()._setShowMenu(true);
+        expect(document.addEventListener).toHaveBeenCalledWith('mousedown', wrapper.instance()._onOutsideClickHandler);
+    });
+
+    it('should remove _onOutsideClickHandler event listener', () => {
+        document.removeEventListener = jest.fn();
+        expect(document.removeEventListener).not.toHaveBeenCalled();
+        wrapper.instance()._setShowMenu(false);
+        expect(document.removeEventListener).toHaveBeenCalledWith('mousedown', wrapper.instance()._onOutsideClickHandler);
+    });
+
     it('should render to right', () => {
         wrapper.setProps({ menuOffsetDirection: 'right' });
         expect(wrapper.find('.menu').prop('style').left).toBe(-30);
