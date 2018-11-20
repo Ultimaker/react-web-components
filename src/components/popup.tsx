@@ -10,8 +10,10 @@ import PopupBase from './popup_base'
 import splitTextByNewLine from '../utils/split_text_by_new_line';
 
 export interface PopupProps {
+    /** Popup header element, above the header text */
+    headerElement?: JSX.Element;
     /** Popup header text */
-    headerText: string;
+    headerText?: string;
     /** Popup body text */
     bodyText: string;
     /** The form validation error messages */
@@ -112,13 +114,13 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     render(): JSX.Element {
         const {
-            headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle,
+            headerElement, headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle,
             validationErrors, step, totalSteps, width, children, footer
         } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
         return (
-            <PopupBase headerText={headerText} step={step} totalSteps={totalSteps} width={width} footer={footer}>
+            <PopupBase headerElement={headerElement} headerText={headerText} step={step} totalSteps={totalSteps} width={width} footer={footer}>
                 {splitTextByNewLine(bodyText)}
                 <Form
                     primaryBtnText={primaryBtnText}
