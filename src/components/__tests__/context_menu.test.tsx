@@ -53,13 +53,6 @@ describe('The ContextMenu component', () => {
         expect(wrapper.find('.visible').exists()).toBe(false);
     });
 
-    it('should hide menu on blur', () => {
-        wrapper.find('.trigger').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible')).toHaveLength(1);
-        wrapper.simulate('blur');
-        expect(wrapper.find('.visible').exists()).toBe(false);
-    });
-
     it('should hide menu on menu click', () => {
         wrapper.find('.trigger').simulate('click', mockClickEvent);
         expect(wrapper.find('.visible')).toHaveLength(1);
