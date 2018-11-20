@@ -6,7 +6,7 @@ import ProgressBar from './progress_bar';
 
 export interface PopupBaseProps {
     /** Popup header text */
-    headerText: string;
+    headerText?: string;
     /** The width of the popup: 'sm' | 'md' */
     width?: ModalWidth;
     /** The current step number of a multi-step popup */
@@ -29,9 +29,9 @@ export const PopupBase: React.StatelessComponent<PopupBaseProps> = (
         <Modal width={width}>
             <div className="popup__container">
                 <div className="popup__content">
-                    <div className="popup__header">
+                    {headerText && <div className="popup__header">
                         {headerText}
-                    </div>
+                    </div>}
 
                     <div className="popup__body">
                         {children}
