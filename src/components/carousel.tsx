@@ -1,87 +1,55 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import Grid, {Align, GridProps, Gutter, Position} from './grid'
-import GridItem, {Breakpoint, LayoutWidth} from './grid_item'
-import CircleIcon from './icons/circle_icon'
+import _ = require('lodash')
+import AliceCarousel from 'react-alice-carousel';
+import {BreakpointSizes} from '../utils/layout_constants';
 
+/**
+ * The props of this component.
+ */
 export interface CarouselProps {
-    /** The amount of items to show per time; limited to the LayoutWidth options */
-    showItems: 1 | 2 | 3 | 4 | 5;
+    /** An array of the amount of items to show depending on each breakpoint [xs, sm, md, lg] **/
+    itemCounts: number[];
 
-    /** Breakpoint at which the widthFraction will be applied: 'xs' | 'sm' | 'md' | 'lg' */
-    breakpoint?: Breakpoint;
+    /** A list of items to be displayed **/
+    children: any;
 
-    /** Alignment (horizontal) of the grid items: 'left' | 'center' | 'right' */
-    align?: Align;
+    /** How often the auto play should run **/
+    autoPlayInterval?: number;
 
-    /** Position (vertical) of the grid items: 'top' | 'middle' | 'bottom' */
-    position?: Position;
-
-    /** Gutter size between the grid items: 'xs' | 'sm' | 'md' | 'lg' | 'none' */
-    gutter?: Gutter;
-
-    /** An optional class name for the grid **/
-    className?: string;
-
-    /** Size of the icon. Include unit */
-    size?: string;
+    /** Duration of slides transition (milliseconds) */
+    transitionDuration?: number;
 }
 
-export interface CarouselState {
-    page: number;
+/**
+ * A carousel component.
+ */
+export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, itemCounts, autoPlayInterval, transitionDuration }) => {
+    // create an object with the format {breakpointWidth: {items: item_count}}.
+    const responsive = _.zipObject(BreakpointSizes.slice(0, itemCounts.length), itemCounts.map(items => ({items})));
+
+    // each child will receive the given extra parameter
+    const extraProps = {onDragStart: e => e.preventDefault()};
+
+    return (
+        <AliceCarousel
+            mouseDragEnabled
+            autoPlay={autoPlayInterval > 0}
+            buttonsDisabled
+            duration={transitionDuration}
+            autoPlayInterval={autoPlayInterval}
+            responsive={responsive}
+        >
+            {React.Children.map(children, child => React.isValidElement(child) && React.cloneElement(child, extraProps))}
+        </AliceCarousel>
+    );
 }
 
-export default class Carousel extends React.Component<CarouselProps, CarouselState> {
-    state = {
-        page: 0,
-    };
+Carousel.defaultProps = {
+    autoPlayInterval: 5000,
+    transitionDuration: 1000,
+};
 
-    constructor(props) {
-        super(props)
-        this._renderChild = this._renderChild.bind(this);
-    }
+Carousel.displayName = 'Carousel';
 
-    private _renderChild(child: JSX.Element, index: number): JSX.Element {
-        const { breakpoint, showItems } = this.props;
-        const layoutWidth = ("1/" + showItems.toString()) as LayoutWidth;
-        return (
-            <GridItem key={index} layoutWidth={layoutWidth} breakpoint={breakpoint}>
-                {child}
-            </GridItem>
-        );
-    }
-
-    private _onClick(page: number) {
-        this.setState({ page })
-    }
-
-    render() {
-        const { children, showItems, align, gutter, position, className  } = this.props;
-        const { page } = this.state;
-        const childrenArray = React.Children.toArray(children);
-        const start = showItems * page;
-        const end = start + showItems;
-        const pageCount = Math.ceil(childrenArray.length / showItems);
-        return (
-            <Grid align={align} gutter={gutter} position={position} className={className}>
-                {childrenArray.slice(start, end).map(this._renderChild)}
-                <GridItem layoutWidth="1/1">
-                    <Grid align={align} gutter="sm">
-                        {Array.from(Array(pageCount).keys()).map(p =>
-                            <GridItem key={p} layoutWidth="fit">
-                                <span onClick={() => this._onClick(p)}>
-                                    <CircleIcon
-                                        size="sm"
-                                        color={p === page ? "blue" : "white"}
-                                        borderColor={p === page ? "blue" : "grey"}
-                                        key={p}
-                                    />
-                                </span>
-                            </GridItem>
-                        )}
-                    </Grid>
-                </GridItem>
-            </Grid>
-        );
-    }
-}
+export default Carousel;

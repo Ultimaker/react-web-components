@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, selectV2, number } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
@@ -12,7 +12,11 @@ import GridItem from '../components/grid_item';
 import SlideOutContainer from '../components/slide_out_container';
 import SlideInPanel from '../components/slide_in_panel';
 import SettingPanel from '../components/setting_panel';
-import Carousel from '../components/carousel'
+import Carousel from '../components/carousel';
+
+import UM3PrinterIcon from '../components/icons/um3_printer_icon';
+import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
+import UMS5PrinterIcon from '../components/icons/ums5_printer_icon';
 
 const stories = storiesOf('Layout', module);
 
@@ -121,17 +125,24 @@ stories.add('Grid', withInfo(
 stories.add('Carousel', withInfo(
     'A carrousel component'
 )(() =>
-    <div style={{ width: '80vw' }}>
+    <div style={{ width: number("Width (rem)", 30).toString() + 'rem' }}>
         <Carousel
-            showItems={4}
-            align={selectV2('Align', alignOptions, alignDefaultValue)}
-            gutter={selectV2('Gutter', spacingOptions, spacingDefaultValue)}
+            itemCounts={[
+                number("Items (xs)", 1),
+                number("Items (sm)", 2),
+                number("Items (md)", 3),
+                number("Items (lg)", 4)
+            ]}
         >
-            {Array.from(Array(15).keys()).map(i =>
-                <Tile key={i}>
-                    <div style={{ height: '100px' }}>{i}</div>
-                </Tile>
-            )}
+              <UM3PrinterIcon size="lg" />
+              <UM3XPrinterIcon size="lg" />
+              <UMS5PrinterIcon size="lg" />
+              <UM3PrinterIcon size="lg" />
+              <UM3XPrinterIcon size="lg" />
+              <UMS5PrinterIcon size="lg" />
+              <UM3PrinterIcon size="lg" />
+              <UM3XPrinterIcon size="lg" />
+              <UMS5PrinterIcon size="lg" />
         </Carousel>
     </div>
 ));
