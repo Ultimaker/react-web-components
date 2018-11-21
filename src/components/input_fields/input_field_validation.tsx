@@ -1,8 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-
-export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
+import {Breakpoint, LayoutWidth} from '../../utils/layout_constants';
 
 export interface InputFieldValidationProps {
     /** Message to show for the validation error. Can be any[] if returned from I18n.format */

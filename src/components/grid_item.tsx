@@ -1,8 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-
-export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
+import {Breakpoint, LayoutWidth} from '../utils/layout_constants'
 
 export interface GridItemProps {
     /** Width of the grid item: '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill' */
