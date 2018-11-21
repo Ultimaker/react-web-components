@@ -6,12 +6,12 @@
 
     .popup__container {
         width: 100%;
-        overflow: auto;
     }
 
     .popup__content {
         display: flex;
         flex-direction: column;
+        overflow: auto;
         max-height: 90vh;
     }
 
