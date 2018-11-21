@@ -30,10 +30,11 @@ export const PopupBase: React.StatelessComponent<PopupBaseProps> = (
     <div className="popup">
         <Modal width={width}>
             <div className="popup__container">
-                {headerElement && <div className="popup__header-element">
-                    {headerElement}
-                </div>}
                 <div className="popup__content">
+                    {headerElement && <div className="popup__header-element">
+                        {headerElement}
+                    </div>}
+
                     {headerText && <div className="popup__header">
                         {headerText}
                     </div>}
