@@ -83,7 +83,7 @@ stories.add('Keep aspect ratio', withInfo(
     'A container to keep a given aspect ratio for an image or iframe'
 )(() =>
     <div>
-        <div style={{ width: text('Width', '40rem'), backgroundColor: '#DDD'}} >
+        <div style={{ width: '40rem', backgroundColor: '#DDD'}} >
             <KeepAspectRatio aspectRatio={(text('Aspect ratio', 16 / 9))} className='my-picture-frame' content={<iframe className='interesting-video' width="560" height="315" src="https://www.youtube.com/embed/160yAufQ-is" allowFullScreen></iframe>} >
             </KeepAspectRatio>
         </div>
