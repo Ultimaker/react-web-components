@@ -201,7 +201,7 @@ stories.add('Keep aspect ratio', withInfo(
 )(() =>
     <div>
         <div style={{ width: '40rem', backgroundColor: '#DDD'}} >
-            <KeepAspectRatio aspectRatio={(text('Aspect ratio', 16 / 9))} className='my-picture-frame' content={<iframe className='interesting-video' width="560" height="315" src="https://www.youtube.com/embed/160yAufQ-is" allowFullScreen></iframe>} >
+            <KeepAspectRatio aspectRatio={(text('Aspect ratio', 16 / 9))} className='my-picture-frame' content={<div className='my-picture-or-video' style={{backgroundColor: 'grey'}}></div>} >
             </KeepAspectRatio>
         </div>
     </div>
