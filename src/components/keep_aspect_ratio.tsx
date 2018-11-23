@@ -27,8 +27,10 @@ export const keepAspectRatio: React.StatelessComponent<keepAspectRatioProps> = (
     )
 
     return (
-        <div id={id} className={containerClasses} style={{ paddingBottom: bottomPadding }}>
-            {updatedContent}
+        <div id={id} className={containerClasses}>
+            <div className='keep-aspect-ratio__height-setter' style={{ paddingBottom: bottomPadding }}>
+                {updatedContent}
+            </div>
         </div>
     );
 };

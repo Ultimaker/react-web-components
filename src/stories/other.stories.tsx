@@ -82,7 +82,10 @@ stories.add('Circle Icon', withInfo(
 stories.add('Keep aspect ratio', withInfo(
     'A container to keep a given aspect ratio for an image or iframe'
 )(() =>
-    <KeepAspectRatio content={<img className='pretty-picture' src='https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' alt='A nice whatever'/>} >
-    <img className='pretty-picture' src='https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' alt='A nice whatever'/>
-    </KeepAspectRatio>
+    <div>
+        <div style={{ width: text('Width', '40rem'), backgroundColor: '#DDD'}} >
+            <KeepAspectRatio aspectRatio={(text('Aspect ratio', 16 / 9))} className='my-picture-frame' content={<iframe className='interesting-video' width="560" height="315" src="https://www.youtube.com/embed/160yAufQ-is" allowFullScreen></iframe>} >
+            </KeepAspectRatio>
+        </div>
+    </div>
 ));
