@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames = require('classnames');
 
-export interface keepAspectRatioProps {
+export interface aspectRatioContainerProps {
     /** the content to be sized appropriately  */
     content: JSX.Element;
     /** given as a fraction, for example 16/9 */
@@ -15,11 +15,11 @@ export interface keepAspectRatioProps {
 /**
  * returns a copy of the content with modified classes, wrapped in containers to manage it's size
  */
-export const keepAspectRatio: React.StatelessComponent<keepAspectRatioProps> = ({ aspectRatio, className, id, content }) => {
+export const aspectRatioContainer: React.StatelessComponent<aspectRatioContainerProps> = ({ aspectRatio, className, id, content }) => {
 
-    const containerClasses = classNames('keep-aspect-ratio', className);
+    const containerClasses = classNames('aspect-ratio-container', className);
     const bottomPadding = 1 / aspectRatio * 100 + '%';
-    const contentClasses = classNames('keep-aspect-ratio__content', content.props.className);
+    const contentClasses = classNames('aspect-ratio-container__content', content.props.className);
     const updatedContent = React.cloneElement(
         content,
         { className: contentClasses }
@@ -27,16 +27,16 @@ export const keepAspectRatio: React.StatelessComponent<keepAspectRatioProps> = (
 
     return (
         <div id={id} className={containerClasses}>
-            <div className='keep-aspect-ratio__height-setter' style={{ paddingBottom: bottomPadding }}>
+            <div className='aspect-ratio-container__height-setter' style={{ paddingBottom: bottomPadding }}>
                 {updatedContent}
             </div>
         </div>
     );
 };
 
-keepAspectRatio.defaultProps = {
+aspectRatioContainer.defaultProps = {
     aspectRatio: 16 / 9
 };
 
 
-export default keepAspectRatio;
+export default aspectRatioContainer;

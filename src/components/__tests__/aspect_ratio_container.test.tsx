@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import KeepAspectRatio from '../keep_aspect_ratio';
+import AspectRatioContainer from '../aspect_ratio_container';
 
 describe('The Image component', () => {
     let props;
@@ -16,7 +16,7 @@ describe('The Image component', () => {
             id: 'container-id',
             className: 'container-class'
         };
-        wrapper = shallow(<KeepAspectRatio {...props} />);
+        wrapper = shallow(<AspectRatioContainer {...props} />);
     });
 
     it('should render', () => {

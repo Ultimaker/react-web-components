@@ -2,11 +2,11 @@
 
 exports[`The Image component should render 1`] = `
 <div
-  className="keep-aspect-ratio container-class"
+  className="aspect-ratio-container container-class"
   id="container-id"
 >
   <div
-    className="keep-aspect-ratio__height-setter"
+    className="aspect-ratio-container__height-setter"
     style={
       Object {
         "paddingBottom": "75%",
@@ -15,7 +15,7 @@ exports[`The Image component should render 1`] = `
   >
     <img
       alt="a test image"
-      className="keep-aspect-ratio__content test-image"
+      className="aspect-ratio-container__content test-image"
       id="myPrettyPicture"
       src="http://ultimaker.com"
     />
