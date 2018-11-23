@@ -13,6 +13,7 @@ import SlideOutContainer from '../components/slide_out_container';
 import SlideInPanel from '../components/slide_in_panel';
 import SettingPanel from '../components/setting_panel';
 import Carousel from '../components/carousel';
+import KeepAspectRatio from '../components/keep_aspect_ratio';
 
 import UM3PrinterIcon from '../components/icons/um3_printer_icon';
 import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
@@ -194,3 +195,14 @@ stories.add('Setting Panel', withState({ value: null })
         )
     )
 );
+
+stories.add('Keep aspect ratio', withInfo(
+    'A container to keep a given aspect ratio for an image or iframe'
+)(() =>
+    <div>
+        <div style={{ width: '40rem', backgroundColor: '#DDD'}} >
+            <KeepAspectRatio aspectRatio={(text('Aspect ratio', 16 / 9))} className='my-picture-frame' content={<iframe className='interesting-video' width="560" height="315" src="https://www.youtube.com/embed/160yAufQ-is" allowFullScreen></iframe>} >
+            </KeepAspectRatio>
+        </div>
+    </div>
+));
