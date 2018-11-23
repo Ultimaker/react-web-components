@@ -10,6 +10,7 @@ import PanelArrow from '../components/panel_arrow';
 import Divider from '../components/divider';
 import Pill from '../components/pill';
 import CircleIcon from '../components/circle_icon';
+import KeepAspectRatio from '../components/keep_aspect_ratio';
 
 const stories = storiesOf('Other', module);
 
@@ -76,4 +77,12 @@ stories.add('Circle Icon', withInfo(
     <CircleIcon style={selectV2('Style', styleOptions, styleValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
         {text('Text', '1')}
     </CircleIcon>
+));
+
+stories.add('Keep aspect ratio', withInfo(
+    'A container to keep a given aspect ratio for an image or iframe'
+)(() =>
+    <KeepAspectRatio content={<img className='pretty-picture' src='https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' alt='A nice whatever'/>} >
+    <img className='pretty-picture' src='https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' alt='A nice whatever'/>
+    </KeepAspectRatio>
 ));
