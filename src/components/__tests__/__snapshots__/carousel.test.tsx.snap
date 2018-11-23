@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The carousel component should render 1`] = `
+<AliceCarousel
+  autoPlay={true}
+  autoPlayDirection="ltr"
+  autoPlayInterval={5000}
+  buttonsDisabled={true}
+  disableAutoPlayOnAction={false}
+  dotsDisabled={false}
+  duration={1000}
+  fadeOutAnimation={false}
+  infinite={true}
+  items={Array []}
+  keysControlDisabled={false}
+  mouseDragEnabled={true}
+  playButtonEnabled={false}
+  preventEventOnTouchMove={false}
+  responsive={
+    Object {
+      "0": Object {
+        "items": 1,
+      },
+      "1025": Object {
+        "items": 4,
+      },
+      "620": Object {
+        "items": 2,
+      },
+      "800": Object {
+        "items": 3,
+      },
+    }
+  }
+  showSlideInfo={false}
+  slideToIndex={0}
+  stagePadding={Object {}}
+  startIndex={0}
+  stopAutoPlayOnHover={true}
+  swipeDisabled={false}
+>
+  <Icon(UM3PrinterIcon)
+    key=".0"
+    onDragStart={[Function]}
+    size="lg"
+  />
+  <Icon(UM3XPrinterIcon)
+    key=".1"
+    onDragStart={[Function]}
+    size="lg"
+  />
+  <Icon(UMS5PrinterIcon)
+    key=".2"
+    onDragStart={[Function]}
+    size="lg"
+  />
+</AliceCarousel>
+`;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, selectV2, number } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from "@sambego/storybook-styles";
 import { withInfo } from '@storybook/addon-info';
@@ -12,6 +12,11 @@ import GridItem from '../components/grid_item';
 import SlideOutContainer from '../components/slide_out_container';
 import SlideInPanel from '../components/slide_in_panel';
 import SettingPanel from '../components/setting_panel';
+import Carousel from '../components/carousel';
+
+import UM3PrinterIcon from '../components/icons/um3_printer_icon';
+import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
+import UMS5PrinterIcon from '../components/icons/ums5_printer_icon';
 
 const stories = storiesOf('Layout', module);
 
@@ -84,38 +89,65 @@ stories.add('Grid', withInfo(
             <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
                 breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
-                <div style={{ background: 'grey', height: '100px' }}></div>
+                <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
 
             <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
                 breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
-                <div style={{ background: 'grey', height: '100px' }}></div>
+                <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
 
             <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
                 breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
-                <div style={{ background: 'grey', height: '100px' }}></div>
+                <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
             <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
                 breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
-                <div style={{ background: 'grey', height: '100px' }}></div>
+                <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
             <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
                 breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
-                <div style={{ background: 'grey', height: '100px' }}></div>
+                <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
             <GridItem layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
                 breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
-                <div style={{ background: 'grey', height: '100px' }}></div>
+                <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
         </ Grid>
     </div>
 ));
+
+stories.add('Carousel', withInfo(
+    'A carrousel component'
+)(() => {
+    const itemCounts = [
+        number("Items (xs)", 1),
+        number("Items (sm)", 2),
+        number("Items (md)", 3),
+        number("Items (lg)", 4)
+    ]
+    const icons = {
+        0: <UM3PrinterIcon size="lg"/>,
+        1: <UM3XPrinterIcon size="lg"/>,
+        2: <UMS5PrinterIcon size="lg"/>,
+    }
+    return <div style={{width: number("Width (rem)", 30).toString() + 'rem'}}>
+            <Carousel itemCounts={itemCounts}
+                      autoPlayInterval={number("Auto Play Interval", 5000)}
+                      transitionDuration={number("Transition Duration", 1000)}>
+                {Array.from(Array(10).keys()).map(i =>
+                    <div key={i} style={{margin: "0 auto", width: "4.8rem"}}>
+                        {icons[i % Object.keys(icons).length]}
+                    </div>
+                )}
+            </Carousel>
+        </div>
+}));
 
 stories.add('Slide out container', withInfo(
     'A toggle slide out container'

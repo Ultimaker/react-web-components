@@ -5,9 +5,7 @@ import classNames from 'classnames';
 import InputFieldLabel from './input_field_label';
 import InputFieldValidation from './input_field_validation';
 import RequiredIcon from '../icons/required_icon';
-
-export type LayoutWidth = '1/1' | '1/2' | '1/3' | '1/4' | '1/5' | 'fit' | 'fill';
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg';
+import {Breakpoint, LayoutWidth} from '../../utils/layout_constants'
 
 /**
  * The props in this interface are available in all the input fields.
