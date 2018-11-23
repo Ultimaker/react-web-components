@@ -13,8 +13,7 @@ export interface keepAspectRatioProps {
 }
 
 /**
- * returns only the first child with a modified className
- * @param param0 
+ * returns a copy of the content with modified classes, wrapped in containers to manage it's size
  */
 export const keepAspectRatio: React.StatelessComponent<keepAspectRatioProps> = ({ aspectRatio, className, id, content }) => {
 
