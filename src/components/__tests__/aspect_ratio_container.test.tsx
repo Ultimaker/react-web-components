@@ -11,12 +11,11 @@ describe('The Image component', () => {
 
     beforeEach(() => {
         props = {
-            content: <img id='myPrettyPicture' className='test-image' src='http://ultimaker.com' alt='a test image' />,
             aspectRatio: 4 / 3,
             id: 'container-id',
             className: 'container-class'
         };
-        wrapper = shallow(<AspectRatioContainer {...props} />);
+        wrapper = shallow(<AspectRatioContainer {...props} ><img id='myPrettyPicture' className='test-image' src='http://ultimaker.com' alt='a test image' /></AspectRatioContainer>);
     });
 
     it('should render', () => {
