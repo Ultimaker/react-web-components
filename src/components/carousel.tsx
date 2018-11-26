@@ -1,15 +1,13 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import _ = require('lodash')
 import AliceCarousel from 'react-alice-carousel';
-import {BreakpointSizes} from '../utils/layout_constants';
 
 /**
  * The props of this component.
  */
 export interface CarouselProps {
-    /** An array of the amount of items to show depending on each breakpoint [xs, sm, md, lg] **/
-    itemCounts: number[];
+    /** The amount of items to show from a minimum width, with the format {breakpointWidth: {items: item_count}} **/
+    responsive: {[breakpointWidth: number]: {items: number}};
 
     /** A list of items to be displayed **/
     children: any;
@@ -24,10 +22,7 @@ export interface CarouselProps {
 /**
  * A carousel component.
  */
-export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, itemCounts, autoPlayInterval, transitionDuration }) => {
-    // create an object with the format {breakpointWidth: {items: item_count}}.
-    const responsive = _.zipObject(BreakpointSizes.slice(0, itemCounts.length), itemCounts.map(items => ({items})));
-
+export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, responsive, autoPlayInterval, transitionDuration }) => {
     // each child will receive the given extra parameter
     const extraProps = {onDragStart: e => e.preventDefault()};
 
@@ -40,7 +35,9 @@ export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, it
             autoPlayInterval={autoPlayInterval}
             responsive={responsive}
         >
-            {React.Children.map(children, child => React.isValidElement(child) && React.cloneElement(child, extraProps))}
+            {React.Children.map(children, child =>
+                React.isValidElement(child) && React.cloneElement(child, extraProps))
+            }
         </AliceCarousel>
     );
 }

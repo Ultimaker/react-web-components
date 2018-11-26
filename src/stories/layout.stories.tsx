@@ -125,19 +125,19 @@ stories.add('Grid', withInfo(
 stories.add('Carousel', withInfo(
     'A carrousel component'
 )(() => {
-    const itemCounts = [
-        number("Items (xs)", 1),
-        number("Items (sm)", 2),
-        number("Items (md)", 3),
-        number("Items (lg)", 4)
-    ]
+    const responsive = {
+        0: {items: number("Items (xs)", 1)},
+        620: {items: number("Items (sm)", 2)},
+        800: {items: number("Items (md)", 3)},
+        1024: {items: number("Items (lg)", 4)},
+    };
     const icons = {
         0: <UM3PrinterIcon size="lg"/>,
         1: <UM3XPrinterIcon size="lg"/>,
         2: <UMS5PrinterIcon size="lg"/>,
     }
     return <div style={{width: number("Width (rem)", 30).toString() + 'rem'}}>
-            <Carousel itemCounts={itemCounts}
+            <Carousel responsive={responsive}
                       autoPlayInterval={number("Auto Play Interval", 5000)}
                       transitionDuration={number("Transition Duration", 1000)}>
                 {Array.from(Array(10).keys()).map(i =>
