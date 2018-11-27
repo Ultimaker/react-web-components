@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The carousel component should render 1`] = `
+exports[`The carousel component should render a carousel 1`] = `
 <AliceCarousel
   autoPlay={true}
   autoPlayDirection="ltr"
@@ -55,4 +55,41 @@ exports[`The carousel component should render 1`] = `
     size="lg"
   />
 </AliceCarousel>
+`;
+
+exports[`The carousel component should render a grid 1`] = `
+<Grid
+  align="center"
+  className="carousel__fixed"
+  gutter="md"
+  position="top"
+>
+  <GridItem
+    breakpoint="xs"
+    key=".0"
+    layoutWidth="fit"
+  >
+    <Icon(UM3PrinterIcon)
+      size="lg"
+    />
+  </GridItem>
+  <GridItem
+    breakpoint="xs"
+    key=".1"
+    layoutWidth="fit"
+  >
+    <Icon(UM3XPrinterIcon)
+      size="lg"
+    />
+  </GridItem>
+  <GridItem
+    breakpoint="xs"
+    key=".2"
+    layoutWidth="fit"
+  >
+    <Icon(UMS5PrinterIcon)
+      size="lg"
+    />
+  </GridItem>
+</Grid>
 `;

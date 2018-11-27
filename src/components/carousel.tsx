@@ -3,6 +3,8 @@ import * as React from 'react';
 import _ = require('lodash')
 import AliceCarousel from 'react-alice-carousel';
 import {BreakpointSizes} from '../utils/layout_constants';
+import Grid from './grid'
+import GridItem from './grid_item'
 
 /**
  * The props of this component.
@@ -28,7 +30,19 @@ export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, it
     // create an object with the format {breakpointWidth: {items: item_count}}.
     const responsive = _.zipObject(BreakpointSizes.slice(0, itemCounts.length), itemCounts.map(items => ({items})));
 
-    // each child will receive the given extra parameter
+    const maxBreakpoint = BreakpointSizes[BreakpointSizes.length - 1];
+    if (innerWidth > maxBreakpoint && responsive[maxBreakpoint]
+            && responsive[maxBreakpoint].items > React.Children.count(children)) {
+        return (
+            <Grid align="center" className="carousel__fixed">
+                {React.Children.map(children, child => React.isValidElement(child) &&
+                    <GridItem layoutWidth="fit">{child}</GridItem>)
+                }
+            </Grid>
+        );
+    }
+
+    // each child will receive these extra parameters
     const extraProps = {onDragStart: e => e.preventDefault()};
 
     return (
@@ -40,7 +54,9 @@ export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, it
             autoPlayInterval={autoPlayInterval}
             responsive={responsive}
         >
-            {React.Children.map(children, child => React.isValidElement(child) && React.cloneElement(child, extraProps))}
+            {React.Children.map(children, child =>
+                React.isValidElement(child) && React.cloneElement(child, extraProps))
+            }
         </AliceCarousel>
     );
 }
