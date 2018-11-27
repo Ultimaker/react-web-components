@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Image component should render 1`] = `
+<div
+  className="aspect-ratio-container container-class"
+  id="container-id"
+>
+  <div
+    className="aspect-ratio-container__height-setter"
+    style={
+      Object {
+        "paddingBottom": "75%",
+      }
+    }
+  >
+    <img
+      alt="a test image"
+      className="aspect-ratio-container__content test-image"
+      id="myPrettyPicture"
+      src="http://ultimaker.com"
+    />
+  </div>
+</div>
+`;

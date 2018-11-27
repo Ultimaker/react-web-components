@@ -5,8 +5,10 @@ import { Modal, ModalWidth } from './modal';
 import ProgressBar from './progress_bar';
 
 export interface PopupBaseProps {
+    /** Popup header element, above the header text */
+    headerElement?: JSX.Element;
     /** Popup header text */
-    headerText: string;
+    headerText?: string;
     /** The width of the popup: 'sm' | 'md' */
     width?: ModalWidth;
     /** The current step number of a multi-step popup */
@@ -23,15 +25,19 @@ export interface PopupBaseProps {
  * The popup base component is a simple modal with a title, content and optionally a progress bar.
  */
 export const PopupBase: React.StatelessComponent<PopupBaseProps> = (
-    { headerText, step, totalSteps, width, children, footer }
+    { headerElement, headerText, step, totalSteps, width, children, footer }
 ) =>
     <div className="popup">
         <Modal width={width}>
             <div className="popup__container">
                 <div className="popup__content">
-                    <div className="popup__header">
+                    {headerElement && <div className="popup__header-element">
+                        {headerElement}
+                    </div>}
+
+                    {headerText && <div className="popup__header">
                         {headerText}
-                    </div>
+                    </div>}
 
                     <div className="popup__body">
                         {children}

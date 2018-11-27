@@ -13,7 +13,6 @@ describe('The PopupBase component', () => {
 
     beforeEach(() => {
         props = {
-            headerText: 'PopupBase header',
         };
         wrapper = shallow(<PopupBase {...props} />);
     });
@@ -31,9 +30,19 @@ describe('The PopupBase component', () => {
         wrapper.setProps({ step: 1, totalSteps: 3 });
         expect(wrapper.find(ProgressBar)).toHaveLength(1);
     });
-    
+
     it('should render a footer', () => {
         wrapper.setProps({ footer: 'An error occurred!' });
         expect(wrapper.find('.popup__footer').prop('children')).toEqual('An error occurred!');
+    })
+
+    it('should render a header text', () => {
+        wrapper.setProps({ headerText: 'PopupBase header' });
+        expect(wrapper.find('.popup__header').prop('children')).toEqual('PopupBase header');
+    })
+
+    it('should render a header element', () => {
+        wrapper.setProps({ headerElement: 'A header element' });
+        expect(wrapper.find('.popup__header-element').prop('children')).toEqual('A header element');
     })
 });
