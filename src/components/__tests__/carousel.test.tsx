@@ -37,8 +37,7 @@ describe('The carousel component', () => {
     });
 
     it('should render a grid', () => {
-        global['innerWidth'] = 1026
-        props.itemCounts[3] = 40;
+        props.itemCounts = [1, 1, 30, 1];
         wrapper.setProps(props);
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.find(AliceCarousel)).toHaveLength(0)

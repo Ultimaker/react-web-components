@@ -10,7 +10,10 @@ import GridItem from './grid_item'
  * The props of this component.
  */
 export interface CarouselProps {
-    /** An array of the amount of items to show depending on each breakpoint [xs, sm, md, lg] **/
+    /**
+     * An array of the amount of items to show depending on each breakpoint [xs, sm, md, lg].
+     * If not enough children are given, a fixed grid will be displayed instead.
+     **/
     itemCounts: number[];
 
     /** A list of items to be displayed **/
@@ -30,9 +33,9 @@ export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, it
     // create an object with the format {breakpointWidth: {items: item_count}}.
     const responsive = _.zipObject(BreakpointSizes.slice(0, itemCounts.length), itemCounts.map(items => ({items})));
 
-    const maxBreakpoint = BreakpointSizes[BreakpointSizes.length - 1];
-    if (innerWidth > maxBreakpoint && responsive[maxBreakpoint]
-            && responsive[maxBreakpoint].items > React.Children.count(children)) {
+    const breakpoint = Math.max(...BreakpointSizes.filter(bp => bp <= innerWidth && responsive[bp]));
+    if (responsive[breakpoint].items > React.Children.count(children)) {
+        // we have too few items, let's output a grid instead.
         return (
             <Grid align="center" className="carousel__fixed">
                 {React.Children.map(children, child => React.isValidElement(child) &&
