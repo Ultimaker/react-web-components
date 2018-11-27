@@ -48,9 +48,9 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
     private _playerClasses() {
         const {loading,error,invalidUrl} = this.state;
         if (loading || error || invalidUrl) {
-            return 'video-player--player video-player--player__hidden'
+            return 'video-player__player video-player__player--hidden'
         } else {
-            return 'video-player--player'
+            return 'video-player__player'
         }
     }
 
