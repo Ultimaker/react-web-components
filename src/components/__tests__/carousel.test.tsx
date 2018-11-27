@@ -18,7 +18,7 @@ describe('The carousel component', () => {
 
     beforeEach(() => {
         props = {
-            itemCounts: [1, 2, 3, 4]
+            itemCounts: [1, 2, 2, 3]
         }
         wrapper = shallow(
             <Carousel {...props}>

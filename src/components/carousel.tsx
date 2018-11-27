@@ -33,22 +33,15 @@ export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, it
     // create an object with the format {breakpointWidth: {items: item_count}}.
     const responsive = _.zipObject(BreakpointSizes.slice(0, itemCounts.length), itemCounts.map(items => ({items})));
 
-    const breakpoint = Math.max(...BreakpointSizes.filter(bp => bp <= innerWidth && responsive[bp]));
-    if (responsive[breakpoint].items > React.Children.count(children)) {
-        // we have too few items, let's output a grid instead.
-        return (
-            <Grid align="center" className="carousel__fixed">
-                {React.Children.map(children, child => React.isValidElement(child) &&
-                    <GridItem layoutWidth="fit">{child}</GridItem>)
-                }
-            </Grid>
-        );
-    }
+    // renders a grid without any carousel features, in case we don't have enough items in the carousel.
+    const renderGrid = () =>
+        <Grid align="center" className="carousel__fixed">
+            {React.Children.map(children, child => React.isValidElement(child) &&
+                <GridItem layoutWidth="fit">{child}</GridItem>)
+            }
+        </Grid>;
 
-    // each child will receive these extra parameters
-    const extraProps = {onDragStart: e => e.preventDefault()};
-
-    return (
+    const renderCarousel = () =>
         <AliceCarousel
             mouseDragEnabled
             autoPlay={autoPlayInterval > 0}
@@ -58,10 +51,13 @@ export const Carousel: React.StatelessComponent<CarouselProps> = ({ children, it
             responsive={responsive}
         >
             {React.Children.map(children, child =>
-                React.isValidElement(child) && React.cloneElement(child, extraProps))
+                React.isValidElement(child) && React.cloneElement(child, {onDragStart: e => e.preventDefault()} as any))
             }
-        </AliceCarousel>
-    );
+        </AliceCarousel>;
+
+    // choose which
+    const breakpoint = Math.max(...BreakpointSizes.filter(bp => bp <= innerWidth && responsive[bp]));
+    return responsive[breakpoint].items >= React.Children.count(children) ? renderGrid() : renderCarousel();
 }
 
 Carousel.defaultProps = {
