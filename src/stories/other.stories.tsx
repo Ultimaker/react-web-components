@@ -10,7 +10,6 @@ import PanelArrow from '../components/panel_arrow';
 import Divider from '../components/divider';
 import Pill from '../components/pill';
 import CircleIcon from '../components/circle_icon';
-import VideoPlayer from '../components/video_player';
 
 const stories = storiesOf('Other', module);
 
@@ -77,10 +76,4 @@ stories.add('Circle Icon', withInfo(
     <CircleIcon style={selectV2('Style', styleOptions, styleValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
         {text('Text', '1')}
     </CircleIcon>
-));
-
-stories.add('Video player', withInfo(
-    'A Video player'
-)(() =>
-    <VideoPlayer width={text('width', '')} height={text('height', '')} url={text('url', 'https://www.youtube.com/watch?v=160yAufQ-is')}/>
 ));
