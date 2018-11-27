@@ -1,6 +1,9 @@
+/**
+ * This component is mainly to handle the player's error and loading state nicely, being able to display something custom in those cases.
+ * The react-player component knows much more than youtube and these props, but only these are needed for now. Refer to it's documentation before changing this component.
+ */
 import * as React from 'react';
-/** this component knows much more than youtube, but only that is needed for now */
-import YouTubePlayer from 'react-player/lib/players/YouTube'
+import YouTubePlayer from 'react-player/lib/players/YouTube';
 
 import Spinner from "./spinner";
 
