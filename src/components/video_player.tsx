@@ -19,7 +19,7 @@ export interface VideoPlayerProps {
 export interface VideoPlayerState {
     loading: boolean;
     error: boolean;
-    wrongUrl: boolean;
+    invalidUrl: boolean;
 }
 
 export default class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerState> {
@@ -31,7 +31,7 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
     state = {
         loading: true,
         error: false,
-        wrongUrl: false
+        invalidUrl: false
     }
 
     private _ready() {
@@ -46,8 +46,8 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
     }
 
     private _playerClasses() {
-        const {loading,error,wrongUrl} = this.state;
-        if (loading || error || wrongUrl) {
+        const {loading,error,invalidUrl} = this.state;
+        if (loading || error || invalidUrl) {
             return 'video-player--player video-player--player__hidden'
         } else {
             return 'video-player--player'
@@ -58,14 +58,14 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         if (!YouTubePlayer.canPlay(this.props.url)) {
             this.setState({
                 loading: false,
-                wrongUrl: true
+                invalidUrl: true
             });
         }
     }
 
     render() {
         const { url, width, height } = this.props;
-        const { loading, wrongUrl, error } = this.state;
+        const { loading, invalidUrl, error } = this.state;
 
         const playerProps = {
             className: this._playerClasses(),
@@ -82,7 +82,7 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
 
         return (
             <div style={containerStyle} className='video-player'>
-                {wrongUrl && <span className='video-player--wrongurl'>Can not play Url</span>}
+                {invalidUrl && <span className='video-player--invalidUrl'>Can not play Url</span>}
                 {error && <span className='video-player--error'>Video unavailable</span>}
                 {loading && <Spinner />}
                 <YouTubePlayer {...playerProps} />
