@@ -46,7 +46,7 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
     }
 
     private _playerClasses() {
-        const {loading,error,invalidUrl} = this.state;
+        const { loading, error, invalidUrl } = this.state;
         if (loading || error || invalidUrl) {
             return 'video-player__player video-player__player--hidden'
         } else {
@@ -67,14 +67,6 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         const { url, width, height } = this.props;
         const { loading, invalidUrl, error } = this.state;
 
-        const playerProps = {
-            className: this._playerClasses(),
-            onReady: () => this._ready(),
-            onError: (e) => this._error(e),
-            url: url,
-            width: width,
-            height: height,
-        };
         const containerStyle = {
             width: width,
             height: height,
@@ -85,7 +77,14 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
                 {invalidUrl && <span className='video-player--invalidUrl'>Can not play Url</span>}
                 {error && <span className='video-player--error'>Video unavailable</span>}
                 {loading && <Spinner />}
-                <YouTubePlayer {...playerProps} />
+                <YouTubePlayer
+                    className={this._playerClasses()}
+                    onReady={() => this._ready()}
+                    onError={(e) => this._error(e)}
+                    url={url}
+                    width={width}
+                    height={height}
+                />
             </div>
         );
     }
