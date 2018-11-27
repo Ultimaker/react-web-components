@@ -7,9 +7,9 @@ import Spinner from "./spinner";
 export interface VideoPlayerProps {
     /** url for the react-player component */
     url: string;
-    /** optional width to be given to the container and the video */
+    /** Optional width to be given to the container and the video. Will accept values that are valid in CSS */
     width?: string;
-    /** optional height to be given to the container and the video */
+    /** Optional height to be given to the container and the video. Will accept values that are valid in CSS */
     height?: string;
 }
 
@@ -35,22 +35,26 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         this.setState({ loading: false })
     }
 
-    private _error() {
-        this.setState({ error: true })
+    private _error(e) {
+        this.setState({
+            loading: false,
+            error: true
+        });
     }
 
     private _playerClasses() {
-        if (this.state.loading) {
+        const {loading,error,wrongUrl} = this.state;
+        if (loading || error || wrongUrl) {
             return 'video-player--player video-player--player__hidden'
         } else {
             return 'video-player--player'
         }
     }
 
-    componentDidMount(){
-        if (!YouTubePlayer.canPlay(this.props.url)){
+    componentDidMount() {
+        if (!YouTubePlayer.canPlay(this.props.url)) {
             this.setState({
-                loading:false,
+                loading: false,
                 wrongUrl: true
             });
         }
@@ -58,12 +62,12 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
 
     render() {
         const { url, width, height } = this.props;
-        const { loading, wrongUrl } = this.state;
+        const { loading, wrongUrl, error } = this.state;
 
         const playerProps = {
             className: this._playerClasses(),
             onReady: () => this._ready(),
-            onError: () => this._error(),
+            onError: (e) => this._error(e),
             url: url,
             width: width ? width : '',
             height: height ? height : '',
@@ -74,11 +78,10 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         }
 
         return (
-            <div style={containerStyle} className='video_player'>
-                {wrongUrl && 'Can not load Url'}
-
+            <div style={containerStyle} className='video-player'>
+                {wrongUrl && <span className='video-player--wrongurl'>Can not play Url</span>}
+                {error && <span className='video-player--error'>Video unavailable</span>}
                 {loading && <Spinner />}
-
                 <YouTubePlayer {...playerProps} />
             </div>
         );

@@ -82,5 +82,5 @@ stories.add('Circle Icon', withInfo(
 stories.add('Video player', withInfo(
     'A Video player'
 )(() =>
-    <VideoPlayer url='https://www.youtube.com/watch?v=160yAufQ-is'/>
+    <VideoPlayer width={text('width', '')} height={text('height', '')} url={text('url', 'https://www.youtube.com/watch?v=160yAufQ-is')}/>
 ));
