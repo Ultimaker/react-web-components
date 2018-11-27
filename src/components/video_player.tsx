@@ -72,12 +72,12 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
             onReady: () => this._ready(),
             onError: (e) => this._error(e),
             url: url,
-            width: width ? width : '',
-            height: height ? height : '',
+            width: width,
+            height: height,
         };
         const containerStyle = {
-            width: width ? width : '',
-            height: height ? height : '',
+            width: width,
+            height: height,
         }
 
         return (
