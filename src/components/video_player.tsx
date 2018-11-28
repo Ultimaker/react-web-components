@@ -23,22 +23,31 @@ export interface VideoPlayerState {
 }
 
 export default class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerState> {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loading: true,
+            error: false,
+            invalidUrl: !YouTubePlayer.canPlay(this.props.url)
+        }
+
+        // bind callbacks once
+        this._ready = this._ready.bind(this);
+        this._error = this._error.bind(this);
+    }
+
     static defaultProps = {
         width: '100%',
         height: '100%'
     };
 
-    state = {
-        loading: true,
-        error: false,
-        invalidUrl: false
-    }
 
     private _ready() {
         this.setState({ loading: false })
     }
 
-    private _error(e) {
+    private _error() {
         this.setState({
             loading: false,
             error: true
@@ -54,15 +63,6 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         }
     }
 
-    componentDidMount() {
-        if (!YouTubePlayer.canPlay(this.props.url)) {
-            this.setState({
-                loading: false,
-                invalidUrl: true
-            });
-        }
-    }
-
     render() {
         const { url, width, height } = this.props;
         const { loading, invalidUrl, error } = this.state;
@@ -74,17 +74,21 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
 
         return (
             <div style={containerStyle} className='video-player'>
+                {/* The Url is invalid */}
                 {invalidUrl && <span className='video-player--invalidUrl'>Can not play Url</span>}
-                {error && <span className='video-player--error'>Video unavailable</span>}
-                {loading && <Spinner />}
-                <YouTubePlayer
+                {/* The Url is valid, but there is an issue with the playback, eg. no internet connection */}
+                {!invalidUrl && error && <span className='video-player--error'>Video unavailable</span>}
+                {/* The Url is valid, and the video is being loaded */}
+                {!invalidUrl && loading && <Spinner />}
+                {/* Url is valid, the video will appear when it's ready to be played */}
+                {!invalidUrl && <YouTubePlayer
                     className={this._playerClasses()}
-                    onReady={() => this._ready()}
-                    onError={(e) => this._error(e)}
+                    onReady={this._ready}
+                    onError={this._error}
                     url={url}
                     width={width}
                     height={height}
-                />
+                />}
             </div>
         );
     }
