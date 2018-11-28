@@ -11,14 +11,12 @@ export interface PageProps {
 
 const Page: React.StatelessComponent<PageProps> =
     ({ title, maxWidth, id, className, children }): JSX.Element =>
-        <div id={id} className={classNames("page", className)} style={{ maxWidth: maxWidth }}>
-            {title && <PageTitle title={title} />}
-            {children}
+        <div id={id} className={classNames("page", className)}>
+            <div className="page__content" style={{ maxWidth: maxWidth }}>
+                {title && <PageTitle title={title} />}
+                {children}
+            </div>
         </div>;
-
-Page.defaultProps = {
-    maxWidth: "100%"
-};
 
 Page.displayName = "Page";
 
