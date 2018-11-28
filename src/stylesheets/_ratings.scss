@@ -1,23 +1,9 @@
 .ratings {
-    display: inline-block;
-    position: relative;
-
-
     .ratings__foreground, .ratings__background {
         white-space: nowrap;
         overflow: hidden;
         svg {
             padding: 0.1rem;
         }
-    }
-
-    .ratings__foreground {
-        position: absolute;
-        top: 0;
-    }
-
-    .icon {
-        display: inline-block;
-        margin: 0 0.3rem;
     }
 }
