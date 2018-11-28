@@ -1,95 +1,206 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The carousel component should render a carousel 1`] = `
-<AliceCarousel
-  autoPlay={true}
-  autoPlayDirection="ltr"
-  autoPlayInterval={5000}
-  buttonsDisabled={true}
-  disableAutoPlayOnAction={false}
-  dotsDisabled={false}
-  duration={1000}
-  fadeOutAnimation={false}
-  infinite={true}
-  items={Array []}
-  keysControlDisabled={false}
-  mouseDragEnabled={true}
-  playButtonEnabled={false}
-  preventEventOnTouchMove={false}
-  responsive={
-    Object {
-      "0": Object {
-        "items": 1,
-      },
-      "1025": Object {
-        "items": 3,
-      },
-      "620": Object {
-        "items": 2,
-      },
-      "800": Object {
-        "items": 2,
-      },
-    }
-  }
-  showSlideInfo={false}
-  slideToIndex={0}
-  stagePadding={Object {}}
-  startIndex={0}
-  stopAutoPlayOnHover={true}
-  swipeDisabled={false}
+<div
+  className="carousel"
 >
-  <Icon(UM3PrinterIcon)
-    key=".0"
-    onDragStart={[Function]}
-    size="lg"
-  />
-  <Icon(UM3XPrinterIcon)
-    key=".1"
-    onDragStart={[Function]}
-    size="lg"
-  />
-  <Icon(UMS5PrinterIcon)
-    key=".2"
-    onDragStart={[Function]}
-    size="lg"
-  />
-</AliceCarousel>
+  <div
+    className="carousel__carousel"
+  >
+    <AliceCarousel
+      autoPlay={true}
+      autoPlayDirection="ltr"
+      autoPlayInterval={5000}
+      buttonsDisabled={true}
+      disableAutoPlayOnAction={false}
+      dotsDisabled={false}
+      duration={1000}
+      fadeOutAnimation={false}
+      infinite={true}
+      items={Array []}
+      keysControlDisabled={false}
+      mouseDragEnabled={true}
+      playButtonEnabled={false}
+      preventEventOnTouchMove={false}
+      responsive={
+        Object {
+          "0": Object {
+            "items": 1,
+          },
+          "1025": Object {
+            "items": 2,
+          },
+          "620": Object {
+            "items": 2,
+          },
+          "800": Object {
+            "items": 2,
+          },
+        }
+      }
+      showSlideInfo={false}
+      slideToIndex={0}
+      stagePadding={Object {}}
+      startIndex={0}
+      stopAutoPlayOnHover={true}
+      swipeDisabled={false}
+    >
+      <Icon(UM3PrinterIcon)
+        key=".0"
+        onDragStart={[Function]}
+        size="lg"
+      />
+      <Icon(UM3XPrinterIcon)
+        key=".1"
+        onDragStart={[Function]}
+        size="lg"
+      />
+      <Icon(UMS5PrinterIcon)
+        key=".2"
+        onDragStart={[Function]}
+        size="lg"
+      />
+    </AliceCarousel>
+  </div>
+</div>
 `;
 
 exports[`The carousel component should render a grid 1`] = `
-<Grid
-  align="center"
-  className="carousel__fixed"
-  gutter="md"
-  position="top"
+<div
+  className="carousel"
 >
-  <GridItem
-    breakpoint="xs"
-    key=".0"
-    layoutWidth="fit"
+  <Grid
+    align="center"
+    className="carousel__fixed hide-xs"
+    gutter="md"
+    position="top"
   >
-    <Icon(UM3PrinterIcon)
-      size="lg"
-    />
-  </GridItem>
-  <GridItem
-    breakpoint="xs"
-    key=".1"
-    layoutWidth="fit"
+    <GridItem
+      breakpoint="xs"
+      key=".0"
+      layoutWidth="fit"
+    >
+      <Icon(UM3PrinterIcon)
+        size="lg"
+      />
+    </GridItem>
+    <GridItem
+      breakpoint="xs"
+      key=".1"
+      layoutWidth="fit"
+    >
+      <Icon(UM3XPrinterIcon)
+        size="lg"
+      />
+    </GridItem>
+    <GridItem
+      breakpoint="xs"
+      key=".2"
+      layoutWidth="fit"
+    >
+      <Icon(UMS5PrinterIcon)
+        size="lg"
+      />
+    </GridItem>
+  </Grid>
+</div>
+`;
+
+exports[`The carousel component should render a grid and a carousel 1`] = `
+<div
+  className="carousel"
+>
+  <Grid
+    align="center"
+    className="carousel__fixed hide-md"
+    gutter="md"
+    position="top"
   >
-    <Icon(UM3XPrinterIcon)
-      size="lg"
-    />
-  </GridItem>
-  <GridItem
-    breakpoint="xs"
-    key=".2"
-    layoutWidth="fit"
+    <GridItem
+      breakpoint="xs"
+      key=".0"
+      layoutWidth="fit"
+    >
+      <Icon(UM3PrinterIcon)
+        size="lg"
+      />
+    </GridItem>
+    <GridItem
+      breakpoint="xs"
+      key=".1"
+      layoutWidth="fit"
+    >
+      <Icon(UM3XPrinterIcon)
+        size="lg"
+      />
+    </GridItem>
+    <GridItem
+      breakpoint="xs"
+      key=".2"
+      layoutWidth="fit"
+    >
+      <Icon(UMS5PrinterIcon)
+        size="lg"
+      />
+    </GridItem>
+  </Grid>
+  <div
+    className="carousel__carousel show-md"
   >
-    <Icon(UMS5PrinterIcon)
-      size="lg"
-    />
-  </GridItem>
-</Grid>
+    <AliceCarousel
+      autoPlay={true}
+      autoPlayDirection="ltr"
+      autoPlayInterval={5000}
+      buttonsDisabled={true}
+      disableAutoPlayOnAction={false}
+      dotsDisabled={false}
+      duration={1000}
+      fadeOutAnimation={false}
+      infinite={true}
+      items={Array []}
+      keysControlDisabled={false}
+      mouseDragEnabled={true}
+      playButtonEnabled={false}
+      preventEventOnTouchMove={false}
+      responsive={
+        Object {
+          "0": Object {
+            "items": 1,
+          },
+          "1025": Object {
+            "items": 4,
+          },
+          "620": Object {
+            "items": 2,
+          },
+          "800": Object {
+            "items": 3,
+          },
+        }
+      }
+      showSlideInfo={false}
+      slideToIndex={0}
+      stagePadding={Object {}}
+      startIndex={0}
+      stopAutoPlayOnHover={true}
+      swipeDisabled={false}
+    >
+      <Icon(UM3PrinterIcon)
+        key=".0"
+        onDragStart={[Function]}
+        size="lg"
+      />
+      <Icon(UM3XPrinterIcon)
+        key=".1"
+        onDragStart={[Function]}
+        size="lg"
+      />
+      <Icon(UMS5PrinterIcon)
+        key=".2"
+        onDragStart={[Function]}
+        size="lg"
+      />
+    </AliceCarousel>
+  </div>
+</div>
 `;

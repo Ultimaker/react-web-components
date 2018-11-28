@@ -17,9 +17,7 @@ describe('The carousel component', () => {
     let wrapper;
 
     beforeEach(() => {
-        props = {
-            itemCounts: [1, 2, 2, 3]
-        }
+        props = {itemCounts: [1, 2, 3]};
         wrapper = shallow(
             <Carousel {...props}>
                 <UM3PrinterIcon size="lg" />
@@ -30,6 +28,8 @@ describe('The carousel component', () => {
     });
 
     it('should render a carousel', () => {
+        props.itemCounts = [1, 2];
+        wrapper.setProps(props);
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.find(AliceCarousel)).toHaveLength(1)
         expect(wrapper.find(AliceCarousel).prop('children')).toHaveLength(3)
@@ -37,10 +37,17 @@ describe('The carousel component', () => {
     });
 
     it('should render a grid', () => {
-        props.itemCounts = [1, 1, 30, 1];
+        props.itemCounts = [3, 3, 4, 4];
         wrapper.setProps(props);
         expect(wrapper).toMatchSnapshot();
         expect(wrapper.find(AliceCarousel)).toHaveLength(0)
+        expect(wrapper.find(Grid)).toHaveLength(1)
+        expect(wrapper.find(GridItem)).toHaveLength(3)
+    });
+
+    it('should render a grid and a carousel', () => {
+        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.find(AliceCarousel)).toHaveLength(1)
         expect(wrapper.find(Grid)).toHaveLength(1)
         expect(wrapper.find(GridItem)).toHaveLength(3)
     });
