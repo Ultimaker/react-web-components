@@ -54,22 +54,34 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
     render() {
         const { url, width, height } = this.props;
         const { loading, error } = this.state;
-
         const containerStyle = {
             width: width,
             height: height,
         }
-        const invalidUrl= !YouTubePlayer.canPlay(this.props.url);
+        const invalidUrl = !YouTubePlayer.canPlay(this.props.url);
         const playerClasses = loading || error || invalidUrl ? 'video-player__player video-player__player--hidden' : 'video-player__player'
-    
+
+        function _displaySpinner() {
+            if (!invalidUrl && loading) {
+                return <Spinner />
+            }
+        }
+        function _displayPlaybackError() {
+            if (!invalidUrl && error) {
+                return <span className='video-player--error'>Video unavailable</span>
+            }
+        }
+        function _displayUrlError() {
+            if (invalidUrl) {
+                return <span className='video-player--invalidUrl'>Can not play Url</span>
+            }
+        }
+
         return (
             <div style={containerStyle} className='video-player'>
-                {/* The Url is invalid */}
-                {invalidUrl && <span className='video-player--invalidUrl'>Can not play Url</span>}
-                {/* The Url is valid, but there is an issue with the playback, eg. no internet connection */}
-                {!invalidUrl && error && <span className='video-player--error'>Video unavailable</span>}
-                {/* The Url is valid, and the video is being loaded */}
-                {!invalidUrl && loading && <Spinner />}
+                {_displayUrlError()}
+                {_displayPlaybackError()}
+                {_displaySpinner()}
                 <YouTubePlayer
                     className={playerClasses}
                     onReady={this._ready}
