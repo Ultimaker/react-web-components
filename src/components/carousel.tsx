@@ -63,12 +63,12 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
 
     /**
      * Calculates at which breakpoint we have too few items to fit the screen.
-     * @param childrenCount - The amount of items being rendered in the carousel.
      * @return The name of the breakpoint.
      * @private
      */
-    private _getBreakpoint(childrenCount: number): Breakpoint | null {
-        const { itemCounts } = this.props;
+    private _getBreakpoint(): Breakpoint | null {
+        const { itemCounts, children } = this.props;
+        const childrenCount = React.Children.count(children);
         const breakpointIndex = itemCounts.findIndex(count => childrenCount <= count);
         if (breakpointIndex >= 0) {
             return BreakpointNames[breakpointIndex];
@@ -80,16 +80,15 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
      * In that case we will render a fixed Grid too, which will be displayed depending on the window width breakpoints.
      */
     render() {
-        const { children } = this.props;
-        const childrenCount = React.Children.count(children);
         const responsive = this._getResponsiveConfiguration();
-        const breakpoint = this._getBreakpoint(childrenCount);
-
+        const breakpoint = this._getBreakpoint();
         // We render both a grid and a carousel. Via CSS we decide which one to show with which breakpoint.
-        return <div className="carousel">
-            {this._renderGrid(responsive, breakpoint)}
-            {this._renderCarousel(responsive, breakpoint)}
-        </div>;
+        return (
+            <div className="carousel">
+                {this._renderGrid(responsive, breakpoint)}
+                {this._renderCarousel(responsive, breakpoint)}
+            </div>
+        );
     }
 
     /**
