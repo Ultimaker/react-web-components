@@ -5,38 +5,58 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
   className="ratings"
 >
   <div
-    className="ratings__background"
+    className="ratings__background layout layout--align-middle layout--gutter-xs"
   >
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="0"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="1"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="2"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="3"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="4"
-      size="sm"
-    />
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="0"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="1"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="2"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="3"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="4"
+        size="sm"
+      />
+    </div>
   </div>
   <div
     className="ratings__foreground"
@@ -46,36 +66,56 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
       }
     }
   >
-    <Icon(HighlightIcon)
-      borderColor="orange"
-      color="orange"
-      key="0"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="orange"
-      color="orange"
-      key="1"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="orange"
-      color="orange"
-      key="2"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="orange"
-      color="orange"
-      key="3"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="orange"
-      color="orange"
-      key="4"
-      size="sm"
-    />
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="orange"
+        color="orange"
+        key="0"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="orange"
+        color="orange"
+        key="1"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="orange"
+        color="orange"
+        key="2"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="orange"
+        color="orange"
+        key="3"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="orange"
+        color="orange"
+        key="4"
+        size="sm"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -85,68 +125,108 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
   className="ratings"
 >
   <div
-    className="ratings__background"
+    className="ratings__background layout layout--align-middle layout--gutter-xs"
   >
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="0"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="1"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="2"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="3"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="4"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="5"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="6"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="7"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="8"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="grey"
-      color="grey"
-      key="9"
-      size="sm"
-    />
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="0"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="1"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="2"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="3"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="4"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="5"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="6"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="7"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="8"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="grey"
+        color="grey"
+        key="9"
+        size="sm"
+      />
+    </div>
   </div>
   <div
     className="ratings__foreground"
@@ -156,66 +236,106 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       }
     }
   >
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="0"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="1"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="2"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="3"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="4"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="5"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="6"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="7"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="8"
-      size="sm"
-    />
-    <Icon(ApprovedIcon)
-      borderColor="orange"
-      color="orange"
-      key="9"
-      size="sm"
-    />
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="0"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="1"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="2"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="3"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="4"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="5"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="6"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="7"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="8"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(ApprovedIcon)
+        borderColor="orange"
+        color="orange"
+        key="9"
+        size="sm"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -225,38 +345,58 @@ exports[`The Ratings component should render only background if the rating is nu
   className="ratings"
 >
   <div
-    className="ratings__background"
+    className="ratings__background layout layout--align-middle layout--gutter-xs"
   >
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="0"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="1"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="2"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="3"
-      size="sm"
-    />
-    <Icon(HighlightIcon)
-      borderColor="grey"
-      color="grey"
-      key="4"
-      size="sm"
-    />
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="0"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="1"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="2"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="3"
+        size="sm"
+      />
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <Icon(HighlightIcon)
+        borderColor="grey"
+        color="grey"
+        key="4"
+        size="sm"
+      />
+    </div>
   </div>
 </div>
 `;

@@ -3,10 +3,14 @@
 exports[`The Page component should render 1`] = `
 <div
   className="page"
-  style={
-    Object {
-      "maxWidth": "100%",
+>
+  <div
+    className="page__content"
+    style={
+      Object {
+        "maxWidth": undefined,
+      }
     }
-  }
-/>
+  />
+</div>
 `;
