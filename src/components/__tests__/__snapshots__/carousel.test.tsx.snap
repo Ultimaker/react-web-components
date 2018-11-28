@@ -168,7 +168,7 @@ exports[`The carousel component should render a grid and a carousel 1`] = `
             "items": 1,
           },
           "1025": Object {
-            "items": 4,
+            "items": 3,
           },
           "620": Object {
             "items": 2,
