@@ -55,6 +55,25 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         });
     }
 
+    private _displaySpinner(invalidUrl) {
+        if (!invalidUrl && this.state.loading) {
+            return <Spinner />
+        }
+    }
+
+    private _displayPlaybackError(invalidUrl) {
+        if (!invalidUrl && this.state.error) {
+            return <span className='video-player--error'>{I18n.translate('Video player - Video unavailable', 'Video unavailable')}</span>
+        }
+    }
+
+    private _displayUrlError(invalidUrl) {
+        if (invalidUrl) {
+            return <span className='video-player--invalidUrl'>{I18n.translate('Video player - Video unavailable', 'Can not play Url')}</span>
+        }
+    }
+
+
     render() {
         const { url, width, height } = this.props;
         const { loading, error } = this.state;
@@ -63,29 +82,13 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
             height: height,
         }
         const invalidUrl = !YouTubePlayer.canPlay(this.props.url);
-        const playerClasses = loading || error || invalidUrl ? 'video-player__player video-player__player--hidden' : 'video-player__player'
-
-        function _displaySpinner() {
-            if (!invalidUrl && loading) {
-                return <Spinner />
-            }
-        }
-        function _displayPlaybackError() {
-            if (!invalidUrl && error) {
-                return <span className='video-player--error'>{I18n.translate('Video player - Video unavailable', 'Video unavailable')}</span>
-            }
-        }
-        function _displayUrlError() {
-            if (invalidUrl) {
-                return <span className='video-player--invalidUrl'>{I18n.translate('Video player - Video unavailable', 'Can not play Url')}</span>
-            }
-        }
+        const playerClasses = loading || error || invalidUrl ? 'video-player__player video-player__player--hidden' : 'video-player__player';
 
         return (
             <div style={containerStyle} className='video-player'>
-                {_displayUrlError()}
-                {_displayPlaybackError()}
-                {_displaySpinner()}
+                {this._displayUrlError(invalidUrl)}
+                {this._displayPlaybackError(invalidUrl)}
+                {this._displaySpinner(invalidUrl)}
                 <YouTubePlayer
                     className={playerClasses}
                     onReady={this._ready}
