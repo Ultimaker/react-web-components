@@ -141,7 +141,7 @@ stories.add('Carousel', withInfo(
         <Carousel itemCounts={itemCounts}
             autoPlayInterval={number("Auto Play Interval", 5000)}
             transitionDuration={number("Transition Duration", 1000)}>
-            {Array.from(Array(10).keys()).map(i =>
+            {Array.from(Array(number("Amount of items", 10)).keys()).map(i =>
                 <div key={i} style={{ margin: "0 auto", width: "4.8rem" }}>
                     {icons[i % Object.keys(icons).length]}
                 </div>
