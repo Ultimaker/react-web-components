@@ -338,3 +338,4 @@
 }
 
 @include layout-hiding-rules($layout-breakpoints);
+@include layout-hiding-rules((xs: 0));
