@@ -5,6 +5,10 @@
 import * as React from 'react';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
 
+// utils
+import { I18n } from '../utils/i18n'
+
+// component
 import Spinner from "./spinner";
 
 export interface VideoPlayerProps {
@@ -68,12 +72,12 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         }
         function _displayPlaybackError() {
             if (!invalidUrl && error) {
-                return <span className='video-player--error'>Video unavailable</span>
+                return <span className='video-player--error'>{I18n.translate('Video player - Video unavailable', 'Video unavailable')}</span>
             }
         }
         function _displayUrlError() {
             if (invalidUrl) {
-                return <span className='video-player--invalidUrl'>Can not play Url</span>
+                return <span className='video-player--invalidUrl'>{I18n.translate('Video player - Video unavailable', 'Can not play Url')}</span>
             }
         }
 
