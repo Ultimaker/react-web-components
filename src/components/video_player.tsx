@@ -63,13 +63,13 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
 
     private _displayPlaybackError(invalidUrl) {
         if (!invalidUrl && this.state.error) {
-            return <span className='video-player--error'>{I18n.translate('Video player - Video unavailable', 'Video unavailable')}</span>
+            return <span className='video-player__error'>{I18n.translate('Video player - Video unavailable', 'Video unavailable')}</span>
         }
     }
 
     private _displayUrlError(invalidUrl) {
         if (invalidUrl) {
-            return <span className='video-player--invalidUrl'>{I18n.translate('Video player - Video unavailable', 'Can not play Url')}</span>
+            return <span className='video-player__invalidUrl'>{I18n.translate('Video player - Video unavailable', 'Can not play Url')}</span>
         }
     }
 
