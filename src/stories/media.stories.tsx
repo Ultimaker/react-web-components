@@ -19,5 +19,5 @@ stories.addDecorator(withKnobs)
 stories.add('Video player', withInfo(
     'A Video player'
 )(() =>
-    <VideoPlayer width={text('width', '')} height={text('height', '')} url={text('url', 'https://www.youtube.com/watch?v=160yAufQ-is')} />
+    <VideoPlayer width={text('Width', '')} height={text('Height', '')} url={text('url', 'https://www.youtube.com/watch?v=160yAufQ-is')} />
 ));
