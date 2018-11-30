@@ -81,7 +81,6 @@
         "react-docgen-typescript-loader": "^2.1.1",
         "react-docgen-typescript-webpack-plugin": "^1.1.0",
         "react-test-renderer": "^16.4.1",
-        "react-web-components": "https://github.com/Ultimaker/react-web-components.git#v1.0.4",
         "sass-loader": "^7.0.3",
         "storybook-addon-jsx": "^5.3.0",
         "ts-jest": "^23.0.1",
