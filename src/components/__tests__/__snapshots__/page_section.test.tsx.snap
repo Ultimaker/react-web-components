@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Page component should render 1`] = `
+<Page
+  className="page-class"
+  id="page-id"
+  maxWidth="100rem"
+/>
+`;
