@@ -33,8 +33,8 @@ export const Ratings: React.StatelessComponent<RatingsProps> = (
         <div className="ratings">
             <div className="ratings__background layout layout--align-middle layout--gutter-xs">
                 {_.times(max, i =>
-                    <div className="layout__item u-fit">
-                        <Icon key={i} color={backgroundColor}
+                    <div className="layout__item u-fit" key={i}>
+                        <Icon color={backgroundColor}
                             borderColor={backgroundBorder || backgroundColor}
                             size={size} />
                     </div>
@@ -43,8 +43,8 @@ export const Ratings: React.StatelessComponent<RatingsProps> = (
             {rating > 0 &&
                 <div className="ratings__foreground" style={{ width: (100 * rating / max) + "%" }}>
                     {_.times(max, i =>
-                        <div className="layout__item u-fit">
-                            <Icon key={i} color={foregroundColor}
+                        <div className="layout__item u-fit" key={i}>
+                            <Icon color={foregroundColor}
                                 borderColor={foregroundBorder || foregroundColor}
                                 size={size} />
                         </div>
