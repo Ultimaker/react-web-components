@@ -1,5 +1,4 @@
 import * as React from 'react';
-import classNames = require('classnames');
 
 // components
 import Page from './page';
