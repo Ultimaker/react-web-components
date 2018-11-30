@@ -100,7 +100,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     private _renderGrid(responsive: ResponsiveConfiguration, breakpoint: Breakpoint | null): JSX.Element | null {
         const { children } = this.props;
         if (!breakpoint) {
-            // we have enough carousel items to show the carousel at all screen width, so we don't need to render a grid.
+            // we have enough carousel items to show the carousel at all screen widths, so we don't need to render a grid.
             return null;
         }
         return (
