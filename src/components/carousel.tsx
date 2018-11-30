@@ -62,7 +62,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     }
 
     /**
-     * Calculates at which breakpoint we have too few items to fit the screen.
+     * Calculates at which breakpoint we have too few items to display the carousel.
      * @return The name of the breakpoint.
      * @private
      */
@@ -92,7 +92,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     }
 
     /**
-     * Renders a fixed grid, to be displayed in a given screen width when we don't have enough items to display a carousel.
+     * Renders a fixed grid, to be displayed in a given screen width when we don't have enough items to display the carousel.
      * @param responsive - The responsive configuration for alice carousel, as returned by _getResponsiveConfiguration.
      * @param breakpoint - The window width breakpoint after the grid should be displayed.
      * @private
