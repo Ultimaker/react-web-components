@@ -96,6 +96,15 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
                     url={url}
                     width={width}
                     height={height}
+                    config={{
+                        youtube: {
+                            playerVars: {
+                                modestbranding: 1,
+                                controls: 1,
+                                rel: 0
+                            }
+                        }
+                    }}
                 />
             </div>
         );
