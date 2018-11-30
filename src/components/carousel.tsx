@@ -76,13 +76,13 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     }
 
     /**
-     * Renders the carousel. Depending on how large the screen is, we may have too few items for the carousel.
-     * In that case we will render a fixed Grid too, which will be displayed depending on the window width breakpoints.
+     * Render both a grid and a carousel. Via CSS we decide which one to show at which breakpoint 
+     * based on the number of items we have to show.
      */
     render() {
         const responsive = this._getResponsiveConfiguration();
         const breakpoint = this._getBreakpoint();
-        // We render both a grid and a carousel. Via CSS we decide which one to show with which breakpoint.
+
         return (
             <div className="carousel">
                 {this._renderGrid(responsive, breakpoint)}
@@ -92,7 +92,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     }
 
     /**
-     * Renders a fixed grid, to be displayed in a given screen width when we don't have enough items to display.
+     * Renders a fixed grid, to be displayed in a given screen width when we don't have enough items to display a carousel.
      * @param responsive - The responsive configuration for alice carousel, as returned by _getResponsiveConfiguration.
      * @param breakpoint - The window width breakpoint after the grid should be displayed.
      * @private
@@ -100,7 +100,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     private _renderGrid(responsive: ResponsiveConfiguration, breakpoint: Breakpoint | null): JSX.Element | null {
         const { children } = this.props;
         if (!breakpoint) {
-            // we have enough carousel items even in the largest screen, so let's not render the grid at all.
+            // we have enough carousel items to show the carousel at all screen width, so we don't need to render a grid.
             return null;
         }
         return (
@@ -113,7 +113,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     }
 
     /**
-     * Renders a carousel, to be displayed whenever we have enough items to display.
+     * Renders a carousel, to be displayed whenever we have enough items to display it.
      * @param responsive - The responsive configuration for alice carousel, as returned by _getResponsiveConfiguration.
      * @param breakpoint - The window width breakpoint before the carousel should be hidden. If null, the carousel will
      * always be shown.
@@ -122,7 +122,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     private _renderCarousel(responsive: ResponsiveConfiguration, breakpoint: Breakpoint | null): JSX.Element | null {
         const { autoPlayInterval, transitionDuration, children } = this.props;
         if (breakpoint === "xs") {
-            // we don't have enough carousel items even in the smallest screen, so let's not render it at all.
+            // we don't have enough carousel items at any screen width, so we don't need to render it at all.
             return null;
         }
         const extraProps = {onDragStart: e => e.preventDefault()};
