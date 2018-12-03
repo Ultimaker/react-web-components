@@ -11,76 +11,20 @@ exports[`The video player component should display a message in case the player 
   }
 >
   <span
-    className="video-player--wrongurl"
+    className="video-player__invalidUrl"
   >
     Can not play Url
   </span>
-  <Spinner />
   <YouTubePlayer
-    className="video-player--player video-player--player__hidden"
+    className="video-player__player video-player__player--hidden"
     config={
       Object {
-        "dailymotion": Object {
-          "params": Object {
-            "api": 1,
-            "endscreen-enable": false,
-          },
-          "preload": false,
-        },
-        "facebook": Object {
-          "appId": "1309697205772819",
-        },
-        "file": Object {
-          "attributes": Object {},
-          "dashVersion": "2.9.2",
-          "forceAudio": false,
-          "forceDASH": false,
-          "forceHLS": false,
-          "forceVideo": false,
-          "hlsOptions": Object {},
-          "hlsVersion": "0.10.1",
-          "tracks": Array [],
-        },
-        "mixcloud": Object {
-          "options": Object {
-            "hide_cover": 1,
-          },
-        },
-        "soundcloud": Object {
-          "options": Object {
-            "buying": false,
-            "download": false,
-            "liking": false,
-            "sharing": false,
-            "show_comments": false,
-            "show_playcount": false,
-            "visual": true,
-          },
-        },
-        "twitch": Object {
-          "options": Object {},
-        },
-        "vimeo": Object {
-          "playerOptions": Object {
-            "autopause": false,
-            "byline": false,
-            "portrait": false,
-            "title": false,
-          },
-          "preload": false,
-        },
-        "wistia": Object {
-          "options": Object {},
-        },
         "youtube": Object {
           "playerVars": Object {
-            "iv_load_policy": 3,
+            "controls": 1,
             "modestbranding": 1,
-            "playsinline": 1,
             "rel": 0,
-            "showinfo": 0,
           },
-          "preload": false,
         },
       }
     }
@@ -106,7 +50,7 @@ exports[`The video player component should display a message in case the player 
     playsinline={false}
     progressInterval={1000}
     style={Object {}}
-    url="https://www.youtube.com/watch?v=160yAufQ-is"
+    url="|||invalid url |||"
     volume={null}
     width="100%"
     wrapper="div"
@@ -125,76 +69,20 @@ exports[`The video player component should display the error state 1`] = `
   }
 >
   <span
-    className="video-player--error"
+    className="video-player__error"
   >
     Video unavailable
   </span>
-  <Spinner />
   <YouTubePlayer
-    className="video-player--player video-player--player__hidden"
+    className="video-player__player video-player__player--hidden"
     config={
       Object {
-        "dailymotion": Object {
-          "params": Object {
-            "api": 1,
-            "endscreen-enable": false,
-          },
-          "preload": false,
-        },
-        "facebook": Object {
-          "appId": "1309697205772819",
-        },
-        "file": Object {
-          "attributes": Object {},
-          "dashVersion": "2.9.2",
-          "forceAudio": false,
-          "forceDASH": false,
-          "forceHLS": false,
-          "forceVideo": false,
-          "hlsOptions": Object {},
-          "hlsVersion": "0.10.1",
-          "tracks": Array [],
-        },
-        "mixcloud": Object {
-          "options": Object {
-            "hide_cover": 1,
-          },
-        },
-        "soundcloud": Object {
-          "options": Object {
-            "buying": false,
-            "download": false,
-            "liking": false,
-            "sharing": false,
-            "show_comments": false,
-            "show_playcount": false,
-            "visual": true,
-          },
-        },
-        "twitch": Object {
-          "options": Object {},
-        },
-        "vimeo": Object {
-          "playerOptions": Object {
-            "autopause": false,
-            "byline": false,
-            "portrait": false,
-            "title": false,
-          },
-          "preload": false,
-        },
-        "wistia": Object {
-          "options": Object {},
-        },
         "youtube": Object {
           "playerVars": Object {
-            "iv_load_policy": 3,
+            "controls": 1,
             "modestbranding": 1,
-            "playsinline": 1,
             "rel": 0,
-            "showinfo": 0,
           },
-          "preload": false,
         },
       }
     }
@@ -228,7 +116,60 @@ exports[`The video player component should display the error state 1`] = `
 </div>
 `;
 
-exports[`The video player component should render 1`] = `
+exports[`The video player component should display the loaded state 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <YouTubePlayer
+    className="video-player__player"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=160yAufQ-is"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should display the loading state when the url is updated with a valid url 1`] = `
 <div
   className="video-player"
   style={
@@ -240,70 +181,122 @@ exports[`The video player component should render 1`] = `
 >
   <Spinner />
   <YouTubePlayer
-    className="video-player--player video-player--player__hidden"
+    className="video-player__player video-player__player--hidden"
     config={
       Object {
-        "dailymotion": Object {
-          "params": Object {
-            "api": 1,
-            "endscreen-enable": false,
-          },
-          "preload": false,
-        },
-        "facebook": Object {
-          "appId": "1309697205772819",
-        },
-        "file": Object {
-          "attributes": Object {},
-          "dashVersion": "2.9.2",
-          "forceAudio": false,
-          "forceDASH": false,
-          "forceHLS": false,
-          "forceVideo": false,
-          "hlsOptions": Object {},
-          "hlsVersion": "0.10.1",
-          "tracks": Array [],
-        },
-        "mixcloud": Object {
-          "options": Object {
-            "hide_cover": 1,
-          },
-        },
-        "soundcloud": Object {
-          "options": Object {
-            "buying": false,
-            "download": false,
-            "liking": false,
-            "sharing": false,
-            "show_comments": false,
-            "show_playcount": false,
-            "visual": true,
-          },
-        },
-        "twitch": Object {
-          "options": Object {},
-        },
-        "vimeo": Object {
-          "playerOptions": Object {
-            "autopause": false,
-            "byline": false,
-            "portrait": false,
-            "title": false,
-          },
-          "preload": false,
-        },
-        "wistia": Object {
-          "options": Object {},
-        },
         "youtube": Object {
           "playerVars": Object {
-            "iv_load_policy": 3,
+            "controls": 1,
             "modestbranding": 1,
-            "playsinline": 1,
             "rel": 0,
-            "showinfo": 0,
           },
-          "preload": false,
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=KI5pvThvu9I"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should render the loading state 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <Spinner />
+  <YouTubePlayer
+    className="video-player__player video-player__player--hidden"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=160yAufQ-is"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should stay in the loaded state when the url is updated with the original url 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <YouTubePlayer
+    className="video-player__player"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
         },
       }
     }
