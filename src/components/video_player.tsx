@@ -46,7 +46,7 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
 
     componentDidUpdate(prevProps: VideoPlayerProps): void {
         if (prevProps.url !== this.props.url) {
-            this.setState({ loading: true })
+            this.setState({ loading: true });
         }
     }
 
