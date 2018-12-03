@@ -44,6 +44,12 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         height: '100%'
     };
 
+    componentDidUpdate(prevProps: VideoPlayerProps): void {
+        if (prevProps.url !== this.props.url) {
+            this.setState({ loading: true })
+        }
+    }
+
     private _ready() {
         this.setState({ loading: false })
     }
