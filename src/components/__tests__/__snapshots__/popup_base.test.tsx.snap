@@ -14,11 +14,6 @@ exports[`The PopupBase component should render a modal 1`] = `
         className="popup__content"
       >
         <div
-          className="popup__header"
-        >
-          PopupBase header
-        </div>
-        <div
           className="popup__body"
         />
       </div>

@@ -13,6 +13,7 @@ import SlideOutContainer from '../components/slide_out_container';
 import SlideInPanel from '../components/slide_in_panel';
 import SettingPanel from '../components/setting_panel';
 import Carousel from '../components/carousel';
+import AspectRatioContainer from '../components/aspect_ratio_container';
 
 import UM3PrinterIcon from '../components/icons/um3_printer_icon';
 import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
@@ -132,21 +133,21 @@ stories.add('Carousel', withInfo(
         number("Items (lg)", 4)
     ]
     const icons = {
-        0: <UM3PrinterIcon size="lg"/>,
-        1: <UM3XPrinterIcon size="lg"/>,
-        2: <UMS5PrinterIcon size="lg"/>,
+        0: <UM3PrinterIcon size="lg" />,
+        1: <UM3XPrinterIcon size="lg" />,
+        2: <UMS5PrinterIcon size="lg" />,
     }
-    return <div style={{width: number("Width (rem)", 30).toString() + 'rem'}}>
-            <Carousel itemCounts={itemCounts}
-                      autoPlayInterval={number("Auto Play Interval", 5000)}
-                      transitionDuration={number("Transition Duration", 1000)}>
-                {Array.from(Array(10).keys()).map(i =>
-                    <div key={i} style={{margin: "0 auto", width: "4.8rem"}}>
-                        {icons[i % Object.keys(icons).length]}
-                    </div>
-                )}
-            </Carousel>
-        </div>
+    return <div style={{ width: number("Width (rem)", 30).toString() + 'rem' }}>
+        <Carousel itemCounts={itemCounts}
+            autoPlayInterval={number("Auto Play Interval", 5000)}
+            transitionDuration={number("Transition Duration", 1000)}>
+            {Array.from(Array(number("Amount of items", 10)).keys()).map(i =>
+                <div key={i} style={{ margin: "0 auto", width: "4.8rem" }}>
+                    {icons[i % Object.keys(icons).length]}
+                </div>
+            )}
+        </Carousel>
+    </div>
 }));
 
 stories.add('Slide out container', withInfo(
@@ -194,3 +195,13 @@ stories.add('Setting Panel', withState({ value: null })
         )
     )
 );
+
+stories.add('Aspect ratio container', withInfo(
+    'A container to keep a given aspect ratio for it\'s content, eg. an image or iframe'
+)(() =>
+    <div style={{ width: '94vw' }} >
+        <AspectRatioContainer aspectRatio={(number('Aspect ratio', 16 / 9))} className='my-picture-frame'>
+            <div className='my-picture-or-video' style={{ backgroundColor: 'grey' }}></div>
+        </AspectRatioContainer>
+    </div>
+));
