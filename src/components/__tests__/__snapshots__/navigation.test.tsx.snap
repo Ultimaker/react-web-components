@@ -8,7 +8,7 @@ exports[`The Navigation component should render 1`] = `
     class="nav-links-container"
   >
     <div
-      class="burger-menu show-xs"
+      class="burger-menu hide-sm"
     >
       <button
         class="btn btn--primary btn--circle "
