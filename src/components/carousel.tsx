@@ -104,7 +104,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
             return null;
         }
         return (
-            <Grid align="center" className={classNames('carousel__fixed', "hide-" + breakpoint)}>
+            <Grid align="center" className={classNames('carousel__fixed', 'show-' + breakpoint)}>
                 {React.Children.map(children, child => React.isValidElement(child) &&
                     <GridItem layoutWidth="fit">{child}</GridItem>)
                 }
@@ -127,7 +127,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
         }
         const extraProps = {onDragStart: e => e.preventDefault()};
         return (
-            <div className={classNames('carousel__carousel', breakpoint && "show-" + breakpoint)}>
+            <div className={classNames('carousel__carousel', breakpoint && 'hide-' + breakpoint)}>
                 <AliceCarousel
                     mouseDragEnabled
                     autoPlay={autoPlayInterval > 0}
