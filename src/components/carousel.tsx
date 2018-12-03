@@ -59,8 +59,10 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
         // create an object with the format .
         const responsive = {};
         breakpointSizes.forEach((breakpoint, index) => {
+            // minus 1 to fix bug in AliceCarousel that applies the breackpoint 1px to early
+            const fixedBreakpoint = breakpoint > 0 ? breakpoint -1 : breakpoint;
             const itemCount = itemCounts.length > index ? itemCounts[index] : itemCounts[itemCounts.length - 1];
-            responsive[breakpoint] = { items: itemCount };
+            responsive[fixedBreakpoint] = { items: itemCount };
         });
         return responsive;
     }
