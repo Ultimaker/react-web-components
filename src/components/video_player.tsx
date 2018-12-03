@@ -50,37 +50,37 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         }
     }
 
-    private _ready() {
+    private _ready(): void {
         this.setState({ loading: false })
     }
 
-    private _error() {
+    private _error(): void {
         this.setState({
             loading: false,
             error: true
         });
     }
 
-    private _displaySpinner(invalidUrl) {
+    private _displaySpinner(invalidUrl: boolean): JSX.Element {
         if (!invalidUrl && this.state.loading) {
             return <Spinner />
         }
     }
 
-    private _displayPlaybackError(invalidUrl) {
+    private _displayPlaybackError(invalidUrl: boolean): JSX.Element {
         if (!invalidUrl && this.state.error) {
             return <span className='video-player__error'>{I18n.translate('Video player - Video unavailable', 'Video unavailable')}</span>
         }
     }
 
-    private _displayUrlError(invalidUrl) {
+    private _displayUrlError(invalidUrl: boolean): JSX.Element {
         if (invalidUrl) {
             return <span className='video-player__invalidUrl'>{I18n.translate('Video player - Video unavailable', 'Can not play Url')}</span>
         }
     }
 
 
-    render() {
+    render(): JSX.Element {
         const { url, width, height } = this.props;
         const { loading, error } = this.state;
         const containerStyle = {
