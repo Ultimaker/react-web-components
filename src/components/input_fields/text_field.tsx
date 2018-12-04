@@ -50,9 +50,9 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
 const TextField: React.StatelessComponent<TextFieldProps> = ({
     children, ...wrapperProps
 }) => (
-  <DefaultInputField inputChildren={children} {...wrapperProps}>
-    {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
-  </DefaultInputField>
+    <DefaultInputField inputChildren={children} {...wrapperProps}>
+        {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
+    </DefaultInputField>
 );
 
 TextField.displayName = 'TextField';

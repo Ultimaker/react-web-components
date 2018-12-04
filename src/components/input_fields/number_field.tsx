@@ -23,15 +23,15 @@ export interface NumberFieldProps extends InputFieldProps {
 const NumberField: React.StatelessComponent<NumberFieldProps> = ({
     value, onChangeHandler, focusOnLoad, placeholder, children, ...wrapperProps
 }) => (
-  <DefaultInputField
-    type="number"
-    value={value || value === 0 ? value.toString() : null}
-    onChangeHandler={(id, val) => onChangeHandler(id, val ? parseFloat(val) : null)}
-    inputChildren={children}
-    {...wrapperProps}
-  >
-    {wrapperProps.staticField && value}
-  </DefaultInputField>
+    <DefaultInputField
+        type="number"
+        value={value || value === 0 ? value.toString() : null}
+        onChangeHandler={(id, val) => onChangeHandler(id, val ? parseFloat(val) : null)}
+        inputChildren={children}
+        {...wrapperProps}
+    >
+        {wrapperProps.staticField && value}
+    </DefaultInputField>
 );
 
 

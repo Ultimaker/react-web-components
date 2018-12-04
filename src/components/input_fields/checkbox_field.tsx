@@ -50,20 +50,20 @@ class CheckboxField extends React.Component<CheckboxFieldProps, CheckboxFieldSta
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
         return (
-          <InputFieldWrapper
-            touched={touched}
-            className={classNames(className, 'input-field--checkbox')}
-            labelLayoutWidth={labelLayoutWidth}
-            inputChildren={children}
-            {...wrapperProps}
-          >
-            <Checkbox
-              id={id}
-              onChangeHandler={this._onChange}
-              value={value === true}
-              disabled={staticField}
-            />
-          </InputFieldWrapper>
+            <InputFieldWrapper
+                touched={touched}
+                className={classNames(className, 'input-field--checkbox')}
+                labelLayoutWidth={labelLayoutWidth}
+                inputChildren={children}
+                {...wrapperProps}
+            >
+                <Checkbox
+                    id={id}
+                    onChangeHandler={this._onChange}
+                    value={value === true}
+                    disabled={staticField}
+                />
+            </InputFieldWrapper>
         );
     }
 }

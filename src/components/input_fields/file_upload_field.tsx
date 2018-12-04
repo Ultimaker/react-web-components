@@ -70,16 +70,16 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
         return (
-          <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
-            <FileUpload
-              id={id}
-              onChangeHandler={this._onChange}
-              disabled={staticField}
-              uploading={uploading}
-              placeholder={placeholder}
-              accept={accept}
-            />
-          </InputFieldWrapper>
+            <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
+                <FileUpload
+                    id={id}
+                    onChangeHandler={this._onChange}
+                    disabled={staticField}
+                    uploading={uploading}
+                    placeholder={placeholder}
+                    accept={accept}
+                />
+            </InputFieldWrapper>
         );
     }
 }

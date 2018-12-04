@@ -76,21 +76,21 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
         const { children, ...wrapperProps } = this.props;
         const { staticField, value } = wrapperProps;
         return (
-          <div className="search-field">
-            <DefaultInputField inputChildren={children} {...wrapperProps} inputRef={this._inputRef}>
-              {staticField ? value
-                  : (
-                    <Button
-                      onClickHandler={value ? this._onResetHandler : this._focus}
-                      style="quiet"
-                      className="search-button"
-                    >
-                      {value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}
-                    </Button>
-                  )
-                }
-            </DefaultInputField>
-          </div>
+            <div className="search-field">
+                <DefaultInputField inputChildren={children} {...wrapperProps} inputRef={this._inputRef}>
+                    {staticField ? value
+                        : (
+                            <Button
+                                onClickHandler={value ? this._onResetHandler : this._focus}
+                                style="quiet"
+                                className="search-button"
+                            >
+                                {value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}
+                            </Button>
+                        )
+                    }
+                </DefaultInputField>
+            </div>
         );
     }
 }

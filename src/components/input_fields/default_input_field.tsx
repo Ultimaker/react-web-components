@@ -83,24 +83,24 @@ class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultI
         } = wrapperProps;
         const { touched } = this.state;
         return (
-          <InputFieldWrapper touched={touched} inputChildren={inputChildren} {...wrapperProps}>
-            {!staticField && (
-            <input
-              id={id}
-              className={classNames('input', { error: validationError && (touched || submitted) })}
-              name={id}
-              type={type}
-              min={min || null}
-              max={max || null}
-              maxLength={maxLength}
-              onChange={this._onChange}
-              placeholder={placeholder}
-              value={value || ''}
-              ref={inputRef || this._inputRef}
-            />
-            )}
-            {children}
-          </InputFieldWrapper>
+            <InputFieldWrapper touched={touched} inputChildren={inputChildren} {...wrapperProps}>
+                {!staticField && (
+                    <input
+                        id={id}
+                        className={classNames('input', { error: validationError && (touched || submitted) })}
+                        name={id}
+                        type={type}
+                        min={min || null}
+                        max={max || null}
+                        maxLength={maxLength}
+                        onChange={this._onChange}
+                        placeholder={placeholder}
+                        value={value || ''}
+                        ref={inputRef || this._inputRef}
+                    />
+                )}
+                {children}
+            </InputFieldWrapper>
         );
     }
 }

@@ -55,18 +55,18 @@ describe('The Form component', () => {
 
     it('should render with a form item', () => {
         const mountedWrapper = mount(
-          <Form {...props}>
-            <InputField id="test" onChangeHandler={jest.fn()} value={null} />
-          </Form>,
+            <Form {...props}>
+                <InputField id="test" onChangeHandler={jest.fn()} value={null} />
+            </Form>,
         );
         expect(mountedWrapper).toMatchSnapshot();
     });
 
     it('should pass validation error to form item', () => {
         const mountedWrapper = mount(
-          <Form {...props} validationErrors={{ test: 'Validation error' }}>
-            <InputField id="test" onChangeHandler={jest.fn()} value={null} />
-          </Form>,
+            <Form {...props} validationErrors={{ test: 'Validation error' }}>
+                <InputField id="test" onChangeHandler={jest.fn()} value={null} />
+            </Form>,
         );
         expect(mountedWrapper.find(InputField).prop('validationError')).toBe('Validation error');
         expect(mountedWrapper.find(Button).prop('disabled')).toBe(true);
@@ -74,9 +74,9 @@ describe('The Form component', () => {
 
     it('should submit button should ignore validation when always enabled', () => {
         const mountedWrapper = mount(
-          <Form {...props} validationErrors={{ test: 'Validation error' }}>
-            <InputField id="test" onChangeHandler={jest.fn()} value={null} />
-          </Form>,
+            <Form {...props} validationErrors={{ test: 'Validation error' }}>
+                <InputField id="test" onChangeHandler={jest.fn()} value={null} />
+            </Form>,
         );
         mountedWrapper.setProps({ alwaysEnableSubmitButton: true });
         expect(mountedWrapper.find(Button).prop('disabled')).toBe(false);

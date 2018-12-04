@@ -19,11 +19,11 @@ describe('The carousel component', () => {
     beforeEach(() => {
         props = { itemCounts: [1, 2, 3] };
         wrapper = shallow(
-          <Carousel {...props}>
-            <UM3PrinterIcon size="lg" />
-            <UM3XPrinterIcon size="lg" />
-            <UMS5PrinterIcon size="lg" />
-          </Carousel>,
+            <Carousel {...props}>
+                <UM3PrinterIcon size="lg" />
+                <UM3XPrinterIcon size="lg" />
+                <UMS5PrinterIcon size="lg" />
+            </Carousel>,
         );
     });
 

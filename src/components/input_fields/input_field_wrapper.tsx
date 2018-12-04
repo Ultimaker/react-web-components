@@ -87,15 +87,15 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
         if (label || preLabelElement) {
             return (
-              <InputFieldLabel
-                id={id}
-                label={label}
-                labelLayoutWidth={labelLayoutWidth}
-                labelWidthBreakpoint={labelWidthBreakpoint}
-                preLabelElement={preLabelElement}
-                infoText={infoText}
-                infoLinkURL={infoLinkURL}
-              />
+                <InputFieldLabel
+                    id={id}
+                    label={label}
+                    labelLayoutWidth={labelLayoutWidth}
+                    labelWidthBreakpoint={labelWidthBreakpoint}
+                    preLabelElement={preLabelElement}
+                    infoText={infoText}
+                    infoLinkURL={infoLinkURL}
+                />
             );
         }
         return null;
@@ -108,12 +108,12 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
         if (this._showValidationError()) {
             return (
-              <InputFieldValidation
-                validationError={validationError}
-                labelLayoutWidth={labelLayoutWidth}
-                labelWidthBreakpoint={labelWidthBreakpoint}
-                required={required}
-              />
+                <InputFieldValidation
+                    validationError={validationError}
+                    labelLayoutWidth={labelLayoutWidth}
+                    labelWidthBreakpoint={labelWidthBreakpoint}
+                    required={required}
+                />
             );
         }
         return null;
@@ -125,12 +125,12 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
         const inputClasses = classNames('input-field layout', className, { 'hide-input': staticField });
         return (
-          <div className={inputClasses}>
-            {this._renderLabel()}
-            {this._renderInput()}
-            {this._renderInputChildren()}
-            {this._renderValidation()}
-          </div>
+            <div className={inputClasses}>
+                {this._renderLabel()}
+                {this._renderInput()}
+                {this._renderInputChildren()}
+                {this._renderValidation()}
+            </div>
         );
     }
 
@@ -138,9 +138,9 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
         const { inputChildren } = this.props;
         if (inputChildren) {
             return (
-              <div className="layout__item u-fit input-children">
-                {inputChildren}
-              </div>
+                <div className="layout__item u-fit input-children">
+                    {inputChildren}
+                </div>
             );
         }
         return null;
@@ -159,20 +159,20 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
         );
 
         return (
-          <div className={inputLayoutClasses}>
-            {!staticField
+            <div className={inputLayoutClasses}>
+                {!staticField
             && (
-            <div className="input-container layout layout--gutter-xs">
-              <div className="input-wrapper-children layout__item u-fill">
-                {children}
-              </div>
-              {this._renderPostInputElement()}
-            </div>
+                <div className="input-container layout layout--gutter-xs">
+                    <div className="input-wrapper-children layout__item u-fill">
+                        {children}
+                    </div>
+                    {this._renderPostInputElement()}
+                </div>
             )
-            }
+                }
 
-            {staticField && <div className="static-field">{children}</div>}
-          </div>
+                {staticField && <div className="static-field">{children}</div>}
+            </div>
         );
     }
 
@@ -180,9 +180,9 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
         const { required } = this.props;
         if (required) {
             return (
-              <div className="layout__item u-fit input-field__field-addition">
-                <RequiredIcon />
-              </div>
+                <div className="layout__item u-fit input-field__field-addition">
+                    <RequiredIcon />
+                </div>
             );
         }
         return null;

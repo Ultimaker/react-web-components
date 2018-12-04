@@ -70,24 +70,24 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
         return (
-          <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
-            {
-            staticField
-                ? <Image src={value} size={imageSize} shape={imageShape} />
-                : (
-                  <ImageUpload
-                    id={id}
-                    size={imageSize}
-                    imageURL={value && value.toString()}
-                    onFileSelection={this._onChange}
-                    onFileRead={contents => onReadHandler && onReadHandler(id, contents)}
-                    shape={imageShape}
-                    placeholderLabel={placeholder}
-                    allowCropping={allowCropping}
-                  />
-                )
-        }
-          </InputFieldWrapper>
+            <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
+                {
+                    staticField
+                        ? <Image src={value} size={imageSize} shape={imageShape} />
+                        : (
+                            <ImageUpload
+                                id={id}
+                                size={imageSize}
+                                imageURL={value && value.toString()}
+                                onFileSelection={this._onChange}
+                                onFileRead={contents => onReadHandler && onReadHandler(id, contents)}
+                                shape={imageShape}
+                                placeholderLabel={placeholder}
+                                allowCropping={allowCropping}
+                            />
+                        )
+                }
+            </InputFieldWrapper>
         );
     }
 }

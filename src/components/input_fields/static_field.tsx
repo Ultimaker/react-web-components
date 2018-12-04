@@ -18,9 +18,9 @@ export interface StaticFieldProps extends InputFieldProps {
 const StaticField: React.StatelessComponent<StaticFieldProps> = ({
     children, staticField, ...wrapperProps
 }) => (
-  <InputFieldWrapper touched={false} staticField inputChildren={children} {...wrapperProps}>
-    {wrapperProps.value}
-  </InputFieldWrapper>
+    <InputFieldWrapper touched={false} staticField inputChildren={children} {...wrapperProps}>
+        {wrapperProps.value}
+    </InputFieldWrapper>
 );
 
 StaticField.displayName = 'StaticField';

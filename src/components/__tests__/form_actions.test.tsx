@@ -11,10 +11,10 @@ describe('The form actions component', () => {
 
     beforeEach(() => {
         wrapper = shallow(
-          <FormActions>
-            <Button>First Button</Button>
-            <Button>Second Button</Button>
-          </FormActions>,
+            <FormActions>
+                <Button>First Button</Button>
+                <Button>Second Button</Button>
+            </FormActions>,
         );
     });
 

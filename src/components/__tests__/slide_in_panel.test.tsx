@@ -20,8 +20,8 @@ describe('The SlideInPanel component', () => {
             includeFooter: true,
         };
         wrapper = shallow(<SlideInPanel {...props}>
-          <div>Body</div>
-          <div>Footer</div>
+            <div>Body</div>
+            <div>Footer</div>
         </SlideInPanel>);
     });
 
@@ -66,8 +66,8 @@ describe('The SlideInPanel component', () => {
 
     it('should allow the background to scroll after unmount', () => {
         const mountedWrapper = mount(<SlideInPanel {...props}>
-          <div>Body</div>
-          <div>Footer</div>
+            <div>Body</div>
+            <div>Footer</div>
         </SlideInPanel>);
         mountedWrapper.setProps({ isOpen: true });
         expect(document.body.classList.contains('noscroll')).toBe(true);

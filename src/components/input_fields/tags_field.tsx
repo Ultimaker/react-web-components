@@ -50,22 +50,22 @@ class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
         return (
-          <InputFieldWrapper
-            className={classNames(className, 'input-field--tags')}
-            touched={touched}
-            inputChildren={children}
-            {...wrapperProps}
-          >
-            <TagsSelector
-              id={id}
-              onChangeHandler={this._onChange}
-              placeholder={placeholder}
-              suggestions={tagSuggestions}
-              value={Array.isArray(value) && value}
-              disabled={staticField}
-              autofocus={focusOnLoad}
-            />
-          </InputFieldWrapper>
+            <InputFieldWrapper
+                className={classNames(className, 'input-field--tags')}
+                touched={touched}
+                inputChildren={children}
+                {...wrapperProps}
+            >
+                <TagsSelector
+                    id={id}
+                    onChangeHandler={this._onChange}
+                    placeholder={placeholder}
+                    suggestions={tagSuggestions}
+                    value={Array.isArray(value) && value}
+                    disabled={staticField}
+                    autofocus={focusOnLoad}
+                />
+            </InputFieldWrapper>
         );
     }
 }

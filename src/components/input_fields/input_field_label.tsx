@@ -30,9 +30,9 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
 
         if (preLabelElement) {
             return (
-              <div className="layout__item u-fit input-field__pre-element">
-                {preLabelElement}
-              </div>
+                <div className="layout__item u-fit input-field__pre-element">
+                    {preLabelElement}
+                </div>
             );
         }
         return null;
@@ -43,9 +43,9 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
 
         if (label) {
             return (
-              <div className="layout__item u-fit">
-                <label htmlFor={id}>{label}</label>
-              </div>
+                <div className="layout__item u-fit">
+                    <label htmlFor={id}>{label}</label>
+                </div>
             );
         }
         return null;
@@ -56,14 +56,14 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
 
         if (infoText || infoLinkURL) {
             return (
-              <div className="layout__item u-fit input-field__label-addition">
-                {infoText
+                <div className="layout__item u-fit input-field__label-addition">
+                    {infoText
                     && <InfoTooltip infoText={infoText} />
-                }
-                {infoLinkURL && !infoText // can't have both an InfoTooltip and a InfoLink
+                    }
+                    {infoLinkURL && !infoText // can't have both an InfoTooltip and a InfoLink
                     && <InfoLink infoLinkURL={infoLinkURL} />
-                }
-              </div>
+                    }
+                </div>
             );
         }
         return null;
@@ -76,13 +76,13 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
         const classes = classNames(`input-field__label layout__item u-${labelLayoutWidth}-${labelWidthBreakpoint}`);
 
         return (
-          <div className={classes}>
-            <div className="layout layout--gutter-sm">
-              {this._renderPreLabelElement()}
-              {this._renderLabelElement()}
-              {this._renderPostLabelElement()}
+            <div className={classes}>
+                <div className="layout layout--gutter-sm">
+                    {this._renderPreLabelElement()}
+                    {this._renderLabelElement()}
+                    {this._renderPostLabelElement()}
+                </div>
             </div>
-          </div>
         );
     }
 }
