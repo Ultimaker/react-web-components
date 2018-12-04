@@ -67,7 +67,7 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
     }
   >
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="0"
     >
       <Icon(HighlightIcon)
@@ -77,7 +77,7 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="1"
     >
       <Icon(HighlightIcon)
@@ -87,7 +87,7 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="2"
     >
       <Icon(HighlightIcon)
@@ -97,7 +97,7 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="3"
     >
       <Icon(HighlightIcon)
@@ -107,7 +107,7 @@ exports[`The Ratings component should render 4.3 of 5 highlight icons 1`] = `
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="4"
     >
       <Icon(HighlightIcon)
@@ -237,7 +237,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
     }
   >
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="0"
     >
       <Icon(ApprovedIcon)
@@ -247,7 +247,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="1"
     >
       <Icon(ApprovedIcon)
@@ -257,7 +257,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="2"
     >
       <Icon(ApprovedIcon)
@@ -267,7 +267,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="3"
     >
       <Icon(ApprovedIcon)
@@ -277,7 +277,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="4"
     >
       <Icon(ApprovedIcon)
@@ -287,7 +287,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="5"
     >
       <Icon(ApprovedIcon)
@@ -297,7 +297,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="6"
     >
       <Icon(ApprovedIcon)
@@ -307,7 +307,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="7"
     >
       <Icon(ApprovedIcon)
@@ -317,7 +317,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="8"
     >
       <Icon(ApprovedIcon)
@@ -327,7 +327,7 @@ exports[`The Ratings component should render a third of 10 approved icons 1`] = 
       />
     </div>
     <div
-      className="layout__item u-fit"
+      className="ratings__foreground-icon"
       key="9"
     >
       <Icon(ApprovedIcon)

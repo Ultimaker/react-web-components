@@ -43,7 +43,7 @@ export const Ratings: React.StatelessComponent<RatingsProps> = (
             {rating > 0 &&
                 <div className="ratings__foreground" style={{ width: (100 * rating / max) + "%" }}>
                     {_.times(max, i =>
-                        <div className="layout__item u-fit" key={i}>
+                        <div className="ratings__foreground-icon" key={i}>
                             <Icon color={foregroundColor}
                                 borderColor={foregroundBorder || foregroundColor}
                                 size={size} />
