@@ -447,15 +447,6 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/glob@^5":
-  version "5.0.35"
-  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-5.0.35.tgz#1ae151c802cece940443b5ac246925c85189f32a"
-  integrity sha512-wc+VveszMLyMWFvXLkloixT4n0harUIVZjnpzztaZ0nKLuul7Z32iMt2fUFGAaZ4y1XWjFRMtCI5ewvyh4aIeg==
-  dependencies:
-    "@types/events" "*"
-    "@types/minimatch" "*"
-    "@types/node" "*"
-
 "@types/history@*", "@types/history@^4.7.0":
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.0.tgz#2fac51050c68f7d6f96c5aafc631132522f4aa3f"
@@ -4677,19 +4668,6 @@ getpass@^0.1.1:
   integrity sha1-Xv+OPmhNVprkyysSgmBOi6YhSfo=
   dependencies:
     assert-plus "^1.0.0"
-
-gettext-extractor@^3.2.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/gettext-extractor/-/gettext-extractor-3.3.2.tgz#d5172ba8d175678bd40a5abe7f908fa2a9d9473b"
-  integrity sha1-1RcrqNF1Z4vUClq+f5CPoqnZRzs=
-  dependencies:
-    "@types/glob" "^5"
-    "@types/parse5" "^5"
-    css-selector-parser "^1.3"
-    glob "5 - 7"
-    parse5 "^5"
-    pofile "^1"
-    typescript "^2"
 
 gettext-extractor@^3.4.0:
   version "3.4.0"
@@ -9316,39 +9294,6 @@ react-treebeard@^2.1.0:
     shallowequal "^0.2.2"
     velocity-react "^1.3.1"
 
-"react-web-components@https://github.com/Ultimaker/react-web-components.git#v1.0.4":
-  version "1.0.0"
-  resolved "https://github.com/Ultimaker/react-web-components.git#34dde64f6a34246c77dec1e910ed8aeed25abaf4"
-  dependencies:
-    "@types/classnames" "^2.2.0"
-    "@types/history" "^4.7.0"
-    "@types/node" "^8.5.2"
-    "@types/react" "^16.4.8"
-    "@types/react-dom" "^16.0.7"
-    "@types/react-router" "^4.0.30"
-    "@types/react-router-dom" "^4.3.0"
-    array.prototype.includes "^1.0.0"
-    classnames "^2.2.6"
-    gettext-extractor "^3.2.1"
-    gettext-parser "^1.3.0"
-    lodash "^4.17.10"
-    moment "^2.22.2"
-    node-gettext "^2.0.0"
-    node-sass "^4.7.2"
-    parcel-bundler "^1.9.6"
-    parcel-plugin-json-url-loader "^0.1.1"
-    parcel-plugin-typescript "^1.0.0"
-    react "^16.4.2"
-    react-collapse "^4.0.3"
-    react-dates "^17.0.0"
-    react-dev-utils "^5.0.1"
-    react-dom "^16.4.2"
-    react-dropzone "^4.2.11"
-    react-motion "^0.5.2"
-    react-router-dom "^4.1.1"
-    react-tag-input "^5.1.1"
-    typescript "^2.9.2"
-
 react-with-direction@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-with-direction/-/react-with-direction-1.3.0.tgz#9885f5941aa986be753db95a41e8f3d8f8de97ff"
@@ -10990,7 +10935,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.4.tgz#c74ef7b3c2da65beff548b903022cb8c3cd997ed"
   integrity sha512-JZHJtA6ZL15+Q3Dqkbh8iCUmvxD3iJ7ujXS+fVkKnwIVAdHc5BJTDNM0aTrnr2luKulFjU7W+SRhDZvi66Ru7Q==
 
-typescript@^2, typescript@^2.9.2:
+typescript@^2.9.2:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
   integrity sha512-Gr4p6nFNaoufRIY4NMdpQRNmgxVIGMs4Fcu/ujdYk3nAZqk7supzBE9idmvfZIlH/Cuj//dvi+019qEue9lV0w==
