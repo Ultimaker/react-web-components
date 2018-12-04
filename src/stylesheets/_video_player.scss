@@ -1,0 +1,9 @@
+.video-player {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.video-player__player--hidden{
+    display: none;
+}

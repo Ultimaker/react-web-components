@@ -1,0 +1,331 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The video player component should display a message in case the player can not play the url 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <span
+    className="video-player__invalidUrl"
+  >
+    Can not play Url
+  </span>
+  <YouTubePlayer
+    className="video-player__player video-player__player--hidden"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="|||invalid url |||"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should display the error state 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <span
+    className="video-player__error"
+  >
+    Video unavailable
+  </span>
+  <YouTubePlayer
+    className="video-player__player video-player__player--hidden"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=160yAufQ-is"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should display the loaded state 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <YouTubePlayer
+    className="video-player__player"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=160yAufQ-is"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should display the loading state when the url is updated with a valid url 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <Spinner />
+  <YouTubePlayer
+    className="video-player__player video-player__player--hidden"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=KI5pvThvu9I"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should render the loading state 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <Spinner />
+  <YouTubePlayer
+    className="video-player__player video-player__player--hidden"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=160yAufQ-is"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
+
+exports[`The video player component should stay in the loaded state when the url is updated with the original url 1`] = `
+<div
+  className="video-player"
+  style={
+    Object {
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <YouTubePlayer
+    className="video-player__player"
+    config={
+      Object {
+        "youtube": Object {
+          "playerVars": Object {
+            "controls": 1,
+            "modestbranding": 1,
+            "rel": 0,
+          },
+        },
+      }
+    }
+    controls={false}
+    height="100%"
+    loop={false}
+    muted={false}
+    onBuffer={[Function]}
+    onDisablePIP={[Function]}
+    onDuration={[Function]}
+    onEnablePIP={[Function]}
+    onEnded={[Function]}
+    onError={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onProgress={[Function]}
+    onReady={[Function]}
+    onSeek={[Function]}
+    onStart={[Function]}
+    pip={false}
+    playbackRate={1}
+    playing={false}
+    playsinline={false}
+    progressInterval={1000}
+    style={Object {}}
+    url="https://www.youtube.com/watch?v=160yAufQ-is"
+    volume={null}
+    width="100%"
+    wrapper="div"
+  />
+</div>
+`;
