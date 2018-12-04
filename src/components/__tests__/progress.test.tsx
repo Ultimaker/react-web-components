@@ -11,7 +11,7 @@ describe('The ProgressBar component', () => {
 
     beforeEach(() => {
         props = {
-            progressPercentage: 50
+            progressPercentage: 50,
         };
         wrapper = shallow(<ProgressBar {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The ProgressBar component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

@@ -11,7 +11,7 @@ describe('The App component', () => {
 
     beforeEach(() => {
         props = {
-            fixedHeader: true
+            fixedHeader: true,
         };
         wrapper = shallow(<App {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The App component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

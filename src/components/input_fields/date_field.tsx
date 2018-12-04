@@ -1,19 +1,20 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 import DatePicker from '../date_picker';
+
 import moment = require('moment');
 
 /**
  * The date field provides these props in addition to those supported by all input fields.
  */
 export interface DateFieldProps extends InputFieldProps {
-    /** The date currently selected **/
+    /** The date currently selected */
     value: string;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
-    /** The format to display the date, as specified by moment-js **/
+    /** The format to display the date, as specified by moment-js */
     format?: string;
     /** Placeholder text */
     placeholder?: string;
@@ -33,7 +34,7 @@ export interface DateFieldState {
  */
 class DateField extends React.Component<DateFieldProps, DateFieldState> {
     state = {
-        touched: false
+        touched: false,
     };
 
     static defaultProps = {
@@ -48,26 +49,34 @@ class DateField extends React.Component<DateFieldProps, DateFieldState> {
     }
 
     private _onChange(value: string): void {
-        this.setState({touched: true});
+        this.setState({ touched: true });
         this.props.onChangeHandler(this.props.id, value);
     }
 
     render() {
-        const {value, format, placeholder, children, ...wrapperProps} = this.props;
-        const {id, staticField, validationError, submitted} = wrapperProps;
-        const {touched} = this.state;
-        return <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
-            {staticField ?
-                typeof value === 'string' && moment(value).format(format) :
-                <DatePicker
+        const {
+            value, format, placeholder, children, ...wrapperProps
+        } = this.props;
+        const {
+            id, staticField, validationError, submitted,
+        } = wrapperProps;
+        const { touched } = this.state;
+        return (
+          <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
+            {staticField
+                ? typeof value === 'string' && moment(value).format(format)
+                : (
+                  <DatePicker
                     id={id}
                     onChangeHandler={this._onChange}
                     value={value != null ? value.toString() : null}
                     error={validationError && (touched || submitted)}
                     format={format}
                     placeholder={placeholder}
-                />}
-        </InputFieldWrapper>;
+                  />
+                )}
+          </InputFieldWrapper>
+        );
     }
 }
 

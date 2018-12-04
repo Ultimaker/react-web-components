@@ -1,7 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 import FileUpload from '../file_upload';
 
 
@@ -16,9 +16,9 @@ export interface FileUploadFieldProps extends InputFieldProps {
     onReadHandler?: (id: string, value: string) => void;
     /** Placeholder text */
     placeholder?: string;
-    /** Whether the file is being uploaded (so the upload button is disabled) **/
+    /** Whether the file is being uploaded (so the upload button is disabled) */
     uploading?: boolean;
-    /** What kinds of file extensions should be accepted client-side **/
+    /** What kinds of file extensions should be accepted client-side */
     accept?: string[];
 }
 
@@ -50,13 +50,13 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
     }
 
     private _onChange(target: HTMLInputElement): void {
-        this.setState({touched: true});
-        const {onChangeHandler, onReadHandler, id} = this.props;
+        this.setState({ touched: true });
+        const { onChangeHandler, onReadHandler, id } = this.props;
         if (onChangeHandler) {
             onChangeHandler(id, target);
         }
         if (onReadHandler) {
-            const reader = new FileReader()
+            const reader = new FileReader();
             reader.onload = () => onReadHandler(id, reader.result as string);
             reader.onerror = console.error; // TODO
             reader.readAsDataURL(target.files[0]);
@@ -64,19 +64,23 @@ class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFi
     }
 
     render() {
-        const {placeholder, uploading, children, accept, ...wrapperProps} = this.props;
-        const {id, staticField} = wrapperProps;
-        const {touched} = this.state;
-        return <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
+        const {
+            placeholder, uploading, children, accept, ...wrapperProps
+        } = this.props;
+        const { id, staticField } = wrapperProps;
+        const { touched } = this.state;
+        return (
+          <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
             <FileUpload
-                id={id}
-                onChangeHandler={this._onChange}
-                disabled={staticField}
-                uploading={uploading}
-                placeholder={placeholder}
-                accept={accept}
+              id={id}
+              onChangeHandler={this._onChange}
+              disabled={staticField}
+              uploading={uploading}
+              placeholder={placeholder}
+              accept={accept}
             />
-        </InputFieldWrapper>;
+          </InputFieldWrapper>
+        );
     }
 }
 

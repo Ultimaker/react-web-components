@@ -27,5 +27,4 @@ describe('The Textarea component', () => {
         wrapper.setProps({ error: 'true' });
         expect(wrapper.find('.error')).toHaveLength(1);
     });
-
 });

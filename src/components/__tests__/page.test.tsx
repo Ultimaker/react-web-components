@@ -16,5 +16,4 @@ describe('The Page component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

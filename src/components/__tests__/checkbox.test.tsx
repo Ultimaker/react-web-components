@@ -36,5 +36,4 @@ describe('The Checkbox component', () => {
         wrapper.setProps({ value: true });
         expect(wrapper.find('input').props().checked).toBe(true);
     });
-
 });

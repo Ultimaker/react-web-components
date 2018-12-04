@@ -31,5 +31,4 @@ describe('The Checkbox component', () => {
         wrapper.simulate('click', mockClickEvent);
         expect(mockClickEvent.stopPropagation).toBeCalled();
     });
-
 });

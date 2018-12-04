@@ -15,5 +15,4 @@ describe('The Footer component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

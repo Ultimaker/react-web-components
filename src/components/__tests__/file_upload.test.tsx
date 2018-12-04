@@ -14,7 +14,7 @@ describe('The FileUpload component', () => {
         props = {
             id: 'testFileUpload',
             onChangeHandler: jest.fn(),
-            placeholder: "A text placeholder",
+            placeholder: 'A text placeholder',
             uploading: false,
         };
         wrapper = shallow(<FileUpload {...props} />);
@@ -26,8 +26,7 @@ describe('The FileUpload component', () => {
     });
 
     it('should show a spinner while uploading', () => {
-        wrapper.setProps({uploading: true})
+        wrapper.setProps({ uploading: true });
         expect(wrapper.find(Spinner)).toHaveLength(1);
     });
-
 });

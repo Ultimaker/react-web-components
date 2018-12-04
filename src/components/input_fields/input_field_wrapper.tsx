@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import InputFieldLabel from './input_field_label';
 import InputFieldValidation from './input_field_validation';
 import RequiredIcon from '../icons/required_icon';
-import {Breakpoint, LayoutWidth} from '../../utils/layout_constants'
+import { Breakpoint, LayoutWidth } from '../../utils/layout_constants';
 
 /**
  * The props in this interface are available in all the input fields.
@@ -40,7 +40,7 @@ export interface InputFieldProps {
     /**
      * Message to show for the validation error.
      * It should be translated. Can be JSX.Element[] if returned from I18n.interpolateElements
-     **/
+     */
     validationError?: string | JSX.Element[];
 }
 
@@ -51,7 +51,7 @@ export interface InputFieldWrapperProps extends InputFieldProps {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;
 
-    /** Children are required and must include the input field both in static and non-static mode. **/
+    /** Children are required and must include the input field both in static and non-static mode. */
     children: any;
 
     /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
@@ -76,15 +76,18 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
     }
 
     private _showValidationError(): boolean {
-        const {validationError, submitted, touched} = this.props;
+        const { validationError, submitted, touched } = this.props;
         return validationError && (touched || submitted);
     }
 
     private _renderLabel(): JSX.Element {
-        const {id, label, labelLayoutWidth, labelWidthBreakpoint, preLabelElement, infoText, infoLinkURL} = this.props;
+        const {
+            id, label, labelLayoutWidth, labelWidthBreakpoint, preLabelElement, infoText, infoLinkURL,
+        } = this.props;
 
         if (label || preLabelElement) {
-            return <InputFieldLabel
+            return (
+              <InputFieldLabel
                 id={id}
                 label={label}
                 labelLayoutWidth={labelLayoutWidth}
@@ -92,80 +95,95 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
                 preLabelElement={preLabelElement}
                 infoText={infoText}
                 infoLinkURL={infoLinkURL}
-            />;
+              />
+            );
         }
         return null;
     }
 
     private _renderValidation(): JSX.Element {
-        const {validationError, labelLayoutWidth, labelWidthBreakpoint, required} = this.props;
+        const {
+            validationError, labelLayoutWidth, labelWidthBreakpoint, required,
+        } = this.props;
 
         if (this._showValidationError()) {
-            return <InputFieldValidation
+            return (
+              <InputFieldValidation
                 validationError={validationError}
                 labelLayoutWidth={labelLayoutWidth}
                 labelWidthBreakpoint={labelWidthBreakpoint}
                 required={required}
-            />;
+              />
+            );
         }
         return null;
     }
 
 
     render(): JSX.Element {
-        const {className, staticField} = this.props;
+        const { className, staticField } = this.props;
 
-        const inputClasses = classNames(`input-field layout`, className, {'hide-input': staticField});
+        const inputClasses = classNames('input-field layout', className, { 'hide-input': staticField });
         return (
-            <div className={inputClasses}>
-                {this._renderLabel()}
-                {this._renderInput()}
-                {this._renderInputChildren()}
-                {this._renderValidation()}
-            </div>
+          <div className={inputClasses}>
+            {this._renderLabel()}
+            {this._renderInput()}
+            {this._renderInputChildren()}
+            {this._renderValidation()}
+          </div>
         );
-    };
+    }
 
     private _renderInputChildren(): JSX.Element {
         const { inputChildren } = this.props;
         if (inputChildren) {
-            return <div className="layout__item u-fit input-children">
+            return (
+              <div className="layout__item u-fit input-children">
                 {inputChildren}
-            </div>
+              </div>
+            );
         }
         return null;
     }
 
     private _renderInput() {
-        const {labelLayoutWidth, centerInputField, staticField, className, children} = this.props;
+        const {
+            labelLayoutWidth, centerInputField, staticField, className, children,
+        } = this.props;
 
         const inputLayoutWidth = staticField || labelLayoutWidth === 'fill' ? 'fit' : 'fill';
         const inputLayoutClasses = classNames(
             `layout__item u-${inputLayoutWidth} layout__item--middle`,
             className,
-            {'text-center': centerInputField}
+            { 'text-center': centerInputField },
         );
 
-        return <div className={inputLayoutClasses}>
-            {!staticField &&
+        return (
+          <div className={inputLayoutClasses}>
+            {!staticField
+            && (
             <div className="input-container layout layout--gutter-xs">
-                <div className="input-wrapper-children layout__item u-fill">
-                    {children}
-                </div>
-                {this._renderPostInputElement()}
+              <div className="input-wrapper-children layout__item u-fill">
+                {children}
+              </div>
+              {this._renderPostInputElement()}
             </div>
+            )
             }
 
             {staticField && <div className="static-field">{children}</div>}
-        </div>;
+          </div>
+        );
     }
 
     private _renderPostInputElement() {
-        const {required} = this.props;
+        const { required } = this.props;
         if (required) {
-            return <div className="layout__item u-fit input-field__field-addition">
-                <RequiredIcon/>
-            </div>;
+            return (
+              <div className="layout__item u-fit input-field__field-addition">
+                <RequiredIcon />
+              </div>
+            );
         }
         return null;
     }

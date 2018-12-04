@@ -6,7 +6,7 @@ import { shallow, mount } from 'enzyme';
 import SlideInPanel from '../slide_in_panel';
 
 // mocks
-import { mockClickEvent } from '../../__mocks__/clickMock'
+import { mockClickEvent } from '../../__mocks__/clickMock';
 
 describe('The SlideInPanel component', () => {
     let props;
@@ -17,11 +17,11 @@ describe('The SlideInPanel component', () => {
             headerTitle: 'Panel title',
             isOpen: false,
             onOverlayClickHandler: jest.fn(),
-            includeFooter: true
+            includeFooter: true,
         };
         wrapper = shallow(<SlideInPanel {...props}>
-            <div>Body</div>
-            <div>Footer</div>
+          <div>Body</div>
+          <div>Footer</div>
         </SlideInPanel>);
     });
 
@@ -50,8 +50,8 @@ describe('The SlideInPanel component', () => {
         wrapper.setProps({
             headerLabels: [
                 { label: 'Test label' },
-                { label: 'Test label with info', info: 'Test info' }
-            ]
+                { label: 'Test label with info', info: 'Test info' },
+            ],
         });
         expect(wrapper.render()).toMatchSnapshot();
     });
@@ -66,13 +66,12 @@ describe('The SlideInPanel component', () => {
 
     it('should allow the background to scroll after unmount', () => {
         const mountedWrapper = mount(<SlideInPanel {...props}>
-            <div>Body</div>
-            <div>Footer</div>
+          <div>Body</div>
+          <div>Footer</div>
         </SlideInPanel>);
         mountedWrapper.setProps({ isOpen: true });
         expect(document.body.classList.contains('noscroll')).toBe(true);
         mountedWrapper.unmount();
         expect(document.body.classList.contains('noscroll')).toBe(false);
     });
-
 });

@@ -16,12 +16,11 @@ describe('The LoadingPage component', () => {
 
     afterEach(() => {
         jest.useRealTimers();
-    })
+    });
 
     it('should spinner after timeout', () => {
         expect(wrapper.find(Spinner)).toHaveLength(0);
         jest.runOnlyPendingTimers();
         expect(wrapper.find(Spinner)).toHaveLength(1);
     });
-
 });

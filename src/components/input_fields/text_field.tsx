@@ -1,7 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
-import {InputFieldProps} from './input_field_wrapper';
+import { InputFieldProps } from './input_field_wrapper';
 import DefaultInputField from './default_input_field';
 
 export type TextFieldType = 'text' | 'password' | 'email' | 'url';
@@ -11,7 +11,7 @@ export interface TextFieldProps extends InputFieldProps {
     type?: TextFieldType;
     /** Input field value */
     value: string | null;
-    /** Maximum amount of characters allowed in the field **/
+    /** Maximum amount of characters allowed in the field */
     maxLength?: number;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
@@ -19,7 +19,7 @@ export interface TextFieldProps extends InputFieldProps {
     focusOnLoad?: boolean;
     /** html placeholder text */
     placeholder?: string;
-    /** Optional extra elements to be displayed after the input **/
+    /** Optional extra elements to be displayed after the input */
     children?: any;
 }
 
@@ -30,14 +30,14 @@ export interface TextFieldProps extends InputFieldProps {
  */
 function staticRender(type: TextFieldType, value: string): JSX.Element | string {
     switch (type) {
-        case "email":
-            return <a href={`mailto:${value}`} target="_top">{value}</a>;
-        case "url":
-            return <a href={value} target="_blank">{value}</a>;
-        case "password":
-            return "*".repeat(value.length);
-        default:
-            return value;
+    case 'email':
+        return <a href={`mailto:${value}`} target="_top">{value}</a>;
+    case 'url':
+        return <a href={value} target="_blank">{value}</a>;
+    case 'password':
+        return '*'.repeat(value.length);
+    default:
+        return value;
     }
 }
 
@@ -49,12 +49,13 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
  */
 const TextField: React.StatelessComponent<TextFieldProps> = ({
     children, ...wrapperProps
-}) =>
-    <DefaultInputField inputChildren={children} {...wrapperProps}>
-        {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
-    </DefaultInputField>;
+}) => (
+  <DefaultInputField inputChildren={children} {...wrapperProps}>
+    {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
+  </DefaultInputField>
+);
 
-TextField.displayName = "TextField";
+TextField.displayName = 'TextField';
 TextField.defaultProps = {
     type: 'text',
 };

@@ -11,7 +11,7 @@ describe('The PanelArrow component', () => {
 
     beforeEach(() => {
         props = {
-            width: '20px'
+            width: '20px',
         };
         wrapper = shallow(<PanelArrow {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The PanelArrow component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

@@ -16,5 +16,4 @@ describe('The Divider component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

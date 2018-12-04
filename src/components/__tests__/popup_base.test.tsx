@@ -22,7 +22,7 @@ describe('The PopupBase component', () => {
     });
 
     it('should render children', () => {
-        wrapper.setProps({ children: <div className="child"></div> });
+        wrapper.setProps({ children: <div className="child" /> });
         expect(wrapper.find('.child')).toHaveLength(1);
     });
 
@@ -34,15 +34,15 @@ describe('The PopupBase component', () => {
     it('should render a footer', () => {
         wrapper.setProps({ footer: 'An error occurred!' });
         expect(wrapper.find('.popup__footer').prop('children')).toEqual('An error occurred!');
-    })
+    });
 
     it('should render a header text', () => {
         wrapper.setProps({ headerText: 'PopupBase header' });
         expect(wrapper.find('.popup__header').prop('children')).toEqual('PopupBase header');
-    })
+    });
 
     it('should render a header element', () => {
         wrapper.setProps({ headerElement: 'A header element' });
         expect(wrapper.find('.popup__header-element').prop('children')).toEqual('A header element');
-    })
+    });
 });

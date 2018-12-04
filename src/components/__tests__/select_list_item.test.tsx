@@ -44,5 +44,4 @@ describe('The SelectListItem component', () => {
         wrapper.setProps({ disabled: true });
         expect(wrapper.find('.disabled')).toHaveLength(1);
     });
-
 });

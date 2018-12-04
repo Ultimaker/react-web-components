@@ -15,5 +15,4 @@ describe('The Header component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

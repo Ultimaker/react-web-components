@@ -1,9 +1,9 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import {RefObject} from 'react';
+import { RefObject } from 'react';
 
 // components
-import {InputFieldProps} from './input_field_wrapper';
+import { InputFieldProps } from './input_field_wrapper';
 import DefaultInputField from './default_input_field';
 import Button from '../button';
 import RejectedIcon from '../icons/rejected_icon';
@@ -15,7 +15,7 @@ import PendingIcon from '../icons/pending_icon';
 export interface SearchFieldProps extends InputFieldProps {
     /** Input field value */
     value: string | null;
-    /** Maximum amount of characters allowed in the field **/
+    /** Maximum amount of characters allowed in the field */
     maxLength?: number;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
@@ -23,7 +23,7 @@ export interface SearchFieldProps extends InputFieldProps {
     focusOnLoad?: boolean;
     /** html placeholder text */
     placeholder?: string;
-    /** Optional extra elements to be displayed after the input **/
+    /** Optional extra elements to be displayed after the input */
     children?: any;
 }
 
@@ -75,18 +75,22 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
     render() {
         const { children, ...wrapperProps } = this.props;
         const { staticField, value } = wrapperProps;
-        return <div className="search-field">
+        return (
+          <div className="search-field">
             <DefaultInputField inputChildren={children} {...wrapperProps} inputRef={this._inputRef}>
-                {staticField ? value :
+              {staticField ? value
+                  : (
                     <Button
-                        onClickHandler={value ? this._onResetHandler : this._focus}
-                        style="quiet"
-                        className="search-button"
+                      onClickHandler={value ? this._onResetHandler : this._focus}
+                      style="quiet"
+                      className="search-button"
                     >
-                        {value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}
+                      {value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}
                     </Button>
+                  )
                 }
             </DefaultInputField>
-        </div>;
+          </div>
+        );
     }
 }

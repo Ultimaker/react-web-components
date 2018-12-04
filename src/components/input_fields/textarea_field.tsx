@@ -7,7 +7,7 @@ import Textarea from '../textarea';
 import splitTextByNewLine from '../../utils/split_text_by_new_line';
 
 export interface TextareaFieldProps extends InputFieldProps {
-    /** The text **/
+    /** The text */
     value: string;
     /** Whether the textarea should grow horizontally with user input */
     textareaAutoGrow?: boolean;
@@ -45,25 +45,32 @@ class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldSta
     }
 
     render() {
-        const { value, textareaAutoGrow, focusOnLoad, placeholder, className, children, ...wrapperProps } = this.props;
+        const {
+            value, textareaAutoGrow, focusOnLoad, placeholder, className, children, ...wrapperProps
+        } = this.props;
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
-        return <InputFieldWrapper
+        return (
+          <InputFieldWrapper
             touched={touched}
-            className={classNames(className, "input-field--textarea")}
+            className={classNames(className, 'input-field--textarea')}
             inputChildren={children}
             {...wrapperProps}
-        >
-            {staticField ? splitTextByNewLine(value) :
-                <Textarea
+          >
+            {staticField ? splitTextByNewLine(value)
+                : (
+                  <Textarea
                     id={id}
                     onChangeHandler={this._onChange}
                     placeholder={placeholder}
-                    value={value || ""}
+                    value={value || ''}
                     autofocus={focusOnLoad}
                     autoGrow={textareaAutoGrow}
-                />
-            }</InputFieldWrapper>;
+                  />
+                )
+            }
+          </InputFieldWrapper>
+        );
     }
 }
 

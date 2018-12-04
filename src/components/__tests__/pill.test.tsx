@@ -15,5 +15,4 @@ describe('The Pill component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

@@ -8,7 +8,7 @@ import SlideOutContainer from '../slide_out_container';
 import PanelArrow from '../panel_arrow';
 
 // mocks
-import { mockClickEvent } from '../../__mocks__/clickMock'
+import { mockClickEvent } from '../../__mocks__/clickMock';
 
 describe('The SlideOutContainer component', () => {
     let props;
@@ -18,7 +18,7 @@ describe('The SlideOutContainer component', () => {
         props = {
             isOpen: false,
             onHeaderClick: jest.fn(),
-            headerText: 'Test panel'
+            headerText: 'Test panel',
         };
         wrapper = shallow(<SlideOutContainer {...props} />);
     });
@@ -47,5 +47,4 @@ describe('The SlideOutContainer component', () => {
         wrapper.setProps({ headerText: null });
         expect(wrapper.find('.slide-out-container__header').exists()).toBe(false);
     });
-
 });

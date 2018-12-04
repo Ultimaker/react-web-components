@@ -15,5 +15,4 @@ describe('The Tile component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

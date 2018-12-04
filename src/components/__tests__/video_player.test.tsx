@@ -7,9 +7,9 @@ import VideoPlayer, { VideoPlayerProps } from '../video_player';
 
 describe('The video player component', () => {
     let wrapper;
-    let props: VideoPlayerProps = {
-        url: 'https://www.youtube.com/watch?v=160yAufQ-is'
-    }
+    const props: VideoPlayerProps = {
+        url: 'https://www.youtube.com/watch?v=160yAufQ-is',
+    };
 
     beforeEach(() => {
         wrapper = shallow(<VideoPlayer {...props} />);
@@ -31,19 +31,18 @@ describe('The video player component', () => {
 
     it('should display the loading state when the url is updated with a valid url', () => {
         wrapper.instance()._ready();
-        wrapper.setProps({ url: 'https://www.youtube.com/watch?v=KI5pvThvu9I' })
+        wrapper.setProps({ url: 'https://www.youtube.com/watch?v=KI5pvThvu9I' });
         expect(wrapper).toMatchSnapshot();
     });
 
     it('should stay in the loaded state when the url is updated with the original url', () => {
         wrapper.instance()._ready();
-        wrapper.setProps({ url: 'https://www.youtube.com/watch?v=160yAufQ-is' })
+        wrapper.setProps({ url: 'https://www.youtube.com/watch?v=160yAufQ-is' });
         expect(wrapper).toMatchSnapshot();
     });
 
     it('should display a message in case the player can not play the url', () => {
-        wrapper.setProps({ url: '|||invalid url |||' })
+        wrapper.setProps({ url: '|||invalid url |||' });
         expect(wrapper).toMatchSnapshot();
     });
-
 });
