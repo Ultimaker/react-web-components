@@ -46,4 +46,10 @@ describe('The video player component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should pass the given classname to the container', () => {
+        wrapper.setProps({ className: 'test-class1 test-class2' })
+        expect(wrapper.hasClass('test-class1')).toBe(true);
+        expect(wrapper.hasClass('test-class2')).toBe(true);
+    });
+
 });

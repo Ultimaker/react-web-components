@@ -4,6 +4,7 @@
  */
 import * as React from 'react';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
+import classNames = require('classnames');
 
 // utils
 import { I18n } from '../utils/i18n'
@@ -14,6 +15,8 @@ import Spinner from "./spinner";
 export interface VideoPlayerProps {
     /** url for the react-player component */
     url: string;
+    /** css classes to pass down to the container  */
+    className?: string;
     /** Optional width to be given to the container and the video. Will accept values that are valid in CSS */
     width?: string;
     /** Optional height to be given to the container and the video. Will accept values that are valid in CSS */
@@ -81,7 +84,7 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
 
 
     render(): JSX.Element {
-        const { url, width, height } = this.props;
+        const { url, width, height, className } = this.props;
         const { loading, error } = this.state;
         const containerStyle = {
             width: width,
@@ -89,9 +92,10 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         }
         const invalidUrl = !YouTubePlayer.canPlay(this.props.url);
         const playerClasses = loading || error || invalidUrl ? 'video-player__player video-player__player--hidden' : 'video-player__player';
+        const containerClasses = classNames('video-player', className);
 
         return (
-            <div style={containerStyle} className='video-player'>
+            <div style={containerStyle} className={containerClasses}>
                 {this._displayUrlError(invalidUrl)}
                 {this._displayPlaybackError(invalidUrl)}
                 {this._displaySpinner(invalidUrl)}
