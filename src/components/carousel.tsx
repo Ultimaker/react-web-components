@@ -25,6 +25,9 @@ export interface CarouselProps {
 
     /** Duration of slides transition (milliseconds) */
     transitionDuration?: number;
+
+    /** A list of breakpoint sizes for the breakpoints 'xs', 'sm', 'md', 'lg' */
+    breakpointSizes?: number[];
 }
 
 /**
@@ -42,6 +45,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
     static defaultProps = {
         autoPlayInterval: 5000,
         transitionDuration: 1000,
+        breakpointSizes: BreakpointSizes,
     };
 
     /**
@@ -51,12 +55,14 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
      * @private
      */
     private _getResponsiveConfiguration(): ResponsiveConfiguration {
-        const { itemCounts } = this.props;
+        const { itemCounts, breakpointSizes } = this.props;
         // create an object with the format .
         const responsive = {};
-        BreakpointSizes.forEach((breakpoint, index) => {
+        breakpointSizes.forEach((breakpoint, index) => {
+            // minus 1 to fix bug in AliceCarousel that applies the breackpoint 1px to early
+            const fixedBreakpoint = breakpoint > 0 ? breakpoint -1 : breakpoint;
             const itemCount = itemCounts.length > index ? itemCounts[index] : itemCounts[itemCounts.length - 1];
-            responsive[breakpoint] = { items: itemCount };
+            responsive[fixedBreakpoint] = { items: itemCount };
         });
         return responsive;
     }
@@ -104,7 +110,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
             return null;
         }
         return (
-            <Grid align="center" className={classNames('carousel__fixed', "hide-" + breakpoint)}>
+            <Grid align="center" className={classNames('carousel__fixed', 'show-' + breakpoint)}>
                 {React.Children.map(children, child => React.isValidElement(child) &&
                     <GridItem layoutWidth="fit">{child}</GridItem>)
                 }
@@ -127,7 +133,7 @@ export default class Carousel extends React.Component<CarouselProps, {}> { // no
         }
         const extraProps = {onDragStart: e => e.preventDefault()};
         return (
-            <div className={classNames('carousel__carousel', breakpoint && "show-" + breakpoint)}>
+            <div className={classNames('carousel__carousel', breakpoint && 'hide-' + breakpoint)}>
                 <AliceCarousel
                     mouseDragEnabled
                     autoPlay={autoPlayInterval > 0}

@@ -55,7 +55,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
 
             {visibleNavLinks.length > 0 &&
                 <div className="nav-links-container">
-                    <div className="burger-menu show-xs">
+                    <div className="burger-menu hide-sm">
                         <Button style="primary" shape="circle" onClickHandler={() => this._toggleShowNav(!showNav)}>
                             <div className={burgerIconClasses} />
                         </Button>

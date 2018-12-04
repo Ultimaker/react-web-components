@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import Page from '../page';
+import PageSection from '../page_section';
 
 describe('The Page component', () => {
     let props;
@@ -11,13 +11,13 @@ describe('The Page component', () => {
 
     beforeEach(() => {
         props = {
-            title: 'Page title',
+            title: 'Page section title',
             maxWidth: '100rem',
             id: 'page-id',
             className: 'page-class',
         };
 
-        wrapper = shallow(<Page {...props} />);
+        wrapper = shallow(<PageSection {...props} />);
     });
 
     it('should render', () => {

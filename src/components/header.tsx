@@ -18,7 +18,7 @@ const Header: React.StatelessComponent<HeaderProps> = ({ showNav, headerLogo, he
             </Link>
             <div className="navigation-container">
                 {showNav && children}
-                {rightSideLabel && <div className="right-side-label hide-sm">
+                {rightSideLabel && <div className="right-side-label show-sm">
                     <span title={rightSideLabel}>{rightSideLabel}</span>
                 </div>}
             </div>
