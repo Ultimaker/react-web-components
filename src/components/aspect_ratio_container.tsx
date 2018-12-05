@@ -41,5 +41,6 @@ aspectRatioContainer.defaultProps = {
     aspectRatio: 16 / 9
 };
 
+aspectRatioContainer.displayName = "AspectRatioContainer";
 
 export default aspectRatioContainer;
