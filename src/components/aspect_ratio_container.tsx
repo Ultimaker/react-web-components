@@ -15,7 +15,7 @@ export interface aspectRatioContainerProps {
 /**
  * returns a copy of the content with modified classes, wrapped in containers to manage it's size
  */
-export const aspectRatioContainer: React.StatelessComponent<aspectRatioContainerProps> = ({ aspectRatio, className, id, children }) => {
+export const AspectRatioContainer: React.StatelessComponent<aspectRatioContainerProps> = ({ aspectRatio, className, id, children }) => {
 
     const containerClasses = classNames('aspect-ratio-container', className);
     const bottomPadding = 1 / aspectRatio * 100 + '%';
@@ -37,10 +37,10 @@ export const aspectRatioContainer: React.StatelessComponent<aspectRatioContainer
     );
 };
 
-aspectRatioContainer.defaultProps = {
+AspectRatioContainer.defaultProps = {
     aspectRatio: 16 / 9
 };
 
-aspectRatioContainer.displayName = "AspectRatioContainer";
+AspectRatioContainer.displayName = "AspectRatioContainer";
 
-export default aspectRatioContainer;
+export default AspectRatioContainer;
