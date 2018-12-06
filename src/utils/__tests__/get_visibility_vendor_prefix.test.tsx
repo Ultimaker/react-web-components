@@ -5,4 +5,4 @@ import getVisibilityVendorPrefix from '../get_visibility_vendor_prefix';
 
 test('Visibility vendor prefix is not needed', () => {
     expect(getVisibilityVendorPrefix()).toBe('');
-})
+});

@@ -1,5 +1,5 @@
 /**
- * Gets browser prefix needed to support Document.hidden 
+ * Gets browser prefix needed to support Document.hidden
  */
 function getVisibilityVendorPrefix(): string {
     const prefixes = ['webkit', 'moz', 'ms', 'o'];
@@ -8,9 +8,8 @@ function getVisibilityVendorPrefix(): string {
     if ('hidden' in document) return '';
 
     // otherwise loop over all the known prefixes until we find one
-    for (var i = 0; i < prefixes.length; i++) {
-        if ((prefixes[i] + 'Hidden') in document)
-            return prefixes[i];
+    for (let i = 0; i < prefixes.length; i += 1) {
+        if ((`${prefixes[i]}Hidden`) in document) { return prefixes[i]; }
     }
 
     // otherwise it's not supported
