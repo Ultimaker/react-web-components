@@ -1,11 +1,11 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, number, selectV2 } from '@storybook/addon-knobs/react';
-import styles from "@sambego/storybook-styles";
+import styles from '@sambego/storybook-styles';
 
-import Ratings from '../components/ratings'
+import Ratings from '../components/ratings';
 
 import ApprovedIcon from '../components/icons/approved_icon';
 import EmailIcon from '../components/icons/email_icon';
@@ -71,22 +71,22 @@ const iconOptions = {
     um3_printer: UM3PrinterIcon,
     um3x_printer: UM3XPrinterIcon,
     ums5_printer: UMS5PrinterIcon,
-}
+};
 const colorOptions = {
     '': '',
-    'black': 'black',
-    'blue': 'blue',
-    'red': 'red',
-    'green': 'green',
-    'orange': 'orange',
-    'grey': 'grey',
-    'white': 'white'
+    black: 'black',
+    blue: 'blue',
+    red: 'red',
+    green: 'green',
+    orange: 'orange',
+    grey: 'grey',
+    white: 'white',
 };
 
 const sizeOptions = {
-    'sm': 'sm',
-    'md': 'md',
-    'lg': 'lg'
+    sm: 'sm',
+    md: 'md',
+    lg: 'lg',
 };
 
 stories.addDecorator(withKnobs)
@@ -98,16 +98,16 @@ stories.addDecorator(withKnobs)
     }));
 
 stories.add('Ratings', withInfo(
-    'Ratings component'
-)(() =>
+    'Ratings component',
+)(() => (
     <Ratings
-        max={number("Maximum rating", 5)}
-        rating={number("Current rating", 3.5)}
-        Icon={iconOptions[selectV2("Icon", Object.keys(iconOptions), 'highlight')]}
-        foregroundColor={selectV2("Foreground color", colorOptions, Ratings.defaultProps.foregroundColor)}
-        backgroundColor={selectV2("Background color", colorOptions, Ratings.defaultProps.backgroundColor)}
-        foregroundBorder={selectV2("Foreground border", colorOptions, Ratings.defaultProps.foregroundBorder)}
-        backgroundBorder={selectV2("Background border", colorOptions, Ratings.defaultProps.backgroundBorder)}
-        size={selectV2("Size", sizeOptions, Ratings.defaultProps.size)}
+        max={number('Maximum rating', 5)}
+        rating={number('Current rating', 3.5)}
+        Icon={iconOptions[selectV2('Icon', Object.keys(iconOptions), 'highlight')]}
+        foregroundColor={selectV2('Foreground color', colorOptions, Ratings.defaultProps.foregroundColor)}
+        backgroundColor={selectV2('Background color', colorOptions, Ratings.defaultProps.backgroundColor)}
+        foregroundBorder={selectV2('Foreground border', colorOptions, Ratings.defaultProps.foregroundBorder)}
+        backgroundBorder={selectV2('Background border', colorOptions, Ratings.defaultProps.backgroundBorder)}
+        size={selectV2('Size', sizeOptions, Ratings.defaultProps.size)}
     />
-));
+)));

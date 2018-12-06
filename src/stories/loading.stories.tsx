@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, number } from '@storybook/addon-knobs/react';
-import styles from "@sambego/storybook-styles";
+import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 
 import Loading from '../components/loading';
@@ -18,13 +18,11 @@ stories.addDecorator(withKnobs)
     }));
 
 stories.add('Loading text', withInfo(
-    'Loading text component'
-)(() =>
-    <Loading label={text('Label', 'Loading')} />
-));
+    'Loading text component',
+)(() => <Loading label={text('Label', 'Loading')} />));
 
 stories.add('Loading page', withInfo(
-    'Full page loading spinner. To be used when the application is loading.'
+    'Full page loading spinner. To be used when the application is loading.',
 )(() => {
     // pass the timeout as key so that it gets remounted when it changes.
     const timeout = number('Timeout to show spinner', 500);

@@ -45,14 +45,9 @@ export class I18n {
             return navigator.languages.find(I18n.isLanguageSupported);
         }
 
-        // determine the language using navigator.language (fallback 1)
+        // determine the language using navigator.language
         if (navigator.language !== undefined) {
             return [navigator.language].find(I18n.isLanguageSupported);
-        }
-
-        // determine the language using navigator.browserLanguage (fallback 2)
-        if (navigator.hasOwnProperty('browserLanguage')) {
-            return [navigator.browserLanguage].find(I18n.isLanguageSupported);
         }
 
         // return the default language

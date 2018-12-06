@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean, selectV2 } from '@storybook/addon-knobs/react';
-import styles from "@sambego/storybook-styles";
+import {
+    withKnobs, text, boolean, selectV2,
+} from '@storybook/addon-knobs/react';
+import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 
 import ContextMenu from '../components/context_menu';
@@ -34,32 +36,33 @@ stories.addDecorator(withKnobs)
     }));
 
 stories.add('Context menu', withInfo(
-    'Context menu for additional actions'
-)(() =>
+    'Context menu for additional actions',
+)(() => (
     <ContextMenu
         menuWidth={200}
         menuDirection={selectV2('Menu Direction', directionOptions, directionDefaultValue)}
-        menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}>
+        menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}
+    >
         <ContextMenuItem onClickHandler={action('clicked 1')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />
         <ContextMenuItem onClickHandler={action('clicked 2')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
         <ContextMenuItem onClickHandler={action('clicked 3')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
     </ContextMenu>
-));
+)));
 
 stories.add('Drop down menu', withInfo(
-    'Drop down menu'
-)(() =>
-    <DropDownMenu activeLabel='10'>
-        <DropDownMenuItem active={true} onClickHandler={action('clicked')}>10</DropDownMenuItem>
+    'Drop down menu',
+)(() => (
+    <DropDownMenu activeLabel="10">
+        <DropDownMenuItem active onClickHandler={action('clicked')}>10</DropDownMenuItem>
         <DropDownMenuItem active={false} onClickHandler={action('clicked')}>20</DropDownMenuItem>
         <DropDownMenuItem active={false} onClickHandler={action('clicked')}>40</DropDownMenuItem>
         <DropDownMenuItem active={false} onClickHandler={action('clicked')}>80</DropDownMenuItem>
     </DropDownMenu>
-));
+)));
 
 stories.add('User account menu', withInfo(
-    'User account menu'
-)(() =>
+    'User account menu',
+)(() => (
     <UserAccountMenu
         onSignOutClickHandler={action('clicked')}
         manageAccountURL={text('Account Management URL', 'https://account.ultimaker.com')}
@@ -69,4 +72,4 @@ stories.add('User account menu', withInfo(
         signedOut={boolean('Sign out', false)}
         onSignInClickHandler={action('clicked')}
     />
-));
+)));

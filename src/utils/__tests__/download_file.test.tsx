@@ -7,6 +7,7 @@ test('Downloading a file', () => {
     const elementMock = { click: jest.fn() };
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValue(elementMock);
     const createObjectURL = jest.fn().mockReturnValue('obj://test-url');
+    // @ts-ignore
     global.URL.createObjectURL = createObjectURL;
 
     // click download button

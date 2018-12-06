@@ -34,15 +34,6 @@ describe('The text field component', () => {
         expect(wrapper.find(DefaultInputField).prop('value')).toBeNull();
     });
 
-    it('should render a wrapped input', () => {
-        props.staticField = true;
-        props.children = 'a child';
-        props.inputChildren = props.children;
-        wrapper.setProps(props);
-        props.children = props.value;
-        expect(wrapper.find(DefaultInputField).props()).toEqual(props);
-    });
-
     it('should render a static text', () => {
         wrapper.setProps({ staticField: true, children: 'a child' });
         expect(wrapper.find(DefaultInputField).prop('children')).toEqual(props.value);
