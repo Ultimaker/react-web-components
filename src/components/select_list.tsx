@@ -82,7 +82,8 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         const { options } = this.props;
         const { focusedIndex } = this.state;
 
-        // if the focusedIndex has not been set, set it to 0, otherwise adjust it by the value of the changeByValue
+        // if the focusedIndex has not been set, set it to 0,
+        // otherwise adjust it by the value of the changeByValue
         let newIndex = focusedIndex !== null ? focusedIndex + changeByValue : 0;
 
         // if the user presses down on the last item, go to the first
@@ -155,7 +156,10 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
 
                 <div className="container">
                     <div ref="menu" className="menu">
-                        <UnmountClosed isOpened={showMenu} springConfig={{ stiffness: 370, damping: 35 }}>
+                        <UnmountClosed
+                            isOpened={showMenu}
+                            springConfig={{ stiffness: 370, damping: 35 }}
+                        >
                             <ul>
                                 {options.map((option, index) => (
                                     <SelectListItem

@@ -134,11 +134,20 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         } = this.props;
         const { showMenu, menuOffset } = this.state;
 
-        const classes = classNames(`context-menu context-menu--${menuDirection}`, { visible: showMenu }, { 'context-menu--panel': positionMenuInPanel });
+        const classes = classNames(
+            `context-menu context-menu--${menuDirection}`,
+            { visible: showMenu },
+            { 'context-menu--panel': positionMenuInPanel },
+        );
         const menuStyle = ContextMenu._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
         return (
-            <div ref={this._menuRef} className={classes} tabIndex={1} onClick={ContextMenu._stopPropagation}>
+            <div
+                ref={this._menuRef}
+                className={classes}
+                tabIndex={1}
+                onClick={ContextMenu._stopPropagation}
+            >
 
                 <div
                     className="trigger"

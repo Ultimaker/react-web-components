@@ -6,9 +6,10 @@ import Page from './page';
 export interface PageSectionProps {
     /** The page section title displayed at the top of the page section */
     title?: string;
-    /** The max width of the page section content. The content will be centered horizontally on the page section */
+    /** The max width of the page section content.
+     * The content will be centered horizontally on the page section */
     maxWidth?: number | string;
-    /** Optional ID for the button **/
+    /** Optional ID for the button * */
     id?: string;
     /** Additional classes for styling */
     className?: string;
@@ -20,16 +21,18 @@ export interface PageSectionProps {
  * Page Section is the same as Page, but renamed for syntax reasons.
  * Should be used instead of Page when you want multiple sections.
  */
-const PageSection: React.StatelessComponent<PageSectionProps> =
-    ({ maxWidth, id, className, children }): JSX.Element =>
-        <Page
-            id={id}
-            className={className}
-            maxWidth={maxWidth}
-        >
-            {children}
-        </Page>;
+const PageSection: React.StatelessComponent<PageSectionProps> = ({
+    maxWidth, id, className, children,
+}): JSX.Element => (
+    <Page
+        id={id}
+        className={className}
+        maxWidth={maxWidth}
+    >
+        {children}
+    </Page>
+);
 
-PageSection.displayName = "PageSection";
+PageSection.displayName = 'PageSection';
 
 export default PageSection;
