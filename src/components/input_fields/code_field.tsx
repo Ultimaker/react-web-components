@@ -168,7 +168,9 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
 
         if (values[index] === charValue) {
             return true;
-        } if (!this._isKeyAllowed(charValue)) {
+        }
+
+        if (!this._isKeyAllowed(charValue)) {
             return false;
         }
 
@@ -286,8 +288,12 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
             <div className="code-field" id={id}>
                 <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
                     {staticField
-                        && (type === 'password' ? _.repeat('*', maxLength) : value)
+                        && type === 'password'
+                        && _.repeat('*', maxLength)
                     }
+                    {staticField
+                        && type !== 'password'
+                        && value}
                     {!staticField && values.map((v, i) => (
                         <React.Fragment key={i}>
                             {i > 0 && <span className="separator">-</span>}

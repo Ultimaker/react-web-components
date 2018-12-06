@@ -35,12 +35,11 @@ export interface UserAccountMenuState {
 }
 
 export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserAccountMenuState> {
-    private static _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
-        e.stopPropagation();
-    }
+
+    private _menuRef;
 
     state = {
-        showMenu: false,
+        showMenu: false
     };
 
     constructor(props: UserAccountMenuProps) {
@@ -51,17 +50,16 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         this._onSignOut = this._onSignOut.bind(this);
     }
 
-    private _menuRef;
-
     private _setShowMenu(showMenu: boolean): void {
         if (showMenu) {
             document.addEventListener('mousedown', this._onOutsideClickHandler);
-        } else {
+        }
+        else {
             document.removeEventListener('mousedown', this._onOutsideClickHandler);
         }
 
         this.setState({
-            showMenu,
+            showMenu: showMenu
         });
     }
 
@@ -71,76 +69,104 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         }
     }
 
+    private _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+        e.stopPropagation();
+    }
+
     private _onSignOut() {
-        const { onSignOutClickHandler } = this.props;
         this._setShowMenu(false);
-        onSignOutClickHandler();
+        this.props.onSignOutClickHandler();
     }
 
     private _onSignIn() {
-        const { onSignInClickHandler } = this.props;
         this._setShowMenu(false);
-        onSignInClickHandler();
+        this.props.onSignInClickHandler();
     }
 
     render(): JSX.Element {
-        const {
-            manageAccountURL, displayName, imageURL, triggerWidth,
-            triggerHeight, signedOut, children,
-        } = this.props;
+
+        const { manageAccountURL, displayName, imageURL, triggerWidth, triggerHeight, signedOut, children } = this.props;
         const { showMenu } = this.state;
 
-        const classes = classNames('user-account-menu', { visible: showMenu });
+        const classes = classNames('user-account-menu', { 'visible': showMenu });
         const triggerClasses = classNames('trigger', { 'trigger--rectangle': triggerWidth || triggerHeight });
 
-        const childProps = children && { onCloseMenuHandler: () => this._setShowMenu(false) };
+        const childProps = children && { onCloseMenuHandler: () => this._setShowMenu(false) }
 
-        return (
-            <div
-                className={classes}
-                tabIndex={1}
-                onClick={UserAccountMenu._stopPropagation}
-                ref={this._menuRef}
+        return <div className={classes} tabIndex={1} onClick={this._stopPropagation} ref={this._menuRef}>
 
+            <div className={triggerClasses}
+                onClick={() => this._setShowMenu(!showMenu)}
+                style={triggerWidth || triggerHeight ? { width: triggerWidth, height: triggerHeight } : undefined}
             >
-                <div
-                    className={triggerClasses}
-                    onClick={() => this._setShowMenu(!showMenu)}
-                    style={triggerWidth || triggerHeight ? { width: triggerWidth, height: triggerHeight } : undefined}
-                >
-                    <ProfileImage imageURL={imageURL} size="3.6rem" />
+                <ProfileImage imageURL={imageURL} size="3.6rem" />
+            </div>
+
+            <div className='container'>
+                <div className="menu">
+                    <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
+                        <div className="sections">
+
+                            {children &&
+                                <div className="other-section">
+                                    {React.Children.map(children, (child: JSX.Element) =>
+                                        React.cloneElement(child, childProps)
+                                    )}
+                                </div>
+                            }
+
+                            <div className="account-section">
+                                {!signedOut &&
+                                    <React.Fragment>
+                                        <div className="account-section__title">
+                                            {I18n.translate("User account menu title", "My account")}
+                                        </div>
+
+                                        <div className="account-section__profile">
+                                            <div className="account-section__icon">
+                                                <ProfileImage imageURL={imageURL} size="10rem" />
+                                            </div>
+                                            <div className="account-section__name">{displayName}</div>
+                                        </div>
+
+                                        <div className="account-section__buttons">
+                                            {manageAccountURL &&
+                                            <Button style="secondary"
+                                                    type="link"
+                                                    id="account-menu-manage-button"
+                                                    linkURL={manageAccountURL}
+                                                    linkToNewTab
+                                            >
+                                                {I18n.translate("User account menu button", "Manage account")}
+                                                <LinkIcon />
+                                            </Button>}
+
+                                            <Button style="secondary"
+                                                    onClickHandler={this._onSignOut}
+                                                    id="account-menu-sign-out-button"
+                                            >
+                                                {I18n.translate("User account menu button", "Sign out")}
+                                            </Button>
+                                        </div>
+                                    </React.Fragment>
+                                }
+                                {signedOut &&
+                                    <Button style="secondary"
+                                            id="account-menu-sign-in-button"
+                                            onClickHandler={this._onSignIn}
+                                    >
+                                        {I18n.translate("User account menu button", "Sign in")}
+                                    </Button>
+                                }
+                            </div>
+
+                        </div>
+                    </Collapse>
                 </div>
+            </div>
 
-                <div className="container">
-                    <div className="menu">
-                        <Collapse
-                            isOpened={showMenu}
-                            springConfig={{ stiffness: 390, damping: 32 }}
-                        >
-                            <div className="sections">
+        </div>
+    }
+}
 
-                                {children && (
-                                    <div className="other-section">
-                                        {React.Children.map(children, (child: JSX.Element) => (
-                                            React.cloneElement(child, childProps)
-                                        ))}
-                                    </div>
-                                )}
-
-                                <div className="account-section">
-                                    {!signedOut && (
-                                        <React.Fragment>
-                                            <div className="account-section__title">
-                                                {I18n.translate('User account menu title', 'My account')}
-                                            </div>
-
-                                            <div className="account-section__profile">
-                                                <div className="account-section__icon">
-                                                    <ProfileImage imageURL={imageURL} size="10rem" />
-                                                </div>
-                                                <div className="account-section__name">{displayName}</div>
-                                            </div>
-
-                                            <div className="account-section__buttons">
-                                                {manageAccountURL && (
-                                                    <Button 
+export default UserAccountMenu;

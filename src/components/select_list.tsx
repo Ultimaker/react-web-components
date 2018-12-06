@@ -182,3 +182,5 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         )
     }
 }
+
+export default SelectList;
