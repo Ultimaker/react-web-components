@@ -12,28 +12,31 @@ export interface CheckboxProps {
     disabled?: boolean;
 }
 
-export const Checkbox: React.StatelessComponent<CheckboxProps> = ({ id, value, onChangeHandler, disabled }) => {
-
+export const Checkbox: React.StatelessComponent<CheckboxProps> = ({
+    id, value, onChangeHandler, disabled,
+}) => {
     const classes = classNames('checkbox', { disabled });
 
-    return <div className={classes} onClick={(e) => e.stopPropagation()} >
-        <input
-            id={id}
-            name={id}
-            type="checkbox"
-            checked={value !== null ? value : false}
-            onChange={(e) => onChangeHandler(e.currentTarget.checked)}
-            disabled={disabled}
-        />
-        <label htmlFor={id}></label>
-    </div>
-}
+    return (
+        <div className={classes} onClick={e => e.stopPropagation()}>
+            <input
+                id={id}
+                name={id}
+                type="checkbox"
+                checked={value !== null ? value : false}
+                onChange={e => onChangeHandler(e.currentTarget.checked)}
+                disabled={disabled}
+            />
+            <label htmlFor={id} />
+        </div>
+    );
+};
 
 
 Checkbox.defaultProps = {
-    value: false
+    value: false,
 };
 
-Checkbox.displayName = "Checkbox";
+Checkbox.displayName = 'Checkbox';
 
 export default Checkbox;

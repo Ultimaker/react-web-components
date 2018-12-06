@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ModalWidth } from './modal';
 import { Form, FormValidationResponse } from './form';
 import { ButtonStyle } from './button';
-import PopupBase from './popup_base'
+import PopupBase from './popup_base';
 
 // utils
 import splitTextByNewLine from '../utils/split_text_by_new_line';
@@ -20,13 +20,19 @@ export interface PopupProps {
     validationErrors?: FormValidationResponse;
     /** Primary button text */
     primaryBtnText: string;
-    /** Called when the primary button is clicked. If it returns a promise, the spinner is hidden when it is done */
+    /**
+     * Called when the primary button is clicked.
+     * If it returns a promise, the spinner is hidden when it is done
+     */
     primaryBtnHandler: () => void | Promise<any>;
     /** Primary button style */
     primaryBtnStyle?: ButtonStyle;
     /** Secondary button text */
     secondaryBtnText?: string;
-    /** Called when the secondary button is clicked. If it returns a promise, the spinner is hidden when it is done */
+    /**
+     * Called when the secondary button is clicked.
+     * If it returns a promise, the spinner is hidden when it is done
+     */
     secondaryBtnHandler?: () => void | Promise<any>;
     /** Secondary button style */
     secondaryBtnStyle?: ButtonStyle;
@@ -38,27 +44,29 @@ export interface PopupProps {
     step?: number;
     /** The total number of steps of a multi-step popup */
     totalSteps?: number;
-    /** A component or text to be rendered in the footer of the popup **/
+    /** A component or text to be rendered in the footer of the popup */
     footer?: any;
 }
 
 export interface PopupState {
     primaryBtnShowSpinner: boolean;
     secondaryBtnShowSpinner: boolean;
-    /** Saved solely to be used as a comparison in getDerivedStateFromProps to check whether the step prop has changed */
+    /**
+     * Saved solely to be used as a comparison in getDerivedStateFromProps
+     * to check whether the step prop has changed
+     */
     storedStep: number;
 }
 
 export class Popup extends React.Component<PopupProps, PopupState> {
-
     static defaultProps = {
-        width: 'sm'
+        width: 'sm',
     };
 
     state = {
         primaryBtnShowSpinner: false,
         secondaryBtnShowSpinner: false,
-        storedStep: null
+        storedStep: null,
     };
 
     constructor(props) {
@@ -74,7 +82,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
             // if there are validation errors, reset the button spinners
             return {
                 primaryBtnShowSpinner: false,
-                secondaryBtnShowSpinner: false
+                secondaryBtnShowSpinner: false,
             };
         }
         if (props.step !== state.storedStep) {
@@ -82,7 +90,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
             return {
                 storedStep: props.step,
                 primaryBtnShowSpinner: false,
-                secondaryBtnShowSpinner: false
+                secondaryBtnShowSpinner: false,
             };
         }
         return null;
@@ -92,7 +100,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
      * Handles a click on the primary button
      */
     private _primaryBtnHandler(): void {
-        const promise = this.props.primaryBtnHandler();
+        const { primaryBtnHandler } = this.props;
+        const promise = primaryBtnHandler();
         this.setState({ primaryBtnShowSpinner: true });
         if (promise) {
             const hideSpinner = () => this.setState({ primaryBtnShowSpinner: false });
@@ -104,7 +113,8 @@ export class Popup extends React.Component<PopupProps, PopupState> {
      * Handles a click on the secondary button
      */
     private _secondaryBtnHandler(): void {
-        const promise = this.props.secondaryBtnHandler();
+        const { secondaryBtnHandler } = this.props;
+        const promise = secondaryBtnHandler();
         this.setState({ secondaryBtnShowSpinner: true });
         if (promise) {
             const hideSpinner = () => this.setState({ secondaryBtnShowSpinner: false });
@@ -114,13 +124,20 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     render(): JSX.Element {
         const {
-            headerElement, headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle,
-            validationErrors, step, totalSteps, width, children, footer
+            headerElement, headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnStyle,
+            secondaryBtnStyle, validationErrors, step, totalSteps, width, children, footer,
         } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
         return (
-            <PopupBase headerElement={headerElement} headerText={headerText} step={step} totalSteps={totalSteps} width={width} footer={footer}>
+            <PopupBase
+                headerElement={headerElement}
+                headerText={headerText}
+                step={step}
+                totalSteps={totalSteps}
+                width={width}
+                footer={footer}
+            >
                 {bodyText && splitTextByNewLine(bodyText)}
                 <Form
                     primaryBtnText={primaryBtnText}
@@ -132,13 +149,13 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                     secondaryBtnHandler={this._secondaryBtnHandler}
                     secondaryBtnShowSpinner={secondaryBtnShowSpinner}
                     validationErrors={validationErrors}
-                    alwaysEnableSubmitButton={true}
+                    alwaysEnableSubmitButton
                 >
                     {children}
                 </Form>
             </PopupBase>
         );
-    };
+    }
 }
 
 export default Popup;

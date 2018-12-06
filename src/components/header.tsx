@@ -10,29 +10,30 @@ export interface HeaderProps {
     rightSideLabel?: string;
 }
 
-const Header: React.StatelessComponent<HeaderProps> = ({ showNav, headerLogo, headerLogoUrl, rightSideLabel, children }) => {
-    return (
-        <header className="app__header">
-            <Link className="logo" to={headerLogoUrl}>
-                {headerLogo}
-            </Link>
-            <div className="navigation-container">
-                {showNav && children}
-                {rightSideLabel && <div className="right-side-label hide-sm">
+const Header: React.StatelessComponent<HeaderProps> = ({
+    showNav, headerLogo, headerLogoUrl, rightSideLabel, children,
+}) => (
+    <header className="app__header">
+        <Link className="logo" to={headerLogoUrl}>
+            {headerLogo}
+        </Link>
+        <div className="navigation-container">
+            {showNav && children}
+            {rightSideLabel && (
+                <div className="right-side-label hide-sm">
                     <span title={rightSideLabel}>{rightSideLabel}</span>
-                </div>}
-            </div>
-        </header>
-    );
-
-}
+                </div>
+            )}
+        </div>
+    </header>
+);
 
 Header.defaultProps = {
     showNav: true,
     headerLogo: <CuraLogo />,
-    headerLogoUrl: "/"
-}
+    headerLogoUrl: '/',
+};
 
-Header.displayName = "Header";
+Header.displayName = 'Header';
 
 export default Header;

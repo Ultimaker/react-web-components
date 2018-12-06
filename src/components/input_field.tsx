@@ -14,10 +14,10 @@ import TextField from './input_fields/text_field';
 import CodeField from './input_fields/code_field';
 import SearchField from './input_fields/search_field';
 
-import {SelectOption} from './select_list';
-import {ImageShape} from './image';
-import {ImageFile} from './image_upload';
-import {InputFieldProps} from './input_fields/input_field_wrapper';
+import { SelectOption } from './select_list';
+import { ImageShape } from './image';
+import { ImageFile } from './image_upload';
+import { InputFieldProps } from './input_fields/input_field_wrapper';
 
 
 export type InputFieldValue = string | number | boolean | ImageFile | string[] | HTMLInputElement;
@@ -34,7 +34,7 @@ export interface OldInputFieldProps extends InputFieldProps {
     onChangeHandler: (id: string, value: InputFieldValue) => void;
     /** html placeholder text */
     placeholder?: string;
-    /** The type of the input **/
+    /** The type of the input */
     type?: InputFieldType;
     /** Minimum value for number field */
     min?: number;
@@ -52,7 +52,7 @@ export interface OldInputFieldProps extends InputFieldProps {
     imageSize?: string;
     /** Shape of the image for type image: 'round' | 'square' */
     imageShape?: ImageShape;
-    /** Maximum amount of characters allowed in the text field **/
+    /** Maximum amount of characters allowed in the text field */
     maxLength?: number;
 }
 
@@ -69,7 +69,7 @@ export class InputField extends React.Component<OldInputFieldProps, {}> {
         staticField: false,
     };
 
-    private readonly input_fields = {
+    private readonly inputFields = {
         number: NumberField,
         textarea: TextareaField,
         select: SelectField,
@@ -88,8 +88,8 @@ export class InputField extends React.Component<OldInputFieldProps, {}> {
     };
 
     render() {
-        const {children, ...wrapperProps} = this.props;
-        const Component = this.input_fields[wrapperProps.type];
+        const { children, ...wrapperProps } = this.props;
+        const Component = this.inputFields[wrapperProps.type];
         return <Component {...wrapperProps}>{children}</Component>;
     }
 }

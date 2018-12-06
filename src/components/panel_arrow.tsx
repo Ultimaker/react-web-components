@@ -16,20 +16,19 @@ export interface PanelArrowProps {
 }
 
 const PanelArrow: React.StatelessComponent<PanelArrowProps> = ({ active, width, color }) => {
-
     const classes = classNames(`panel-arrow panel-arrow--${color}`, { 'panel-arrow--active': active });
 
     return (
-        <div className={classes} style={{ width: width }}>
+        <div className={classes} style={{ width }}>
             <SingleArrowIcon />
         </div>
     );
 };
 
 PanelArrow.defaultProps = {
-    color: 'black'
+    color: 'black',
 };
 
-PanelArrow.displayName = "PanelArrow";
+PanelArrow.displayName = 'PanelArrow';
 
 export default PanelArrow;

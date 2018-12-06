@@ -12,21 +12,22 @@ export interface CircleIconProps {
     size?: string;
 }
 
-export const CircleIcon: React.StatelessComponent<CircleIconProps> = ({ style, disabled, size, children }) => {
+export const CircleIcon: React.StatelessComponent<CircleIconProps> = ({
+    style, disabled, size, children,
+}) => (
+    <div
+        className={classNames(`circle-icon icon icon--circle ${style}`, { disabled })}
+        style={size ? { width: size, height: size } : undefined}
+    >
 
-    return (
-        <div className={classNames(`circle-icon icon icon--circle ${style}`, { 'disabled': disabled })}
-            style={size ? { width: size, height: size } : undefined}>
-
-            {children}
-        </div>
-    );
-};
+        {children}
+    </div>
+);
 
 CircleIcon.defaultProps = {
     style: 'primary',
 };
 
-CircleIcon.displayName = "CircleIcon";
+CircleIcon.displayName = 'CircleIcon';
 
 export default CircleIcon;

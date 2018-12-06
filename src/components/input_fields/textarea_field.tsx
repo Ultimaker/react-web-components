@@ -40,8 +40,9 @@ class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldSta
     }
 
     private _onChange(value: string): void {
+        const { onChangeHandler, id } = this.props;
         this.setState({ touched: true });
-        this.props.onChangeHandler(this.props.id, value);
+        onChangeHandler(id, value);
     }
 
     render() {

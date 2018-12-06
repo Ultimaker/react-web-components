@@ -20,9 +20,6 @@ export interface TextareaProps {
 }
 
 export class Textarea extends React.Component<TextareaProps, {}> {
-
-    private _inputRef;
-
     constructor(props) {
         super(props);
         this._inputRef = React.createRef();
@@ -31,6 +28,8 @@ export class Textarea extends React.Component<TextareaProps, {}> {
     componentDidMount(): void {
         this._focusOnPromptInput();
     }
+
+    private _inputRef;
 
     private _focusOnPromptInput(): void {
         const { autofocus } = this.props;
@@ -41,7 +40,9 @@ export class Textarea extends React.Component<TextareaProps, {}> {
     }
 
     render(): JSX.Element {
-        const { id, value, onChangeHandler, error, autoGrow, placeholder, autofocus } = this.props;
+        const {
+            id, value, onChangeHandler, error, autoGrow, placeholder, autofocus,
+        } = this.props;
         const classes = classNames('input', { error });
 
         return (
@@ -57,7 +58,7 @@ export class Textarea extends React.Component<TextareaProps, {}> {
                     onChange={e => onChangeHandler(e.target.value)}
                 />
             </div>
-        )
+        );
     }
 }
 

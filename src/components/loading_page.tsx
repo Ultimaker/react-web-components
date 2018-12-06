@@ -8,8 +8,9 @@ import Spinner from './spinner';
 export interface LoadingPageProps {
     /**
      * The page will only show the spinner if it is rendered for this amount of milliseconds.
-     * This way we can avoid flashing the spinner in fast pages, and only show it when it takes long.
-     **/
+     * This way we can avoid flashing the spinner in fast pages,
+     * and only show it when it takes long.
+     */
     timeoutMs?: number,
 }
 
@@ -19,7 +20,7 @@ export interface LoadingPageProps {
 export interface LoadingPageState {
     /**
      * When timed out the spinner is shown.
-     **/
+     */
     isTimedOut: boolean,
 }
 
@@ -27,7 +28,7 @@ export interface LoadingPageState {
  * A page with a loading spinner.
  */
 export default class LoadingPage extends React.Component<LoadingPageProps, LoadingPageState> {
-    /** The timer that will time out the page and show the spinner **/
+    /** The timer that will time out the page and show the spinner */
     private _timeout: any = null;
 
     state = {
@@ -57,15 +58,15 @@ export default class LoadingPage extends React.Component<LoadingPageProps, Loadi
 
     private _onTimeout() {
         this._timeout = null;
-        this.setState({ isTimedOut: true })
+        this.setState({ isTimedOut: true });
     }
 
     render(): JSX.Element {
         const { isTimedOut } = this.state;
         return (
             <div className="loading-page">
-                {isTimedOut && <Spinner/>}
+                {isTimedOut && <Spinner />}
             </div>
         );
     }
-};
+}

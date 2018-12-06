@@ -39,8 +39,9 @@ class CheckboxField extends React.Component<CheckboxFieldProps, CheckboxFieldSta
     }
 
     private _onChange(value: boolean): void {
+        const { onChangeHandler, id } = this.props;
         this.setState({ touched: true });
-        this.props.onChangeHandler(this.props.id, value);
+        onChangeHandler(id, value);
     }
 
     render() {

@@ -45,24 +45,28 @@ export interface InputFieldProps {
 }
 
 /**
- * The input field wrapper has also some properties that must be passed by the input fields themselves.
+ * The input field wrapper has also some properties
+ * that must be passed by the input fields themselves.
  */
 export interface InputFieldWrapperProps extends InputFieldProps {
-    /** Indicates if the field has been touched (changed) or not from the default value. */
+    /**
+     * Indicates if the field has been touched (changed)
+     * or not from the default value.
+     */
     touched: boolean;
-
-    /** Children are required and must include the input field both in static and non-static mode. */
+    /**
+     * Children are required and must include the
+     * input field both in static and non-static mode.
+     */
     children: any;
-
-    /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
+    /**
+     * Any other children passed inside the input field are
+     * rendered separately and should be passed in this prop
+     */
     inputChildren: any;
 }
 
 export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {}> {
-    state = {
-        touched: false,
-    };
-
     static defaultProps = {
         labelLayoutWidth: '1/1',
         labelWidthBreakpoint: 'sm',
@@ -82,7 +86,8 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
     private _renderLabel(): JSX.Element {
         const {
-            id, label, labelLayoutWidth, labelWidthBreakpoint, preLabelElement, infoText, infoLinkURL,
+            id, label, labelLayoutWidth, labelWidthBreakpoint,
+            preLabelElement, infoText, infoLinkURL,
         } = this.props;
 
         if (label || preLabelElement) {
@@ -119,21 +124,6 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
         return null;
     }
 
-
-    render(): JSX.Element {
-        const { className, staticField } = this.props;
-
-        const inputClasses = classNames('input-field layout', className, { 'hide-input': staticField });
-        return (
-            <div className={inputClasses}>
-                {this._renderLabel()}
-                {this._renderInput()}
-                {this._renderInputChildren()}
-                {this._renderValidation()}
-            </div>
-        );
-    }
-
     private _renderInputChildren(): JSX.Element {
         const { inputChildren } = this.props;
         if (inputChildren) {
@@ -161,14 +151,14 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
         return (
             <div className={inputLayoutClasses}>
                 {!staticField
-            && (
-                <div className="input-container layout layout--gutter-xs">
-                    <div className="input-wrapper-children layout__item u-fill">
-                        {children}
-                    </div>
-                    {this._renderPostInputElement()}
-                </div>
-            )
+                    && (
+                        <div className="input-container layout layout--gutter-xs">
+                            <div className="input-wrapper-children layout__item u-fill">
+                                {children}
+                            </div>
+                            {this._renderPostInputElement()}
+                        </div>
+                    )
                 }
 
                 {staticField && <div className="static-field">{children}</div>}
@@ -186,6 +176,20 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
             );
         }
         return null;
+    }
+
+    render(): JSX.Element {
+        const { className, staticField } = this.props;
+
+        const inputClasses = classNames('input-field layout', className, { 'hide-input': staticField });
+        return (
+            <div className={inputClasses}>
+                {this._renderLabel()}
+                {this._renderInput()}
+                {this._renderInputChildren()}
+                {this._renderValidation()}
+            </div>
+        );
     }
 }
 

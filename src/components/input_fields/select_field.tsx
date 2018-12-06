@@ -35,13 +35,14 @@ class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
     }
 
     private _onChange(value: string | number): void {
+        const { onChangeHandler, id } = this.props;
         this.setState({ touched: true });
-        this.props.onChangeHandler(this.props.id, value);
+        onChangeHandler(id, value);
     }
 
     private _staticRender(): JSX.Element | string {
         const { value, selectOptions } = this.props;
-        const option = selectOptions.find(option => option.value === value);
+        const option = selectOptions.find(findOption => findOption.value === value);
         return option && option.label;
     }
 

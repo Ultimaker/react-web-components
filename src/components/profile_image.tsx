@@ -14,17 +14,19 @@ export interface CircleIconProps {
 
 export const ProfileImage: React.StatelessComponent<CircleIconProps> = ({ size, imageURL }) => (
     <div className="profile-image">
-        {imageURL &&
-            <Image src={imageURL} size={size} />
+        {imageURL
+            && <Image src={imageURL} size={size} />
         }
-        {!imageURL &&
-            <CircleIcon style="primary" disabled size={size} >
-                <ProfileIcon />
-            </CircleIcon>
+        {!imageURL
+            && (
+                <CircleIcon style="primary" disabled size={size}>
+                    <ProfileIcon />
+                </CircleIcon>
+            )
         }
     </div>
 );
 
-ProfileImage.displayName = "ProfileImage";
+ProfileImage.displayName = 'ProfileImage';
 
 export default ProfileImage;

@@ -10,18 +10,15 @@ export interface DividerProps {
     margin?: boolean;
 }
 
-export const Divider: React.StatelessComponent<DividerProps> = ({ direction, margin }) => {
-
-    return (
-        <div className={classNames(`divider divider--${direction}`, { 'divider--with-margin': margin })}></div>
-    );
-};
+export const Divider: React.StatelessComponent<DividerProps> = ({ direction, margin }) => (
+    <div className={classNames(`divider divider--${direction}`, { 'divider--with-margin': margin })} />
+);
 
 Divider.defaultProps = {
     direction: 'horizontal',
-    margin: false
+    margin: false,
 };
 
-Divider.displayName = "Divider";
+Divider.displayName = 'Divider';
 
 export default Divider;

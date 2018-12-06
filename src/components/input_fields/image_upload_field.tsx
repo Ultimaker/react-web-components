@@ -63,9 +63,18 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
         }
     }
 
+    private _onFileRead(contents: string): void {
+        const { onReadHandler, id } = this.props;
+
+        if (onReadHandler) {
+            onReadHandler(id, contents);
+        }
+    }
+
     render() {
         const {
-            imageSize, imageShape, placeholder, value, onReadHandler, children, allowCropping, ...wrapperProps
+            imageSize, imageShape, placeholder, value, onReadHandler,
+            children, allowCropping, ...wrapperProps
         } = this.props;
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
@@ -80,7 +89,7 @@ class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploa
                                 size={imageSize}
                                 imageURL={value && value.toString()}
                                 onFileSelection={this._onChange}
-                                onFileRead={contents => onReadHandler && onReadHandler(id, contents)}
+                                onFileRead={contents => this._onFileRead(contents)}
                                 shape={imageShape}
                                 placeholderLabel={placeholder}
                                 allowCropping={allowCropping}

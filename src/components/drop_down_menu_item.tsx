@@ -7,23 +7,24 @@ export interface DropDownMenuItemProps {
     onClickHandler: () => void;
 }
 
-const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
-    ({ active, disabled, onClickHandler, children }) => {
-
-        const handleClick = (e) => {
-            if (disabled) {
-                e.stopPropagation();
-            }
-            else {
-                onClickHandler();
-            }
+const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> = ({
+    active, disabled, onClickHandler, children,
+}) => {
+    const handleClick = (e) => {
+        if (disabled) {
+            e.stopPropagation();
+        } else {
+            onClickHandler();
         }
-
-        return <li className={classNames({ disabled, active })} onClick={handleClick}>
-            {children}
-        </li>
     };
 
-DropDownMenuItem.displayName = "DropDownMenuItem";
+    return (
+        <li className={classNames({ disabled, active })} onClick={handleClick}>
+            {children}
+        </li>
+    );
+};
+
+DropDownMenuItem.displayName = 'DropDownMenuItem';
 
 export default DropDownMenuItem;

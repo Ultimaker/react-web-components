@@ -26,17 +26,40 @@ const triggerWidth = 45;
 const windowMargin = 10;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
-
-    private _menuRef;
-
     public static defaultProps: Partial<ContextMenuProps> = {
         menuOffsetDirection: 'left',
-        menuDirection: 'south'
+        menuDirection: 'south',
     };
+
+    static _getMenuStyle(
+        menuOffset: number,
+        menuOffsetDirection: MenuOffsetDirection,
+        menuWidth: number,
+    ): React.CSSProperties {
+        let offset = -menuOffsetDefault;
+        let direction: MenuOffsetDirection = 'left';
+
+        if (menuOffset) {
+            offset = menuOffset;
+        } else if (menuOffsetDirection === 'left') {
+            direction = 'right';
+        }
+
+        const menuStyle = {
+            [direction]: offset,
+            width: menuWidth,
+        };
+
+        return menuStyle;
+    }
+
+    static _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+        e.stopPropagation();
+    }
 
     state = {
         showMenu: false,
-        menuOffset: null
+        menuOffset: null,
     };
 
     constructor(props: ContextMenuProps) {
@@ -45,6 +68,8 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
     }
 
+    private _menuRef;
+
     private _onOutsideClickHandler(event) {
         if (this._menuRef && !this._menuRef.current.contains(event.target)) {
             this._setShowMenu(false);
@@ -52,7 +77,6 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     }
 
     private _setMenuOffset(): void {
-
         const { menuWidth, menuOffsetDirection } = this.props;
 
         // get browser page width
@@ -62,7 +86,8 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const contextMenuElement = this._menuRef.current;
 
         // get element position
-        const contextMenuLeft = contextMenuElement ? contextMenuElement.getBoundingClientRect().left : null;
+        const contextMenuLeft = contextMenuElement
+            ? contextMenuElement.getBoundingClientRect().left : null;
 
         const leftOffset = menuOffsetDefault - windowMargin;
         const rightOffset = (triggerWidth + menuOffsetDefault) - windowMargin;
@@ -74,24 +99,19 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
             if (contextMenuLeft > windowWidth - (menuWidth - leftOffset)) {
                 menuOffset = windowWidth - (contextMenuLeft + menuWidth + windowMargin);
             }
-        }
-
-        else if (menuOffsetDirection === 'left') {
-            // if the menu will appear outside the window on the left side, move it right
+        } else if (menuOffsetDirection === 'left') {
             if (contextMenuLeft - menuWidth < -rightOffset) {
+                // if the menu will appear outside the window on the left side, move it right
                 menuOffset = windowMargin - contextMenuLeft;
-            }
-            // if the menu will appear outside the window on the right side, move it left
-            else if (contextMenuLeft + rightOffset + windowMargin > windowWidth) {
+            } else if (contextMenuLeft + rightOffset + windowMargin > windowWidth) {
+                // if the menu will appear outside the window on the right side, move it left
                 menuOffset = windowWidth - (contextMenuLeft + menuWidth + windowMargin);
             }
-
         }
 
         this.setState({
-            menuOffset: menuOffset
+            menuOffset,
         });
-
     }
 
     private _setShowMenu(showMenu: boolean): void {
@@ -99,61 +119,48 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
         if (showMenu) {
             document.addEventListener('mousedown', this._onOutsideClickHandler);
-        }
-        else {
+        } else {
             document.removeEventListener('mousedown', this._onOutsideClickHandler);
         }
 
         this.setState({
-            showMenu: showMenu
+            showMenu,
         });
     }
 
-    private _getMenuStyle(menuOffset: number, menuOffsetDirection: MenuOffsetDirection, menuWidth: number): React.CSSProperties {
-        let offset = -menuOffsetDefault;
-        let direction: MenuOffsetDirection = 'left';
-
-        if (menuOffset) {
-            offset = menuOffset;
-        }
-        else if (menuOffsetDirection === 'left') {
-            direction = 'right';
-        }
-
-        const menuStyle = {
-            [direction]: offset,
-            'width': menuWidth
-        }
-        return menuStyle;
-    }
-
-    private _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
-        e.stopPropagation()
-    }
-
     render(): JSX.Element {
-        const { menuWidth, menuOffsetDirection, menuDirection, positionMenuInPanel, children } = this.props;
+        const {
+            menuWidth, menuOffsetDirection, menuDirection, positionMenuInPanel, children,
+        } = this.props;
         const { showMenu, menuOffset } = this.state;
 
-        const classes = classNames(`context-menu context-menu--${menuDirection}`, { 'visible': showMenu }, { 'context-menu--panel': positionMenuInPanel });
-        const menuStyle = this._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
+        const classes = classNames(`context-menu context-menu--${menuDirection}`, { visible: showMenu }, { 'context-menu--panel': positionMenuInPanel });
+        const menuStyle = ContextMenu._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
-        return <div ref={this._menuRef} className={classes} tabIndex={1} onClick={this._stopPropagation}>
+        return (
+            <div ref={this._menuRef} className={classes} tabIndex={1} onClick={ContextMenu._stopPropagation}>
 
-            <div className="trigger" onClick={() => this._setShowMenu(!showMenu)}
-                style={{ width: triggerWidth }}></div>
+                <div
+                    className="trigger"
+                    onClick={() => this._setShowMenu(!showMenu)}
+                    style={{ width: triggerWidth }}
+                />
 
-            <div className='container' onClick={() => this._setShowMenu(false)}>
-                <div className="menu" style={menuStyle}>
-                    <Collapse isOpened={showMenu} springConfig={{ stiffness: 390, damping: 32 }}>
-                        <ul>
-                            {children}
-                        </ul>
-                    </Collapse>
+                <div className="container" onClick={() => this._setShowMenu(false)}>
+                    <div className="menu" style={menuStyle}>
+                        <Collapse
+                            isOpened={showMenu}
+                            springConfig={{ stiffness: 390, damping: 32 }}
+                        >
+                            <ul>
+                                {children}
+                            </ul>
+                        </Collapse>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
+        );
     }
 }
 

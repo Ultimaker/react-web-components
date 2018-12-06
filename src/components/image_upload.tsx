@@ -1,13 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-// dependencies
-let Dropzone = require('react-dropzone'); // needs to be imported this way to keep jest happy
-if ('default' in Dropzone) {
-    /* istanbul ignore next */ // ignores coverage for this line.
-    Dropzone = Dropzone.default;
-}
-
 // components
 import { Image, ImageShape } from './image';
 import UploadIcon from './icons/upload_icon';
@@ -15,9 +8,18 @@ import UploadIcon from './icons/upload_icon';
 // utils
 import ImageCropper from './image_cropper';
 
+// dependencies
+let Dropzone = require('react-dropzone');
+// needs to be imported this way to keep jest happy
+if ('default' in Dropzone) {
+    /* istanbul ignore next */ // ignores coverage for this line.
+    Dropzone = Dropzone.default;
+}
+
 /**
  * This interface adds an image preview URL to blob files.
- * Note: To avoid memory leaks, call window.URL.revokeObjectURL(image.preview) after done using the URL.
+ * Note: To avoid memory leaks, call window.URL.revokeObjectURL(image.preview)
+ * after done using the URL.
  */
 export interface ImageFile extends File {
     preview?: string;
@@ -39,16 +41,19 @@ export interface ImageUploadProps {
     /** Placeholder label */
     placeholderLabel?: string;
     /**
-     * Whether cropping should be enabled. If enabled, the user is allowed to choose what part of the image to use.
-     * For every change, the `onFileRead` callback is called.
-     **/
+     * Whether cropping should be enabled. If enabled, the user is allowed to choose what
+     * part of the image to use. For every change, the `onFileRead` callback is called.
+     */
     allowCropping?: boolean;
 }
 
 export interface ImageUploadState {
-    /** Whether the user is currently dropping a file in this component **/
+    /** Whether the user is currently dropping a file in this component */
     dropActive: boolean;
-    /** The URL the user started cropping with. This is used to keep the whole image even then the imageURL changed **/
+    /**
+     * The URL the user started cropping with.
+     * This is used to keep the whole image even then the imageURL changed
+     */
     cropURL: string | null;
     /** Whether the component is focused using the keyboard */
     dropFocus: boolean;
@@ -58,7 +63,6 @@ export interface ImageUploadState {
  * Component that allows a user to upload (and optionally crop) an image.
  */
 export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
-
     public static defaultProps: Partial<ImageUploadProps> = {
         shape: 'round',
         size: '18rem',
@@ -67,7 +71,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     state: ImageUploadState = {
         dropActive: false,
         cropURL: null,
-        dropFocus: false
+        dropFocus: false,
     };
 
     constructor(props) {
@@ -85,7 +89,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         const file = files[0];
         this.setState({ dropActive: false });
 
-        const {allowCropping, onFileSelection, onFileRead} = this.props;
+        const { allowCropping, onFileSelection, onFileRead } = this.props;
 
         if (onFileSelection) {
             onFileSelection(file);
@@ -120,28 +124,33 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     private _onCropCancel(): void {
-        this.props.onFileRead(null);
+        const { onFileRead } = this.props;
+        onFileRead(null);
         this.setState({ cropURL: null });
     }
 
     private _renderCropper(): JSX.Element {
         const { size, shape, onFileRead } = this.props;
         const { cropURL } = this.state;
-        return <ImageCropper
-            onImageChanged={onFileRead}
-            imageURL={cropURL}
-            size={size}
-            shape={shape}
-            onCropCancel={() => this._onCropCancel()}
-        />;
+        return (
+            <ImageCropper
+                onImageChanged={onFileRead}
+                imageURL={cropURL}
+                size={size}
+                shape={shape}
+                onCropCancel={() => this._onCropCancel()}
+            />
+        );
     }
 
     private _renderDropzone(): JSX.Element {
-        const { size, shape, imageURL, placeholderLabel } = this.props;
+        const {
+            size, shape, imageURL, placeholderLabel,
+        } = this.props;
         const { dropActive, dropFocus } = this.state;
 
-        const iconClasses = classNames({ 'hide': imageURL !== null, 'icon-with-label': placeholderLabel });
-        const hoverAreaClasses = classNames('hover-area', { 'show': dropActive || dropFocus });
+        const iconClasses = classNames({ hide: imageURL !== null, 'icon-with-label': placeholderLabel });
+        const hoverAreaClasses = classNames('hover-area', { show: dropActive || dropFocus });
 
         return (
             <Dropzone
@@ -157,21 +166,23 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 <div className={hoverAreaClasses}>
                     <div className={iconClasses}>
                         <UploadIcon />
-                        {placeholderLabel &&
-                            <div className="placeholder-label">
-                                {placeholderLabel}
-                            </div>
+                        {placeholderLabel
+                            && (
+                                <div className="placeholder-label">
+                                    {placeholderLabel}
+                                </div>
+                            )
                         }
                     </div>
 
-                    {imageURL &&
-                        <div className={`cover cover--${shape}`}/>
+                    {imageURL
+                        && <div className={`cover cover--${shape}`} />
                     }
                 </div>
 
-                {imageURL ?
-                    <Image src={imageURL} shape={shape} size={size} />
-                    : <div className={`placeholder placeholder--${shape}`}/>
+                {imageURL
+                    ? <Image src={imageURL} shape={shape} size={size} />
+                    : <div className={`placeholder placeholder--${shape}`} />
                 }
             </Dropzone>
         );
@@ -180,9 +191,11 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     render(): JSX.Element {
         const { id } = this.props;
         const { cropURL } = this.state;
-        return <div id={id} className="image-upload">
-            {cropURL ? this._renderCropper() : this._renderDropzone()}
-        </div>;
+        return (
+            <div id={id} className="image-upload">
+                {cropURL ? this._renderCropper() : this._renderDropzone()}
+            </div>
+        );
     }
 }
 

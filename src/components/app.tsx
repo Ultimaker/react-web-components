@@ -15,18 +15,16 @@ export interface AppProps {
 /**
  * Application wrapper component that applies the correct CSS classes.
  */
-const App: React.StatelessComponent<AppProps> =
-    ({ fixedHeader, children }) => {
+const App: React.StatelessComponent<AppProps> = ({ fixedHeader, children }) => {
+    const classes = classNames('app', { 'app--fixed-header': fixedHeader });
 
-        const classes = classNames('app', { 'app--fixed-header': fixedHeader });
+    return (
+        <div className={classes}>
+            {children}
+        </div>
+    );
+};
 
-        return (
-            <div className={classes}>
-                {children}
-            </div>
-        )
-    }
-
-App.displayName = "App";
+App.displayName = 'App';
 
 export default App;

@@ -32,7 +32,7 @@ export interface DateFieldState {
  * Class that adds an input wrapper around a DatePicker component.
  * TODO: merge DateField and DatePicker?
  */
-class DateField extends React.Component<DateFieldProps, DateFieldState> {
+export class DateField extends React.Component<DateFieldProps, DateFieldState> {
     state = {
         touched: false,
     };
@@ -49,8 +49,9 @@ class DateField extends React.Component<DateFieldProps, DateFieldState> {
     }
 
     private _onChange(value: string): void {
+        const { onChangeHandler, id } = this.props;
         this.setState({ touched: true });
-        this.props.onChangeHandler(this.props.id, value);
+        onChangeHandler(id, value);
     }
 
     render() {

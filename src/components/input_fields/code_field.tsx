@@ -42,17 +42,17 @@ export interface CodeFieldState {
  */
 export default class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
     /**
+     * if the user wrote one of the later characters but not earlier ones,
+     * we add this character as filler
+     */
+    private static readonly _emptyChar: string = '\t';
+
+    /**
      * References to the input fields to focus on them.
      * Note that we don't use React.CreateRef because that would require some extra code
      * for re-initializing the array whenever {maxLength} changes.
      */
     private readonly _inputRefs: HTMLInputElement[] = [];
-
-    /**
-     * if the user wrote one of the later characters but not earlier ones,
-     * we add this character as filler
-     */
-    private static readonly _emptyChar: string = '\t';
 
     /** The default props */
     static defaultProps = {

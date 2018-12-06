@@ -23,19 +23,16 @@ export interface SlideInPanelProps {
 }
 
 export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
-
     componentDidUpdate(prevProps: SlideInPanelProps): void {
         const { isOpen } = this.props;
 
         if (prevProps.isOpen !== isOpen) {
             if (isOpen) {
                 document.body.classList.add('noscroll');
-            }
-            else {
+            } else {
                 document.body.classList.remove('noscroll');
             }
         }
-        
     }
 
     componentWillUnmount(): void {
@@ -55,54 +52,58 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
     private _renderHeaderLabels() {
         const { headerLabels } = this.props;
 
-        return headerLabels.map((item, index) => {
-            return <div className="layout__item u-fit" key={index}>
+        return headerLabels.map((item, index) => (
+            <div className="layout__item u-fit" key={index}>
                 <div className="header-label">
                     {item.label}
-                    {item.info &&
-                        <span className="header-label__info">{item.info}</span>
+                    {item.info
+                        && <span className="header-label__info">{item.info}</span>
                     }
                 </div>
             </div>
-        })
-
+        ));
     }
 
     render(): JSX.Element {
-        const { headerTitle, headerLabels, isOpen, width, includeFooter, children } = this.props;
+        const {
+            headerTitle, headerLabels, isOpen, width, includeFooter, children,
+        } = this.props;
 
         const motion = { stiffness: 450, damping: 50 };
         const classes = classNames('slide-in-panel', { isOpen });
 
-        return <div className={classes}>
+        return (
+            <div className={classes}>
 
-            <div className="slide-in-panel__overlay" onClick={(e) => this._handleOverlayClick(e)}></div>
+                <div className="slide-in-panel__overlay" onClick={e => this._handleOverlayClick(e)} />
 
-            <Motion style={{ x: spring(isOpen ? 0 : 100, motion) }}>
-                {({ x }) =>
-                    <div className="slide-in-panel__container" style={{ transform: `translate3d(${x}%,0,0)`, width }}>
-                        <div className="slide-in-panel__header">
-                            <div className="layout">
-                                <div className="layout__item u-fill">
-                                    {headerTitle}
+                <Motion style={{ x: spring(isOpen ? 0 : 100, motion) }}>
+                    {({ x }) => (
+                        <div className="slide-in-panel__container" style={{ transform: `translate3d(${x}%,0,0)`, width }}>
+                            <div className="slide-in-panel__header">
+                                <div className="layout">
+                                    <div className="layout__item u-fill">
+                                        {headerTitle}
+                                    </div>
+                                    {headerLabels && this._renderHeaderLabels()}
                                 </div>
-                                {headerLabels && this._renderHeaderLabels()}
                             </div>
-                        </div>
-                        <div className="slide-in-panel__content">
-                            {children[0]}
-                        </div>
-                        {includeFooter &&
-                            <div className="slide-in-panel__footer">
-                                {children[1]}
+                            <div className="slide-in-panel__content">
+                                {children[0]}
                             </div>
-                        }
-                    </div>
-                }
-            </Motion>
+                            {includeFooter
+                                && (
+                                    <div className="slide-in-panel__footer">
+                                        {children[1]}
+                                    </div>
+                                )
+                            }
+                        </div>
+                    )}
+                </Motion>
 
-        </div>
-
+            </div>
+        );
     }
 }
 

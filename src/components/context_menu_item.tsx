@@ -14,24 +14,24 @@ export interface ContextMenuItemProps {
     className?: string;
 }
 
-export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> =
-    ({ disabled, onClickHandler, label, id, className }) => {
-
-        const _onClickHandler = (e) => {
-            if (disabled) {
-                e.stopPropagation();
-            }
-            else {
-                onClickHandler();
-            }
+export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> = ({
+    disabled, onClickHandler, label, id, className,
+}) => {
+    const _onClickHandler = (e) => {
+        if (disabled) {
+            e.stopPropagation();
+        } else {
+            onClickHandler();
         }
-
-        return <li id={id} className={classNames({ disabled }, className)} onClick={_onClickHandler}>
-            {label}
-        </li>
-
     };
 
-ContextMenuItem.displayName = "ContextMenuItem";
+    return (
+        <li id={id} className={classNames({ disabled }, className)} onClick={_onClickHandler}>
+            {label}
+        </li>
+    );
+};
+
+ContextMenuItem.displayName = 'ContextMenuItem';
 
 export default ContextMenuItem;

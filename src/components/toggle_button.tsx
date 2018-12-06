@@ -11,28 +11,27 @@ export interface ToggleButtonProps {
     disabled?: boolean;
 }
 
-export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({ id, value, onChangeHandler, disabled }) => {
-
-    return (
-        <div className="toggle-button-container" onClick={(e) => e.stopPropagation()}>
-            <input
-                className="toggle-button"
-                id={id}
-                name={id}
-                type="checkbox"
-                checked={value !== null ? value : false}
-                onChange={(e) => onChangeHandler(e.currentTarget.checked)}
-                disabled={disabled}
-            />
-            <label htmlFor={id}></label>
-        </div>
-    );
-};
+export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({
+    id, value, onChangeHandler, disabled,
+}) => (
+    <div className="toggle-button-container" onClick={e => e.stopPropagation()}>
+        <input
+            className="toggle-button"
+            id={id}
+            name={id}
+            type="checkbox"
+            checked={value !== null ? value : false}
+            onChange={e => onChangeHandler(e.currentTarget.checked)}
+            disabled={disabled}
+        />
+        <label htmlFor={id} />
+    </div>
+);
 
 ToggleButton.defaultProps = {
-    value: false
+    value: false,
 };
 
-ToggleButton.displayName = "ToggleButton";
+ToggleButton.displayName = 'ToggleButton';
 
 export default ToggleButton;

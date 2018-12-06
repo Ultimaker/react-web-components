@@ -1,11 +1,15 @@
 import * as React from 'react';
 
-import { default as Button, ButtonStyle } from './button';
-import FormActions from './form_actions'
+import { Button, ButtonStyle } from './button';
+import FormActions from './form_actions';
 
 
-/** The validation of each field may be a text, a list of elements or the validation of a sub-model **/
-export type FormValidationResponse = { [key: string]: string | JSX.Element[] | FormValidationResponse };
+/**
+ * The validation of each field may be a text, a list of elements or the validation of a sub-model
+ */
+export type FormValidationResponse = {
+    [key: string]: string | JSX.Element[] | FormValidationResponse
+};
 
 export interface FormProps {
     /** Primary button text */
@@ -38,11 +42,8 @@ export interface FormState {
 
 
 export class Form extends React.Component<FormProps, FormState> {
-
     state = {
-        primaryBtnSpinner: false,
-        secondaryBtnSpinner: false,
-        submitted: false
+        submitted: false,
     }
 
     constructor(props) {
@@ -54,9 +55,10 @@ export class Form extends React.Component<FormProps, FormState> {
     }
 
     private _onSubmitHandler(e: React.FormEvent<HTMLFormElement>): void {
+        const { onSubmitHandler } = this.props;
         e.preventDefault();
         this.setState({ submitted: true });
-        this.props.onSubmitHandler();
+        onSubmitHandler();
     }
 
     private _isPrimaryBtnDisabled() {
@@ -71,12 +73,12 @@ export class Form extends React.Component<FormProps, FormState> {
         return validationErrors !== null;
     }
 
-	/**
-     * Renders a single child of the form component. If the child has the `id` props, we will check for errors in the
-     * form validation, any errors are passed as extra props to the child.
-	 * @param child - The child element to be rendered.
-	 * @private
-	 */
+    /**
+     * Renders a single child of the form component. If the child has the `id` props, we will check
+     * for errors in the form validation, any errors are passed as extra props to the child.
+     * @param child - The child element to be rendered.
+     * @private
+     */
     private _renderChild(child: JSX.Element): JSX.Element {
         const { validationErrors } = this.props;
         const { submitted } = this.state;
@@ -86,47 +88,57 @@ export class Form extends React.Component<FormProps, FormState> {
             <div className="form__item">
                 {React.cloneElement(child, errors && {
                     validationError: errors,
-                    submitted: child.props.submitted || submitted
+                    submitted: child.props.submitted || submitted,
                 })}
             </div>
-        )
+        );
     }
 
     render(): JSX.Element {
-        const { primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler,
-            secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner, children } = this.props;
+        const {
+            primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle,
+            secondaryBtnHandler, secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner,
+            children,
+        } = this.props;
 
         return (
             <form noValidate className="form" onSubmit={this._onSubmitHandler}>
                 {React.Children.map(children, this._renderChild)}
-                {primaryBtnText &&
-                    <FormActions>
-                        {primaryBtnText &&
-                            <Button
-                                style={primaryBtnStyle}
-                                showSpinner={primaryBtnShowSpinner}
-                                disabled={this._isPrimaryBtnDisabled()}
-                                type="submit" >
+                {primaryBtnText
+                    && (
+                        <FormActions>
+                            {primaryBtnText
+                                && (
+                                    <Button
+                                        style={primaryBtnStyle}
+                                        showSpinner={primaryBtnShowSpinner}
+                                        disabled={this._isPrimaryBtnDisabled()}
+                                        type="submit"
+                                    >
 
-                                {primaryBtnText}
-                            </Button>
-                        }
-                        {secondaryBtnText &&
-                            <Button
-                                style={secondaryBtnStyle}
-                                showSpinner={secondaryBtnShowSpinner}
-                                disabled={primaryBtnShowSpinner}
-                                onClickHandler={secondaryBtnHandler}
-                                type={secondaryBtnLink ? 'link' : 'button'}
-                                linkURL={secondaryBtnLink}
-                            >
-                                {secondaryBtnText}
-                            </Button>
-                        }
-                    </FormActions>
+                                        {primaryBtnText}
+                                    </Button>
+                                )
+                            }
+                            {secondaryBtnText
+                                && (
+                                    <Button
+                                        style={secondaryBtnStyle}
+                                        showSpinner={secondaryBtnShowSpinner}
+                                        disabled={primaryBtnShowSpinner}
+                                        onClickHandler={secondaryBtnHandler}
+                                        type={secondaryBtnLink ? 'link' : 'button'}
+                                        linkURL={secondaryBtnLink}
+                                    >
+                                        {secondaryBtnText}
+                                    </Button>
+                                )
+                            }
+                        </FormActions>
+                    )
                 }
             </form>
-        )
+        );
     }
 }
 

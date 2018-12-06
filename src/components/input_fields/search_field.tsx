@@ -1,6 +1,5 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { RefObject } from 'react';
 
 // components
 import { InputFieldProps } from './input_field_wrapper';
@@ -34,7 +33,8 @@ export interface SearchFieldProps extends InputFieldProps {
  * @constructor
  */
 export default class SearchField extends React.Component<SearchFieldProps, {}> {
-    private readonly _inputRef: RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
+    private readonly _inputRef: React.RefObject<HTMLInputElement> =
+        React.createRef<HTMLInputElement>();
 
     constructor(props) {
         super(props);
@@ -46,7 +46,8 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
      * Focuses on this field during mount if required.
      */
     componentDidMount(): void {
-        if (this.props.focusOnLoad) {
+        const { focusOnLoad } = this.props;
+        if (focusOnLoad) {
             this._focus();
         }
     }
@@ -77,7 +78,11 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
         const { staticField, value } = wrapperProps;
         return (
             <div className="search-field">
-                <DefaultInputField inputChildren={children} {...wrapperProps} inputRef={this._inputRef}>
+                <DefaultInputField
+                    inputChildren={children}
+                    inputRef={this._inputRef}
+                    {...wrapperProps}
+                >
                     {staticField ? value
                         : (
                             <Button

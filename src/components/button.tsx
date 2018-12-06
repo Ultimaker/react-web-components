@@ -10,7 +10,7 @@ export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'alert';
 export type ButtonShape = 'rectangle' | 'circle' | 'pill';
 
 export interface ButtonProps {
-    /** Optional ID for the button **/
+    /** Optional ID for the button */
     id?: string;
     /** Called when the Button is clicked */
     onClickHandler?: () => void;
@@ -33,13 +33,12 @@ export interface ButtonProps {
 }
 
 export class Button extends React.Component<ButtonProps, {}> {
-
     static defaultProps = {
         type: 'button',
         style: 'primary',
         shape: 'rectangle',
         linkToNewTab: false,
-        className: ''
+        className: '',
     };
 
     constructor(props) {
@@ -49,7 +48,9 @@ export class Button extends React.Component<ButtonProps, {}> {
     }
 
     private _isLinkInternal(): boolean {
-        const { linkURL, disabled, showSpinner, linkToNewTab } = this.props;
+        const {
+            linkURL, disabled, showSpinner, linkToNewTab,
+        } = this.props;
         return !linkToNewTab && !disabled && !showSpinner && linkURL && !(/^https?:\/\//.test(linkURL));
     }
 
@@ -65,44 +66,57 @@ export class Button extends React.Component<ButtonProps, {}> {
     private _renderInternalLink(classes: string): JSX.Element {
         const { id, linkURL, children } = this.props;
 
-        return <Link
-            id={id}
-            className={classes}
-            to={linkURL}
-        >
-            <span className="text">{children}</span>
-        </Link>
+        return (
+            <Link
+                id={id}
+                className={classes}
+                to={linkURL}
+            >
+                <span className="text">{children}</span>
+            </Link>
+        );
     }
 
     private _renderExternalLink(classes: string): JSX.Element {
-        const { id, disabled, showSpinner, linkURL, linkToNewTab, children } = this.props;
+        const {
+            id, disabled, showSpinner, linkURL, linkToNewTab, children,
+        } = this.props;
 
-        return <a 
-            id={id} 
-            className={classes}
-            href={disabled || showSpinner ? undefined : linkURL}
-            target={linkToNewTab ? '_blank' : undefined}
-        >
-            <span className="text">{children}</span>
-            {showSpinner &&
-                <Spinner />
-            }
-        </a>
+        return (
+            <a
+                id={id}
+                className={classes}
+                href={disabled || showSpinner ? undefined : linkURL}
+                target={linkToNewTab ? '_blank' : undefined}
+                rel="noopener noreferrer"
+            >
+                <span className="text">{children}</span>
+                {showSpinner
+                    && <Spinner />
+                }
+            </a>
+        );
     }
 
     private _renderButton(classes: string): JSX.Element {
-        const { id, disabled, showSpinner, type, children } = this.props;
+        const {
+            id, disabled, showSpinner, type, children,
+        } = this.props;
 
-        return <button id={id} className={classes} onClick={this._onClickHandler} disabled={disabled || showSpinner} type={type}>
-            <span className="text">{children}</span>
-            {showSpinner &&
-                <Spinner />
-            }
-        </button>
+        return (
+            <button id={id} className={classes} onClick={this._onClickHandler} disabled={disabled || showSpinner} type={type}>
+                <span className="text">{children}</span>
+                {showSpinner
+                    && <Spinner />
+                }
+            </button>
+        );
     }
 
     render(): JSX.Element {
-        const { disabled, type, style, shape, showSpinner, className } = this.props;
+        const {
+            disabled, type, style, shape, showSpinner, className,
+        } = this.props;
 
         const classes = classNames(`btn btn--${style} btn--${shape} ${className}`,
             { disabled }, { waiting: showSpinner });
@@ -110,12 +124,11 @@ export class Button extends React.Component<ButtonProps, {}> {
         if (type === 'link' && this._isLinkInternal()) {
             return this._renderInternalLink(classes);
         }
-        else if (type === 'link') {
+        if (type === 'link') {
             return this._renderExternalLink(classes);
         }
-        else {
-            return this._renderButton(classes);
-        }
+
+        return this._renderButton(classes);
     }
 }
 

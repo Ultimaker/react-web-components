@@ -2,7 +2,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { RefObject } from 'react';
 import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 
 export interface DefaultInputFieldProps extends InputFieldProps {
@@ -25,11 +24,14 @@ export interface DefaultInputFieldProps extends InputFieldProps {
     /** Maximum amount of characters allowed in the field */
     maxLength?: number;
 
-    /** Any other children passed inside the input field are rendered separately and should be passed in this prop */
+    /**
+     * Any other children passed inside the input field are rendered separately
+     * and should be passed in this prop
+     */
     inputChildren: any;
 
     /** Optional reference object in case the caller wants more control of the input's focus */
-    inputRef?: RefObject<HTMLInputElement>;
+    inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 export interface DefaultInputFieldState {
@@ -42,7 +44,8 @@ export interface DefaultInputFieldState {
  */
 class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultInputFieldState> {
     /** A reference object to set the focus on load if required */
-    private readonly _inputRef: RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
+    private readonly _inputRef: React.RefObject<HTMLInputElement> =
+        React.createRef<HTMLInputElement>();
 
     state = {
         touched: false,
@@ -70,13 +73,15 @@ class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultI
     }
 
     private _onChange(e: React.ChangeEvent<HTMLInputElement>): void {
+        const { onChangeHandler, id } = this.props;
         this.setState({ touched: true });
-        this.props.onChangeHandler(this.props.id, e.target.value === '' ? null : e.target.value);
+        onChangeHandler(id, e.target.value === '' ? null : e.target.value);
     }
 
     render() {
         const {
-            type, value, placeholder, min, max, maxLength, children, inputChildren, inputRef, ...wrapperProps
+            type, value, placeholder, min, max, maxLength, children,
+            inputChildren, inputRef, ...wrapperProps
         } = this.props;
         const {
             id, validationError, submitted, staticField,

@@ -33,7 +33,7 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
     case 'email':
         return <a href={`mailto:${value}`} target="_top">{value}</a>;
     case 'url':
-        return <a href={value} target="_blank">{value}</a>;
+        return <a href={value} target="_blank" rel="noopener noreferrer">{value}</a>;
     case 'password':
         return '*'.repeat(value.length);
     default:
@@ -51,7 +51,9 @@ const TextField: React.StatelessComponent<TextFieldProps> = ({
     children, ...wrapperProps
 }) => (
     <DefaultInputField inputChildren={children} {...wrapperProps}>
-        {wrapperProps.staticField && wrapperProps.value && staticRender(wrapperProps.type, wrapperProps.value)}
+        {wrapperProps.staticField && wrapperProps.value
+            && staticRender(wrapperProps.type, wrapperProps.value)
+        }
     </DefaultInputField>
 );
 

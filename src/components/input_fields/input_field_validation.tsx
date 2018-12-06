@@ -13,40 +13,37 @@ export interface InputFieldValidationProps {
     required?: boolean;
 }
 
-export class InputFieldValidation extends React.Component<InputFieldValidationProps, {}> {
-    render(): JSX.Element {
-        const {
-            validationError, labelLayoutWidth, labelWidthBreakpoint, required,
-        } = this.props;
-        let errorMsgOffsetClass = null;
-        let errorMsgClass = '';
+const InputFieldValidation: React.StatelessComponent<InputFieldValidationProps> = ({
+    validationError, labelLayoutWidth, labelWidthBreakpoint, required,
+}): JSX.Element => {
+    let errorMsgOffsetClass = null;
+    let errorMsgClass = '';
 
-        if (labelLayoutWidth !== 'fill' && labelLayoutWidth !== 'fit' && labelLayoutWidth !== '1/1') {
-            // align validation message under input (after label width)
-            errorMsgOffsetClass = `u-${labelLayoutWidth}-${labelWidthBreakpoint}`;
-        } else if (labelLayoutWidth !== '1/1') {
-            // align validation message to the right
-            errorMsgClass = 'text-right';
+    if (labelLayoutWidth !== 'fill' && labelLayoutWidth !== 'fit' && labelLayoutWidth !== '1/1') {
+        // align validation message under input (after label width)
+        errorMsgOffsetClass = `u-${labelLayoutWidth}-${labelWidthBreakpoint}`;
+    } else if (labelLayoutWidth !== '1/1') {
+        // align validation message to the right
+        errorMsgClass = 'text-right';
 
-            if (required) {
-                // offset to the left to allow space for the required icon
-                errorMsgClass += ' offset-for-required';
-            }
+        if (required) {
+            // offset to the left to allow space for the required icon
+            errorMsgClass += ' offset-for-required';
         }
+    }
 
-        return (
-            <div className="layout__item u-full input-field__validation">
-                <div className="layout">
-                    {errorMsgOffsetClass
-                    && <div className={`layout__item ${errorMsgOffsetClass}`} />
-                    }
-                    <div className={`layout__item u-fill ${errorMsgClass}`}>
-                        <div className="input-field__error-message">{validationError}</div>
-                    </div>
+    return (
+        <div className="layout__item u-full input-field__validation">
+            <div className="layout">
+                {errorMsgOffsetClass
+                        && <div className={`layout__item ${errorMsgOffsetClass}`} />
+                }
+                <div className={`layout__item u-fill ${errorMsgClass}`}>
+                    <div className="input-field__error-message">{validationError}</div>
                 </div>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default InputFieldValidation;

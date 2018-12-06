@@ -1,8 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
-import { InputFieldProps } from './input_field_wrapper';
-import InputFieldWrapper from './input_field_wrapper';
+import { InputFieldWrapper, InputFieldProps } from './input_field_wrapper';
 
 export interface StaticFieldProps extends InputFieldProps {
     /** Input field value */

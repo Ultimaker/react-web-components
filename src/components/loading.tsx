@@ -6,14 +6,14 @@ export interface LoadingProps {
 }
 
 export const Loading: React.StatelessComponent<LoadingProps> = ({ label }): JSX.Element => (
-  <div className="loader">
-    {label}
-    <span>
-      <span className="loader__dot">.</span>
-      <span className="loader__dot">.</span>
-      <span className="loader__dot">.</span>
-    </span>
-  </div>
+    <div className="loader">
+        {label}
+        <span>
+            <span className="loader__dot">.</span>
+            <span className="loader__dot">.</span>
+            <span className="loader__dot">.</span>
+        </span>
+    </div>
 );
 
 Loading.displayName = 'Loading';

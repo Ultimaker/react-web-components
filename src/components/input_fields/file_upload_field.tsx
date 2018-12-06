@@ -12,7 +12,10 @@ import FileUpload from '../file_upload';
 export interface FileUploadFieldProps extends InputFieldProps {
     /** Called when a file is selected */
     onChangeHandler?: (id: string, target: HTMLInputElement) => void;
-    /** Called when a file is read. The promise should be fulfilled when the file is ready uploading. */
+    /**
+     * Called when a file is read.
+     * The promise should be fulfilled when the file is ready uploading.
+     */
     onReadHandler?: (id: string, value: string) => void;
     /** Placeholder text */
     placeholder?: string;

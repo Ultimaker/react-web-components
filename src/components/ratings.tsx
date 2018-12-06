@@ -1,6 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import {IconColor, IconSize, IconWrapperProps} from './icons/icon_wrapper'
+import { IconColor, IconSize, IconWrapperProps } from './icons/icon_wrapper';
+
 import _ = require('lodash');
 
 export interface RatingsProps {
@@ -26,38 +27,40 @@ export interface RatingsProps {
  * The ratings component shows the ratings score of an object.
  * @constructor
  */
-export const Ratings: React.StatelessComponent<RatingsProps> = (
-    { max, rating, Icon, foregroundColor, foregroundBorder, backgroundColor, backgroundBorder, size }
-) => {
-    return (
-        <div className="ratings">
-            <div className="ratings__background">
-                {_.times(max, i =>
-                    <Icon key={i} color={backgroundColor}
-                          borderColor={backgroundBorder || backgroundColor}
-                          size={size} />
-                )}
-            </div>
-            {rating > 0 &&
-                <div className="ratings__foreground" style={{width: (100 * rating / max) + "%"}}>
-                    {_.times(max, i =>
-                        <Icon key={i} color={foregroundColor}
-                              borderColor={foregroundBorder || foregroundColor}
-                              size={size} />
-                    )}
-                </div>
-            }
+export const Ratings: React.StatelessComponent<RatingsProps> = ({
+    max, rating, Icon, foregroundColor, foregroundBorder, backgroundColor, backgroundBorder, size,
+}) => (
+    <div className="ratings">
+        <div className="ratings__background">
+            {_.times(max, i => (
+                <Icon key={i} 
+                    color={backgroundColor}
+                    borderColor={backgroundBorder || backgroundColor}
+                    size={size}
+                />
+            ))}
         </div>
-    );
-};
+        {rating > 0 && (
+            <div className="ratings__foreground" style={{ width: `${(100 * rating / max)}%` }}>
+                {_.times(max, i => (
+                    <Icon key={i} 
+                        color={foregroundColor}
+                        borderColor={foregroundBorder || foregroundColor}
+                        size={size}
+                    />
+                ))}
+            </div>
+        )}
+    </div>
+);
 
 Ratings.defaultProps = {
-    foregroundColor: "orange",
+    foregroundColor: 'orange',
     foregroundBorder: null,
-    backgroundColor: "grey",
+    backgroundColor: 'grey',
     backgroundBorder: null,
     size: 'sm',
 };
-Ratings.displayName = "Ratings";
+Ratings.displayName = 'Ratings';
 
 export default Ratings;
