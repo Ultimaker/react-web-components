@@ -1,6 +1,8 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { IconColor, IconSize, IconWrapperProps } from './icons/icon_wrapper';
+import {
+    IconColor, IconSize, IconWrapperProps,
+} from './icons/icon_wrapper';
 
 import _ = require('lodash');
 
@@ -31,23 +33,27 @@ export const Ratings: React.StatelessComponent<RatingsProps> = ({
     max, rating, Icon, foregroundColor, foregroundBorder, backgroundColor, backgroundBorder, size,
 }) => (
     <div className="ratings">
-        <div className="ratings__background">
+        <div className="ratings__background layout layout--align-middle layout--gutter-xs">
             {_.times(max, i => (
-                <Icon key={i} 
-                    color={backgroundColor}
-                    borderColor={backgroundBorder || backgroundColor}
-                    size={size}
-                />
+                <div className="layout__item u-fit" key={i}>
+                    <Icon
+                        color={backgroundColor}
+                        borderColor={backgroundBorder || backgroundColor}
+                        size={size}
+                    />
+                </div>
             ))}
         </div>
         {rating > 0 && (
-            <div className="ratings__foreground" style={{ width: `${(100 * rating / max)}%` }}>
+            <div className="ratings__foreground" style={{ width: `${100 * rating / max}%` }}>
                 {_.times(max, i => (
-                    <Icon key={i} 
-                        color={foregroundColor}
-                        borderColor={foregroundBorder || foregroundColor}
-                        size={size}
-                    />
+                    <div className="ratings__foreground-icon" key={i}>
+                        <Icon
+                            color={foregroundColor}
+                            borderColor={foregroundBorder || foregroundColor}
+                            size={size}
+                        />
+                    </div>
                 ))}
             </div>
         )}

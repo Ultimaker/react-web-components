@@ -52,7 +52,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
 
     private _getActiveOptionLabel() {
         const { options, value } = this.props;
-        const option = options.find(findOption => findOption.value === value);
+        const option = options.find(newOption => newOption.value === value);
         return option ? option.label : null;
     }
 
@@ -82,8 +82,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         const { options } = this.props;
         const { focusedIndex } = this.state;
 
-        // if the focusedIndex has not been set, set it to 0,
-        // otherwise adjust it by the value of the changeByValue
+        // if the focusedIndex has not been set, set it to 0, otherwise adjust it by the value of the changeByValue
         let newIndex = focusedIndex !== null ? focusedIndex + changeByValue : 0;
 
         // if the user presses down on the last item, go to the first
@@ -105,31 +104,29 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         const focusedItem = options[focusedIndex];
 
         switch (e.key) {
-            case 'ArrowDown': {
-                this._setShowMenu(true);
-                this._updateFocusedIndex(1);
-                break;
+        case 'ArrowDown':
+            this._setShowMenu(true);
+            this._updateFocusedIndex(1);
+            break;
+        case 'ArrowUp':
+            this._setShowMenu(true);
+            this._updateFocusedIndex(-1);
+            break;
+        case 'Enter':
+            if (focusedItem) {
+                this._onClickHandler(focusedItem.value, focusedItem.disabled);
             }
-            case 'ArrowUp': {
-                this._setShowMenu(true);
-                this._updateFocusedIndex(-1);
-                break;
-            }
-            case 'Enter': {
-                if (focusedItem) {
-                    this._onClickHandler(focusedItem.value, focusedItem.disabled);
-                }
-                break;
-            }
-            default: {
-                return null;
-            }
+            break;
+        default:
+            return null;
         }
         return null;
     }
 
     render(): JSX.Element {
-        const { id, error, options, value } = this.props;
+        const {
+            id, error, options, value,
+        } = this.props;
         const { showMenu, focusedIndex } = this.state;
 
         const dropDownMenuClasses = classNames('drop-down-menu', { visible: showMenu });
@@ -145,7 +142,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
                 onKeyDown={this._onKeyPressed}
             >
 
-                <div className={labelClasses} onClick={() => this._setShowMenu(true)} >
+                <div className={labelClasses} onClick={() => this._setShowMenu(true)}>
                     <div className="layout layout--align-middle layout--gutter-none">
                         <div className="layout__item u-fit">
                             <div className="text">{this._getActiveOptionLabel()}</div>
@@ -158,13 +155,11 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
 
                 <div className="container">
                     <div ref="menu" className="menu">
-                        <UnmountClosed
-                            isOpened={showMenu}
-                            springConfig={{ stiffness: 370, damping: 35 }}
-                        >
+                        <UnmountClosed isOpened={showMenu} springConfig={{ stiffness: 370, damping: 35 }}>
                             <ul>
                                 {options.map((option, index) => (
-                                    <SelectListItem key={index}
+                                    <SelectListItem
+                                        key={index}
                                         onChangeHandler={this._onClickHandler}
                                         label={option.label}
                                         value={option.value}
@@ -179,7 +174,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
                 </div>
 
             </div>
-        )
+        );
     }
 }
 
