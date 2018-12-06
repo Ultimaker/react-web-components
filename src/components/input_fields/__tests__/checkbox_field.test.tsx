@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import CheckboxField, {CheckboxFieldProps} from '../checkbox_field';
+import CheckboxField, { CheckboxFieldProps } from '../checkbox_field';
 import Checkbox from '../../checkbox';
 import InputFieldWrapper from '../input_field_wrapper';
 
@@ -31,16 +31,16 @@ describe('The checkbox field component', () => {
     it('should render a checkbox input', () => {
         expect(wrapper.find(Checkbox).props()).toEqual({
             disabled: false,
-            id: "testInputField",
+            id: 'testInputField',
             onChangeHandler: wrapper.instance()._onChange,
             value: true,
         });
-    })
+    });
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find(Checkbox).prop("onChangeHandler")(false)
+        wrapper.find(Checkbox).prop('onChangeHandler')(false);
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, false);
-        expect(wrapper.find(InputFieldWrapper).prop("touched")).toEqual(true);
+        expect(wrapper.find(InputFieldWrapper).prop('touched')).toEqual(true);
     });
 });

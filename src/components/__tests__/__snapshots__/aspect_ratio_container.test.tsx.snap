@@ -14,7 +14,7 @@ exports[`The Image component should render 1`] = `
     }
   >
     <img
-      alt="a test image"
+      alt="myPrettyPicture"
       className="aspect-ratio-container__content test-image"
       id="myPrettyPicture"
       src="http://ultimaker.com"

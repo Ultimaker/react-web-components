@@ -37,7 +37,7 @@ describe('The text field component', () => {
     it('should render a wrapped input', () => {
         props.staticField = true;
         props.children = 'a child';
-        props['inputChildren'] = props['children'];
+        props.inputChildren = props.children;
         wrapper.setProps(props);
         props.children = props.value;
         expect(wrapper.find(DefaultInputField).props()).toEqual(props);

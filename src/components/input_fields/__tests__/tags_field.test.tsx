@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import TagsField, {TagsFieldProps} from '../tags_field';
+import TagsField, { TagsFieldProps } from '../tags_field';
 import InputFieldWrapper from '../input_field_wrapper';
 import TagsSelector from '../../tags_selector';
 
@@ -18,9 +18,9 @@ describe('The tags field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
-            value: ["tag1", "tag2"],
-            placeholder: "placeholder text",
-            tagSuggestions: ["tag3", "tag4"],
+            value: ['tag1', 'tag2'],
+            placeholder: 'placeholder text',
+            tagSuggestions: ['tag3', 'tag4'],
         };
         wrapper = shallow(<TagsField {...props} />);
     });
@@ -40,12 +40,12 @@ describe('The tags field component', () => {
             error: undefined,
             autofocus: false,
             disabled: false,
-      });
-    })
+        });
+    });
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find(TagsSelector).prop("onChangeHandler")(["tag5"]);
-        expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, ["tag5"]);
+        wrapper.find(TagsSelector).prop('onChangeHandler')(['tag5']);
+        expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, ['tag5']);
     });
 });

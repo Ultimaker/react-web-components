@@ -20,7 +20,9 @@ describe('The code input field component', () => {
             id: 'testInputField',
             type: 'text',
             value: '2018',
-            onChangeHandler: jest.fn().mockImplementation((id, value) => props.id === id && wrapper.setProps({ value })),
+            onChangeHandler: jest.fn().mockImplementation((id, value) => (
+                props.id === id && wrapper.setProps({ value })
+            )),
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
@@ -174,16 +176,6 @@ describe('The code input field component', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
         expect(preventDefault).toHaveBeenCalledTimes(1);
     });
-
-    // it('should ignore invalid characters in clipboard', () => {
-    //     props.value = '';
-    //     props.type = 'number';
-    //     wrapper = mount(<CodeField {...props} />);
-    //     wrapper.find('input').at(1).prop('onPaste')({ clipboardData: { getData: () => '123 test 45' }, preventDefault });
-    //     expect(document.activeElement.id).toEqual('testInputField__5');
-    //     expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '\t12345');
-    //     expect(preventDefault).toHaveBeenCalledTimes(1);
-    // });
 
     it('should ignore the same character', () => {
         wrapper = mount(<CodeField {...props} />);
@@ -340,7 +332,7 @@ describe('The code input field component', () => {
         const ref = wrapper.instance()._inputRefs[0];
         ref.select = jest.fn();
 
-        // the backspace should delete the current content, but then the select cannot be called again
+        // backspace should delete the current content, but then the select cannot be called again
         wrapper.find('input').at(0).prop('onKeyDown')({ key: 'Backspace', preventDefault });
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '\t018');
         ref.value = '';
@@ -349,7 +341,7 @@ describe('The code input field component', () => {
         onSelection();
         expect(ref.select).toHaveBeenCalledTimes(1);
 
-        // the backspace should set the current content to another one, ref.select() should be called again
+        // backspace should set the current content to another, ref.select() should be called again
         wrapper.find('input').at(0).prop('onKeyDown')({ key: 'Delete', preventDefault });
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '018');
         ref.value = '0';

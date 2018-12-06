@@ -19,10 +19,12 @@ describe('The SlideInPanel component', () => {
             onOverlayClickHandler: jest.fn(),
             includeFooter: true,
         };
-        wrapper = shallow(<SlideInPanel {...props}>
-            <div>Body</div>
-            <div>Footer</div>
-        </SlideInPanel>);
+        wrapper = shallow(
+            <SlideInPanel {...props}>
+                <div>Body</div>
+                <div>Footer</div>
+            </SlideInPanel>,
+        );
     });
 
     it('should render', () => {
@@ -65,10 +67,12 @@ describe('The SlideInPanel component', () => {
     });
 
     it('should allow the background to scroll after unmount', () => {
-        const mountedWrapper = mount(<SlideInPanel {...props}>
-            <div>Body</div>
-            <div>Footer</div>
-        </SlideInPanel>);
+        const mountedWrapper = mount(
+            <SlideInPanel {...props}>
+                <div>Body</div>
+                <div>Footer</div>
+            </SlideInPanel>,
+        );
         mountedWrapper.setProps({ isOpen: true });
         expect(document.body.classList.contains('noscroll')).toBe(true);
         mountedWrapper.unmount();

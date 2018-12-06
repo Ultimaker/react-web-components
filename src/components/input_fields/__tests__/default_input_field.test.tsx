@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import DefaultInputField, {DefaultInputFieldProps} from '../default_input_field';
+import DefaultInputField, { DefaultInputFieldProps } from '../default_input_field';
 import InputFieldWrapper from '../input_field_wrapper';
 
 describe('The wrapped input field component', () => {
@@ -34,57 +34,57 @@ describe('The wrapped input field component', () => {
     });
 
     it('should render a null', () => {
-        wrapper.setProps({value: null});
-        expect(wrapper.find(InputFieldWrapper).prop("value")).toBeUndefined();
-    })
+        wrapper.setProps({ value: null });
+        expect(wrapper.find(InputFieldWrapper).prop('value')).toBeUndefined();
+    });
 
     it('should render a wrapped field', () => {
         expect(wrapper.find(InputFieldWrapper).props()).toEqual({
-            id: "testInputField",
+            id: 'testInputField',
             children: expect.any(Object),
             focusOnLoad: true,
-            labelLayoutWidth: "1/1",
-            labelWidthBreakpoint: "sm",
+            labelLayoutWidth: '1/1',
+            labelWidthBreakpoint: 'sm',
             onChangeHandler: props.onChangeHandler,
             inputChildren: props.inputChildren,
             staticField: false,
             touched: false,
         });
-        expect(wrapper.find(InputFieldWrapper).children().type()).toEqual("input")
+        expect(wrapper.find(InputFieldWrapper).children().type()).toEqual('input');
         expect(wrapper.find(InputFieldWrapper).children().props()).toEqual({
-            className: "input",
-            id: "testInputField",
+            className: 'input',
+            id: 'testInputField',
             max: 1000,
             min: 1,
-            name: "testInputField",
+            name: 'testInputField',
             onChange: wrapper.instance()._onChange,
-            placeholder: "placeholder text",
-            type: "text",
-            value: "2018",
+            placeholder: 'placeholder text',
+            type: 'text',
+            value: '2018',
         });
-    })
+    });
 
     it('should render a static field', () => {
-        wrapper.setProps({staticField: true, children: props.value});
-        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual([false, props.value]);
-    })
+        wrapper.setProps({ staticField: true, children: props.value });
+        expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual([false, props.value]);
+    });
 
     it('should render a custom static field', () => {
-        wrapper.setProps({staticField: true, children: <div>static text</div>});
-        expect(wrapper.find(InputFieldWrapper).prop("children")).toEqual([false, <div>static text</div>]);
-    })
+        wrapper.setProps({ staticField: true, children: <div>static text</div> });
+        expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual([false, <div>static text</div>]);
+    });
 
     it('should set the maximum input field length', () => {
-        wrapper.setProps({maxLength: 100});
-        expect(wrapper.find("input").prop("maxLength")).toEqual(100);
-    })
+        wrapper.setProps({ maxLength: 100 });
+        expect(wrapper.find('input').prop('maxLength')).toEqual(100);
+    });
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find("input").prop("onChange")({target: {value: "some text"}});
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "some text");
-        expect(wrapper.state("touched")).toEqual(true);
-        wrapper.find("input").prop("onChange")({target: {value: ""}})
+        wrapper.find('input').prop('onChange')({ target: { value: 'some text' } });
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, 'some text');
+        expect(wrapper.state('touched')).toEqual(true);
+        wrapper.find('input').prop('onChange')({ target: { value: '' } });
         expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, null);
     });
 });

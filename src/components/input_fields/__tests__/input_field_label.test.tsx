@@ -15,7 +15,7 @@ describe('The InputFieldLabel component', () => {
             type: 'text',
             label: 'Input label',
             labelLayoutWidth: '1/1',
-            labelWidthBreakpoint: 'sm'
+            labelWidthBreakpoint: 'sm',
         };
         wrapper = shallow(<InputFieldLabel {...props} />);
     });
@@ -31,7 +31,7 @@ describe('The InputFieldLabel component', () => {
 
     it('should not render empty label', () => {
         wrapper.setProps({ label: null });
-        expect(wrapper.text()).toEqual("");
+        expect(wrapper.text()).toEqual('');
     });
 
     it('should render info tooltip', () => {
