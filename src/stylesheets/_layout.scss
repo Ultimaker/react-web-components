@@ -319,14 +319,14 @@
 // Create the hide-{breakpoint} and show-{breakpoint} classes
 @mixin layout-hiding-rules($bp) {
     @each $name, $value in $bp {
-        .hide-#{$name} {
+        .show-#{$name} {
             @media (max-width: $value - 1) {
                 display: none !important;
                 visibility: hidden !important;
             }
         }
 
-        .show-#{$name} {
+        .hide-#{$name} {
             display: block;
 
             @media (min-width: #{$value}) {
@@ -338,4 +338,3 @@
 }
 
 @include layout-hiding-rules($layout-breakpoints);
-@include layout-hiding-rules((xs: 0));

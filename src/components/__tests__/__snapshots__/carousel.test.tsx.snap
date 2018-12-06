@@ -27,13 +27,13 @@ exports[`The carousel component should render a carousel 1`] = `
           "0": Object {
             "items": 1,
           },
-          "1025": Object {
+          "1024": Object {
             "items": 2,
           },
-          "620": Object {
+          "619": Object {
             "items": 2,
           },
-          "800": Object {
+          "799": Object {
             "items": 2,
           },
         }
@@ -71,7 +71,7 @@ exports[`The carousel component should render a grid 1`] = `
 >
   <Grid
     align="center"
-    className="carousel__fixed hide-xs"
+    className="carousel__fixed show-xs"
     gutter="md"
     position="top"
   >
@@ -112,7 +112,7 @@ exports[`The carousel component should render a grid and a carousel 1`] = `
 >
   <Grid
     align="center"
-    className="carousel__fixed hide-md"
+    className="carousel__fixed show-md"
     gutter="md"
     position="top"
   >
@@ -145,7 +145,7 @@ exports[`The carousel component should render a grid and a carousel 1`] = `
     </GridItem>
   </Grid>
   <div
-    className="carousel__carousel show-md"
+    className="carousel__carousel hide-md"
   >
     <AliceCarousel
       autoPlay={true}
@@ -167,13 +167,13 @@ exports[`The carousel component should render a grid and a carousel 1`] = `
           "0": Object {
             "items": 1,
           },
-          "1025": Object {
+          "1024": Object {
             "items": 3,
           },
-          "620": Object {
+          "619": Object {
             "items": 2,
           },
-          "800": Object {
+          "799": Object {
             "items": 3,
           },
         }

@@ -2,11 +2,20 @@
 
 exports[`The Page component should render 1`] = `
 <div
-  className="page"
-  style={
-    Object {
-      "maxWidth": "100%",
+  className="page page-class"
+  id="page-id"
+>
+  <div
+    className="page__content"
+    style={
+      Object {
+        "maxWidth": "100rem",
+      }
     }
-  }
-/>
+  >
+    <PageTitle
+      title="Page title"
+    />
+  </div>
+</div>
 `;

@@ -50,13 +50,19 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
         const visibleNavLinks = navLinks.filter(navLink => navLink.visible);
 
         return (
-            <nav className={navClasses} onClick={() => this._toggleShowNav(false)}>
+            <nav
+                className={navClasses}
+                onClick={() => this._toggleShowNav(false)}
+            >
 
-                {visibleNavLinks.length > 0
-                && (
+                {visibleNavLinks.length > 0 && (
                     <div className="nav-links-container">
-                        <div className="burger-menu show-xs">
-                            <Button style="primary" shape="circle" onClickHandler={() => this._toggleShowNav(!showNav)}>
+                        <div className="burger-menu hide-sm">
+                            <Button
+                                style="primary"
+                                shape="circle"
+                                onClickHandler={() => this._toggleShowNav(!showNav)}
+                            >
                                 <div className={burgerIconClasses} />
                             </Button>
                         </div>
@@ -76,17 +82,14 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                             )}
                         </Motion>
 
-                        {children
-                        && (
+                        {children && (
                             <div className="children-containter">
                                 {children}
                             </div>
-                        )
-                        }
+                        )}
 
                     </div>
-                )
-                }
+                )}
 
             </nav>
         );

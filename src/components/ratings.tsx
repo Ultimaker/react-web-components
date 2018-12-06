@@ -1,8 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import {
-    IconColor, IconSize, IconWrapperProps,
-} from './icons/icon_wrapper';
+import { IconColor, IconSize, IconWrapperProps } from './icons/icon_wrapper';
 
 import _ = require('lodash');
 
@@ -45,7 +43,7 @@ export const Ratings: React.StatelessComponent<RatingsProps> = ({
             ))}
         </div>
         {rating > 0 && (
-            <div className="ratings__foreground" style={{ width: `${100 * rating / max}%` }}>
+            <div className="ratings__foreground" style={{ width: `${(100 * rating / max)}%` }}>
                 {_.times(max, i => (
                     <div className="ratings__foreground-icon" key={i}>
                         <Icon

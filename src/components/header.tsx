@@ -20,7 +20,7 @@ const Header: React.StatelessComponent<HeaderProps> = ({
         <div className="navigation-container">
             {showNav && children}
             {rightSideLabel && (
-                <div className="right-side-label hide-sm">
+                <div className="right-side-label show-md">
                     <span title={rightSideLabel}>{rightSideLabel}</span>
                 </div>
             )}
