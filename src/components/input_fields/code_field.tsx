@@ -210,10 +210,10 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
             // arrow up / down let you increase / decrease numbers
             ArrowUp: () => type === 'number'
                 && this._changeValue(index, values[index]
-                    && ((parseInt(values[index], 10) + 1) % 10).toString(), -1),
+                && ((parseInt(values[index], 10) + 1) % 10).toString(), -1),
             ArrowDown: () => type === 'number'
                 && this._changeValue(index, values[index]
-                    && ((parseInt(values[index], 10) + 9) % 10).toString(), -1),
+                && ((parseInt(values[index], 10) + 9) % 10).toString(), -1),
             // home/end let you go to the beginning and end of the code.
             Home: () => this._focusOnPromptInput(0),
             End: () => this._focusOnPromptInput(maxLength - 1),

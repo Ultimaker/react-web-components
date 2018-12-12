@@ -150,16 +150,14 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
         return (
             <div className={inputLayoutClasses}>
-                {!staticField
-                    && (
-                        <div className="input-container layout layout--gutter-xs">
-                            <div className="input-wrapper-children layout__item u-fill">
-                                {children}
-                            </div>
-                            {this._renderPostInputElement()}
+                {!staticField && (
+                    <div className="input-container layout layout--gutter-xs">
+                        <div className="input-wrapper-children layout__item u-fill">
+                            {children}
                         </div>
-                    )
-                }
+                        {this._renderPostInputElement()}
+                    </div>
+                )}
 
                 {staticField && <div className="static-field">{children}</div>}
             </div>

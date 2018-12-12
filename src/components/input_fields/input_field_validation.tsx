@@ -36,7 +36,7 @@ const InputFieldValidation: React.StatelessComponent<InputFieldValidationProps> 
         <div className="layout__item u-full input-field__validation">
             <div className="layout">
                 {errorMsgOffsetClass
-                        && <div className={`layout__item ${errorMsgOffsetClass}`} />
+                    && <div className={`layout__item ${errorMsgOffsetClass}`} />
                 }
                 <div className={`layout__item u-fill ${errorMsgClass}`}>
                     <div className="input-field__error-message">{validationError}</div>

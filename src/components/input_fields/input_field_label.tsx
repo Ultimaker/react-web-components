@@ -58,10 +58,10 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
             return (
                 <div className="layout__item u-fit input-field__label-addition">
                     {infoText
-                    && <InfoTooltip infoText={infoText} />
+                        && <InfoTooltip infoText={infoText} />
                     }
                     {infoLinkURL && !infoText // can't have both an InfoTooltip and a InfoLink
-                    && <InfoLink infoLinkURL={infoLinkURL} />
+                        && <InfoLink infoLinkURL={infoLinkURL} />
                     }
                 </div>
             );
