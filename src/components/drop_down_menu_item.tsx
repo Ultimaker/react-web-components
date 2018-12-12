@@ -19,7 +19,7 @@ const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> = ({
     };
 
     return (
-        <li className={classNames({ disabled, active })} onClick={handleClick}>
+        <li className={classNames({ disabled, active })} onClick={handleClick} role="menuitem">
             {children}
         </li>
     );

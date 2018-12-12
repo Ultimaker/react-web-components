@@ -145,17 +145,18 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
             <div
                 ref={this._menuRef}
                 className={classes}
-                tabIndex={1}
-                onClick={ContextMenu._stopPropagation}
             >
 
                 <div
                     className="trigger"
-                    onClick={() => this._setShowMenu(!showMenu)}
+                    onClick={() => { this._setShowMenu(!showMenu); ContextMenu._stopPropagation; }}
                     style={{ width: triggerWidth }}
                 />
 
-                <div className="container" onClick={() => this._setShowMenu(false)}>
+                <div
+                    className="container"
+                    onClick={() => { this._setShowMenu(false); ContextMenu._stopPropagation; }}
+                >
                     <div className="menu" style={menuStyle}>
                         <Collapse
                             isOpened={showMenu}

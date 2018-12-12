@@ -64,8 +64,13 @@ export class Modal extends React.Component<ModalProps, ModalState> {
         const classes = classNames('modal__content', width ? `modal__content--${width}` : undefined);
 
         return (
-            <div className="modal" onClick={e => this._handleOverlayClick(e)} key={key} style={{ ...style }}>
-                <div className={classes} onClick={Modal._stopPropagation}>
+            <div
+                className="modal"
+                onClick={e => this._handleOverlayClick(e)}
+                key={key}
+                style={{ ...style }}
+            >
+                <div className={classes} onClick={Modal._stopPropagation} role="dialog">
                     {children}
                 </div>
             </div>

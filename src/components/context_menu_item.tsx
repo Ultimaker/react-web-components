@@ -26,7 +26,12 @@ export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> = (
     };
 
     return (
-        <li id={id} className={classNames({ disabled }, className)} onClick={_onClickHandler}>
+        <li
+            id={id}
+            className={classNames({ disabled }, className)}
+            onClick={_onClickHandler}
+            role="menuitem"
+        >
             {label}
         </li>
     );

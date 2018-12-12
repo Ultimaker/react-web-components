@@ -18,7 +18,7 @@ export const Checkbox: React.StatelessComponent<CheckboxProps> = ({
     const classes = classNames('checkbox', { disabled });
 
     return (
-        <div className={classes} onClick={e => e.stopPropagation()}>
+        <div className={classes} onClick={e => e.stopPropagation()} role="checkbox">
             <input
                 id={id}
                 name={id}

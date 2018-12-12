@@ -104,7 +104,13 @@ export class Button extends React.Component<ButtonProps, {}> {
         } = this.props;
 
         return (
-            <button id={id} className={classes} onClick={this._onClickHandler} disabled={disabled || showSpinner} type={type}>
+            <button
+                id={id}
+                className={classes}
+                onClick={this._onClickHandler}
+                disabled={disabled || showSpinner}
+                type={type}
+            >
                 <span className="text">{children}</span>
                 {showSpinner
                     && <Spinner />

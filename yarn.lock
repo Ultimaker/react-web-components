@@ -1075,13 +1075,6 @@ array.prototype.flatten@^1.2.1:
     es-abstract "^1.10.0"
     function-bind "^1.1.1"
 
-array.prototype.includes@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/array.prototype.includes/-/array.prototype.includes-1.0.0.tgz#60ec45d3dbcbc4ea3a963adc871a1349a9e65b5c"
-  integrity sha1-YOxF09vLxOo6ljrchxoTSanmW1w=
-  dependencies:
-    especially "^1.8.3"
-
 arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
@@ -4422,11 +4415,6 @@ eslint@^5.9.0:
     strip-json-comments "^2.0.1"
     table "^5.0.2"
     text-table "^0.2.0"
-
-especially@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/especially/-/especially-1.8.3.tgz#60c454e6c43841c7d5ffc898e6b92fa0a14a4f01"
-  integrity sha1-YMRU5sQ4QcfV/8iY5rkvoKFKTwE=
 
 espree@^4.0.0:
   version "4.1.0"
