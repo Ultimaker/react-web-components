@@ -86,7 +86,7 @@ export class Button extends React.Component<ButtonProps, {}> {
             <a
                 id={id}
                 className={classes}
-                href={disabled || showSpinner ? undefined : linkURL}
+                href={linkURL}
                 target={linkToNewTab ? '_blank' : undefined}
                 rel="noopener noreferrer"
             >
@@ -104,7 +104,11 @@ export class Button extends React.Component<ButtonProps, {}> {
         } = this.props;
 
         return (
-            <button id={id} className={classes} onClick={this._onClickHandler} disabled={disabled || showSpinner} type={type}>
+            <button id={id}
+                    className={classes}
+                    onClick={this._onClickHandler}
+                    disabled={disabled || showSpinner}
+                    type={type}>
                 <span className="text">{children}</span>
                 {showSpinner
                     && <Spinner />
@@ -115,7 +119,7 @@ export class Button extends React.Component<ButtonProps, {}> {
 
     render(): JSX.Element {
         const {
-            disabled, type, style, shape, showSpinner, className,
+            disabled, type, style, shape, showSpinner, className, linkURL
         } = this.props;
 
         const classes = classNames(`btn btn--${style} btn--${shape} ${className}`,
@@ -124,7 +128,7 @@ export class Button extends React.Component<ButtonProps, {}> {
         if (type === 'link' && this._isLinkInternal()) {
             return this._renderInternalLink(classes);
         }
-        if (type === 'link') {
+        if (type === 'link' && !disabled && !showSpinner && linkURL) {
             return this._renderExternalLink(classes);
         }
 

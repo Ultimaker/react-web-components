@@ -9,7 +9,7 @@
     "scripts": {
         "start": "STATIC_URL=http://localhost:9001 start-storybook -p 9001 -c .storybook",
         "build": "STATIC_URL=https://ultimaker.github.io/react-web-components build-storybook -c .storybook -o public",
-        "lint": "eslint --fix ./src/**/*.tsx",
+        "lint": "eslint ./src/**/*.tsx",
         "lint:fix": "eslint --fix ./src/**/*.tsx",
         "test": "jest",
         "test:watch": "jest --watch",

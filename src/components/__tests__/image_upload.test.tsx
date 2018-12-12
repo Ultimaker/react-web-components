@@ -6,6 +6,7 @@ import { shallow } from 'enzyme';
 import ImageUpload from '../image_upload';
 import ImageCropper from '../image_cropper';
 import { Image } from '../image';
+import Popup from '../popup';
 
 let Dropzone = require('react-dropzone');
 
@@ -48,6 +49,28 @@ describe('The image upload component', () => {
         const expected = `data:image/jpeg;base64,${btoa('A+test+string+for+testing+image')}`;
         expect(props.onFileRead).toHaveBeenCalledWith(expected);
     });
+
+    it('should reject images that are too large', async () => {
+        wrapper.setProps({ maxMb: 0.000001 });
+
+        const image = new Blob(['A+test+string+for+testing+image'], { type: 'image/jpeg' });
+        image['preview'] = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
+        wrapper.find(Dropzone).prop('onDrop')([image]);
+
+        expect(wrapper.find(Popup).props()).toEqual({
+            "bodyText": "This file is too large. Please select an image below 0.0MB",
+            "headerText": "File too large",
+            "primaryBtnHandler": expect.any(Function),
+            "primaryBtnText": "OK",
+            "width": "sm",
+        });
+
+        wrapper.find(Popup).prop('primaryBtnHandler')();
+        expect(wrapper.find(Popup)).toHaveLength(0);
+
+        expect(props.onFileSelection).not.toHaveBeenCalled();
+        expect(props.onFileRead).not.toHaveBeenCalled();
+    })
 
     it('should handle drag enter', () => {
         wrapper.instance()._onDragEnter();

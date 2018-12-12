@@ -233,6 +233,7 @@ stories.add('Image upload', withState({ value: null })(withInfo('Image drag and 
             infoText={text('Info text', '')}
             preLabelElement={text('Pre label element', '')}
             allowCropping={boolean('Allow Cropping', true)}
+            maxMb={number('Maximum MB', 10)}
         />
         <br />
         <Tile>
