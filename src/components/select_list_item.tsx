@@ -1,6 +1,9 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+// components
+import Button from './button';
+
 export interface SelectListItemProps {
     /** This should be set to true when the item is selected */
     active: boolean;
@@ -12,27 +15,22 @@ export interface SelectListItemProps {
     label: string;
     /** The value of the menu item */
     value: string | number;
-    /** Whether the item is focused */
-    focused: boolean;
 }
 
 export const SelectListItem: React.StatelessComponent<SelectListItemProps> = ({
-    active, disabled, onChangeHandler, label, value, focused,
-}) => {
-    const _onClickHandler = (e: React.MouseEvent<HTMLLIElement>) => {
-        if (disabled) {
-            e.stopPropagation();
-        } else {
-            onChangeHandler(value, disabled);
-        }
-    };
-
-    return (
-        <li className={classNames({ disabled, active, focused })} onClick={_onClickHandler}>
+    active, disabled, onChangeHandler, label, value,
+}) => (
+    <li>
+        <Button
+            className={classNames('context-menu__button', { disabled, active })}
+            style="no-style"
+            onClickHandler={() => onChangeHandler(value, disabled)}
+            disabled={disabled}
+        >
             {label}
-        </li>
-    );
-};
+        </Button>
+    </li>
+);
 
 SelectListItem.displayName = 'SelectListItem';
 

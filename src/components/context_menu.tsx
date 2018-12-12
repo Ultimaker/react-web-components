@@ -148,8 +148,8 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         return (
             <div ref={this._menuRef} className={classes}>
 
-                <Button style="no-style" onClickHandler={() => this._setShowMenu(!showMenu)}>
-                    <div className="trigger" style={{ width: triggerWidth }} />
+                <Button style="no-style" className="trigger" onClickHandler={() => this._setShowMenu(!showMenu)}>
+                    <div style={{ width: triggerWidth }} />
                 </Button>
 
                 <div className="container">

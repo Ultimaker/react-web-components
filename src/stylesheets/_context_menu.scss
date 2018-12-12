@@ -78,8 +78,6 @@
             z-index: 99998;
             box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
 
-            @include font-size-text-2;
-
             ul {
                 list-style: none;
                 padding: 1rem 0;
@@ -89,6 +87,7 @@
     }
 
     .context-menu__button {
+        @include font-size-text-2;
         cursor: pointer;
         padding: 1.2rem 2.4rem;
         width: 100%;
@@ -101,7 +100,7 @@
             border-bottom: none;
         }
 
-        &:hover, &.focused {
+        &:hover, &:focus {
             background-color: $context-menu-color-hover;
             transition: background-color 0.2s ease-out;
         }
@@ -146,7 +145,7 @@
             visibility: visible;
         }
 
-        .trigger, .label {
+        .trigger {
             &:hover, &:focus {
                 background-color: transparent;
             }

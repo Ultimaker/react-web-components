@@ -22,9 +22,10 @@ export interface ContextMenuItemProps {
 export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> = ({
     disabled, onClickHandler, label, id, className, onCloseMenuHandler,
 }) => (
-    <li id={id} className={classNames({ disabled }, className)}>
+    <li>
         <Button
-            className="context-menu__button"
+            id={id}
+            className={classNames('context-menu__button', { disabled }, className)}
             style="no-style"
             onClickHandler={() => { onCloseMenuHandler(); onClickHandler(); }}
             disabled={disabled}

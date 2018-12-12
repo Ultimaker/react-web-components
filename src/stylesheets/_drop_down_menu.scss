@@ -11,23 +11,29 @@
 
         .menu {
             right: 0;
+        }
+    }
 
-            li {
-                white-space: nowrap;
+    .context-menu__button {
+        white-space: nowrap;
 
-                &.active {
-                    color: $drop-down-menu-color-text-active;
-                }
-            }
+        &.active {
+            color: $drop-down-menu-color-text-active;
         }
     }
 
     .label {
         cursor: pointer;
         padding: 1.2rem 1.8rem;
+        width: 100%;
 
         .text {
             display: inline-block;
+            width: 100%;
+        }
+
+        .label__text {
+            text-align: left;
         }
 
         .panel-arrow {

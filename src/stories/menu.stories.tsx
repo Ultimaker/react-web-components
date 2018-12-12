@@ -39,7 +39,7 @@ stories.add('Context menu', withInfo(
     'Context menu for additional actions',
 )(() => (
     <ContextMenu
-        menuWidth={250}
+        menuWidth={200}
         menuDirection={selectV2('Menu Direction', directionOptions, directionDefaultValue)}
         menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}
     >
