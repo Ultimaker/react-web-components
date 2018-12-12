@@ -6,7 +6,6 @@ import { shallow } from 'enzyme';
 import ImageUpload from '../image_upload';
 import ImageCropper from '../image_cropper';
 import { Image } from '../image';
-import Popup from '../popup';
 
 let Dropzone = require('react-dropzone');
 
@@ -18,8 +17,12 @@ describe('The image upload component', () => {
     let props;
     let wrapper;
     let image;
+    let oldAlert = window.alert;
+    let alertMock;
 
     beforeEach(() => {
+        window.alert = alertMock = jest.fn();
+
         image = new Blob(['A+test+string+for+testing+image'], { type: 'image/jpeg' });
         image.preview = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
 
@@ -29,6 +32,10 @@ describe('The image upload component', () => {
         };
         wrapper = shallow(<ImageUpload {...props} />);
     });
+
+    afterEach(() => {
+        window.alert = oldAlert;
+    })
 
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
@@ -57,17 +64,7 @@ describe('The image upload component', () => {
         image['preview'] = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
         wrapper.find(Dropzone).prop('onDrop')([image]);
 
-        expect(wrapper.find(Popup).props()).toEqual({
-            "bodyText": "This file is too large. Please select an image below 0.0MB",
-            "headerText": "File too large",
-            "primaryBtnHandler": expect.any(Function),
-            "primaryBtnText": "OK",
-            "width": "sm",
-        });
-
-        wrapper.find(Popup).prop('primaryBtnHandler')();
-        expect(wrapper.find(Popup)).toHaveLength(0);
-
+        expect(alertMock).toHaveBeenCalledWith("This file is too large. Please select an image below 0.0MB");
         expect(props.onFileSelection).not.toHaveBeenCalled();
         expect(props.onFileRead).not.toHaveBeenCalled();
     })
