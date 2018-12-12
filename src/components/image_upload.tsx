@@ -1,14 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+// utils
+import { I18n } from '../utils/i18n';
+
 // components
 import { Image, ImageShape } from './image';
 import UploadIcon from './icons/upload_icon';
-
-// utils
+import Popup from './popup';
 import ImageCropper from './image_cropper';
-import Popup from './popup'
-import {I18n} from '../utils/i18n'
 
 // dependencies
 let Dropzone = require('react-dropzone');
@@ -42,7 +42,7 @@ export interface ImageUploadProps {
     imageURL?: string;
     /** Placeholder label */
     placeholderLabel?: string;
-    /** The maximum amount of megabytes allowed to be uploaded **/
+    /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
     /**
      * Whether cropping should be enabled. If enabled, the user is allowed to choose what
@@ -61,7 +61,7 @@ export interface ImageUploadState {
     cropURL: string | null;
     /** Whether the component is focused using the keyboard */
     dropFocus: boolean;
-    /** Whether we should show a popup with a message that the uploaded image is too large **/
+    /** Whether we should show a popup with a message that the uploaded image is too large */
     showFileTooLarge: boolean;
 }
 
@@ -69,15 +69,14 @@ export interface ImageUploadState {
  * The translations for this component.
  */
 export const T = {
-    imageTooLargeText: (maxMb: number) =>
-        I18n.format(
-            "image upload error",
-            "This file is too large. Please select an image below %{maxMb}MB",
-            {maxMb: maxMb.toFixed(1)}
-        ),
-    imageTooLargeTitle: I18n.translate("image upload error", "File too large"),
-    OK: I18n.translate("image upload error", "OK"),
-}
+    imageTooLargeText: (maxMb: number) => I18n.format(
+        'image upload error',
+        'This file is too large. Please select an image below %{maxMb}MB',
+        { maxMb: maxMb.toFixed(1) },
+    ),
+    imageTooLargeTitle: I18n.translate('image upload error', 'File too large'),
+    OK: I18n.translate('image upload error', 'OK'),
+};
 
 /**
  * Component that allows a user to upload (and optionally crop) an image.
@@ -110,10 +109,13 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         const file = files[0];
         this.setState({ dropActive: false });
 
-        const { allowCropping, onFileSelection, onFileRead, maxMb } = this.props;
-        
+        const {
+            allowCropping, onFileSelection, onFileRead, maxMb,
+        } = this.props;
+
         if (maxMb && file.size > maxMb * 1024 * 1024) {
-            return this.setState({ showFileTooLarge: true })
+            this.setState({ showFileTooLarge: true });
+            return;
         }
 
         if (onFileSelection) {
