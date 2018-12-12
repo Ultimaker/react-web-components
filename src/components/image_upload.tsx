@@ -7,7 +7,6 @@ import { I18n } from '../utils/i18n';
 // components
 import { Image, ImageShape } from './image';
 import UploadIcon from './icons/upload_icon';
-import Popup from './popup';
 import ImageCropper from './image_cropper';
 
 // dependencies
@@ -61,20 +60,17 @@ export interface ImageUploadState {
     cropURL: string | null;
     /** Whether the component is focused using the keyboard */
     dropFocus: boolean;
-    /** Whether we should show a popup with a message that the uploaded image is too large */
-    showFileTooLarge: boolean;
 }
 
 /**
  * The translations for this component.
  */
 export const T = {
-    imageTooLargeText: (maxMb: number) => I18n.format(
+    imageTooLarge: (maxMb: number) => I18n.format(
         'image upload error',
         'This file is too large. Please select an image below %{maxMb}MB',
         { maxMb: maxMb.toFixed(1) },
     ),
-    imageTooLargeTitle: I18n.translate('image upload error', 'File too large'),
     OK: I18n.translate('image upload error', 'OK'),
 };
 
@@ -91,7 +87,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         dropActive: false,
         cropURL: null,
         dropFocus: false,
-        showFileTooLarge: false,
     };
 
     constructor(props) {
@@ -114,7 +109,8 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         } = this.props;
 
         if (maxMb && file.size > maxMb * 1024 * 1024) {
-            this.setState({ showFileTooLarge: true });
+            // TODO: Make this a proper error in STAR-334.
+            alert(T.imageTooLarge(maxMb));
             return;
         }
 
@@ -216,18 +212,8 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     render(): JSX.Element {
-        const { id, maxMb } = this.props;
-        const { cropURL, showFileTooLarge } = this.state;
-        if (showFileTooLarge) {
-            return (
-                <Popup
-                    headerText={T.imageTooLargeTitle}
-                    bodyText={T.imageTooLargeText(maxMb)}
-                    primaryBtnText={T.OK}
-                    primaryBtnHandler={() => this.setState({ showFileTooLarge: false })}
-                />
-            );
-        }
+        const { id } = this.props;
+        const { cropURL } = this.state;
         return (
             <div id={id} className="image-upload">
                 {cropURL ? this._renderCropper() : this._renderDropzone()}
