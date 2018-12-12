@@ -155,6 +155,21 @@ button {
         }
     }
 
+    &.btn--no-style {
+        line-height: inherit;
+        padding: 0;
+        color: inherit;
+    }
+
+    &.btn--link {
+        line-height: inherit;
+        padding: 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     &.btn--circle {
         border-radius: 50%;
         height: 4.4rem;

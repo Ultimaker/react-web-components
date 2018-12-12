@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Spinner from './spinner';
 
 export type ButtonType = 'submit' | 'button' | 'link';
-export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'alert';
+export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'alert' | 'link' | 'no-style';
 export type ButtonShape = 'rectangle' | 'circle' | 'pill';
 
 export interface ButtonProps {
@@ -18,7 +18,7 @@ export interface ButtonProps {
     disabled?: boolean;
     /** html button type: 'submit' | 'button' | 'link' */
     type?: ButtonType;
-    /** CSS styling: 'primary' | 'secondary' | 'quiet' | 'alert' */
+    /** CSS styling: 'primary' | 'secondary' | 'quiet' | 'alert' | 'link' | no-style' */
     style?: ButtonStyle;
     /** Visual shape of the Button: 'rectangle' | 'circle' | 'pill' */
     shape?: ButtonShape;
