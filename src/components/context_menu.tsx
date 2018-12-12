@@ -2,6 +2,9 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Collapse } from 'react-collapse';
 
+// components
+import Button from './button';
+
 export type MenuOffsetDirection = 'left' | 'right';
 export type MenuDirection = 'north' | 'south';
 
@@ -66,6 +69,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         super(props);
         this._menuRef = React.createRef();
         this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
+        this._setShowMenu = this._setShowMenu.bind(this);
     }
 
     private _menuRef;
@@ -142,28 +146,24 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const menuStyle = ContextMenu._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
         return (
-            <div
-                ref={this._menuRef}
-                className={classes}
-            >
+            <div ref={this._menuRef} className={classes}>
 
-                <div
-                    className="trigger"
-                    onClick={() => { this._setShowMenu(!showMenu); ContextMenu._stopPropagation; }}
-                    style={{ width: triggerWidth }}
-                />
+                <Button style="no-style" onClickHandler={() => this._setShowMenu(!showMenu)}>
+                    <div className="trigger" style={{ width: triggerWidth }} />
+                </Button>
 
-                <div
-                    className="container"
-                    onClick={() => { this._setShowMenu(false); ContextMenu._stopPropagation; }}
-                >
+                <div className="container">
                     <div className="menu" style={menuStyle}>
                         <Collapse
                             isOpened={showMenu}
                             springConfig={{ stiffness: 390, damping: 32 }}
                         >
                             <ul>
-                                {children}
+                                {React.Children.map(children, (child: JSX.Element) => (
+                                    React.cloneElement(child, {
+                                        onCloseMenuHandler: () => this._setShowMenu(false),
+                                    })
+                                ))}
                             </ul>
                         </Collapse>
                     </div>
