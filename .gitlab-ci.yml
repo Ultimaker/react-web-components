@@ -10,7 +10,6 @@ before_script:
 test:
   stage: test
   script:
-    - yarn lint
     - yarn test:coverage
     - yarn build
   except:
