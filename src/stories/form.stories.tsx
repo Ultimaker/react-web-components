@@ -239,7 +239,13 @@ stories.add('Image upload', withState({ value: null })(withInfo('Image drag and 
         <Tile>
             <h3>Result</h3>
             {store.state.value
-                ? <Image src={store.state.value} size="4.8rem" />
+                ? (
+                    <Image
+                        src={store.state.value}
+                        size="4.8rem"
+                        shape={selectV2('Image shape', options, defaultValue)}
+                    />
+                )
                 : <ProfileIcon size="lg" />}
             <br />
         </Tile>
