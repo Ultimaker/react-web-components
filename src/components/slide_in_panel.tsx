@@ -74,8 +74,8 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
 
         return (
             <div className={classes}>
-
-                <div className="slide-in-panel__overlay" onClick={e => this._handleOverlayClick(e)} />
+                {/* eslint-disable-next-line */}
+                <div className="slide-in-panel__overlay" onClick={e => this._handleOverlayClick(e)} /> 
 
                 <Motion style={{ x: spring(isOpen ? 0 : 100, motion) }}>
                     {({ x }) => (
