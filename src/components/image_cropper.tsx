@@ -117,7 +117,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         return (
             <div className="image-cropper--container">
                 <AvatarEditor
-                    ref={editor => this._editor = editor}
+                    ref={editor => this._editor = editor} // eslint-disable-line no-return-assign
                     scale={scale}
                     border={borderSize}
                     width={sizePixels}
