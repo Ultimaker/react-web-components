@@ -89,6 +89,11 @@ const sizeOptions = {
     lg: 'lg',
 };
 
+const foregroundColorDefaultValue = 'orange';
+const backgroundColorDefaultValue = 'grey';
+const foregroundBorderDefaultValue = 'orange';
+const backgroundBorderDefaultValue = 'grey';
+
 stories.addDecorator(withKnobs)
     .addDecorator(styles({
         display: 'flex',
@@ -104,10 +109,10 @@ stories.add('Ratings', withInfo(
         max={number('Maximum rating', 5)}
         rating={number('Current rating', 3.5)}
         Icon={iconOptions[selectV2('Icon', Object.keys(iconOptions), 'highlight')]}
-        foregroundColor={selectV2('Foreground color', colorOptions, Ratings.defaultProps.foregroundColor)}
-        backgroundColor={selectV2('Background color', colorOptions, Ratings.defaultProps.backgroundColor)}
-        foregroundBorder={selectV2('Foreground border', colorOptions, Ratings.defaultProps.foregroundBorder)}
-        backgroundBorder={selectV2('Background border', colorOptions, Ratings.defaultProps.backgroundBorder)}
+        foregroundColor={selectV2('Foreground color', colorOptions, foregroundColorDefaultValue)}
+        backgroundColor={selectV2('Background color', colorOptions, backgroundColorDefaultValue)}
+        foregroundBorder={selectV2('Foreground border', colorOptions, foregroundBorderDefaultValue)}
+        backgroundBorder={selectV2('Background border', colorOptions, backgroundBorderDefaultValue)}
         size={selectV2('Size', sizeOptions, Ratings.defaultProps.size)}
     />
 )));

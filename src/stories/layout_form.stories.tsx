@@ -48,7 +48,7 @@ stories.add('Form', withState({
     selectValue: 1,
     checkboxValue: null,
     dateValue: null,
-    customValue: null,
+    customValue: '',
 })(withInfo('A example layout for a form')(({ store }) => (
     <div style={{ maxWidth: 550, margin: '2.4rem auto' }}>
         <Tile padding="lg">
@@ -140,7 +140,7 @@ stories.add('Form', withState({
 
                 <div>
                     <a href="#link">Links</a>
-                    or other elements may also be used.
+                    <span> or other elements may also be used.</span>
                 </div>
 
                 <InputField
