@@ -15,21 +15,20 @@ export interface ToggleButtonProps {
 export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({
     id, value, onChangeHandler, disabled,
 }) => (
-    <label
-        htmlFor={id}
-        className={classNames('toggle-button', { 'toggle-button--checked': value })}
-    >
-        <input
-            className="toggle-button__input"
-            id={id}
-            name={id}
-            type="checkbox"
-            checked={value !== null ? value : false}
-            onChange={e => onChangeHandler(e.currentTarget.checked)}
-            disabled={disabled}
-        />
-        <span className="toggle-button__slider" />
-    </label>
+    <div className={classNames('toggle-button', { 'toggle-button--checked': value })}>
+        <label htmlFor={id}>
+            <input
+                className="toggle-button__input"
+                id={id}
+                name={id}
+                type="checkbox"
+                checked={value !== null ? value : false}
+                onChange={e => onChangeHandler(e.currentTarget.checked)}
+                disabled={disabled}
+            />
+            <span className="toggle-button__slider" />
+        </label>
+    </div>
 );
 
 ToggleButton.defaultProps = {
