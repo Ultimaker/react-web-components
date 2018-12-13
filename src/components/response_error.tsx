@@ -40,7 +40,7 @@ export const getTranslatedError = (
 export interface ResponseErrorObject {
     id: string;
     code: string;
-    http_status: string;
+    http_status: string; // eslint-disable-line camelcase
     title: string;
     detail?: string;
     meta?: { [key: string]: any };
