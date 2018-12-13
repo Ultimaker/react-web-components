@@ -7,6 +7,7 @@ exports[`The Modal component should render 1`] = `
 >
   <div
     class="modal__content"
+    role="dialog"
   />
 </div>
 `;

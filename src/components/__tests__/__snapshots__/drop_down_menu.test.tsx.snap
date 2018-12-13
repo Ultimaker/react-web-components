@@ -3,13 +3,14 @@
 exports[`The DropDownMenu component should render 1`] = `
 <div
   className="drop-down-menu"
-  onBlur={[Function]}
-  onClick={[Function]}
-  tabIndex={1}
 >
-  <div
+  <Button
     className="label"
-    onClick={[Function]}
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
   >
     <div
       className="layout layout--align-middle layout--gutter-none"
@@ -18,7 +19,7 @@ exports[`The DropDownMenu component should render 1`] = `
         className="layout__item u-fit"
       >
         <div
-          className="text"
+          className="label__text"
         >
           Active label
         </div>
@@ -33,10 +34,9 @@ exports[`The DropDownMenu component should render 1`] = `
         />
       </div>
     </div>
-  </div>
+  </Button>
   <div
     className="container"
-    onClick={[Function]}
   >
     <div
       className="menu"

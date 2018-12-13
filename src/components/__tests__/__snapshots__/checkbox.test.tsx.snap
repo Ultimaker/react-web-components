@@ -3,17 +3,21 @@
 exports[`The Checkbox component should render 1`] = `
 <div
   className="checkbox"
-  onClick={[Function]}
 >
-  <input
-    checked={false}
-    id="testCheckbox"
-    name="testCheckbox"
-    onChange={[Function]}
-    type="checkbox"
-  />
   <label
     htmlFor="testCheckbox"
-  />
+  >
+    <input
+      checked={false}
+      className="checkbox__input"
+      id="testCheckbox"
+      name="testCheckbox"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="checkbox__visual"
+    />
+  </label>
 </div>
 `;

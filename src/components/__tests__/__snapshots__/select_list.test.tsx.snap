@@ -3,23 +3,23 @@
 exports[`The SelectList component should render 1`] = `
 <div
   className="drop-down-menu"
-  onBlur={[Function]}
-  onFocus={[Function]}
-  onKeyDown={[Function]}
-  tabIndex={1}
 >
-  <div
+  <Button
     className="label"
-    onClick={[Function]}
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
   >
     <div
       className="layout layout--align-middle layout--gutter-none"
     >
       <div
-        className="layout__item u-fit"
+        className="layout__item u-fill"
       >
         <div
-          className="text"
+          className="label__text"
         >
           Option 1
         </div>
@@ -34,7 +34,7 @@ exports[`The SelectList component should render 1`] = `
         />
       </div>
     </div>
-  </div>
+  </Button>
   <div
     className="container"
   >
@@ -53,7 +53,6 @@ exports[`The SelectList component should render 1`] = `
         <ul>
           <SelectListItem
             active={true}
-            focused={false}
             key="0"
             label="Option 1"
             onChangeHandler={[Function]}
@@ -62,7 +61,6 @@ exports[`The SelectList component should render 1`] = `
           <SelectListItem
             active={false}
             disabled={true}
-            focused={false}
             key="1"
             label="Option 2"
             onChangeHandler={[Function]}
@@ -70,7 +68,6 @@ exports[`The SelectList component should render 1`] = `
           />
           <SelectListItem
             active={false}
-            focused={false}
             key="2"
             label="Option 3"
             onChangeHandler={[Function]}

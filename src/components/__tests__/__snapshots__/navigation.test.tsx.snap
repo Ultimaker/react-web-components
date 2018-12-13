@@ -3,6 +3,7 @@
 exports[`The Navigation component should render 1`] = `
 <nav
   class="navigation"
+  role="navigation"
 >
   <div
     class="nav-links-container"

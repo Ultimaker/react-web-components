@@ -3,7 +3,6 @@
 exports[`The FileUpload component should render 1`] = `
 <div
   className="file-upload"
-  onClick={[Function]}
 >
   <div
     className="layout layout--gutter-sm"
@@ -11,30 +10,32 @@ exports[`The FileUpload component should render 1`] = `
     <div
       className="layout__item u-fill file-upload__input-container"
     >
-      <label
+      <div
         className="file-upload__input"
-        htmlFor="testFileUpload"
       />
     </div>
     <div
       className="layout__item u-fit"
     >
-      <input
-        accept={null}
-        id="testFileUpload"
-        name="testFileUpload"
-        onChange={[Function]}
-        placeholder="A text placeholder"
-        type="file"
-      />
       <label
-        className="btn btn--primary"
         htmlFor="testFileUpload"
       >
+        <input
+          accept={null}
+          id="testFileUpload"
+          name="testFileUpload"
+          onChange={[Function]}
+          placeholder="A text placeholder"
+          type="file"
+        />
         <span
-          className="text"
+          className="btn btn--primary"
         >
-          Choose file
+          <span
+            className="text"
+          >
+            Choose file
+          </span>
         </span>
       </label>
     </div>
