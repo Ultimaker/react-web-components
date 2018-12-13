@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classNames from 'classnames';
 
 export interface ToggleButtonProps {
     /** Checkbox id. Must be unique */
@@ -14,9 +15,12 @@ export interface ToggleButtonProps {
 export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({
     id, value, onChangeHandler, disabled,
 }) => (
-    <div className="toggle-button-container" onClick={e => e.stopPropagation()}>
+    <label
+        htmlFor={id}
+        className={classNames('toggle-button', { 'toggle-button--checked': value })}
+    >
         <input
-            className="toggle-button"
+            className="toggle-button__input"
             id={id}
             name={id}
             type="checkbox"
@@ -24,8 +28,8 @@ export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({
             onChange={e => onChangeHandler(e.currentTarget.checked)}
             disabled={disabled}
         />
-        <label htmlFor={id} />
-    </div>
+        <span className="toggle-button__slider" />
+    </label>
 );
 
 ToggleButton.defaultProps = {

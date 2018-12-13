@@ -1,14 +1,14 @@
-.toggle-button {
+.toggle-button__input {
     left: -9999px;
     position: absolute;
 }
 
-.toggle-button + label {
+.toggle-button__slider {
     padding-right: 6.2rem;
     position: relative;
 }
 
-.toggle-button + label:before {
+.toggle-button__slider:before {
     background-color: $toggle-button-color-background;
     border-radius: 9999px;
     content: "";
@@ -24,11 +24,11 @@
     width: 6.2rem;
 }
 
-.toggle-button:checked + label:before {
+.toggle-button--checked .toggle-button__slider:before {
     background-color: $toggle-button-color-active;
 }
 
-.toggle-button + label:after {
+.toggle-button__slider:after {
     background-color: $toggle-button-color;
     border-radius: 50%;
     content: "";
@@ -45,14 +45,14 @@
     box-shadow: 0 0.1rem 0.5rem 0 $color-shadow;
 }
 
-.toggle-button:checked + label:after {
+.toggle-button--checked .toggle-button__slider:after {
     right: 0;
 }
 
-.toggle-button:focus + label:before {
-    background-color: $toggle-button-color-background-focus
+.toggle-button__input:focus + .toggle-button__slider:before {
+    background-color: $toggle-button-color-background-focus;
 }
 
-.toggle-button:focus:checked + label:before {
-    background-color: $toggle-button-color-active-focus
+.toggle-button--checked .toggle-button__input:focus + .toggle-button__slider:before {
+    background-color: $toggle-button-color-active-focus;
 }
