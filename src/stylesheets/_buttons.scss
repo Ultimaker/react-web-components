@@ -1,14 +1,11 @@
-a, button {
+a {
     color: $color-anchor;
     text-decoration: none;
     cursor: pointer;
 
-    &:focus {
-        outline: none;
-    }
-
-    &:hover {
+    &:hover, &:focus {
         text-decoration: underline;
+        outline: none;
     }
 }
 
@@ -31,8 +28,15 @@ button {
     border-radius: 0;
     position: relative;
     display: inline-block;
+    text-decoration: none;
+    color: $color-anchor;
 
-    .text {
+    &:hover, &:focus {
+        text-decoration: none;
+        outline: none;
+    }
+
+    > .text {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -159,13 +163,19 @@ button {
         line-height: inherit;
         padding: 0;
         color: inherit;
+        width: 100%;
+
+        > .text {
+            display: block;
+            text-align: left;
+        }
     }
 
     &.btn--link {
         line-height: inherit;
         padding: 0;
 
-        &:hover {
+        &:hover, &:focus {
             text-decoration: underline;
         }
     }
@@ -187,7 +197,7 @@ button {
             padding: 0.5rem 2.3rem;
         }
     }
-    
+
     .icon--link {
         position: absolute;
         right: 1.2rem;
