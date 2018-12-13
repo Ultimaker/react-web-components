@@ -30,7 +30,7 @@ describe('The Image Cropper component', () => {
 
     const createWrapper = () => {
         const wrapper = shallow(<ImageCropper {...props} />);
-        // @ts-ignore TODO: work out why _editor is used how it is in the component
+        // @ts-ignore
         wrapper.instance()._editor = editor;
         return wrapper;
     };
@@ -76,7 +76,7 @@ describe('The Image Cropper component', () => {
         const wrapper = createWrapper();
         const avatarProps: any = wrapper.find(AvatarEditor).props();
         avatarProps.onImageChange();
-        // @ts-ignore TODO: work out why _onImageChanged is used how it is in the component
+        // @ts-ignore
         wrapper.instance()._onImageChanged.flush();
         expect(onImageChanged).toHaveBeenCalledWith('imageData');
         expect(onCropCancel).not.toHaveBeenCalled();
