@@ -20,11 +20,17 @@ export interface DatePickerProps {
     error?: boolean;
     /** The format to display the date, as specified by moment-js */
     format: string;
+    /** When true, dates from before the current date can be selected */
+    allowPastDates?: boolean;
 }
 
 export interface DatePickerState {
     focused: boolean;
     date: moment.Moment;
+}
+
+export interface FocusedObj {
+    focused: boolean;
 }
 
 export class DatePicker extends React.Component<DatePickerProps, DatePickerState> {
@@ -36,6 +42,11 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
     state = {
         focused: false,
         date: undefined,
+    }
+
+    constructor(props: DatePickerProps) {
+        super(props);
+        this._onFocused = this._onFocused.bind(this);
     }
 
     static getDerivedStateFromProps(
@@ -71,9 +82,13 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
         }
     }
 
+    private _onFocused(focusedObj: FocusedObj): void {
+        this.setState({ focused: focusedObj.focused });
+    }
+
     render(): JSX.Element {
         const {
-            id, placeholder, error, format,
+            id, placeholder, error, format, allowPastDates,
         } = this.props;
         const { date, focused } = this.state;
 
@@ -85,7 +100,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
                     date={date}
                     onDateChange={newDate => this._onChangeHandler(newDate)}
                     focused={focused}
-                    onFocusChange={({ newFocused }) => this.setState({ focused: newFocused })}
+                    onFocusChange={this._onFocused}
                     id={id}
                     placeholder={placeholder}
                     noBorder
@@ -94,6 +109,7 @@ export class DatePicker extends React.Component<DatePickerProps, DatePickerState
                     anchorDirection="left"
                     displayFormat={format}
                     enableOutsideDays
+                    isOutsideRange={allowPastDates ? () => false : undefined}
                 />
             </div>
         );

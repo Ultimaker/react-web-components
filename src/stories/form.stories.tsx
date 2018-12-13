@@ -273,6 +273,7 @@ stories.add('Date picker', withState({ value: '10-10-2018' })(withInfo('Date sel
             infoLinkURL={text('Info link URL', '')}
             infoText={text('Info text', '')}
             preLabelElement={text('Pre label element', '')}
+            allowPastDates={boolean('Allow past dates', false)}
         />
     </div>
 ))));

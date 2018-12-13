@@ -18,6 +18,8 @@ export interface DateFieldProps extends InputFieldProps {
     format?: string;
     /** Placeholder text */
     placeholder?: string;
+    /** When true, dates from before the current date can be selected */
+    allowPastDates?: boolean;
 }
 
 /**
@@ -56,7 +58,7 @@ export class DateField extends React.Component<DateFieldProps, DateFieldState> {
 
     render() {
         const {
-            value, format, placeholder, children, ...wrapperProps
+            value, format, placeholder, allowPastDates, children, ...wrapperProps
         } = this.props;
         const {
             id, staticField, validationError, submitted,
@@ -74,6 +76,7 @@ export class DateField extends React.Component<DateFieldProps, DateFieldState> {
                             error={validationError && (touched || submitted)}
                             format={format}
                             placeholder={placeholder}
+                            allowPastDates={allowPastDates}
                         />
                     )}
             </InputFieldWrapper>
