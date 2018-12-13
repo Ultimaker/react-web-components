@@ -40,24 +40,32 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
     constructor(props: SelectListProps) {
         super(props);
         this._menuRef = React.createRef();
-        this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
+        this._onOutsideFocusHandler = this._onOutsideFocusHandler.bind(this);
         this._setShowMenu = this._setShowMenu.bind(this);
         this._onClickHandler = this._onClickHandler.bind(this);
     }
 
     private _menuRef;
 
-    private _onOutsideClickHandler(event) {
+    private _onOutsideFocusHandler(event): void {
         if (this._menuRef && !this._menuRef.current.contains(event.target)) {
+            // close menu is user clicks or tabs outside
+            this._setShowMenu(false);
+        }
+
+        if (event.key === 'Escape') {
+            // close menu is user presses escape
             this._setShowMenu(false);
         }
     }
 
     private _setShowMenu(showMenu: boolean): void {
         if (showMenu) {
-            document.addEventListener('mousedown', this._onOutsideClickHandler);
+            document.addEventListener('mousedown', this._onOutsideFocusHandler);
+            document.addEventListener('keydown', this._onOutsideFocusHandler);
         } else {
-            document.removeEventListener('mousedown', this._onOutsideClickHandler);
+            document.removeEventListener('mousedown', this._onOutsideFocusHandler);
+            document.removeEventListener('keydown', this._onOutsideFocusHandler);
         }
 
         this.setState({
@@ -99,7 +107,11 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         const labelClasses = classNames('label', { active: showMenu, error });
 
         return (
-            <div ref={this._menuRef} className={classes} id={id}>
+            <div
+                ref={this._menuRef}
+                className={classes}
+                id={id}
+            >
 
                 <Button style="no-style" className={labelClasses} onClickHandler={() => this._setShowMenu(!showMenu)}>
                     <div className="layout layout--align-middle layout--gutter-none">

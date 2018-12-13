@@ -68,16 +68,38 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     constructor(props: ContextMenuProps) {
         super(props);
         this._menuRef = React.createRef();
-        this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
+        this._onOutsideFocusHandler = this._onOutsideFocusHandler.bind(this);
         this._setShowMenu = this._setShowMenu.bind(this);
     }
 
     private _menuRef;
 
-    private _onOutsideClickHandler(event) {
+    private _onOutsideFocusHandler(event): void {
         if (this._menuRef && !this._menuRef.current.contains(event.target)) {
+            // close menu is user clicks or tabs outside
             this._setShowMenu(false);
         }
+
+        if (event.key === 'Escape') {
+            // close menu is user presses escape
+            this._setShowMenu(false);
+        }
+    }
+
+    private _setShowMenu(showMenu: boolean): void {
+        this._setMenuOffset();
+
+        if (showMenu) {
+            document.addEventListener('mousedown', this._onOutsideFocusHandler);
+            document.addEventListener('keydown', this._onOutsideFocusHandler);
+        } else {
+            document.removeEventListener('mousedown', this._onOutsideFocusHandler);
+            document.removeEventListener('keydown', this._onOutsideFocusHandler);
+        }
+
+        this.setState({
+            showMenu,
+        });
     }
 
     private _setMenuOffset(): void {
@@ -115,20 +137,6 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
         this.setState({
             menuOffset,
-        });
-    }
-
-    private _setShowMenu(showMenu: boolean): void {
-        this._setMenuOffset();
-
-        if (showMenu) {
-            document.addEventListener('mousedown', this._onOutsideClickHandler);
-        } else {
-            document.removeEventListener('mousedown', this._onOutsideClickHandler);
-        }
-
-        this.setState({
-            showMenu,
         });
     }
 

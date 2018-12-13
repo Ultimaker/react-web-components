@@ -125,9 +125,14 @@
             background-color: white;
             border-bottom: 2px solid $input-field-color-border;
 
-            &:hover, &:focus, &:active, &.active {
+            &:hover, &:active, &.active {
                 background-color: white;
                 border-bottom-color: $input-field-color-border-hover;
+            }
+
+            &:focus {
+                background-color: white;
+                border-bottom-color: $input-field-color-border-active;
             }
 
             &.error {
