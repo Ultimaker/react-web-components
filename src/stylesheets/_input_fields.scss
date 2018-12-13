@@ -254,7 +254,7 @@
         transform: translateY(-50%);
     }
 
-    input[type=file]:focus + label {
+    input[type=file]:focus + .btn {
         background-color: $primary-btn-color-hover;
     }
 }
