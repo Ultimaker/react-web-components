@@ -64,19 +64,20 @@ export class Modal extends React.Component<ModalProps, ModalState> {
         const classes = classNames('modal__content', width ? `modal__content--${width}` : undefined);
 
         return (
-            <React.Fragment>
-                {/* eslint-disable-next-line */}
-                <div
-                    className="modal"
-                    onClick={e => this._handleOverlayClick(e)}
-                    key={key}
-                    style={{ ...style }}
-                >
-                    <div className={classes} role="dialog">
-                        {children}
-                    </div>
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+            <div
+                className="modal"
+                onClick={e => this._handleOverlayClick(e)}
+                key={key}
+                style={{ ...style }}
+            >
+                {/* eslint-disable-next-line max-len */}
+                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
+                <div className={classes} role="dialog" onClick={Modal._stopPropagation}>
+                    {children}
                 </div>
-            </React.Fragment>
+            </div>
         );
     }
 

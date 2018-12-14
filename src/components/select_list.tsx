@@ -33,6 +33,10 @@ export interface SelectListState {
 }
 
 export class SelectList extends React.Component<SelectListProps, SelectListState> {
+    private static _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+        e.stopPropagation();
+    }
+
     state = {
         showMenu: false,
     }
@@ -107,10 +111,13 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         const labelClasses = classNames('label', { active: showMenu, error });
 
         return (
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
             <div
                 ref={this._menuRef}
                 className={classes}
                 id={id}
+                onClick={SelectList._stopPropagation}
             >
 
                 <Button style="no-style" className={labelClasses} onClickHandler={() => this._setShowMenu(!showMenu)}>

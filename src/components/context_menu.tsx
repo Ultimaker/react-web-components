@@ -154,7 +154,9 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const menuStyle = ContextMenu._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
         return (
-            <div ref={this._menuRef} className={classes}>
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+            <div ref={this._menuRef} className={classes} onClick={ContextMenu._stopPropagation}>
 
                 <Button style="no-style" className="trigger" onClickHandler={() => this._setShowMenu(!showMenu)}>
                     <div style={{ width: triggerWidth }} />

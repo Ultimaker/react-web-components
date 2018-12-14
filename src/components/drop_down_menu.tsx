@@ -68,7 +68,9 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
         const classes = classNames('drop-down-menu', { visible: showMenu });
 
         return (
-            <div ref={this._menuRef} className={classes}>
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+            <div ref={this._menuRef} className={classes} onClick={DropDownMenu._stopPropagation}>
 
                 <Button style="no-style" className="label" onClickHandler={() => this._setShowMenu(!showMenu)}>
                     <div className="layout layout--align-middle layout--gutter-none">
