@@ -79,7 +79,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
 
     private _getActiveOptionLabel() {
         const { options, value } = this.props;
-        const option = options.find(newOption => newOption.value === value);
+        const option = options.find(findOption => findOption.value === value);
         return option ? option.label : null;
     }
 

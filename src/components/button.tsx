@@ -83,19 +83,17 @@ export class Button extends React.Component<ButtonProps, {}> {
         } = this.props;
 
         return (
-            <React.Fragment>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a
-                    id={id}
-                    className={classes}
-                    href={disabled || showSpinner ? undefined : linkURL}
-                    target={linkToNewTab ? '_blank' : undefined}
-                    rel="noopener noreferrer"
-                >
-                    <span className="text">{children}</span>
-                    {showSpinner && <Spinner />}
-                </a>
-            </React.Fragment>
+            // eslint-disable-next-line jsx-a11y/anchor-is-valid
+            <a
+                id={id}
+                className={classes}
+                href={disabled || showSpinner ? undefined : linkURL}
+                target={linkToNewTab ? '_blank' : undefined}
+                rel="noopener noreferrer"
+            >
+                <span className="text">{children}</span>
+                {showSpinner && <Spinner />}
+            </a>
         );
     }
 
@@ -105,19 +103,17 @@ export class Button extends React.Component<ButtonProps, {}> {
         } = this.props;
 
         return (
-            <React.Fragment>
-                {/* eslint-disable-next-line react/button-has-type */}
-                <button
-                    id={id}
-                    className={classes}
-                    onClick={this._onClickHandler}
-                    disabled={disabled || showSpinner}
-                    type={type}
-                >
-                    <span className="text">{children}</span>
-                    {showSpinner && <Spinner />}
-                </button>
-            </React.Fragment>
+            // eslint-disable-next-line react/button-has-type
+            <button
+                id={id}
+                className={classes}
+                onClick={this._onClickHandler}
+                disabled={disabled || showSpinner}
+                type={type}
+            >
+                <span className="text">{children}</span>
+                {showSpinner && <Spinner />}
+            </button>
         );
     }
 

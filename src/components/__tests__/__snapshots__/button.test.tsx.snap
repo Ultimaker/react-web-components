@@ -1,20 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The Button component renders a anchor when prop \`type\` is link and an external link is given 1`] = `
-<Fragment>
-  <a
-    className="btn btn--primary btn--rectangle "
-    href="https://ultimaker.com/"
-    id="testButton"
-    rel="noopener noreferrer"
+<a
+  className="btn btn--primary btn--rectangle "
+  href="https://ultimaker.com/"
+  id="testButton"
+  rel="noopener noreferrer"
+>
+  <span
+    className="text"
   >
-    <span
-      className="text"
-    >
-      Button text
-    </span>
-  </a>
-</Fragment>
+    Button text
+  </span>
+</a>
 `;
 
 exports[`The Button component renders a link when prop \`type\` is link and an internal link is given 1`] = `
@@ -33,18 +31,16 @@ exports[`The Button component renders a link when prop \`type\` is link and an i
 `;
 
 exports[`The Button component should render 1`] = `
-<Fragment>
-  <button
-    className="btn btn--primary btn--rectangle "
-    id="testButton"
-    onClick={[Function]}
-    type="button"
+<button
+  className="btn btn--primary btn--rectangle "
+  id="testButton"
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    className="text"
   >
-    <span
-      className="text"
-    >
-      Button text
-    </span>
-  </button>
-</Fragment>
+    Button text
+  </span>
+</button>
 `;

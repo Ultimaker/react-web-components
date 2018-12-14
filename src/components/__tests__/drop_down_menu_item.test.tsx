@@ -4,10 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import DropDownMenuItem from '../drop_down_menu_item';
-
-// mocks
-import { mockClickEvent } from '../../__mocks__/clickMock';
-
+import Button from '../button';
 
 describe('The DropDownMenuItem component', () => {
     let props;
@@ -17,6 +14,7 @@ describe('The DropDownMenuItem component', () => {
         props = {
             active: false,
             onClickHandler: jest.fn(),
+            onCloseMenuHandler: jest.fn(),
         };
         wrapper = shallow(<DropDownMenuItem {...props}>Menu item</DropDownMenuItem>);
     });
@@ -27,15 +25,9 @@ describe('The DropDownMenuItem component', () => {
     });
 
     it('should call the click handler when item is clicked', () => {
-        wrapper.simulate('click', mockClickEvent);
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onClickHandler).toHaveBeenCalled();
-    });
-
-    it('should not call the click handler when item is disabled', () => {
-        wrapper.setProps({ disabled: true });
-        wrapper.simulate('click', mockClickEvent);
-        expect(props.onClickHandler).not.toHaveBeenCalled();
-        expect(mockClickEvent.stopPropagation).toBeCalled();
+        expect(props.onCloseMenuHandler).toHaveBeenCalled();
     });
 
     it('should render item as disabled', () => {
