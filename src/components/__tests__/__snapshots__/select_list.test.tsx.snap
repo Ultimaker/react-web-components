@@ -3,6 +3,7 @@
 exports[`The SelectList component should render 1`] = `
 <div
   className="drop-down-menu"
+  onClick={[Function]}
 >
   <Button
     className="label"

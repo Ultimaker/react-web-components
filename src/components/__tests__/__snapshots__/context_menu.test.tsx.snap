@@ -3,6 +3,7 @@
 exports[`The ContextMenu component should render 1`] = `
 <div
   className="context-menu context-menu--south"
+  onClick={[Function]}
 >
   <Button
     className="trigger"
