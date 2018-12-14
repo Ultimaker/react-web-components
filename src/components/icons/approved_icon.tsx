@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const ApprovedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--approved`}>
@@ -9,8 +9,8 @@ const ApprovedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.E
             <polygon points="26.11 11.01 23.89 8.99 13.96 19.89 8 14.59 6 16.83 14.18 24.11 26.11 11.01" />
         </svg>
     </div>
-)
+);
 
-ApprovedIcon.displayName = "ApprovedIcon";
+ApprovedIcon.displayName = 'ApprovedIcon';
 
 export default IconWrapper(ApprovedIcon);

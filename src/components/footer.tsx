@@ -1,14 +1,11 @@
 import * as React from 'react';
 
-const Footer: React.StatelessComponent = ({ children }) => {
+const Footer: React.StatelessComponent = ({ children }) => (
+    <footer className="app__footer">
+        {children}
+    </footer>
+);
 
-    return (
-        <footer className="app__footer">
-            {children}
-        </footer>
-    );
-};
-
-Footer.displayName = "Footer";
+Footer.displayName = 'Footer';
 
 export default Footer;

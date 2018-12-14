@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const RejectedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--rejected`}>
@@ -9,8 +9,8 @@ const RejectedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.E
             <polygon points="11.4 22.72 16 18.12 20.6 22.72 22.72 20.6 18.12 16 22.72 11.4 20.6 9.28 16 13.88 11.4 9.28 9.28 11.4 13.88 16 9.28 20.6 11.4 22.72" />
         </svg>
     </div>
-)
+);
 
-RejectedIcon.displayName = "RejectedIcon";
+RejectedIcon.displayName = 'RejectedIcon';
 
 export default IconWrapper(RejectedIcon);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const LinkIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--link`}>
@@ -8,8 +8,8 @@ const LinkIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Eleme
             <path d="M21.46,3l1.12,1.13-12,12.15a1.86,1.86,0,0,0,0,2.62L13,21.45a1.86,1.86,0,0,0,2.64,0L27.79,9.25,29,10.47l1.4,1.42A.93.93,0,0,0,32,11.23V1.17A1.16,1.16,0,0,0,30.84,0H20.67a.92.92,0,0,0-.62,1.57Z" />
         </svg>
     </div>
-)
+);
 
-LinkIcon.displayName = "LinkIcon";
+LinkIcon.displayName = 'LinkIcon';
 
 export default IconWrapper(LinkIcon);

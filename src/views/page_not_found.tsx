@@ -1,12 +1,12 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import * as React from 'react'
+import * as React from 'react';
 
 // components
-import Page from '../components/page'
-import Tile from '../components/tile'
+import Page from '../components/page';
+import Tile from '../components/tile';
 
 // utils
-import { I18n } from '../utils/i18n'
+import { I18n } from '../utils/i18n';
 
 export interface PageNotFoundViewProps {
     location: Location
@@ -16,16 +16,16 @@ export interface PageNotFoundViewProps {
  * The page not found view.
  */
 const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({ location }) => (
-    <Page title={I18n.translate("title page_not_found", "Page Not Found")} maxWidth={550}>
+    <Page title={I18n.translate('title page_not_found', 'Page Not Found')} maxWidth={550}>
         <Tile padding="lg" align="center">
             <p>
-                {I18n.translate("page_not_found", "The page requested could not be found.")}
+                {I18n.translate('page_not_found', 'The page requested could not be found.')}
             </p>
             <pre>{location.pathname}</pre>
         </Tile>
     </Page>
-)
+);
 
-PageNotFoundView.displayName = "PageNotFoundView";
+PageNotFoundView.displayName = 'PageNotFoundView';
 
 export default PageNotFoundView;

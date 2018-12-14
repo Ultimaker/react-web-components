@@ -1,10 +1,11 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import moment = require('moment');
 
 // component
 import DatePicker from '../date_picker';
+
+import moment = require('moment');
 
 describe('The DatePicker component', () => {
     let props;
@@ -28,5 +29,4 @@ describe('The DatePicker component', () => {
         wrapper.setProps({ error: true });
         expect(wrapper.find('.error')).toHaveLength(1);
     });
-
 });

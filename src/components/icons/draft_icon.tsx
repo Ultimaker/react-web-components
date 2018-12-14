@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const DraftIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--draft`}>
@@ -11,8 +11,8 @@ const DraftIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Elem
             <path d="M21.91,6.29H8a1,1,0,0,0,0,2H21.91a1,1,0,1,0,0-2Z" />
         </svg>
     </div>
-)
+);
 
-DraftIcon.displayName = "DraftIcon";
+DraftIcon.displayName = 'DraftIcon';
 
 export default IconWrapper(DraftIcon);

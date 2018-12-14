@@ -12,11 +12,12 @@ export interface CloseButtonProps {
     color?: IconColor;
 }
 
-export const CloseButton: React.StatelessComponent<CloseButtonProps> = ({ onClickHandler, color }) => {
-
+export const CloseButton: React.StatelessComponent<CloseButtonProps> = ({
+    onClickHandler, color,
+}) => {
     const _onClickHandler = (): void => {
         onClickHandler();
-    }
+    };
 
     return (
         <Button className="close-button" onClickHandler={_onClickHandler} style="quiet" shape="circle">
@@ -25,6 +26,6 @@ export const CloseButton: React.StatelessComponent<CloseButtonProps> = ({ onClic
     );
 };
 
-CloseButton.displayName = "CloseButton";
+CloseButton.displayName = 'CloseButton';
 
 export default CloseButton;

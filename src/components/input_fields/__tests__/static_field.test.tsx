@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // components
-import StaticField, {StaticFieldProps} from '../static_field';
+import StaticField, { StaticFieldProps } from '../static_field';
 import InputFieldWrapper from '../input_field_wrapper';
 
 describe('The static field component', () => {
@@ -30,7 +30,7 @@ describe('The static field component', () => {
     });
 
     it('should render a null', () => {
-        wrapper.setProps({value: null})
+        wrapper.setProps({ value: null });
         expect(wrapper.find(InputFieldWrapper).prop('value')).toBeNull();
-    })
+    });
 });

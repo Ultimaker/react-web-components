@@ -56,5 +56,4 @@ describe('The Modal component', () => {
         mountedWrapper.unmount();
         expect(document.body.classList.contains('noscroll')).toBe(false);
     });
-
 });

@@ -8,7 +8,7 @@ import { InputField } from '../input_field';
 import { Button } from '../button';
 
 // mocks
-import { mockClickEvent } from '../../__mocks__/clickMock'
+import { mockClickEvent } from '../../__mocks__/clickMock';
 
 describe('The Form component', () => {
     let props;
@@ -17,7 +17,7 @@ describe('The Form component', () => {
     beforeEach(() => {
         props = {
             onSubmitHandler: jest.fn(),
-            primaryBtnText: 'primaryBtnText'
+            primaryBtnText: 'primaryBtnText',
         };
         wrapper = shallow(<Form {...props} />);
     });
@@ -38,7 +38,7 @@ describe('The Form component', () => {
         wrapper.setProps({
             secondaryBtnText: 'secondaryBtnText',
             secondaryBtnHandler: jest.fn(),
-            secondaryBtnStyle: 'secondary'
+            secondaryBtnStyle: 'secondary',
         });
         expect(props.onSubmitHandler).not.toHaveBeenCalled();
         expect(wrapper.find(Button)).toHaveLength(2);
@@ -48,7 +48,7 @@ describe('The Form component', () => {
         wrapper.setProps({
             secondaryBtnText: 'secondaryBtnText',
             secondaryBtnLink: 'https://ultimaker.com/',
-            secondaryBtnStyle: 'secondary'
+            secondaryBtnStyle: 'secondary',
         });
         expect(wrapper.find(Button).at(1).prop('type')).toBe('link');
     });
@@ -57,7 +57,7 @@ describe('The Form component', () => {
         const mountedWrapper = mount(
             <Form {...props}>
                 <InputField id="test" onChangeHandler={jest.fn()} value={null} />
-            </Form>
+            </Form>,
         );
         expect(mountedWrapper).toMatchSnapshot();
     });
@@ -66,7 +66,7 @@ describe('The Form component', () => {
         const mountedWrapper = mount(
             <Form {...props} validationErrors={{ test: 'Validation error' }}>
                 <InputField id="test" onChangeHandler={jest.fn()} value={null} />
-            </Form>
+            </Form>,
         );
         expect(mountedWrapper.find(InputField).prop('validationError')).toBe('Validation error');
         expect(mountedWrapper.find(Button).prop('disabled')).toBe(true);
@@ -76,10 +76,9 @@ describe('The Form component', () => {
         const mountedWrapper = mount(
             <Form {...props} validationErrors={{ test: 'Validation error' }}>
                 <InputField id="test" onChangeHandler={jest.fn()} value={null} />
-            </Form>
+            </Form>,
         );
         mountedWrapper.setProps({ alwaysEnableSubmitButton: true });
         expect(mountedWrapper.find(Button).prop('disabled')).toBe(false);
     });
-
 });

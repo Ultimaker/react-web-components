@@ -8,48 +8,48 @@ import NumberField from '../input_fields/number_field';
 import TextField from '../input_fields/text_field';
 
 describe('The InputField component', () => {
-    let props
-    let wrapper
+    let props;
+    let wrapper;
 
     beforeEach(() => {
         props = {
             id: 'testInputField',
             value: 'Test input',
             onChangeHandler: jest.fn(),
-        }
-        wrapper = shallow(<InputField {...props} />)
-    })
+        };
+        wrapper = shallow(<InputField {...props} />);
+    });
 
     it('should render', () => {
-        expect(wrapper).toMatchSnapshot()
-        expect(props.onChangeHandler).not.toHaveBeenCalled()
-    })
+        expect(wrapper).toMatchSnapshot();
+        expect(props.onChangeHandler).not.toHaveBeenCalled();
+    });
 
     it('should handle an e-mail input', () => {
-        wrapper.setProps({ type: 'email', staticField: true })
+        wrapper.setProps({ type: 'email', staticField: true });
         expect(wrapper.find(TextField).props()).toEqual({
             children: undefined,
-            id: "testInputField",
-            type: "email",
-            labelLayoutWidth: "1/1",
-            labelWidthBreakpoint: "sm",
+            id: 'testInputField',
+            type: 'email',
+            labelLayoutWidth: '1/1',
+            labelWidthBreakpoint: 'sm',
             onChangeHandler: props.onChangeHandler,
             staticField: true,
-            value: "Test input",
-      })
-    })
+            value: 'Test input',
+        });
+    });
     it('should handle a number input', () => {
-        wrapper.setProps({ type: 'number', min: 1 })
+        wrapper.setProps({ type: 'number', min: 1 });
         expect(wrapper.find(NumberField).props()).toEqual({
             children: undefined,
-            id: "testInputField",
+            id: 'testInputField',
             min: 1,
-            type: "number",
-            labelLayoutWidth: "1/1",
-            labelWidthBreakpoint: "sm",
+            type: 'number',
+            labelLayoutWidth: '1/1',
+            labelWidthBreakpoint: 'sm',
             onChangeHandler: props.onChangeHandler,
             staticField: false,
-            value: "Test input",
-      })
-    })
-})
+            value: 'Test input',
+        });
+    });
+});

@@ -38,6 +38,24 @@ const keyCodes = {
 const delimiters = [keyCodes.comma, keyCodes.enter, keyCodes.space];
 
 export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelectorState> {
+    static convertStringsToTags(strings: string[]): Tag[] {
+        if (strings) {
+            const tags: Tag[] = [];
+            strings.forEach((string) => {
+                tags.push({ id: string, text: string });
+            });
+            return tags;
+        }
+        return [];
+    }
+
+    static convertTagsToStrings(tags: Tag[]): string[] {
+        const strings: string[] = [];
+        tags.forEach((tag) => {
+            strings.push(tag.text);
+        });
+        return strings;
+    }
 
     static defaultProps = {
         autofocus: false,
@@ -45,7 +63,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
     state = {
         tags: [],
-        suggestions: []
+        suggestions: [],
     }
 
     constructor(props) {
@@ -56,7 +74,9 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         this._handleDrag = this._handleDrag.bind(this);
     }
 
-    static getDerivedStateFromProps(props: TagsSelectorProps, state: TagsSelectorState): TagsSelectorState {
+    static getDerivedStateFromProps(
+        props: TagsSelectorProps, state: TagsSelectorState,
+    ): TagsSelectorState {
         let updatedSuggestions: Tag[] = null;
         let updatedTags: Tag[] = null;
 
@@ -74,83 +94,69 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
         return {
             suggestions: updatedSuggestions,
-            tags: updatedTags
-        }
-    }
-
-    static convertStringsToTags(strings: string[]): Tag[] {
-        if (strings) {
-            let tags: Tag[] = [];
-            strings.forEach(string => {
-                tags.push({ id: string, text: string });
-            })
-            return tags
-        }
-        return [];
-    }
-
-    static convertTagsToStrings(tags: Tag[]): string[] {
-        let strings: string[] = [];
-        tags.forEach(tag => {
-            strings.push(tag.text)
-        })
-        return strings
+            tags: updatedTags,
+        };
     }
 
     private _handleDelete(i: number): void {
-        const { disabled } = this.props;
+        const { disabled, onChangeHandler } = this.props;
 
         if (!disabled) {
             const { tags } = this.state;
             const updatedTags = tags.filter((tag, index) => index !== i);
-            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
+            onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
     private _handleAddition(tag: Tag): void {
-        const { disabled } = this.props;
+        const { disabled, onChangeHandler } = this.props;
 
         if (!disabled) {
             const { tags } = this.state;
             const updatedTags = [...tags, tag];
-            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
+            onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
     private _handleDrag(tag: Tag, currPos: number, newPos: number): void {
-        const { disabled } = this.props;
+        const { disabled, onChangeHandler } = this.props;
+        const { tags } = this.state;
 
         if (!disabled) {
-            const tags = [...this.state.tags];
             const updatedTags = tags.slice();
 
             updatedTags.splice(currPos, 1);
             updatedTags.splice(newPos, 0, tag);
 
-            this.props.onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
+            onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
         }
     }
 
 
     render(): JSX.Element {
         const { tags, suggestions } = this.state;
-        const { id, placeholder, disabled, autofocus } = this.props;
+        const {
+            id, placeholder, disabled, autofocus,
+        } = this.props;
 
         const classes = classNames('tags-selector', { disabled });
 
-        return <div id={id} className={classes}>
-            <ReactTags tags={tags}
-                suggestions={suggestions}
-                handleDelete={this._handleDelete}
-                handleAddition={this._handleAddition}
-                handleDrag={!disabled ? null : this._handleDrag}
-                delimiters={delimiters}
-                placeholder={placeholder}
-                autofocus={autofocus}
-                maxLength={30} />
-        </div>
+        return (
+            <div id={id} className={classes}>
+                <ReactTags
+                    tags={tags}
+                    suggestions={suggestions}
+                    handleDelete={this._handleDelete}
+                    handleAddition={this._handleAddition}
+                    handleDrag={!disabled ? null : this._handleDrag}
+                    delimiters={delimiters}
+                    placeholder={placeholder}
+                    autofocus={autofocus}
+                    maxLength={30}
+                />
+            </div>
+        );
     }
-
 }
 
 export default TagsSelector;

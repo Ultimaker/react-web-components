@@ -17,7 +17,7 @@ describe('The Popup component', () => {
             bodyText: 'Popup body',
             primaryBtnText: 'Primary button',
             primaryBtnHandler: jest.fn(),
-            secondaryBtnHandler: jest.fn()
+            secondaryBtnHandler: jest.fn(),
         };
         wrapper = shallow(<Popup {...props} />);
     });
@@ -29,7 +29,7 @@ describe('The Popup component', () => {
     });
 
     it('should render children', () => {
-        wrapper.setProps({ children: <div className="child"></div> });
+        wrapper.setProps({ children: <div className="child" /> });
         expect(wrapper.find('.child')).toHaveLength(1);
     });
 
@@ -58,7 +58,7 @@ describe('The Popup component', () => {
     });
 
     it('should reset primary button spinner when the promise is done', async () => {
-        const promise = new Promise((resolve, reject) => reject("promise rejected"));
+        const promise = new Promise((resolve, reject) => reject('promise rejected'));
         props.primaryBtnHandler.mockReturnValue(promise);
         expect(wrapper.find(Form).prop('primaryBtnShowSpinner')).toBeFalsy();
         wrapper.find(Form).prop('onSubmitHandler')();
@@ -66,13 +66,13 @@ describe('The Popup component', () => {
         try {
             await promise;
         } catch (e) {
-            expect(e).toEqual("promise rejected");
+            expect(e).toEqual('promise rejected');
         }
         expect(wrapper.find(Form).prop('primaryBtnShowSpinner')).toBeFalsy();
     });
 
     it('should reset secondary button spinner when the promise is done', async () => {
-        const promise = new Promise(resolve => resolve("resolved"));
+        const promise = new Promise(resolve => resolve('resolved'));
         props.secondaryBtnHandler.mockReturnValue(promise);
         expect(wrapper.find(Form).prop('secondaryBtnShowSpinner')).toBeFalsy();
         wrapper.find(Form).prop('secondaryBtnHandler')();
@@ -93,7 +93,7 @@ describe('The Popup component', () => {
     });
 
     it('should pass a footer to the popup base', () => {
-        wrapper.setProps({ footer: "An error occurred!" });
-        expect(wrapper.find(PopupBase).prop('footer')).toEqual("An error occurred!");
-    })
+        wrapper.setProps({ footer: 'An error occurred!' });
+        expect(wrapper.find(PopupBase).prop('footer')).toEqual('An error occurred!');
+    });
 });

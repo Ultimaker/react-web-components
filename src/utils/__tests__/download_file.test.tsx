@@ -4,10 +4,11 @@ import downloadFile from '../download_file';
 
 test('Downloading a file', () => {
     // prepare mock
-    const elementMock = {click: jest.fn()};
+    const elementMock = { click: jest.fn() };
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValue(elementMock);
     const createObjectURL = jest.fn().mockReturnValue('obj://test-url');
-    global['URL']['createObjectURL'] = createObjectURL;
+    // @ts-ignore
+    global.URL.createObjectURL = createObjectURL;
 
     // click download button
     downloadFile('file-name.txt', 'file contents');
@@ -18,7 +19,7 @@ test('Downloading a file', () => {
     expect(elementMock).toEqual({
         click: expect.any(Function),
         download: 'file-name.txt',
-        href: 'obj://test-url'
+        href: 'obj://test-url',
     });
     expect(elementMock.click).toHaveBeenCalledTimes(1);
 });

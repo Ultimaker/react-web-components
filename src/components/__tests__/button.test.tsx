@@ -16,7 +16,7 @@ describe('The Button component', () => {
     beforeEach(() => {
         props = {
             onClickHandler: jest.fn(),
-            id: 'testButton'
+            id: 'testButton',
         };
         wrapper = shallow(<Button {...props}>Button text</Button>);
     });
@@ -117,4 +117,4 @@ describe('The Button component', () => {
         wrapper.setProps({ className: 'additionalClass' });
         expect(wrapper.find('.additionalClass')).toHaveLength(1);
     });
-})
+});

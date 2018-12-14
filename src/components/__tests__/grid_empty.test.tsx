@@ -11,7 +11,7 @@ describe('The GridEmpty component', () => {
 
     beforeEach(() => {
         props = {
-            label: 'Empty grid'
+            label: 'Empty grid',
         };
         wrapper = shallow(<GridEmpty {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The GridEmpty component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

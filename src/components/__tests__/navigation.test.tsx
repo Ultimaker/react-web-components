@@ -20,9 +20,9 @@ describe('The Navigation component', () => {
                     path: '/home',
                     label: 'Home',
                     visible: true,
-                    component: PageNotFoundView
-                }
-            ]
+                    component: PageNotFoundView,
+                },
+            ],
         };
         wrapper = shallow(<BrowserRouter><Navigation {...props} /></BrowserRouter>);
     });
@@ -30,5 +30,4 @@ describe('The Navigation component', () => {
     it('should render', () => {
         expect(wrapper.render()).toMatchSnapshot();
     });
-
 });

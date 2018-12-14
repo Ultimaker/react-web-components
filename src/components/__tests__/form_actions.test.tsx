@@ -14,7 +14,7 @@ describe('The form actions component', () => {
             <FormActions>
                 <Button>First Button</Button>
                 <Button>Second Button</Button>
-            </FormActions>
+            </FormActions>,
         );
     });
 

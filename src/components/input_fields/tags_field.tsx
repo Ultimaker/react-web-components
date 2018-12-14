@@ -2,7 +2,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 import TagsSelector from '../tags_selector';
 
 export interface TagsFieldProps extends InputFieldProps {
@@ -39,20 +39,24 @@ class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
     }
 
     private _onChange(value: string[]): void {
-        this.setState({touched: true});
-        this.props.onChangeHandler(this.props.id, value);
+        const { onChangeHandler, id } = this.props;
+        this.setState({ touched: true });
+        onChangeHandler(id, value);
     }
 
     render() {
-        const {placeholder, value, tagSuggestions, focusOnLoad, className, children, ...wrapperProps} = this.props;
-        const {id, staticField} = wrapperProps;
-        const {touched} = this.state;
+        const {
+            placeholder, value, tagSuggestions, focusOnLoad, className, children, ...wrapperProps
+        } = this.props;
+        const { id, staticField } = wrapperProps;
+        const { touched } = this.state;
         return (
             <InputFieldWrapper
-                className={classNames(className, "input-field--tags")}
+                className={classNames(className, 'input-field--tags')}
                 touched={touched}
                 inputChildren={children}
-                {...wrapperProps}>
+                {...wrapperProps}
+            >
                 <TagsSelector
                     id={id}
                     onChangeHandler={this._onChange}

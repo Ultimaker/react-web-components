@@ -11,7 +11,7 @@ describe('The ProfileImage component', () => {
 
     beforeEach(() => {
         props = {
-            width: '20px'
+            width: '20px',
         };
         wrapper = shallow(<ProfileImage {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The ProfileImage component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

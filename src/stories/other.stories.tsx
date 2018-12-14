@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, number, text, selectV2 } from '@storybook/addon-knobs/react';
-import styles from "@sambego/storybook-styles";
+import {
+    withKnobs, boolean, number, text, selectV2,
+} from '@storybook/addon-knobs/react';
+import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 
 import Tile from '../components/tile';
@@ -22,58 +24,61 @@ stories.addDecorator(withKnobs)
     }));
 
 stories.add('Progress bar', withInfo(
-    'Progress bar component'
-)(() =>
-    <div style={{ width: 200 }} >
-        <ProgressBar progressPercentage={number('Percentage', 33)}
+    'Progress bar component',
+)(() => (
+    <div style={{ width: 200 }}>
+        <ProgressBar
+            progressPercentage={number('Percentage', 33)}
             isStopped={boolean('isStopped', false)}
-            barHeight={text('Bar height', '0.6rem')} />
+            barHeight={text('Bar height', '0.6rem')}
+        />
     </div>
-));
+)));
 
 stories.add('Panel Arrow', withInfo(
-    'A flippable arrow used for displaying when something is open or not'
-)(() =>
+    'A flippable arrow used for displaying when something is open or not',
+)(() => (
     <PanelArrow
         active={boolean('Active', false)}
-        width={text('Width', '2.4rem')} />
-));
+        width={text('Width', '2.4rem')}
+    />
+)));
 
 const directionOptions = {
-    'horizontal': 'horizontal',
-    'vertical': 'vertical',
+    horizontal: 'horizontal',
+    vertical: 'vertical',
 };
 const directionValue = 'horizontal';
 
 stories.add('Divider', withInfo(
-    'A divider line. Useful for breaking up content'
-)(() =>
-    <div style={{ width: 200, height: 200 }} >
+    'A divider line. Useful for breaking up content',
+)(() => (
+    <div style={{ width: 200, height: 200 }}>
         <Divider direction={selectV2('Direction', directionOptions, directionValue)} />
     </div>
-));
+)));
 
 stories.add('Pill', withInfo(
-    'A toggleable pill'
-)(() =>
+    'A toggleable pill',
+)(() => (
     <Tile padding="md">
         <Pill active={boolean('Active', false)}>
             {text('Text', 'Pill')}
         </Pill>
     </Tile>
-));
+)));
 
 const styleOptions = {
-    'primary': 'primary',
-    'secondary': 'secondary',
-    'alert': 'alert'
+    primary: 'primary',
+    secondary: 'secondary',
+    alert: 'alert',
 };
 const styleValue = 'primary';
 
 stories.add('Circle Icon', withInfo(
-    'A circle icon'
-)(() =>
+    'A circle icon',
+)(() => (
     <CircleIcon style={selectV2('Style', styleOptions, styleValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
         {text('Text', '1')}
     </CircleIcon>
-));
+)));

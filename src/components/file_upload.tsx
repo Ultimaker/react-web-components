@@ -11,11 +11,11 @@ export interface FileUploadProps {
     onChangeHandler: (value: HTMLInputElement) => void;
     /** Disables the file upload when true */
     disabled?: boolean;
-    /** Whether the file is being uploaded (so the upload button is disabled) **/
+    /** Whether the file is being uploaded (so the upload button is disabled) */
     uploading?: boolean;
     /** Placeholder text */
     placeholder?: string;
-    /** What kinds of file extensions should be accepted client-side **/
+    /** What kinds of file extensions should be accepted client-side */
     accept?: string[];
 }
 
@@ -24,9 +24,12 @@ export interface FileUploadState {
 }
 
 export class FileUpload extends React.Component<FileUploadProps, FileUploadState> {
+    static _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
+        e.stopPropagation();
+    }
 
     state = {
-        selectedFileName: null
+        selectedFileName: null,
     }
 
     constructor(props) {
@@ -35,43 +38,45 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
     }
 
     _onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ selectedFileName: e.target.files[0].name })
-        this.props.onChangeHandler(e.target);
+        const { onChangeHandler } = this.props;
+        this.setState({ selectedFileName: e.target.files[0].name });
+        onChangeHandler(e.target);
     }
 
-    _stopPropagation(e: React.MouseEvent<HTMLDivElement>) {
-        e.stopPropagation()
-    }
 
     render(): JSX.Element {
-        const { id, disabled, placeholder, uploading, accept } = this.props;
+        const {
+            id, disabled, placeholder, uploading, accept,
+        } = this.props;
         const { selectedFileName } = this.state;
 
         const classes = classNames('file-upload', { disabled });
         const inputClasses = classNames('file-upload__input');
 
-        return <div className={classes} onClick={this._stopPropagation} >
-            <div className="layout layout--gutter-sm">
-                <div className="layout__item u-fill file-upload__input-container">
-                    <label className={inputClasses} htmlFor={id}>{selectedFileName}</label>
-                </div>
-                <div className="layout__item u-fit">
-                    <input
-                        id={id}
-                        name={id}
-                        type="file"
-                        onChange={this._onChangeHandler}
-                        disabled={disabled}
-                        placeholder={placeholder}
-                        accept={accept ? accept.join(",") : null}
-                    />
-                    <label className={classNames('btn btn--primary', { waiting: uploading })} htmlFor={id}>
-                        <span className="text">{I18n.translate('file upload button', 'Choose file')}</span>
-                        {uploading && <Spinner />}
-                    </label>
+        return (
+            <div className={classes} onClick={FileUpload._stopPropagation}>
+                <div className="layout layout--gutter-sm">
+                    <div className="layout__item u-fill file-upload__input-container">
+                        <label className={inputClasses} htmlFor={id}>{selectedFileName}</label>
+                    </div>
+                    <div className="layout__item u-fit">
+                        <input
+                            id={id}
+                            name={id}
+                            type="file"
+                            onChange={this._onChangeHandler}
+                            disabled={disabled}
+                            placeholder={placeholder}
+                            accept={accept ? accept.join(',') : null}
+                        />
+                        <label className={classNames('btn btn--primary', { waiting: uploading })} htmlFor={id}>
+                            <span className="text">{I18n.translate('file upload button', 'Choose file')}</span>
+                            {uploading && <Spinner />}
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
+        );
     }
 }
 

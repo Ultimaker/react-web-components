@@ -19,7 +19,7 @@ describe('The SettingPanel component', () => {
             headerText: 'header text',
             trueValueText: 'true value text',
             falseValueText: 'false value text',
-            explanationText: 'a brief explanation'
+            explanationText: 'a brief explanation',
         };
         wrapper = shallow(<SettingPanel {...props} />);
     });

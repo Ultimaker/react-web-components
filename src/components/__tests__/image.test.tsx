@@ -11,7 +11,7 @@ describe('The Image component', () => {
 
     beforeEach(() => {
         props = {
-            src: './test_image.png'
+            src: './test_image.png',
         };
         wrapper = shallow(<Image {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The Image component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

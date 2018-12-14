@@ -18,7 +18,7 @@ describe('The SelectList component', () => {
             options: [
                 { label: 'Option 1', value: 1 },
                 { label: 'Option 2', value: 2, disabled: true },
-                { label: 'Option 3', value: 3 }
+                { label: 'Option 3', value: 3 },
             ],
             value: 1,
             onChangeHandler: jest.fn(),
@@ -81,5 +81,4 @@ describe('The SelectList component', () => {
         wrapper.instance()._updateFocusedIndex(-1);
         expect(wrapper.state('focusedIndex')).toBe(1);
     });
-
 });

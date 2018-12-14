@@ -12,8 +12,8 @@ const CuraLogo: React.StatelessComponent = (): JSX.Element => (
             </g>
         </g>
     </svg>
-)
+);
 
-CuraLogo.displayName = "CuraLogo";
+CuraLogo.displayName = 'CuraLogo';
 
 export default CuraLogo;

@@ -2,22 +2,20 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export interface PillProps {
-    /** Whether the pill should be shown as active **/
+    /** Whether the pill should be shown as active */
     active?: boolean
 }
 
-export const Pill: React.StatelessComponent<PillProps> =
-    ({ active, children }) => {
+export const Pill: React.StatelessComponent<PillProps> = ({ active, children }) => {
+    const classes = classNames('pill', { active });
 
-        const classes = classNames('pill', { 'active': active });
-
-        return <div className={classes}>{children}</div>
-    };
-
-Pill.defaultProps = {
-    active: false
+    return <div className={classes}>{children}</div>;
 };
 
-Pill.displayName = "Pill";
+Pill.defaultProps = {
+    active: false,
+};
+
+Pill.displayName = 'Pill';
 
 export default Pill;

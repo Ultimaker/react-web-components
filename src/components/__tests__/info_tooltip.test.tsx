@@ -11,7 +11,7 @@ describe('The InfoTooltip component', () => {
 
     beforeEach(() => {
         props = {
-            infoText: 'Tooltip text'
+            infoText: 'Tooltip text',
         };
         wrapper = shallow(<InfoTooltip {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The InfoTooltip component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

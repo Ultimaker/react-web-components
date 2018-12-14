@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const PasswordIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--password`}>
@@ -10,8 +10,8 @@ const PasswordIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.E
             <path d="M20.59,8.59H8.82v-2A3.89,3.89,0,0,1,12.5,2.5a3.89,3.89,0,0,1,3.68,4.06h0a1,1,0,0,0,2,0h0A5.88,5.88,0,0,0,12.5.5,5.88,5.88,0,0,0,6.82,6.56v2H4.41a1,1,0,0,0-1,1V21.5a3,3,0,0,0,3,3H18.59a3,3,0,0,0,3-3V9.59A1,1,0,0,0,20.59,8.59Zm-1,12.91a1,1,0,0,1-1,1H6.41a1,1,0,0,1-1-1V10.59H19.59Z" />
         </svg>
     </div>
-)
+);
 
-PasswordIcon.displayName = "PasswordIcon";
+PasswordIcon.displayName = 'PasswordIcon';
 
 export default IconWrapper(PasswordIcon);

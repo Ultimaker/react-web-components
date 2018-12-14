@@ -19,5 +19,4 @@ describe('The Loading component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

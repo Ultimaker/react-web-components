@@ -1,24 +1,30 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-let Dropzone = require('react-dropzone');
-if ('default' in Dropzone) {
-    Dropzone = Dropzone.default;
-}
 
 // component
 import ImageUpload from '../image_upload';
 import ImageCropper from '../image_cropper';
 import { Image } from '../image';
 
+let Dropzone = require('react-dropzone');
+
+if ('default' in Dropzone) {
+    Dropzone = Dropzone.default;
+}
+
 describe('The image upload component', () => {
     let props;
     let wrapper;
     let image;
+    let oldAlert = window.alert;
+    let alertMock;
 
     beforeEach(() => {
-        image = new Blob(["A+test+string+for+testing+image"], {type: 'image/jpeg'});
-        image['preview'] = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
+        window.alert = alertMock = jest.fn();
+
+        image = new Blob(['A+test+string+for+testing+image'], { type: 'image/jpeg' });
+        image.preview = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
 
         props = {
             onFileSelection: jest.fn(),
@@ -26,6 +32,10 @@ describe('The image upload component', () => {
         };
         wrapper = shallow(<ImageUpload {...props} />);
     });
+
+    afterEach(() => {
+        window.alert = oldAlert;
+    })
 
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
@@ -43,9 +53,21 @@ describe('The image upload component', () => {
         await new Promise(setImmediate);
         await new Promise(setImmediate);
 
-        const expected = 'data:image/jpeg;base64,' + btoa('A+test+string+for+testing+image');
+        const expected = `data:image/jpeg;base64,${btoa('A+test+string+for+testing+image')}`;
         expect(props.onFileRead).toHaveBeenCalledWith(expected);
     });
+
+    it('should reject images that are too large', async () => {
+        wrapper.setProps({ maxMb: 0.000001 });
+
+        const image = new Blob(['A+test+string+for+testing+image'], { type: 'image/jpeg' });
+        image['preview'] = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
+        wrapper.find(Dropzone).prop('onDrop')([image]);
+
+        expect(alertMock).toHaveBeenCalledWith("This file is too large. Please select an image below 0.0MB");
+        expect(props.onFileSelection).not.toHaveBeenCalled();
+        expect(props.onFileRead).not.toHaveBeenCalled();
+    })
 
     it('should handle drag enter', () => {
         wrapper.instance()._onDragEnter();
@@ -71,14 +93,14 @@ describe('The image upload component', () => {
     });
 
     it('should ignore empty callbacks', () => {
-        wrapper.setProps({onFileSelection: null, onFileRead: null})
-        wrapper.find(Dropzone).prop("onDrop")([image]);
+        wrapper.setProps({ onFileSelection: null, onFileRead: null });
+        wrapper.find(Dropzone).prop('onDrop')([image]);
         expect(props.onFileSelection).not.toHaveBeenCalled();
         expect(props.onFileRead).not.toHaveBeenCalled();
     });
 
     it('should allow for cropping', () => {
-        wrapper.setProps({allowCropping: true});
+        wrapper.setProps({ allowCropping: true });
         expect(wrapper.find(Dropzone)).toHaveLength(1);
         expect(wrapper.find(ImageCropper)).toHaveLength(0);
         wrapper.find(Dropzone).prop('onDrop')([image]);

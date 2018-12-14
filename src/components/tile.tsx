@@ -17,26 +17,30 @@ export interface TileProps {
     alert?: boolean;
     /** The tile will be displayed in an success state when true */
     success?: boolean;
-    /** An optional class name for the tile **/
+    /** An optional class name for the tile * */
     className?: string;
 }
 
-export const Tile: React.StatelessComponent<TileProps> =
-    ({ padding, align, children, disabled, selected, alert, success, className }): JSX.Element => {
+export const Tile: React.StatelessComponent<TileProps> = ({
+    padding, align, children, disabled, selected, alert, success, className,
+}): JSX.Element => {
+    const classes = classnames('tile', className, `padding-${padding}`, {
+        selected, alert, disabled, success,
+    });
 
-        const classes = classnames('tile', className, `padding-${padding}`, { selected, alert, disabled, success });
-
-        return <div className={classes} style={{ textAlign: align }}>
+    return (
+        <div className={classes} style={{ textAlign: align }}>
             <div className="cover" />
             {children}
         </div>
-    }
+    );
+};
 
 Tile.defaultProps = {
     padding: 'md',
-    align: 'left'
-}
+    align: 'left',
+};
 
-Tile.displayName = "Tile";
+Tile.displayName = 'Tile';
 
 export default Tile;

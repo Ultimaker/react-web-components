@@ -15,7 +15,7 @@ describe('The ContextMenu component', () => {
 
     beforeEach(() => {
         props = {
-            menuWidth: 200
+            menuWidth: 200,
         };
         wrapper = shallow(<ContextMenu {...props} />);
     });

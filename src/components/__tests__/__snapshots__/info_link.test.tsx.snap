@@ -7,6 +7,7 @@ exports[`The InfoLink component should render 1`] = `
   <a
     className="icon icon--circle"
     href="https://ultimaker.com/"
+    rel="noopener noreferrer"
     target="_blank"
   >
     <Icon(LinkIcon) />

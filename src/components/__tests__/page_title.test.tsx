@@ -11,7 +11,7 @@ describe('The PageTitle component', () => {
 
     beforeEach(() => {
         props = {
-            label: 'Page title'
+            label: 'Page title',
         };
         wrapper = shallow(<PageTitle {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The PageTitle component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

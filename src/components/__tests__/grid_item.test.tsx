@@ -16,5 +16,4 @@ describe('The GridItem component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

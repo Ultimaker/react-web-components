@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const DownloadIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--download`}>
@@ -10,8 +10,8 @@ const DownloadIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.E
             <polygon points="7 9 5 9 6 10 7 9" />
         </svg>
     </div>
-)
+);
 
-DownloadIcon.displayName = "DownloadIcon";
+DownloadIcon.displayName = 'DownloadIcon';
 
 export default IconWrapper(DownloadIcon);

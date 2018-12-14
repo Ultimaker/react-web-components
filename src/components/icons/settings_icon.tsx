@@ -8,8 +8,8 @@ const SettingsIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.E
             <path d="M12.5,6.71h0a5.79,5.79,0,1,0,5.79,5.79A5.8,5.8,0,0,0,12.5,6.71Zm0,9.58a3.79,3.79,0,1,1,3.79-3.79A3.79,3.79,0,0,1,12.5,16.29Z" />
         </svg>
     </div>
-)
+);
 
-SettingsIcon.displayName = "SettingsIcon";
+SettingsIcon.displayName = 'SettingsIcon';
 
 export default IconWrapper(SettingsIcon);

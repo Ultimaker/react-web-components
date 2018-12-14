@@ -15,5 +15,4 @@ describe('The Spinner component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

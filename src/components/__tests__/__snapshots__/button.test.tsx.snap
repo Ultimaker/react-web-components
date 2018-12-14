@@ -5,6 +5,7 @@ exports[`The Button component renders a anchor when prop \`type\` is link and an
   className="btn btn--primary btn--rectangle "
   href="https://ultimaker.com/"
   id="testButton"
+  rel="noopener noreferrer"
 >
   <span
     className="text"

@@ -1,10 +1,11 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import _ = require('lodash');
 import classNames from 'classnames';
 
 // components
-import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
+import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
+
+import _ = require('lodash');
 
 /**
  * The props of the code field.
@@ -12,7 +13,7 @@ import InputFieldWrapper, {InputFieldProps} from './input_field_wrapper';
 export interface CodeFieldProps extends InputFieldProps {
     /** Input field value */
     value: string | null;
-    /** Amount of characters in the field **/
+    /** Amount of characters in the field */
     maxLength: number;
     /** Called when the field changes */
     onChangeHandler: (id: string, value: string) => any;
@@ -20,10 +21,10 @@ export interface CodeFieldProps extends InputFieldProps {
     focusOnLoad?: boolean;
     /** Optional html placeholder text */
     placeholder?: string;
-    /** Optional extra elements to be displayed after the input **/
+    /** Optional extra elements to be displayed after the input */
     children?: any;
-    /** Optional type of the input elements **/
-    type?: "text" | "password" | "number";
+    /** Optional type of the input elements */
+    type?: 'text' | 'password' | 'number';
 }
 
 /**
@@ -32,7 +33,7 @@ export interface CodeFieldProps extends InputFieldProps {
 export interface CodeFieldState {
     /** Indicates whether the field has been touched (changed) or not from the default value. */
     touched: boolean;
-    /** The values within each of the input fields **/
+    /** The values within each of the input fields */
     values: string[];
 }
 
@@ -40,23 +41,25 @@ export interface CodeFieldState {
  * The code field is a text field that includes {maxLength} single-letter password inputs.
  */
 export default class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
+    /**
+     * if the user wrote one of the later characters but not earlier ones,
+     * we add this character as filler
+     */
+    private static readonly _emptyChar: string = '\t';
 
     /**
      * References to the input fields to focus on them.
-     * Note that we don't use React.CreateRef because that would require some extra code for re-initializing the array
-     * whenever {maxLength} changes.
-     **/
+     * Note that we don't use React.CreateRef because that would require some extra code
+     * for re-initializing the array whenever {maxLength} changes.
+     */
     private readonly _inputRefs: HTMLInputElement[] = [];
 
-    /** if the user wrote one of the later characters but not earlier ones, we add this character as filler **/
-    private static readonly _emptyChar: string = "\t";
-
-    /** The default props **/
+    /** The default props */
     static defaultProps = {
         type: 'number',
     };
 
-    /** The default state **/
+    /** The default state */
     state = {
         touched: false,
         values: [],
@@ -81,7 +84,8 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
     componentDidMount(): void {
         const { focusOnLoad, value } = this.props;
         if (focusOnLoad) {
-            // focus on the next input field to be filled in (or the 1st if all chars are filled in).
+            // focus on the next input field to be filled in
+            // (or the 1st if all chars are filled in).
             this._focusOnPromptInput(value.length);
         }
         document.addEventListener('selectionchange', this._onSelectionChanged);
@@ -99,19 +103,18 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      */
     static getDerivedStateFromProps(props: CodeFieldProps) {
         const { value, maxLength } = props;
-        const valueStr = value || "";
+        const valueStr = value || '';
         // we use space values to hide
         return {
-            values: _.range(0, maxLength).map(i =>
-                valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || ''
-            ),
+            values: _.range(0, maxLength).map(i => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
         };
     }
 
     /**
      * Handles changes to the text selection in the document.
-     * Without this function, if the value of the field changes (with delete for example) we lose the selection.
-     * To fix it, if the currently focused element is one of the refs in this class, we select its text.
+     * Without this function, if the value of the field changes (with delete for example)
+     * we lose the selection. To fix it, if the currently focused element is one of the
+     * refs in this class, we select its text.
      */
     private _onSelectionChanged() {
         const ref = this._inputRefs && this._inputRefs.find(r => r === document.activeElement);
@@ -146,15 +149,16 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         const regex = {
             text: /\w/,
             number: /\d/,
-            password: /[ -~]/,  // match any ascii printable characters
-        }
+            password: /[ -~]/, // match any ascii printable characters
+        };
         return !charValue || regex[type].test(charValue);
     }
 
     /**
      * Actually changes the value of of the code inputs.
      * @param index - The index of the field.
-     * @param charValue - The value of the character typed. Empty string is fine. Null will completely remove the value.
+     * @param charValue - The value of the character typed.
+     * Empty string is fine. Null will completely remove the value.
      * @param focusOnIndex - The next input field to be selected. -1 to default it to {index}.
      * @return - Whether the change was successful.
      */
@@ -164,12 +168,15 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
 
         if (values[index] === charValue) {
             return true;
-        } else if (!this._isKeyAllowed(charValue)) {
+        }
+
+        if (!this._isKeyAllowed(charValue)) {
             return false;
         }
 
         if (charValue === null) {
-            // charValue null, remove the character completely, add one to the end to make sure the length is OK.
+            // charValue null, remove the character completely,
+            // add one to the end to make sure the length is OK.
             values.splice(index, 1);
             values.push('');
         } else {
@@ -177,7 +184,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         }
 
         // Default chars to _emptyChar, remove the empty spaces in the end
-        const newValue: string = values.map(v => v || CodeField._emptyChar).join("").replace(/\s+$/g, "");
+        const newValue: string = values.map(v => v || CodeField._emptyChar).join('').replace(/\s+$/g, '');
         onChangeHandler(id, newValue);
 
         this.setState({ touched: true, values });
@@ -189,22 +196,24 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      * Gets a function that will handle special keyboard keys.
      * @param index - The index of the field in which the key was pressed.
      * @param key - The name of the keyboard key that was pressed.
-     * @return - Null if the key was special; otherwise a function that will return true if the default behavior should
-     * be blocked;
+     * @return - Null if the key was special; otherwise a function that will return true if the
+     * default behavior should be blocked;
      */
     private _getSpecialKeyHandler(index: number, key: string): () => boolean | null {
         const { type, maxLength } = this.props;
         const { values } = this.state;
-        /** a mapping of keys that should be handled. Each function returns whether the event was handled. **/
+
         return {
             // arrow left & right let you move between the fields
             ArrowLeft: () => this._focusOnPromptInput(index - 1),
             ArrowRight: () => this._focusOnPromptInput(index + 1),
             // arrow up / down let you increase / decrease numbers
-            ArrowUp: () => type == 'number' &&
-                this._changeValue(index, values[index] && ((parseInt(values[index]) + 1) % 10).toString(), -1),
-            ArrowDown: () => type == 'number' &&
-                this._changeValue(index, values[index] && ((parseInt(values[index]) + 9) % 10).toString(), -1),
+            ArrowUp: () => type === 'number'
+                && this._changeValue(index, values[index]
+                && ((parseInt(values[index], 10) + 1) % 10).toString(), -1),
+            ArrowDown: () => type === 'number'
+                && this._changeValue(index, values[index]
+                && ((parseInt(values[index], 10) + 9) % 10).toString(), -1),
             // home/end let you go to the beginning and end of the code.
             Home: () => this._focusOnPromptInput(0),
             End: () => this._focusOnPromptInput(maxLength - 1),
@@ -216,15 +225,18 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
     }
 
     /**
-     * Method that handles special key presses on the code fields, allowing the user to seamlessly switch between them.
+     * Method that handles special key presses on the code fields,
+     * allowing the user to seamlessly switch between them.
      * @param index - The index of the field.
      * @param event - The keyboard event.
      */
     private _onKeyDown(index: number, event: React.KeyboardEvent<HTMLInputElement>) {
-        let handler = this._getSpecialKeyHandler(index, event.key);
+        const handler = this._getSpecialKeyHandler(index, event.key);
         if (handler) {
-            handler() && event.preventDefault();
-        } else if (event.key.length == 1 && !event.ctrlKey) {
+            if (handler()) {
+                event.preventDefault();
+            }
+        } else if (event.key.length === 1 && !event.ctrlKey) {
             // call the onchange manually, prevent the default
             this._changeValue(index, event.key, index + 1);
             event.preventDefault();
@@ -233,7 +245,8 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
 
     /**
      * Handles the change event on one of the fields.
-     * This generally doesn't get called because the changes are handled and stopped during onKeyDown.
+     * This generally doesn't get called because the changes are handled
+     * and stopped during onKeyDown.
      * @param index - The index of the field.
      * @param event - The change event.
      */
@@ -249,9 +262,10 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      */
     private _onPaste(index: number, event: React.ClipboardEvent<HTMLInputElement>) {
         const text = event.clipboardData.getData('Text');
-        Array.from(text || "").forEach(char => {
-            if (this._changeValue(index, char, index + 1)) {
-                index += 1;
+        let updatedIndex = index;
+        Array.from(text || '').forEach((char) => {
+            if (this._changeValue(updatedIndex, char, index + 1)) {
+                updatedIndex += 1;
             }
         });
         event.preventDefault();
@@ -261,36 +275,45 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      * Renders the code field.
      */
     render() {
-        const { value, maxLength, placeholder, type, children, ...wrapperProps } = this.props;
+        const {
+            value, maxLength, placeholder, type, children, ...wrapperProps
+        } = this.props;
         const { touched, values } = this.state;
-        const { staticField, id, submitted, validationError } = wrapperProps;
-        const className = classNames('input', {'error': validationError && (touched || submitted)});
+        const {
+            staticField, id, submitted, validationError,
+        } = wrapperProps;
+        const className = classNames('input', { error: validationError && (touched || submitted) });
 
         return (
             <div className="code-field" id={id}>
                 <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
-                    {staticField ? (type === "password" ? _.repeat('*', maxLength) : value) :
-                        values.map((v, i) =>
-                            <React.Fragment key={i}>
-                                {i > 0 && <span className="separator">-</span>}
-                                <input
-                                    id={id + "__" + i.toString()}
-                                    className={className}
-                                    name={id}
-                                    type={type}
-                                    maxLength={1}
-                                    onKeyDown={e => this._onKeyDown(i, e)}
-                                    onChange={e => this._onChange(i, e)}
-                                    onPaste={e => this._onPaste(i, e)}
-                                    placeholder={value ? null : placeholder && placeholder[i]}
-                                    value={v}
-                                    ref={ref => this._inputRefs[i] = ref}
-                                />
-                            </React.Fragment>
-                    )}
+                    {staticField
+                        && type === 'password'
+                        && _.repeat('*', maxLength)
+                    }
+                    {staticField
+                        && type !== 'password'
+                        && value}
+                    {!staticField && values.map((v, i) => (
+                        <React.Fragment key={i}>
+                            {i > 0 && <span className="separator">-</span>}
+                            <input
+                                id={`${id}__${i.toString()}`}
+                                className={className}
+                                name={id}
+                                type={type}
+                                maxLength={1}
+                                onKeyDown={e => this._onKeyDown(i, e)}
+                                onChange={e => this._onChange(i, e)}
+                                onPaste={e => this._onPaste(i, e)}
+                                placeholder={value ? null : placeholder && placeholder[i]}
+                                value={v}
+                                ref={ref => this._inputRefs[i] = ref}
+                            />
+                        </React.Fragment>
+                    ))}
                 </InputFieldWrapper>
             </div>
         );
     }
 }
-

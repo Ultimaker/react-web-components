@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const PausedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--paused`}>
@@ -9,8 +9,8 @@ const PausedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Ele
             <rect x="17.5" y="9" width="3" height="14" />
         </svg>
     </div>
-)
+);
 
-PausedIcon.displayName = "PausedIcon";
+PausedIcon.displayName = 'PausedIcon';
 
 export default IconWrapper(PausedIcon);

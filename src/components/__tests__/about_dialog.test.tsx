@@ -20,7 +20,7 @@ describe('The AboutDialog component', () => {
             appName: 'test app',
             versionNumber: '1.0.0',
             supportLinkURL: 'https://ultimaker.support.com/',
-            supportLinkText: 'Support link'
+            supportLinkText: 'Support link',
         };
         wrapper = shallow(<AboutDialog {...props} />);
     });
@@ -29,5 +29,4 @@ describe('The AboutDialog component', () => {
         expect(wrapper).toMatchSnapshot();
         expect(props.closeHandler).not.toHaveBeenCalled();
     });
-
 });

@@ -42,5 +42,4 @@ describe('The DropDownMenuItem component', () => {
         wrapper.setProps({ disabled: true });
         expect(wrapper.find('.disabled')).toHaveLength(1);
     });
-
 });

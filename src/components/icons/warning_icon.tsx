@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const WarningIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--warning`}>
@@ -10,8 +10,8 @@ const WarningIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.El
             <path d="M16.06,23.08a2.19,2.19,0,0,0-2.13,2.25,2.24,2.24,0,0,0,.57,1.41,2.14,2.14,0,0,0,1.56.55,2,2,0,0,0,1.54-.55,2.07,2.07,0,0,0,.55-1.55,2.19,2.19,0,0,0-.53-1.55A2,2,0,0,0,16.06,23.08Z" />
         </svg>
     </div>
-)
+);
 
-WarningIcon.displayName = "WarningIcon";
+WarningIcon.displayName = 'WarningIcon';
 
 export default IconWrapper(WarningIcon);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const UM3XPrinterIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--um3x-printer`}>
@@ -9,8 +9,8 @@ const UM3XPrinterIcon: React.StatelessComponent<IconProps> = ({ className }): JS
             <path id="Shape-3" data-name="Shape" d="M0,0V58H3.76a2.86,2.86,0,0,1,2.13-1H40.27a2.86,2.86,0,0,1,2.13,1h3.76V0ZM41.28,35.32V47a2.83,2.83,0,0,1-2.84,2.84H7.72A2.84,2.84,0,0,1,4.88,47V5.49a.65.65,0,0,1,.61-.61H40.67a.65.65,0,0,1,.61.61Z" />
         </svg>
     </div>
-)
+);
 
-UM3XPrinterIcon.displayName = "UM3XPrinterIcon";
+UM3XPrinterIcon.displayName = 'UM3XPrinterIcon';
 
 export default IconWrapper(UM3XPrinterIcon);

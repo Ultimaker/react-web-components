@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, selectV2, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
-import styles from "@sambego/storybook-styles";
+import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 
@@ -10,7 +10,7 @@ import Modal from '../components/modal';
 import Popup from '../components/popup';
 import AboutDialog from '../components/about_dialog';
 import { PopupPrompt } from '../components/popup_prompt';
-import PopupBase from '../components/popup_base'
+import PopupBase from '../components/popup_base';
 
 const stories = storiesOf('Modal', module);
 
@@ -30,16 +30,16 @@ const widthOptions = {
 const widthDefaultValue = 'sm';
 
 stories.add('Modal', withInfo(
-    'Basic Modal'
-)(() =>
+    'Basic Modal',
+)(() => (
     <Modal onOverlayClickHandler={action('clicked')}>
         <div style={{ background: 'white', height: 200, width: 300 }} />
     </Modal>
-));
+)));
 
 stories.add('Confirm popup', withInfo(
-    'Popup modal for confirmation'
-)(() =>
+    'Popup modal for confirmation',
+)(() => (
     <Popup
         headerText="Confirm popup"
         bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -52,11 +52,11 @@ stories.add('Confirm popup', withInfo(
         width={selectV2('Popup width', widthOptions, widthDefaultValue)}
         footer={text('Footer')}
     />
-));
+)));
 
 stories.add('Basic popup', withInfo(
-    'PopupBase modal'
-)(() =>
+    'PopupBase modal',
+)(() => (
     <PopupBase
         headerText="Basic popup"
         width={selectV2('Popup width', widthOptions, widthDefaultValue)}
@@ -66,11 +66,20 @@ stories.add('Basic popup', withInfo(
             Content of the popup.
         </div>
     </PopupBase>
-));
+)));
+
+function validation(quantity: string | number): string {
+    const quantityInt = Number(quantity);
+
+    if (!quantityInt) {
+        return 'Please enter a number';
+    }
+    return null;
+}
 
 stories.add('Prompt popup', withInfo(
-    'Popup modal for user input'
-)(() =>
+    'Popup modal for user input',
+)(() => (
     <PopupPrompt
         headerText="Prompt popup"
         bodyText="Input a number:"
@@ -87,64 +96,40 @@ stories.add('Prompt popup', withInfo(
         inputMax={100}
         footer={text('Footer')}
     />
-));
-
-function validation(quantity: string | number): string {
-    const quantityInt = Number(quantity);
-
-    if (!quantityInt) {
-        return 'Please enter a number';
-    }
-    return null;
-}
-
-stories.add('Multi-step popup', withState({ step: 1 })
-    (withInfo('Multi-step popup modal')
-        (({ store }) =>
-            <Popup
-                headerText={'Multi-step popup ' + store.state.step}
-                bodyText={getBodyText(store.state.step)}
-                primaryBtnText={getPrimaryBtnText(store.state.step)}
-                primaryBtnHandler={() => store.set({ step: validateStep(store.state.step + 1, 3) })}
-                primaryBtnStyle="primary"
-                secondaryBtnText={getSecondaryBtnText(store.state.step)}
-                secondaryBtnHandler={() => store.set({ step: validateStep(store.state.step - 1, 3) })}
-                secondaryBtnStyle="quiet"
-                step={store.state.step}
-                totalSteps={3}
-                width={selectV2('Popup width', widthOptions, widthDefaultValue)}
-                footer={text('Footer')}
-            />
-        )
-    )
-);
+)));
 
 function getBodyText(step: number): string {
     switch (step) {
-        case 1:
-            return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        case 2:
-            return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        case 3:
-            return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur lectus lorem, id consectetur tellus sollicitudin eu. Curabitur nec metus nibh. Sed sagittis mi nisi, sollicitudin viverra magna malesuada nec. Morbi porttitor, nunc nec mollis feugiat, ex felis commodo sapien, vitae porta sapien magna sit amet nibh. Fusce quis porttitor massa. Pellentesque ornare risus at elementum tempor. Sed convallis odio tellus. Aenean tincidunt purus ut nisl ultrices, sit amet auctor odio porta. Mauris euismod ligula luctus semper dictum. Nulla orci leo, facilisis ac dapibus vitae, consequat ut sem.'
+    case 1:
+        return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    case 2:
+        return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+    case 3:
+        return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur lectus lorem, id consectetur tellus sollicitudin eu. Curabitur nec metus nibh. Sed sagittis mi nisi, sollicitudin viverra magna malesuada nec. Morbi porttitor, nunc nec mollis feugiat, ex felis commodo sapien, vitae porta sapien magna sit amet nibh. Fusce quis porttitor massa. Pellentesque ornare risus at elementum tempor. Sed convallis odio tellus. Aenean tincidunt purus ut nisl ultrices, sit amet auctor odio porta. Mauris euismod ligula luctus semper dictum. Nulla orci leo, facilisis ac dapibus vitae, consequat ut sem.';
+    default:
+        return null;
     }
 }
 
 function getPrimaryBtnText(step: number): string {
     switch (step) {
-        case 1: case 2:
-            return 'Next'
-        case 3:
-            return 'Confirm'
+    case 1: case 2:
+        return 'Next';
+    case 3:
+        return 'Confirm';
+    default:
+        return null;
     }
 }
 
 function getSecondaryBtnText(step: number): string {
     switch (step) {
-        case 1:
-            return 'Cancel'
-        case 2: case 3:
-            return 'Back'
+    case 1:
+        return 'Cancel';
+    case 2: case 3:
+        return 'Back';
+    default:
+        return null;
     }
 }
 
@@ -158,28 +143,46 @@ function validateStep(step: number, totalSteps: number) {
     return step;
 }
 
+stories.add('Multi-step popup', withState({ step: 1 })(withInfo('Multi-step popup modal')(({ store }) => (
+    <Popup
+        headerText={`Multi-step popup ${store.state.step}`}
+        bodyText={getBodyText(store.state.step)}
+        primaryBtnText={getPrimaryBtnText(store.state.step)}
+        primaryBtnHandler={() => store.set({ step: validateStep(store.state.step + 1, 3) })}
+        primaryBtnStyle="primary"
+        secondaryBtnText={getSecondaryBtnText(store.state.step)}
+        secondaryBtnHandler={() => store.set({ step: validateStep(store.state.step - 1, 3) })}
+        secondaryBtnStyle="quiet"
+        step={store.state.step}
+        totalSteps={3}
+        width={selectV2('Popup width', widthOptions, widthDefaultValue)}
+        footer={text('Footer')}
+    />
+))));
+
 stories.add('About dialog', withInfo(
-    'About dialog modal for providing information about the application'
-)(() =>
+    'About dialog modal for providing information about the application',
+)(() => (
     <AboutDialog
         appName="Test app"
         versionNumber="1.0.0"
         closeHandler={action('clicked')}
-        supportLinkURL={'https://ultimaker.com/'}
+        supportLinkURL="https://ultimaker.com/"
         supportLinkText="Support page"
         componentsList={[
-            { name: "array.prototype.includes", license: "MIT", url: "https://github.com/Steditor/es7-array.prototype.includes" },
-            { name: "classnames", license: "MIT", url: "https://github.com/JedWatson/classnames" },
-            { name: "gettext-extractor", license: "MIT", url: "https://github.com/lukasgeiter/gettext-extractor" },
-            { name: "gettext-parser", license: "MIT", url: "https://github.com/smhg/gettext-parser" },
-            { name: "lodash", license: "MIT", url: "https://lodash.com/" },
-            { name: "moment", license: "MIT", url: "http://momentjs.com/" },
-            { name: "node-gettext", license: "MIT", url: "https://github.com/alexanderwallin/node-gettext" },
-            { name: "react", license: "MIT", url: "https://reactjs.org/" },
-            { name: "react-collapse", license: "MIT", url: "https://github.com/nkbt/react-collapse" },
-            { name: "react-dom", license: "MIT", url: "https://reactjs.org/" },
-            { name: "react-motion", license: "MIT", url: "https://github.com/chenglou/react-motion" },
-            { name: "react-refetch", license: "MIT", url: "https://github.com/heroku/react-refetch" },
-            { name: "react-router-dom", license: "MIT", url: "https://github.com/ReactTraining/react-router" }
-        ]} />
-));
+            { name: 'array.prototype.includes', license: 'MIT', url: 'https://github.com/Steditor/es7-array.prototype.includes' },
+            { name: 'classnames', license: 'MIT', url: 'https://github.com/JedWatson/classnames' },
+            { name: 'gettext-extractor', license: 'MIT', url: 'https://github.com/lukasgeiter/gettext-extractor' },
+            { name: 'gettext-parser', license: 'MIT', url: 'https://github.com/smhg/gettext-parser' },
+            { name: 'lodash', license: 'MIT', url: 'https://lodash.com/' },
+            { name: 'moment', license: 'MIT', url: 'http://momentjs.com/' },
+            { name: 'node-gettext', license: 'MIT', url: 'https://github.com/alexanderwallin/node-gettext' },
+            { name: 'react', license: 'MIT', url: 'https://reactjs.org/' },
+            { name: 'react-collapse', license: 'MIT', url: 'https://github.com/nkbt/react-collapse' },
+            { name: 'react-dom', license: 'MIT', url: 'https://reactjs.org/' },
+            { name: 'react-motion', license: 'MIT', url: 'https://github.com/chenglou/react-motion' },
+            { name: 'react-refetch', license: 'MIT', url: 'https://github.com/heroku/react-refetch' },
+            { name: 'react-router-dom', license: 'MIT', url: 'https://github.com/ReactTraining/react-router' },
+        ]}
+    />
+)));

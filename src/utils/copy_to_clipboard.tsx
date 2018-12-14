@@ -4,8 +4,8 @@
  * Copies a string to the user's clipboard.
  * @param value - The string to be copied.
  */
-export function copyToClipboard(value: string){
-    let selectionTextarea = document.createElement('textarea');
+export function copyToClipboard(value: string) {
+    const selectionTextarea = document.createElement('textarea');
     selectionTextarea.style.position = 'fixed';
     selectionTextarea.style.left = '0';
     selectionTextarea.style.top = '0';
@@ -17,5 +17,5 @@ export function copyToClipboard(value: string){
     document.execCommand('copy');
     document.body.removeChild(selectionTextarea);
 }
-  
+
 export default copyToClipboard;

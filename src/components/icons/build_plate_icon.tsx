@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const BuildPlateIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--build_plate`}>
@@ -10,8 +10,8 @@ const BuildPlateIcon: React.StatelessComponent<IconProps> = ({ className }): JSX
             <path d="M31.3,8.3,16.5,1.5a1.7,1.7,0,0,0-1,0L.7,8.3a1.2,1.2,0,0,0,0,2.2l14.8,6.8h1l14.8-6.8a1.2,1.2,0,0,0,0-2.2ZM16,14.8,4.2,9.4,16,4,27.8,9.4Z" />
         </svg>
     </div>
-)
+);
 
-BuildPlateIcon.displayName = "BuildPlateIcon";
+BuildPlateIcon.displayName = 'BuildPlateIcon';
 
 export default IconWrapper(BuildPlateIcon);

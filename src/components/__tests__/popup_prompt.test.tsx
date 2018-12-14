@@ -15,7 +15,7 @@ describe('The PopupPrompt component', () => {
             headerText: 'PopupPrompt header',
             bodyText: 'PopupPrompt body',
             primaryBtnText: 'Primary button',
-            primaryBtnHandler: jest.fn()
+            primaryBtnHandler: jest.fn(),
         };
         wrapper = shallow(<PopupPrompt {...props} />);
     });
@@ -33,13 +33,13 @@ describe('The PopupPrompt component', () => {
 
     it('should set validationError when the input is changed and there is a validation error', () => {
         expect(wrapper.state('validationError')).toBe(undefined);
-        wrapper.setProps({ validationHandler: () => { return 'Validation error' } });
+        wrapper.setProps({ validationHandler: () => 'Validation error' });
         wrapper.instance()._onChangeHandler('promptInput', 10);
         expect(wrapper.state('validationError')).toBe('Validation error');
     });
 
     it('should set inputValue to the default value', () => {
-        wrapper = shallow(<PopupPrompt {...props} inputDefaultValue={'Default value'} />);
+        wrapper = shallow(<PopupPrompt {...props} inputDefaultValue="Default value" />);
         expect(wrapper.state('inputValue')).toBe('Default value');
     });
 
@@ -51,7 +51,7 @@ describe('The PopupPrompt component', () => {
     });
 
     it('should not call primaryBtnHandler when there is a validation error', () => {
-        wrapper.setProps({ validationHandler: () => { return 'Validation error' } });
+        wrapper.setProps({ validationHandler: () => 'Validation error' });
         wrapper.instance()._primaryBtnHandler();
         expect(props.primaryBtnHandler).not.toHaveBeenCalled();
     });
@@ -59,5 +59,5 @@ describe('The PopupPrompt component', () => {
     it('should pass a footer to the popup', () => {
         wrapper.setProps({ footer: 'An error occurred!' });
         expect(wrapper.find(Popup).prop('footer')).toEqual('An error occurred!');
-    })
+    });
 });

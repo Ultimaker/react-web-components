@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import classNames = require('classnames');
 
 export type Align = 'left' | 'center' | 'right';
@@ -12,28 +13,30 @@ export interface GridProps {
     position?: Position;
     /** Gutter size between the grid items: 'xs' | 'sm' | 'md' | 'lg' | 'none' */
     gutter?: Gutter;
-    /** An optional class name for the grid **/
+    /** An optional class name for the grid */
     className?: string;
 }
 
-export const Grid: React.StatelessComponent<GridProps> =
-    ({ align, gutter, position, children, className }): JSX.Element => {
+export const Grid: React.StatelessComponent<GridProps> = ({
+    align, gutter, position, children, className,
+}): JSX.Element => {
+    const classes = classNames('grid-component', 'layout', `layout--align-${align}`, `layout--gutter-${gutter}`,
+        `layout--align-${position}`, `layout--gutter-${gutter}--above`, `layout--gutter-${gutter}--below`,
+        className);
 
-        const classes = classNames('grid-component', 'layout', `layout--align-${align}`, `layout--gutter-${gutter}`,
-            `layout--align-${position}`, `layout--gutter-${gutter}--above`, `layout--gutter-${gutter}--below`,
-            className);
-
-        return <div className={classes}>
+    return (
+        <div className={classes}>
             {children}
         </div>
-    }
+    );
+};
 
 Grid.defaultProps = {
     align: 'left',
     gutter: 'md',
-    position: 'top'
-}
+    position: 'top',
+};
 
-Grid.displayName = "Grid"
+Grid.displayName = 'Grid';
 
 export default Grid;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const DeleteIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--delete`}>
@@ -10,8 +10,8 @@ const DeleteIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Ele
             <path d=" M 15 7.5 C 14.4 7.5 14 7.9 14 8.3 L 14 17.6 C 14 18.1 14.4 18.4 15 18.4 C 15.6 18.4 16 18 16 17.6 L 16 8.4 C 16 7.9 15.6 7.5 15 7.5 Z " />
         </svg>
     </div>
-)
+);
 
-DeleteIcon.displayName = "DeleteIcon";
+DeleteIcon.displayName = 'DeleteIcon';
 
 export default IconWrapper(DeleteIcon);

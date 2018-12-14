@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { withKnobs, selectV2 } from '@storybook/addon-knobs/react';
-import styles from "@sambego/storybook-styles";
+import { withKnobs } from '@storybook/addon-knobs/react';
+import styles from '@sambego/storybook-styles';
 
 import Tile from '../components/tile';
 import Grid from '../components/grid';
@@ -15,20 +15,20 @@ stories.addDecorator(withKnobs)
         display: 'flex',
         justifyContent: 'center',
         marginTop: '50px',
-        marginBottom: '50px'
+        marginBottom: '50px',
     }));
 
 stories.add('Colors', withInfo(
-    'All colors'
-)(() =>
+    'All colors',
+)(() => (
     <div>
 
-        <div style={{ 'margin': '0 0 1.2rem 0' }}>Colors</div>
+        <div style={{ margin: '0 0 1.2rem 0' }}>Colors</div>
 
         <Tile padding="lg">
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-blue"></div>
+                    <div className="color-square color-blue" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#00a7e9</div>
@@ -40,7 +40,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-blue-light"></div>
+                    <div className="color-square color-blue-light" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#24bcf3</div>
@@ -52,7 +52,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-blue-lighter"></div>
+                    <div className="color-square color-blue-lighter" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#46C4F2</div>
@@ -64,7 +64,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-red"></div>
+                    <div className="color-square color-red" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#ef5b5b</div>
@@ -76,7 +76,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-green"></div>
+                    <div className="color-square color-green" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#23aa1d</div>
@@ -88,7 +88,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-orange"></div>
+                    <div className="color-square color-orange" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#fbb045</div>
@@ -100,7 +100,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-black"></div>
+                    <div className="color-square color-black" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#000000</div>
@@ -112,7 +112,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-grey-darker"></div>
+                    <div className="color-square color-grey-darker" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#666666</div>
@@ -124,7 +124,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-grey-dark"></div>
+                    <div className="color-square color-grey-dark" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#999999</div>
@@ -136,7 +136,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-grey-mid"></div>
+                    <div className="color-square color-grey-mid" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#b7b7b7</div>
@@ -148,7 +148,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-grey-light"></div>
+                    <div className="color-square color-grey-light" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#dcdcdc</div>
@@ -160,7 +160,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-grey-lighter"></div>
+                    <div className="color-square color-grey-lighter" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#e6e6e6</div>
@@ -172,7 +172,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-grey-lightest"></div>
+                    <div className="color-square color-grey-lightest" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#f3f3f3</div>
@@ -184,7 +184,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-white"></div>
+                    <div className="color-square color-white" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">#ffffff</div>
@@ -196,7 +196,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent"></div>
+                    <div className="color-square color-transparent" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0)</div>
@@ -208,7 +208,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-lighter"></div>
+                    <div className="color-square color-transparent-grey-lighter" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.03)</div>
@@ -220,7 +220,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-light"></div>
+                    <div className="color-square color-transparent-grey-light" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.06)</div>
@@ -232,7 +232,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-mid"></div>
+                    <div className="color-square color-transparent-grey-mid" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.09)</div>
@@ -244,7 +244,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-dark"></div>
+                    <div className="color-square color-transparent-grey-dark" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.16)</div>
@@ -256,7 +256,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-darker"></div>
+                    <div className="color-square color-transparent-grey-darker" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.25)</div>
@@ -268,7 +268,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-grey-darkest"></div>
+                    <div className="color-square color-transparent-grey-darkest" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 0, 0, 0.85)</div>
@@ -280,7 +280,7 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
-                    <div className="color-square color-transparent-blue"></div>
+                    <div className="color-square color-transparent-blue" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
                     <div className="color-label">rgba(0, 167, 233, 0.06)</div>
@@ -293,4 +293,4 @@ stories.add('Colors', withInfo(
 
 
     </div>
-));
+)));

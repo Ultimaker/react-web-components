@@ -15,7 +15,7 @@ describe('The DropDownMenu component', () => {
 
     beforeEach(() => {
         props = {
-            activeLabel: 'Active label'
+            activeLabel: 'Active label',
         };
         wrapper = shallow(<DropDownMenu {...props} />);
     });
@@ -54,5 +54,4 @@ describe('The DropDownMenu component', () => {
         wrapper.simulate('click', mockClickEvent);
         expect(mockClickEvent.stopPropagation).toBeCalled();
     });
-
 });

@@ -15,9 +15,9 @@ export interface PopupBaseProps {
     step?: number;
     /** The total number of steps of a multi-step popup */
     totalSteps?: number;
-    /** The content of the popup **/
+    /** The content of the popup */
     children: any;
-    /** A component or text to be rendered in the footer of the popup **/
+    /** A component or text to be rendered in the footer of the popup */
     footer?: any;
 }
 
@@ -25,31 +25,38 @@ export interface PopupBaseProps {
  * The popup base component is a simple modal with a title, content and optionally a progress bar.
  */
 export const PopupBase: React.StatelessComponent<PopupBaseProps> = (
-    { headerElement, headerText, step, totalSteps, width, children, footer }
-) =>
+    {
+        headerElement, headerText, step, totalSteps, width, children, footer,
+    },
+) => (
     <div className="popup">
         <Modal width={width}>
             <div className="popup__container">
                 <div className="popup__content">
-                    {headerElement && <div className="popup__header-element">
-                        {headerElement}
-                    </div>}
+                    {headerElement && (
+                        <div className="popup__header-element">
+                            {headerElement}
+                        </div>
+                    )}
 
-                    {headerText && <div className="popup__header">
-                        {headerText}
-                    </div>}
+                    {headerText && (
+                        <div className="popup__header">
+                            {headerText}
+                        </div>
+                    )}
 
                     <div className="popup__body">
                         {children}
                     </div>
                 </div>
-                {step && totalSteps &&
-                    <ProgressBar progressPercentage={step / totalSteps * 100} barHeight="0.9rem" />
+                {step && totalSteps
+                    && <ProgressBar progressPercentage={step / totalSteps * 100} barHeight="0.9rem" />
                 }
                 {footer && <div className="popup__footer">{footer}</div>}
             </div>
         </Modal>
-    </div>;
+    </div>
+);
 
 PopupBase.defaultProps = {
     width: 'sm',

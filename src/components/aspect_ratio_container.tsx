@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import classNames = require('classnames');
 
 export interface aspectRatioContainerProps {
@@ -6,31 +7,32 @@ export interface aspectRatioContainerProps {
     children: JSX.Element;
     /** given as a fraction, for example 16/9 */
     aspectRatio?: number;
-    /** An optional id for the container **/
+    /** An optional id for the container */
     id?: string;
-    /** An optional class name for the container **/
+    /** An optional class name for the container */
     className?: string;
 }
 
 /**
  * returns a copy of the content with modified classes, wrapped in containers to manage it's size
  */
-export const AspectRatioContainer: React.StatelessComponent<aspectRatioContainerProps> = ({ aspectRatio, className, id, children }) => {
-
+export const AspectRatioContainer: React.StatelessComponent<aspectRatioContainerProps> = ({
+    aspectRatio, className, id, children,
+}) => {
     const containerClasses = classNames('aspect-ratio-container', className);
-    const bottomPadding = 1 / aspectRatio * 100 + '%';
+    const bottomPadding = `${1 / aspectRatio * 100}%`;
 
     function _renderChild(child: JSX.Element): JSX.Element {
         const contentClasses = classNames('aspect-ratio-container__content', child.props.className);
         return React.cloneElement(
             child,
-            { className: contentClasses }
-        )
+            { className: contentClasses },
+        );
     }
 
     return (
         <div id={id} className={containerClasses}>
-            <div className='aspect-ratio-container__height-setter' style={{ paddingBottom: bottomPadding }}>
+            <div className="aspect-ratio-container__height-setter" style={{ paddingBottom: bottomPadding }}>
                 {children && _renderChild(children)}
             </div>
         </div>
@@ -38,9 +40,9 @@ export const AspectRatioContainer: React.StatelessComponent<aspectRatioContainer
 };
 
 AspectRatioContainer.defaultProps = {
-    aspectRatio: 16 / 9
+    aspectRatio: 16 / 9,
 };
 
-AspectRatioContainer.displayName = "AspectRatioContainer";
+AspectRatioContainer.displayName = 'AspectRatioContainer';
 
 export default AspectRatioContainer;

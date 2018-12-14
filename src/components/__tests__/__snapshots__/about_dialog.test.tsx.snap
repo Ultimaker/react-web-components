@@ -16,6 +16,7 @@ exports[`The AboutDialog component should render 1`] = `
          
       <a
         href="https://ultimaker.support.com/"
+        rel="noopener noreferrer"
         target="_blank"
       >
         Support link
@@ -36,6 +37,7 @@ exports[`The AboutDialog component should render 1`] = `
           >
             <a
               href="https://ultimaker.com/"
+              rel="noopener noreferrer"
               target="_blank"
             >
               testComponent
@@ -46,6 +48,7 @@ exports[`The AboutDialog component should render 1`] = `
           >
             <a
               href="https://spdx.org/licenses/MIT.html"
+              rel="noopener noreferrer"
               target="_blank"
             >
               license MIT

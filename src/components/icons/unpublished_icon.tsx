@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const UnpublishedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--unpublished`}>
@@ -12,8 +12,8 @@ const UnpublishedIcon: React.StatelessComponent<IconProps> = ({ className }): JS
             <polygon points="12.69 20.72 22.72 10.69 22.78 10.63 24.98 8.43 27.36 6.06 25.94 4.64 23.13 7.45 21.58 9 20.84 9.75 19.91 10.68 17.86 12.73 11 19.58 9.22 21.37 7.02 23.57 4.64 25.94 6.06 27.36 8.87 24.55 11.16 22.25 12.69 20.72" />
         </svg>
     </div>
-)
+);
 
-UnpublishedIcon.displayName = "UnpublishedIcon";
+UnpublishedIcon.displayName = 'UnpublishedIcon';
 
 export default IconWrapper(UnpublishedIcon);

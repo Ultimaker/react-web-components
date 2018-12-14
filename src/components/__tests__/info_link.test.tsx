@@ -11,7 +11,7 @@ describe('The InfoLink component', () => {
 
     beforeEach(() => {
         props = {
-            infoLinkURL: 'https://ultimaker.com/'
+            infoLinkURL: 'https://ultimaker.com/',
         };
         wrapper = shallow(<InfoLink {...props} />);
     });
@@ -19,5 +19,4 @@ describe('The InfoLink component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

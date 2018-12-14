@@ -70,5 +70,4 @@ describe('The UserAccountMenu component', () => {
         expect(wrapper).toMatchSnapshot();
         expect(props.onSignInClickHandler).not.toHaveBeenCalled();
     });
-
 });

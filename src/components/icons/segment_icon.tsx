@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconWrapper, IconProps} from './icon_wrapper';
+import { IconWrapper, IconProps } from './icon_wrapper';
 
 const SegmentIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--segment`}>
@@ -11,8 +11,8 @@ const SegmentIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.El
             <path d=" M 13.48 7.35 C 15.6 7.741 17.259 9.4 17.65 11.52 C 17.698 11.769 17.916 11.95 18.17 11.95 L 24.48 11.95 C 24.625 11.949 24.763 11.887 24.86 11.78 C 24.96 11.676 25.011 11.534 25 11.39 C 24.486 5.329 19.681 0.519 13.62 0 C 13.474 -0.011 13.331 0.039 13.223 0.137 C 13.115 0.235 13.052 0.374 13.05 0.52 L 13.05 6.83 C 13.05 7.084 13.231 7.302 13.48 7.35 L 13.48 7.35 Z " />
         </svg>
     </div>
-)
+);
 
-SegmentIcon.displayName = "SegmentIcon";
+SegmentIcon.displayName = 'SegmentIcon';
 
 export default IconWrapper(SegmentIcon);

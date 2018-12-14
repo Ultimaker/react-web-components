@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import TextareaField, {TextareaFieldProps} from '../textarea_field';
+import TextareaField, { TextareaFieldProps } from '../textarea_field';
 import Textarea from '../../textarea';
 import InputFieldWrapper from '../input_field_wrapper';
 
@@ -14,12 +14,12 @@ describe('The textarea field component', () => {
     beforeEach(() => {
         props = {
             id: 'testInputField',
-            value: "2018",
+            value: '2018',
             onChangeHandler: jest.fn(),
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
-            placeholder: "placeholder textarea",
+            placeholder: 'placeholder textarea',
         };
         wrapper = shallow(<TextareaField {...props} />);
     });
@@ -30,9 +30,9 @@ describe('The textarea field component', () => {
     });
 
     it('should render a null', () => {
-        wrapper.setProps({value: null})
-        expect(wrapper.find(Textarea).prop("value")).toEqual("")
-    })
+        wrapper.setProps({ value: null });
+        expect(wrapper.find(Textarea).prop('value')).toEqual('');
+    });
 
     it('should render a wrapped textarea', () => {
         expect(wrapper.find(Textarea).props()).toEqual({
@@ -43,18 +43,18 @@ describe('The textarea field component', () => {
             autofocus: props.focusOnLoad,
             autoGrow: props.textareaAutoGrow,
         });
-    })
+    });
 
     it('should render a static textarea', () => {
-        wrapper.setProps({staticField: true})
-        expect(wrapper.find(InputFieldWrapper).prop("children").map(c => c.props.children)).toEqual([props.value]);
-    })
+        wrapper.setProps({ staticField: true });
+        expect(wrapper.find(InputFieldWrapper).prop('children').map(c => c.props.children)).toEqual([props.value]);
+    });
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find(Textarea).prop("onChangeHandler")("some text")
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "some text");
-        wrapper.find(Textarea).prop("onChangeHandler")("")
-        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, "");
+        wrapper.find(Textarea).prop('onChangeHandler')('some text');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, 'some text');
+        wrapper.find(Textarea).prop('onChangeHandler')('');
+        expect(props.onChangeHandler).toHaveBeenLastCalledWith(props.id, '');
     });
 });

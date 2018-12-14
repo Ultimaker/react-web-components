@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import InfoTooltip from '../info_tooltip';
 import InfoLink from '../info_link';
-import {Breakpoint, LayoutWidth} from '../../utils/layout_constants';
+import { Breakpoint, LayoutWidth } from '../../utils/layout_constants';
 
 export interface InputFieldLabelProps {
     /** Input field id. Must be unique */
@@ -25,14 +25,15 @@ export interface InputFieldLabelProps {
 
 
 export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
-
     private _renderPreLabelElement(): JSX.Element {
         const { preLabelElement } = this.props;
 
         if (preLabelElement) {
-            return <div className="layout__item u-fit input-field__pre-element">
-                {preLabelElement}
-            </div>;
+            return (
+                <div className="layout__item u-fit input-field__pre-element">
+                    {preLabelElement}
+                </div>
+            );
         }
         return null;
     }
@@ -41,9 +42,11 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
         const { label, id } = this.props;
 
         if (label) {
-            return <div className="layout__item u-fit">
-                <label htmlFor={id}>{label}</label>
-            </div>;
+            return (
+                <div className="layout__item u-fit">
+                    <label htmlFor={id}>{label}</label>
+                </div>
+            );
         }
         return null;
     }
@@ -52,14 +55,16 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
         const { infoText, infoLinkURL } = this.props;
 
         if (infoText || infoLinkURL) {
-            return <div className="layout__item u-fit input-field__label-addition">
-                {infoText &&
-                    <InfoTooltip infoText={infoText} />
-                }
-                {infoLinkURL && !infoText && // can't have both an InfoTooltip and a InfoLink
-                    <InfoLink infoLinkURL={infoLinkURL} />
-                }
-            </div>;
+            return (
+                <div className="layout__item u-fit input-field__label-addition">
+                    {infoText
+                        && <InfoTooltip infoText={infoText} />
+                    }
+                    {infoLinkURL && !infoText // can't have both an InfoTooltip and a InfoLink
+                        && <InfoLink infoLinkURL={infoLinkURL} />
+                    }
+                </div>
+            );
         }
         return null;
     }
@@ -79,7 +84,7 @@ export class InputFieldLabel extends React.Component<InputFieldLabelProps, {}> {
                 </div>
             </div>
         );
-    };
+    }
 }
 
 export default InputFieldLabel;

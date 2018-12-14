@@ -13,13 +13,16 @@ describe('The Image component', () => {
         props = {
             aspectRatio: 4 / 3,
             id: 'container-id',
-            className: 'container-class'
+            className: 'container-class',
         };
-        wrapper = shallow(<AspectRatioContainer {...props} ><img id='myPrettyPicture' className='test-image' src='http://ultimaker.com' alt='a test image' /></AspectRatioContainer>);
+        wrapper = shallow(
+            <AspectRatioContainer {...props}>
+                <img id="myPrettyPicture" className="test-image" src="http://ultimaker.com" alt="myPrettyPicture" />
+            </AspectRatioContainer>,
+        );
     });
 
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
     });
-
 });

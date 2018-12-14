@@ -25,15 +25,14 @@ export interface SettingPanelState {
 }
 
 /**
- * The SettingPanel component displays a toggle setting and label, with 
+ * The SettingPanel component displays a toggle setting and label, with
  * a slide out container that shows further description about the setting
  */
 export class SettingPanel extends React.Component<SettingPanelProps, SettingPanelState> {
-
     constructor(props) {
         super(props);
         this.state = {
-            showExplanation: false
+            showExplanation: false,
         };
 
         this._handleOnchange = this._handleOnchange.bind(this);
@@ -41,8 +40,9 @@ export class SettingPanel extends React.Component<SettingPanelProps, SettingPane
     }
 
     _toggleExplanationVisibility() {
+        const { showExplanation } = this.state;
         this.setState({
-            showExplanation: !this.state.showExplanation
+            showExplanation: !showExplanation,
         });
     }
 
@@ -52,35 +52,45 @@ export class SettingPanel extends React.Component<SettingPanelProps, SettingPane
     }
 
     _handleOnchange(checked: boolean): void {
-        this.props.onChangeHandler(checked)
+        const { onChangeHandler } = this.props;
+        onChangeHandler(checked);
     }
 
     render(): JSX.Element {
         const { showExplanation } = this.state;
-        const { toggleId, settingValue, headerText, explanationText } = this.props;
+        const {
+            toggleId, settingValue, headerText, explanationText,
+        } = this.props;
 
-        return <div className="setting-panel">
+        return (
+            <div className="setting-panel">
 
-            <SlideOutContainer isOpen={showExplanation} headerText={headerText} onHeaderClick={this._toggleExplanationVisibility}>
-                <div className="setting-panel__explanation-text">{explanationText}</div>
-            </SlideOutContainer>
+                <SlideOutContainer
+                    isOpen={showExplanation}
+                    headerText={headerText}
+                    onHeaderClick={this._toggleExplanationVisibility}
+                >
+                    <div className="setting-panel__explanation-text">{explanationText}</div>
+                </SlideOutContainer>
 
-            <div className="layout setting-panel__option">
+                <div className="layout setting-panel__option">
 
-                <div className="layout__item u-fill">
-                    <div className="setting-panel__value-text">{this._getLabelText()}</div>
+                    <div className="layout__item u-fill">
+                        <div className="setting-panel__value-text">{this._getLabelText()}</div>
+                    </div>
+
+                    <div className="layout__item u-fit-sm">
+                        <ToggleButton
+                            id={toggleId}
+                            value={settingValue}
+                            onChangeHandler={this._handleOnchange}
+                            disabled={false}
+                        />
+                    </div>
                 </div>
 
-                <div className="layout__item u-fit-sm">
-                    <ToggleButton
-                        id={toggleId}
-                        value={settingValue}
-                        onChangeHandler={this._handleOnchange}
-                        disabled={false} />
-                </div>
             </div>
-
-        </div>
+        );
     }
 }
 

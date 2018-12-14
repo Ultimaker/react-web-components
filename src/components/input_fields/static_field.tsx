@@ -1,13 +1,12 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
-import {InputFieldProps} from './input_field_wrapper';
-import InputFieldWrapper from './input_field_wrapper'
+import { InputFieldWrapper, InputFieldProps } from './input_field_wrapper';
 
 export interface StaticFieldProps extends InputFieldProps {
     /** Input field value */
     value?: any;
-    /** Optional extra elements to be displayed after the input **/
+    /** Optional extra elements to be displayed after the input */
     children?: any;
 }
 
@@ -17,11 +16,12 @@ export interface StaticFieldProps extends InputFieldProps {
  */
 const StaticField: React.StatelessComponent<StaticFieldProps> = ({
     children, staticField, ...wrapperProps
-}) =>
-    <InputFieldWrapper touched={false} staticField={true} inputChildren={children} {...wrapperProps}>
+}) => (
+    <InputFieldWrapper touched={false} staticField inputChildren={children} {...wrapperProps}>
         {wrapperProps.value}
-    </InputFieldWrapper>;
+    </InputFieldWrapper>
+);
 
-StaticField.displayName = "StaticField";
+StaticField.displayName = 'StaticField';
 
 export default StaticField;

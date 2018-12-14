@@ -11,7 +11,7 @@ describe('The Tooltip component', () => {
 
     beforeEach(() => {
         props = {
-            tooltipText: 'Tooltip text'
+            tooltipText: 'Tooltip text',
         };
         wrapper = shallow(<Tooltip {...props} />);
     });

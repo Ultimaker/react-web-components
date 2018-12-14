@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import InputFieldWrapper, {InputFieldWrapperProps} from '../input_field_wrapper';
+import InputFieldWrapper, { InputFieldWrapperProps } from '../input_field_wrapper';
 
 describe('The input field wrapper component', () => {
     let props: InputFieldWrapperProps;
@@ -15,15 +15,15 @@ describe('The input field wrapper component', () => {
             staticField: false,
             className: 'test-input-class',
             centerInputField: true,
-            label: "Test Input Label",
+            label: 'Test Input Label',
             labelLayoutWidth: '1/2',
             labelWidthBreakpoint: 'xs',
-            infoLinkURL: "http://info.url",
-            infoText: "Click for more info",
-            preLabelElement: "*",
+            infoLinkURL: 'http://info.url',
+            infoText: 'Click for more info',
+            preLabelElement: '*',
             required: true,
             submitted: false,
-            validationError: "A validation error!",
+            validationError: 'A validation error!',
             touched: true,
             children: <div>child</div>,
             inputChildren: <div>input child</div>,
@@ -36,7 +36,7 @@ describe('The input field wrapper component', () => {
     });
 
     it('should render a static field', () => {
-        wrapper.setProps({required: false, staticField: true, touched: false})
+        wrapper.setProps({ required: false, staticField: true, touched: false });
         expect(wrapper).toMatchSnapshot();
     });
 

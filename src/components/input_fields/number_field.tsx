@@ -2,10 +2,10 @@
 import * as React from 'react';
 
 import DefaultInputField from './default_input_field';
-import {InputFieldProps} from './input_field_wrapper';
+import { InputFieldProps } from './input_field_wrapper';
 
 
-export interface NumberFieldProps extends  InputFieldProps {
+export interface NumberFieldProps extends InputFieldProps {
     /** Input field value */
     value: number | null;
     /** Called when the field changes */
@@ -22,7 +22,7 @@ export interface NumberFieldProps extends  InputFieldProps {
 
 const NumberField: React.StatelessComponent<NumberFieldProps> = ({
     value, onChangeHandler, focusOnLoad, placeholder, children, ...wrapperProps
-}) =>
+}) => (
     <DefaultInputField
         type="number"
         value={value || value === 0 ? value.toString() : null}
@@ -31,7 +31,8 @@ const NumberField: React.StatelessComponent<NumberFieldProps> = ({
         {...wrapperProps}
     >
         {wrapperProps.staticField && value}
-    </DefaultInputField>;
+    </DefaultInputField>
+);
 
 
 export default NumberField;

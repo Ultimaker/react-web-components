@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import CloseButton from '../close_button';
 
 // mocks
-import Button from '../button'
+import Button from '../button';
 
 
 describe('The CloseButton component', () => {

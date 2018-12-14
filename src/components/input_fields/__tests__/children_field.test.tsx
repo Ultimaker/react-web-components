@@ -3,7 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import ChildrenField, {ChildrenFieldProps} from '../children_field';
+import ChildrenField, { ChildrenFieldProps } from '../children_field';
 
 describe('The children field component', () => {
     let children;
@@ -11,7 +11,7 @@ describe('The children field component', () => {
     let wrapper;
 
     beforeEach(() => {
-        children = <div>Children</div>
+        children = <div>Children</div>;
         props = {
             id: 'testInputField',
             labelLayoutWidth: '1/1',
@@ -24,6 +24,6 @@ describe('The children field component', () => {
 
     it('should render a wrapper', () => {
         expect(wrapper).toMatchSnapshot();
-        expect(wrapper.prop("children")).toEqual(children);
+        expect(wrapper.prop('children')).toEqual(children);
     });
 });

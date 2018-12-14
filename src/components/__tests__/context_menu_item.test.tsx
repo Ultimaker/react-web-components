@@ -42,5 +42,4 @@ describe('The ContextMenuItem component', () => {
         wrapper.setProps({ disabled: true });
         expect(wrapper.find('.disabled')).toHaveLength(1);
     });
-
 });
