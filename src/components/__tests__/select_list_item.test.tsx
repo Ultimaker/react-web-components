@@ -4,10 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import SelectListItem from '../select_list_item';
-
-// mocks
-import { mockClickEvent } from '../../__mocks__/clickMock';
-
+import Button from '../button';
 
 describe('The SelectListItem component', () => {
     let props;
@@ -29,19 +26,7 @@ describe('The SelectListItem component', () => {
     });
 
     it('should call the click handler when item is clicked', () => {
-        wrapper.simulate('click', mockClickEvent);
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onChangeHandler).toHaveBeenCalled();
-    });
-
-    it('should not call the click handler when item is disabled', () => {
-        wrapper.setProps({ disabled: true });
-        wrapper.simulate('click', mockClickEvent);
-        expect(props.onChangeHandler).not.toHaveBeenCalled();
-        expect(mockClickEvent.stopPropagation).toBeCalled();
-    });
-
-    it('should render item as disabled', () => {
-        wrapper.setProps({ disabled: true });
-        expect(wrapper.find('.disabled')).toHaveLength(1);
     });
 });

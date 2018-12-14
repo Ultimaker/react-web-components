@@ -25,28 +25,14 @@ describe('The DropDownMenu component', () => {
     });
 
     it('should show menu when the label is clicked', () => {
-        wrapper.find('.label').simulate('click', mockClickEvent);
+        wrapper.find('.label').props().onClickHandler();
         expect(wrapper.find('.visible')).toHaveLength(1);
     });
 
     it('should hide menu when the label is clicked', () => {
-        wrapper.find('.label').simulate('click', mockClickEvent);
+        wrapper.find('.label').props().onClickHandler();
         expect(wrapper.find('.visible')).toHaveLength(1);
-        wrapper.find('.label').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible').exists()).toBe(false);
-    });
-
-    it('should hide menu on blur', () => {
-        wrapper.find('.label').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible')).toHaveLength(1);
-        wrapper.simulate('blur');
-        expect(wrapper.find('.visible').exists()).toBe(false);
-    });
-
-    it('should hide menu on menu click', () => {
-        wrapper.find('.label').simulate('click', mockClickEvent);
-        expect(wrapper.find('.visible')).toHaveLength(1);
-        wrapper.find('.container').simulate('click', mockClickEvent);
+        wrapper.find('.label').props().onClickHandler();
         expect(wrapper.find('.visible').exists()).toBe(false);
     });
 

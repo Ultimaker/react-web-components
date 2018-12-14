@@ -50,10 +50,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
         const visibleNavLinks = navLinks.filter(navLink => navLink.visible);
 
         return (
-            <nav
-                className={navClasses}
-                onClick={() => this._toggleShowNav(false)}
-            >
+            <nav className={navClasses} role="navigation">
 
                 {visibleNavLinks.length > 0 && (
                     <div className="nav-links-container">
@@ -73,7 +70,11 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                                 <ul>
                                     {visibleNavLinks.map((navLink, index) => (
                                         <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
-                                            <NavLink to={navLink.path} activeClassName="active">
+                                            <NavLink
+                                                to={navLink.path}
+                                                activeClassName="active"
+                                                onClick={() => this._toggleShowNav(false)}
+                                            >
                                                 <span className="label">{navLink.label}</span>
                                             </NavLink>
                                         </li>

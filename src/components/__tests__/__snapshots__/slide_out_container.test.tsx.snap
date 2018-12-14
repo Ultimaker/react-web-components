@@ -4,9 +4,13 @@ exports[`The SlideOutContainer component should render 1`] = `
 <div
   className="slide-out-container"
 >
-  <div
+  <Button
     className="slide-out-container__header"
-    onClick={[Function]}
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
   >
     <div
       className="layout"
@@ -31,7 +35,7 @@ exports[`The SlideOutContainer component should render 1`] = `
         />
       </div>
     </div>
-  </div>
+  </Button>
   <UnmountClosed
     isOpened={false}
   >

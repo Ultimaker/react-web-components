@@ -4,20 +4,25 @@ exports[`The ContextMenu component should render 1`] = `
 <div
   className="context-menu context-menu--south"
   onClick={[Function]}
-  tabIndex={1}
 >
-  <div
+  <Button
     className="trigger"
-    onClick={[Function]}
-    style={
-      Object {
-        "width": 45,
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
+  >
+    <div
+      style={
+        Object {
+          "width": 45,
+        }
       }
-    }
-  />
+    />
+  </Button>
   <div
     className="container"
-    onClick={[Function]}
   >
     <div
       className="menu"

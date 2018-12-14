@@ -2,6 +2,9 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Collapse } from 'react-collapse';
 
+// components
+import Button from './button';
+
 export type MenuOffsetDirection = 'left' | 'right';
 export type MenuDirection = 'north' | 'south';
 
@@ -65,15 +68,38 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     constructor(props: ContextMenuProps) {
         super(props);
         this._menuRef = React.createRef();
-        this._onOutsideClickHandler = this._onOutsideClickHandler.bind(this);
+        this._onOutsideFocusHandler = this._onOutsideFocusHandler.bind(this);
+        this._setShowMenu = this._setShowMenu.bind(this);
     }
 
     private _menuRef;
 
-    private _onOutsideClickHandler(event) {
+    private _onOutsideFocusHandler(event): void {
         if (this._menuRef && !this._menuRef.current.contains(event.target)) {
+            // close menu is user clicks or tabs outside
             this._setShowMenu(false);
         }
+
+        if (event.key === 'Escape') {
+            // close menu is user presses escape
+            this._setShowMenu(false);
+        }
+    }
+
+    private _setShowMenu(showMenu: boolean): void {
+        this._setMenuOffset();
+
+        if (showMenu) {
+            document.addEventListener('mousedown', this._onOutsideFocusHandler);
+            document.addEventListener('keydown', this._onOutsideFocusHandler);
+        } else {
+            document.removeEventListener('mousedown', this._onOutsideFocusHandler);
+            document.removeEventListener('keydown', this._onOutsideFocusHandler);
+        }
+
+        this.setState({
+            showMenu,
+        });
     }
 
     private _setMenuOffset(): void {
@@ -114,20 +140,6 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         });
     }
 
-    private _setShowMenu(showMenu: boolean): void {
-        this._setMenuOffset();
-
-        if (showMenu) {
-            document.addEventListener('mousedown', this._onOutsideClickHandler);
-        } else {
-            document.removeEventListener('mousedown', this._onOutsideClickHandler);
-        }
-
-        this.setState({
-            showMenu,
-        });
-    }
-
     render(): JSX.Element {
         const {
             menuWidth, menuOffsetDirection, menuDirection, positionMenuInPanel, children,
@@ -142,27 +154,26 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const menuStyle = ContextMenu._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
 
         return (
-            <div
-                ref={this._menuRef}
-                className={classes}
-                tabIndex={1}
-                onClick={ContextMenu._stopPropagation}
-            >
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+            <div ref={this._menuRef} className={classes} onClick={ContextMenu._stopPropagation}>
 
-                <div
-                    className="trigger"
-                    onClick={() => this._setShowMenu(!showMenu)}
-                    style={{ width: triggerWidth }}
-                />
+                <Button style="no-style" className="trigger" onClickHandler={() => this._setShowMenu(!showMenu)}>
+                    <div style={{ width: triggerWidth }} />
+                </Button>
 
-                <div className="container" onClick={() => this._setShowMenu(false)}>
+                <div className="container">
                     <div className="menu" style={menuStyle}>
                         <Collapse
                             isOpened={showMenu}
                             springConfig={{ stiffness: 390, damping: 32 }}
                         >
                             <ul>
-                                {children}
+                                {React.Children.map(children, (child: JSX.Element) => (
+                                    React.cloneElement(child, {
+                                        onCloseMenuHandler: () => this._setShowMenu(false),
+                                    })
+                                ))}
                             </ul>
                         </Collapse>
                     </div>

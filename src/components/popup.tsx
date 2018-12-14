@@ -66,7 +66,7 @@ export class Popup extends React.Component<PopupProps, PopupState> {
     state = {
         primaryBtnShowSpinner: false,
         secondaryBtnShowSpinner: false,
-        storedStep: null,
+        storedStep: null, // eslint-disable-line react/no-unused-state
     };
 
     constructor(props) {

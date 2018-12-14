@@ -6,9 +6,7 @@ import { UnmountClosed } from 'react-collapse';
 // component
 import SlideOutContainer from '../slide_out_container';
 import PanelArrow from '../panel_arrow';
-
-// mocks
-import { mockClickEvent } from '../../__mocks__/clickMock';
+import Button from '../button';
 
 describe('The SlideOutContainer component', () => {
     let props;
@@ -29,7 +27,7 @@ describe('The SlideOutContainer component', () => {
     });
 
     it('calls onHeaderClick when the header clicked', () => {
-        wrapper.find('.slide-out-container__header').simulate('click', mockClickEvent);
+        wrapper.find('.slide-out-container__header').find(Button).props().onClickHandler();
         expect(props.onHeaderClick).toHaveBeenCalled();
     });
 

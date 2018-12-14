@@ -110,7 +110,7 @@ describe('The Button component', () => {
 
     it('can open a link in a new tab', () => {
         wrapper.setProps({ type: 'link', linkURL: 'https://ultimaker.com/', linkToNewTab: true });
-        expect(wrapper.prop('target')).toBe('_blank');
+        expect(wrapper.find('a').prop('target')).toBe('_blank');
     });
 
     it('applies an additional class name when passed', () => {

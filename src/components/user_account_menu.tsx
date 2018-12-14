@@ -96,24 +96,20 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
         const childProps = children && { onCloseMenuHandler: () => this._setShowMenu(false) };
 
         return (
-            <div
-                className={classes}
-                tabIndex={1}
-                onClick={UserAccountMenu._stopPropagation}
-                ref={this._menuRef}
-            >
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+            <div className={classes} ref={this._menuRef} onClick={UserAccountMenu._stopPropagation}>
 
-                <div
-                    className={triggerClasses}
-                    onClick={() => this._setShowMenu(!showMenu)}
-                    style={
+                <Button style="no-style" className={triggerClasses} onClickHandler={() => this._setShowMenu(!showMenu)}>
+                    <div style={
                         triggerWidth || triggerHeight
                             ? { width: triggerWidth, height: triggerHeight }
                             : undefined
                     }
-                >
-                    <ProfileImage imageURL={imageURL} size="3.6rem" />
-                </div>
+                    >
+                        <ProfileImage imageURL={imageURL} size="3.6rem" />
+                    </div>
+                </Button>
 
                 <div className="container">
                     <div className="menu">

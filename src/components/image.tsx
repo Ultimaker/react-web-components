@@ -15,14 +15,22 @@ export interface ImageProps {
     id?: string;
     /** An optional class name for the image */
     className?: string;
+    /** image alt */
+    alt?: string;
 }
 
 export const Image: React.StatelessComponent<ImageProps> = ({
-    shape, src, size, id, className,
+    shape, src, size, id, className, alt,
 }) => {
     const classes = classNames(`image image--${shape}`, className);
     return (
-        <img id={id} src={src} className={classes} style={{ width: size, height: size }} />
+        <img
+            id={id}
+            src={src}
+            alt={alt}
+            className={classes}
+            style={{ width: size, height: size }}
+        />
     );
 };
 

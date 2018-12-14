@@ -2,6 +2,8 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { UnmountClosed } from 'react-collapse';
 
+// components
+import Button from './button';
 import SelectListItem from './select_list_item';
 import PanelArrow from './panel_arrow';
 
@@ -28,23 +30,48 @@ export interface SelectOption {
 
 export interface SelectListState {
     showMenu: boolean;
-    focusedIndex: number;
 }
 
 export class SelectList extends React.Component<SelectListProps, SelectListState> {
-    state = {
-        showMenu: false,
-        focusedIndex: null,
+    private static _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
+        e.stopPropagation();
     }
 
-    constructor(props) {
-        super(props);
+    state = {
+        showMenu: false,
+    }
 
-        this._onKeyPressed = this._onKeyPressed.bind(this);
+    constructor(props: SelectListProps) {
+        super(props);
+        this._menuRef = React.createRef();
+        this._onOutsideFocusHandler = this._onOutsideFocusHandler.bind(this);
+        this._setShowMenu = this._setShowMenu.bind(this);
         this._onClickHandler = this._onClickHandler.bind(this);
     }
 
+    private _menuRef;
+
+    private _onOutsideFocusHandler(event): void {
+        if (this._menuRef && !this._menuRef.current.contains(event.target)) {
+            // close menu is user clicks or tabs outside
+            this._setShowMenu(false);
+        }
+
+        if (event.key === 'Escape') {
+            // close menu is user presses escape
+            this._setShowMenu(false);
+        }
+    }
+
     private _setShowMenu(showMenu: boolean): void {
+        if (showMenu) {
+            document.addEventListener('mousedown', this._onOutsideFocusHandler);
+            document.addEventListener('keydown', this._onOutsideFocusHandler);
+        } else {
+            document.removeEventListener('mousedown', this._onOutsideFocusHandler);
+            document.removeEventListener('keydown', this._onOutsideFocusHandler);
+        }
+
         this.setState({
             showMenu,
         });
@@ -52,7 +79,7 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
 
     private _getActiveOptionLabel() {
         const { options, value } = this.props;
-        const option = options.find(newOption => newOption.value === value);
+        const option = options.find(findOption => findOption.value === value);
         return option ? option.label : null;
     }
 
@@ -68,94 +95,44 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
         const { onChangeHandler } = this.props;
 
         if (!disabled && value) {
+            this._setShowMenu(false);
             onChangeHandler(value);
-            this.setState({ focusedIndex: null });
             this._setShowMenu(false);
         }
-    }
-
-    /**
-     * Updates the focusedIndex and validates it
-     * @param changeByValue - value to adjust the focusedIndex by
-     */
-    private _updateFocusedIndex(changeByValue: number): void {
-        const { options } = this.props;
-        const { focusedIndex } = this.state;
-
-        // if the focusedIndex has not been set, set it to 0,
-        // otherwise adjust it by the value of the changeByValue
-        let newIndex = focusedIndex !== null ? focusedIndex + changeByValue : 0;
-
-        // if the user presses down on the last item, go to the first
-        if (newIndex > options.length - 1) {
-            newIndex = 0;
-        }
-
-        // if the user presses up on the first item, go the last
-        if (newIndex < 0) {
-            newIndex = options.length - 1;
-        }
-
-        this.setState({ focusedIndex: newIndex });
-    }
-
-    private _onKeyPressed(e): void {
-        const { options } = this.props;
-        const { focusedIndex } = this.state;
-        const focusedItem = options[focusedIndex];
-
-        switch (e.key) {
-        case 'ArrowDown':
-            this._setShowMenu(true);
-            this._updateFocusedIndex(1);
-            break;
-        case 'ArrowUp':
-            this._setShowMenu(true);
-            this._updateFocusedIndex(-1);
-            break;
-        case 'Enter':
-            if (focusedItem) {
-                this._onClickHandler(focusedItem.value, focusedItem.disabled);
-            }
-            break;
-        default:
-            return null;
-        }
-        return null;
     }
 
     render(): JSX.Element {
         const {
             id, error, options, value,
         } = this.props;
-        const { showMenu, focusedIndex } = this.state;
+        const { showMenu } = this.state;
 
-        const dropDownMenuClasses = classNames('drop-down-menu', { visible: showMenu });
+        const classes = classNames('drop-down-menu', { visible: showMenu });
         const labelClasses = classNames('label', { active: showMenu, error });
 
         return (
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
             <div
+                ref={this._menuRef}
+                className={classes}
                 id={id}
-                className={dropDownMenuClasses}
-                tabIndex={1}
-                onFocus={() => this._setShowMenu(true)}
-                onBlur={() => this._setShowMenu(false)}
-                onKeyDown={this._onKeyPressed}
+                onClick={SelectList._stopPropagation}
             >
 
-                <div className={labelClasses} onClick={() => this._setShowMenu(true)}>
+                <Button style="no-style" className={labelClasses} onClickHandler={() => this._setShowMenu(!showMenu)}>
                     <div className="layout layout--align-middle layout--gutter-none">
-                        <div className="layout__item u-fit">
-                            <div className="text">{this._getActiveOptionLabel()}</div>
+                        <div className="layout__item u-fill">
+                            <div className="label__text">{this._getActiveOptionLabel()}</div>
                         </div>
                         <div className="layout__item u-fit layout__item--right">
                             <PanelArrow active={showMenu} width="1.2rem" color="blue" />
                         </div>
                     </div>
-                </div>
+                </Button>
 
                 <div className="container">
-                    <div ref="menu" className="menu">
+                    <div className="menu">
                         <UnmountClosed
                             isOpened={showMenu}
                             springConfig={{ stiffness: 370, damping: 35 }}
@@ -169,7 +146,6 @@ export class SelectList extends React.Component<SelectListProps, SelectListState
                                         value={option.value}
                                         active={value === option.value}
                                         disabled={option.disabled}
-                                        focused={focusedIndex === index && !option.disabled}
                                     />
                                 ))}
                             </ul>

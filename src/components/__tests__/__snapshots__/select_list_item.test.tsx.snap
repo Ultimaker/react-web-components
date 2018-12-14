@@ -1,10 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The SelectListItem component should render 1`] = `
-<li
-  className=""
-  onClick={[Function]}
->
-  List item
+<li>
+  <Button
+    className="context-menu__button"
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
+  >
+    List item
+  </Button>
 </li>
 `;

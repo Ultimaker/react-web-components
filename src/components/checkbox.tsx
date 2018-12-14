@@ -15,19 +15,22 @@ export interface CheckboxProps {
 export const Checkbox: React.StatelessComponent<CheckboxProps> = ({
     id, value, onChangeHandler, disabled,
 }) => {
-    const classes = classNames('checkbox', { disabled });
+    const classes = classNames('checkbox', { 'checkbox--checked': value, 'checkbox--disabled': disabled });
 
     return (
-        <div className={classes} onClick={e => e.stopPropagation()}>
-            <input
-                id={id}
-                name={id}
-                type="checkbox"
-                checked={value !== null ? value : false}
-                onChange={e => onChangeHandler(e.currentTarget.checked)}
-                disabled={disabled}
-            />
-            <label htmlFor={id} />
+        <div className={classes}>
+            <label htmlFor={id}>
+                <input
+                    className="checkbox__input"
+                    id={id}
+                    name={id}
+                    type="checkbox"
+                    checked={value !== null ? value : false}
+                    onChange={e => onChangeHandler(e.currentTarget.checked)}
+                    disabled={disabled}
+                />
+                <span className="checkbox__visual" />
+            </label>
         </div>
     );
 };

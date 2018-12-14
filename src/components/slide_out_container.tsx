@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { UnmountClosed } from 'react-collapse';
 
+// components
+import Button from './button';
 import PanelArrow from './panel_arrow';
 
 export type TextAlign = 'left' | 'center' | 'right';
@@ -27,24 +29,24 @@ export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps>
 }) => (
     <div className="slide-out-container">
 
-        {headerText
-                && (
-                    <div className="slide-out-container__header" onClick={() => onHeaderClick()}>
-                        <div className="layout">
-                            <div className="layout__item u-fill" style={{ textAlign: headerTextAlignment }}>
-                                {headerText}
-                            </div>
-                            {showHeaderPanelArrow
-                                && (
-                                    <div className="layout__item arrow-column">
-                                        <PanelArrow active={isOpen} width="1.6rem" />
-                                    </div>
-                                )
-                            }
-                        </div>
+        {headerText && (
+            <Button
+                style="no-style"
+                className="slide-out-container__header"
+                onClickHandler={() => onHeaderClick()}
+            >
+                <div className="layout">
+                    <div className="layout__item u-fill" style={{ textAlign: headerTextAlignment }}>
+                        {headerText}
                     </div>
-                )
-        }
+                    {showHeaderPanelArrow && (
+                        <div className="layout__item arrow-column">
+                            <PanelArrow active={isOpen} width="1.6rem" />
+                        </div>
+                    )}
+                </div>
+            </Button>
+        )}
 
         <UnmountClosed isOpened={isOpen}>
             <div className="slide-out-container__body">

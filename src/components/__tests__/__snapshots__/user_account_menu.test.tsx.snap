@@ -4,16 +4,21 @@ exports[`The UserAccountMenu component should display child section 1`] = `
 <div
   className="user-account-menu"
   onClick={[Function]}
-  tabIndex={1}
 >
-  <div
+  <Button
     className="trigger"
-    onClick={[Function]}
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
   >
-    <ProfileImage
-      size="3.6rem"
-    />
-  </div>
+    <div>
+      <ProfileImage
+        size="3.6rem"
+      />
+    </div>
+  </Button>
   <div
     className="container"
   >
@@ -118,16 +123,21 @@ exports[`The UserAccountMenu component should render 1`] = `
 <div
   className="user-account-menu"
   onClick={[Function]}
-  tabIndex={1}
 >
-  <div
+  <Button
     className="trigger"
-    onClick={[Function]}
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
   >
-    <ProfileImage
-      size="3.6rem"
-    />
-  </div>
+    <div>
+      <ProfileImage
+        size="3.6rem"
+      />
+    </div>
+  </Button>
   <div
     className="container"
   >
@@ -222,16 +232,21 @@ exports[`The UserAccountMenu component should render sign in button 1`] = `
 <div
   className="user-account-menu"
   onClick={[Function]}
-  tabIndex={1}
 >
-  <div
+  <Button
     className="trigger"
-    onClick={[Function]}
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
   >
-    <ProfileImage
-      size="3.6rem"
-    />
-  </div>
+    <div>
+      <ProfileImage
+        size="3.6rem"
+      />
+    </div>
+  </Button>
   <div
     className="container"
   >

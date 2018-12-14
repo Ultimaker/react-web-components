@@ -66,6 +66,26 @@ stories.add('Rectangle', withInfo(
                 {text('Text 4', 'Alert')}
             </Button>
         </div>
+        <div className="layout__item u-fit">
+            <Button
+                onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="link"
+            >
+                {text('Text 5', 'Link')}
+            </Button>
+        </div>
+        <div className="layout__item u-fit">
+            <Button
+                onClickHandler={action('clicked')}
+                showSpinner={boolean('Loading', false)}
+                disabled={boolean('Disabled', false)}
+                style="no-style"
+            >
+                {text('Text 6', 'No style')}
+            </Button>
+        </div>
     </div>
 )));
 
@@ -188,7 +208,7 @@ stories.add('Close', withInfo(
     <CloseButton onClickHandler={action('clicked')} />
 )));
 
-stories.add('Link', withInfo(
+stories.add('Link button', withInfo(
     'An anchor styled as a button. Useful for page navigation',
 )(() => (
     <BrowserRouter>

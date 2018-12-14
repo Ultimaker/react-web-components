@@ -5,10 +5,6 @@ import { shallow } from 'enzyme';
 // component
 import Checkbox from '../checkbox';
 
-// mocks
-import { mockClickEvent } from '../../__mocks__/clickMock';
-
-
 describe('The Checkbox component', () => {
     let props;
     let wrapper;
@@ -25,11 +21,6 @@ describe('The Checkbox component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-    });
-
-    it('should not propagate click', () => {
-        wrapper.simulate('click', mockClickEvent);
-        expect(mockClickEvent.stopPropagation).toBeCalled();
     });
 
     it('should render a checked checkbox', () => {

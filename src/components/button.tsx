@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Spinner from './spinner';
 
 export type ButtonType = 'submit' | 'button' | 'link';
-export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'alert';
+export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'alert' | 'link' | 'no-style';
 export type ButtonShape = 'rectangle' | 'circle' | 'pill';
 
 export interface ButtonProps {
@@ -18,7 +18,7 @@ export interface ButtonProps {
     disabled?: boolean;
     /** html button type: 'submit' | 'button' | 'link' */
     type?: ButtonType;
-    /** CSS styling: 'primary' | 'secondary' | 'quiet' | 'alert' */
+    /** CSS styling: 'primary' | 'secondary' | 'quiet' | 'alert' | 'link' | no-style' */
     style?: ButtonStyle;
     /** Visual shape of the Button: 'rectangle' | 'circle' | 'pill' */
     shape?: ButtonShape;
@@ -83,6 +83,7 @@ export class Button extends React.Component<ButtonProps, {}> {
         } = this.props;
 
         return (
+            // eslint-disable-next-line jsx-a11y/anchor-is-valid
             <a
                 id={id}
                 className={classes}
@@ -91,9 +92,7 @@ export class Button extends React.Component<ButtonProps, {}> {
                 rel="noopener noreferrer"
             >
                 <span className="text">{children}</span>
-                {showSpinner
-                    && <Spinner />
-                }
+                {showSpinner && <Spinner />}
             </a>
         );
     }
@@ -104,14 +103,20 @@ export class Button extends React.Component<ButtonProps, {}> {
         } = this.props;
 
         return (
-            <button id={id} className={classes} onClick={this._onClickHandler} disabled={disabled || showSpinner} type={type}>
+            // eslint-disable-next-line react/button-has-type
+            <button
+                id={id}
+                className={classes}
+                onClick={this._onClickHandler}
+                disabled={disabled || showSpinner}
+                type={type}
+            >
                 <span className="text">{children}</span>
-                {showSpinner
-                    && <Spinner />
-                }
+                {showSpinner && <Spinner />}
             </button>
         );
     }
+
 
     render(): JSX.Element {
         const {

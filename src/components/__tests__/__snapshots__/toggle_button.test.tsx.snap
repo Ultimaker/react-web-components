@@ -2,19 +2,22 @@
 
 exports[`The Checkbox component should render 1`] = `
 <div
-  className="toggle-button-container"
-  onClick={[Function]}
+  className="toggle-button"
 >
-  <input
-    checked={false}
-    className="toggle-button"
-    id="testToggleButton"
-    name="testToggleButton"
-    onChange={[Function]}
-    type="checkbox"
-  />
   <label
     htmlFor="testToggleButton"
-  />
+  >
+    <input
+      checked={false}
+      className="toggle-button__input"
+      id="testToggleButton"
+      name="testToggleButton"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <span
+      className="toggle-button__slider"
+    />
+  </label>
 </div>
 `;
