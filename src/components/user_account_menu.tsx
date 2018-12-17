@@ -102,7 +102,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
                 <Button style="no-style" className={triggerClasses} onClickHandler={() => this._setShowMenu(!showMenu)}>
                     <div
-                        className="profile-image"
+                        className="profile-image-container"
                         style={
                             triggerWidth || triggerHeight
                                 ? { width: triggerWidth, height: triggerHeight }

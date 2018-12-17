@@ -10,9 +10,12 @@
 
         &.trigger--rectangle {
             border-radius: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+            .profile-image-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }
 
@@ -28,10 +31,6 @@
     .sections {
         display: flex;
         flex-flow: row nowrap;
-    }
-
-    .profile-image {
-        text-align: center;
     }
 
     .account-section {
