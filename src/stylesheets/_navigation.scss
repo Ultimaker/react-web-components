@@ -83,7 +83,7 @@
                 margin: 0;
             }
 
-            > a {
+            .nav-link {
                 border-radius: 9999px;
                 background: white;
                 font-size: 1.6rem;
@@ -173,7 +173,7 @@
         }
 
 
-        li a {
+        li .nav-link {
             width: 150px;
             transition: width 200ms ease-in;
 

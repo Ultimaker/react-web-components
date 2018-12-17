@@ -30,4 +30,22 @@ describe('The Navigation component', () => {
     it('should render', () => {
         expect(wrapper.render()).toMatchSnapshot();
     });
+
+    it('should render sign out button', () => {
+        wrapper = shallow(
+            <BrowserRouter>
+                <Navigation {...props} onSignOutClickHandler={jest.fn()} />
+            </BrowserRouter>,
+        );
+        expect(wrapper.render()).toMatchSnapshot();
+    });
+
+    it('should render manage account button', () => {
+        wrapper = shallow(
+            <BrowserRouter>
+                <Navigation {...props} manageAccountURL="https://account.ultimaker.com/" />
+            </BrowserRouter>,
+        );
+        expect(wrapper.render()).toMatchSnapshot();
+    });
 });
