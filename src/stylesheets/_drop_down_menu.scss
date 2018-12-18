@@ -1,20 +1,20 @@
 .drop-down-menu {
-    @extend .context-menu;
+    @extend .drop-down-menu-base;
 
-    .container {
+    .drop-down-menu-base__menu-container {
         z-index: 99999;
 
         &:before {
             right: 13px;
             left: auto;
         }
-
-        .menu {
-            right: 0;
-        }
     }
 
-    .context-menu__button {
+    .drop-down-menu-base__menu {
+        right: 0;
+    }
+
+    .drop-down-menu-base__item {
         white-space: nowrap;
 
         &.active {
@@ -22,12 +22,17 @@
         }
     }
 
-    .label {
+    .drop-down-menu-base__trigger {
         cursor: pointer;
         padding: 1.2rem 1.8rem;
         width: 100%;
 
-        .label__text {
+        &:hover, &:focus {
+            background-color: $context-menu-color-hover;
+            transition: all 0.2s ease-out;
+        }
+
+        .drop-down-menu-base__trigger-label {
             text-align: left;
         }
 

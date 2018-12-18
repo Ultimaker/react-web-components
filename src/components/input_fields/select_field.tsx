@@ -2,7 +2,14 @@
 import * as React from 'react';
 
 import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
-import { SelectList, SelectOption } from '../select_list';
+import DropDownMenu from '../drop_down_menu';
+import DropDownMenuItem from '../drop_down_menu_item';
+
+export interface SelectOption {
+    label: string,
+    value: string | number,
+    disabled?: boolean
+}
 
 export interface SelectFieldProps extends InputFieldProps {
     /** The value of the option currently selected */
@@ -22,7 +29,7 @@ export interface SelectFieldState {
  * Class that adds an input wrapper around a SelectList component.
  * TODO: Merge SelectField and SelectList?
  */
-class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
+export class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
     state = {
         touched: false,
     };
@@ -59,13 +66,22 @@ class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
                 { staticField
                     ? this._staticRender()
                     : (
-                        <SelectList
+                        <DropDownMenu
                             id={id}
-                            onChangeHandler={this._onChange}
-                            value={typeof value === 'number' || typeof value === 'string' ? value : null}
-                            options={selectOptions}
+                            activeLabel={typeof value === 'number' || typeof value === 'string' ? value : null}
                             error={validationError && (touched || submitted)}
-                        />
+                        >
+                            {selectOptions.map((option, index) => (
+                                <DropDownMenuItem
+                                    key={index}
+                                    onClickHandler={() => this._onChange(option.value)}
+                                    active={value === option.value}
+                                    disabled={option.disabled}
+                                >
+                                    {option.label}
+                                </DropDownMenuItem>
+                            ))}
+                        </DropDownMenu>
                     )
                 }
             </InputFieldWrapper>

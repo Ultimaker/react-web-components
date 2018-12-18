@@ -5,19 +5,27 @@ import * as classNames from 'classnames';
 import Button from './button';
 
 export interface DropDownMenuItemProps {
+    /** Whether the item is the active item */
     active: boolean;
+    /** Disables the menu item when true */
     disabled?: boolean;
+    /** Called when the Button is clicked */
     onClickHandler: () => void;
-    /** Passed by the DropDownMenu component */
+    /** Optional ID for the menu item */
+    id?: string;
+    /** Optional class for the menu item */
+    className?: string;
+    /** Passed by the DropDownMenuBase component */
     onCloseMenuHandler?: () => void;
 }
 
 const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> = ({
-    active, disabled, onClickHandler, onCloseMenuHandler, children,
+    active, disabled, onClickHandler, onCloseMenuHandler, id, className, children,
 }) => (
     <li>
         <Button
-            className={classNames('context-menu__button', { disabled, active })}
+            id={id}
+            className={classNames('drop-down-menu-base__item', { disabled, active }, className)}
             style="no-style"
             onClickHandler={() => { onCloseMenuHandler(); onClickHandler(); }}
             disabled={disabled}
