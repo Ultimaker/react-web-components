@@ -13,7 +13,9 @@ exports[`The UserAccountMenu component should display child section 1`] = `
     style="no-style"
     type="button"
   >
-    <div>
+    <div
+      className="profile-image-container"
+    >
       <ProfileImage
         size="3.6rem"
       />
@@ -132,7 +134,9 @@ exports[`The UserAccountMenu component should render 1`] = `
     style="no-style"
     type="button"
   >
-    <div>
+    <div
+      className="profile-image-container"
+    >
       <ProfileImage
         size="3.6rem"
       />
@@ -241,7 +245,9 @@ exports[`The UserAccountMenu component should render sign in button 1`] = `
     style="no-style"
     type="button"
   >
-    <div>
+    <div
+      className="profile-image-container"
+    >
       <ProfileImage
         size="3.6rem"
       />

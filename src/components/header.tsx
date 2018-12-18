@@ -1,7 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import CuraLogo from './icons/cura_logo';
+import UltimakerLogo from './icons/ultimaker_logo';
 
 export interface HeaderProps {
     showNav?: boolean;
@@ -30,7 +30,7 @@ const Header: React.StatelessComponent<HeaderProps> = ({
 
 Header.defaultProps = {
     showNav: true,
-    headerLogo: <CuraLogo />,
+    headerLogo: <UltimakerLogo />,
     headerLogoUrl: '/',
 };
 

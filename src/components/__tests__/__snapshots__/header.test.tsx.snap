@@ -9,7 +9,7 @@ exports[`The Header component should render 1`] = `
     replace={false}
     to="/"
   >
-    <CuraLogo />
+    <UltimakerLogo />
   </Link>
   <div
     className="navigation-container"

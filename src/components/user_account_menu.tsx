@@ -101,11 +101,13 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
             <div className={classes} ref={this._menuRef} onClick={UserAccountMenu._stopPropagation}>
 
                 <Button style="no-style" className={triggerClasses} onClickHandler={() => this._setShowMenu(!showMenu)}>
-                    <div style={
-                        triggerWidth || triggerHeight
-                            ? { width: triggerWidth, height: triggerHeight }
-                            : undefined
-                    }
+                    <div
+                        className="profile-image-container"
+                        style={
+                            triggerWidth || triggerHeight
+                                ? { width: triggerWidth, height: triggerHeight }
+                                : undefined
+                        }
                     >
                         <ProfileImage imageURL={imageURL} size="3.6rem" />
                     </div>

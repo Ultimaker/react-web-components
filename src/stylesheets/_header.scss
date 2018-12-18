@@ -14,7 +14,7 @@
 
 
     @include respond-to(md) {
-        padding: 0 2.4rem;
+        padding: 0 0 0 2.4rem;
     }
 
 
@@ -49,7 +49,13 @@
         }
 
 
-        svg {
+        .cura-logo {
+            width: 9.5rem;
+            height: 1.8rem;
+        }
+
+        .ulimaker-logo {
+            width: 12rem;
             height: 1.8rem;
         }
     }
@@ -58,8 +64,9 @@
         display: flex;
         align-items: center;
         color: $color-text;
-        padding: 0 0 0 2rem;
+        padding: 0 2.4rem;
         border-bottom: 5px solid $color-background;
+        border-left: 1px solid $color-border-light;
         height: 6rem;
         font-family: $font-primary-medium;
 

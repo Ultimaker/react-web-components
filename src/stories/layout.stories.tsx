@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, selectV2, number,
@@ -16,6 +17,8 @@ import SlideInPanel from '../components/slide_in_panel';
 import SettingPanel from '../components/setting_panel';
 import Carousel from '../components/carousel';
 import AspectRatioContainer from '../components/aspect_ratio_container';
+import Header from '../components/header';
+import Navigation from '../components/navigation';
 
 import UM3PrinterIcon from '../components/icons/um3_printer_icon';
 import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
@@ -131,6 +134,31 @@ stories.add('Grid', withInfo(
             </GridItem>
         </Grid>
     </div>
+)));
+
+const routes = [{
+    path: '/profile',
+    label: 'Profile',
+    component: null,
+    visible: true,
+},
+{
+    path: '/settings',
+    label: 'Settings',
+    component: null,
+    visible: true,
+}];
+
+stories.add('Header', withInfo(
+    'Application header with navigation',
+)(() => (
+    <BrowserRouter>
+        <div style={{ width: '100vw', marginTop: '-50px' }}>
+            <Header headerLogoUrl="/" showNav rightSideLabel={text('Label', '')}>
+                <Navigation navLinks={routes} manageAccountURL={text('Manage Account URL', '')} onSignOutClickHandler={() => {}} />
+            </Header>
+        </div>
+    </BrowserRouter>
 )));
 
 stories.add('Carousel', withInfo(
