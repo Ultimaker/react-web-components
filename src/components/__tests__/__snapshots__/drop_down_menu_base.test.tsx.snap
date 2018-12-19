@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The DropDownMenuBase component should render 1`] = `
+<div
+  className="drop-down-menu-base"
+  onClick={[Function]}
+>
+  <Button
+    className="drop-down-menu-base__trigger"
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    style="no-style"
+    type="button"
+  >
+    trigger
+  </Button>
+  <div
+    className="drop-down-menu-base__menu-container"
+  >
+    <div
+      className="drop-down-menu-base__menu"
+    >
+      <Collapse
+        fixedHeight={-1}
+        forceInitialAnimation={false}
+        hasNestedCollapse={false}
+        isOpened={false}
+        onMeasure={[Function]}
+        onRender={[Function]}
+        onRest={[Function]}
+        springConfig={
+          Object {
+            "damping": 35,
+            "stiffness": 370,
+          }
+        }
+        style={Object {}}
+        theme={
+          Object {
+            "collapse": "ReactCollapse--collapse",
+            "content": "ReactCollapse--content",
+          }
+        }
+      >
+        <ul
+          className="drop-down-menu-base__menu-list"
+        >
+          <DropDownMenuItem
+            active={false}
+            key=".0"
+            onClickHandler={[MockFunction]}
+            onCloseMenuHandler={[Function]}
+          />
+        </ul>
+      </Collapse>
+    </div>
+  </div>
+</div>
+`;

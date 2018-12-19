@@ -7,6 +7,7 @@ import {
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 
+import { relative } from 'path';
 import ContextMenu from '../components/context_menu';
 import ContextMenuItem from '../components/context_menu_item';
 import DropDownMenu from '../components/drop_down_menu';
@@ -43,9 +44,15 @@ stories.add('Context menu', withInfo(
         menuDirection={selectV2('Menu Direction', directionOptions, directionDefaultValue)}
         menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}
     >
-        <ContextMenuItem onClickHandler={action('clicked 1')} disabled={boolean('Disabled', false)} label={text('Text 1', 'Context menu item 1')} />
-        <ContextMenuItem onClickHandler={action('clicked 2')} disabled={boolean('Disabled', false)} label={text('Text 2', 'Context menu item 2')} />
-        <ContextMenuItem onClickHandler={action('clicked 3')} disabled={boolean('Disabled', false)} label={text('Text 3', 'Context menu item 3')} />
+        <ContextMenuItem onClickHandler={action('clicked 1')} disabled={boolean('Disabled', false)}>
+            {text('Text 1', 'Context menu item 1')}
+        </ContextMenuItem>
+        <ContextMenuItem onClickHandler={action('clicked 2')} disabled={boolean('Disabled', false)}>
+            {text('Text 2', 'Context menu item 2')}
+        </ContextMenuItem>
+        <ContextMenuItem onClickHandler={action('clicked 3')} disabled={boolean('Disabled', false)}>
+            {text('Text 3', 'Context menu item 3')}
+        </ContextMenuItem>
     </ContextMenu>
 )));
 
@@ -53,10 +60,18 @@ stories.add('Drop down menu', withInfo(
     'Drop down menu',
 )(() => (
     <DropDownMenu activeLabel="10">
-        <DropDownMenuItem active onClickHandler={action('clicked')}>10</DropDownMenuItem>
-        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>20</DropDownMenuItem>
-        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>40</DropDownMenuItem>
-        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>80</DropDownMenuItem>
+        <DropDownMenuItem active onClickHandler={action('clicked')}>
+            10
+        </DropDownMenuItem>
+        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>
+            20
+        </DropDownMenuItem>
+        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>
+            40
+        </DropDownMenuItem>
+        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>
+            80
+        </DropDownMenuItem>
     </DropDownMenu>
 )));
 

@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 
 // component
 import ContextMenuItem from '../context_menu_item';
-import Button from '../button';
 
 
 describe('The ContextMenuItem component', () => {
@@ -23,16 +22,5 @@ describe('The ContextMenuItem component', () => {
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
         expect(props.onClickHandler).not.toHaveBeenCalled();
-    });
-
-    it('should call the click handler when item is clicked', () => {
-        wrapper.find(Button).props().onClickHandler();
-        expect(props.onClickHandler).toHaveBeenCalled();
-        expect(props.onCloseMenuHandler).toHaveBeenCalled();
-    });
-
-    it('should render item as disabled', () => {
-        wrapper.setProps({ disabled: true });
-        expect(wrapper.find('.disabled')).toHaveLength(1);
     });
 });

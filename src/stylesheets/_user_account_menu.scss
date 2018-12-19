@@ -1,29 +1,43 @@
 .user-account-menu {
-    @extend .context-menu;
-
-    .trigger {
+    .drop-down-menu-base__trigger {
         height: auto;
+        position: relative;
+        cursor: pointer;
+        color: $context-menu-color-trigger;
+        text-align: center;
+        display: inline-block;
+        border-radius: 9999px;
+        background-color: transparent;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        z-index: 99;
 
-        &:after {
-            content: none;
-        }
-
-        &.trigger--rectangle {
-            border-radius: 0;
-
-            .profile-image-container{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+        &:hover, &:focus {
+            background-color: $context-menu-color-hover;
+            color: $context-menu-color-trigger-hover;
+            transition: all 0.2s ease-out;
         }
     }
 
-    .container {
+    .user-account-menu__trigger-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.user-account-menu--trigger-rectangle {
+        .drop-down-menu-base__trigger {
+            border-radius: 0;
+        }
+    }
+
+    .drop-down-menu-base__menu-container {
         bottom: calc(50% - 2.5rem);
     }
 
-    .menu {
+    .drop-down-menu-base__menu {
         right: calc(50% - 4rem);
         margin-bottom: 1.2rem;
     }

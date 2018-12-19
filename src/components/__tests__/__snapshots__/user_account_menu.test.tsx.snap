@@ -1,307 +1,205 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The UserAccountMenu component should display child section 1`] = `
+exports[`The UserAccountMenu component should display other section 1`] = `
 <div
   className="user-account-menu"
-  onClick={[Function]}
 >
-  <Button
-    className="trigger"
-    linkToNewTab={false}
-    onClickHandler={[Function]}
-    shape="rectangle"
-    style="no-style"
-    type="button"
+  <DropDownMenuBase
+    onToggleMenuHandler={[Function]}
+    showMenu={false}
+    triggerElement={
+      <div
+        className="user-account-menu__trigger-image"
+      >
+        <ProfileImage
+          size="3.6rem"
+        />
+      </div>
+    }
   >
     <div
-      className="profile-image-container"
+      className="sections"
     >
-      <ProfileImage
-        size="3.6rem"
-      />
-    </div>
-  </Button>
-  <div
-    className="container"
-  >
-    <div
-      className="menu"
-    >
-      <Collapse
-        fixedHeight={-1}
-        forceInitialAnimation={false}
-        hasNestedCollapse={false}
-        isOpened={false}
-        onMeasure={[Function]}
-        onRender={[Function]}
-        onRest={[Function]}
-        springConfig={
-          Object {
-            "damping": 32,
-            "stiffness": 390,
-          }
-        }
-        style={Object {}}
-        theme={
-          Object {
-            "collapse": "ReactCollapse--collapse",
-            "content": "ReactCollapse--content",
-          }
-        }
+      <div
+        className="other-section"
       >
         <div
-          className="sections"
+          key=".0"
+          onCloseMenuHandler={[Function]}
+        >
+          Child section
+        </div>
+      </div>
+      <div
+        className="account-section"
+      >
+        <div
+          className="account-section__title"
+        >
+          My account
+        </div>
+        <div
+          className="account-section__profile"
         >
           <div
-            className="other-section"
+            className="account-section__icon"
           >
-            <div
-              key=".0"
-              onCloseMenuHandler={[Function]}
-            >
-              Child section
-            </div>
+            <ProfileImage
+              size="10rem"
+            />
           </div>
           <div
-            className="account-section"
+            className="account-section__name"
           >
-            <div
-              className="account-section__title"
-            >
-              My account
-            </div>
-            <div
-              className="account-section__profile"
-            >
-              <div
-                className="account-section__icon"
-              >
-                <ProfileImage
-                  size="10rem"
-                />
-              </div>
-              <div
-                className="account-section__name"
-              >
-                Test User
-              </div>
-            </div>
-            <div
-              className="account-section__buttons"
-            >
-              <Button
-                className=""
-                id="account-menu-manage-button"
-                linkToNewTab={true}
-                linkURL="https://account-staging.ultimaker.com"
-                shape="rectangle"
-                style="secondary"
-                type="link"
-              >
-                Manage account
-                <Icon(LinkIcon) />
-              </Button>
-              <Button
-                className=""
-                id="account-menu-sign-out-button"
-                linkToNewTab={false}
-                onClickHandler={[Function]}
-                shape="rectangle"
-                style="secondary"
-                type="button"
-              >
-                Sign out
-              </Button>
-            </div>
+            Test User
           </div>
         </div>
-      </Collapse>
+        <div
+          className="account-section__buttons"
+        >
+          <Button
+            className=""
+            id="account-menu-manage-button"
+            linkToNewTab={true}
+            linkURL="https://account-staging.ultimaker.com"
+            shape="rectangle"
+            style="secondary"
+            type="link"
+          >
+            Manage account
+            <Icon(LinkIcon) />
+          </Button>
+          <Button
+            className=""
+            id="account-menu-sign-out-button"
+            linkToNewTab={false}
+            onClickHandler={[Function]}
+            shape="rectangle"
+            style="secondary"
+            type="button"
+          >
+            Sign out
+          </Button>
+        </div>
+      </div>
     </div>
-  </div>
+  </DropDownMenuBase>
 </div>
 `;
 
 exports[`The UserAccountMenu component should render 1`] = `
 <div
   className="user-account-menu"
-  onClick={[Function]}
 >
-  <Button
-    className="trigger"
-    linkToNewTab={false}
-    onClickHandler={[Function]}
-    shape="rectangle"
-    style="no-style"
-    type="button"
+  <DropDownMenuBase
+    onToggleMenuHandler={[Function]}
+    showMenu={false}
+    triggerElement={
+      <div
+        className="user-account-menu__trigger-image"
+      >
+        <ProfileImage
+          size="3.6rem"
+        />
+      </div>
+    }
   >
     <div
-      className="profile-image-container"
+      className="sections"
     >
-      <ProfileImage
-        size="3.6rem"
-      />
-    </div>
-  </Button>
-  <div
-    className="container"
-  >
-    <div
-      className="menu"
-    >
-      <Collapse
-        fixedHeight={-1}
-        forceInitialAnimation={false}
-        hasNestedCollapse={false}
-        isOpened={false}
-        onMeasure={[Function]}
-        onRender={[Function]}
-        onRest={[Function]}
-        springConfig={
-          Object {
-            "damping": 32,
-            "stiffness": 390,
-          }
-        }
-        style={Object {}}
-        theme={
-          Object {
-            "collapse": "ReactCollapse--collapse",
-            "content": "ReactCollapse--content",
-          }
-        }
+      <div
+        className="account-section"
       >
         <div
-          className="sections"
+          className="account-section__title"
+        >
+          My account
+        </div>
+        <div
+          className="account-section__profile"
         >
           <div
-            className="account-section"
+            className="account-section__icon"
           >
-            <div
-              className="account-section__title"
-            >
-              My account
-            </div>
-            <div
-              className="account-section__profile"
-            >
-              <div
-                className="account-section__icon"
-              >
-                <ProfileImage
-                  size="10rem"
-                />
-              </div>
-              <div
-                className="account-section__name"
-              >
-                Test User
-              </div>
-            </div>
-            <div
-              className="account-section__buttons"
-            >
-              <Button
-                className=""
-                id="account-menu-manage-button"
-                linkToNewTab={true}
-                linkURL="https://account-staging.ultimaker.com"
-                shape="rectangle"
-                style="secondary"
-                type="link"
-              >
-                Manage account
-                <Icon(LinkIcon) />
-              </Button>
-              <Button
-                className=""
-                id="account-menu-sign-out-button"
-                linkToNewTab={false}
-                onClickHandler={[Function]}
-                shape="rectangle"
-                style="secondary"
-                type="button"
-              >
-                Sign out
-              </Button>
-            </div>
+            <ProfileImage
+              size="10rem"
+            />
+          </div>
+          <div
+            className="account-section__name"
+          >
+            Test User
           </div>
         </div>
-      </Collapse>
+        <div
+          className="account-section__buttons"
+        >
+          <Button
+            className=""
+            id="account-menu-manage-button"
+            linkToNewTab={true}
+            linkURL="https://account-staging.ultimaker.com"
+            shape="rectangle"
+            style="secondary"
+            type="link"
+          >
+            Manage account
+            <Icon(LinkIcon) />
+          </Button>
+          <Button
+            className=""
+            id="account-menu-sign-out-button"
+            linkToNewTab={false}
+            onClickHandler={[Function]}
+            shape="rectangle"
+            style="secondary"
+            type="button"
+          >
+            Sign out
+          </Button>
+        </div>
+      </div>
     </div>
-  </div>
+  </DropDownMenuBase>
 </div>
 `;
 
 exports[`The UserAccountMenu component should render sign in button 1`] = `
 <div
   className="user-account-menu"
-  onClick={[Function]}
 >
-  <Button
-    className="trigger"
-    linkToNewTab={false}
-    onClickHandler={[Function]}
-    shape="rectangle"
-    style="no-style"
-    type="button"
-  >
-    <div
-      className="profile-image-container"
-    >
-      <ProfileImage
-        size="3.6rem"
-      />
-    </div>
-  </Button>
-  <div
-    className="container"
-  >
-    <div
-      className="menu"
-    >
-      <Collapse
-        fixedHeight={-1}
-        forceInitialAnimation={false}
-        hasNestedCollapse={false}
-        isOpened={false}
-        onMeasure={[Function]}
-        onRender={[Function]}
-        onRest={[Function]}
-        springConfig={
-          Object {
-            "damping": 32,
-            "stiffness": 390,
-          }
-        }
-        style={Object {}}
-        theme={
-          Object {
-            "collapse": "ReactCollapse--collapse",
-            "content": "ReactCollapse--content",
-          }
-        }
+  <DropDownMenuBase
+    onToggleMenuHandler={[Function]}
+    showMenu={true}
+    triggerElement={
+      <div
+        className="user-account-menu__trigger-image"
       >
-        <div
-          className="sections"
+        <ProfileImage
+          size="3.6rem"
+        />
+      </div>
+    }
+  >
+    <div
+      className="sections"
+    >
+      <div
+        className="account-section"
+      >
+        <Button
+          className=""
+          id="account-menu-sign-in-button"
+          linkToNewTab={false}
+          onClickHandler={[Function]}
+          shape="rectangle"
+          style="secondary"
+          type="button"
         >
-          <div
-            className="account-section"
-          >
-            <Button
-              className=""
-              id="account-menu-sign-in-button"
-              linkToNewTab={false}
-              onClickHandler={[Function]}
-              shape="rectangle"
-              style="secondary"
-              type="button"
-            >
-              Sign in
-            </Button>
-          </div>
-        </div>
-      </Collapse>
+          Sign in
+        </Button>
+      </div>
     </div>
-  </div>
+  </DropDownMenuBase>
 </div>
 `;
