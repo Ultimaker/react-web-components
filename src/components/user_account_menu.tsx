@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Collapse } from 'react-collapse';
 
 // components
 import Button from './button';
@@ -90,9 +89,6 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
             { 'user-account-menu--trigger-rectangle': triggerWidth || triggerHeight },
         );
 
-        const childProps = children
-            && { onCloseMenuHandler: () => this._onToggleMenuHandler(false) };
-
         return (
             <div className={classes}>
                 <DropDownMenuBase
@@ -105,7 +101,9 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                         {children && (
                             <div className="other-section">
                                 {React.Children.map(children, (child: JSX.Element) => (
-                                    React.cloneElement(child, childProps)
+                                    React.cloneElement(child, {
+                                        onCloseMenuHandler: () => this._onToggleMenuHandler(false),
+                                    })
                                 ))}
                             </div>
                         )}

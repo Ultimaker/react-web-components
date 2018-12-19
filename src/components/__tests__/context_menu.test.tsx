@@ -1,21 +1,20 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 // component
-import ContextMenu from '../context_menu';
-
-// mocks
-import { mockClickEvent } from '../../__mocks__/clickMock';
+import ContextMenu, { ContextMenuProps } from '../context_menu';
+import DropDownMenuBase from '../drop_down_menu_base';
 
 
 describe('The ContextMenu component', () => {
-    let props;
+    let props: ContextMenuProps;
     let wrapper;
 
     beforeEach(() => {
         props = {
             menuWidth: 200,
+            children: null,
         };
         wrapper = shallow(<ContextMenu {...props} />);
     });
@@ -26,8 +25,8 @@ describe('The ContextMenu component', () => {
 
     it('should render to right', () => {
         wrapper.setProps({ menuOffsetDirection: 'right' });
-        expect(wrapper.find('.menu').prop('style').left).toBe(-30);
-        expect(wrapper.find('.menu').prop('style').right).toBeUndefined();
+        expect(wrapper.find(DropDownMenuBase).prop('menuStyle').left).toBe(-30);
+        expect(wrapper.find(DropDownMenuBase).prop('menuStyle').right).toBeUndefined();
     });
 
     it('should render to north', () => {
@@ -42,19 +41,7 @@ describe('The ContextMenu component', () => {
     });
 
     it('should show menu when the trigger is clicked', () => {
-        wrapper.find('.trigger').props().onClickHandler();
-        expect(wrapper.find('.visible')).toHaveLength(1);
-    });
-
-    it('should hide menu when the trigger is clicked', () => {
-        wrapper.find('.trigger').props().onClickHandler();
-        expect(wrapper.find('.visible')).toHaveLength(1);
-        wrapper.find('.trigger').props().onClickHandler();
-        expect(wrapper.find('.visible').exists()).toBe(false);
-    });
-
-    it('should not propagate click', () => {
-        wrapper.simulate('click', mockClickEvent);
-        expect(mockClickEvent.stopPropagation).toBeCalled();
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        expect(wrapper.find(DropDownMenuBase).prop('showMenu')).toBe(true);
     });
 });

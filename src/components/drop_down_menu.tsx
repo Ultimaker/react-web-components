@@ -8,8 +8,11 @@ import PanelArrow from './panel_arrow';
 export interface DropDownMenuProps {
     /** Optional ID for the menu item */
     id?: string;
+    /** The active value label to be shown in the trigger */
     activeLabel: string | number;
+    /** Whether to show the menu in the error state */
     error?: boolean;
+    /** The list of menu items */
     children: JSX.Element | JSX.Element[];
 }
 
@@ -18,10 +21,6 @@ export interface DropDownMenuState {
 }
 
 export default class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
-    static _stopPropagation(e): void {
-        e.stopPropagation();
-    }
-
     state = {
         showMenu: false,
     };

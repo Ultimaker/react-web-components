@@ -25,10 +25,6 @@ export interface SelectFieldState {
     touched: boolean;
 }
 
-/**
- * Class that adds an input wrapper around a SelectList component.
- * TODO: Merge SelectField and SelectList?
- */
 export class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
     state = {
         touched: false,

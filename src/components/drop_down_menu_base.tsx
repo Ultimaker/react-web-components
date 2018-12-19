@@ -8,19 +8,21 @@ import Button from './button';
 export type MenuDirection = 'left' | 'right';
 
 export interface DropDownMenuBaseProps {
+    /** Whether the menu should be visible */
     showMenu: boolean;
-    triggerElement: JSX.Element;
+    /** The string or JSX.Element to be shown in the trigger button */
+    triggerElement: any;
     /** Direction to position the menu: 'north' | 'south' */
     menuDirection?: MenuDirection;
-
-    onToggleMenuHandler?: (showMenu) => void;
-
+    /** Style object to be applied to menu */
     menuStyle?: object;
-
+    /** Callback to toggle showMenu */
+    onToggleMenuHandler?: (showMenu) => void;
+    /** The list of menu items */
     children: JSX.Element | JSX.Element[];
 }
 
-export default class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}> {
+export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}> {
     static _stopPropagation(e): void {
         e.stopPropagation();
     }
@@ -91,7 +93,7 @@ export default class DropDownMenuBase extends React.Component<DropDownMenuBasePr
                             isOpened={showMenu}
                             springConfig={{ stiffness: 370, damping: 35 }}
                         >
-                            <ul>
+                            <ul className="drop-down-menu-base__menu-list">
                                 {React.Children.map(children, (child: JSX.Element) => (
                                     React.cloneElement(child, {
                                         onCloseMenuHandler: () => this._onToggleMenuHandler(false),
@@ -106,3 +108,5 @@ export default class DropDownMenuBase extends React.Component<DropDownMenuBasePr
         );
     }
 }
+
+export default DropDownMenuBase;

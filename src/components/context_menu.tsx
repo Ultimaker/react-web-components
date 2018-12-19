@@ -16,7 +16,7 @@ export interface ContextMenuProps {
     menuDirection?: MenuDirection;
     /** Whether the context menu is positioned in a panel, such as a header or footer */
     positionMenuInPanel?: boolean;
-
+    /** The list of menu items */
     children: JSX.Element | JSX.Element[];
 }
 
@@ -57,10 +57,6 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         return menuStyle;
     }
 
-    static _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
-        e.stopPropagation();
-    }
-
     state = {
         menuOffset: null,
         showMenu: false,
@@ -74,8 +70,8 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     private _menuRef;
 
     private _onToggleMenuHandler(showMenu: boolean): void {
-        this._setMenuOffset();
         this.setState({ showMenu });
+        this._setMenuOffset();
     }
 
     private _setMenuOffset(): void {

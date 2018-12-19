@@ -4,9 +4,7 @@ import { shallow } from 'enzyme';
 
 // component
 import DropDownMenu from '../drop_down_menu';
-
-// mocks
-import { mockClickEvent } from '../../__mocks__/clickMock';
+import DropDownMenuBase from '../drop_down_menu_base';
 
 
 describe('The DropDownMenu component', () => {
@@ -24,20 +22,13 @@ describe('The DropDownMenu component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should show menu when the label is clicked', () => {
-        wrapper.find('.label').props().onClickHandler();
-        expect(wrapper.find('.visible')).toHaveLength(1);
+    it('should show menu when the trigger is clicked', () => {
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        expect(wrapper.find(DropDownMenuBase).prop('showMenu')).toBe(true);
     });
 
-    it('should hide menu when the label is clicked', () => {
-        wrapper.find('.label').props().onClickHandler();
-        expect(wrapper.find('.visible')).toHaveLength(1);
-        wrapper.find('.label').props().onClickHandler();
-        expect(wrapper.find('.visible').exists()).toBe(false);
-    });
-
-    it('should not propagate click', () => {
-        wrapper.simulate('click', mockClickEvent);
-        expect(mockClickEvent.stopPropagation).toBeCalled();
+    it('should render the error state', () => {
+        wrapper.setProps({ error: true });
+        expect(wrapper.find('.drop-down-menu--error')).toHaveLength(1);
     });
 });

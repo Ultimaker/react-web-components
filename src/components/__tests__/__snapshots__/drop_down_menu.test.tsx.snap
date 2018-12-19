@@ -3,57 +3,34 @@
 exports[`The DropDownMenu component should render 1`] = `
 <div
   className="drop-down-menu"
-  onClick={[Function]}
 >
-  <Button
-    className="label"
-    linkToNewTab={false}
-    onClickHandler={[Function]}
-    shape="rectangle"
-    style="no-style"
-    type="button"
-  >
-    <div
-      className="layout layout--align-middle layout--gutter-none"
-    >
+  <DropDownMenuBase
+    onToggleMenuHandler={[Function]}
+    showMenu={false}
+    triggerElement={
       <div
-        className="layout__item u-fit"
+        className="layout layout--align-middle layout--gutter-none"
       >
         <div
-          className="label__text"
+          className="layout__item u-fit"
         >
-          Active label
+          <div
+            className="drop-down-menu-base__button-label"
+          >
+            Active label
+          </div>
+        </div>
+        <div
+          className="layout__item u-fit layout__item--right"
+        >
+          <PanelArrow
+            active={false}
+            color="blue"
+            width="1.2rem"
+          />
         </div>
       </div>
-      <div
-        className="layout__item u-fit layout__item--right"
-      >
-        <PanelArrow
-          active={false}
-          color="blue"
-          width="1.2rem"
-        />
-      </div>
-    </div>
-  </Button>
-  <div
-    className="container"
-  >
-    <div
-      className="menu"
-    >
-      <UnmountClosed
-        isOpened={false}
-        springConfig={
-          Object {
-            "damping": 35,
-            "stiffness": 370,
-          }
-        }
-      >
-        <ul />
-      </UnmountClosed>
-    </div>
-  </div>
+    }
+  />
 </div>
 `;
