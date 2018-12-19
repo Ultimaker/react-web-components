@@ -12,7 +12,9 @@ function downloadFile(fileName: string, fileContent: string, contentType?: strin
     const element = document.createElement('a');
     element.href = URL.createObjectURL(blob);
     element.download = fileName;
+    document.body.appendChild(element);
     element.click();
+    document.body.removeChild(element);
 }
 
 export default downloadFile;
