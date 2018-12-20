@@ -7,7 +7,6 @@ import {
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 
-import { relative } from 'path';
 import ContextMenu from '../components/context_menu';
 import ContextMenuItem from '../components/context_menu_item';
 import DropDownMenu from '../components/drop_down_menu';
