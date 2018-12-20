@@ -21,7 +21,6 @@ module.exports = {
         "jsx-closing-tag-location": 0,
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
-        "react/style-prop-object": 0,
         "react/no-array-index-key": 0
     },
     settings: {

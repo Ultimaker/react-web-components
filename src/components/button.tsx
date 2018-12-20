@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Spinner from './spinner';
 
 export type ButtonType = 'submit' | 'button' | 'link';
-export type ButtonStyle = 'primary' | 'secondary' | 'quiet' | 'alert' | 'link' | 'no-style';
+export type ButtonAppearance = 'primary' | 'secondary' | 'quiet' | 'alert' | 'link' | 'no-style';
 export type ButtonShape = 'rectangle' | 'circle' | 'pill';
 
 export interface ButtonProps {
@@ -19,7 +19,7 @@ export interface ButtonProps {
     /** html button type: 'submit' | 'button' | 'link' */
     type?: ButtonType;
     /** CSS styling: 'primary' | 'secondary' | 'quiet' | 'alert' | 'link' | no-style' */
-    style?: ButtonStyle;
+    appearance?: ButtonAppearance;
     /** Visual shape of the Button: 'rectangle' | 'circle' | 'pill' */
     shape?: ButtonShape;
     /** Replaces the Button text with a spinner when true */
@@ -35,7 +35,7 @@ export interface ButtonProps {
 export class Button extends React.Component<ButtonProps, {}> {
     static defaultProps = {
         type: 'button',
-        style: 'primary',
+        appearance: 'primary',
         shape: 'rectangle',
         linkToNewTab: false,
         className: '',
@@ -120,10 +120,10 @@ export class Button extends React.Component<ButtonProps, {}> {
 
     render(): JSX.Element {
         const {
-            disabled, type, style, shape, showSpinner, className,
+            disabled, type, appearance, shape, showSpinner, className,
         } = this.props;
 
-        const classes = classNames(`btn btn--${style} btn--${shape} ${className}`,
+        const classes = classNames(`btn btn--${appearance} btn--${shape} ${className}`,
             { disabled }, { waiting: showSpinner });
 
         if (type === 'link' && this._isLinkInternal()) {

@@ -83,7 +83,7 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
                 onClick={DropDownMenuBase._stopPropagation}
             >
 
-                <Button style="no-style" className="drop-down-menu-base__trigger" onClickHandler={() => this._onToggleMenuHandler(!showMenu)}>
+                <Button appearance="no-style" className="drop-down-menu-base__trigger" onClickHandler={() => this._onToggleMenuHandler(!showMenu)}>
                     {triggerElement}
                 </Button>
 

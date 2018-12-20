@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, ButtonStyle } from './button';
+import { Button, ButtonAppearance } from './button';
 import FormActions from './form_actions';
 
 
@@ -17,13 +17,13 @@ export interface FormProps {
     /** Called when the primary button is clicked to submit the form */
     onSubmitHandler: () => void;
     /** Primary button style type */
-    primaryBtnStyle?: ButtonStyle;
+    primaryBtnAppearance?: ButtonAppearance;
     /** Secondary button text */
     secondaryBtnText?: string;
     /** Called when the secondary button is clicked */
     secondaryBtnHandler?: () => void;
     /** Primary button style type */
-    secondaryBtnStyle?: ButtonStyle;
+    secondaryBtnAppearance?: ButtonAppearance;
     /** An internal url link to be used instead of calling secondaryBtnHandler */
     secondaryBtnLink?: string;
     /** Replaces the secondary button text with a spinner when true */
@@ -96,7 +96,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
     render(): JSX.Element {
         const {
-            primaryBtnText, secondaryBtnText, primaryBtnStyle, secondaryBtnStyle,
+            primaryBtnText, secondaryBtnText, primaryBtnAppearance, secondaryBtnAppearance,
             secondaryBtnHandler, secondaryBtnLink, primaryBtnShowSpinner, secondaryBtnShowSpinner,
             children,
         } = this.props;
@@ -110,7 +110,7 @@ export class Form extends React.Component<FormProps, FormState> {
                             {primaryBtnText
                                 && (
                                     <Button
-                                        style={primaryBtnStyle}
+                                        appearance={primaryBtnAppearance}
                                         showSpinner={primaryBtnShowSpinner}
                                         disabled={this._isPrimaryBtnDisabled()}
                                         type="submit"
@@ -123,7 +123,7 @@ export class Form extends React.Component<FormProps, FormState> {
                             {secondaryBtnText
                                 && (
                                     <Button
-                                        style={secondaryBtnStyle}
+                                        appearance={secondaryBtnAppearance}
                                         showSpinner={secondaryBtnShowSpinner}
                                         disabled={primaryBtnShowSpinner}
                                         onClickHandler={secondaryBtnHandler}
