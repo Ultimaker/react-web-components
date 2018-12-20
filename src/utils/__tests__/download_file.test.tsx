@@ -6,6 +6,8 @@ test('Downloading a file', () => {
     // prepare mock
     const elementMock = { click: jest.fn() };
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValue(elementMock);
+    const appendChildSpy = jest.spyOn(document.body, 'appendChild').mockImplementation();
+    const removeChildSpy = jest.spyOn(document.body, 'removeChild').mockImplementation();
     const createObjectURL = jest.fn().mockReturnValue('obj://test-url');
     // @ts-ignore
     global.URL.createObjectURL = createObjectURL;
@@ -22,4 +24,6 @@ test('Downloading a file', () => {
         href: 'obj://test-url',
     });
     expect(elementMock.click).toHaveBeenCalledTimes(1);
+    expect(appendChildSpy).toHaveBeenCalledWith(elementMock);
+    expect(removeChildSpy).toHaveBeenCalledWith(elementMock);
 });
