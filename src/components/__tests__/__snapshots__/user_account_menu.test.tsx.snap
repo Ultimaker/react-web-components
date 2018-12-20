@@ -58,24 +58,26 @@ exports[`The UserAccountMenu component should display other section 1`] = `
           className="account-section__buttons"
         >
           <Button
+            appearance="secondary"
             className=""
             id="account-menu-manage-button"
             linkToNewTab={true}
             linkURL="https://account-staging.ultimaker.com"
             shape="rectangle"
-            style="secondary"
+            style="primary"
             type="link"
           >
             Manage account
             <Icon(LinkIcon) />
           </Button>
           <Button
+            appearance="secondary"
             className=""
             id="account-menu-sign-out-button"
             linkToNewTab={false}
             onClickHandler={[Function]}
             shape="rectangle"
-            style="secondary"
+            style="primary"
             type="button"
           >
             Sign out
@@ -135,24 +137,26 @@ exports[`The UserAccountMenu component should render 1`] = `
           className="account-section__buttons"
         >
           <Button
+            appearance="secondary"
             className=""
             id="account-menu-manage-button"
             linkToNewTab={true}
             linkURL="https://account-staging.ultimaker.com"
             shape="rectangle"
-            style="secondary"
+            style="primary"
             type="link"
           >
             Manage account
             <Icon(LinkIcon) />
           </Button>
           <Button
+            appearance="secondary"
             className=""
             id="account-menu-sign-out-button"
             linkToNewTab={false}
             onClickHandler={[Function]}
             shape="rectangle"
-            style="secondary"
+            style="primary"
             type="button"
           >
             Sign out
@@ -188,12 +192,13 @@ exports[`The UserAccountMenu component should render sign in button 1`] = `
         className="account-section"
       >
         <Button
+          appearance="secondary"
           className=""
           id="account-menu-sign-in-button"
           linkToNewTab={false}
           onClickHandler={[Function]}
           shape="rectangle"
-          style="secondary"
+          style="primary"
           type="button"
         >
           Sign in

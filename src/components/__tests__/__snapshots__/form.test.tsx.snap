@@ -119,7 +119,7 @@ exports[`The Form component should render with a form item 1`] = `
             type="submit"
           >
             <button
-              className="btn btn--primary btn--rectangle  disabled"
+              className="btn btn--undefined btn--rectangle  disabled"
               disabled={true}
               onClick={[Function]}
               type="submit"

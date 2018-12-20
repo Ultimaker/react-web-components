@@ -22,11 +22,12 @@ exports[`The search field component should render a wrapper 1`] = `
     value="2018"
   >
     <Button
+      appearance="quiet"
       className="search-button"
       linkToNewTab={false}
       onClickHandler={[Function]}
       shape="rectangle"
-      style="quiet"
+      style="primary"
       type="button"
     >
       <Icon(RejectedIcon)

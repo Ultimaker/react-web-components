@@ -64,7 +64,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                     <div className="nav-links-container">
                         <div className="burger-menu hide-sm">
                             <Button
-                                style="primary"
+                                appearance="primary"
                                 shape="circle"
                                 onClickHandler={() => this._toggleShowNav(!showNav)}
                             >
@@ -98,7 +98,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
 
                                     {onSignOutClickHandler && (
                                         <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * x}px` }} className="hide-sm">
-                                            <Button className="nav-link" onClickHandler={onSignOutClickHandler} style="no-style">
+                                            <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
                                                 <span className="label">{I18n.translate('Nav sign out button', 'Sign out')}</span>
                                             </Button>
                                         </li>

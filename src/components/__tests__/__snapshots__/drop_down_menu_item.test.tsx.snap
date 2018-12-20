@@ -3,11 +3,12 @@
 exports[`The DropDownMenuItem component should render 1`] = `
 <li>
   <Button
+    appearance="no-style"
     className="drop-down-menu-base__item"
     linkToNewTab={false}
     onClickHandler={[Function]}
     shape="rectangle"
-    style="no-style"
+    style="primary"
     type="button"
   >
     Menu item

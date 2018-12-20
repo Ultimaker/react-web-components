@@ -19,7 +19,7 @@ export const ProfileImage: React.StatelessComponent<CircleIconProps> = ({ size, 
         }
         {!imageURL
             && (
-                <CircleIcon style="primary" disabled size={size}>
+                <CircleIcon appearance="primary" disabled size={size}>
                     <ProfileIcon />
                 </CircleIcon>
             )

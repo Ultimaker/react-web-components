@@ -5,11 +5,12 @@ exports[`The SlideOutContainer component should render 1`] = `
   className="slide-out-container"
 >
   <Button
+    appearance="no-style"
     className="slide-out-container__header"
     linkToNewTab={false}
     onClickHandler={[Function]}
     shape="rectangle"
-    style="no-style"
+    style="primary"
     type="button"
   >
     <div
