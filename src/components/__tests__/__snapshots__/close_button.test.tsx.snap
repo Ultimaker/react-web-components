@@ -2,11 +2,11 @@
 
 exports[`The CloseButton component should render 1`] = `
 <Button
+  appearance="quiet"
   className="close-button"
   linkToNewTab={false}
   onClickHandler={[Function]}
   shape="circle"
-  style="quiet"
   type="button"
 >
   <Icon(CrossIcon) />

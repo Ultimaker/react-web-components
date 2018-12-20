@@ -68,17 +68,17 @@ stories.add('Pill', withInfo(
     </Tile>
 )));
 
-const styleOptions = {
+const appearanceOptions = {
     primary: 'primary',
     secondary: 'secondary',
     alert: 'alert',
 };
-const styleValue = 'primary';
+const appearanceValue = 'primary';
 
 stories.add('Circle Icon', withInfo(
     'A circle icon',
 )(() => (
-    <CircleIcon style={selectV2('Style', styleOptions, styleValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
+    <CircleIcon appearance={selectV2('Appearance', appearanceOptions, appearanceValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
         {text('Text', '1')}
     </CircleIcon>
 )));

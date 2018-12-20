@@ -3,7 +3,7 @@ import * as React from 'react';
 // components
 import { ModalWidth } from './modal';
 import { Form, FormValidationResponse } from './form';
-import { ButtonStyle } from './button';
+import { ButtonAppearance } from './button';
 import PopupBase from './popup_base';
 
 // utils
@@ -25,8 +25,8 @@ export interface PopupProps {
      * If it returns a promise, the spinner is hidden when it is done
      */
     primaryBtnHandler: () => void | Promise<any>;
-    /** Primary button style */
-    primaryBtnStyle?: ButtonStyle;
+    /** Primary button appearance */
+    primaryBtnAppearance?: ButtonAppearance;
     /** Secondary button text */
     secondaryBtnText?: string;
     /**
@@ -34,8 +34,8 @@ export interface PopupProps {
      * If it returns a promise, the spinner is hidden when it is done
      */
     secondaryBtnHandler?: () => void | Promise<any>;
-    /** Secondary button style */
-    secondaryBtnStyle?: ButtonStyle;
+    /** Secondary button appearance */
+    secondaryBtnAppearance?: ButtonAppearance;
     /** Placeholder text for the input for popups of type prompt */
     promptPlaceholder?: string;
     /** The width of the popup: 'sm' | 'md' */
@@ -124,8 +124,9 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     render(): JSX.Element {
         const {
-            headerElement, headerText, bodyText, primaryBtnText, secondaryBtnText, primaryBtnStyle,
-            secondaryBtnStyle, validationErrors, step, totalSteps, width, children, footer,
+            headerElement, headerText, bodyText, primaryBtnText, secondaryBtnText,
+            primaryBtnAppearance, secondaryBtnAppearance, validationErrors, step, totalSteps,
+            width, footer, children,
         } = this.props;
         const { primaryBtnShowSpinner, secondaryBtnShowSpinner } = this.state;
 
@@ -141,11 +142,11 @@ export class Popup extends React.Component<PopupProps, PopupState> {
                 {bodyText && splitTextByNewLine(bodyText)}
                 <Form
                     primaryBtnText={primaryBtnText}
-                    primaryBtnStyle={primaryBtnStyle}
+                    primaryBtnAppearance={primaryBtnAppearance}
                     onSubmitHandler={this._primaryBtnHandler}
                     primaryBtnShowSpinner={primaryBtnShowSpinner}
                     secondaryBtnText={secondaryBtnText}
-                    secondaryBtnStyle={secondaryBtnStyle}
+                    secondaryBtnAppearance={secondaryBtnAppearance}
                     secondaryBtnHandler={this._secondaryBtnHandler}
                     secondaryBtnShowSpinner={secondaryBtnShowSpinner}
                     validationErrors={validationErrors}

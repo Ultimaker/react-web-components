@@ -59,11 +59,11 @@ exports[`The AboutDialog component should render 1`] = `
     </table>
     <FormActions>
       <Button
+        appearance="primary"
         className=""
         linkToNewTab={false}
         onClickHandler={[MockFunction]}
         shape="rectangle"
-        style="primary"
         type="button"
       >
         Close

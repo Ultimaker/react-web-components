@@ -20,7 +20,7 @@ export const CloseButton: React.StatelessComponent<CloseButtonProps> = ({
     };
 
     return (
-        <Button className="close-button" onClickHandler={_onClickHandler} style="quiet" shape="circle">
+        <Button className="close-button" onClickHandler={_onClickHandler} appearance="quiet" shape="circle">
             <CrossIcon color={color} />
         </Button>
     );

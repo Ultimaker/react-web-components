@@ -125,7 +125,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                     <div className="account-section__buttons">
                                         {manageAccountURL && (
                                             <Button
-                                                style="secondary"
+                                                appearance="secondary"
                                                 type="link"
                                                 id="account-menu-manage-button"
                                                 linkURL={manageAccountURL}
@@ -137,7 +137,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                         )}
 
                                         <Button
-                                            style="secondary"
+                                            appearance="secondary"
                                             onClickHandler={this._onSignOut}
                                             id="account-menu-sign-out-button"
                                         >
@@ -148,7 +148,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                             )}
                             {signedOut && (
                                 <Button
-                                    style="secondary"
+                                    appearance="secondary"
                                     id="account-menu-sign-in-button"
                                     onClickHandler={this._onSignIn}
                                 >

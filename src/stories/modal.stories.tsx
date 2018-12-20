@@ -45,10 +45,10 @@ stories.add('Confirm popup', withInfo(
         bodyText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         primaryBtnText="Confirm"
         primaryBtnHandler={action('clicked')}
-        primaryBtnStyle="primary"
+        primaryBtnAppearance="primary"
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
-        secondaryBtnStyle="quiet"
+        secondaryBtnAppearance="quiet"
         width={selectV2('Popup width', widthOptions, widthDefaultValue)}
         footer={text('Footer')}
     />
@@ -85,10 +85,10 @@ stories.add('Prompt popup', withInfo(
         bodyText="Input a number:"
         primaryBtnText="Confirm"
         primaryBtnHandler={action('clicked')}
-        primaryBtnStyle="primary"
+        primaryBtnAppearance="primary"
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
-        secondaryBtnStyle="quiet"
+        secondaryBtnAppearance="quiet"
         inputDefaultValue={10}
         validationHandler={validation}
         inputType="number"
@@ -149,10 +149,10 @@ stories.add('Multi-step popup', withState({ step: 1 })(withInfo('Multi-step popu
         bodyText={getBodyText(store.state.step)}
         primaryBtnText={getPrimaryBtnText(store.state.step)}
         primaryBtnHandler={() => store.set({ step: validateStep(store.state.step + 1, 3) })}
-        primaryBtnStyle="primary"
+        primaryBtnAppearance="primary"
         secondaryBtnText={getSecondaryBtnText(store.state.step)}
         secondaryBtnHandler={() => store.set({ step: validateStep(store.state.step - 1, 3) })}
-        secondaryBtnStyle="quiet"
+        secondaryBtnAppearance="quiet"
         step={store.state.step}
         totalSteps={3}
         width={selectV2('Popup width', widthOptions, widthDefaultValue)}

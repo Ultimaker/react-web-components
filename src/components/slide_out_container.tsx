@@ -31,7 +31,7 @@ export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps>
 
         {headerText && (
             <Button
-                style="no-style"
+                appearance="no-style"
                 className="slide-out-container__header"
                 onClickHandler={() => onHeaderClick()}
             >
