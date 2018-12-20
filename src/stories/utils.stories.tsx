@@ -30,7 +30,7 @@ stories.addDecorator(withKnobs)
         height: '100vh',
     }));
 
-stories.add('copyToClipboard', withState({ value: null })(withInfo('Text input field')(({ store }) => (
+stories.add('Copy to clipboard', withState({ value: null })(withInfo('Text input field')(({ store }) => (
     <div style={{ width: 350 }}>
         <TextareaField
             value={store.state.value}
@@ -38,6 +38,7 @@ stories.add('copyToClipboard', withState({ value: null })(withInfo('Text input f
             onChangeHandler={(id, value) => store.set({ value })}
             label="Text to copy"
         />
+        <br />
         <Button onClickHandler={() => copyToClipboard(store.state.value)}>
             Copy to clipboard
         </Button>
@@ -46,7 +47,7 @@ stories.add('copyToClipboard', withState({ value: null })(withInfo('Text input f
 
 const defaultDownloadState = { fileName: 'downloaded.txt', content: '', contentType: 'text/plain' };
 
-stories.add('downloadFile', withState(defaultDownloadState)(withInfo('Text input field')(({ store }) => {
+stories.add('Download file', withState(defaultDownloadState)(withInfo('Text input field')(({ store }) => {
     const { fileName, content, contentType } = store.state;
     return (
         <div style={{ width: 350 }}>
@@ -68,6 +69,7 @@ stories.add('downloadFile', withState(defaultDownloadState)(withInfo('Text input
                 onChangeHandler={(id, value) => store.set({ contentType: value })}
                 label="Content Type"
             />
+            <br />
             <Button onClickHandler={() => downloadFile(fileName, content, contentType)}>
                 Download file
             </Button>
@@ -75,7 +77,7 @@ stories.add('downloadFile', withState(defaultDownloadState)(withInfo('Text input
     );
 })));
 
-stories.add('splitTextByNewLine', withState({ value: null })(withInfo('Text input field')(({ store }) => (
+stories.add('Split text by new line', withState({ value: null })(withInfo('Text input field')(({ store }) => (
     <div style={{ width: 350 }}>
         <TextareaField
             value={store.state.value}
@@ -83,6 +85,7 @@ stories.add('splitTextByNewLine', withState({ value: null })(withInfo('Text inpu
             onChangeHandler={(id, value) => store.set({ value })}
             label="Text to split"
         />
+        <br />
         <StaticField value={splitTextByNewLine(store.state.value)} id="splitResult" label="Result" />
     </div>
 ))));
