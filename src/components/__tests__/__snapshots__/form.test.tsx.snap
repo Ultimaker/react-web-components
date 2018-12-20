@@ -8,11 +8,11 @@ exports[`The Form component should render 1`] = `
 >
   <FormActions>
     <Button
+      appearance="primary"
       className=""
       disabled={true}
       linkToNewTab={false}
       shape="rectangle"
-      style="primary"
       type="submit"
     >
       primaryBtnText
@@ -110,12 +110,12 @@ exports[`The Form component should render with a form item 1`] = `
           key="0"
         >
           <Button
+            appearance="primary"
             className=""
             disabled={true}
             key=".0"
             linkToNewTab={false}
             shape="rectangle"
-            style="primary"
             type="submit"
           >
             <button

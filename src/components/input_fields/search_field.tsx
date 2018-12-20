@@ -87,7 +87,7 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
                         : (
                             <Button
                                 onClickHandler={value ? this._onResetHandler : this._focus}
-                                style="quiet"
+                                appearance="quiet"
                                 className="search-button"
                             >
                                 {value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}

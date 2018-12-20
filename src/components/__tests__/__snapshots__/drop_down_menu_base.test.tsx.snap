@@ -6,11 +6,11 @@ exports[`The DropDownMenuBase component should render 1`] = `
   onClick={[Function]}
 >
   <Button
+    appearance="no-style"
     className="drop-down-menu-base__trigger"
     linkToNewTab={false}
     onClickHandler={[Function]}
     shape="rectangle"
-    style="no-style"
     type="button"
   >
     trigger

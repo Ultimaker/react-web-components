@@ -3,14 +3,14 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import Button from '../button';
+import { Button, ButtonProps } from '../button';
 import Spinner from '../spinner';
 
 // mocks
 import { mockClickEvent } from '../../__mocks__/clickMock';
 
 describe('The Button component', () => {
-    let props;
+    let props: ButtonProps;
     let wrapper;
 
     beforeEach(() => {
@@ -80,20 +80,20 @@ describe('The Button component', () => {
         expect(wrapper.prop('href')).toBeUndefined();
     });
 
-    it('applies the correct class when prop `style` is secondary', () => {
-        wrapper.setProps({ style: 'secondary' });
+    it('applies the correct class when prop `appearance` is secondary', () => {
+        wrapper.setProps({ appearance: 'secondary' });
         expect(wrapper.find('.btn--secondary')).toHaveLength(1);
         expect(wrapper.find('.btn--primary').exists()).toBe(false);
     });
 
-    it('applies the correct class when prop `style` is quiet', () => {
-        wrapper.setProps({ style: 'quiet' });
+    it('applies the correct class when prop `appearance` is quiet', () => {
+        wrapper.setProps({ appearance: 'quiet' });
         expect(wrapper.find('.btn--quiet')).toHaveLength(1);
         expect(wrapper.find('.btn--primary').exists()).toBe(false);
     });
 
-    it('applies the correct class when prop `style` is alert', () => {
-        wrapper.setProps({ style: 'alert' });
+    it('applies the correct class when prop `appearance` is alert', () => {
+        wrapper.setProps({ appearance: 'alert' });
         expect(wrapper.find('.btn--alert')).toHaveLength(1);
         expect(wrapper.find('.btn--primary').exists()).toBe(false);
     });

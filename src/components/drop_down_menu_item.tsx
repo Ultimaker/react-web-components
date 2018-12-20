@@ -26,7 +26,7 @@ const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> = ({
         <Button
             id={id}
             className={classNames('drop-down-menu-base__item', { disabled, active }, className)}
-            style="no-style"
+            appearance="no-style"
             onClickHandler={() => { onCloseMenuHandler(); onClickHandler(); }}
             disabled={disabled}
         >

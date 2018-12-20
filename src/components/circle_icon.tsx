@@ -5,7 +5,7 @@ export type CircleIconStyle = 'primary' | 'secondary' | 'alert';
 
 export interface CircleIconProps {
     /** CSS styling: 'primary' | 'secondary' | 'alert' */
-    style?: CircleIconStyle;
+    appearance?: CircleIconStyle;
     /** Whether the circle should be should displayed in a disabled state */
     disabled?: boolean;
     /** Size of the icon. Include unit */
@@ -13,10 +13,10 @@ export interface CircleIconProps {
 }
 
 export const CircleIcon: React.StatelessComponent<CircleIconProps> = ({
-    style, disabled, size, children,
+    appearance, disabled, size, children,
 }) => (
     <div
-        className={classNames(`circle-icon icon icon--circle ${style}`, { disabled })}
+        className={classNames(`circle-icon icon icon--circle ${appearance}`, { disabled })}
         style={size ? { width: size, height: size } : undefined}
     >
 
@@ -25,7 +25,7 @@ export const CircleIcon: React.StatelessComponent<CircleIconProps> = ({
 );
 
 CircleIcon.defaultProps = {
-    style: 'primary',
+    appearance: 'primary',
 };
 
 CircleIcon.displayName = 'CircleIcon';

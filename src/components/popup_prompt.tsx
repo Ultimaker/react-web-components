@@ -3,7 +3,7 @@ import * as React from 'react';
 // components
 import Popup from './popup';
 import { InputField, InputFieldType, InputFieldValue } from './input_field';
-import { ButtonStyle } from './button';
+import { ButtonAppearance } from './button';
 
 export interface PopupPromptProps {
     /** Input type for popups of type prompt */
@@ -28,8 +28,8 @@ export interface PopupPromptProps {
      * If it returns a promise, the spinner is hidden when it is done.
      */
     primaryBtnHandler: (value: InputFieldValue) => void | Promise<any>;
-    /** Primary button style */
-    primaryBtnStyle?: ButtonStyle;
+    /** Primary button appearance */
+    primaryBtnAppearance?: ButtonAppearance;
     /** Secondary button text */
     secondaryBtnText?: string;
     /**
@@ -37,8 +37,8 @@ export interface PopupPromptProps {
      * If it returns a promise, the spinner is hidden when it is done.
      */
     secondaryBtnHandler?: () => void | Promise<any>;
-    /** Secondary button style */
-    secondaryBtnStyle?: ButtonStyle;
+    /** Secondary button appearance */
+    secondaryBtnAppearance?: ButtonAppearance;
     /** Placeholder text for the input for popups of type prompt */
     promptPlaceholder?: string;
     /** A component or text to be rendered in the footer of the popup */
@@ -108,7 +108,8 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
     render(): JSX.Element {
         const {
             headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
-            inputMin, inputMax, primaryBtnStyle, secondaryBtnStyle, secondaryBtnHandler, footer,
+            inputMin, inputMax, primaryBtnAppearance, secondaryBtnAppearance, secondaryBtnHandler,
+            footer,
         } = this.props;
         const { inputValue, validationError } = this.state;
 
@@ -118,10 +119,10 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
                 bodyText={bodyText}
                 primaryBtnText={primaryBtnText}
                 primaryBtnHandler={this._primaryBtnHandler}
-                primaryBtnStyle={primaryBtnStyle}
+                primaryBtnAppearance={primaryBtnAppearance}
                 secondaryBtnText={secondaryBtnText}
                 secondaryBtnHandler={secondaryBtnHandler}
-                secondaryBtnStyle={secondaryBtnStyle}
+                secondaryBtnAppearance={secondaryBtnAppearance}
                 validationErrors={validationError ? { promptInput: validationError } : null}
                 width="sm"
                 footer={footer}

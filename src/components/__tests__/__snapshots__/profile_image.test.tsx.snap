@@ -5,8 +5,8 @@ exports[`The ProfileImage component should render 1`] = `
   className="profile-image"
 >
   <CircleIcon
+    appearance="primary"
     disabled={true}
-    style="primary"
   >
     <Icon(ProfileIcon) />
   </CircleIcon>
