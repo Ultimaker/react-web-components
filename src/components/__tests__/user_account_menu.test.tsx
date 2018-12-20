@@ -1,12 +1,13 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 // component
-import UserAccountMenu from '../user_account_menu';
+import { UserAccountMenu, UserAccountMenuProps } from '../user_account_menu';
+import DropDownMenuBase from '../drop_down_menu_base';
 
 describe('The UserAccountMenu component', () => {
-    let props;
+    let props: UserAccountMenuProps;
     let wrapper;
 
     beforeEach(() => {
@@ -25,24 +26,35 @@ describe('The UserAccountMenu component', () => {
         expect(props.onSignOutClickHandler).not.toHaveBeenCalled();
     });
 
-    it('should toggle the menu visibility when clicking the trigger', () => {
-        wrapper.find('.trigger').props().onClickHandler();
-        expect(wrapper.state('showMenu')).toBe(true);
-        expect(wrapper.find('.visible')).toHaveLength(1);
-
-        wrapper.find('.trigger').props().onClickHandler();
-        expect(wrapper.state('showMenu')).toBe(false);
-        expect(wrapper.find('.visible').exists()).toBe(false);
-    });
-
-    it('should display child section', () => {
+    it('should display other section', () => {
         wrapper.setProps({ children: <div>Child section</div> });
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should show menu when the trigger is clicked', () => {
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        expect(wrapper.find(DropDownMenuBase).prop('showMenu')).toBe(true);
+    });
+
+    it('should sign out when sign out button is clicked', () => {
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        wrapper.find('#account-menu-sign-out-button').props().onClickHandler();
+        expect(wrapper.find(DropDownMenuBase).prop('showMenu')).toBe(false);
+        expect(props.onSignOutClickHandler).toBeCalled();
+    });
+
     it('should render sign in button', () => {
         wrapper.setProps({ signedOut: 'true' });
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
         expect(wrapper).toMatchSnapshot();
         expect(props.onSignInClickHandler).not.toHaveBeenCalled();
+    });
+
+    it('should sign in when sign in button is clicked', () => {
+        wrapper.setProps({ signedOut: 'true' });
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        wrapper.find('#account-menu-sign-in-button').props().onClickHandler();
+        expect(wrapper.find(DropDownMenuBase).prop('showMenu')).toBe(false);
+        expect(props.onSignInClickHandler).toBeCalled();
     });
 });

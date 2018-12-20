@@ -4,7 +4,8 @@ import { shallow } from 'enzyme';
 
 // component
 import SelectField, { SelectFieldProps } from '../select_field';
-import SelectList from '../../select_list';
+import DropDownMenu from '../../drop_down_menu';
+import DropDownMenuItem from '../../drop_down_menu_item';
 import InputFieldWrapper from '../input_field_wrapper';
 
 describe('The select field component', () => {
@@ -33,25 +34,15 @@ describe('The select field component', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
     });
 
-    it('should render a select picker', () => {
-        expect(wrapper.find(SelectList).props()).toEqual({
-            id: props.id,
-            onChangeHandler: wrapper.instance()._onChange,
-            value: props.value,
-            options: props.selectOptions,
-            error: undefined,
-        });
-    });
-
     it('should not pass invalid values', () => {
         wrapper.setProps({ value: {}, submitted: true, validationError: 'Invalid value' });
-        expect(wrapper.find(SelectList).prop('value')).toBeNull();
-        expect(wrapper.find(SelectList).prop('error')).toEqual(true);
+        expect(wrapper.find(DropDownMenu).prop('activeLabel')).toBeNull();
+        expect(wrapper.find(DropDownMenu).prop('error')).toEqual(true);
     });
 
     it('should render a static value', () => {
         wrapper.setProps({ staticField: true });
-        expect(wrapper.find(SelectList)).toHaveLength(0);
+        expect(wrapper.find(DropDownMenu)).toHaveLength(0);
         expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual('Option 3');
         wrapper.setProps({ value: 10 });
         expect(wrapper.find(InputFieldWrapper).prop('children')).toBeUndefined();
@@ -59,7 +50,7 @@ describe('The select field component', () => {
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find(SelectList).prop('onChangeHandler')(2);
+        wrapper.find(DropDownMenuItem).at(1).props().onClickHandler();
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, 2);
     });
 });

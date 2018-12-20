@@ -3,7 +3,7 @@
 exports[`The DropDownMenuItem component should render 1`] = `
 <li>
   <Button
-    className="context-menu__button"
+    className="drop-down-menu-base__item"
     linkToNewTab={false}
     onClickHandler={[Function]}
     shape="rectangle"

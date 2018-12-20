@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import NumberField from './input_fields/number_field';
 import TextareaField from './input_fields/textarea_field';
-import SelectField from './input_fields/select_field';
+import { SelectField, SelectOption } from './input_fields/select_field';
 import CheckboxField from './input_fields/checkbox_field';
 import ImageUploadField from './input_fields/image_upload_field';
 import DateField from './input_fields/date_field';
@@ -14,7 +14,6 @@ import TextField from './input_fields/text_field';
 import CodeField from './input_fields/code_field';
 import SearchField from './input_fields/search_field';
 
-import { SelectOption } from './select_list';
 import { ImageShape } from './image';
 import { ImageFile } from './image_upload';
 import { InputFieldProps } from './input_fields/input_field_wrapper';

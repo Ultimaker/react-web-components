@@ -1,11 +1,5 @@
 .context-menu {
-    position: relative;
-
-    &:focus {
-        outline: none;
-    }
-
-    .trigger {
+    .drop-down-menu-base__trigger {
         position: relative;
         cursor: pointer;
         color: $context-menu-color-trigger;
@@ -19,6 +13,12 @@
         -ms-user-select: none;
         user-select: none;
         z-index: 99;
+
+        &:hover, &:focus {
+            background-color: $context-menu-color-hover;
+            color: $context-menu-color-trigger-hover;
+            transition: all 0.2s ease-out;
+        }
 
         &:after {
             content: "";
@@ -35,127 +35,22 @@
         }
     }
 
-    .trigger, .label {
-        &:hover, &:focus {
-            background-color: $context-menu-color-hover;
-            transition: all 0.2s ease-out;
-        }
-    }
-
-    .trigger {
-        &:hover, &:focus {
-            color: $context-menu-color-trigger-hover;
-        }
-    }
-
-    .container {
-        visibility: hidden;
-        position: absolute;
-        bottom: 3px;
-        width: 100%;
-
-        &:before {
-            background: white;
-            border-top: 1px solid $context-menu-color-chevron-shadow;
-            border-left: 1px solid $context-menu-color-chevron-shadow;
-            border-width: 1px 0 0 1px;
-            content: "";
-            height: 1rem;
-            left: 50%;
-            position: absolute;
-            transform: translate(-50%, 0) rotate(45deg);
-            top: -6px;
-            width: 1rem;
-            z-index: 99999;
-        }
-
-        .menu {
-            background-color: $context-menu-color-background;
-            line-height: 2.2rem;
-            color: $context-menu-color-text;
-            position: absolute;
-            border-radius: 1px;
-            z-index: 99998;
-            box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
-
-            ul {
-                list-style: none;
-                padding: 1rem 0;
-                margin: 0;
-            }
-        }
-    }
-
-    .context-menu__button {
-        @include font-size-text-2;
-        cursor: pointer;
-        padding: 1.2rem 2.4rem;
-
-        &:last-child {
-            border-bottom: none;
-        }
-
-        &:hover, &:focus {
-            background-color: $context-menu-color-hover;
-            transition: background-color 0.2s ease-out;
-        }
-
-        &.disabled {
-            color: $color-text-lighter;
-            transition: color 0.2s ease-out;
-            cursor: default;
-
-            &:hover {
-                background-color: $context-menu-color-background;
-                transition: background-color 0.2s ease-out;
-            }
-        }
-
-        .additional-info {
-            color: $color-text-lighter;
-        }
-
-    }
-
-    &.context-menu--north {
-        .container {
-            bottom: auto;
-            top: 0;
-
-            &:before {
-                top: -5px;
-                border: none;
-                border-bottom: 1px solid $context-menu-color-chevron-shadow;
-                border-right: 1px solid $context-menu-color-chevron-shadow;
-            }
-
-            .menu {
-                transform: translate(0, calc(-100%));
-            }
-        }
-    }
-
-    &.visible {
-        .container {
-            visibility: visible;
-        }
-
-        .trigger {
-            &:hover, &:focus {
-                background-color: transparent;
-            }
-        }
-    }
-
     &.context-menu--panel {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
+        left: 0;
 
-        .trigger {
+        .drop-down-menu-base {
+            height: 100%;
+            width: 100%;
+        }
+
+        .drop-down-menu-base__trigger {
             border-radius: 0;
             height: 100%;
+            width: 100%;
         }
     }
 }

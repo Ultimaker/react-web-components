@@ -110,17 +110,17 @@
     }
 
     .drop-down-menu {
-        &.visible {
-            .label:hover {
+        &.drop-down-menu-base--visible {
+            .drop-down-menu-base__trigger:hover {
                 background-color: white;
             }
         }
 
-        .menu {
+        .drop-down-menu-base__menu {
             min-width: 100%;
         }
 
-        .label {
+        .drop-down-menu-base__trigger {
             padding: 1.2rem 1.8rem 1.2rem 0.9rem;
             background-color: white;
             border-bottom: 2px solid $input-field-color-border;
@@ -135,8 +135,10 @@
                 background-color: white;
                 border-bottom-color: $input-field-color-border-active;
             }
+        }
 
-            &.error {
+        &.drop-down-menu--error {
+            .drop-down-menu-base__trigger {
                 border-bottom-color: $color-border-error;
             }
         }

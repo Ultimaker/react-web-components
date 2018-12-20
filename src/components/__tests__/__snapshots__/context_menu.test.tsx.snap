@@ -3,61 +3,25 @@
 exports[`The ContextMenu component should render 1`] = `
 <div
   className="context-menu context-menu--south"
-  onClick={[Function]}
 >
-  <Button
-    className="trigger"
-    linkToNewTab={false}
-    onClickHandler={[Function]}
-    shape="rectangle"
-    style="no-style"
-    type="button"
-  >
-    <div
-      style={
-        Object {
-          "width": 45,
-        }
+  <DropDownMenuBase
+    menuStyle={
+      Object {
+        "right": -30,
+        "width": 200,
       }
-    />
-  </Button>
-  <div
-    className="container"
-  >
-    <div
-      className="menu"
-      style={
-        Object {
-          "right": -30,
-          "width": 200,
-        }
-      }
-    >
-      <Collapse
-        fixedHeight={-1}
-        forceInitialAnimation={false}
-        hasNestedCollapse={false}
-        isOpened={false}
-        onMeasure={[Function]}
-        onRender={[Function]}
-        onRest={[Function]}
-        springConfig={
+    }
+    onToggleMenuHandler={[Function]}
+    showMenu={false}
+    triggerElement={
+      <div
+        style={
           Object {
-            "damping": 32,
-            "stiffness": 390,
+            "width": 45,
           }
         }
-        style={Object {}}
-        theme={
-          Object {
-            "collapse": "ReactCollapse--collapse",
-            "content": "ReactCollapse--content",
-          }
-        }
-      >
-        <ul />
-      </Collapse>
-    </div>
-  </div>
+      />
+    }
+  />
 </div>
 `;

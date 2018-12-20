@@ -9,27 +9,32 @@ exports[`The select field component should render a wrapper 1`] = `
   staticField={false}
   touched={false}
 >
-  <SelectList
+  <DropDownMenu
+    activeLabel={3}
     id="testInputField"
-    onChangeHandler={[Function]}
-    options={
-      Array [
-        Object {
-          "label": "Option 1",
-          "value": 1,
-        },
-        Object {
-          "disabled": true,
-          "label": "Option 2",
-          "value": 2,
-        },
-        Object {
-          "label": "Option 3",
-          "value": 3,
-        },
-      ]
-    }
-    value={3}
-  />
+  >
+    <DropDownMenuItem
+      active={false}
+      key="0"
+      onClickHandler={[Function]}
+    >
+      Option 1
+    </DropDownMenuItem>
+    <DropDownMenuItem
+      active={false}
+      disabled={true}
+      key="1"
+      onClickHandler={[Function]}
+    >
+      Option 2
+    </DropDownMenuItem>
+    <DropDownMenuItem
+      active={true}
+      key="2"
+      onClickHandler={[Function]}
+    >
+      Option 3
+    </DropDownMenuItem>
+  </DropDownMenu>
 </InputFieldWrapper>
 `;
