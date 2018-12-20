@@ -64,7 +64,6 @@ exports[`The UserAccountMenu component should display other section 1`] = `
             linkToNewTab={true}
             linkURL="https://account-staging.ultimaker.com"
             shape="rectangle"
-            style="primary"
             type="link"
           >
             Manage account
@@ -77,7 +76,6 @@ exports[`The UserAccountMenu component should display other section 1`] = `
             linkToNewTab={false}
             onClickHandler={[Function]}
             shape="rectangle"
-            style="primary"
             type="button"
           >
             Sign out
@@ -143,7 +141,6 @@ exports[`The UserAccountMenu component should render 1`] = `
             linkToNewTab={true}
             linkURL="https://account-staging.ultimaker.com"
             shape="rectangle"
-            style="primary"
             type="link"
           >
             Manage account
@@ -156,7 +153,6 @@ exports[`The UserAccountMenu component should render 1`] = `
             linkToNewTab={false}
             onClickHandler={[Function]}
             shape="rectangle"
-            style="primary"
             type="button"
           >
             Sign out
@@ -198,7 +194,6 @@ exports[`The UserAccountMenu component should render sign in button 1`] = `
           linkToNewTab={false}
           onClickHandler={[Function]}
           shape="rectangle"
-          style="primary"
           type="button"
         >
           Sign in

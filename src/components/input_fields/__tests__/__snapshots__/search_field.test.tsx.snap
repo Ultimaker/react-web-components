@@ -27,7 +27,6 @@ exports[`The search field component should render a wrapper 1`] = `
       linkToNewTab={false}
       onClickHandler={[Function]}
       shape="rectangle"
-      style="primary"
       type="button"
     >
       <Icon(RejectedIcon)

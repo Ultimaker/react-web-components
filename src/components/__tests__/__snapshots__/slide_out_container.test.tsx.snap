@@ -10,7 +10,6 @@ exports[`The SlideOutContainer component should render 1`] = `
     linkToNewTab={false}
     onClickHandler={[Function]}
     shape="rectangle"
-    style="primary"
     type="button"
   >
     <div

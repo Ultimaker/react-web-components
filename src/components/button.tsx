@@ -35,7 +35,7 @@ export interface ButtonProps {
 export class Button extends React.Component<ButtonProps, {}> {
     static defaultProps = {
         type: 'button',
-        style: 'primary',
+        appearance: 'primary',
         shape: 'rectangle',
         linkToNewTab: false,
         className: '',
