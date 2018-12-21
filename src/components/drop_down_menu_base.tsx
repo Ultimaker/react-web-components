@@ -31,6 +31,11 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         e.stopPropagation();
     }
 
+    /**
+     * Determines whether a child component is in the list of components
+     * that require the onCloseMenuHandler prop to be added
+     * @param child - the child component
+     */
     static _isHandlerRequired(child: any): boolean {
         const componentList = {
             DropDownMenuItem: true,
