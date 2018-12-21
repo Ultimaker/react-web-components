@@ -2,7 +2,7 @@
 
 exports[`The DropDownMenuBase component should render 1`] = `
 <div
-  className="drop-down-menu-base"
+  className="drop-down-menu-base drop-down-menu-base--south"
   onClick={[Function]}
 >
   <Button

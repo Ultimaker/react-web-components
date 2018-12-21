@@ -5,6 +5,7 @@ exports[`The UserAccountMenu component should display other section 1`] = `
   className="user-account-menu"
 >
   <DropDownMenuBase
+    menuDirection="south"
     onToggleMenuHandler={[Function]}
     showMenu={false}
     triggerElement={
@@ -92,6 +93,7 @@ exports[`The UserAccountMenu component should render 1`] = `
   className="user-account-menu"
 >
   <DropDownMenuBase
+    menuDirection="south"
     onToggleMenuHandler={[Function]}
     showMenu={false}
     triggerElement={
@@ -169,6 +171,7 @@ exports[`The UserAccountMenu component should render sign in button 1`] = `
   className="user-account-menu"
 >
   <DropDownMenuBase
+    menuDirection="south"
     onToggleMenuHandler={[Function]}
     showMenu={true}
     triggerElement={

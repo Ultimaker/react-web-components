@@ -31,8 +31,7 @@ describe('The ContextMenu component', () => {
 
     it('should render to north', () => {
         wrapper.setProps({ menuDirection: 'north' });
-        expect(wrapper.find('.context-menu--north')).toHaveLength(1);
-        expect(wrapper.find('.context-menu--south').exists()).toBe(false);
+        expect(wrapper.find(DropDownMenuBase).prop('menuDirection')).toBe('north');
     });
 
     it('should render for a panel', () => {
