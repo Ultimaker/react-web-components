@@ -5,7 +5,7 @@ import { Collapse } from 'react-collapse';
 // components
 import Button from './button';
 
-export type MenuDirection = 'left' | 'right';
+export type MenuDirection = 'north' | 'south';
 
 export interface DropDownMenuBaseProps {
     /** Whether the menu should be visible */
@@ -23,6 +23,10 @@ export interface DropDownMenuBaseProps {
 }
 
 export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}> {
+    public static defaultProps: Partial<DropDownMenuBaseProps> = {
+        menuDirection: 'south',
+    };
+
     static _stopPropagation(e): void {
         e.stopPropagation();
     }

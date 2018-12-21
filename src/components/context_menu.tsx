@@ -2,10 +2,9 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 // components
-import DropDownMenuBase from './drop_down_menu_base';
+import { DropDownMenuBase, MenuDirection } from './drop_down_menu_base';
 
 export type MenuOffsetDirection = 'left' | 'right';
-export type MenuDirection = 'north' | 'south';
 
 export interface ContextMenuProps {
     /** Width of the menu in pixels */
@@ -119,7 +118,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         const { menuOffset, showMenu } = this.state;
 
         const classes = classNames(
-            `context-menu context-menu--${menuDirection}`,
+            'context-menu',
             { 'context-menu--panel': positionMenuInPanel },
         );
         const menuStyle = ContextMenu._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
@@ -132,6 +131,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
                     triggerElement={<div style={{ width: triggerWidth }} />}
                     menuStyle={menuStyle}
                     onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    menuDirection={menuDirection}
                 >
                     {children}
                 </DropDownMenuBase>
