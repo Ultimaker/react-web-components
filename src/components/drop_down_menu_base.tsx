@@ -31,6 +31,24 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         e.stopPropagation();
     }
 
+    /**
+     * Determines whether a child component is in the list of components
+     * that require the onCloseMenuHandler prop to be added
+     * @param child - the child component
+     */
+    static _isHandlerRequired(child: any): boolean {
+        const componentList = {
+            DropDownMenuItem: true,
+            ContextMenuItem: true,
+        };
+
+        if (child.type && child.type.displayName && componentList[child.type.displayName]) {
+            return true;
+        }
+
+        return false;
+    }
+
     constructor(props: DropDownMenuBaseProps) {
         super(props);
         this._menuRef = React.createRef();
@@ -78,6 +96,10 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
             { 'drop-down-menu-base--visible': showMenu },
         );
 
+        const onCloseMenuHandlerProp = {
+            onCloseMenuHandler: () => this._onToggleMenuHandler(false),
+        };
+
         return (
             // eslint-disable-next-line max-len
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
@@ -99,9 +121,11 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
                         >
                             <ul className="drop-down-menu-base__menu-list">
                                 {React.Children.map(children, (child: JSX.Element) => (
-                                    React.cloneElement(child, {
-                                        onCloseMenuHandler: () => this._onToggleMenuHandler(false),
-                                    })
+                                    React.cloneElement(
+                                        child,
+                                        DropDownMenuBase._isHandlerRequired(child)
+                                            && onCloseMenuHandlerProp,
+                                    )
                                 ))}
                             </ul>
                         </Collapse>
