@@ -2,9 +2,10 @@
 
 exports[`The ContextMenu component should render 1`] = `
 <div
-  className="context-menu context-menu--south"
+  className="context-menu"
 >
   <DropDownMenuBase
+    menuDirection="south"
     menuStyle={
       Object {
         "right": -30,

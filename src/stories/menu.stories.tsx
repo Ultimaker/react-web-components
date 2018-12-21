@@ -22,8 +22,8 @@ const offsetOptions = {
 const offsetDefaultValue = 'left';
 
 const directionOptions = {
-    Left: 'north',
-    Right: 'south',
+    North: 'north',
+    South: 'south',
 };
 const directionDefaultValue = 'south';
 

@@ -5,6 +5,7 @@ exports[`The DropDownMenu component should render 1`] = `
   className="drop-down-menu"
 >
   <DropDownMenuBase
+    menuDirection="south"
     onToggleMenuHandler={[Function]}
     showMenu={false}
     triggerElement={
