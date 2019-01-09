@@ -48,13 +48,14 @@ exports[`The DropDownMenuBase component should render 1`] = `
         >
           <DropDownMenuItem
             active={false}
-            key=".0"
             onClickHandler={[MockFunction]}
-            onCloseMenuHandler={[Function]}
           />
         </ul>
       </Collapse>
     </div>
+    <div
+      className="drop-down-menu-base__arrow"
+    />
   </div>
 </div>
 `;
