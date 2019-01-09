@@ -31,24 +31,6 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         e.stopPropagation();
     }
 
-    /**
-     * Determines whether a child component is in the list of components
-     * that require the onCloseMenuHandler prop to be added
-     * @param child - the child component
-     */
-    static _isHandlerRequired(child: any): boolean {
-        const componentList = {
-            DropDownMenuItem: true,
-            ContextMenuItem: true,
-        };
-
-        if (child.type && child.type.displayName && componentList[child.type.displayName]) {
-            return true;
-        }
-
-        return false;
-    }
-
     constructor(props: DropDownMenuBaseProps) {
         super(props);
         this._menuRef = React.createRef();
@@ -60,7 +42,6 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
 
     private _onOutsideFocusHandler(event): void {
         if (this._menuRef && !this._menuRef.current.contains(event.target)) {
-            // close menu is user clicks or tabs outside
             this._onToggleMenuHandler(false);
         }
 
@@ -120,16 +101,11 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
                             springConfig={{ stiffness: 370, damping: 35 }}
                         >
                             <ul className="drop-down-menu-base__menu-list">
-                                {React.Children.map(children, (child: JSX.Element) => (
-                                    React.cloneElement(
-                                        child,
-                                        DropDownMenuBase._isHandlerRequired(child)
-                                            && onCloseMenuHandlerProp,
-                                    )
-                                ))}
+                                {children}
                             </ul>
                         </Collapse>
                     </div>
+                    <div className="drop-down-menu-base__arrow" />
                 </div>
 
             </div>
