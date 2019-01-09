@@ -12,12 +12,10 @@ export interface ContextMenuItemProps {
     id?: string;
     /** Optional class for the menu item */
     className?: string;
-    /** Passed by the DropDownMenuBase component */
-    onCloseMenuHandler?: () => void;
 }
 
 export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> = ({
-    disabled, onClickHandler, id, className, onCloseMenuHandler, children,
+    disabled, onClickHandler, id, className, children,
 }) => (
     <DropDownMenuItem
         active={false}
@@ -25,7 +23,6 @@ export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> = (
         onClickHandler={onClickHandler}
         id={id}
         className={className}
-        onCloseMenuHandler={onCloseMenuHandler}
     >
         {children}
     </DropDownMenuItem>

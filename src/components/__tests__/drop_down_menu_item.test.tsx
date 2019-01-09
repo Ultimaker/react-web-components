@@ -14,7 +14,6 @@ describe('The DropDownMenuItem component', () => {
         props = {
             active: false,
             onClickHandler: jest.fn(),
-            onCloseMenuHandler: jest.fn(),
         };
         wrapper = shallow(<DropDownMenuItem {...props}>Menu item</DropDownMenuItem>);
     });
@@ -27,7 +26,6 @@ describe('The DropDownMenuItem component', () => {
     it('should call the click handler when item is clicked', () => {
         wrapper.find(Button).props().onClickHandler();
         expect(props.onClickHandler).toHaveBeenCalled();
-        expect(props.onCloseMenuHandler).toHaveBeenCalled();
     });
 
     it('should render item as disabled', () => {

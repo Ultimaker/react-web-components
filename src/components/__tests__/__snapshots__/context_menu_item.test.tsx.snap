@@ -4,6 +4,5 @@ exports[`The ContextMenuItem component should render 1`] = `
 <DropDownMenuItem
   active={false}
   onClickHandler={[MockFunction]}
-  onCloseMenuHandler={[MockFunction]}
 />
 `;

@@ -10,20 +10,19 @@
         position: absolute;
         bottom: 3px;
         width: 100%;
+        z-index: 99998;
 
-        &:before {
+        .drop-down-menu-base__arrow {
             background: white;
             border-top: 1px solid $context-menu-color-chevron-shadow;
             border-left: 1px solid $context-menu-color-chevron-shadow;
             border-width: 1px 0 0 1px;
-            content: "";
             height: 1rem;
             left: 50%;
             position: absolute;
             transform: translate(-50%, 0) rotate(45deg);
             top: -6px;
             width: 1rem;
-            z-index: 99999;
         }
     }
 
@@ -33,7 +32,6 @@
         color: $context-menu-color-text;
         position: absolute;
         border-radius: 1px;
-        z-index: 99998;
         box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
 
         ul {
@@ -48,7 +46,7 @@
             bottom: auto;
             top: 0;
 
-            &:before {
+            .drop-down-menu-base__arrow {
                 top: -5px;
                 border: none;
                 border-bottom: 1px solid $context-menu-color-chevron-shadow;
