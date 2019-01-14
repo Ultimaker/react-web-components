@@ -3,8 +3,9 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 
-import GenericFlowPage from '../components/generic_flow_page';
+import { GenericFlowPage } from '../components/generic_flow_page';
 import Spinner from '../components/spinner';
+import ApprovedIcon from '../components/icons/approved_icon';
 
 const stories = storiesOf('Example layouts', module);
 
@@ -17,7 +18,7 @@ stories.add('Generic Flow Page', withInfo(
         <GenericFlowPage
             title="Enabling cloud connectivity"
             description="Waiting for the printer to enable cloud service, this can take a few seconds."
-            image={<img className="cloud-connecting-image" src="../images/cloud_connection/cloud_connecting-image.svg" alt="cloud-connecting" />}
+            image={<ApprovedIcon size="lg" color="green" />}
         >
             <Spinner />
         </GenericFlowPage>

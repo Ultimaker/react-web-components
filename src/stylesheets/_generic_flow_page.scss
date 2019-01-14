@@ -20,9 +20,14 @@
     }
     .generic-flow-page__image {
         margin-bottom: 1.8rem;
+        text-align: center;
 
         @include respond-to(sm) {
             margin-bottom: 3.6rem;
+        }
+
+        .icon {
+            margin: 0 auto;
         }
     }
     .generic-flow-page__title {
