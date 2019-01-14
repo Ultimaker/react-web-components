@@ -6,39 +6,44 @@
     @include respond-to(sm) {
         margin-top: 0;
     }
+}
 
-    .generic-flow-page__logo {
-        svg {
-            width: 15rem;
-            height: 2.3rem;
-        }
-        margin-bottom: 2.4rem;
+.generic-flow-page__logo {
+    margin-bottom: 2.4rem;
 
-        @include respond-to(sm) {
-            margin-bottom: 4.8rem;
-        }
+    @include respond-to(sm) {
+        margin-bottom: 4.8rem;
     }
-    .generic-flow-page__image {
-        margin-bottom: 1.8rem;
-        text-align: center;
 
-        @include respond-to(sm) {
-            margin-bottom: 3.6rem;
-        }
+    svg {
+        width: 15rem;
+        height: 2.3rem;
+    }
+}
 
-        .icon {
-            margin: 0 auto;
-        }
+.generic-flow-page__image {
+    margin-bottom: 1.8rem;
+    text-align: center;
+
+    @include respond-to(sm) {
+        margin-bottom: 3.6rem;
     }
-    .generic-flow-page__title {
-        @include font-size-header-1;
+
+    .icon {
+        margin: 0 auto;
     }
-    .generic-flow-page__description {
-        max-width: 48rem;
-        margin: 1.8rem auto 0;
-        padding: 0 1.2rem;
-    }
-    .generic-flow-page__content {
-        margin-top: 3.6rem;
-    }
+}
+
+.generic-flow-page__title {
+    @include font-size-header-1;
+}
+
+.generic-flow-page__description {
+    max-width: 48rem;
+    margin: 1.8rem auto 0;
+    padding: 0 1.2rem;
+}
+
+.generic-flow-page__content {
+    margin-top: 3.6rem;
 }
