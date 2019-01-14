@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The GenericFlowPage component should render 1`] = `
+<div
+  className="generic-flow-page"
+>
+  <div
+    className="generic-flow-page__logo"
+  >
+    <UltimakerLogo />
+  </div>
+  <div
+    className="generic-flow-page__image"
+  >
+    <img
+      alt="cloud-connecting"
+      className="cloud-connecting-image"
+      src="../../images/cloud_connection/cloud_connecting-image.svg"
+    />
+  </div>
+  <div
+    className="generic-flow-page__title"
+  >
+    Cloud connectivity enabled
+  </div>
+  <div
+    className="generic-flow-page__description"
+  >
+    <p
+      key="0"
+    >
+      Sign in with your Ultimaker account to continue.
+    </p>
+  </div>
+  <div
+    className="generic-flow-page__content"
+  >
+    <Spinner />
+  </div>
+</div>
+`;
