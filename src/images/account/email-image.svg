@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Email-image</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="UMA-verify-email" transform="translate(-657.000000, -153.000000)" fill="#08073F" fill-rule="nonzero">
+            <g id="Email-image" transform="translate(657.000000, 153.000000)">
+                <path d="M64,127.461538 C28.9511601,127.461538 0.538461538,99.0488399 0.538461538,64 C0.538461538,28.9511601 28.9511601,0.538461538 64,0.538461538 C99.0488399,0.538461538 127.461538,28.9511601 127.461538,64 C127.461538,99.0488399 99.0488399,127.461538 64,127.461538 Z M64,120.538462 C95.2253301,120.538462 120.538462,95.2253301 120.538462,64 C120.538462,32.7746699 95.2253301,7.46153846 64,7.46153846 C32.7746699,7.46153846 7.46153846,32.7746699 7.46153846,64 C7.46153846,95.2253301 32.7746699,120.538462 64,120.538462 Z" id="Combined-Shape"></path>
+                <polygon id="Path" points="97 41 65 65.4705882 33 41"></polygon>
+                <path d="M31,86.4852941 L31,43 L65,69 L99,43 L99,87.4852941 L32,87.4852941 C31.4477153,87.4852941 31,87.0375789 31,86.4852941 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
