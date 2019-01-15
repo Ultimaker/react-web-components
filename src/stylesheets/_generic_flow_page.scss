@@ -6,6 +6,10 @@
     @include respond-to(sm) {
         margin-top: 0;
     }
+
+    .form__actions {
+        justify-content: center;
+    }
 }
 
 .generic-flow-page__logo {
