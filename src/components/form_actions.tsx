@@ -4,7 +4,7 @@ export type FormActionsAlign = 'left' | 'center' | 'right';
 
 export interface FormActionsProps {
     /** The horizontal alignment of the buttons */
-    align: FormActionsAlign;
+    align?: FormActionsAlign;
     /** typically the form actions are a list of buttons */
     children: JSX.Element[] | JSX.Element;
 }

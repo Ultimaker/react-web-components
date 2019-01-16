@@ -11,6 +11,7 @@ export interface GenericFlowPageProps {
     title: string;
     description?: string;
     image?: JSX.Element;
+    children?: any;
 }
 
 export const GenericFlowPage: React.StatelessComponent<GenericFlowPageProps> = ({
