@@ -59,3 +59,63 @@ exports[`The DropDownMenuBase component should render 1`] = `
   </div>
 </div>
 `;
+
+exports[`The DropDownMenuBase component should render drop down menu open 1`] = `
+<div
+  className="drop-down-menu-base drop-down-menu-base--south drop-down-menu-base--visible"
+  onClick={[Function]}
+>
+  <Button
+    appearance="no-style"
+    className="drop-down-menu-base__trigger"
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    type="button"
+  >
+    trigger
+  </Button>
+  <div
+    className="drop-down-menu-base__menu-container"
+  >
+    <div
+      className="drop-down-menu-base__menu"
+    >
+      <Collapse
+        fixedHeight={-1}
+        forceInitialAnimation={false}
+        hasNestedCollapse={false}
+        isOpened={true}
+        onMeasure={[Function]}
+        onRender={[Function]}
+        onRest={[Function]}
+        springConfig={
+          Object {
+            "damping": 35,
+            "stiffness": 370,
+          }
+        }
+        style={Object {}}
+        theme={
+          Object {
+            "collapse": "ReactCollapse--collapse",
+            "content": "ReactCollapse--content",
+          }
+        }
+      >
+        <ul
+          className="drop-down-menu-base__menu-list"
+        >
+          <DropDownMenuItem
+            active={false}
+            onClickHandler={[MockFunction]}
+          />
+        </ul>
+      </Collapse>
+    </div>
+    <div
+      className="drop-down-menu-base__arrow"
+    />
+  </div>
+</div>
+`;
