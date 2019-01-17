@@ -6,7 +6,9 @@ exports[`The Form component should render 1`] = `
   noValidate={true}
   onSubmit={[Function]}
 >
-  <FormActions>
+  <FormActions
+    align="left"
+  >
     <Button
       appearance="primary"
       className=""
@@ -101,12 +103,14 @@ exports[`The Form component should render with a form item 1`] = `
         </TextField>
       </InputField>
     </div>
-    <FormActions>
+    <FormActions
+      align="left"
+    >
       <div
-        className="form__actions"
+        className="form-actions form-actions--left"
       >
         <div
-          className="form__btn-container"
+          className="form-actions__btn-container"
           key="0"
         >
           <Button
