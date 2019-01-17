@@ -20,7 +20,7 @@ stories.add('Generic Flow Page', withInfo(
             description="Waiting for the printer to enable cloud service, this can take a few seconds."
             image={<ApprovedIcon size="lg" color="green" />}
         >
-            <Spinner />
+            <div className="text-center"><Spinner /></div>
         </GenericFlowPage>
     </div>
 )));
