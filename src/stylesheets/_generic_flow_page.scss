@@ -1,6 +1,5 @@
 .generic-flow-page {
-    text-align: center;
-    max-width: 54rem;
+    max-width: 52rem;
     margin: 3.6rem auto;
 
     @include respond-to(sm) {
@@ -9,13 +8,14 @@
 }
 
 .generic-flow-page__logo {
+    text-align: center;
     margin-bottom: 2.4rem;
 
     @include respond-to(sm) {
         margin-bottom: 4.8rem;
     }
 
-    svg {
+    > svg {
         width: 15rem;
         height: 2.3rem;
     }
@@ -29,17 +29,19 @@
         margin-bottom: 3.6rem;
     }
 
-    .icon {
+    > .icon {
         margin: 0 auto;
     }
 }
 
 .generic-flow-page__title {
+    text-align: center;
     @include font-size-header-1;
 }
 
 .generic-flow-page__description {
-    max-width: 48rem;
+    text-align: center;
+    max-width: 49.6rem;
     margin: 1.8rem auto 0;
     padding: 0 1.2rem;
 }

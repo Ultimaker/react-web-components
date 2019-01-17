@@ -3,18 +3,16 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import ContextMenuItem from '../context_menu_item';
+import { ContextMenuItem, ContextMenuItemProps } from '../context_menu_item';
 
 
 describe('The ContextMenuItem component', () => {
-    let props;
+    let props: ContextMenuItemProps;
     let wrapper;
 
     beforeEach(() => {
         props = {
-            label: 'Menu item',
             onClickHandler: jest.fn(),
-            onCloseMenuHandler: jest.fn(),
         };
         wrapper = shallow(<ContextMenuItem {...props} />);
     });

@@ -7,6 +7,10 @@ import { DropDownMenuBase, MenuDirection } from './drop_down_menu_base';
 export type MenuOffsetDirection = 'left' | 'right';
 
 export interface ContextMenuProps {
+    /** Whether the menu should be visible */
+    showMenu: boolean;
+    /** Callback to toggle showMenu */
+    onToggleMenuHandler: (showMenu: boolean) => void;
     /** Width of the menu in pixels */
     menuWidth: number;
     /** Direction to offset the menu: 'left' | 'right' */
@@ -21,7 +25,6 @@ export interface ContextMenuProps {
 
 export interface ContextMenuState {
     menuOffset: number;
-    showMenu: boolean;
 }
 
 const menuOffsetDefault = 30;
@@ -58,7 +61,6 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
     state = {
         menuOffset: null,
-        showMenu: false,
     };
 
     constructor(props: ContextMenuProps) {
@@ -69,7 +71,8 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     private _menuRef;
 
     private _onToggleMenuHandler(showMenu: boolean): void {
-        this.setState({ showMenu });
+        const { onToggleMenuHandler } = this.props;
+        onToggleMenuHandler(showMenu);
         this._setMenuOffset();
     }
 
@@ -113,9 +116,9 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
     render(): JSX.Element {
         const {
-            menuWidth, menuOffsetDirection, menuDirection, positionMenuInPanel, children,
+            menuWidth, menuOffsetDirection, menuDirection, positionMenuInPanel, showMenu, children,
         } = this.props;
-        const { menuOffset, showMenu } = this.state;
+        const { menuOffset } = this.state;
 
         const classes = classNames(
             'context-menu',

@@ -1,0 +1,27 @@
+.form-actions {
+    flex: 0 0 auto;
+    padding: 2.4rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+
+.form-actions__btn-container {
+    margin-left: 1.2rem;
+
+    &:last-child {
+        margin-left: 0;
+    }
+
+    > .btn {
+        margin-bottom: 1.2rem;
+    }
+}
+
+.form-actions--center {
+    justify-content: center;
+}
+
+.form-actions--right {
+    justify-content: flex-end;
+}

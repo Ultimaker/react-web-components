@@ -2,10 +2,10 @@
 
 exports[`The form actions component should render its children 1`] = `
 <div
-  className="form__actions"
+  className="form-actions form-actions--left"
 >
   <div
-    className="form__btn-container"
+    className="form-actions__btn-container"
     key="0"
   >
     <Button
@@ -20,7 +20,7 @@ exports[`The form actions component should render its children 1`] = `
     </Button>
   </div>
   <div
-    className="form__btn-container"
+    className="form-actions__btn-container"
     key="1"
   >
     <Button

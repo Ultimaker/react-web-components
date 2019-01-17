@@ -37,4 +37,20 @@ describe('The DropDownMenuBase component', () => {
         wrapper.simulate('click', mockClickEvent);
         expect(mockClickEvent.stopPropagation).toBeCalled();
     });
+
+    it('should render drop down menu north', () => {
+        wrapper.setProps({ menuDirection: 'north' });
+        expect(wrapper.find('.drop-down-menu-base--north').exists()).toBe(true);
+        expect(wrapper.find('.drop-down-menu-base--south').exists()).toBe(false);
+    });
+
+    it('should render drop down menu open', () => {
+        wrapper.setProps({ showMenu: true });
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should pass in menuStyle', () => {
+        wrapper.setProps({ menuStyle: { background: 'blue' } });
+        expect(wrapper.find('.drop-down-menu-base__menu').prop('style')).toHaveProperty('background', 'blue');
+    });
 });
