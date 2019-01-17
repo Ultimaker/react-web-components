@@ -6,6 +6,7 @@ import {
 } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
+import { withState } from '@dump247/storybook-state';
 
 import ContextMenu from '../components/context_menu';
 import ContextMenuItem from '../components/context_menu_item';
@@ -35,25 +36,36 @@ stories.addDecorator(withKnobs)
         height: '100vh',
     }));
 
-stories.add('Context menu', withInfo(
+stories.add('Context menu', withState({ showMenu: false })(withInfo(
     'Context menu for additional actions',
-)(() => (
+)(({ store }) => (
     <ContextMenu
+        showMenu={store.state.showMenu}
+        onToggleMenuHandler={showMenu => store.set({ showMenu })}
         menuWidth={200}
         menuDirection={selectV2('Menu Direction', directionOptions, directionDefaultValue)}
         menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}
     >
-        <ContextMenuItem onClickHandler={action('clicked 1')} disabled={boolean('Disabled', false)}>
+        <ContextMenuItem
+            onClickHandler={() => { store.set({ showMenu: false }); action('clicked 1'); }}
+            disabled={boolean('Disabled', false)}
+        >
             {text('Text 1', 'Context menu item 1')}
         </ContextMenuItem>
-        <ContextMenuItem onClickHandler={action('clicked 2')} disabled={boolean('Disabled', false)}>
+        <ContextMenuItem
+            onClickHandler={() => { store.set({ showMenu: false }); action('clicked 2'); }}
+            disabled={boolean('Disabled', false)}
+        >
             {text('Text 2', 'Context menu item 2')}
         </ContextMenuItem>
-        <ContextMenuItem onClickHandler={action('clicked 3')} disabled={boolean('Disabled', false)}>
+        <ContextMenuItem
+            onClickHandler={() => { store.set({ showMenu: false }); action('clicked 3'); }}
+            disabled={boolean('Disabled', false)}
+        >
             {text('Text 3', 'Context menu item 3')}
         </ContextMenuItem>
     </ContextMenu>
-)));
+))));
 
 stories.add('Drop down menu', withInfo(
     'Drop down menu',

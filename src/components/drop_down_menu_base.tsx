@@ -17,7 +17,7 @@ export interface DropDownMenuBaseProps {
     /** Style object to be applied to menu */
     menuStyle?: object;
     /** Callback to toggle showMenu */
-    onToggleMenuHandler?: (showMenu) => void;
+    onToggleMenuHandler?: (showMenu: boolean) => void;
     /** The list of menu items */
     children: JSX.Element | JSX.Element[];
 }

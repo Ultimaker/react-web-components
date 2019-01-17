@@ -13,6 +13,8 @@ describe('The ContextMenu component', () => {
 
     beforeEach(() => {
         props = {
+            showMenu: false,
+            onToggleMenuHandler: jest.fn(),
             menuWidth: 200,
             children: null,
         };
@@ -39,8 +41,13 @@ describe('The ContextMenu component', () => {
         expect(wrapper.find('.context-menu--panel')).toHaveLength(1);
     });
 
-    it('should show menu when the trigger is clicked', () => {
-        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+    it('should pass showMenu down', () => {
+        wrapper.setProps({ showMenu: true });
         expect(wrapper.find(DropDownMenuBase).prop('showMenu')).toBe(true);
+    });
+
+    it('should call onToggleMenuHandler when the trigger is clicked', () => {
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        expect(props.onToggleMenuHandler).toHaveBeenCalled();
     });
 });
