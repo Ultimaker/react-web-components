@@ -24,7 +24,10 @@ export const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> =
 }) => {
     const _onClickHandler = () => {
         onClickHandler();
-        onCloseMenuHandler();
+
+        if (onCloseMenuHandler) {
+            onCloseMenuHandler();
+        }
     };
 
     return (
