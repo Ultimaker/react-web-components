@@ -3,17 +3,18 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import DropDownMenuItem from '../drop_down_menu_item';
+import { DropDownMenuItem, DropDownMenuItemProps } from '../drop_down_menu_item';
 import Button from '../button';
 
 describe('The DropDownMenuItem component', () => {
-    let props;
+    let props: DropDownMenuItemProps;
     let wrapper;
 
     beforeEach(() => {
         props = {
             active: false,
             onClickHandler: jest.fn(),
+            onCloseMenuHandler: jest.fn(),
         };
         wrapper = shallow(<DropDownMenuItem {...props}>Menu item</DropDownMenuItem>);
     });
@@ -26,6 +27,7 @@ describe('The DropDownMenuItem component', () => {
     it('should call the click handler when item is clicked', () => {
         wrapper.find(Button).props().onClickHandler();
         expect(props.onClickHandler).toHaveBeenCalled();
+        expect(props.onCloseMenuHandler).toHaveBeenCalled();
     });
 
     it('should render item as disabled', () => {
