@@ -25,6 +25,13 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
         showMenu: false,
     };
 
+    constructor(props) {
+        super(props);
+
+        // bind callbacks once
+        this._onToggleMenuHandler = this._onToggleMenuHandler.bind(this);
+    }
+
     private _onToggleMenuHandler(showMenu: boolean) {
         this.setState({ showMenu });
     }
@@ -61,7 +68,12 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
                     triggerElement={this._renderTrigger()}
                     onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
                 >
-                    {children}
+                    {React.Children.map(children, (child: JSX.Element) => (
+                        React.cloneElement(
+                            child,
+                            { onCloseMenuHandler: () => this._onToggleMenuHandler(false) },
+                        )
+                    ))}
                 </DropDownMenuBase>
             </div>
         );

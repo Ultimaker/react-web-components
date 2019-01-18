@@ -41,7 +41,9 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
     private _menuRef;
 
     private _onOutsideFocusHandler(event): void {
-        if (this._menuRef && !this._menuRef.current.contains(event.target)) {
+        if (this._menuRef
+            && this._menuRef.current
+            && !this._menuRef.current.contains(event.target)) {
             this._onToggleMenuHandler(false);
         }
 
