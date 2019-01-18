@@ -15,23 +15,32 @@ export interface DropDownMenuItemProps {
     id?: string;
     /** Optional class for the menu item */
     className?: string;
+    /** Passed by the DropDownMenu component */
+    onCloseMenuHandler?: () => void;
 }
 
 const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> = ({
-    active, disabled, onClickHandler, id, className, children,
-}) => (
-    <li>
-        <Button
-            id={id}
-            className={classNames('drop-down-menu-base__item', { disabled, active }, className)}
-            appearance="no-style"
-            onClickHandler={() => { onClickHandler(); }}
-            disabled={disabled}
-        >
-            {children}
-        </Button>
-    </li>
-);
+    active, disabled, onClickHandler, id, className, onCloseMenuHandler, children,
+}) => {
+    const _onClickHandler = () => {
+        onClickHandler();
+        onCloseMenuHandler();
+    };
+
+    return (
+        <li>
+            <Button
+                id={id}
+                className={classNames('drop-down-menu-base__item', { disabled, active }, className)}
+                appearance="no-style"
+                onClickHandler={_onClickHandler}
+                disabled={disabled}
+            >
+                {children}
+            </Button>
+        </li>
+    );
+};
 
 DropDownMenuItem.displayName = 'DropDownMenuItem';
 

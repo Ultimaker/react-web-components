@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import {
     withKnobs, text, boolean, selectV2,
 } from '@storybook/addon-knobs/react';
@@ -47,19 +46,19 @@ stories.add('Context menu', withState({ showMenu: false })(withInfo(
         menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}
     >
         <ContextMenuItem
-            onClickHandler={() => { store.set({ showMenu: false }); action('clicked 1'); }}
+            onClickHandler={() => { store.set({ showMenu: false }); }}
             disabled={boolean('Disabled', false)}
         >
             {text('Text 1', 'Context menu item 1')}
         </ContextMenuItem>
         <ContextMenuItem
-            onClickHandler={() => { store.set({ showMenu: false }); action('clicked 2'); }}
+            onClickHandler={() => { store.set({ showMenu: false }); }}
             disabled={boolean('Disabled', false)}
         >
             {text('Text 2', 'Context menu item 2')}
         </ContextMenuItem>
         <ContextMenuItem
-            onClickHandler={() => { store.set({ showMenu: false }); action('clicked 3'); }}
+            onClickHandler={() => { store.set({ showMenu: false }); }}
             disabled={boolean('Disabled', false)}
         >
             {text('Text 3', 'Context menu item 3')}
@@ -71,16 +70,16 @@ stories.add('Drop down menu', withInfo(
     'Drop down menu',
 )(() => (
     <DropDownMenu activeLabel="10">
-        <DropDownMenuItem active onClickHandler={action('clicked')}>
+        <DropDownMenuItem active onClickHandler={() => {}}>
             10
         </DropDownMenuItem>
-        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>
+        <DropDownMenuItem active={false} onClickHandler={() => {}}>
             20
         </DropDownMenuItem>
-        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>
+        <DropDownMenuItem active={false} onClickHandler={() => {}}>
             40
         </DropDownMenuItem>
-        <DropDownMenuItem active={false} onClickHandler={action('clicked')}>
+        <DropDownMenuItem active={false} onClickHandler={() => {}}>
             80
         </DropDownMenuItem>
     </DropDownMenu>
@@ -90,12 +89,12 @@ stories.add('User account menu', withInfo(
     'User account menu',
 )(() => (
     <UserAccountMenu
-        onSignOutClickHandler={action('clicked')}
+        onSignOutClickHandler={() => {}}
         manageAccountURL={text('Account Management URL', 'https://account.ultimaker.com')}
         displayName="Test User"
         triggerWidth={text('Trigger width', null)}
         triggerHeight={text('Trigger height', null)}
         signedOut={boolean('Sign out', false)}
-        onSignInClickHandler={action('clicked')}
+        onSignInClickHandler={() => {}}
     />
 )));
