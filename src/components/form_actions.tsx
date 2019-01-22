@@ -24,7 +24,7 @@ export const FormActions: React.StatelessComponent<FormActionsProps> = ({ align,
 };
 
 FormActions.defaultProps = {
-    align: 'left',
+    align: 'right',
 };
 
 FormActions.displayName = 'FormActions';
