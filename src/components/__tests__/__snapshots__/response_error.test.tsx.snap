@@ -7,6 +7,7 @@ exports[`The ResponseError component should render 1`] = `
   <Tile
     alert={true}
     align="center"
+    appearance="shadow"
     padding="md"
   >
     <div

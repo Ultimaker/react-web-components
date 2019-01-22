@@ -58,7 +58,7 @@ exports[`The AboutDialog component should render 1`] = `
       </tbody>
     </table>
     <FormActions
-      align="left"
+      align="right"
     >
       <Button
         appearance="primary"
