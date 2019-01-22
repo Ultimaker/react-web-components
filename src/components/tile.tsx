@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 export type Padding = 'none' | 'sm' | 'md' | 'lg';
 export type Align = 'left' | 'center' | 'right';
+export type TileAppearance = 'shadow' | 'dashed' | 'flat';
 
 export interface TileProps {
     /** The amount of padding to apply: 'none' | 'sm' | 'md' | 'lg' */
@@ -19,17 +20,24 @@ export interface TileProps {
     success?: boolean;
     /** An optional class name for the tile * */
     className?: string;
+    /** CSS styling: 'shadow' | 'dashed' | 'flat' */
+    appearance?: TileAppearance;
+    /** Border radius. Include unit */
+    radius?: string;
 }
 
 export const Tile: React.StatelessComponent<TileProps> = ({
-    padding, align, children, disabled, selected, alert, success, className,
+    padding, align, children, disabled, selected, alert, success, className, appearance, radius,
 }): JSX.Element => {
-    const classes = classnames('tile', className, `padding-${padding}`, {
-        selected, alert, disabled, success,
+    const classes = classnames('tile', className, `padding-${padding}`, `tile--${appearance}`, {
+        'tile--selected': selected,
+        'tile--alert': alert,
+        'tile--disabled': disabled,
+        'tile--success': success,
     });
 
     return (
-        <div className={classes} style={{ textAlign: align }}>
+        <div className={classes} style={{ textAlign: align, borderRadius: radius }}>
             <div className="cover" />
             {children}
         </div>
@@ -39,6 +47,7 @@ export const Tile: React.StatelessComponent<TileProps> = ({
 Tile.defaultProps = {
     padding: 'md',
     align: 'left',
+    appearance: 'shadow',
 };
 
 Tile.displayName = 'Tile';
