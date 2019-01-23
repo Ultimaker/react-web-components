@@ -2,9 +2,10 @@
 
 exports[`The Tile component should render 1`] = `
 <div
-  className="tile padding-md"
+  className="tile padding-md tile--shadow"
   style={
     Object {
+      "borderRadius": undefined,
       "textAlign": "left",
     }
   }

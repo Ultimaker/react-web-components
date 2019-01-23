@@ -6,6 +6,7 @@ import {
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
+import { action } from '@storybook/addon-actions';
 
 // components
 import { ImageFile } from '../components/image_upload';
@@ -25,6 +26,8 @@ import RangeSlider from '../components/range_slider';
 import ProfileIcon from '../components/icons/profile_icon';
 import Image from '../components/image';
 import StaticField from '../components/input_fields/static_field';
+import FormActions from '../components/form_actions';
+import Button from '../components/button';
 
 const stories = storiesOf('Forms', module);
 
@@ -371,7 +374,7 @@ stories.add('Upload file field', withState({ value: null })(withInfo('Upload fil
     </div>
 ))));
 
-stories.add('Static input field', withState({ })(withInfo('Static input field')(({ store }) => (
+stories.add('Static input field', withState({})(withInfo('Static input field')(({ store }) => (
     <div style={{ width: 350 }}>
         <StaticField
             id="id_12"
@@ -387,3 +390,33 @@ stories.add('Static input field', withState({ })(withInfo('Static input field')(
         </StaticField>
     </div>
 ))));
+
+const alignOptions = {
+    left: 'left',
+    right: 'right',
+    center: 'center',
+};
+const alignDefaultValue = 'right';
+
+stories.add('Form actions', withInfo(
+    'Action button container for forms',
+)(() => (
+    <div style={{ minWidth: '500px' }}>
+        <Tile>
+            <FormActions align={selectV2('Align', alignOptions, alignDefaultValue)}>
+                <Button
+                    onClickHandler={action('clicked')}
+                    appearance="primary"
+                >
+                    {text('Text 1', 'Submit')}
+                </Button>
+                <Button
+                    onClickHandler={action('clicked')}
+                    appearance="quiet"
+                >
+                    {text('Text 2', 'Cancel')}
+                </Button>
+            </FormActions>
+        </Tile>
+    </div>
+)));

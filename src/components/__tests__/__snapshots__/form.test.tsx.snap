@@ -7,7 +7,7 @@ exports[`The Form component should render 1`] = `
   onSubmit={[Function]}
 >
   <FormActions
-    align="left"
+    align="right"
   >
     <Button
       appearance="primary"
@@ -104,10 +104,10 @@ exports[`The Form component should render with a form item 1`] = `
       </InputField>
     </div>
     <FormActions
-      align="left"
+      align="right"
     >
       <div
-        className="form-actions form-actions--left"
+        className="form-actions form-actions--right"
       >
         <div
           className="form-actions__btn-container"

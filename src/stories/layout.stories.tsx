@@ -66,6 +66,13 @@ const breakpointOptions = {
 };
 const breakpointDefaultValue = 'sm';
 
+const tileAppearanceOptions = {
+    shadow: 'shadow',
+    dashed: 'dashed',
+    flat: 'flat',
+};
+const tileAppearanceDefaultValue = 'shadow';
+
 stories.add('Tile', withInfo(
     'A content tile that can be used as full width or as part of a grid',
 )(() => (
@@ -76,6 +83,8 @@ stories.add('Tile', withInfo(
         success={boolean('Success', false)}
         padding={selectV2('Padding', spacingOptions, spacingDefaultValue)}
         align={selectV2('Align', alignOptions, alignDefaultValue)}
+        appearance={selectV2('Appearance', tileAppearanceOptions, tileAppearanceDefaultValue)}
+        radius={text('Radius', '')}
     >
         <div>Tile</div>
         <div style={{ marginTop: '1.2rem' }}>Component</div>

@@ -1,33 +1,45 @@
 .tile {
     position: relative;
-    box-shadow: 0 0.2rem 0.3rem 0 $color-shadow;
     background-color: $color-background;
+    transition: background-color 0.2s ease-out;
+}
 
-    &.disabled .cover, &.selected .cover {
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        transition: background-color 0.2s ease-out;
-    }
+.tile--disabled .cover, .tile--selected .cover {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: background-color 0.2s ease-out;
+}
 
-    &.selected .cover {
-        background-color: $color-background-selected;
-    }
+.tile--selected .cover {
+    background-color: $color-background-selected;
+}
 
-    &.disabled .cover {
-        background-color: $color-background-darkest;
-    }
+.tile--disabled .cover {
+    background-color: $color-background-darkest;
+}
 
-    &.alert {
-        color: white;
-        background-color: $color-background-alert;
-    }
+.tile--alert {
+    color: white;
+    background-color: $color-background-alert;
+}
 
-    &.success {
-        color: white;
-        background-color: $color-background-success;
-    }
+.tile--success {
+    color: white;
+    background-color: $color-background-success;
+}
+
+.tile--shadow {
+    box-shadow: 0 0.2rem 0.3rem 0 $color-shadow;
+}
+
+.tile--dashed {
+    border: 1px dashed $color-border;
+}
+
+.tile--flat {
+    border: 1px solid $color-border;
 }
