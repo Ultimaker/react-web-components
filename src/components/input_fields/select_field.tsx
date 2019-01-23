@@ -34,7 +34,7 @@ export class SelectField extends React.Component<SelectFieldProps, SelectFieldSt
         super(props);
         // bind callbacks once
         this._onChange = this._onChange.bind(this);
-        this._staticRender = this._staticRender.bind(this);
+        this._getValueLabel = this._getValueLabel.bind(this);
     }
 
     private _onChange(value: string | number): void {
@@ -43,10 +43,14 @@ export class SelectField extends React.Component<SelectFieldProps, SelectFieldSt
         onChangeHandler(id, value);
     }
 
-    private _staticRender(): JSX.Element | string {
-        const { value, selectOptions } = this.props;
+    private _getValueLabel(value: string | number): string {
+        const { selectOptions } = this.props;
         const option = selectOptions.find(findOption => findOption.value === value);
-        return option && option.label;
+
+        if (option) {
+            return option.label;
+        }
+        return null;
     }
 
     render() {
@@ -60,11 +64,11 @@ export class SelectField extends React.Component<SelectFieldProps, SelectFieldSt
         return (
             <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
                 { staticField
-                    ? this._staticRender()
+                    ? this._getValueLabel(value)
                     : (
                         <DropDownMenu
                             id={id}
-                            activeLabel={typeof value === 'number' || typeof value === 'string' ? value : null}
+                            activeLabel={this._getValueLabel(value)}
                             error={validationError && (touched || submitted)}
                         >
                             {selectOptions.map((option, index) => (

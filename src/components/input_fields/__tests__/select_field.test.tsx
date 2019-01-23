@@ -45,7 +45,7 @@ describe('The select field component', () => {
         expect(wrapper.find(DropDownMenu)).toHaveLength(0);
         expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual('Option 3');
         wrapper.setProps({ value: 10 });
-        expect(wrapper.find(InputFieldWrapper).prop('children')).toBeUndefined();
+        expect(wrapper.find(InputFieldWrapper).prop('children')).toBeNull();
     });
 
     it('should call the callback', () => {

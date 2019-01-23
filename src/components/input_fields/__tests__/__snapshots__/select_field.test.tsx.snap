@@ -10,7 +10,7 @@ exports[`The select field component should render a wrapper 1`] = `
   touched={false}
 >
   <DropDownMenu
-    activeLabel={3}
+    activeLabel="Option 3"
     id="testInputField"
   >
     <DropDownMenuItem
