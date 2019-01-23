@@ -126,7 +126,9 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
     private _renderInputChildren(): JSX.Element {
         const { inputChildren } = this.props;
-        if (inputChildren) {
+        const displayChildren = React.Children.toArray(inputChildren).length > 0;
+
+        if (displayChildren) {
             return (
                 <div className="layout__item u-fit input-children">
                     {inputChildren}
