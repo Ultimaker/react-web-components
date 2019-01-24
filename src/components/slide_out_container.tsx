@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UnmountClosed } from 'react-collapse';
+import { Spring, animated } from 'react-spring';
 
 // components
 import Button from './button';
@@ -48,11 +48,15 @@ export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps>
             </Button>
         )}
 
-        <UnmountClosed isOpened={isOpen}>
-            <div className="slide-out-container__body">
-                {children}
-            </div>
-        </UnmountClosed>
+        <Spring native from={{ height: 0 }} to={{ height: isOpen ? 'auto' : 0 }}>
+            {props => (
+                <animated.div className="spring-container" style={props}>
+                    <div className="slide-out-container__body">
+                        {children}
+                    </div>
+                </animated.div>
+            )}
+        </Spring>
 
     </div>
 );

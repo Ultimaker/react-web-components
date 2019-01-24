@@ -94,6 +94,13 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.0.0-beta.53.tgz#1f45eb617bf9463d482b2c04d349d9e4edbf4892"
   integrity sha1-H0XrYXv5Rj1IKywE00nZ5O2/SJI=
 
+"@babel/runtime@^7.1.2":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.1.tgz#574b03e8e8a9898eaf4a872a92ea20b7846f6f2a"
+  integrity sha512-7jGW8ppV0ant637pIqAcFfQDDH1orEPGJb8aXfUozuCU3QqX7rX4DA8iwrbPrR1hcH0FTTHz47yQnk+bl5xHQA==
+  dependencies:
+    regenerator-runtime "^0.12.0"
+
 "@babel/runtime@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.2.0.tgz#b03e42eeddf5898e00646e4c840fa07ba8dcad7f"
@@ -9750,6 +9757,13 @@ react-split-pane@^0.1.84:
     prop-types "^15.5.10"
     react-lifecycles-compat "^3.0.4"
     react-style-proptype "^3.0.0"
+
+react-spring@6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.0.tgz#bea4211d0543c13b07c334d374cfec9978b6df24"
+  integrity sha512-7LuX1IrYVz+nECMfn4vqr2IfY6rBHpka1cWYCQ4Wz+PVaTVEuvT0VJhjHmWdr9Bw8j63FSuvTTZX2mb4ZUSc/A==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
 
 react-style-proptype@^3.0.0:
   version "3.2.1"

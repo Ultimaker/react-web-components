@@ -164,7 +164,7 @@ stories.add('Header', withInfo(
     <BrowserRouter>
         <div style={{ width: '100vw', marginTop: '-50px' }}>
             <Header headerLogoUrl="/" showNav rightSideLabel={text('Label', '')}>
-                <Navigation navLinks={routes} manageAccountURL={text('Manage Account URL', '')} onSignOutClickHandler={() => {}} />
+                <Navigation navLinks={routes} manageAccountURL={text('Manage Account URL', '')} onSignOutClickHandler={() => { }} />
             </Header>
         </div>
     </BrowserRouter>
@@ -211,10 +211,8 @@ stories.add('Slide out container', withInfo(
                 headerText={text('Header text', 'Slide out container component')}
                 onHeaderClick={action('clicked')}
             >
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.
             </SlideOutContainer>
         </Tile>
     </div>
