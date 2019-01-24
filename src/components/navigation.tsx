@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { Motion, spring } from 'react-motion';
+import { Spring } from 'react-spring';
 
 // components
 import Button from './button';
@@ -27,8 +27,6 @@ export interface NavigationProps {
 export interface NavigationState {
     showNav: boolean;
 }
-
-const motion = { stiffness: 999, damping: 50 };
 
 export default class Navigation extends React.Component<NavigationProps, NavigationState> {
     state = {
@@ -72,11 +70,16 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                             </Button>
                         </div>
 
-                        <Motion style={{ x: spring(showNav ? 56 : 0, motion) }}>
-                            {({ x }) => (
+
+                        <Spring
+                            config={{ tension: 999, friction: 50 }}
+                            from={{ x: 0 }}
+                            to={{ x: showNav ? 56 : 0 }}
+                        >
+                            {(props: any) => (
                                 <ul>
                                     {visibleNavLinks.map((navLink, index) => (
-                                        <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
+                                        <li key={navLink.path} style={{ top: `${(index + 1) * props.x}px` }}>
                                             <NavLink
                                                 to={navLink.path}
                                                 activeClassName="active"
@@ -89,7 +92,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                                     ))}
 
                                     {manageAccountURL && (
-                                        <li style={{ top: `${(visibleNavLinks.length + 1) * x}px` }} className="hide-sm">
+                                        <li style={{ top: `${(visibleNavLinks.length + 1) * props.x}px` }} className="hide-sm">
                                             <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
                                                 <span className="label">{I18n.translate('Nav manage account button', 'Account')}</span>
                                             </a>
@@ -97,7 +100,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                                     )}
 
                                     {onSignOutClickHandler && (
-                                        <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * x}px` }} className="hide-sm">
+                                        <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * props.x}px` }} className="hide-sm">
                                             <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
                                                 <span className="label">{I18n.translate('Nav sign out button', 'Sign out')}</span>
                                             </Button>
@@ -105,7 +108,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                                     )}
                                 </ul>
                             )}
-                        </Motion>
+                        </Spring>
 
                         {children && (
                             <div className="children-containter">
