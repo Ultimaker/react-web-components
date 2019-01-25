@@ -59,63 +59,59 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
 
         return (
             <nav className={navClasses} role="navigation">
-
-                {visibleNavLinks.length > 0 && (
-                    <div className="nav-links-container">
-                        <div className="burger-menu hide-sm">
-                            <Button
-                                appearance="primary"
-                                shape="circle"
-                                onClickHandler={() => this._toggleShowNav(!showNav)}
-                            >
-                                <div className={burgerIconClasses} />
-                            </Button>
-                        </div>
-
-                        <Motion style={{ x: spring(showNav ? 56 : 0, motion) }}>
-                            {({ x }) => (
-                                <ul>
-                                    {visibleNavLinks.map((navLink, index) => (
-                                        <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
-                                            <NavLink
-                                                to={navLink.path}
-                                                activeClassName="active"
-                                                className="nav-link"
-                                                onClick={() => this._toggleShowNav(false)}
-                                            >
-                                                <span className="label">{navLink.label}</span>
-                                            </NavLink>
-                                        </li>
-                                    ))}
-
-                                    {manageAccountURL && (
-                                        <li style={{ top: `${(visibleNavLinks.length + 1) * x}px` }} className="hide-sm">
-                                            <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
-                                                <span className="label">{I18n.translate('Nav manage account button', 'Account')}</span>
-                                            </a>
-                                        </li>
-                                    )}
-
-                                    {onSignOutClickHandler && (
-                                        <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * x}px` }} className="hide-sm">
-                                            <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
-                                                <span className="label">{I18n.translate('Nav sign out button', 'Sign out')}</span>
-                                            </Button>
-                                        </li>
-                                    )}
-                                </ul>
-                            )}
-                        </Motion>
-
-                        {children && (
-                            <div className="children-containter">
-                                {children}
-                            </div>
-                        )}
-
+                <div className="nav-links-container">
+                    <div className="burger-menu hide-sm">
+                        <Button
+                            appearance="primary"
+                            shape="circle"
+                            onClickHandler={() => this._toggleShowNav(!showNav)}
+                        >
+                            <div className={burgerIconClasses} />
+                        </Button>
                     </div>
-                )}
 
+                    <Motion style={{ x: spring(showNav ? 56 : 0, motion) }}>
+                        {({ x }) => (
+                            <ul>
+                                {visibleNavLinks.map((navLink, index) => (
+                                    <li key={navLink.path} style={{ top: `${(index + 1) * x}px` }}>
+                                        <NavLink
+                                            to={navLink.path}
+                                            activeClassName="active"
+                                            className="nav-link"
+                                            onClick={() => this._toggleShowNav(false)}
+                                        >
+                                            <span className="label">{navLink.label}</span>
+                                        </NavLink>
+                                    </li>
+                                ))}
+
+                                {manageAccountURL && (
+                                    <li style={{ top: `${(visibleNavLinks.length + 1) * x}px` }} className="hide-sm">
+                                        <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
+                                            <span className="label">{I18n.translate('Nav manage account button', 'Account')}</span>
+                                        </a>
+                                    </li>
+                                )}
+
+                                {onSignOutClickHandler && (
+                                    <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * x}px` }} className="hide-sm">
+                                        <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
+                                            <span className="label">{I18n.translate('Nav sign out button', 'Sign out')}</span>
+                                        </Button>
+                                    </li>
+                                )}
+                            </ul>
+                        )}
+                    </Motion>
+
+                    {children && (
+                        <div className="children-containter">
+                            {children}
+                        </div>
+                    )}
+
+                </div>
             </nav>
         );
     }
