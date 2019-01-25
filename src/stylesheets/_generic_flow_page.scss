@@ -1,6 +1,7 @@
 .generic-flow-page {
-    max-width: 52rem;
+    max-width: 54.4rem;
     margin: 3.6rem auto;
+    padding: 0 1.2rem;
 
     @include respond-to(sm) {
         margin-top: 0;
@@ -41,9 +42,11 @@
 
 .generic-flow-page__description {
     text-align: center;
-    max-width: 49.6rem;
-    margin: 1.8rem auto 0;
-    padding: 0 1.2rem;
+    margin: 1.8rem 2.4rem 0;
+
+    @include respond-to(sm) {
+        margin: 1.8rem 3.6rem 0;
+    }
 }
 
 .generic-flow-page__content {
