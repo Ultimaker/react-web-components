@@ -1,10 +1,15 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, number, selectV2 } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
+/* eslint-enable */
 
+// components
 import Ratings from '../components/ratings';
 
 import ApprovedIcon from '../components/icons/approved_icon';

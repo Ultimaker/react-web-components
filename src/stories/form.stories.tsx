@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, number, selectV2,
@@ -7,6 +10,7 @@ import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 import { action } from '@storybook/addon-actions';
+/* eslint-enable */
 
 // components
 import { ImageFile } from '../components/image_upload';

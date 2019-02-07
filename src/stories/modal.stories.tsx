@@ -1,11 +1,16 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs, selectV2, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
+/* eslint-enable */
 
+// components
 import Modal from '../components/modal';
 import Popup from '../components/popup';
 import AboutDialog from '../components/about_dialog';

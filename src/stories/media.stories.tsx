@@ -1,9 +1,12 @@
 import * as React from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
+// components
 import VideoPlayer from '../components/video_player';
 
 const stories = storiesOf('Media', module);
