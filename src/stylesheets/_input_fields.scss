@@ -171,23 +171,16 @@
 }
 
 .date-picker {
-    .SingleDatePicker {
+    .react-date-picker {
         width: 100%;
     }
 
-    .SingleDatePicker_picker {
-        top: 46px !important;
-    }
-
-    .SingleDatePickerInput {
+    .react-date-picker__wrapper {
+        border: none;
         width: 100%;
     }
 
-    .DateInput {
-        width: 100%;
-    }
-
-    .DateInput_input {
+    .react-date-picker__inputGroup {
         @extend %input-style;
 
         color: $color-text;
@@ -195,33 +188,48 @@
     }
 
     &.error {
-        .DateInput_input {
+        .react-date-picker__inputGroup {
             border-bottom-color: $input-field-color-border-error;
         }
     }
 
-    .DateInput_fang {
-        top: 38px !important;
-        height: 0.75rem;
+    .react-date-picker__calendar {
+        width: 30rem;
+        top: calc(100% + 0.9rem);
+        right: 0;
+        left: auto;
+        bottom: auto;
+        margin-bottom: 1.2rem;
+
+        &::before {
+            background: white;
+            border-top: 1px solid $context-menu-color-chevron-shadow;
+            border-left: 1px solid $context-menu-color-chevron-shadow;
+            border-width: 1px 0 0 1px;
+            height: 1rem;
+            right: 3rem;
+            position: absolute;
+            transform: translate(-50%, 0) rotate(45deg);
+            top: -6px;
+            width: 1rem;
+            content: '';
+        }
     }
 
-    .DateInput_fangStroke {
-        stroke: $context-menu-color-chevron-shadow;
-    }
-
-    .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
-        background: $input-field-color-border-active;
-        border-color: $input-field-color-border-active;
-    }
-
-    .CalendarDay__default:hover {
-        background: $context-menu-color-hover;
-        border-color: $context-menu-color-hover;
-    }
-
-    .DayPicker__withBorder {
-        box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
+    .react-calendar {
+        border: none;
+        background-color: $context-menu-color-background;
         border-radius: 1px;
+        box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
+        padding: 1rem 0.5rem;
+    }
+
+    .react-calendar__navigation {
+        margin-bottom: 0.5rem;
+    }
+
+    .react-calendar__tile {
+        padding: 1rem 0;
     }
 }
 
@@ -265,11 +273,13 @@
     .input {
         padding-left: 4rem;
     }
+
     .search-button {
         position: absolute;
         left: 0.8rem;
         top: 1.2rem;
         padding: 0;
+
         &.btn--quiet:hover {
             background-color: transparent;
         }
@@ -280,21 +290,25 @@
     .input-wrapper-children {
         display: flex;
         justify-content: space-between;
+
         .input {
             width: 3rem;
             text-align: center;
         }
+
         .separator {
             line-height: 4.8rem;
             vertical-align: middle;
             display: inline-block;
         }
     }
+
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
+
     input[type="number"] {
         -moz-appearance: textfield;
     }

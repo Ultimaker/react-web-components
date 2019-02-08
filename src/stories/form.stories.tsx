@@ -272,7 +272,7 @@ stories.add('Range slider', withState({ value: null })(withInfo('Range slider')(
     </div>
 ))));
 
-stories.add('Date picker', withState({ value: '10-10-2018' })(withInfo('Date selection field')(({ store }) => (
+stories.add('Date picker', withState({ value: new Date() })(withInfo('Date selection field')(({ store }) => (
     <div style={{ width: 350 }}>
         <DateField
             id="id_9"
@@ -286,7 +286,6 @@ stories.add('Date picker', withState({ value: '10-10-2018' })(withInfo('Date sel
             infoLinkURL={text('Info link URL', '')}
             infoText={text('Info text', '')}
             preLabelElement={text('Pre label element', '')}
-            allowPastDates={boolean('Allow past dates', false)}
         />
     </div>
 ))));
