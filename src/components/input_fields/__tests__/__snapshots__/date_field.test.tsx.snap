@@ -9,12 +9,19 @@ exports[`The date field component should render a wrapper 1`] = `
   staticField={false}
   touched={false}
 >
-  <DatePicker
-    format="DD-MM-YYYY"
+  <div
+    className="date-picker"
     id="testInputField"
-    onChangeHandler={[Function]}
-    placeholder="placeholder text"
-    value="2018-12-31"
-  />
+  >
+    <DatePicker
+      calendarIcon={null}
+      clearIcon={null}
+      isOpen={null}
+      locale="en-GB"
+      onChange={[Function]}
+      returnValue="start"
+      value={1970-01-01T00:00:00.000Z}
+    />
+  </div>
 </InputFieldWrapper>
 `;
