@@ -19,6 +19,10 @@ export interface DateFieldProps extends InputFieldProps {
     error?: boolean;
     /** Location locale, defaults to browser settings */
     locale?: string;
+    /** Defines maximum date that the user can select */
+    maxDate?: Date;
+    /** Defines minimum date that the user can select */
+    minDate?: Date;
 }
 
 /**
@@ -48,7 +52,7 @@ export class DateField extends React.Component<DateFieldProps, DateFieldState> {
 
     render() {
         const {
-            value, locale, children, ...wrapperProps
+            value, locale, maxDate, minDate, children, ...wrapperProps
         } = this.props;
         const {
             id, staticField, validationError, submitted,
@@ -69,6 +73,8 @@ export class DateField extends React.Component<DateFieldProps, DateFieldState> {
                                 calendarIcon={null}
                                 onChange={this._onChange}
                                 value={value}
+                                maxDate={maxDate}
+                                minDate={minDate}
                             />
                         </div>
                     )}

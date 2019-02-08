@@ -11,6 +11,8 @@ describe('The date field component', () => {
     let props: DateFieldProps;
     let wrapper;
     const testDate = new Date(0);
+    const testMinDate = new Date(0);
+    const testMaxDate = new Date(1);
 
     beforeEach(() => {
         props = {
@@ -63,5 +65,11 @@ describe('The date field component', () => {
         wrapper.find(DatePicker).prop('onChange')(testDate);
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, testDate);
         expect(wrapper.find(InputFieldWrapper).prop('touched')).toEqual(true);
+    });
+
+    it('should set min and max date', () => {
+        wrapper.setProps({ minDate: testMinDate, maxDate: testMaxDate });
+        expect(wrapper.find(DatePicker).prop('minDate')).toBe(testMinDate);
+        expect(wrapper.find(DatePicker).prop('maxDate')).toBe(testMaxDate);
     });
 });
