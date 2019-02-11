@@ -10,7 +10,7 @@ export interface TagsSelectorProps {
     suggestions?: string[];
     /** Called when the tag is selected */
     onChangeHandler: (tags: string[]) => void;
-    /** Placeholder text */
+    /** Placeholder name */
     placeholder?: string;
     /** List of strings to be converted into tags */
     value: string[]
@@ -27,7 +27,7 @@ export interface TagsSelectorState {
 
 export interface Tag {
     id: string,
-    text: string
+    name: string
 }
 
 const keyCodes = {
@@ -43,7 +43,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         if (strings) {
             const tags: Tag[] = [];
             strings.forEach((string) => {
-                tags.push({ id: string, text: string });
+                tags.push({ id: string, name: string });
             });
             return tags;
         }
@@ -53,7 +53,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
     static convertTagsToStrings(tags: Tag[]): string[] {
         const strings: string[] = [];
         tags.forEach((tag) => {
-            strings.push(tag.text);
+            strings.push(tag.name);
         });
         return strings;
     }
@@ -72,7 +72,6 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
         this._handleDelete = this._handleDelete.bind(this);
         this._handleAddition = this._handleAddition.bind(this);
-        this._handleDrag = this._handleDrag.bind(this);
     }
 
     static getDerivedStateFromProps(
@@ -119,21 +118,6 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         }
     }
 
-    private _handleDrag(tag: Tag, currPos: number, newPos: number): void {
-        const { disabled, onChangeHandler } = this.props;
-        const { tags } = this.state;
-
-        if (!disabled) {
-            const updatedTags = tags.slice();
-
-            updatedTags.splice(currPos, 1);
-            updatedTags.splice(newPos, 0, tag);
-
-            onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
-        }
-    }
-
-
     render(): JSX.Element {
         const { tags, suggestions } = this.state;
         const {
@@ -153,6 +137,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
                     placeholder={placeholder}
                     autofocus={autofocus}
                     maxLength={30}
+                    allowNew
                 />
             </div>
         );
