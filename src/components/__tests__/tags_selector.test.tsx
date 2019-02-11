@@ -23,11 +23,11 @@ describe('The TagsSelector component', () => {
         expect(wrapper.state('tags')).toEqual([
             {
                 id: 'tag 1',
-                text: 'tag 1',
+                name: 'tag 1',
             },
             {
                 id: 'tag 2',
-                text: 'tag 2',
+                name: 'tag 2',
             },
         ]);
     });
@@ -37,11 +37,11 @@ describe('The TagsSelector component', () => {
         expect(wrapper.state('suggestions')).toEqual([
             {
                 id: 'suggestion tag 1',
-                text: 'suggestion tag 1',
+                name: 'suggestion tag 1',
             },
             {
                 id: 'suggestion tag 2',
-                text: 'suggestion tag 2',
+                name: 'suggestion tag 2',
             },
         ]);
     });
@@ -49,17 +49,9 @@ describe('The TagsSelector component', () => {
     it('should handle adding a tag', () => {
         wrapper.instance()._handleAddition({
             id: 'tag 3',
-            text: 'tag 3',
+            name: 'tag 3',
         });
         expect(props.onChangeHandler).toHaveBeenCalledWith(['tag 1', 'tag 2', 'tag 3']);
-    });
-
-    it('should handle changing tags order', () => {
-        wrapper.instance()._handleDrag({
-            id: 'tag 1',
-            text: 'tag 1',
-        }, 0, 1);
-        expect(props.onChangeHandler).toHaveBeenCalledWith(['tag 2', 'tag 1']);
     });
 
     it('should handle deleting a tag', () => {
@@ -73,14 +65,8 @@ describe('The TagsSelector component', () => {
 
         wrapper.instance()._handleAddition({
             id: 'tag 3',
-            text: 'tag 3',
+            name: 'tag 3',
         });
-        expect(props.onChangeHandler).not.toHaveBeenCalled();
-
-        wrapper.instance()._handleDrag({
-            id: 'tag 1',
-            text: 'tag 1',
-        }, 0, 1);
         expect(props.onChangeHandler).not.toHaveBeenCalled();
 
         wrapper.instance()._handleDelete(1);
