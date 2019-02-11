@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
 import classNames from 'classnames';
+
+const ReactTags = require('react-tag-autocomplete');
 
 export interface TagsSelectorProps {
     /** The TagsSelector id */
@@ -148,7 +149,6 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
                     suggestions={suggestions}
                     handleDelete={this._handleDelete}
                     handleAddition={this._handleAddition}
-                    handleDrag={!disabled ? null : this._handleDrag}
                     delimiters={delimiters}
                     placeholder={placeholder}
                     autofocus={autofocus}
