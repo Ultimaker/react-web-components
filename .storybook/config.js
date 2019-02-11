@@ -5,10 +5,8 @@ import { configure } from '@storybook/react';
 import "../src/stylesheets/fonts.scss";
 import "../src/stylesheets/main.scss";
 import "../src/fonts/notosans/NotoSans-Regular.woff";
-import "../src/fonts/notosans/NotoSans-Bold.woff";
 import "../src/fonts/notosans/NotoSans-Medium.woff";
 import "../src/fonts/notosans/NotoSans-Regular.woff2";
-import "../src/fonts/notosans/NotoSans-Bold.woff2";
 import "../src/fonts/notosans/NotoSans-Medium.woff2";
 
 // load stories
