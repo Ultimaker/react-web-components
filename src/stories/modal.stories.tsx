@@ -179,7 +179,6 @@ stories.add('About dialog', withInfo(
             { name: 'classnames', license: 'MIT', url: 'https://github.com/JedWatson/classnames' },
             { name: 'gettext-extractor', license: 'MIT', url: 'https://github.com/lukasgeiter/gettext-extractor' },
             { name: 'gettext-parser', license: 'MIT', url: 'https://github.com/smhg/gettext-parser' },
-            { name: 'lodash', license: 'MIT', url: 'https://lodash.com/' },
             { name: 'moment', license: 'MIT', url: 'http://momentjs.com/' },
             { name: 'node-gettext', license: 'MIT', url: 'https://github.com/alexanderwallin/node-gettext' },
             { name: 'react', license: 'MIT', url: 'https://reactjs.org/' },

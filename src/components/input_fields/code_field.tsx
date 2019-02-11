@@ -5,8 +5,6 @@ import classNames from 'classnames';
 // components
 import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 
-import _ = require('lodash');
-
 /**
  * The props of the code field.
  */
@@ -52,12 +50,19 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
      * Note that we don't use React.CreateRef because that would require some extra code
      * for re-initializing the array whenever {maxLength} changes.
      */
-    private readonly _inputRefs: HTMLInputElement[] = [];
 
     /** The default props */
     static defaultProps = {
         type: 'number',
     };
+
+    static range(start: number, end: number): number[] {
+        const length = end - start;
+        return Array.from({ length }, (e, i) => start + i);
+    }
+
+    private readonly _inputRefs: HTMLInputElement[] = [];
+
 
     /** The default state */
     state = {
@@ -106,9 +111,10 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         const valueStr = value || '';
         // we use space values to hide
         return {
-            values: _.range(0, maxLength).map(i => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
+            values: CodeField.range(0, maxLength).map(i => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
         };
     }
+
 
     /**
      * Handles changes to the text selection in the document.
@@ -289,7 +295,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
                 <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
                     {staticField
                         && type === 'password'
-                        && _.repeat('*', maxLength)
+                        && '*'.repeat(maxLength)
                     }
                     {staticField
                         && type !== 'password'
