@@ -138,6 +138,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
                     autofocus={autofocus}
                     maxLength={30}
                     allowNew
+                    autoresize={false}
                 />
             </div>
         );

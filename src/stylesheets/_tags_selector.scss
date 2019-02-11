@@ -1,61 +1,36 @@
 .tags-selector {
-    .ReactTags__tags {
+    .react-tags__tags {
         position: relative;
     }
 
-    .ReactTags__tagInput {
+    .react-tags__search-input {
         width: 100%;
         display: inline-block;
 
-        .ReactTags__tagInputField {
+        input {
             @extend %input-style;
 
+            width: 100%;
             padding-top: 0.5rem;
         }
     }
 
-    .ReactTags__selected {
-        .ReactTags__tag {
+    .react-tags__selected {
+        .react-tags__selected-tag {
             @extend .pill;
 
             margin-right: 0.6rem;
             margin-bottom: 1.2rem;
-        }
-
-        .ReactTags__remove {
-            visibility: collapse;
-            position: relative;
-            margin-left: 0.9rem;
-
-            &::after {
-                content: "✕";
-                cursor: pointer;
-                color: white;
-                position: absolute;
-                top: 0;
-                left: -0.3rem;
-                border-radius: 9999px;
-                height: 1.8rem;
-                width: 1.8rem;
-                background: $tags-color-close-background;
-                line-height: 1.8rem;
-                text-align: center;
-                color: $tags-color-close-text;
-                visibility: visible;
-                font-size: 1rem;
-            }
 
             &:hover {
-                &::after {
-                    text-decoration: none;
-                    transition: background-color 0.2s ease-out;
-                    background-color: $tags-color-hover;
-                }
+                background-color: $context-menu-color-hover;
+                transition: background-color 0.2s ease-out;
+                cursor: pointer;
             }
         }
     }
 
-    .ReactTags__suggestions {
+    .react-tags__suggestions {
         position: absolute;
 
         ul {
@@ -88,7 +63,7 @@
                     font-weight: 600;
                 }
 
-                .ReactTags__activeSuggestion {
+                .react-tags__activeSuggestion {
                     background: $context-menu-color-hover;
                     cursor: pointer;
                 }
@@ -97,8 +72,17 @@
     }
 
     &.disabled {
-        .ReactTags__tagInput, .ReactTags__remove {
+        .react-tags__search {
             display: none;
+        }
+        .react-tags__selected-tag {
+            &:hover {
+                background-color: $pill-color-background;
+                cursor: default;
+            }
+            &:focus {
+                outline: none;
+            }
         }
     }
 }
