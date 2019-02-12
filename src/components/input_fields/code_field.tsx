@@ -5,6 +5,9 @@ import classNames from 'classnames';
 // components
 import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 
+// utils
+import range from '../../utils/range';
+
 /**
  * The props of the code field.
  */
@@ -56,11 +59,6 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         type: 'number',
     };
 
-    static range(start: number, end: number): number[] {
-        const length = end - start;
-        return Array.from({ length }, (e, i) => start + i);
-    }
-
     private readonly _inputRefs: HTMLInputElement[] = [];
 
 
@@ -111,7 +109,7 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         const valueStr = value || '';
         // we use space values to hide
         return {
-            values: CodeField.range(0, maxLength).map(i => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
+            values: range(0, maxLength).map(i => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
         };
     }
 
