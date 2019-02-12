@@ -1,11 +1,16 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs, selectV2, text } from '@storybook/addon-knobs/react';
 import { action } from '@storybook/addon-actions';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
+/* eslint-enable */
 
+// components
 import Modal from '../components/modal';
 import Popup from '../components/popup';
 import AboutDialog from '../components/about_dialog';
@@ -174,7 +179,6 @@ stories.add('About dialog', withInfo(
             { name: 'classnames', license: 'MIT', url: 'https://github.com/JedWatson/classnames' },
             { name: 'gettext-extractor', license: 'MIT', url: 'https://github.com/lukasgeiter/gettext-extractor' },
             { name: 'gettext-parser', license: 'MIT', url: 'https://github.com/smhg/gettext-parser' },
-            { name: 'lodash', license: 'MIT', url: 'https://lodash.com/' },
             { name: 'moment', license: 'MIT', url: 'http://momentjs.com/' },
             { name: 'node-gettext', license: 'MIT', url: 'https://github.com/alexanderwallin/node-gettext' },
             { name: 'react', license: 'MIT', url: 'https://reactjs.org/' },

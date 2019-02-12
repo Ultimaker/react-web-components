@@ -1,11 +1,13 @@
 import * as React from 'react';
 
 // storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 import styles from '@sambego/storybook-styles';
+/* eslint-enable */
 
 // utils
 import copyToClipboard from '../utils/copy_to_clipboard';

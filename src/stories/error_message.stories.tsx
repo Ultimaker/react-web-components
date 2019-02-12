@@ -1,8 +1,12 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
 // components
 import ResponseError, { ErrorMessageTemplates, FieldTranslations } from '../components/response_error';

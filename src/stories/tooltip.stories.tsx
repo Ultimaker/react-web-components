@@ -1,11 +1,16 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, selectV2,
 } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
+// components
 import Tooltip from '../components/tooltip';
 import InfoTooltip from '../components/info_tooltip';
 

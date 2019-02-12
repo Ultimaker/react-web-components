@@ -1,9 +1,12 @@
 import * as React from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, number } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
+// components
 import Loading from '../components/loading';
 import LoadingPage from '../components/loading_page';
 

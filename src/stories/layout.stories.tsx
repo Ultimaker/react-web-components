@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, selectV2, number,
@@ -8,7 +11,9 @@ import { action } from '@storybook/addon-actions';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
+/* eslint-enable */
 
+// components
 import Tile from '../components/tile';
 import Grid from '../components/grid';
 import GridItem from '../components/grid_item';
