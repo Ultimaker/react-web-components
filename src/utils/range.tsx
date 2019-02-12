@@ -1,5 +1,6 @@
 /**
- * Creates an array of numbers (positive and/or negative) progressing from start up to, but not including, end.
+ * Creates an array of numbers (positive and/or negative) progressing from start up to,
+ * but not including, end.
  * @param start - start of the range.
  * @param end - end of the range.
  */

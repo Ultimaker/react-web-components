@@ -1,5 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
+import * as debounce from 'lodash.debounce';
+
 import { ImageShape } from './image';
 import RangeSlider from './range_slider';
 import CloseButton from './close_button';
@@ -11,8 +13,6 @@ if ('default' in AvatarEditor) {
     /* istanbul ignore next */ // ignores coverage for this line.
     AvatarEditor = AvatarEditor.default;
 }
-
-const debounce = require('lodash.debounce');
 
 export interface ImageCropperProps {
     /** Size of the image. Include size unit */
