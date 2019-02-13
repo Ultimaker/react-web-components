@@ -132,5 +132,11 @@
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
         ]
+    },
+    "greenkeeper": {
+        "ignore": [
+            "jest",
+            "@types/jest"
+        ]
     }
 }
