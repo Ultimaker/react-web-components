@@ -1,6 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, render } from 'enzyme';
 
 // component
 import ImageUpload from '../image_upload';
@@ -17,7 +17,7 @@ describe('The image upload component', () => {
     let props;
     let wrapper;
     let image;
-    let oldAlert = window.alert;
+    const oldAlert = window.alert;
     let alertMock;
 
     beforeEach(() => {
@@ -35,7 +35,7 @@ describe('The image upload component', () => {
 
     afterEach(() => {
         window.alert = oldAlert;
-    })
+    });
 
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
@@ -59,15 +59,12 @@ describe('The image upload component', () => {
 
     it('should reject images that are too large', async () => {
         wrapper.setProps({ maxMb: 0.000001 });
-
-        const image = new Blob(['A+test+string+for+testing+image'], { type: 'image/jpeg' });
-        image['preview'] = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
         wrapper.find(Dropzone).prop('onDrop')([image]);
 
-        expect(alertMock).toHaveBeenCalledWith("This file is too large. Please select an image below 0.0MB");
+        expect(alertMock).toHaveBeenCalledWith('This file is too large. Please select an image below 0.0MB');
         expect(props.onFileSelection).not.toHaveBeenCalled();
         expect(props.onFileRead).not.toHaveBeenCalled();
-    })
+    });
 
     it('should handle drag enter', () => {
         wrapper.instance()._onDragEnter();
@@ -82,13 +79,13 @@ describe('The image upload component', () => {
     });
 
     it('should display the placeholder', () => {
-        wrapper.setProps({ placeholderLabel: 'Upload your image' });
+        wrapper = render(<ImageUpload {...props} placeholderLabel="Upload your image" />);
         expect(wrapper.find('.placeholder-label').text()).toEqual('Upload your image');
     });
 
     it('should display the image', () => {
-        wrapper.setProps({ imageURL: 'a/image/url' });
-        expect(wrapper.find(Image).prop('src')).toEqual('a/image/url');
+        wrapper = render(<ImageUpload {...props} imageURL="a/image/url" />);
+        expect(wrapper.find('.image').prop('src')).toEqual('a/image/url');
         expect(wrapper.find('.cover')).toHaveLength(1);
     });
 
