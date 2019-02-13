@@ -3,7 +3,7 @@ import copyToClipboard from '../copy_to_clipboard';
 
 test('Copy to clipboard', () => {
     // prepare mock
-    const elementMock = { focus: jest.fn(), select: jest.fn(), style: {} };
+    const elementMock: any = { focus: jest.fn(), select: jest.fn(), style: {} };
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValue(elementMock);
     const appendChildSpy = jest.spyOn(document.body, 'appendChild').mockImplementation();
     const removeChildSpy = jest.spyOn(document.body, 'removeChild').mockImplementation();
