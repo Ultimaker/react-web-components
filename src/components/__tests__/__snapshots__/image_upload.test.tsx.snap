@@ -4,22 +4,7 @@ exports[`The image upload component should render 1`] = `
 <div
   className="image-upload"
 >
-  <t
-    accept="image/jpeg, image/png"
-    disableClick={false}
-    disablePreview={false}
-    disabled={false}
-    getDataTransferItems={[Function]}
-    inputProps={Object {}}
-    maxSize={Infinity}
-    minSize={0}
-    multiple={false}
-    onBlur={[Function]}
-    onDragEnter={[Function]}
-    onDragLeave={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    preventDropOnDocument={true}
+  <div
     style={
       Object {
         "height": "18rem",
@@ -27,18 +12,26 @@ exports[`The image upload component should render 1`] = `
       }
     }
   >
-    <div
-      className="hover-area"
+    <t
+      accept="image/jpeg, image/png"
+      disableClick={false}
+      disabled={false}
+      getDataTransferItems={[Function]}
+      maxSize={Infinity}
+      minSize={0}
+      multiple={false}
+      onBlur={[Function]}
+      onDragEnter={[Function]}
+      onDragLeave={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      preventDropOnDocument={true}
     >
-      <div
-        className="hide"
-      >
-        <Icon(UploadIcon) />
-      </div>
-    </div>
+      <Component />
+    </t>
     <div
       className="placeholder placeholder--round"
     />
-  </t>
+  </div>
 </div>
 `;
