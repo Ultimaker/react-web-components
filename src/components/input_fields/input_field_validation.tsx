@@ -46,4 +46,6 @@ export const InputFieldValidation: React.StatelessComponent<InputFieldValidation
     );
 };
 
+InputFieldValidation.displayName = 'InputFieldValidation';
+
 export default InputFieldValidation;

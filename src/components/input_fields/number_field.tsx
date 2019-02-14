@@ -34,5 +34,6 @@ export const NumberField: React.StatelessComponent<NumberFieldProps> = ({
     </DefaultInputField>
 );
 
+NumberField.displayName = 'NumberField';
 
 export default NumberField;
