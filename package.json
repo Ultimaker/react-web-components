@@ -90,9 +90,9 @@
         "sass-loader": "^7.0.3",
         "storybook-addon-jsx": "^6.0.0",
         "ts-jest": "^23.10.5",
+        "typescript": "^3.3.3",
         "typescript-eslint-parser": "^22.0.0",
-        "webpack": "4.29.3",
-        "typescript": "^3.3.3"
+        "webpack": "4.29.3"
     },
     "jest": {
         "coverageDirectory": "coverage",
