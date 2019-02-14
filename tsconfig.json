@@ -5,7 +5,7 @@
         "target": "es5",
         "module": "commonjs",
         "noImplicitAny": false,
-        "outDir": "tmp",
+        "outDir": "dist",
         "jsx": "react",
         "lib": [
             "es6",
@@ -23,6 +23,8 @@
     "exclude": [
         "node_modules",
         "build",
-        "scripts"
+        "scripts",
+        "src/**/*.test.tsx",
+        "src/__mocks__/**/*"
     ]
 }

@@ -28,7 +28,7 @@ export interface TextareaFieldState {
  * Class that adds an input wrapper around a Textarea component.
  * TODO: merge TextareaField and Textarea?
  */
-class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldState> {
+export class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldState> {
     state = {
         touched: false,
     };

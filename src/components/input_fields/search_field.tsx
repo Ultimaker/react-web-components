@@ -32,7 +32,7 @@ export interface SearchFieldProps extends InputFieldProps {
  * @param children - Any extra children to be displayed after the text.
  * @constructor
  */
-export default class SearchField extends React.Component<SearchFieldProps, {}> {
+export class SearchField extends React.Component<SearchFieldProps, {}> {
     private readonly _inputRef: React.RefObject<HTMLInputElement> =
         React.createRef<HTMLInputElement>();
 
@@ -99,3 +99,5 @@ export default class SearchField extends React.Component<SearchFieldProps, {}> {
         );
     }
 }
+
+export default SearchField;

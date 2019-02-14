@@ -41,7 +41,7 @@ export interface CodeFieldState {
 /**
  * The code field is a text field that includes {maxLength} single-letter password inputs.
  */
-export default class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
+export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
     /**
      * if the user wrote one of the later characters but not earlier ones,
      * we add this character as filler
@@ -321,3 +321,5 @@ export default class CodeField extends React.Component<CodeFieldProps, CodeField
         );
     }
 }
+
+export default CodeField;

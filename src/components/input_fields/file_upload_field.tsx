@@ -37,7 +37,7 @@ export interface FileUploadFieldState {
  * Class that adds an input wrapper around a FileUpload component.
  * TODO: merge FileUploadField and FileUpload?
  */
-class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFieldState> {
+export class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFieldState> {
     state = {
         touched: false,
     };

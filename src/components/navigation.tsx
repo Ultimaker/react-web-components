@@ -30,7 +30,7 @@ export interface NavigationState {
 
 const motion = { stiffness: 999, damping: 50 };
 
-export default class Navigation extends React.Component<NavigationProps, NavigationState> {
+export class Navigation extends React.Component<NavigationProps, NavigationState> {
     state = {
         showNav: false,
     }
@@ -116,3 +116,5 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
         );
     }
 }
+
+export default Navigation;

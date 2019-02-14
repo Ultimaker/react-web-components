@@ -18,7 +18,7 @@ export interface PageProps {
     children: any;
 }
 
-const Page: React.StatelessComponent<PageProps> = ({
+export const Page: React.StatelessComponent<PageProps> = ({
     title, maxWidth, id, className, children,
 }): JSX.Element => (
     <div id={id} className={classNames('page', className)}>
