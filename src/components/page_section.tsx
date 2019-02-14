@@ -21,7 +21,7 @@ export interface PageSectionProps {
  * Page Section is the same as Page, but renamed for syntax reasons.
  * Should be used instead of Page when you want multiple sections.
  */
-const PageSection: React.StatelessComponent<PageSectionProps> = ({
+export const PageSection: React.StatelessComponent<PageSectionProps> = ({
     maxWidth, id, className, children,
 }): JSX.Element => (
     <Page

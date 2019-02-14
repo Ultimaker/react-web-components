@@ -13,7 +13,7 @@ export interface InputFieldValidationProps {
     required?: boolean;
 }
 
-const InputFieldValidation: React.StatelessComponent<InputFieldValidationProps> = ({
+export const InputFieldValidation: React.StatelessComponent<InputFieldValidationProps> = ({
     validationError, labelLayoutWidth, labelWidthBreakpoint, required,
 }): JSX.Element => {
     let errorMsgOffsetClass = null;

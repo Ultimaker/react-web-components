@@ -20,7 +20,7 @@ export interface DropDownMenuState {
     showMenu: boolean;
 }
 
-export default class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
+export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
     state = {
         showMenu: false,
     };
@@ -79,3 +79,5 @@ export default class DropDownMenu extends React.Component<DropDownMenuProps, Dro
         );
     }
 }
+
+export default DropDownMenu;

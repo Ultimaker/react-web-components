@@ -20,7 +20,7 @@ export interface NumberFieldProps extends InputFieldProps {
     max?: number;
 }
 
-const NumberField: React.StatelessComponent<NumberFieldProps> = ({
+export const NumberField: React.StatelessComponent<NumberFieldProps> = ({
     value, onChangeHandler, focusOnLoad, placeholder, children, ...wrapperProps
 }) => (
     <DefaultInputField

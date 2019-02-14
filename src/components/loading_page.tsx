@@ -27,7 +27,7 @@ export interface LoadingPageState {
 /**
  * A page with a loading spinner.
  */
-export default class LoadingPage extends React.Component<LoadingPageProps, LoadingPageState> {
+export class LoadingPage extends React.Component<LoadingPageProps, LoadingPageState> {
     /** The timer that will time out the page and show the spinner */
     private _timeout: any = null;
 
@@ -70,3 +70,5 @@ export default class LoadingPage extends React.Component<LoadingPageProps, Loadi
         );
     }
 }
+
+export default LoadingPage;
