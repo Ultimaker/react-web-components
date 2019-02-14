@@ -2,16 +2,17 @@
     "name": "@ultimaker/react-web-components",
     "version": "3.0.0",
     "description": "Ultimaker's unified react component and style library for front-end web",
-    "main": "src/index.tsx",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "directories": {
         "test": "tests"
     },
     "scripts": {
         "start": "STATIC_URL=http://localhost:9001 start-storybook -p 9001 -c .storybook",
         "build": "STATIC_URL=https://ultimaker.github.io/react-web-components build-storybook -c .storybook -o public",
-        "build-ts": "tsc ./src/**/*.tsx --jsx react",
         "lint": "eslint ./src/**/*.tsx",
         "lint:fix": "eslint --fix ./src/**/*.tsx",
+        "prepublish": "tsc",
         "test": "jest",
         "test:watch": "jest --watch",
         "test:coverage": "jest --coverage",
@@ -51,8 +52,7 @@
         "react-player": "^1.7.0",
         "react-router-dom": "^4.1.1",
         "react-tag-autocomplete": "^5.8.0",
-        "react-textarea-autosize": "^7.0.4",
-        "typescript": "^3.3.3"
+        "react-textarea-autosize": "^7.0.4"
     },
     "devDependencies": {
         "@babel/core": "^7.2.2",
@@ -91,7 +91,8 @@
         "storybook-addon-jsx": "^6.0.0",
         "ts-jest": "^23.10.5",
         "typescript-eslint-parser": "^22.0.0",
-        "webpack": "4.29.3"
+        "webpack": "4.29.3",
+        "typescript": "^3.3.3"
     },
     "jest": {
         "coverageDirectory": "coverage",
