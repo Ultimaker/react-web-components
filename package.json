@@ -1,6 +1,6 @@
 {
     "name": "@ultimaker/react-web-components",
-    "version": "3.0.0",
+    "version": "3.0.1-rc.1",
     "description": "Ultimaker's unified react component and style library for front-end web",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -12,7 +12,7 @@
         "build": "STATIC_URL=https://ultimaker.github.io/react-web-components build-storybook -c .storybook -o public",
         "lint": "eslint ./src/**/*.tsx",
         "lint:fix": "eslint --fix ./src/**/*.tsx",
-        "prepublish": "tsc",
+        "prepublishOnly": "tsc",
         "test": "jest",
         "test:watch": "jest --watch",
         "test:coverage": "jest --coverage",
