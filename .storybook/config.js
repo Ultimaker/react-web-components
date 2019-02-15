@@ -4,10 +4,10 @@ import { configure } from '@storybook/react';
 // load assets
 import "../src/stylesheets/fonts.scss";
 import "../src/stylesheets/main.scss";
-import "../src/fonts/notosans/NotoSans-Regular.woff";
-import "../src/fonts/notosans/NotoSans-Medium.woff";
-import "../src/fonts/notosans/NotoSans-Regular.woff2";
-import "../src/fonts/notosans/NotoSans-Medium.woff2";
+import "../src/fonts/NotoSans-Regular.woff";
+import "../src/fonts/NotoSans-Medium.woff";
+import "../src/fonts/NotoSans-Regular.woff2";
+import "../src/fonts/NotoSans-Medium.woff2";
 
 // load stories
 const req = require.context('../src', true, /\.stories.tsx?$/)
