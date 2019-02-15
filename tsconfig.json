@@ -25,6 +25,7 @@
         "build",
         "scripts",
         "src/**/*.test.tsx",
-        "src/__mocks__/**/*"
+        "src/__mocks__/**/*",
+        "src/stories/**/*"
     ]
 }

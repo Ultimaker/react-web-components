@@ -9,5 +9,7 @@ public/
 coverage/
 src/
 .storybook/
-
-
+.editorconfig
+.eslintrc.js
+.gitlab-ci.yml
+tsconfig.json
