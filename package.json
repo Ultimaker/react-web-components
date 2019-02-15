@@ -98,7 +98,7 @@
         "ts-jest": "^23.10.5",
         "typescript": "^3.3.3",
         "typescript-eslint-parser": "^22.0.0",
-        "webpack": "4.29.3"
+        "webpack": "4.29.4"
     },
     "jest": {
         "coverageDirectory": "coverage",
