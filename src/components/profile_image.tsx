@@ -4,7 +4,7 @@ import CircleIcon from './circle_icon';
 import ProfileIcon from './icons/profile_icon';
 import Image from './image';
 
-export interface CircleIconProps {
+export interface ProfileProps {
     /** Size of the profile image. Include unit */
     size: string;
     /** URL of the image. If not provided, a default image will be displayed */
@@ -12,7 +12,7 @@ export interface CircleIconProps {
 }
 
 
-export const ProfileImage: React.StatelessComponent<CircleIconProps> = ({ size, imageURL }) => (
+export const ProfileImage: React.StatelessComponent<ProfileProps> = ({ size, imageURL }) => (
     <div className="profile-image">
         {imageURL
             && <Image src={imageURL} size={size} />

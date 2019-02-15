@@ -15,7 +15,7 @@ export interface PageNotFoundViewProps {
 /**
  * The page not found view.
  */
-const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({ location }) => (
+export const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({ location }) => (
     <Page title={I18n.translate('title page_not_found', 'Page Not Found')} maxWidth={550}>
         <Tile padding="lg" align="center">
             <p>

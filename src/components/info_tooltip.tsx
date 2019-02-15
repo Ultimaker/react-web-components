@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import Tooltip from './tooltip';
 
-export type TooltipDirection = 'north' | 'south';
+export type InfoTooltipDirection = 'north' | 'south';
 
 export interface InfoTooltipProps {
     /** Text to be displayed inside the tooltip. \n can be used to create a new paragraph. */
     infoText: string;
     /** The positional direction of the tooltip: 'north' | 'south' */
-    direction?: 'north' | 'south';
+    direction?: InfoTooltipDirection;
     /** When true, the tooltip will not be displayed */
     disableTooltip?: boolean;
 }

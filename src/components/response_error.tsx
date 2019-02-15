@@ -57,7 +57,7 @@ export interface ResponseErrorState {
     showPopup: boolean;
 }
 
-export default class ResponseError extends React.Component<ResponseErrorProps, ResponseErrorState> {
+export class ResponseError extends React.Component<ResponseErrorProps, ResponseErrorState> {
     state = {
         userText: null,
         showPopup: true,
@@ -136,3 +136,5 @@ export default class ResponseError extends React.Component<ResponseErrorProps, R
         );
     }
 }
+
+export default ResponseError;
