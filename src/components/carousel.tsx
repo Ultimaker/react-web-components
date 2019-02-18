@@ -40,7 +40,7 @@ type ResponsiveConfiguration = { [breakpoint: number]: { items: number } };
 /**
  * A carousel component.
  */
-export default class Carousel extends React.Component<CarouselProps, {}> {
+export class Carousel extends React.Component<CarouselProps, {}> {
     /**
      * The default props of the carousel.
      */
@@ -163,3 +163,5 @@ export default class Carousel extends React.Component<CarouselProps, {}> {
         );
     }
 }
+
+export default Carousel;

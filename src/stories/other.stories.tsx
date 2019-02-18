@@ -1,11 +1,16 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, boolean, number, text, selectV2,
 } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
+// components
 import Tile from '../components/tile';
 import ProgressBar from '../components/progress_bar';
 import PanelArrow from '../components/panel_arrow';

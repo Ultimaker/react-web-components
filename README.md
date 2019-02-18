@@ -1,4 +1,7 @@
 # React Web Components
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Ultimaker/react-web-components.svg)](https://greenkeeper.io/)
+
 This library contains all shared components, utilities and templates for front-end applications within Ultimaker R&D.
 
 ## Installation

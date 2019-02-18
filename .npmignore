@@ -1,6 +1,5 @@
 *.DS_Store
 node_modules/
-dist/
 yarn-error.log
 .vscode/
 build/
@@ -8,3 +7,9 @@ build/
 docs/
 public/
 coverage/
+src/
+.storybook/
+.editorconfig
+.eslintrc.js
+.gitlab-ci.yml
+tsconfig.json

@@ -1,9 +1,14 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
+// components
 import Page from '../components/page';
 import Button from '../components/button';
 import Tile from '../components/tile';

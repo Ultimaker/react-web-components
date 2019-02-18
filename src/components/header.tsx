@@ -10,7 +10,7 @@ export interface HeaderProps {
     rightSideLabel?: string;
 }
 
-const Header: React.StatelessComponent<HeaderProps> = ({
+export const Header: React.StatelessComponent<HeaderProps> = ({
     showNav, headerLogo, headerLogoUrl, rightSideLabel, children,
 }) => (
     <header className="app__header">

@@ -1,9 +1,14 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs, selectV2 } from '@storybook/addon-knobs/react';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
+// components
 import Grid from '../components/grid';
 import GridItem from '../components/grid_item';
 import Tooltip from '../components/tooltip';

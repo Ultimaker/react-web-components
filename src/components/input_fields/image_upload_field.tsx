@@ -31,7 +31,7 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     /** Whether cropping should be enabled */
     allowCropping?: boolean;
 
-    /** The maximum amount of megabytes allowed to be uploaded **/
+    /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
 }
 
@@ -47,7 +47,8 @@ export interface ImageUploadFieldState {
  * Class that adds an input wrapper around a ImageUpload component.
  * TODO: merge ImageUpload and ImageUploadField?
  */
-class ImageUploadField extends React.Component<ImageUploadFieldProps, ImageUploadFieldState> {
+export class ImageUploadField extends React.Component
+<ImageUploadFieldProps, ImageUploadFieldState> {
     state = {
         touched: false,
     };

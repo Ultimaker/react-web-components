@@ -1,8 +1,13 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
+/* eslint-enable */
 
+// components
 import { GenericFlowPage } from '../components/generic_flow_page';
 import Spinner from '../components/spinner';
 import ApprovedIcon from '../components/icons/approved_icon';

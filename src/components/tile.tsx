@@ -1,15 +1,15 @@
 import * as React from 'react';
 import classnames from 'classnames';
 
-export type Padding = 'none' | 'sm' | 'md' | 'lg';
-export type Align = 'left' | 'center' | 'right';
+export type TilePadding = 'none' | 'sm' | 'md' | 'lg';
+export type TileAlign = 'left' | 'center' | 'right';
 export type TileAppearance = 'shadow' | 'dashed' | 'flat';
 
 export interface TileProps {
     /** The amount of padding to apply: 'none' | 'sm' | 'md' | 'lg' */
-    padding?: Padding;
+    padding?: TilePadding;
     /** The alignment of the tile content: 'left' | 'center' | 'right' */
-    align?: Align;
+    align?: TileAlign;
     /** The tile will be displayed in a disabled state when true */
     disabled?: boolean;
     /** The tile will be displayed in a selected state when true */

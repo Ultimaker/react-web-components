@@ -31,4 +31,6 @@ export const ChildrenField: React.StatelessComponent<ChildrenFieldProps> = (
     </InputFieldWrapper>
 );
 
+ChildrenField.displayName = 'ChildrenField';
+
 export default ChildrenField;

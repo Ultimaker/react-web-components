@@ -1,25 +1,28 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
+import classNames from 'classnames';
+import DatePicker from 'react-date-picker';
 
 import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
-import DatePicker from '../date_picker';
-
-import moment = require('moment');
 
 /**
  * The date field provides these props in addition to those supported by all input fields.
  */
 export interface DateFieldProps extends InputFieldProps {
-    /** The date currently selected */
-    value: string;
-    /** Called when the field changes */
-    onChangeHandler: (id: string, value: string) => any;
-    /** The format to display the date, as specified by moment-js */
-    format?: string;
-    /** Placeholder text */
-    placeholder?: string;
-    /** When true, dates from before the current date can be selected */
-    allowPastDates?: boolean;
+    /** Called when a date is selected */
+    onChangeHandler: (id: string, value: Date) => any;
+    /** String date value to pre-fill or change the DatePicker date */
+    value?: Date;
+    /** DatePicker id. Must be unique */
+    id: string;
+    /** When true the error state will be displayed */
+    error?: boolean;
+    /** Location locale, defaults to browser settings */
+    locale?: string;
+    /** Defines maximum date that the user can select */
+    maxDate?: Date;
+    /** Defines minimum date that the user can select */
+    minDate?: Date;
 }
 
 /**
@@ -30,18 +33,9 @@ export interface DateFieldState {
     touched: boolean;
 }
 
-/**
- * Class that adds an input wrapper around a DatePicker component.
- * TODO: merge DateField and DatePicker?
- */
 export class DateField extends React.Component<DateFieldProps, DateFieldState> {
     state = {
         touched: false,
-    };
-
-    static defaultProps = {
-        format: DatePicker.defaultProps.format,
-        placeholder: DatePicker.defaultProps.placeholder,
     };
 
     constructor(props) {
@@ -50,7 +44,7 @@ export class DateField extends React.Component<DateFieldProps, DateFieldState> {
         this._onChange = this._onChange.bind(this);
     }
 
-    private _onChange(value: string): void {
+    private _onChange(value: Date): void {
         const { onChangeHandler, id } = this.props;
         this.setState({ touched: true });
         onChangeHandler(id, value);
@@ -58,26 +52,31 @@ export class DateField extends React.Component<DateFieldProps, DateFieldState> {
 
     render() {
         const {
-            value, format, placeholder, allowPastDates, children, ...wrapperProps
+            value, locale, maxDate, minDate, children, ...wrapperProps
         } = this.props;
         const {
             id, staticField, validationError, submitted,
         } = wrapperProps;
         const { touched } = this.state;
+
+        const classes = classNames('date-picker', { error: validationError && (touched || submitted) });
+
         return (
             <InputFieldWrapper inputChildren={children} touched={touched} {...wrapperProps}>
                 {staticField
-                    ? typeof value === 'string' && moment(value).format(format)
+                    ? value.toLocaleDateString(locale)
                     : (
-                        <DatePicker
-                            id={id}
-                            onChangeHandler={this._onChange}
-                            value={value != null ? value.toString() : null}
-                            error={validationError && (touched || submitted)}
-                            format={format}
-                            placeholder={placeholder}
-                            allowPastDates={allowPastDates}
-                        />
+                        <div className={classes} id={id}>
+                            <DatePicker
+                                locale={locale}
+                                clearIcon={null}
+                                calendarIcon={null}
+                                onChange={this._onChange}
+                                value={value}
+                                maxDate={maxDate}
+                                minDate={minDate}
+                            />
+                        </div>
                     )}
             </InputFieldWrapper>
         );

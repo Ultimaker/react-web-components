@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, selectV2,
@@ -6,7 +9,9 @@ import {
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
+/* eslint-enable */
 
+// components
 import ContextMenu from '../components/context_menu';
 import ContextMenuItem from '../components/context_menu_item';
 import DropDownMenu from '../components/drop_down_menu';

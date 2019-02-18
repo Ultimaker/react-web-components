@@ -28,7 +28,7 @@ export interface NavigationState {
     showNav: boolean;
 }
 
-export default class Navigation extends React.Component<NavigationProps, NavigationState> {
+export class Navigation extends React.Component<NavigationProps, NavigationState> {
     state = {
         showNav: false,
     }
@@ -57,8 +57,17 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
 
         return (
             <nav className={navClasses} role="navigation">
+                <div className="nav-links-container">
+                    <div className="burger-menu hide-sm">
+                        <Button
+                            appearance="primary"
+                            shape="circle"
+                            onClickHandler={() => this._toggleShowNav(!showNav)}
+                        >
+                            <div className={burgerIconClasses} />
+                        </Button>
+                    </div>
 
-                {visibleNavLinks.length > 0 && (
                     <div className="nav-links-container">
                         <div className="burger-menu hide-sm">
                             <Button
@@ -110,6 +119,7 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                             )}
                         </Spring>
 
+
                         {children && (
                             <div className="children-containter">
                                 {children}
@@ -117,9 +127,10 @@ export default class Navigation extends React.Component<NavigationProps, Navigat
                         )}
 
                     </div>
-                )}
-
+                </div>
             </nav>
         );
     }
 }
+
+export default Navigation;

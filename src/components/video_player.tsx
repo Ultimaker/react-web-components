@@ -33,7 +33,7 @@ export interface VideoPlayerState {
     error: boolean;
 }
 
-export default class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerState> {
+export class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerState> {
     static defaultProps = {
         width: '100%',
         height: '100%',
@@ -137,3 +137,5 @@ export default class VideoPlayer extends React.Component<VideoPlayerProps, Video
         );
     }
 }
+
+export default VideoPlayer;

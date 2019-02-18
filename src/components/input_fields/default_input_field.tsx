@@ -42,7 +42,8 @@ export interface DefaultInputFieldState {
 /**
  * Class that adds an input wrapper around a HTML input component.
  */
-class DefaultInputField extends React.Component<DefaultInputFieldProps, DefaultInputFieldState> {
+export class DefaultInputField extends React.Component
+<DefaultInputFieldProps, DefaultInputFieldState> {
     /** A reference object to set the focus on load if required */
     private readonly _inputRef: React.RefObject<HTMLInputElement> =
         React.createRef<HTMLInputElement>();

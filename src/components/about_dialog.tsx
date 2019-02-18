@@ -63,7 +63,7 @@ function licenseList(componentsList: OpenSourceComponent[]): JSX.Element[] {
     ));
 }
 
-const AboutDialog: React.StatelessComponent<AboutDialogProps> = ({
+export const AboutDialog: React.StatelessComponent<AboutDialogProps> = ({
     componentsList, versionNumber, closeHandler, appName, supportLinkURL, supportLinkText,
 }) => (
     <div className="about-dialog">

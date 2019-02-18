@@ -1,9 +1,13 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text, selectV2 } from '@storybook/addon-knobs/react';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
+/* eslint-enable */
 
 // components
 import InputField from '../components/input_field';

@@ -176,38 +176,39 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         const hoverAreaClasses = classNames('hover-area', { show: dropActive || dropFocus });
 
         return (
-            <Dropzone
-                style={{ height: size, width: size }}
-                accept="image/jpeg, image/png"
-                multiple={false}
-                onDragEnter={this._onDragEnter}
-                onDragLeave={this._onDragLeave}
-                onDrop={this._onDropHandler}
-                onFocus={this._onDragFocus}
-                onBlur={this._onDragBlur}
-            >
-                <div className={hoverAreaClasses}>
-                    <div className={iconClasses}>
-                        <UploadIcon />
-                        {placeholderLabel
-                            && (
-                                <div className="placeholder-label">
-                                    {placeholderLabel}
-                                </div>
-                            )
-                        }
-                    </div>
+            <div style={{ height: size, width: size }}>
+                <Dropzone
+                    accept="image/jpeg, image/png"
+                    multiple={false}
+                    onDragEnter={this._onDragEnter}
+                    onDragLeave={this._onDragLeave}
+                    onDrop={this._onDropHandler}
+                    onFocus={this._onDragFocus}
+                    onBlur={this._onDragBlur}
+                >
+                    {({ getRootProps, getInputProps }) => (
+                        <div {...getRootProps()} className={hoverAreaClasses}>
+                            <input {...getInputProps()} />
+                            <div className={iconClasses}>
+                                <UploadIcon />
+                                {placeholderLabel && (
+                                    <div className="placeholder-label">
+                                        {placeholderLabel}
+                                    </div>
+                                )}
+                            </div>
 
-                    {imageURL
-                        && <div className={`cover cover--${shape}`} />
-                    }
-                </div>
-
+                            {imageURL
+                                && <div className={`cover cover--${shape}`} />
+                            }
+                        </div>
+                    )}
+                </Dropzone>
                 {imageURL
                     ? <Image src={imageURL} shape={shape} size={size} />
                     : <div className={`placeholder placeholder--${shape}`} />
                 }
-            </Dropzone>
+            </div>
         );
     }
 

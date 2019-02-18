@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+// storybook
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, number, selectV2,
@@ -7,6 +10,7 @@ import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 import { action } from '@storybook/addon-actions';
+/* eslint-enable */
 
 // components
 import { ImageFile } from '../components/image_upload';
@@ -268,7 +272,7 @@ stories.add('Range slider', withState({ value: null })(withInfo('Range slider')(
     </div>
 ))));
 
-stories.add('Date picker', withState({ value: '10-10-2018' })(withInfo('Date selection field')(({ store }) => (
+stories.add('Date picker', withState({ value: new Date() })(withInfo('Date selection field')(({ store }) => (
     <div style={{ width: 350 }}>
         <DateField
             id="id_9"
@@ -282,7 +286,6 @@ stories.add('Date picker', withState({ value: '10-10-2018' })(withInfo('Date sel
             infoLinkURL={text('Info link URL', '')}
             infoText={text('Info text', '')}
             preLabelElement={text('Pre label element', '')}
-            allowPastDates={boolean('Allow past dates', false)}
         />
     </div>
 ))));

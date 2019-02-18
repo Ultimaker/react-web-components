@@ -4,7 +4,7 @@ import downloadFile from '../download_file';
 
 test('Downloading a file', () => {
     // prepare mock
-    const elementMock = { click: jest.fn() };
+    const elementMock: any = { click: jest.fn() };
     const createElementSpy = jest.spyOn(document, 'createElement').mockReturnValue(elementMock);
     const appendChildSpy = jest.spyOn(document.body, 'appendChild').mockImplementation();
     const removeChildSpy = jest.spyOn(document.body, 'removeChild').mockImplementation();

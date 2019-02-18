@@ -6,8 +6,6 @@ import { mount, shallow } from 'enzyme';
 import CodeField, { CodeFieldProps } from '../code_field';
 import InputFieldWrapper from '../input_field_wrapper';
 
-import _ = require('lodash');
-
 describe('The code input field component', () => {
     let props: CodeFieldProps;
     let wrapper;
@@ -115,7 +113,9 @@ describe('The code input field component', () => {
         expect(wrapper.find(InputFieldWrapper).prop('validationError')).toBeFalsy();
         wrapper.setProps({ validationError: 'An error', submitted: true });
         expect(wrapper.find(InputFieldWrapper).prop('validationError')).toEqual('An error');
-        expect(wrapper.find('input').map(i => i.prop('className'))).toEqual(_.times(6, () => 'input error'));
+        expect(wrapper.find('input').map(i => i.prop('className'))).toEqual([
+            'input error', 'input error', 'input error', 'input error', 'input error', 'input error',
+        ]);
     });
 
     it('should only call the callback with numbers', () => {
