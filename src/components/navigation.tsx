@@ -57,6 +57,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
 
         return (
             <nav className={navClasses} role="navigation">
+
                 <div className="nav-links-container">
                     <div className="burger-menu hide-sm">
                         <Button
@@ -68,65 +69,53 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                         </Button>
                     </div>
 
-                    <div className="nav-links-container">
-                        <div className="burger-menu hide-sm">
-                            <Button
-                                appearance="primary"
-                                shape="circle"
-                                onClickHandler={() => this._toggleShowNav(!showNav)}
-                            >
-                                <div className={burgerIconClasses} />
-                            </Button>
-                        </div>
 
+                    <Spring
+                        config={{ tension: 999, friction: 50 }}
+                        from={{ x: 0 }}
+                        to={{ x: showNav ? 56 : 0 }}
+                    >
+                        {(props: any) => (
+                            <ul>
+                                {visibleNavLinks.map((navLink, index) => (
+                                    <li key={navLink.path} style={{ top: `${(index + 1) * props.x}px` }}>
+                                        <NavLink
+                                            to={navLink.path}
+                                            activeClassName="active"
+                                            className="nav-link"
+                                            onClick={() => this._toggleShowNav(false)}
+                                        >
+                                            <span className="label">{navLink.label}</span>
+                                        </NavLink>
+                                    </li>
+                                ))}
 
-                        <Spring
-                            config={{ tension: 999, friction: 50 }}
-                            from={{ x: 0 }}
-                            to={{ x: showNav ? 56 : 0 }}
-                        >
-                            {(props: any) => (
-                                <ul>
-                                    {visibleNavLinks.map((navLink, index) => (
-                                        <li key={navLink.path} style={{ top: `${(index + 1) * props.x}px` }}>
-                                            <NavLink
-                                                to={navLink.path}
-                                                activeClassName="active"
-                                                className="nav-link"
-                                                onClick={() => this._toggleShowNav(false)}
-                                            >
-                                                <span className="label">{navLink.label}</span>
-                                            </NavLink>
-                                        </li>
-                                    ))}
+                                {manageAccountURL && (
+                                    <li style={{ top: `${(visibleNavLinks.length + 1) * props.x}px` }} className="hide-sm">
+                                        <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
+                                            <span className="label">{I18n.translate('Nav manage account button', 'Account')}</span>
+                                        </a>
+                                    </li>
+                                )}
 
-                                    {manageAccountURL && (
-                                        <li style={{ top: `${(visibleNavLinks.length + 1) * props.x}px` }} className="hide-sm">
-                                            <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
-                                                <span className="label">{I18n.translate('Nav manage account button', 'Account')}</span>
-                                            </a>
-                                        </li>
-                                    )}
-
-                                    {onSignOutClickHandler && (
-                                        <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * props.x}px` }} className="hide-sm">
-                                            <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
-                                                <span className="label">{I18n.translate('Nav sign out button', 'Sign out')}</span>
-                                            </Button>
-                                        </li>
-                                    )}
-                                </ul>
-                            )}
-                        </Spring>
-
-
-                        {children && (
-                            <div className="children-containter">
-                                {children}
-                            </div>
+                                {onSignOutClickHandler && (
+                                    <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * props.x}px` }} className="hide-sm">
+                                        <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
+                                            <span className="label">{I18n.translate('Nav sign out button', 'Sign out')}</span>
+                                        </Button>
+                                    </li>
+                                )}
+                            </ul>
                         )}
+                    </Spring>
 
-                    </div>
+
+                    {children && (
+                        <div className="children-containter">
+                            {children}
+                        </div>
+                    )}
+
                 </div>
             </nav>
         );
