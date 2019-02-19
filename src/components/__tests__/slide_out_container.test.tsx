@@ -1,7 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { UnmountClosed } from 'react-collapse';
+import { Spring } from 'react-spring';
 
 // component
 import SlideOutContainer from '../slide_out_container';
@@ -38,7 +38,7 @@ describe('The SlideOutContainer component', () => {
 
     it('should open the panel', () => {
         wrapper.setProps({ isOpen: true });
-        expect(wrapper.find(UnmountClosed).prop('isOpened')).toBe(true);
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should hide the header panel', () => {

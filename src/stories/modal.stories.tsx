@@ -182,7 +182,6 @@ stories.add('About dialog', withInfo(
             { name: 'moment', license: 'MIT', url: 'http://momentjs.com/' },
             { name: 'node-gettext', license: 'MIT', url: 'https://github.com/alexanderwallin/node-gettext' },
             { name: 'react', license: 'MIT', url: 'https://reactjs.org/' },
-            { name: 'react-collapse', license: 'MIT', url: 'https://github.com/nkbt/react-collapse' },
             { name: 'react-dom', license: 'MIT', url: 'https://reactjs.org/' },
             { name: 'react-motion', license: 'MIT', url: 'https://github.com/chenglou/react-motion' },
             { name: 'react-refetch', license: 'MIT', url: 'https://github.com/heroku/react-refetch' },

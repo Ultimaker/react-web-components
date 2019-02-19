@@ -55,7 +55,7 @@
         "react-motion": "^0.5.2",
         "react-player": "^1.7.0",
         "react-router-dom": "^4.1.1",
-        "react-spring": "6.1.0",
+        "react-spring": "7.2.0",
         "react-tag-autocomplete": "^5.8.0",
         "react-textarea-autosize": "^7.0.4"
     },

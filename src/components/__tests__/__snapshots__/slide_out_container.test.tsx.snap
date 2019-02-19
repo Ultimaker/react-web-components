@@ -1,5 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`The SlideOutContainer component should open the panel 1`] = `
+<div
+  className="slide-out-container"
+>
+  <Button
+    appearance="no-style"
+    className="slide-out-container__header"
+    linkToNewTab={false}
+    onClickHandler={[Function]}
+    shape="rectangle"
+    type="button"
+  >
+    <div
+      className="layout"
+    >
+      <div
+        className="layout__item u-fill"
+        style={
+          Object {
+            "textAlign": "left",
+          }
+        }
+      >
+        Test panel
+      </div>
+      <div
+        className="layout__item arrow-column"
+      >
+        <PanelArrow
+          active={true}
+          color="black"
+          width="1.6rem"
+        />
+      </div>
+    </div>
+  </Button>
+  <Spring
+    config={
+      Object {
+        "friction": 26,
+        "tension": 170,
+      }
+    }
+    force={false}
+    from={
+      Object {
+        "height": 0,
+      }
+    }
+    immediate={false}
+    inject={[Function]}
+    native={true}
+    reset={false}
+    to={
+      Object {
+        "height": "auto",
+      }
+    }
+  >
+    <Component />
+  </Spring>
+</div>
+`;
+
 exports[`The SlideOutContainer component should render 1`] = `
 <div
   className="slide-out-container"
@@ -36,12 +100,30 @@ exports[`The SlideOutContainer component should render 1`] = `
       </div>
     </div>
   </Button>
-  <UnmountClosed
-    isOpened={false}
+  <Spring
+    config={
+      Object {
+        "friction": 26,
+        "tension": 170,
+      }
+    }
+    force={false}
+    from={
+      Object {
+        "height": 0,
+      }
+    }
+    immediate={false}
+    inject={[Function]}
+    native={true}
+    reset={false}
+    to={
+      Object {
+        "height": 0,
+      }
+    }
   >
-    <div
-      className="slide-out-container__body"
-    />
-  </UnmountClosed>
+    <Component />
+  </Spring>
 </div>
 `;
