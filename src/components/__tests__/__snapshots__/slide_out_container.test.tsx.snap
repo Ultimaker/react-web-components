@@ -39,8 +39,8 @@ exports[`The SlideOutContainer component should open the panel 1`] = `
   <Spring
     config={
       Object {
-        "friction": 26,
-        "tension": 170,
+        "friction": 35,
+        "tension": 370,
       }
     }
     force={false}
@@ -51,7 +51,7 @@ exports[`The SlideOutContainer component should open the panel 1`] = `
     }
     immediate={false}
     inject={[Function]}
-    native={true}
+    native={false}
     reset={false}
     to={
       Object {
@@ -103,8 +103,8 @@ exports[`The SlideOutContainer component should render 1`] = `
   <Spring
     config={
       Object {
-        "friction": 26,
-        "tension": 170,
+        "friction": 35,
+        "tension": 370,
       }
     }
     force={false}
@@ -115,7 +115,7 @@ exports[`The SlideOutContainer component should render 1`] = `
     }
     immediate={false}
     inject={[Function]}
-    native={true}
+    native={false}
     reset={false}
     to={
       Object {

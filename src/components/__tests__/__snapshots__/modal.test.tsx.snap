@@ -1,39 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The Modal component should render 1`] = `
-<div
-  class="modal"
-  style="opacity:1"
->
-  <div
-    class="modal__content"
-    role="dialog"
-  />
-</div>
-`;
+exports[`The Modal component should render 1`] = `null`;
 
 exports[`The Modal component should render a TransitionMotion 1`] = `
-<TransitionMotion
-  didLeave={[Function]}
-  styles={
-    Array [
-      Object {
-        "data": Object {},
-        "key": "modal",
-        "style": Object {
-          "opacity": Object {
-            "damping": 20,
-            "precision": 0.01,
-            "stiffness": 140,
-            "val": 1,
-          },
-        },
-      },
-    ]
+<Transition
+  enter={
+    Object {
+      "opacity": 1,
+    }
   }
-  willEnter={[Function]}
-  willLeave={[Function]}
+  from={
+    Object {
+      "opacity": 0,
+    }
+  }
+  items={true}
+  keys={[Function]}
+  leave={
+    Object {
+      "opacity": 0,
+    }
+  }
+  reset={false}
+  unique={false}
 >
   <Component />
-</TransitionMotion>
+</Transition>
 `;

@@ -31,14 +31,16 @@ describe('The Modal component', () => {
     });
 
     it('should call onOverlayClickHandler when the overlay is clicked', () => {
-        wrapper.dive().find('.modal').simulate('click', mockClickEvent);
+        wrapper = mount(<Modal {...props} />);
+        wrapper.find('.modal').simulate('click', mockClickEvent);
         expect(props.onOverlayClickHandler).toHaveBeenCalled();
         expect(mockClickEvent.stopPropagation).toBeCalled();
     });
 
     it('should call onOverlayClickHandler when the overlay is clicked and onOverlayClickHandler is not passed', () => {
+        wrapper = mount(<Modal {...props} />);
         wrapper.setProps({ onOverlayClickHandler: null });
-        wrapper.dive().find('.modal').simulate('click', mockClickEvent);
+        wrapper.find('.modal').simulate('click', mockClickEvent);
         expect(props.onOverlayClickHandler).not.toHaveBeenCalled();
         expect(mockClickEvent.stopPropagation).toBeCalled();
     });

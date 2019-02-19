@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TransitionMotion, spring } from 'react-motion';
+import { Transition } from 'react-spring';
 
 import classNames = require('classnames');
 
@@ -17,19 +17,11 @@ export interface ModalState {
     isOpen: boolean;
 }
 
-export interface MotionStyle {
+export interface OpacityStyle {
     opacity: number;
 }
 
 export class Modal extends React.Component<ModalProps, ModalState> {
-    static _willEnter(): MotionStyle {
-        return { opacity: 0 };
-    }
-
-    static _willLeave(): MotionStyle {
-        return { opacity: spring(0) };
-    }
-
     static _stopPropagation(e: React.MouseEvent<HTMLDivElement>): void {
         e.stopPropagation();
     }
@@ -58,7 +50,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
         }
     }
 
-    _renderModal(key: string, style: MotionStyle): JSX.Element {
+    _renderModal(style: OpacityStyle): JSX.Element {
         const { width, children } = this.props;
 
         const classes = classNames('modal__content', width ? `modal__content--${width}` : undefined);
@@ -69,8 +61,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
             <div
                 className="modal"
                 onClick={e => this._handleOverlayClick(e)}
-                key={key}
-                style={{ ...style }}
+                style={style}
             >
                 {/* eslint-disable-next-line max-len */}
                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */}
@@ -84,23 +75,15 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     render(): JSX.Element {
         const { isOpen } = this.state;
 
-        const interpolatedStyle = {
-            key: 'modal',
-            style: { opacity: spring(1, { stiffness: 140, damping: 20 }) },
-            data: {},
-        };
-
         return (
-            <TransitionMotion
-                willEnter={Modal._willEnter}
-                willLeave={Modal._willLeave}
-                styles={isOpen ? [interpolatedStyle] : []}
+            <Transition
+                items={isOpen}
+                from={{ opacity: 0 }}
+                enter={{ opacity: 1 }}
+                leave={{ opacity: 0 }}
             >
-                {interpolatedStyles => (interpolatedStyles.length
-                    ? this._renderModal(interpolatedStyles[0].key, interpolatedStyles[0].style)
-                    : null
-                )}
-            </TransitionMotion>
+                {show => show && (props => this._renderModal(props))}
+            </Transition>
         );
     }
 }
