@@ -94,7 +94,12 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
 
                 <div className="drop-down-menu-base__menu-container">
                     <div className="drop-down-menu-base__menu" style={menuStyle}>
-                        <Spring native from={{ height: 0 }} to={{ height: showMenu ? 'auto' : 0 }} config={{ tension: 370, friction: 35 }}>
+                        <Spring
+                            native
+                            from={{ height: 0 }}
+                            to={{ height: showMenu ? 'auto' : 0 }}
+                            config={{ tension: 370, friction: 35 }}
+                        >
                             {props => (
                                 <animated.div className="spring-container" style={props}>
                                     <ul className="drop-down-menu-base__menu-list">

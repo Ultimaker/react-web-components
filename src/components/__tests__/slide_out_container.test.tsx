@@ -1,7 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { Spring } from 'react-spring';
 
 // component
 import SlideOutContainer from '../slide_out_container';

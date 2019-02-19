@@ -48,7 +48,11 @@ export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps>
             </Button>
         )}
 
-        <Spring native from={{ height: 0 }} to={{ height: isOpen ? 'auto' : 0 }}>
+        <Spring
+            from={{ height: 0 }}
+            to={{ height: isOpen ? 'auto' : 0 }}
+            config={{ tension: 370, friction: 35 }}
+        >
             {props => (
                 <animated.div className="spring-container" style={props}>
                     <div className="slide-out-container__body">
