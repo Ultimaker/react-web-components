@@ -51,7 +51,7 @@
         "react-collapse": "^4.0.3",
         "react-date-picker": "^7.2.0",
         "react-dom": "^16.4.2",
-        "react-dropzone": "^8.1.0",
+        "react-dropzone": "^9.0.0",
         "react-motion": "^0.5.2",
         "react-player": "^1.7.0",
         "react-router-dom": "^4.1.1",
