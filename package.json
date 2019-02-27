@@ -99,6 +99,9 @@
         "typescript-eslint-parser": "^22.0.0",
         "webpack": "4.29.3"
     },
+    "resolutions": {
+        "lodash": "^4.17.11"
+    },
     "jest": {
         "coverageDirectory": "coverage",
         "collectCoverageFrom": [
