@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Collapse } from 'react-collapse';
+import { Spring, animated } from 'react-spring';
 
 // components
 import Button from './button';
@@ -94,14 +94,20 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
 
                 <div className="drop-down-menu-base__menu-container">
                     <div className="drop-down-menu-base__menu" style={menuStyle}>
-                        <Collapse
-                            isOpened={showMenu}
-                            springConfig={{ stiffness: 370, damping: 35 }}
+                        <Spring
+                            native
+                            from={{ height: 0 }}
+                            to={{ height: showMenu ? 'auto' : 0 }}
+                            config={{ tension: 370, friction: 35 }}
                         >
-                            <ul className="drop-down-menu-base__menu-list">
-                                {children}
-                            </ul>
-                        </Collapse>
+                            {props => (
+                                <animated.div className="spring-container" style={props}>
+                                    <ul className="drop-down-menu-base__menu-list">
+                                        {children}
+                                    </ul>
+                                </animated.div>
+                            )}
+                        </Spring>
                     </div>
                     <div className="drop-down-menu-base__arrow" />
                 </div>

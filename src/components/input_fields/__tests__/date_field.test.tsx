@@ -22,7 +22,7 @@ describe('The date field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
-            locale: 'en-GB',
+            locale: 'en-US',
         };
         wrapper = shallow(<DateField {...props} />);
     });
@@ -33,15 +33,17 @@ describe('The date field component', () => {
     });
 
     it('should render a date picker', () => {
-        expect(wrapper.find(DatePicker).props()).toEqual({
-            calendarIcon: null,
-            clearIcon: null,
-            onChange: wrapper.instance()._onChange,
-            value: testDate,
-            isOpen: null,
-            locale: 'en-GB',
-            returnValue: 'start',
-        });
+        expect(wrapper.find(DatePicker).props()).toEqual(
+            expect.objectContaining({
+                calendarIcon: null,
+                clearIcon: null,
+                onChange: wrapper.instance()._onChange,
+                value: testDate,
+                isOpen: null,
+                locale: 'en-US',
+                returnValue: 'start',
+            }),
+        );
     });
 
     it('should render an empty date', () => {
