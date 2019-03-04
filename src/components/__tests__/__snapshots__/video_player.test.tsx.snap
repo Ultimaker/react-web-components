@@ -30,6 +30,7 @@ exports[`The video player component should display a message in case the player 
     }
     controls={false}
     height="100%"
+    light={false}
     loop={false}
     muted={false}
     onBuffer={[Function]}
@@ -88,6 +89,7 @@ exports[`The video player component should display the error state 1`] = `
     }
     controls={false}
     height="100%"
+    light={false}
     loop={false}
     muted={false}
     onBuffer={[Function]}
@@ -141,6 +143,7 @@ exports[`The video player component should display the loaded state 1`] = `
     }
     controls={false}
     height="100%"
+    light={false}
     loop={false}
     muted={false}
     onBuffer={[Function]}
@@ -195,6 +198,7 @@ exports[`The video player component should display the loading state when the ur
     }
     controls={false}
     height="100%"
+    light={false}
     loop={false}
     muted={false}
     onBuffer={[Function]}
@@ -249,6 +253,7 @@ exports[`The video player component should render the loading state 1`] = `
     }
     controls={false}
     height="100%"
+    light={false}
     loop={false}
     muted={false}
     onBuffer={[Function]}
@@ -302,6 +307,7 @@ exports[`The video player component should stay in the loaded state when the url
     }
     controls={false}
     height="100%"
+    light={false}
     loop={false}
     muted={false}
     onBuffer={[Function]}
