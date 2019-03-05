@@ -63,7 +63,7 @@
         "@babel/core": "^7.2.2",
         "@dump247/storybook-state": "^1.5.0",
         "@sambego/storybook-styles": "^1.0.0",
-        "@storybook/addon-actions": "^4.0.12",
+        "@storybook/addon-actions": "^5.0.0",
         "@storybook/addon-info": "^4.1.11",
         "@storybook/addon-knobs": "^4.1.11",
         "@storybook/addon-viewport": "^4.1.11",
