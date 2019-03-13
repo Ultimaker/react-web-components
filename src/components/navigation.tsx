@@ -7,14 +7,13 @@ import { Spring } from 'react-spring';
 import Button from './button';
 
 // utils
-import { I18n } from '../utils/i18n';
+import { I18n } from '..';
 
 export interface NavRoute {
     path: string;
     label: string;
     visible: boolean;
     component: React.ComponentClass | React.StatelessComponent;
-    scopes?: string[];
     props?: object;
 }
 
