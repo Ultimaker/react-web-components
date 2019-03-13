@@ -7,7 +7,7 @@ import classNames = require('classnames');
 
 export interface PageProps {
     /** The page title displayed at the top of the page */
-    title?: string;
+    title?: string | JSX.Element;
     /** The max width of the page content. The content will be centered horizontally on the page */
     maxWidth?: number | string;
     /** Optional ID for the button */
