@@ -8,8 +8,8 @@ import classNames = require('classnames');
 export interface PageProps {
     /** The page title displayed at the top of the page */
     title?: string;
-    /** Whether a beta pill should be displayed next to the page title **/
-    is_beta?: boolean;
+    /** Whether a beta pill should be displayed next to the page title */
+    isBeta?: boolean;
     /** The max width of the page content. The content will be centered horizontally on the page */
     maxWidth?: number | string;
     /** Optional ID for the button */
@@ -21,11 +21,11 @@ export interface PageProps {
 }
 
 export const Page: React.StatelessComponent<PageProps> = ({
-    title, is_beta, maxWidth, id, className, children,
+    title, isBeta, maxWidth, id, className, children,
 }): JSX.Element => (
     <div id={id} className={classNames('page', className)}>
         <div className="page__content" style={{ maxWidth }}>
-            {title && <PageTitle title={title} is_beta={is_beta} />}
+            {title && <PageTitle title={title} isBeta={isBeta} />}
             {children}
         </div>
     </div>

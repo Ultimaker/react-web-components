@@ -1,16 +1,19 @@
 import * as React from 'react';
-import BetaPill from './beta_pill'
+import BetaPill from './beta_pill';
 
 export interface PageTitleProps {
     title: string;
-    is_beta?: boolean;
+    isBeta?: boolean;
 }
 
-export const PageTitle: React.StatelessComponent<PageTitleProps> = ({ title, is_beta }): JSX.Element =>
+export const PageTitle: React.StatelessComponent<PageTitleProps> = (
+    { title, isBeta },
+): JSX.Element => (
     <h2 className="page-title">
         {title}
-        {is_beta && <BetaPill />}
-    </h2>;
+        {isBeta && <BetaPill />}
+    </h2>
+);
 
 PageTitle.displayName = 'PageTitle';
 

@@ -12,20 +12,15 @@ import { I18n } from '../utils/i18n';
  * The translations for this view.
  */
 const T = {
-    beta: I18n.translate("beta pill text", "BETA"),
-    betaExplanation: I18n.translate("beta pill explanation",
-        "This feature is in beta and is visible because you are part of the closed beta program."),
+    beta: I18n.translate('beta pill text', 'BETA'),
+    betaExplanation: I18n.translate('beta pill explanation',
+        'This feature is in beta and is visible because you are part of the closed beta program.'),
 };
 
-/**
- * Popup confirming that the user invited other people to join a team.
- */
-export default class BetaPill extends React.Component<{}, {}> {
-    render() {
-        return (
-            <Tooltip tooltipText={T.betaExplanation}>
-                <Pill active>{T.beta}</Pill>
-            </Tooltip>
-        );
-    }
-}
+const BetaPill: React.StatelessComponent<{}> = () => (
+    <Tooltip tooltipText={T.betaExplanation}>
+        <Pill active>{T.beta}</Pill>
+    </Tooltip>
+);
+
+export default BetaPill;
