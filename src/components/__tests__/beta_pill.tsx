@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 // component
 import BetaPill from '../beta_pill';
 
-describe('The Header component', () => {
+describe('The beta pill component', () => {
     let wrapper;
 
     beforeEach(() => {
