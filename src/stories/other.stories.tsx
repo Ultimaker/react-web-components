@@ -17,6 +17,7 @@ import PanelArrow from '../components/panel_arrow';
 import Divider from '../components/divider';
 import Pill from '../components/pill';
 import CircleIcon from '../components/circle_icon';
+import BetaPill from '../components/beta_pill';
 
 const stories = storiesOf('Other', module);
 
@@ -87,3 +88,5 @@ stories.add('Circle Icon', withInfo(
         {text('Text', '1')}
     </CircleIcon>
 )));
+
+stories.add('Beta Pill', withInfo('Beta Pill')(() => <BetaPill />));

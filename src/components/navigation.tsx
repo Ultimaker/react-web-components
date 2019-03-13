@@ -14,7 +14,6 @@ export interface NavRoute {
     label: string;
     visible: boolean;
     component: React.ComponentClass | React.StatelessComponent;
-    scopes?: string[];
     props?: object;
 }
 
