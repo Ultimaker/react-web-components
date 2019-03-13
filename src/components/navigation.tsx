@@ -7,7 +7,7 @@ import { Spring } from 'react-spring';
 import Button from './button';
 
 // utils
-import { I18n } from '..';
+import { I18n } from '../utils/i18n';
 
 export interface NavRoute {
     path: string;

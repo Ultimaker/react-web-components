@@ -6,7 +6,7 @@ import Pill from './pill';
 import Tooltip from './tooltip';
 
 // utils
-import { I18n } from '..';
+import { I18n } from '../utils/i18n';
 
 /**
  * The translations for this view.
