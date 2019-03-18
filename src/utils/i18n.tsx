@@ -14,24 +14,25 @@ export interface TranslationListItem {
  * Assorted methods for translations.
  */
 export class I18n {
-
     private static _gt = new Gettext({ debug: false })
+
     private static _defaultLanguage = 'en-US'
+
     private static _supportedLanguages: string[] = []
 
     /**
     * Initialize the Gettext context.
     */
     public static async initialize(translations: TranslationListItem[]) {
-
         // load the translation files
-	    for (let index = 0; index < translations.length; index++) {
-	    	await this._loadTranslation(translations[index].name, translations[index].source);
-	    }
+        for (let index = 0; index < translations.length; index += 1) {
+            // eslint-disable-next-line
+            await this._loadTranslation(translations[index].name, translations[index].source);
+        }
 
         // set the default locale based on the browser settings
-	    const locale = I18n.getLocale();
-	    console.log(`Using locale ${locale}`);
+        const locale = I18n.getLocale();
+        console.log(`Using locale ${locale}`);
         I18n._gt.setLocale(locale);
     }
 
@@ -136,11 +137,11 @@ export class I18n {
      * @param url - The url of the language source file.
      */
     private static async _loadTranslation(language: string, url: string): Promise<void> {
-        const translation = await fetch(url)
-	    const text = await translation.text()
-		const parsed = I18n._parse(text)
-		I18n._gt.addTranslations(language, 'messages', parsed)
-	    I18n._supportedLanguages.push(language)
+        const translation = await fetch(url);
+        const text = await translation.text();
+        const parsed = I18n._parse(text);
+        I18n._gt.addTranslations(language, 'messages', parsed);
+        I18n._supportedLanguages.push(language);
     }
 
     /**
