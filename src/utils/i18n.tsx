@@ -1,39 +1,36 @@
 // Copyright (c) 2018 Ultimaker B.V.
-import { po } from 'gettext-parser';
 import * as React from 'react';
-
+import { po } from 'gettext-parser';
 import Gettext = require('node-gettext');
 
 // interface for translation items that are passed into initialize
-export interface TranslationListItem {
-    name: string
-    source: string
-}
+export type Translations = { [s: string]: string; }
 
 /**
  * Assorted methods for translations.
  */
 export class I18n {
+
     private static _gt = new Gettext({ debug: false })
 
-    private static _defaultLanguage = 'en-US'
+    private static _defaultLanguage = 'en'
 
     private static _supportedLanguages: string[] = []
 
     /**
-    * Initialize the Gettext context.
-    */
-    public static async initialize(translations: TranslationListItem[]) {
-        // load the translation files
-        for (let index = 0; index < translations.length; index += 1) {
-            // eslint-disable-next-line
-            await this._loadTranslation(translations[index].name, translations[index].source);
-        }
+     * Initialize the Gettext context.
+     * @param translations The translation keys with files to load.
+     */
+    public static async initialize(translations: Translations): Promise<void> {
+
+        // register supported languages
+        Object.keys(translations).forEach(language => {
+            I18n._supportedLanguages.push(language)
+        });
 
         // set the default locale based on the browser settings
         const locale = I18n.getLocale();
-        console.log(`Using locale ${locale}`);
-        I18n._gt.setLocale(locale);
+        await this._loadTranslation(locale, translations[locale]);
     }
 
     /**
@@ -97,10 +94,10 @@ export class I18n {
     }
 
     /**
- * Replace all passed parameters in a text.
- * @param text The text to interpolate.
- * @param parameters The parameters to insert in the text.
- */
+     * Replace all passed parameters in a text.
+     * @param text The text to interpolate.
+     * @param parameters The parameters to insert in the text.
+     */
     public static interpolate(text: string, parameters: object = {}): string {
         return text.replace(/%{(\w+)}/g, (_, expr) => (parameters || window)[expr]);
     }
@@ -133,15 +130,16 @@ export class I18n {
 
     /**
      * Loads a language source file async.
-     * @param language - The language we're loading.
-     * @param url - The url of the language source file.
+     * @param language The language we're loading.
+     * @param url The url of the language source file.
      */
     private static async _loadTranslation(language: string, url: string): Promise<void> {
+        console.log(`Loading language ${language}`);
         const translation = await fetch(url);
         const text = await translation.text();
         const parsed = I18n._parse(text);
         I18n._gt.addTranslations(language, 'messages', parsed);
-        I18n._supportedLanguages.push(language);
+        I18n._gt.setLocale(language);
     }
 
     /**
