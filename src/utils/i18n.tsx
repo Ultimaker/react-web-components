@@ -4,36 +4,35 @@ import * as React from 'react';
 
 import Gettext = require('node-gettext');
 
-// type for available languages
-export type Languages = 'en-US' | 'nl-NL';
-
 // interface for translation items that are passed into initialize
 export interface TranslationListItem {
-    name: Languages
-    source: any
+    name: string
+    source: string
 }
 
 /**
  * Assorted methods for translations.
  */
 export class I18n {
+
     private static _gt = new Gettext({ debug: false })
-
-    private static _defaultLanguage = 'en-DEV'
-
-    private static _supportedLanguages: Languages[] = ['en-US', 'nl-NL']
+    private static _defaultLanguage = 'en-US'
+    private static _supportedLanguages: string[] = []
 
     /**
     * Initialize the Gettext context.
     */
     public static async initialize(translations: TranslationListItem[]) {
+
         // load the translation files
-        translations.forEach(async translation => (
-            this._loadTranslation(translation.name, translation.source)
-        ));
+	    for (let index = 0; index < translations.length; index++) {
+	    	await this._loadTranslation(translations[index].name, translations[index].source);
+	    }
 
         // set the default locale based on the browser settings
-        I18n._gt.setLocale(I18n.getLocale());
+	    const locale = I18n.getLocale();
+	    console.log(`Using locale ${locale}`);
+        I18n._gt.setLocale(locale);
     }
 
     /**
@@ -58,7 +57,7 @@ export class I18n {
     * Check if the given language is supported.
     * @param language The language to check, for example 'en'.
     */
-    public static isLanguageSupported(language: Languages): boolean {
+    public static isLanguageSupported(language: string): boolean {
         return I18n._supportedLanguages.indexOf(language) > -1;
     }
 
@@ -136,11 +135,12 @@ export class I18n {
      * @param language - The language we're loading.
      * @param url - The url of the language source file.
      */
-    private static async _loadTranslation(language: Languages, url: string): Promise<void> {
-        await fetch(url)
-            .then(response => response.text())
-            .then(text => I18n._parse(text))
-            .then(translations => I18n._gt.addTranslations(language, 'messages', translations));
+    private static async _loadTranslation(language: string, url: string): Promise<void> {
+        const translation = await fetch(url)
+	    const text = await translation.text()
+		const parsed = I18n._parse(text)
+		I18n._gt.addTranslations(language, 'messages', parsed)
+	    I18n._supportedLanguages.push(language)
     }
 
     /**
