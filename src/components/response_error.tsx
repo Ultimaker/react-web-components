@@ -8,13 +8,6 @@ import Tile from './tile';
 // utils
 import { I18n } from '../utils/i18n';
 
-// a mapping of error codes to translated error messages which may include
-// the error parameters as replacement keys
-export type ErrorMessageTemplates = { [key: string]: string };
-
-// a mapping of field names to translated versions
-export type FieldTranslations = { [key: string]: string };
-
 /**
  * Gets a translated message for the given error.
  * @param error - The error object to be translated.
@@ -23,17 +16,28 @@ export type FieldTranslations = { [key: string]: string };
  */
 export const getTranslatedError = (
     error: ResponseErrorObject,
-    errorMessageTemplates: ErrorMessageTemplates,
-    fieldTranslations: FieldTranslations,
+    errorMessageTemplates: { [key: string]: () => string },
+    fieldTranslations: { [key: string]: () => string },
 ): string => {
     const params = { ...error };
+
+    // check if we need to translate any fields
     if (params.meta) {
         Object.keys(error.meta).forEach((key) => {
-            params[key] = (key === 'field_name' && fieldTranslations[params[key]]) || error.meta[key];
+            if (key === 'field_name' && fieldTranslations[params[key]]) {
+                // each field translation returns a function that returns a string
+                params[key] = fieldTranslations[params[key]]()
+            } else {
+                params[key] = error.meta[key]
+            }
         });
     }
+
+    // generate the error message
     const errorMessage = errorMessageTemplates[error.code]
-        || I18n.translate('error message default', 'There was a problem on the server: %{title} (code %{code})');
+        ? errorMessageTemplates[error.code]()
+        : I18n.translate('error message default', 'There was a problem on the server: %{title} (code %{code})');
+        
     return I18n.interpolate(errorMessage, params);
 };
 
@@ -48,8 +52,8 @@ export interface ResponseErrorObject {
 
 export interface ResponseErrorProps {
     errors: ResponseErrorObject[];
-    errorMessageTemplates?: ErrorMessageTemplates;
-    fieldNames?: FieldTranslations;
+    errorMessageTemplates?: { [key: string]: () => string };
+    fieldNames?: { [key: string]: () => string };
 }
 
 export interface ResponseErrorState {
