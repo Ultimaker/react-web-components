@@ -25,7 +25,7 @@ export const getTranslatedError = (
     if (params.meta) {
         Object.keys(error.meta).forEach((key) => {
             if (key === 'field_name' && fieldTranslations[params[key]]) {
-                // each field translation returns a function that returns a string
+                // each field translation is a function that returns a string
                 params[key] = fieldTranslations[params[key]]()
             } else {
                 params[key] = error.meta[key]
@@ -34,6 +34,7 @@ export const getTranslatedError = (
     }
 
     // generate the error message
+    // each error message template is a function that returns a string
     const errorMessage = errorMessageTemplates[error.code]
         ? errorMessageTemplates[error.code]()
         : I18n.translate('error message default', 'There was a problem on the server: %{title} (code %{code})');
