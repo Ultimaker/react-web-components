@@ -30,7 +30,9 @@ export class I18n {
 
         // set the default locale based on the browser settings
         const locale = I18n.getLocale();
-        await this._loadTranslation(locale, translations[locale]);
+        if (I18n.isLanguageSupported(locale)) {
+            await this._loadTranslation(locale, translations[locale]);
+        }
     }
 
     /**
@@ -56,7 +58,7 @@ export class I18n {
     * @param language The language to check, for example 'en'.
     */
     public static isLanguageSupported(language: string): boolean {
-        return I18n._supportedLanguages.indexOf(language) > -1;
+        return I18n._supportedLanguages.indexOf(language) > -1 && language !== undefined;
     }
 
     /**
