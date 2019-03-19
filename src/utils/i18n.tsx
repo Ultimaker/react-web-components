@@ -7,7 +7,7 @@ import Gettext = require('node-gettext');
 /**
  * Assorted methods for translations.
  */
-export default class I18n {
+export class I18n {
     private static _gt = new Gettext({ debug: false })
 
     private static _defaultLanguage = 'en'
@@ -148,3 +148,5 @@ export default class I18n {
         return po.parse(source);
     }
 }
+
+export default I18n;
