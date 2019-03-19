@@ -54,7 +54,7 @@ export class I18n {
     * @param language The language to check, for example 'en'.
     */
     public static isLanguageSupported(language: string): boolean {
-        return I18n._supportedLanguages.indexOf(language) > -1 && language !== undefined;
+        return I18n._supportedLanguages.indexOf(language) > -1;
     }
 
     /**
