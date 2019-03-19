@@ -1,16 +1,13 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { po } from 'gettext-parser';
-import Gettext = require('node-gettext');
 
-// interface for translation items that are passed into initialize
-export type Translations = { [s: string]: string; }
+import Gettext = require('node-gettext');
 
 /**
  * Assorted methods for translations.
  */
-export class I18n {
-
+export default class I18n {
     private static _gt = new Gettext({ debug: false })
 
     private static _defaultLanguage = 'en'
@@ -21,11 +18,10 @@ export class I18n {
      * Initialize the Gettext context.
      * @param translations The translation keys with files to load.
      */
-    public static async initialize(translations: Translations): Promise<void> {
-
+    public static async initialize(translations: { [s: string]: string; }): Promise<void> {
         // register supported languages
-        Object.keys(translations).forEach(language => {
-            I18n._supportedLanguages.push(language)
+        Object.keys(translations).forEach((language) => {
+            I18n._supportedLanguages.push(language);
         });
 
         // set the default locale based on the browser settings
