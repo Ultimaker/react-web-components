@@ -132,7 +132,6 @@ export class I18n {
      * @param url The url of the language source file.
      */
     private static async _loadTranslation(language: string, url: string): Promise<void> {
-        console.log(`Loading language ${language}`);
         const translation = await fetch(url);
         const text = await translation.text();
         const parsed = I18n._parse(text);
