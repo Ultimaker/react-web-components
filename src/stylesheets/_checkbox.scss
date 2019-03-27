@@ -60,11 +60,19 @@
         background: $checkbox-color-background-active;
         border-color: $checkbox-color-border-active;
     }
-    
+
     .checkbox__visual:after {
         opacity: 1;
         border-color: $checkbox-color-tick-active;
     }
 }
 
+.static-field .checkbox__visual {
+    background: $color-grey-light;
+    border-color: $color-grey-darker;
 
+    &:after, &:hover:after {
+        border-color: $color-grey-darker;
+        opacity: 0.5;
+    }
+}
