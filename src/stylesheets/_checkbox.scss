@@ -71,7 +71,8 @@
     background: $color-grey-light;
     border-color: $color-grey-darker;
 
-    &:after, &:hover:after {
+    &:after, 
+    &:hover:after {
         border-color: $color-grey-darker;
         opacity: 0.5;
     }
