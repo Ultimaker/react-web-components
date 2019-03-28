@@ -192,12 +192,18 @@
         @include respond-to(sm) {
             display: flex;
             align-items: center;
-            padding: 0 3.6rem;
         }
 
-
-        @include respond-to(md) {
-            padding: 0 1.2rem 0 3.6rem;
+        .user-account-menu {
+            border-left: 1px solid $color-border-light;
+        
+            .drop-down-menu-base__trigger {
+                height: 5rem;
+        
+                @include respond-to(md) {
+                    height: 6rem;
+                }
+            }
         }
     }
 }
