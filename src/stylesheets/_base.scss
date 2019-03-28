@@ -5,6 +5,8 @@
 html {
     font-size: 62.5%;
     -webkit-tap-highlight-color: transparent;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
@@ -15,8 +17,6 @@ body {
     @include font-size-text-1;
 
     line-height: 2.2rem;
-    width: 100vw;
-    overflow-x: hidden;
 }
 
 .app {
