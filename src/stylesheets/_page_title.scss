@@ -1,0 +1,19 @@
+.page-title {
+    text-align: center;
+
+    .page-title__title-container {
+        display: inline-block;
+    }
+
+    .page-title__title-container h2 {
+        position: relative;
+    }
+
+    .beta-pill {
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        margin-left: 0.9rem;
+        transform: translate(0, -50%);
+    }
+}
