@@ -3,10 +3,15 @@
     display: inline-block;
 
     &:after {
+        display: none;
         content: "";
         position: absolute;
         visibility: hidden;
         opacity: 0;
+
+        @include respond-to(md) {
+            display: block; // only show tool-tips on larger displays as they dont work well with touch screens
+        }
     }
 
     &.tooltip-trigger--south {
@@ -63,6 +68,7 @@
     }
 
     .tooltip {
+        display: none;
         background-color: $tooltip-color-background;
         color: $tooltip-color-text;
         font-family: $font-primary;
@@ -73,6 +79,10 @@
         z-index: 9999;
         visibility: hidden;
         opacity: 0;
+
+        @include respond-to(md) {
+            display: block; // only show tool-tips on larger displays as they dont work well with touch screens
+        }
 
         @include font-size-text-2;
 
@@ -97,12 +107,10 @@
 
     &.show {
         .tooltip, &:after {
-            @include respond-to(md) {
-                visibility: visible;
-                transition: opacity 0.2s ease-out;
-                transition-delay: 0.2s;
-                opacity: 1;
-            }
+            visibility: visible;
+            transition: opacity 0.2s ease-out;
+            transition-delay: 0.2s;
+            opacity: 1;
         }
     }
 
