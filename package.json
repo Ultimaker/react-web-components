@@ -104,6 +104,7 @@
         "coverageDirectory": "coverage",
         "collectCoverageFrom": [
             "src/**/*.tsx",
+            "!src/index.tsx",
             "!src/components/icons/*.tsx",
             "!src/stories/*"
         ],

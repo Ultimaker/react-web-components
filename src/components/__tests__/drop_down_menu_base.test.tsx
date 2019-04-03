@@ -33,9 +33,15 @@ describe('The DropDownMenuBase component', () => {
         expect(props.onToggleMenuHandler).toBeCalledWith(true);
     });
 
-    it('should not propagate click', () => {
-        wrapper.simulate('click', mockClickEvent);
-        expect(mockClickEvent.stopPropagation).toBeCalled();
+    it('should call toggle menu handler when the trigger is clicked', () => {
+        // open menu
+        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        expect(props.onToggleMenuHandler).toBeCalledWith(true);
+
+        // close menu
+        wrapper.setProps({ showMenu: true });
+        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        expect(props.onToggleMenuHandler).toBeCalledWith(false);
     });
 
     it('should render drop down menu north', () => {
@@ -52,5 +58,15 @@ describe('The DropDownMenuBase component', () => {
     it('should pass in menuStyle', () => {
         wrapper.setProps({ menuStyle: { background: 'blue' } });
         expect(wrapper.find('.drop-down-menu-base__menu').prop('style')).toHaveProperty('background', 'blue');
+    });
+
+    it('should not propagate menu click', () => {
+        wrapper.find('.drop-down-menu-base').props().onClick(mockClickEvent);
+        expect(mockClickEvent.stopPropagation).toBeCalled();
+    });
+
+    it('should call toggle menu handler when escape is pressed', () => {
+        wrapper.instance()._onOutsideFocusHandler({ key: 'Escape' });
+        expect(props.onToggleMenuHandler).toBeCalledWith(false);
     });
 });
