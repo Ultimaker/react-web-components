@@ -11,10 +11,8 @@ body {
     background-color: $color-body;
     color: $color-text;
     font-family: $font-primary;
-
-    @include font-size-text-1;
-
     line-height: 2.2rem;
+    @include font-size-text-1;
     width: 100vw;
     overflow-x: hidden;
 }

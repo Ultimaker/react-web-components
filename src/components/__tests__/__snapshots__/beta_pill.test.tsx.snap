@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The beta pill component should render 1`] = `
+<div
+  className="beta-pill"
+>
+  <Tooltip
+    direction="north"
+    tooltipText="This feature is in beta and is visible because you are part of the closed beta program."
+  >
+    <Pill
+      active={true}
+    >
+      BETA
+    </Pill>
+  </Tooltip>
+</div>
+`;

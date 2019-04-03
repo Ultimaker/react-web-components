@@ -9,10 +9,14 @@ export interface PageTitleProps {
 export const PageTitle: React.StatelessComponent<PageTitleProps> = (
     { title, isBeta },
 ): JSX.Element => (
-    <h2 className="page-title">
-        {title}
-        {isBeta && <BetaPill />}
-    </h2>
+    <div className="page-title">
+        <div className="page-title__title-container">
+            <h2>
+                {title}
+                {isBeta && <BetaPill />}
+            </h2>
+        </div>
+    </div>
 );
 
 PageTitle.displayName = 'PageTitle';
