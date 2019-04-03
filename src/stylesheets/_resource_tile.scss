@@ -1,0 +1,35 @@
+.resource-tile {
+    width: 23.4rem;
+    height: 30.4rem;
+    padding: 3rem 1.8rem;
+
+    &.resource-tile__empty {
+        background: transparent;
+
+        .resource-tile__image {
+            filter: opacity(0.5);
+        }
+
+        .btn {
+            margin-top: 3rem;
+        }
+    }
+
+    .resource-tile__name {
+        margin-top: 1.2rem;
+        margin-bottom: 2.4rem;
+        @extend .truncate;
+        @include font-size-text-1;
+    }
+
+    .context-menu {
+        bottom: auto;
+        height: 4.2rem;
+        right: 0.6rem;
+        top: 0.6rem;
+
+        .drop-down-menu-base__trigger {
+            border-radius: 100%;
+        }
+    }
+}
