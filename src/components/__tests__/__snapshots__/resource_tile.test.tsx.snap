@@ -1,44 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The ResourceGrid component should render 1`] = `
-<Tile
-  align="center"
-  appearance="shadow"
-  className="resource-tile"
-  padding="md"
->
-  <ResourceContextMenu
-    resource={
-      Object {
-        "imageAlt": "Printer 1",
-        "imageUrl": "../images/logobot-placeholder-dark.svg",
-        "menuItems": Array [
-          Object {
-            "disabled": false,
-            "handler": [MockFunction],
-            "label": "Share",
-          },
-        ],
-        "resourceId": "1",
-        "title": "Printer 1",
-      }
-    }
-  />
-  <img
-    alt="Printer 1"
-    className="resource-tile__image"
-    src="../images/logobot-placeholder-dark.svg"
-    title="Printer 1"
-  />
-  <div
-    className="resource-tile__name"
-    title="Printer 1"
-  >
-    Printer 1
-  </div>
-</Tile>
-`;
-
 exports[`The ResourceTile component should render 1`] = `
 <Tile
   align="center"
