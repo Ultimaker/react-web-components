@@ -26,4 +26,6 @@ export const ResourceEmptyState: React.StatelessComponent<ResourceEmptyStateProp
     </div>
 );
 
+ResourceEmptyState.displayName = 'ResourceEmptyState';
+
 export default ResourceEmptyState;

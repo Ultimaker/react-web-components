@@ -9,10 +9,11 @@ import ResourceEmptyState from './resource_empty_state';
 
 
 export interface ResourceGridProps {
-    emptyText: string;
-    emptyImageAlt: string;
+    emptyStateText: string;
+    emptyStateImageAlt: string;
     emptyStateImageUrl: string;
     emptyTileImageUrl: string;
+    emptyTileImageAlt: string;
     createButtonText: string;
     onCreate: () => void;
 }
@@ -21,15 +22,15 @@ export interface ResourceGridProps {
  * The resource teams component that shows a list of the teams belonging to a resource.
  */
 export const ResourceGrid: React.StatelessComponent<ResourceGridProps> = ({
-    emptyText, emptyStateImageUrl, emptyTileImageUrl,
-    emptyImageAlt, onCreate, createButtonText, children,
+    emptyStateText, emptyStateImageUrl, emptyTileImageUrl, emptyTileImageAlt,
+    emptyStateImageAlt, onCreate, createButtonText, children,
 }) => {
     if (React.Children.count(children) === 0) {
         return (
             <ResourceEmptyState
-                text={emptyText}
+                text={emptyStateText}
                 imageUrl={emptyStateImageUrl}
-                imageAlt={emptyImageAlt}
+                imageAlt={emptyStateImageAlt}
                 onCreateHandler={onCreate}
                 createButtonText={createButtonText}
             />
@@ -47,7 +48,7 @@ export const ResourceGrid: React.StatelessComponent<ResourceGridProps> = ({
                 <GridItem layoutWidth="fit">
                     <ResourceEmptyTile
                         imageUrl={emptyTileImageUrl}
-                        imageAlt={emptyImageAlt}
+                        imageAlt={emptyTileImageAlt}
                         onCreateHandler={onCreate}
                         createButtonText={createButtonText}
                     />

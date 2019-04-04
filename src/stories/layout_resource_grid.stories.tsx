@@ -22,10 +22,11 @@ stories.add('Resource grid', withInfo(
 )(() => (
     <div style={{ marginTop: '6rem', marginBottom: '6rem' }}>
         <ResourceGrid
-            emptyText="Get started by connecting your devices to the cloud"
+            emptyStateText="Get started by connecting your devices to the cloud"
             emptyStateImageUrl="../images/logobot-placeholder-dark.svg"
             emptyTileImageUrl="../images/logobot-placeholder-dark.svg"
-            emptyImageAlt="My devices"
+            emptyStateImageAlt="My devices"
+            emptyTileImageAlt="My devices"
             createButtonText="Add printers"
             onCreate={action('Created')}
         >

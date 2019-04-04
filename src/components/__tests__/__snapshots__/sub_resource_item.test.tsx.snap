@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SubResourceItem component should render icons 1`] = `
+<Tooltip
+  direction="north"
+  tooltipText="Test"
+>
+  <div
+    className="sub-resource-item"
+  >
+    <ProfileImage
+      imageURL="../../images/logobot-placeholder-dark.svg"
+      size="3rem"
+    />
+  </div>
+</Tooltip>
+`;
+
+exports[`The SubResourceItem component should render names 1`] = `
+<Tooltip
+  direction="north"
+  tooltipText="Test"
+>
+  <div
+    className="sub-resource-item"
+  >
+    <Pill
+      active={false}
+    >
+      Test
+    </Pill>
+  </div>
+</Tooltip>
+`;

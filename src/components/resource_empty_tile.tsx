@@ -25,4 +25,6 @@ export const ResourceEmptyTile: React.StatelessComponent<ResourceEmptyTileProps>
     </Tile>
 );
 
+ResourceEmptyTile.displayName = 'ResourceEmptyTile';
+
 export default ResourceEmptyTile;

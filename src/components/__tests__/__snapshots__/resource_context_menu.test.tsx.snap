@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ResourceContextMenu component should render 1`] = `
+<ContextMenu
+  menuDirection="south"
+  menuOffsetDirection="left"
+  menuWidth={240}
+  onToggleMenuHandler={[Function]}
+  showMenu={false}
+>
+  <ContextMenuItem
+    disabled={false}
+    key="Share"
+    onClickHandler={[Function]}
+  >
+    <div>
+      Share
+    </div>
+  </ContextMenuItem>
+</ContextMenu>
+`;
