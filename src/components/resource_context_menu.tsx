@@ -21,7 +21,7 @@ export interface ResourceContextMenuState {
  * The resource context menu component displays a menu
  * that allows the user to execute extra actions for a resource.
  */
-export default class ResourceContextMenu extends React.Component
+export class ResourceContextMenu extends React.Component
 <ResourceContextMenuProps, ResourceContextMenuState> {
     state = {
         showMenu: false,
@@ -51,3 +51,5 @@ export default class ResourceContextMenu extends React.Component
         );
     }
 }
+
+export default ResourceContextMenu;
