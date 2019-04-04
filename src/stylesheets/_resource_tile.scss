@@ -1,35 +1,35 @@
 .resource-tile {
-    width: 23.4rem;
-    height: 30.4rem;
-    padding: 3rem 1.8rem;
-
-    &.resource-tile__empty {
-        background: transparent;
-
-        .resource-tile__image {
-            filter: opacity(0.5);
-        }
-
-        .btn {
-            margin-top: 3rem;
-        }
-    }
-
-    .resource-tile__name {
-        margin-top: 1.2rem;
-        margin-bottom: 2.4rem;
-        @extend .truncate;
-        @include font-size-text-1;
-    }
+    width: 24rem;
+    height: 31.2rem;
+    padding: 3.6rem 1.8rem 1.8rem;
 
     .context-menu {
-        bottom: auto;
-        height: 4.2rem;
-        right: 0.6rem;
+        position: absolute;
         top: 0.6rem;
-
-        .drop-down-menu-base__trigger {
-            border-radius: 100%;
-        }
+        right: 0.6rem;
     }
 }
+
+.resource-tile__empty {
+    background: transparent;
+
+    .resource-tile__image {
+        filter: opacity(0.5);
+    }
+
+    .btn {
+        margin-top: 3rem;
+    }
+}
+
+.resource-tile__image {
+    height: 9.9rem;
+}
+
+.resource-tile__name {
+    margin-top: 1.2rem;
+    margin-bottom: 2.4rem;
+    @extend .truncate;
+    @include font-size-text-1;
+}
+
