@@ -18,9 +18,9 @@ export interface Resource {
 }
 
 export interface ResourceMenuItem {
-    title: string;
+    label: string;
     handler: (resource: Resource) => any;
-    tooltip?: string;
+    title?: string;
     disabled?: boolean;
 }
 
@@ -37,7 +37,7 @@ export const ResourceTile: React.StatelessComponent<ResourceTileProps> = (
 ) => (
     <Tile className={classNames('resource-tile', className)} align="center">
         {resource.menuItems && <ResourceContextMenu resource={resource} />}
-        <img className="resource-tile__image" src={resource.imageUrl} alt={resource.imageAlt} title={resource.imageAlt} height={98} />
+        <img className="resource-tile__image" src={resource.imageUrl} alt={resource.imageAlt} title={resource.imageAlt} />
         <div className="resource-tile__name" title={resource.title}>{resource.title}</div>
         {children}
     </Tile>

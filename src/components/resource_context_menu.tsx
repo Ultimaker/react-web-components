@@ -32,19 +32,18 @@ export default class ResourceContextMenu extends React.Component
         const { showMenu } = this.state;
         return (
             <ContextMenu
-                menuWidth={250}
-                positionMenuInPanel
+                menuWidth={240}
                 showMenu={showMenu}
                 onToggleMenuHandler={() => this.setState({ showMenu: !showMenu })}
             >
                 {resource.menuItems.map(menuItem => (
                     <ContextMenuItem
-                        key={menuItem.title}
+                        key={menuItem.label}
                         onClickHandler={() => menuItem.handler(resource)}
                         disabled={menuItem.disabled}
                     >
-                        <div title={menuItem.tooltip}>
-                            {menuItem.title}
+                        <div title={menuItem.title}>
+                            {menuItem.label}
                         </div>
                     </ContextMenuItem>
                 ))}
