@@ -35,7 +35,7 @@ export interface ResourceTileProps {
 export const ResourceTile: React.StatelessComponent<ResourceTileProps> = (
     { resource, className, children },
 ) => (
-    <Tile className={classNames('resource-tile', className)} align="center">
+    <Tile className={classNames('resource-tile', className)} align="center" id={resource.resourceId}>
         {resource.menuItems && <ResourceContextMenu resource={resource} />}
         <img className="resource-tile__image" src={resource.imageUrl} alt={resource.imageAlt} title={resource.imageAlt} />
         <div className="resource-tile__name" title={resource.title}>{resource.title}</div>
