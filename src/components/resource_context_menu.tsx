@@ -41,6 +41,7 @@ export class ResourceContextMenu extends React.Component
                         key={menuItem.label}
                         onClickHandler={() => menuItem.handler(resource)}
                         disabled={menuItem.disabled}
+                        id={menuItem.id}
                     >
                         <div title={menuItem.title}>
                             {menuItem.label}
