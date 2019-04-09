@@ -8,11 +8,7 @@ import FormActions from './form_actions';
  * The validation of each field may be a text, a list of elements or the validation of a sub-model
  */
 export type FormValidationResponse = {
-    [key: string]: string
-    | string[]
-    | JSX.Element[]
-    | FormValidationResponse
-    | (FormValidationResponse | string)[],
+    [key: string]: string | JSX.Element[] | FormValidationResponse
 };
 
 export interface FormProps {
