@@ -22,7 +22,7 @@ export interface ResourceMenuItem {
     handler: (resource: Resource) => any;
     title?: string;
     disabled?: boolean;
-    id: string;
+    id?: string;
 }
 
 export interface ResourceTileProps {

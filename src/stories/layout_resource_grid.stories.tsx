@@ -38,6 +38,7 @@ stories.add('Resource grid', withInfo(
                     imageAlt: 'Printer 1',
 
                     menuItems: [{
+                        id: '123456789',
                         label: 'Share',
                         handler: action('Shared'),
                         disabled: false,
@@ -52,6 +53,7 @@ stories.add('Resource grid', withInfo(
                     imageAlt: 'Printer 2',
 
                     menuItems: [{
+                        id: '123456789',
                         label: 'Share',
                         handler: action('Shared'),
                         disabled: false,
@@ -68,6 +70,7 @@ stories.add('Resource grid', withInfo(
                     imageAlt: 'Printer 3',
 
                     menuItems: [{
+                        id: '123456789',
                         label: 'Share',
                         handler: action('Shared'),
                         disabled: false,
@@ -115,6 +118,7 @@ stories.add('Resource grid', withInfo(
                     imageAlt: 'Printer 3',
 
                     menuItems: [{
+                        id: '123456789',
                         label: 'Share',
                         handler: action('Shared'),
                         disabled: false,
