@@ -20,6 +20,7 @@ describe('The ResourceContextMenu component', () => {
                 imageAlt: 'Printer 1',
 
                 menuItems: [{
+                    id: 'test_id',
                     label: 'Share',
                     handler: jest.fn(),
                     disabled: false,

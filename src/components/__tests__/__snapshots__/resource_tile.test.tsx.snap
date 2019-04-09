@@ -5,6 +5,7 @@ exports[`The ResourceTile component should render 1`] = `
   align="center"
   appearance="shadow"
   className="resource-tile"
+  id="1"
   padding="md"
 >
   <ResourceContextMenu
@@ -16,6 +17,7 @@ exports[`The ResourceTile component should render 1`] = `
           Object {
             "disabled": false,
             "handler": [MockFunction],
+            "id": "test_id",
             "label": "Share",
           },
         ],

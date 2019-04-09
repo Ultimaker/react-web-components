@@ -10,6 +10,7 @@ exports[`The ResourceContextMenu component should render 1`] = `
 >
   <ContextMenuItem
     disabled={false}
+    id="test_id"
     key="Share"
     onClickHandler={[Function]}
   >
