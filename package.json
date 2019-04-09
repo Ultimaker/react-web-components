@@ -42,7 +42,7 @@
         "classnames": "^2.2.6",
         "css-loader": "^2.1.0",
         "gettext-extractor": "^3.4.0",
-        "gettext-parser": "^3.1.0",
+        "gettext-parser": "^4.0.0",
         "lodash.debounce": "^4.0.8",
         "node-gettext": "^2.0.0",
         "node-sass": "^4.7.2",
