@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SubResourceList component should render 1`] = `
+<div
+  className="sub-resource-list"
+>
+  <div
+    className="sub-resource-list__title"
+  >
+    Test
+  </div>
+  <div
+    className="sub-resource-list__items"
+  >
+    <SubResourceItem
+      key="1"
+      subResource={
+        Object {
+          "name": "Test",
+          "showName": true,
+          "subResourceId": "1",
+        }
+      }
+    />
+  </div>
+</div>
+`;

@@ -27,9 +27,9 @@ export interface ContextMenuState {
     menuOffset: number;
 }
 
-const menuOffsetDefault = 30;
+const menuOffsetDefault = 24;
 const triggerWidth = 45;
-const windowMargin = 10;
+const windowMargin = 12;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
     public static defaultProps: Partial<ContextMenuProps> = {
