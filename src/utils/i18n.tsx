@@ -87,7 +87,7 @@ export class I18n {
     public static plural(
         context: string, text: string, textPlural: string, numberOfThings: number,
     ): string {
-        const stringValue = I18n._gt.dngettext(context, text, textPlural, numberOfThings);
+        const stringValue = I18n._gt.npgettext(context, text, textPlural, numberOfThings);
         return I18n.interpolate(stringValue, { n: numberOfThings });
     }
 
