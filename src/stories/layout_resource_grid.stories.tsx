@@ -15,6 +15,10 @@ import SubResourceList from '../components/sub_resource_list';
 
 const stories = storiesOf('Layout', module);
 
+const logobot = process.env.NODE_ENV === 'development'
+    ? '../images/logobot-placeholder-dark.svg'
+    : './images/logobot-placeholder-dark.svg';
+
 stories.addDecorator(withKnobs);
 
 stories.add('Resource grid', withInfo(
@@ -23,8 +27,8 @@ stories.add('Resource grid', withInfo(
     <div style={{ marginTop: '6rem', marginBottom: '6rem' }}>
         <ResourceGrid
             emptyStateText="Get started by connecting your devices to the cloud"
-            emptyStateImageUrl="../images/logobot-placeholder-dark.svg"
-            emptyTileImageUrl="../images/logobot-placeholder-dark.svg"
+            emptyStateImageUrl={logobot}
+            emptyTileImageUrl={logobot}
             emptyStateImageAlt="My devices"
             emptyTileImageAlt="My devices"
             createButtonText="Add printers"
@@ -34,7 +38,7 @@ stories.add('Resource grid', withInfo(
                 resource={{
                     resourceId: '1',
                     title: 'Printer 1',
-                    imageUrl: '../images/logobot-placeholder-dark.svg',
+                    imageUrl: logobot,
                     imageAlt: 'Printer 1',
 
                     menuItems: [{
@@ -49,7 +53,7 @@ stories.add('Resource grid', withInfo(
                 resource={{
                     resourceId: '2',
                     title: 'Printer 2',
-                    imageUrl: '../images/logobot-placeholder-dark.svg',
+                    imageUrl: logobot,
                     imageAlt: 'Printer 2',
 
                     menuItems: [{
@@ -66,7 +70,7 @@ stories.add('Resource grid', withInfo(
                 resource={{
                     resourceId: '3',
                     title: 'Printer 3',
-                    imageUrl: '../images/logobot-placeholder-dark.svg',
+                    imageUrl: logobot,
                     imageAlt: 'Printer 3',
 
                     menuItems: [{
@@ -84,25 +88,25 @@ stories.add('Resource grid', withInfo(
                         {
                             subResourceId: '1',
                             name: 'User 1',
-                            iconUrl: '../images/logobot-placeholder-dark.svg',
+                            iconUrl: logobot,
                             showIcon: true,
                         },
                         {
                             subResourceId: '2',
                             name: 'User 2',
-                            iconUrl: '../images/logobot-placeholder-dark.svg',
+                            iconUrl: logobot,
                             showIcon: true,
                         },
                         {
                             subResourceId: '3',
                             name: 'User 3',
-                            iconUrl: '../images/logobot-placeholder-dark.svg',
+                            iconUrl: logobot,
                             showIcon: true,
                         },
                         {
                             subResourceId: '4',
                             name: 'User 4',
-                            iconUrl: '../images/logobot-placeholder-dark.svg',
+                            iconUrl: logobot,
                             showIcon: true,
                         },
                     ]}
@@ -114,7 +118,7 @@ stories.add('Resource grid', withInfo(
                 resource={{
                     resourceId: '3',
                     title: 'Printer 3',
-                    imageUrl: '../images/logobot-placeholder-dark.svg',
+                    imageUrl: logobot,
                     imageAlt: 'Printer 3',
 
                     menuItems: [{
