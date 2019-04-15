@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The MorePill component should render 1`] = `
+<Tooltip
+  direction="north"
+  tooltipText="test 1
+test 2
+test 3"
+>
+  <div
+    className="more-pill"
+  >
+    <Pill
+      active={false}
+    >
+      <div
+        className="more-pill__text"
+      >
+        +3
+      </div>
+    </Pill>
+  </div>
+</Tooltip>
+`;

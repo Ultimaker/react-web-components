@@ -21,37 +21,31 @@ exports[`The DropDownMenuBase component should render 1`] = `
     <div
       className="drop-down-menu-base__menu"
     >
-      <Collapse
-        fixedHeight={-1}
-        forceInitialAnimation={false}
-        hasNestedCollapse={false}
-        isOpened={false}
-        onMeasure={[Function]}
-        onRender={[Function]}
-        onRest={[Function]}
-        springConfig={
+      <Spring
+        config={
           Object {
-            "damping": 35,
-            "stiffness": 370,
+            "friction": 35,
+            "tension": 370,
           }
         }
-        style={Object {}}
-        theme={
+        force={false}
+        from={
           Object {
-            "collapse": "ReactCollapse--collapse",
-            "content": "ReactCollapse--content",
+            "height": 0,
+          }
+        }
+        immediate={false}
+        inject={[Function]}
+        native={true}
+        reset={false}
+        to={
+          Object {
+            "height": 0,
           }
         }
       >
-        <ul
-          className="drop-down-menu-base__menu-list"
-        >
-          <DropDownMenuItem
-            active={false}
-            onClickHandler={[MockFunction]}
-          />
-        </ul>
-      </Collapse>
+        <Component />
+      </Spring>
     </div>
     <div
       className="drop-down-menu-base__arrow"
@@ -81,37 +75,31 @@ exports[`The DropDownMenuBase component should render drop down menu open 1`] = 
     <div
       className="drop-down-menu-base__menu"
     >
-      <Collapse
-        fixedHeight={-1}
-        forceInitialAnimation={false}
-        hasNestedCollapse={false}
-        isOpened={true}
-        onMeasure={[Function]}
-        onRender={[Function]}
-        onRest={[Function]}
-        springConfig={
+      <Spring
+        config={
           Object {
-            "damping": 35,
-            "stiffness": 370,
+            "friction": 35,
+            "tension": 370,
           }
         }
-        style={Object {}}
-        theme={
+        force={false}
+        from={
           Object {
-            "collapse": "ReactCollapse--collapse",
-            "content": "ReactCollapse--content",
+            "height": 0,
+          }
+        }
+        immediate={false}
+        inject={[Function]}
+        native={true}
+        reset={false}
+        to={
+          Object {
+            "height": "auto",
           }
         }
       >
-        <ul
-          className="drop-down-menu-base__menu-list"
-        >
-          <DropDownMenuItem
-            active={false}
-            onClickHandler={[MockFunction]}
-          />
-        </ul>
-      </Collapse>
+        <Component />
+      </Spring>
     </div>
     <div
       className="drop-down-menu-base__arrow"

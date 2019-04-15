@@ -24,6 +24,7 @@ import Carousel from '../components/carousel';
 import AspectRatioContainer from '../components/aspect_ratio_container';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
+import UserAccountMenu from '../components/user_account_menu';
 
 import UM3PrinterIcon from '../components/icons/um3_printer_icon';
 import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
@@ -169,7 +170,14 @@ stories.add('Header', withInfo(
     <BrowserRouter>
         <div style={{ width: '100vw', marginTop: '-50px' }}>
             <Header headerLogoUrl="/" showNav rightSideLabel={text('Label', '')}>
-                <Navigation navLinks={routes} manageAccountURL={text('Manage Account URL', '')} onSignOutClickHandler={() => {}} />
+                <Navigation navLinks={routes} manageAccountURL={text('Manage Account URL', '')} onSignOutClickHandler={() => { }}>
+                    <UserAccountMenu
+                        onSignOutClickHandler={() => { }}
+                        displayName="Test User"
+                        onSignInClickHandler={() => { }}
+                        triggerWidth="10rem"
+                    />
+                </Navigation>
             </Header>
         </div>
     </BrowserRouter>
@@ -216,10 +224,8 @@ stories.add('Slide out container', withInfo(
                 headerText={text('Header text', 'Slide out container component')}
                 onHeaderClick={action('clicked')}
             >
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                </div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.
             </SlideOutContainer>
         </Tile>
     </div>
@@ -229,7 +235,13 @@ stories.add('Slide in panel', withInfo(
     'A toggle slide in panel, that slides into view from the right side of the screen.',
 )(() => (
     <div>
-        <SlideInPanel headerTitle="Panel title" headerLabels={[{ label: 'Panel label', info: '1.0.0' }]} isOpen={boolean('isOpen', true)} width="600px" includeFooter>
+        <SlideInPanel
+            headerTitle="Panel title"
+            headerLabels={[{ label: 'Panel label', info: '1.0.0' }]}
+            isOpen={boolean('isOpen', false)}
+            width="600px"
+            includeFooter
+        >
             <div>Panel body</div>
             <div>Panel Footer</div>
         </SlideInPanel>

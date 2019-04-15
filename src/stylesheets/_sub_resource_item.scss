@@ -1,0 +1,10 @@
+.sub-resource-item {
+    padding-right: 0.6rem;
+
+    .pill {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 12rem;
+    }
+}

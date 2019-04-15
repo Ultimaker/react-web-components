@@ -17,6 +17,7 @@ exports[`The Image Cropper component should render 1`] = `
       ]
     }
     disableBoundaryChecks={false}
+    disableHiDPIScaling={false}
     height={150}
     image={null}
     onImageChange={[Function]}

@@ -286,6 +286,7 @@ stories.add('Date picker', withState({ value: new Date() })(withInfo('Date selec
             infoLinkURL={text('Info link URL', '')}
             infoText={text('Info text', '')}
             preLabelElement={text('Pre label element', '')}
+            locale={text('Locale', '')}
         />
     </div>
 ))));

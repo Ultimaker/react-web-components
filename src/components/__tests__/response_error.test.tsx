@@ -6,14 +6,14 @@ import { shallow } from 'enzyme';
 import { I18n } from '../../utils/i18n';
 
 // component
-import ResponseError, { ErrorMessageTemplates, FieldTranslations } from '../response_error';
+import ResponseError from '../response_error';
 
-const ERROR_CODE_TO_I18NC_TEMPLATE: ErrorMessageTemplates = {
-    fieldError: I18n.translate('error message', '%{field_name} was invalid: %{title}.'),
+const ERROR_CODE_TO_I18NC_TEMPLATE = {
+    fieldError: () => I18n.translate('error message', '%{field_name} was invalid: %{title}.'),
 };
 
-const FIELD_NAME_TO_I18NC: FieldTranslations = {
-    username: I18n.translate('form field username', 'Username'),
+const FIELD_NAME_TO_I18NC = {
+    username: () => I18n.translate('form field username', 'Username'),
 };
 
 describe('The ResponseError component', () => {

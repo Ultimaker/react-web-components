@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Motion, spring } from 'react-motion';
+import { Spring, animated } from 'react-spring';
 import classNames from 'classnames';
 
 export interface SlideInPanelHeaderLabels {
@@ -69,17 +69,23 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
             headerTitle, headerLabels, isOpen, width, includeFooter, children,
         } = this.props;
 
-        const motion = { stiffness: 450, damping: 50 };
         const classes = classNames('slide-in-panel', { isOpen });
 
         return (
             <div className={classes}>
                 {/* eslint-disable-next-line */}
-                <div className="slide-in-panel__overlay" onClick={e => this._handleOverlayClick(e)} /> 
+                <div className="slide-in-panel__overlay" onClick={e => this._handleOverlayClick(e)} />
 
-                <Motion style={{ x: spring(isOpen ? 0 : 100, motion) }}>
-                    {({ x }) => (
-                        <div className="slide-in-panel__container" style={{ transform: `translate3d(${x}%,0,0)`, width }}>
+                <Spring
+                    from={{ x: -100 }}
+                    to={{ x: isOpen ? 0 : -100 }}
+                    config={{ tension: 370, friction: 35 }}
+                >
+                    {(props: any) => (
+                        <animated.div
+                            className="slide-in-panel__container"
+                            style={{ right: `${props.x}%`, width }}
+                        >
                             <div className="slide-in-panel__header">
                                 <div className="layout">
                                     <div className="layout__item u-fill">
@@ -91,16 +97,14 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
                             <div className="slide-in-panel__content">
                                 {children[0]}
                             </div>
-                            {includeFooter
-                                && (
-                                    <div className="slide-in-panel__footer">
-                                        {children[1]}
-                                    </div>
-                                )
-                            }
-                        </div>
+                            {includeFooter && (
+                                <div className="slide-in-panel__footer">
+                                    {children[1]}
+                                </div>
+                            )}
+                        </animated.div>
                     )}
-                </Motion>
+                </Spring>
 
             </div>
         );
