@@ -15,6 +15,7 @@
 
     th {
         font-family: $font-primary-medium;
+        font-weight: normal;
     }
 
     th, td {
@@ -92,12 +93,13 @@
 
     td.truncate-cell {
         max-width: 100%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        word-break: break-all;
 
         @include respond-to(sm) {
             max-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 

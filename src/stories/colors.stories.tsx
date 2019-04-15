@@ -69,6 +69,18 @@ stories.add('Colors', withInfo(
 
             <Grid position="middle">
                 <GridItem layoutWidth="fit">
+                    <div className="color-square color-blue-lightest" />
+                </GridItem>
+                <GridItem layoutWidth="fit">
+                    <div className="color-label">#d8f3fd</div>
+                </GridItem>
+                <GridItem layoutWidth="fit">
+                    $color-blue-lightest
+                </GridItem>
+            </Grid>
+
+            <Grid position="middle">
+                <GridItem layoutWidth="fit">
                     <div className="color-square color-red" />
                 </GridItem>
                 <GridItem layoutWidth="fit">

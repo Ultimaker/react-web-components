@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The PageNotFoundView component should render 1`] = `
+<Page
+  maxWidth={550}
+  title="Page Not Found"
+>
+  <Tile
+    align="center"
+    appearance="shadow"
+    padding="lg"
+  >
+    <p>
+      The page requested could not be found.
+    </p>
+    <pre />
+  </Tile>
+</Page>
+`;

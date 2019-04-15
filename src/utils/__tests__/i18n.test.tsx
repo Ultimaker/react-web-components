@@ -5,15 +5,15 @@ import { I18n } from '../i18n';
 
 
 test('I18n is initialized', () => {
-    I18n.initialize([
-        { name: 'en-US', source: '' },
-    ]);
+    I18n.initialize({
+        'en': '/app/en.po'
+    });
 
-    expect(I18n.getLocale()).toBe('en-US');
+    expect(I18n.getLocale()).toBe('en');
 });
 
 test('Is language supported', () => {
-    expect(I18n.isLanguageSupported('en-US')).toBe(true);
+    expect(I18n.isLanguageSupported('en')).toBe(true);
 });
 
 test('Is text translated', () => {

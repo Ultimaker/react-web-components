@@ -77,12 +77,15 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
                 <div className="slide-in-panel__overlay" onClick={e => this._handleOverlayClick(e)} />
 
                 <Spring
-                    from={{ x: 0 }}
-                    to={{ x: isOpen ? 0 : 100 }}
+                    from={{ x: -100 }}
+                    to={{ x: isOpen ? 0 : -100 }}
                     config={{ tension: 370, friction: 35 }}
                 >
                     {(props: any) => (
-                        <animated.div className="slide-in-panel__container" style={{ transform: `translate3d(${props.x}%,0,0)`, width }}>
+                        <animated.div
+                            className="slide-in-panel__container"
+                            style={{ right: `${props.x}%`, width }}
+                        >
                             <div className="slide-in-panel__header">
                                 <div className="layout">
                                     <div className="layout__item u-fill">

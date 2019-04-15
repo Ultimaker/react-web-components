@@ -13,9 +13,6 @@ export interface NavRoute {
     path: string;
     label: string;
     visible: boolean;
-    component: React.ComponentClass | React.StatelessComponent;
-    scopes?: string[];
-    props?: object;
 }
 
 export interface NavigationProps {

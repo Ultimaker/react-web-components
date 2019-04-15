@@ -1,0 +1,28 @@
+.sub-resource-list {
+    border-top: 1px solid $color-border;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    padding-top: 1.8rem;
+    color: $color-grey-darker;
+    text-align: center;
+
+    @include font-size-text-2;
+
+    .tooltip-trigger {
+        vertical-align: top;
+    }
+
+    .pill {
+        height: 3rem;
+        line-height: 3rem;
+    }
+
+    .more-pill__text {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.sub-resource-list__title {
+    margin-bottom: 1.2rem;
+}

@@ -27,7 +27,7 @@ describe('The ContextMenu component', () => {
 
     it('should render to right', () => {
         wrapper.setProps({ menuOffsetDirection: 'right' });
-        expect(wrapper.find(DropDownMenuBase).prop('menuStyle').left).toBe(-30);
+        expect(wrapper.find(DropDownMenuBase).prop('menuStyle').left).toBe(-24);
         expect(wrapper.find(DropDownMenuBase).prop('menuStyle').right).toBeUndefined();
     });
 

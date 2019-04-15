@@ -9,7 +9,7 @@ import { withInfo } from '@storybook/addon-info';
 /* eslint-enable */
 
 // components
-import ResponseError, { ErrorMessageTemplates, FieldTranslations } from '../components/response_error';
+import ResponseError from '../components/response_error';
 
 // utils
 import { I18n } from '../utils/i18n';
@@ -23,17 +23,17 @@ stories.addDecorator(withKnobs)
         height: '100vh',
     }));
 
-const ERROR_CODE_TO_I18NC_TEMPLATE: ErrorMessageTemplates = {
-    fieldError: I18n.translate('error message',
+const ERROR_CODE_TO_I18NC_TEMPLATE = {
+    fieldError: () => I18n.translate('error message',
         '%{field_name} was invalid: %{title}.'),
-    lessThanMinimum: I18n.translate('error message',
+    lessThanMinimum: () => I18n.translate('error message',
         '%{field_name} does not have enough characters.'),
-    usernameInvalid: I18n.translate('error message',
+    usernameInvalid: () => I18n.translate('error message',
         'Username was not valid. Please use only latin characters, numbers and simple separators (single space, underline or hyphen).'),
 };
 
-const FIELD_NAME_TO_I18NC: FieldTranslations = {
-    username: I18n.translate('form field username', 'Username'),
+const FIELD_NAME_TO_I18NC = {
+    username: () => I18n.translate('form field username', 'Username'),
 };
 
 stories.add('Translated errors', withInfo(

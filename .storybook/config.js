@@ -8,6 +8,7 @@ import "../src/fonts/NotoSans-Regular.woff";
 import "../src/fonts/NotoSans-Medium.woff";
 import "../src/fonts/NotoSans-Regular.woff2";
 import "../src/fonts/NotoSans-Medium.woff2";
+import "../src/images/logobot-placeholder-dark.svg";
 
 // load stories
 const req = require.context('../src', true, /\.stories.tsx?$/)

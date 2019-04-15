@@ -8,7 +8,7 @@ exports[`The ContextMenu component should render 1`] = `
     menuDirection="south"
     menuStyle={
       Object {
-        "right": -30,
+        "right": -24,
         "width": 200,
       }
     }
