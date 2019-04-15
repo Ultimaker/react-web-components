@@ -5,7 +5,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, number, selectV2,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';

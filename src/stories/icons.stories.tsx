@@ -3,7 +3,7 @@ import * as React from 'react';
 // storybook
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
-import { withKnobs, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, selectV2 } from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 /* eslint-enable */
