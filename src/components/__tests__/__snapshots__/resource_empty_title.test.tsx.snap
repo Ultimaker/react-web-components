@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ResourceEmptyTile component should render 1`] = `
+<Tile
+  align="center"
+  appearance="dashed"
+  className="resource-tile resource-tile__empty"
+  padding="md"
+>
+  <img
+    alt="My devices"
+    className="resource-tile__image"
+    src="../../images/logobot-placeholder-dark.svg"
+  />
+  <Button
+    appearance="secondary"
+    className=""
+    linkToNewTab={false}
+    onClickHandler={[MockFunction]}
+    shape="rectangle"
+    type="button"
+  >
+    Add printers
+  </Button>
+</Tile>
+`;

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The ResourceGrid component should render a grid 1`] = `
+<div>
+  <Grid
+    align="center"
+    gutter="md"
+    position="middle"
+  >
+    <GridItem
+      breakpoint="xs"
+      key=".0"
+      layoutWidth="fit"
+    >
+      <div>
+        Test item
+      </div>
+    </GridItem>
+    <GridItem
+      breakpoint="xs"
+      layoutWidth="fit"
+    >
+      <ResourceEmptyTile
+        createButtonText="Add printers"
+        imageAlt="My devices"
+        imageUrl="../../images/logobot-placeholder-dark.svg"
+        onCreateHandler={[MockFunction]}
+      />
+    </GridItem>
+  </Grid>
+</div>
+`;
+
+exports[`The ResourceGrid component should render the empty state 1`] = `
+<ResourceEmptyState
+  createButtonText="Add printers"
+  imageAlt="My devices"
+  imageUrl="../../images/logobot-placeholder-dark.svg"
+  onCreateHandler={[MockFunction]}
+  text="Get started by connecting your devices to the cloud"
+/>
+`;

@@ -1,0 +1,15 @@
+.resource-empty-state {
+    text-align: center;
+}
+
+.resource-empty-state__text {
+    margin: 3.2rem;
+}
+
+.resource-empty-state__image {
+    width: 18rem;
+
+    @include respond-to(sm) {
+        width: 28rem;
+    }
+}
