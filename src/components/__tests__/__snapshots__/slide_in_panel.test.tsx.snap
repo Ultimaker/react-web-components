@@ -9,7 +9,7 @@ exports[`The SlideInPanel component should render 1`] = `
   />
   <div
     class="slide-in-panel__container"
-    style="transform:translate3d(0%,0,0)"
+    style="right:-100%"
   >
     <div
       class="slide-in-panel__header"
@@ -51,7 +51,7 @@ exports[`The SlideInPanel component should render header labels 1`] = `
   />
   <div
     class="slide-in-panel__container"
-    style="transform:translate3d(0%,0,0)"
+    style="right:-100%"
   >
     <div
       class="slide-in-panel__header"

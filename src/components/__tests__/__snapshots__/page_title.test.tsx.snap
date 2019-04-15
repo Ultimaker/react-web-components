@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`The PageTitle component should render 1`] = `
-<h2
+<div
   className="page-title"
-/>
+>
+  <div
+    className="page-title__title-container"
+  >
+    <h2 />
+  </div>
+</div>
 `;

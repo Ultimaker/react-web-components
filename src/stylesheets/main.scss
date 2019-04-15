@@ -6,6 +6,7 @@
 @import "base";
 @import "icons";
 @import "page";
+@import "page_title";
 @import "forms";
 @import "forms_actions";
 @import "input_fields";
@@ -52,3 +53,7 @@
 @import "~react-alice-carousel/src/alice-carousel";
 @import "carousel";
 @import "generic_flow_page";
+@import "resource_tile";
+@import "resource_empty_state";
+@import "sub_resource_list";
+@import "sub_resource_item";

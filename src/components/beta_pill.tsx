@@ -18,9 +18,11 @@ const T = {
 };
 
 const BetaPill: React.StatelessComponent<{}> = () => (
-    <Tooltip tooltipText={T.betaExplanation}>
-        <Pill active>{T.beta}</Pill>
-    </Tooltip>
+    <div className="beta-pill">
+        <Tooltip tooltipText={T.betaExplanation}>
+            <Pill active>{T.beta}</Pill>
+        </Tooltip>
+    </div>
 );
 
 export default BetaPill;

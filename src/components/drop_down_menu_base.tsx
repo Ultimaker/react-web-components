@@ -41,6 +41,7 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
     private _menuRef;
 
     private _onOutsideFocusHandler(event): void {
+        /* istanbul ignore next */
         if (this._menuRef
             && this._menuRef.current
             && !this._menuRef.current.contains(event.target)) {
