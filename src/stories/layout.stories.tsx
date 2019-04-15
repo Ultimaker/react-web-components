@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { storiesOf } from '@storybook/react';
 import {
     withKnobs, text, boolean, selectV2, number,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
