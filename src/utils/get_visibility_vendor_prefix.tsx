@@ -1,7 +1,7 @@
 /**
  * Gets browser prefix needed to support Document.hidden
  */
-function getVisibilityVendorPrefix(): string {
+export function getVisibilityVendorPrefix(): string {
     const prefixes = ['webkit', 'moz', 'ms', 'o'];
 
     // if 'hidden' is natively supported return nothing

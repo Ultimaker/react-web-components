@@ -60,7 +60,7 @@ export function objectEquals(x: Object, y: Object) {
  * Usage:
  * `expect(fetch).toHaveBeenCalledWith(url, {method: 'post', body: new JsonMatching({...})})`
  */
-class JsonMatching {
+export class JsonMatching {
     expected: any
 
     inverse: boolean
