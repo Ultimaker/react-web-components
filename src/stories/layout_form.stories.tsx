@@ -4,7 +4,7 @@ import * as React from 'react';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, selectV2 } from '@storybook/addon-knobs';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 import { withState } from '@dump247/storybook-state';
 /* eslint-enable */
@@ -89,8 +89,8 @@ stories.add('Form', withState({
                     id="id_1"
                     value={store.state.textValue}
                     label={text('Label 1', 'Text input field')}
-                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     onChangeHandler={(id, value) => store.set({ textValue: value })}
                     placeholder={text('Placeholder text', 'Placeholder text')}
                     infoText={text('Info text', 'Description of the input field')}
@@ -103,8 +103,8 @@ stories.add('Form', withState({
                     id="id_2"
                     value={store.state.numberValue}
                     label={text('Label 2', 'Number input field')}
-                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     min={1}
                     max={100}
                     onChangeHandler={(id, value) => store.set({ numberValue: value })}
@@ -115,8 +115,8 @@ stories.add('Form', withState({
                     id="id_3"
                     value={store.state.selectValue}
                     label={text('Label 3', 'Select input field')}
-                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     onChangeHandler={(id, value) => store.set({ selectValue: value })}
                     selectOptions={[{ label: 'Option 1', value: 1 }, { label: 'Option 2', value: 2, disabled: true }, { label: 'Option 3', value: 3 }]}
                     required
@@ -126,8 +126,8 @@ stories.add('Form', withState({
                     id="id_4"
                     value={store.state.checkboxValue}
                     label={text('Label 4', 'Checkbox input field')}
-                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     onChangeHandler={(id, value) => store.set({ checkboxValue: value })}
                     required
                 />
@@ -136,8 +136,8 @@ stories.add('Form', withState({
                     id="id_5"
                     value={store.state.dateValue}
                     label={text('Label 5', 'Date input field')}
-                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     onChangeHandler={(id, value) => store.set({ dateValue: value })}
                     required
                 />
@@ -152,8 +152,8 @@ stories.add('Form', withState({
                     type="children"
                     id="id_6"
                     label={text('Label', 'Custom input field')}
-                    labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                    labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                    labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                    labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                     onChangeHandler={() => { }}
                     submitted={typeof store.state.value === 'string'}
                 >

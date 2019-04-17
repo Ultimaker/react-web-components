@@ -3,7 +3,7 @@ import * as React from 'react';
 // storybook
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
-import { withKnobs, selectV2, text } from '@storybook/addon-knobs';
+import { withKnobs, select, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
@@ -54,7 +54,7 @@ stories.add('Confirm popup', withInfo(
         secondaryBtnText="Cancel"
         secondaryBtnHandler={action('clicked')}
         secondaryBtnAppearance="quiet"
-        width={selectV2('Popup width', widthOptions, widthDefaultValue)}
+        width={select('Popup width', widthOptions, widthDefaultValue)}
         footer={text('Footer')}
     />
 )));
@@ -64,7 +64,7 @@ stories.add('Basic popup', withInfo(
 )(() => (
     <PopupBase
         headerText="Basic popup"
-        width={selectV2('Popup width', widthOptions, widthDefaultValue)}
+        width={select('Popup width', widthOptions, widthDefaultValue)}
         footer={text('Footer')}
     >
         <div style={{ height: 200 }}>
@@ -160,7 +160,7 @@ stories.add('Multi-step popup', withState({ step: 1 })(withInfo('Multi-step popu
         secondaryBtnAppearance="quiet"
         step={store.state.step}
         totalSteps={3}
-        width={selectV2('Popup width', widthOptions, widthDefaultValue)}
+        width={select('Popup width', widthOptions, widthDefaultValue)}
         footer={text('Footer')}
     />
 ))));

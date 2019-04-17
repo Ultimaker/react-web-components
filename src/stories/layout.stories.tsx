@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
-    withKnobs, text, boolean, selectV2, number,
+    withKnobs, text, boolean, select, number,
 } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import styles from '@sambego/storybook-styles';
@@ -87,9 +87,9 @@ stories.add('Tile', withInfo(
         selected={boolean('Selected', false)}
         alert={boolean('Alert', false)}
         success={boolean('Success', false)}
-        padding={selectV2('Padding', spacingOptions, spacingDefaultValue)}
-        align={selectV2('Align', alignOptions, alignDefaultValue)}
-        appearance={selectV2('Appearance', tileAppearanceOptions, tileAppearanceDefaultValue)}
+        padding={select('Padding', spacingOptions, spacingDefaultValue)}
+        align={select('Align', alignOptions, alignDefaultValue)}
+        appearance={select('Appearance', tileAppearanceOptions, tileAppearanceDefaultValue)}
         radius={text('Radius', '')}
     >
         <div>Tile</div>
@@ -102,48 +102,48 @@ stories.add('Grid', withInfo(
 )(() => (
     <div style={{ width: '80vw' }}>
         <Grid
-            align={selectV2('Align', alignOptions, alignDefaultValue)}
-            gutter={selectV2('Gutter', spacingOptions, spacingDefaultValue)}
+            align={select('Align', alignOptions, alignDefaultValue)}
+            gutter={select('Gutter', spacingOptions, spacingDefaultValue)}
         >
             <GridItem layoutWidth="1/1">
                 Grid component
             </GridItem>
 
             <GridItem
-                layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
-                breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                layoutWidth={select('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
+                breakpoint={select('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
                 <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
 
             <GridItem
-                layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
-                breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                layoutWidth={select('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
+                breakpoint={select('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
                 <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
 
             <GridItem
-                layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
-                breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                layoutWidth={select('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
+                breakpoint={select('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
                 <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
             <GridItem
-                layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
-                breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                layoutWidth={select('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
+                breakpoint={select('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
                 <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
             <GridItem
-                layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
-                breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                layoutWidth={select('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
+                breakpoint={select('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
                 <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
             <GridItem
-                layoutWidth={selectV2('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
-                breakpoint={selectV2('Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                layoutWidth={select('Layout Width', layoutWidthOptions, layoutWidthDefaultValue)}
+                breakpoint={select('Breakpoint', breakpointOptions, breakpointDefaultValue)}
             >
                 <div style={{ background: 'grey', height: '100px' }} />
             </GridItem>
