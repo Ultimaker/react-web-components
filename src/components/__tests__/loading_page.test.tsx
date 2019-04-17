@@ -23,4 +23,9 @@ describe('The LoadingPage component', () => {
         jest.runOnlyPendingTimers();
         expect(wrapper.find(Spinner)).toHaveLength(1);
     });
+
+    it('should cancel timeout on unmount', () => {
+        wrapper.unmount();
+        expect(clearTimeout).toBeCalled();
+    });
 });
