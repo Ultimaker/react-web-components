@@ -11,7 +11,7 @@ exports[`The PageNotFoundView component should render 1`] = `
     padding="lg"
   >
     <p>
-      The page requested could not be found.
+      The page requested could not be found
     </p>
     <pre />
   </Tile>

@@ -6,9 +6,6 @@ import { Spring } from 'react-spring';
 // components
 import Button from './button';
 
-// utils
-import { I18n } from '../utils/i18n';
-
 export interface NavRoute {
     path: string;
     label: string;
@@ -16,9 +13,16 @@ export interface NavRoute {
 }
 
 export interface NavigationProps {
+    /** Details for the nav items */
     navLinks: NavRoute[];
+    /** URL for the account portal */
     manageAccountURL?: string;
+    /** Called when sign out is clicked */
     onSignOutClickHandler?: () => void;
+    /** The label for account navigation on mobile */
+    accountNavText: string;
+    /** The label for sign out on mobile */
+    signOutNavText: string;
 }
 
 export interface NavigationState {
@@ -44,7 +48,8 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
 
     render(): JSX.Element {
         const {
-            navLinks, onSignOutClickHandler, manageAccountURL, children,
+            navLinks, onSignOutClickHandler, manageAccountURL,
+            accountNavText, signOutNavText, children,
         } = this.props;
         const { showNav } = this.state;
 
@@ -90,7 +95,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                                 {manageAccountURL && (
                                     <li style={{ top: `${(visibleNavLinks.length + 1) * props.x}px` }} className="hide-sm">
                                         <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
-                                            <span className="label">{I18n.translate('Nav manage account button', 'Account')}</span>
+                                            <span className="label">{accountNavText}</span>
                                         </a>
                                     </li>
                                 )}
@@ -98,7 +103,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                                 {onSignOutClickHandler && (
                                     <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * props.x}px` }} className="hide-sm">
                                         <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
-                                            <span className="label">{I18n.translate('Nav sign out button', 'Sign out')}</span>
+                                            <span className="label">{signOutNavText}</span>
                                         </Button>
                                     </li>
                                 )}

@@ -89,4 +89,8 @@ stories.add('Circle Icon', withInfo(
     </CircleIcon>
 )));
 
-stories.add('Beta Pill', withInfo('Beta Pill')(() => <BetaPill />));
+stories.add('Beta Pill', withInfo('Beta Pill')(() => (
+    <BetaPill
+        betaExplanationText={text('Tooltip', 'This feature is in beta and is visible because you are part of the closed beta program.')}
+    />
+)));

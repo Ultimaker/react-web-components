@@ -7,10 +7,6 @@ import ProfileImage from './profile_image';
 import LinkIcon from './icons/link_icon';
 import DropDownMenuBase from './drop_down_menu_base';
 
-// utils
-import { I18n } from '../utils/i18n';
-
-
 export interface UserAccountMenuProps {
     /** Whether the user is signed out */
     signedOut?: boolean;
@@ -28,6 +24,14 @@ export interface UserAccountMenuProps {
     triggerWidth?: string;
     /** The height of the clickable area around the profile picture */
     triggerHeight?: string;
+    /** The header text for account dropdown */
+    accountHeaderText: string;
+    /** The label for account navigation */
+    accountButtonText: string;
+    /** The label for sign out */
+    signOutButtonText: string;
+    /** The label for sign out */
+    signInButtonText: string;
 }
 
 export interface UserAccountMenuState {
@@ -80,7 +84,8 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
     render(): JSX.Element {
         const {
             manageAccountURL, displayName, imageURL,
-            signedOut, triggerWidth, triggerHeight, children,
+            signedOut, triggerWidth, triggerHeight, accountHeaderText,
+            accountButtonText, signOutButtonText, signInButtonText, children,
         } = this.props;
         const { showMenu } = this.state;
 
@@ -112,7 +117,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                             {!signedOut && (
                                 <React.Fragment>
                                     <div className="account-section__title">
-                                        {I18n.translate('User account menu title', 'My account')}
+                                        {accountHeaderText}
                                     </div>
 
                                     <div className="account-section__profile">
@@ -131,7 +136,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                                 linkURL={manageAccountURL}
                                                 linkToNewTab
                                             >
-                                                {I18n.translate('User account menu button', 'Manage account')}
+                                                {accountButtonText}
                                                 <LinkIcon />
                                             </Button>
                                         )}
@@ -141,7 +146,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                             onClickHandler={this._onSignOut}
                                             id="account-menu-sign-out-button"
                                         >
-                                            {I18n.translate('User account menu button', 'Sign out')}
+                                            {signOutButtonText}
                                         </Button>
                                     </div>
                                 </React.Fragment>
@@ -152,7 +157,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                     id="account-menu-sign-in-button"
                                     onClickHandler={this._onSignIn}
                                 >
-                                    {I18n.translate('User account menu button', 'Sign in')}
+                                    {signInButtonText}
                                 </Button>
                             )}
                         </div>

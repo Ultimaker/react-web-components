@@ -3,10 +3,10 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import AboutDialog from '../about_dialog';
+import { AboutDialog, AboutDialogProps } from '../about_dialog';
 
 describe('The AboutDialog component', () => {
-    let props;
+    let props: AboutDialogProps;
     let wrapper;
 
     beforeEach(() => {
@@ -17,10 +17,9 @@ describe('The AboutDialog component', () => {
                 license: 'MIT',
                 url: 'https://ultimaker.com/',
             }],
-            appName: 'test app',
             versionNumber: '1.0.0',
-            supportLinkURL: 'https://ultimaker.support.com/',
-            supportLinkText: 'Support link',
+            headerText: 'About',
+            packagesPreText: 'This app uses the following Open Source components:',
         };
         wrapper = shallow(<AboutDialog {...props} />);
     });

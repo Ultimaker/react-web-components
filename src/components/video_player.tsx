@@ -7,9 +7,6 @@
 import * as React from 'react';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
 
-// utils
-import { I18n } from '../utils/i18n';
-
 // component
 import Spinner from './spinner';
 
@@ -26,6 +23,8 @@ export interface VideoPlayerProps {
     /** Optional height to be given to the container and the video.
      * Will accept values that are valid in CSS */
     height?: string;
+    /** Message to be shown if video cannot play */
+    playErrorMessage: string;
 }
 
 export interface VideoPlayerState {
@@ -38,13 +37,6 @@ export class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerSt
         width: '100%',
         height: '100%',
     };
-
-    private static _displayUrlError(invalidUrl: boolean): JSX.Element {
-        if (invalidUrl) {
-            return <span className="video-player__invalidUrl">{I18n.translate('Video player - Video unavailable', 'Can not play Url')}</span>;
-        }
-        return null;
-    }
 
     state = {
         loading: true,
@@ -64,6 +56,14 @@ export class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerSt
         if (prevProps.url !== url) {
             this._loading();
         }
+    }
+
+    private _displayUrlError(invalidUrl: boolean): JSX.Element {
+        const { playErrorMessage } = this.props;
+        if (invalidUrl) {
+            return <span className="video-player__invalidUrl">{playErrorMessage}</span>;
+        }
+        return null;
     }
 
     private _loading() {
@@ -90,9 +90,10 @@ export class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerSt
     }
 
     private _displayPlaybackError(invalidUrl: boolean): JSX.Element {
+        const { playErrorMessage } = this.props;
         const { error } = this.state;
         if (!invalidUrl && error) {
-            return <span className="video-player__error">{I18n.translate('Video player - Video unavailable', 'Video unavailable')}</span>;
+            return <span className="video-player__error">{playErrorMessage}</span>;
         }
         return null;
     }
@@ -113,7 +114,7 @@ export class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerSt
 
         return (
             <div style={containerStyle} className={containerClasses}>
-                {VideoPlayer._displayUrlError(invalidUrl)}
+                {this._displayUrlError(invalidUrl)}
                 {this._displayPlaybackError(invalidUrl)}
                 {this._displaySpinner(invalidUrl)}
                 <YouTubePlayer

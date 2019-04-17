@@ -101,5 +101,9 @@ stories.add('User account menu', withInfo(
         triggerHeight={text('Trigger height', null)}
         signedOut={boolean('Sign out', false)}
         onSignInClickHandler={() => {}}
+        accountHeaderText="My account"
+        accountButtonText="Manage account"
+        signOutButtonText="Sign out"
+        signInButtonText="Sign in"
     />
 )));

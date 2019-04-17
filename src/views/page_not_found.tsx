@@ -5,21 +5,25 @@ import * as React from 'react';
 import Page from '../components/page';
 import Tile from '../components/tile';
 
-// utils
-import { I18n } from '../utils/i18n';
-
 export interface PageNotFoundViewProps {
-    location: Location
+    /** The location object */
+    location: Location;
+    /** The page title */
+    titleText: string;
+    /** The message to be displayed */
+    messageText: string;
 }
 
 /**
  * The page not found view.
  */
-export const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({ location }) => (
-    <Page title={I18n.translate('title page_not_found', 'Page Not Found')} maxWidth={550}>
+export const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({
+    location, titleText, messageText,
+}) => (
+    <Page title={titleText} maxWidth={550}>
         <Tile padding="lg" align="center">
             <p>
-                {I18n.translate('page_not_found', 'The page requested could not be found.')}
+                {messageText}
             </p>
             <pre>{location.pathname}</pre>
         </Tile>

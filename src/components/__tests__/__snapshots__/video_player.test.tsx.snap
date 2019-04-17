@@ -13,7 +13,7 @@ exports[`The video player component should display a message in case the player 
   <span
     className="video-player__invalidUrl"
   >
-    Can not play Url
+    Cannot play URL
   </span>
   <YouTubePlayer
     className="video-player__player video-player__player--hidden"
@@ -72,7 +72,7 @@ exports[`The video player component should display the error state 1`] = `
   <span
     className="video-player__error"
   >
-    Video unavailable
+    Cannot play URL
   </span>
   <YouTubePlayer
     className="video-player__player video-player__player--hidden"

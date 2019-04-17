@@ -169,11 +169,10 @@ stories.add('About dialog', withInfo(
     'About dialog modal for providing information about the application',
 )(() => (
     <AboutDialog
-        appName="Test app"
         versionNumber="1.0.0"
         closeHandler={action('clicked')}
-        supportLinkURL="https://ultimaker.com/"
-        supportLinkText="Support page"
+        headerText="About"
+        packagesPreText="This app uses the following Open Source components:"
         componentsList={[
             { name: 'array.prototype.includes', license: 'MIT', url: 'https://github.com/Steditor/es7-array.prototype.includes' },
             { name: 'classnames', license: 'MIT', url: 'https://github.com/JedWatson/classnames' },

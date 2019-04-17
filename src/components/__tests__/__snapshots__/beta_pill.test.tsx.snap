@@ -6,6 +6,7 @@ exports[`The beta pill component should render 1`] = `
 >
   <Tooltip
     direction="north"
+    disableTooltip={false}
     tooltipText="This feature is in beta and is visible because you are part of the closed beta program."
   >
     <Pill

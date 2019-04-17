@@ -14,6 +14,8 @@ describe('The PageNotFoundView component', () => {
             location: {
                 path: 'home',
             },
+            titleText: 'Page Not Found',
+            messageText: 'The page requested could not be found',
         };
         wrapper = shallow(<PageNotFoundView {...props} />);
     });

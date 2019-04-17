@@ -44,6 +44,10 @@ stories.add('Translated errors', withInfo(
         <ResponseError
             errorMessageTemplates={ERROR_CODE_TO_I18NC_TEMPLATE}
             fieldNames={FIELD_NAME_TO_I18NC}
+            popupHeaderText="Something went wrong at our end :("
+            popupBodyText="Please describe here what you were doing that caused the error to happen. Then download the report and attach this in an email to your Ultimaker reseller."
+            popupDownloadButtonText="Download"
+            popupCancelButtonText="Cancel"
             errors={[{
                 id: '12345',
                 code: 'randomError',
@@ -57,6 +61,10 @@ stories.add('Translated errors', withInfo(
         <ResponseError
             errorMessageTemplates={ERROR_CODE_TO_I18NC_TEMPLATE}
             fieldNames={FIELD_NAME_TO_I18NC}
+            popupHeaderText="Something went wrong at our end :("
+            popupBodyText="Please describe here what you were doing that caused the error to happen. Then download the report and attach this in an email to your Ultimaker reseller."
+            popupDownloadButtonText="Download"
+            popupCancelButtonText="Cancel"
             errors={[{
                 id: '12345',
                 code: 'fieldError',
@@ -74,6 +82,10 @@ stories.add('Translated errors', withInfo(
         <ResponseError
             errorMessageTemplates={ERROR_CODE_TO_I18NC_TEMPLATE}
             fieldNames={FIELD_NAME_TO_I18NC}
+            popupHeaderText="Something went wrong at our end :("
+            popupBodyText="Please describe here what you were doing that caused the error to happen. Then download the report and attach this in an email to your Ultimaker reseller."
+            popupDownloadButtonText="Download"
+            popupCancelButtonText="Cancel"
             errors={[{
                 id: '12345',
                 code: 'lessThanMinimum',

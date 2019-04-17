@@ -14,7 +14,7 @@ exports[`The ResponseError component should render 1`] = `
       className="response-error__msg"
       key="12345"
     >
-      There was a problem on the server: The server crashed hard (code randomError)
+      The server crashed hard (randomError)
     </div>
   </Tile>
 </div>

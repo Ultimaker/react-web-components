@@ -17,6 +17,10 @@ describe('The UserAccountMenu component', () => {
             onSignInClickHandler: jest.fn(),
             displayName: 'Test User',
             signedOut: false,
+            accountHeaderText: 'My Account',
+            accountButtonText: 'Manage account',
+            signOutButtonText: 'Sign out',
+            signInButtonText: 'Sign in',
         };
         wrapper = shallow(<UserAccountMenu {...props} />);
     });

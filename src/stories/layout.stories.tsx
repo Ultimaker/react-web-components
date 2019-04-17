@@ -170,12 +170,22 @@ stories.add('Header', withInfo(
     <BrowserRouter>
         <div style={{ width: '100vw', marginTop: '-50px' }}>
             <Header headerLogoUrl="/" showNav rightSideLabel={text('Label', '')}>
-                <Navigation navLinks={routes} manageAccountURL={text('Manage Account URL', '')} onSignOutClickHandler={() => { }}>
+                <Navigation
+                    navLinks={routes}
+                    manageAccountURL={text('Manage Account URL', '')}
+                    onSignOutClickHandler={() => { }}
+                    accountNavText="Account"
+                    signOutNavText="Sign out"
+                >
                     <UserAccountMenu
                         onSignOutClickHandler={() => { }}
                         displayName="Test User"
                         onSignInClickHandler={() => { }}
                         triggerWidth="10rem"
+                        accountHeaderText="My account"
+                        accountButtonText="Manage account"
+                        signOutButtonText="Sign out"
+                        signInButtonText="Sign in"
                     />
                 </Navigation>
             </Header>

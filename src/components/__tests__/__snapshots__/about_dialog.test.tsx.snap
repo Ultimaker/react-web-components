@@ -5,25 +5,14 @@ exports[`The AboutDialog component should render 1`] = `
   className="about-dialog"
 >
   <PopupBase
-    headerText="About test app"
+    headerText="About"
     width="md"
   >
     <p>
-      Version: 1.0.0
+      v1.0.0
     </p>
     <p>
-      For support visit:
-         
-      <a
-        href="https://ultimaker.support.com/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Support link
-      </a>
-    </p>
-    <p>
-      test app uses the following Open Source components:
+      This app uses the following Open Source components:
     </p>
     <table
       className="about-components-list"
@@ -51,7 +40,7 @@ exports[`The AboutDialog component should render 1`] = `
               rel="noopener noreferrer"
               target="_blank"
             >
-              license MIT
+              MIT
             </a>
           </td>
         </tr>
