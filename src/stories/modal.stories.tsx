@@ -173,6 +173,8 @@ stories.add('About dialog', withInfo(
         closeHandler={action('clicked')}
         headerText="About"
         packagesPreText="This app uses the following Open Source components:"
+        licensePreText="license"
+        versionPreText="Version: "
         componentsList={[
             { name: 'array.prototype.includes', license: 'MIT', url: 'https://github.com/Steditor/es7-array.prototype.includes' },
             { name: 'classnames', license: 'MIT', url: 'https://github.com/JedWatson/classnames' },

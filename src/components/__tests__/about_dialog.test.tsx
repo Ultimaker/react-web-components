@@ -20,6 +20,8 @@ describe('The AboutDialog component', () => {
             versionNumber: '1.0.0',
             headerText: 'About',
             packagesPreText: 'This app uses the following Open Source components:',
+            licensePreText: 'license',
+            versionPreText: 'Version',
         };
         wrapper = shallow(<AboutDialog {...props} />);
     });

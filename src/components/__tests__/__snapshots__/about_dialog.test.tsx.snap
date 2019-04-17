@@ -9,7 +9,7 @@ exports[`The AboutDialog component should render 1`] = `
     width="md"
   >
     <p>
-      v1.0.0
+      Version 1.0.0
     </p>
     <p>
       This app uses the following Open Source components:
@@ -40,7 +40,7 @@ exports[`The AboutDialog component should render 1`] = `
               rel="noopener noreferrer"
               target="_blank"
             >
-              MIT
+              license MIT
             </a>
           </td>
         </tr>
