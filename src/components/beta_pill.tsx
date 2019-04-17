@@ -17,7 +17,7 @@ const T = {
         'This feature is in beta and is visible because you are part of the closed beta program.'),
 };
 
-const BetaPill: React.StatelessComponent<{}> = () => (
+export const BetaPill: React.StatelessComponent<{}> = () => (
     <div className="beta-pill">
         <Tooltip tooltipText={T.betaExplanation}>
             <Pill active>{T.beta}</Pill>
