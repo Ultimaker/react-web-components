@@ -1,9 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-// utils
-import { I18n } from '../utils/i18n';
-
 // components
 import { Image, ImageShape } from './image';
 import UploadIcon from './icons/upload_icon';
@@ -63,18 +60,6 @@ export interface ImageUploadState {
 }
 
 /**
- * The translations for this component.
- */
-export const T = {
-    imageTooLarge: (maxMb: number) => I18n.format(
-        'image upload error',
-        'This file is too large. Please select an image below %{maxMb}MB',
-        { maxMb: maxMb.toFixed(1) },
-    ),
-    OK: I18n.translate('image upload error', 'OK'),
-};
-
-/**
  * Component that allows a user to upload (and optionally crop) an image.
  */
 export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadState> {
@@ -110,7 +95,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
         if (maxMb && file.size > maxMb * 1024 * 1024) {
             // TODO: Make this a proper error in STAR-334.
-            alert(T.imageTooLarge(maxMb));
             return;
         }
 

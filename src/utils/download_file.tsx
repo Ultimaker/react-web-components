@@ -7,7 +7,7 @@
  * @param contentType - The content type, including the charset.
  * Defaults to "text/plain;charset=utf-8".
  */
-function downloadFile(fileName: string, fileContent: string, contentType?: string) {
+export function downloadFile(fileName: string, fileContent: string, contentType?: string) {
     const blob = new Blob([fileContent], { type: contentType || 'text/plain;charset=utf-8' });
     const element = document.createElement('a');
     element.href = URL.createObjectURL(blob);

@@ -5,7 +5,7 @@ import * as React from 'react';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { withKnobs, number, selectV2 } from '@storybook/addon-knobs';
+import { withKnobs, number, select } from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 /* eslint-enable */
 
@@ -113,11 +113,11 @@ stories.add('Ratings', withInfo(
     <Ratings
         max={number('Maximum rating', 5)}
         rating={number('Current rating', 3.5)}
-        Icon={iconOptions[selectV2('Icon', Object.keys(iconOptions), 'highlight')]}
-        foregroundColor={selectV2('Foreground color', colorOptions, foregroundColorDefaultValue)}
-        backgroundColor={selectV2('Background color', colorOptions, backgroundColorDefaultValue)}
-        foregroundBorder={selectV2('Foreground border', colorOptions, foregroundBorderDefaultValue)}
-        backgroundBorder={selectV2('Background border', colorOptions, backgroundBorderDefaultValue)}
-        size={selectV2('Size', sizeOptions, Ratings.defaultProps.size)}
+        Icon={iconOptions[select('Icon', Object.keys(iconOptions), 'highlight')]}
+        foregroundColor={select('Foreground color', colorOptions, foregroundColorDefaultValue)}
+        backgroundColor={select('Background color', colorOptions, backgroundColorDefaultValue)}
+        foregroundBorder={select('Foreground border', colorOptions, foregroundBorderDefaultValue)}
+        backgroundBorder={select('Background border', colorOptions, backgroundBorderDefaultValue)}
+        size={select('Size', sizeOptions, Ratings.defaultProps.size)}
     />
 )));

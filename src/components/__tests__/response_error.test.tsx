@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import { I18n } from '../../utils/i18n';
 
 // component
-import ResponseError from '../response_error';
+import { ResponseError, ResponseErrorProps } from '../response_error';
 
 const ERROR_CODE_TO_I18NC_TEMPLATE = {
     fieldError: () => I18n.translate('error message', '%{field_name} was invalid: %{title}.'),
@@ -17,13 +17,17 @@ const FIELD_NAME_TO_I18NC = {
 };
 
 describe('The ResponseError component', () => {
-    let props;
+    let props: ResponseErrorProps;
     let wrapper;
 
     beforeEach(() => {
         props = {
             errorMessageTemplates: ERROR_CODE_TO_I18NC_TEMPLATE,
             fieldNames: FIELD_NAME_TO_I18NC,
+            popupHeaderText: 'Something went wrong at our end :(',
+            popupBodyText: 'Please describe here what you were doing that caused the error to happen. Then download the report and attach this in an email to your Ultimaker reseller.',
+            popupDownloadButtonText: 'Download',
+            popupCancelButtonText: 'Cancel',
             errors: [{
                 id: '12345',
                 code: 'randomError',

@@ -4,13 +4,10 @@ import { shallow } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
 
 // component
-import Navigation from '../navigation';
-
-// views
-import PageNotFoundView from '../../views/page_not_found';
+import { Navigation, NavigationProps } from '../navigation';
 
 describe('The Navigation component', () => {
-    let props;
+    let props: NavigationProps;
     let wrapper;
 
     beforeEach(() => {
@@ -20,9 +17,10 @@ describe('The Navigation component', () => {
                     path: '/home',
                     label: 'Home',
                     visible: true,
-                    component: PageNotFoundView,
                 },
             ],
+            accountNavText: 'Account',
+            signOutNavText: 'Sign out',
         };
         wrapper = shallow(<BrowserRouter><Navigation {...props} /></BrowserRouter>);
     });

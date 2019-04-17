@@ -21,6 +21,7 @@ describe('The file upload field component', () => {
             staticField: false,
             placeholder: 'a text placeholder',
             uploading: false,
+            buttonText: 'Choose file',
         };
         wrapper = shallow(<FileUploadField {...props} />);
     });
@@ -37,6 +38,8 @@ describe('The file upload field component', () => {
             disabled: props.staticField,
             placeholder: props.placeholder,
             uploading: props.uploading,
+            accept: props.accept,
+            buttonText: props.buttonText,
         });
     });
 

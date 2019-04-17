@@ -1,12 +1,13 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
+// utils
+import { I18n } from '../utils/i18n';
+
 // components
 import { PopupPrompt } from './popup_prompt';
 import Tile from './tile';
 
-// utils
-import { I18n } from '../utils/i18n';
 
 /**
  * Gets a translated message for the given error.
@@ -37,9 +38,11 @@ export const getTranslatedError = (
     // each error message template is a function that returns a string
     const errorMessage = errorMessageTemplates[error.code]
         ? errorMessageTemplates[error.code]()
-        : I18n.translate('error message default', 'There was a problem on the server: %{title} (code %{code})');
+        : `${error.title} (${error.code})`;
+
     return I18n.interpolate(errorMessage, params);
 };
+
 
 export interface ResponseErrorObject {
     id: string;
@@ -54,6 +57,11 @@ export interface ResponseErrorProps {
     errors: ResponseErrorObject[];
     errorMessageTemplates?: { [key: string]: () => string };
     fieldNames?: { [key: string]: () => string };
+
+    popupHeaderText: string;
+    popupBodyText: string;
+    popupDownloadButtonText: string;
+    popupCancelButtonText: string;
 }
 
 export interface ResponseErrorState {
@@ -109,7 +117,10 @@ export class ResponseError extends React.Component<ResponseErrorProps, ResponseE
     }
 
     render(): JSX.Element {
-        const { errors, errorMessageTemplates, fieldNames } = this.props;
+        const {
+            errors, errorMessageTemplates, fieldNames, popupHeaderText,
+            popupBodyText, popupDownloadButtonText, popupCancelButtonText,
+        } = this.props;
         const { showPopup } = this.state;
         const isServerError = errors.find(e => parseInt(e.http_status, 10) >= 500);
         return (
@@ -121,21 +132,20 @@ export class ResponseError extends React.Component<ResponseErrorProps, ResponseE
                         </div>
                     ))}
                 </Tile>
-                {isServerError && showPopup
-                    && (
-                        <PopupPrompt
-                            headerText={I18n.translate('error popup title', 'Something went wrong at our end :(')}
-                            bodyText={I18n.translate('error popup details', 'Please describe here what you were doing that caused the error to happen. Then download the report and attach this in an email to your Ultimaker reseller.')}
-                            primaryBtnText={I18n.translate('error popup send', 'Download')}
-                            primaryBtnAppearance="primary"
-                            primaryBtnHandler={this._downloadTextFile}
-                            secondaryBtnText={I18n.translate('error popup cancel', 'Cancel')}
-                            secondaryBtnAppearance="quiet"
-                            secondaryBtnHandler={this._closePopup}
-                            inputType="textarea"
-                            validationHandler={this._validate}
-                        />
-                    )}
+                {isServerError && showPopup && (
+                    <PopupPrompt
+                        headerText={popupHeaderText}
+                        bodyText={popupBodyText}
+                        primaryBtnText={popupDownloadButtonText}
+                        primaryBtnAppearance="primary"
+                        primaryBtnHandler={this._downloadTextFile}
+                        secondaryBtnText={popupCancelButtonText}
+                        secondaryBtnAppearance="quiet"
+                        secondaryBtnHandler={this._closePopup}
+                        inputType="textarea"
+                        validationHandler={this._validate}
+                    />
+                )}
             </div>
         );
     }

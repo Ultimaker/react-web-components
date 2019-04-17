@@ -5,7 +5,6 @@ import { shallow, render } from 'enzyme';
 // component
 import ImageUpload from '../image_upload';
 import ImageCropper from '../image_cropper';
-import { Image } from '../image';
 
 let Dropzone = require('react-dropzone');
 
@@ -60,8 +59,6 @@ describe('The image upload component', () => {
     it('should reject images that are too large', async () => {
         wrapper.setProps({ maxMb: 0.000001 });
         wrapper.find(Dropzone).prop('onDrop')([image]);
-
-        expect(alertMock).toHaveBeenCalledWith('This file is too large. Please select an image below 0.0MB');
         expect(props.onFileSelection).not.toHaveBeenCalled();
         expect(props.onFileRead).not.toHaveBeenCalled();
     });

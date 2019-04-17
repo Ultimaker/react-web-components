@@ -3,13 +3,17 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import BetaPill from '../beta_pill';
+import { BetaPill, BetaPillProps } from '../beta_pill';
 
 describe('The beta pill component', () => {
     let wrapper;
+    let props: BetaPillProps;
 
     beforeEach(() => {
-        wrapper = shallow(<BetaPill />);
+        props = {
+            betaExplanationText: 'This feature is in beta and is visible because you are part of the closed beta program.',
+        };
+        wrapper = shallow(<BetaPill {...props} />);
     });
 
     it('should render', () => {

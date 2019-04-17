@@ -4,7 +4,7 @@ import * as React from 'react';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
-    withKnobs, text, boolean, selectV2,
+    withKnobs, text, boolean, select,
 } from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
@@ -47,8 +47,8 @@ stories.add('Context menu', withState({ showMenu: false })(withInfo(
         showMenu={store.state.showMenu}
         onToggleMenuHandler={showMenu => store.set({ showMenu })}
         menuWidth={200}
-        menuDirection={selectV2('Menu Direction', directionOptions, directionDefaultValue)}
-        menuOffsetDirection={selectV2('Menu Offset Direction', offsetOptions, offsetDefaultValue)}
+        menuDirection={select('Menu Direction', directionOptions, directionDefaultValue)}
+        menuOffsetDirection={select('Menu Offset Direction', offsetOptions, offsetDefaultValue)}
     >
         <ContextMenuItem
             onClickHandler={() => { store.set({ showMenu: false }); }}
@@ -101,5 +101,9 @@ stories.add('User account menu', withInfo(
         triggerHeight={text('Trigger height', null)}
         signedOut={boolean('Sign out', false)}
         onSignInClickHandler={() => {}}
+        accountHeaderText="My account"
+        accountButtonText="Manage account"
+        signOutButtonText="Sign out"
+        signInButtonText="Sign in"
     />
 )));

@@ -4,7 +4,7 @@ import * as React from 'react';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
-    withKnobs, text, boolean, selectV2,
+    withKnobs, text, boolean, select,
 } from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
@@ -35,7 +35,7 @@ stories.add('Tooltip', withInfo(
 )(() => (
     <Tooltip
         tooltipText={text('Text', 'Tooltip body text')}
-        direction={selectV2('Direction', directionOptions, spacingDefaultValue)}
+        direction={select('Direction', directionOptions, spacingDefaultValue)}
         disableTooltip={boolean('Disable tooltip', false)}
     >
         {text('Label', 'Tooltip trigger text')}
@@ -47,7 +47,7 @@ stories.add('Info tooltip', withInfo(
 )(() => (
     <InfoTooltip
         infoText={text('Text', 'Tooltip body text')}
-        direction={selectV2('Direction', directionOptions, spacingDefaultValue)}
+        direction={select('Direction', directionOptions, spacingDefaultValue)}
         disableTooltip={boolean('Disable tooltip', false)}
     />
 )));

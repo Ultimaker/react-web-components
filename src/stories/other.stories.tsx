@@ -4,7 +4,7 @@ import * as React from 'react';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
-    withKnobs, boolean, number, text, selectV2,
+    withKnobs, boolean, number, text, select,
 } from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
@@ -60,7 +60,7 @@ stories.add('Divider', withInfo(
     'A divider line. Useful for breaking up content',
 )(() => (
     <div style={{ width: 200, height: 200 }}>
-        <Divider direction={selectV2('Direction', directionOptions, directionValue)} />
+        <Divider direction={select('Direction', directionOptions, directionValue)} />
     </div>
 )));
 
@@ -84,9 +84,13 @@ const appearanceValue = 'primary';
 stories.add('Circle Icon', withInfo(
     'A circle icon',
 )(() => (
-    <CircleIcon appearance={selectV2('Appearance', appearanceOptions, appearanceValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
+    <CircleIcon appearance={select('Appearance', appearanceOptions, appearanceValue)} disabled={boolean('Disabled', false)} size={text('Size', '4rem')}>
         {text('Text', '1')}
     </CircleIcon>
 )));
 
-stories.add('Beta Pill', withInfo('Beta Pill')(() => <BetaPill />));
+stories.add('Beta Pill', withInfo('Beta Pill')(() => (
+    <BetaPill
+        betaExplanationText={text('Tooltip', 'This feature is in beta and is visible because you are part of the closed beta program.')}
+    />
+)));

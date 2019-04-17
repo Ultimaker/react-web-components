@@ -7,7 +7,9 @@ exports[`The PageTitle component should render 1`] = `
   <div
     className="page-title__title-container"
   >
-    <h2 />
+    <h2>
+      Page title
+    </h2>
   </div>
 </div>
 `;

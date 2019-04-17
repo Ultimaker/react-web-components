@@ -3,7 +3,7 @@ import * as React from 'react';
 // storybook
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
-import { withKnobs, selectV2 } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
 /* eslint-enable */
@@ -79,9 +79,9 @@ stories.add('Icons', withInfo(
     'All icons',
 )(() => {
     const props = {
-        color: selectV2('Color', colorOptions, colorDefaultValue),
-        borderColor: selectV2('Border', colorOptions, borderDefaultValue),
-        size: selectV2('Size', sizeOptions, sizeDefaultValue),
+        color: select('Color', colorOptions, colorDefaultValue),
+        borderColor: select('Border', colorOptions, borderDefaultValue),
+        size: select('Size', sizeOptions, sizeDefaultValue),
     };
     return (
         <div style={{ width: '80vw' }}>

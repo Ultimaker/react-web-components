@@ -3,11 +3,11 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // component
-import FileUpload from '../file_upload';
+import { FileUpload, FileUploadProps } from '../file_upload';
 import Spinner from '../spinner';
 
 describe('The FileUpload component', () => {
-    let props;
+    let props: FileUploadProps;
     let wrapper;
 
     beforeEach(() => {
@@ -16,6 +16,7 @@ describe('The FileUpload component', () => {
             onChangeHandler: jest.fn(),
             placeholder: 'A text placeholder',
             uploading: false,
+            buttonText: 'Choose file',
         };
         wrapper = shallow(<FileUpload {...props} />);
     });

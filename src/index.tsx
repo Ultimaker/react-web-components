@@ -2,6 +2,7 @@
 export * from './components/about_dialog';
 export * from './components/app';
 export * from './components/aspect_ratio_container';
+export * from './components/beta_pill';
 export * from './components/button';
 export * from './components/carousel';
 export * from './components/checkbox';

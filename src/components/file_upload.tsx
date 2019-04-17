@@ -1,7 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import classNames from 'classnames';
-import { I18n } from '../utils/i18n';
 import Spinner from './spinner';
 
 export interface FileUploadProps {
@@ -17,6 +16,8 @@ export interface FileUploadProps {
     placeholder?: string;
     /** What kinds of file extensions should be accepted client-side */
     accept?: string[];
+    /** The test to be displayed on the upload button */
+    buttonText: string;
 }
 
 export interface FileUploadState {
@@ -46,7 +47,7 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
 
     render(): JSX.Element {
         const {
-            id, disabled, placeholder, uploading, accept,
+            id, disabled, placeholder, uploading, accept, buttonText,
         } = this.props;
         const { selectedFileName } = this.state;
 
@@ -71,12 +72,10 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
                                 accept={accept ? accept.join(',') : null}
                             />
                             <span className={classNames('btn btn--primary', { waiting: uploading })}>
-                                <span className="text">{I18n.translate('file upload button', 'Choose file')}</span>
+                                <span className="text">{buttonText}</span>
                                 {uploading && <Spinner />}
                             </span>
                         </label>
-
-
                     </div>
                 </div>
             </div>

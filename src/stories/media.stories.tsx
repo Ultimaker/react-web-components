@@ -26,5 +26,6 @@ stories.add('Video player', withInfo(
         width={text('Width', '')}
         height={text('Height', '')}
         url={text('url', 'https://www.youtube.com/watch?v=160yAufQ-is')}
+        playErrorMessage="Cannot play URL"
     />
 )));

@@ -9,6 +9,7 @@ describe('The video player component', () => {
     let wrapper;
     const props: VideoPlayerProps = {
         url: 'https://www.youtube.com/watch?v=160yAufQ-is',
+        playErrorMessage: 'Cannot play URL',
     };
 
     beforeEach(() => {

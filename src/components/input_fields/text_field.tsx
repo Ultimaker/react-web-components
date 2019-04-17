@@ -47,7 +47,7 @@ function staticRender(type: TextFieldType, value: string): JSX.Element | string 
  * @param children - Any extra children to be displayed after the text.
  * @constructor
  */
-const TextField: React.StatelessComponent<TextFieldProps> = ({
+export const TextField: React.StatelessComponent<TextFieldProps> = ({
     children, ...wrapperProps
 }) => (
     <DefaultInputField inputChildren={children} {...wrapperProps}>

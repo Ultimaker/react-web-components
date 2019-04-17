@@ -4,7 +4,7 @@ import * as React from 'react';
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/react';
 import {
-    withKnobs, text, boolean, number, selectV2,
+    withKnobs, text, boolean, number, select,
 } from '@storybook/addon-knobs';
 import styles from '@sambego/storybook-styles';
 import { withInfo } from '@storybook/addon-info';
@@ -70,8 +70,8 @@ stories.add('Text field', withState({ value: null })(withInfo('Text input field'
             id="id_1"
             onChangeHandler={(id, value) => store.set({ value })}
             label={text('Label', 'Input field')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             placeholder={text('Placeholder', 'Text')}
             validationError={text('Validation error message', 'Validation Error')}
             focusOnLoad={boolean('Focus on load', true)}
@@ -94,8 +94,8 @@ stories.add('Number field', withState({ value: 1 })(withInfo('Number input field
             max={100}
             onChangeHandler={(id, value) => store.set({ value })}
             label={text('Label', 'Number field label')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             placeholder={text('Placeholder', 'Number')}
             validationError={text('Validation error message', 'Validation Error')}
             focusOnLoad={boolean('Focus on load', true)}
@@ -115,8 +115,8 @@ stories.add('Text area', withState({ value: null })(withInfo('Textarea input fie
             value={store.state.value}
             onChangeHandler={(id, value) => store.set({ value })}
             label={text('Label', 'Textarea label')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             placeholder={text('Placeholder', 'Textarea')}
             validationError={text('Validation error message', 'Validation Error')}
             textareaAutoGrow={boolean('Auto grow', true)}
@@ -138,8 +138,8 @@ stories.add('Password field', withState({ value: null })(withInfo('Password inpu
             value={store.state.value}
             onChangeHandler={(id, value) => store.set({ value })}
             label={text('Label', 'Enter your password')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             placeholder={text('Placeholder', 'Password')}
             validationError={text('Validation error message', 'Validation Error')}
             focusOnLoad={boolean('Focus on load', true)}
@@ -160,8 +160,8 @@ stories.add('Email field', withState({ value: null })(withInfo('Email input fiel
             value={store.state.value}
             onChangeHandler={(id, value) => store.set({ value })}
             label={text('Label', 'Enter your email address')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             placeholder={text('Placeholder', 'Email')}
             validationError={text('Validation error message', 'Validation Error')}
             focusOnLoad={boolean('Focus on load', true)}
@@ -180,8 +180,8 @@ stories.add('Checkbox', withState({ value: null })(withInfo('Checkbox input fiel
         value={store.state.value}
         onChangeHandler={(id, value) => store.set({ value })}
         label={text('Label', 'Checkbox label')}
-        labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-        labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+        labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+        labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
         validationError={text('Validation error message', 'Validation Error')}
         staticField={boolean('Static field', false)}
         required={boolean('Required', false)}
@@ -203,8 +203,8 @@ stories.add('Select field', withState({ value: null })(withInfo('Select input fi
                 { label: 'Option 3', value: 3 },
             ]}
             label={text('Label', 'Select an option')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             validationError={text('Validation error message', 'Validation Error')}
             staticField={boolean('Static field', false)}
             required={boolean('Required', false)}
@@ -229,9 +229,9 @@ stories.add('Image upload', withState({ value: null })(withInfo('Image drag and 
             onChangeHandler={(id, value: ImageFile) => store.set({ value: value.preview })}
             onReadHandler={(id, value: string) => store.set({ value })}
             label={text('Label', 'Select an image')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
-            imageShape={selectV2('Image shape', options, defaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            imageShape={select('Image shape', options, defaultValue)}
             imageSize={text('Image size', '18rem')}
             placeholder={text('Placeholder Label', 'Upload an image')}
             staticField={boolean('Static field', false)}
@@ -250,7 +250,7 @@ stories.add('Image upload', withState({ value: null })(withInfo('Image drag and 
                     <Image
                         src={store.state.value}
                         size="4.8rem"
-                        shape={selectV2('Image shape', options, defaultValue)}
+                        shape={select('Image shape', options, defaultValue)}
                     />
                 )
                 : <ProfileIcon size="lg" />}
@@ -279,8 +279,8 @@ stories.add('Date picker', withState({ value: new Date() })(withInfo('Date selec
             value={store.state.value}
             onChangeHandler={(id, value) => store.set({ value })}
             label={text('Label', 'Select a date')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             staticField={boolean('Static field', false)}
             required={boolean('Required', false)}
             infoLinkURL={text('Info link URL', '')}
@@ -301,8 +301,8 @@ stories.add('Tags selector', withState({ value: ['Manchester', 'Utrecht'] })(wit
                 placeholder="Tags"
                 tagSuggestions={['Chester', 'London', 'Amsterdam', 'Amersfoort', 'Manchester', 'Utrecht']}
                 label={text('Label', 'Enter tags')}
-                labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                 staticField={boolean('Static field', false)}
                 required={boolean('Required', false)}
                 infoLinkURL={text('Info link URL', '')}
@@ -321,8 +321,8 @@ stories.add('Search field', withState({ value: null })(withInfo('Search field')(
                 value={store.state.value}
                 onChangeHandler={(id, value) => store.set({ value })}
                 label={text('Label', 'Search')}
-                labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                 placeholder={text('Placeholder', 'Search')}
                 validationError={text('Validation error message', '')}
                 focusOnLoad={boolean('Focus on load', true)}
@@ -340,12 +340,12 @@ stories.add('Code field', withState({ value: '' })(withInfo('Code field')(({ sto
             <CodeField
                 id="code_field"
                 value={store.state.value}
-                type={selectV2('Type', ['number', 'text', 'password'])}
+                type={select('Type', ['number', 'text', 'password'])}
                 maxLength={number('Character count', 6) || 0}
                 onChangeHandler={(id, value) => store.set({ value })}
                 label={text('Label', 'Code')}
-                labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-                labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+                labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+                labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
                 placeholder={text('Placeholder', 'Code')}
                 validationError={text('Validation error message', '')}
                 focusOnLoad={boolean('Focus on load', true)}
@@ -364,8 +364,8 @@ stories.add('Upload file field', withState({ value: null })(withInfo('Upload fil
         <FileUploadField
             id="id_11"
             label={text('Label', 'Upload file')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             uploading={boolean('Uploading', false)}
             placeholder={text('Placeholder text', 'Placeholder text')}
             validationError={text('Validation error message', 'Validation Error')}
@@ -374,6 +374,7 @@ stories.add('Upload file field', withState({ value: null })(withInfo('Upload fil
             infoText={text('Info text', '')}
             preLabelElement={text('Pre label element', '')}
             accept={text('Accept file types', '.pdf,.zip').split(',')}
+            buttonText="Choose file"
         />
     </div>
 ))));
@@ -384,8 +385,8 @@ stories.add('Static input field', withState({})(withInfo('Static input field')((
             id="id_12"
             value={text('Value', 'Value')}
             label={text('Label', 'Label')}
-            labelLayoutWidth={selectV2('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
-            labelWidthBreakpoint={selectV2('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
+            labelLayoutWidth={select('Label Layout Width', widthFractionOptions, widthFractionDefaultValue)}
+            labelWidthBreakpoint={select('Label Layout Breakpoint', breakpointOptions, breakpointDefaultValue)}
             infoLinkURL={text('Info link URL', '')}
             infoText={text('Info text', '')}
             preLabelElement={text('Pre label element', '')}
@@ -407,7 +408,7 @@ stories.add('Form actions', withInfo(
 )(() => (
     <div style={{ minWidth: '500px' }}>
         <Tile>
-            <FormActions align={selectV2('Align', alignOptions, alignDefaultValue)}>
+            <FormActions align={select('Align', alignOptions, alignDefaultValue)}>
                 <Button
                     onClickHandler={action('clicked')}
                     appearance="primary"

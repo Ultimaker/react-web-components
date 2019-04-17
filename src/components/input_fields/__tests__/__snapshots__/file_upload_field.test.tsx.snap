@@ -11,6 +11,7 @@ exports[`The file upload field component should render a wrapper 1`] = `
   touched={false}
 >
   <FileUpload
+    buttonText="Choose file"
     disabled={false}
     id="testInputField"
     onChangeHandler={[Function]}

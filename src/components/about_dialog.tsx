@@ -1,44 +1,27 @@
 import * as React from 'react';
-import { I18n } from '../utils/i18n';
 
 // components
 import PopupBase from './popup_base';
 import Button from './button';
 import FormActions from './form_actions';
 
-
-/**
- * The translated messages for this component.
- */
-const T = {
-    // translate beforehand
-    _aboutApp: I18n.translate('About dialog', 'About %{appName}'),
-    _license: I18n.translate('About dialog', 'license %{license}'),
-    _version: I18n.translate('About dialog', 'Version: %{versionNumber}'),
-    _appUses: I18n.translate('About dialog', '%{appName} uses the following Open Source components:'),
-
-    // only interpolate when needed
-    aboutApp: (appName: string) => I18n.interpolate(T._aboutApp, { appName }),
-    license: (license: string) => I18n.interpolate(T._license, { license }),
-    version: (versionNumber: any) => I18n.interpolate(T._version, { versionNumber }),
-    appUses: (appName: string) => I18n.interpolate(T._appUses, { appName }),
-
-    forSupport: I18n.translate('About dialog', 'For support visit:'),
-};
-
 export interface AboutDialogProps {
     /** List of open source components used */
     componentsList: OpenSourceComponent[];
-    /** Name of the application */
-    appName: string;
     /** Version number of the application */
     versionNumber: string;
     /** Function to close the dialog */
     closeHandler: () => void;
-    /** URL to a support page */
-    supportLinkURL?: string;
     /** Link text for the support page */
     supportLinkText?: string;
+    /** The header for the dialog */
+    headerText: string;
+    /** The text to be shown before the list of 3rd party packages */
+    packagesPreText: string;
+    /** The text to be shown before the list of 3rd party package licence */
+    licensePreText: string;
+    /** The text to be shown before the version number */
+    versionPreText: string;
 }
 
 export interface OpenSourceComponent {
@@ -47,47 +30,40 @@ export interface OpenSourceComponent {
     url: string;
 }
 
-
-function licenseList(componentsList: OpenSourceComponent[]): JSX.Element[] {
-    return componentsList.map(component => (
+export const AboutDialog: React.StatelessComponent<AboutDialogProps> = ({
+    componentsList, versionNumber, closeHandler,
+    headerText, packagesPreText, licensePreText, versionPreText,
+}) => {
+    const licenseList = (): JSX.Element[] => componentsList.map(component => (
         <tr key={component.name}>
             <td className="about-component-name">
                 <a href={component.url} target="_blank" rel="noopener noreferrer">{component.name}</a>
             </td>
             <td className="about-component-license">
                 <a href={`https://spdx.org/licenses/${component.license}.html`} target="_blank" rel="noopener noreferrer">
-                    {T.license(component.license)}
+                    {`${licensePreText} ${component.license}`}
                 </a>
             </td>
         </tr>
     ));
-}
 
-export const AboutDialog: React.StatelessComponent<AboutDialogProps> = ({
-    componentsList, versionNumber, closeHandler, appName, supportLinkURL, supportLinkText,
-}) => (
-    <div className="about-dialog">
-        <PopupBase headerText={T.aboutApp(appName)} width="md">
-            <p>{T.version(versionNumber)}</p>
-            {supportLinkURL && (
-                <p>
-                    {T.forSupport}
-                    &nbsp;&nbsp;&nbsp;
-                    <a href={supportLinkURL} target="_blank" rel="noopener noreferrer">{supportLinkText}</a>
-                </p>
-            )}
-            <p>{T.appUses(appName)}</p>
-            <table className="about-components-list">
-                <tbody>
-                    {licenseList(componentsList)}
-                </tbody>
-            </table>
-            <FormActions>
-                <Button onClickHandler={closeHandler}>Close</Button>
-            </FormActions>
-        </PopupBase>
-    </div>
-);
+    return (
+        <div className="about-dialog">
+            <PopupBase headerText={headerText} width="md">
+                <p>{`${versionPreText} ${versionNumber}`}</p>
+                <p>{packagesPreText}</p>
+                <table className="about-components-list">
+                    <tbody>
+                        {licenseList()}
+                    </tbody>
+                </table>
+                <FormActions>
+                    <Button onClickHandler={closeHandler}>Close</Button>
+                </FormActions>
+            </PopupBase>
+        </div>
+    );
+};
 
 AboutDialog.displayName = 'AboutDialog';
 

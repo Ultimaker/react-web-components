@@ -5,22 +5,20 @@ import * as React from 'react';
 import Pill from './pill';
 import Tooltip from './tooltip';
 
-// utils
-import { I18n } from '../utils/i18n';
+export interface BetaPillProps {
+    /** The text to be shown in the tooltip to explain the beta program */
+    betaExplanationText?: string;
+}
 
-/**
- * The translations for this view.
- */
-const T = {
-    beta: I18n.translate('beta pill text', 'BETA'),
-    betaExplanation: I18n.translate('beta pill explanation',
-        'This feature is in beta and is visible because you are part of the closed beta program.'),
-};
-
-const BetaPill: React.StatelessComponent<{}> = () => (
+export const BetaPill: React.StatelessComponent<BetaPillProps> = ({
+    betaExplanationText,
+}) => (
     <div className="beta-pill">
-        <Tooltip tooltipText={T.betaExplanation}>
-            <Pill active>{T.beta}</Pill>
+        <Tooltip
+            tooltipText={betaExplanationText}
+            disableTooltip={betaExplanationText.length === 0}
+        >
+            <Pill active>BETA</Pill>
         </Tooltip>
     </div>
 );
