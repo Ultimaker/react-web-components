@@ -16,11 +16,13 @@ export const BetaPill: React.StatelessComponent<BetaPillProps> = ({
     <div className="beta-pill">
         <Tooltip
             tooltipText={betaExplanationText}
-            disableTooltip={betaExplanationText.length === 0}
+            disableTooltip={!betaExplanationText}
         >
             <Pill active>BETA</Pill>
         </Tooltip>
     </div>
 );
+
+BetaPill.displayName = 'BetaPill';
 
 export default BetaPill;
