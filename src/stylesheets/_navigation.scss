@@ -1,6 +1,5 @@
 .navigation {
     width: 100%;
-    padding-left: 0.9rem;
     position: relative;
 
     .nav-links-container {
@@ -17,19 +16,6 @@
         }
     }
 
-    .user-account-menu {
-        .trigger {
-            height: 4.6rem;
-
-            @include respond-to(sm) {
-                height: 5rem;
-            }
-
-            @include respond-to(md) {
-                height: 6rem;
-            }
-        }
-    }
 
     ul {
         width: 100vw;
@@ -58,24 +44,11 @@
             position: absolute;
 
             @include respond-to(sm) {
-                border-left: 1px solid $color-border-light;
                 flex: 1 1 0;
-                min-width: 9rem;
-                max-width: 11rem;
                 margin: 0;
                 position: relative;
                 top: 0 !important;
-
-                &:last-child {
-                    border-right: 1px solid $color-border-light;
-                }
             }
-
-
-            @include respond-to(md) {
-                max-width: 13.5rem;
-            }
-
 
             &.settings {
                 min-width: 4.4rem;
@@ -85,15 +58,13 @@
 
             .nav-link {
                 border-radius: 9999px;
-                background: white;
                 font-size: 1.6rem;
                 box-shadow: 0 2px 3px 0 $color-shadow-dark;
                 display: inline-block;
                 text-decoration: none;
                 color: $secondary-btn-color-text;
                 position: relative;
-                width: 4.6rem;
-                height: 4.6rem;
+                height: 4.8rem;
 
                 @include respond-to(sm) {
                     border-radius: 0;
@@ -106,9 +77,7 @@
                     justify-content: center;
                     text-align: center;
                     border-bottom: 3px solid transparent;
-                    height: 5rem;
-                    width: auto !important;
-                    padding: 0 0.5rem;
+                    padding: 0 1.8rem;
                     font-size: 1.4rem;
                     transition: border 0.2s ease-out;
 
@@ -119,21 +88,14 @@
 
 
                 @include respond-to(md) {
-                    height: 6rem;
-                    border-bottom: 5px solid transparent;
-
                     @include font-size-text-1;
                 }
 
 
                 &.active {
-                    color: white;
-                    background: $primary-btn-color;
-
                     @include respond-to(sm) {
                         border-bottom-color: $color-border-active;
                         color: $color-text;
-                        background: white;
                     }
                 }
 
