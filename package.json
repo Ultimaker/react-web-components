@@ -86,7 +86,7 @@
         "file-loader": "^3.0.1",
         "gettext-extractor": "^3.4.0",
         "jest": "^24.1.0",
-        "jsdom": "^14.0.0",
+        "jsdom": "^15.0.0",
         "jsdom-global": "^3.0.2",
         "node-sass": "^4.7.2",
         "react-docgen-typescript-loader": "^3.0.1",
