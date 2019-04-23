@@ -2,34 +2,25 @@
     width: 100%;
 
     .arrow-column {
-        flex-basis: 4rem;
-
-        @include respond-to(sm) {
-            flex-basis: 6rem;
-        }
-
-
         .panel-arrow {
-            margin: 0.8rem auto 0;
-
             .icon.icon--single-arrow {
                 width: 100%;
                 height: auto;
             }
         }
     }
+}
 
-    .slide-out-container__header {
-        @include font-size-header-2;
+.slide-out-container__header {
+    @include font-size-header-2;
 
-        font-family: $font-primary-medium;
-        line-height: 2.6rem;
-        cursor: pointer;
-    }
+    font-family: $font-primary-medium;
+    line-height: 2.6rem;
+    cursor: pointer;
+}
 
-    .slide-out-container__body {
-        padding: 2.4rem 0;
-    }
+.slide-out-container__body {
+    padding: 2.4rem 0;
 }
 
 .spring-container {

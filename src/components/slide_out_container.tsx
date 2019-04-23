@@ -16,16 +16,19 @@ export interface SlideOutContainerProps {
      * Text to be displayed above the slide out content.
      * May be JSX.Elements in case created by I18n.formatElements
      */
-    headerText?: string | JSX.Element[];
+    headerText?: string | JSX.Element | JSX.Element[];
     /** The text alignment of the header */
     headerTextAlignment?: TextAlign;
     /** Whether the PanelArrow should be displayed */
     showHeaderPanelArrow?: boolean;
+    /** Width of the arrow, including unit */
+    panelArrowWidth?: string;
 }
 
 
 export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps> = ({
-    isOpen, headerText, showHeaderPanelArrow, headerTextAlignment, onHeaderClick, children,
+    isOpen, headerText, showHeaderPanelArrow, headerTextAlignment,
+    panelArrowWidth, onHeaderClick, children,
 }) => (
     <div className="slide-out-container">
 
@@ -35,13 +38,13 @@ export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps>
                 className="slide-out-container__header"
                 onClickHandler={() => onHeaderClick()}
             >
-                <div className="layout">
+                <div className="layout layout--align-middle">
                     <div className="layout__item u-fill" style={{ textAlign: headerTextAlignment }}>
                         {headerText}
                     </div>
                     {showHeaderPanelArrow && (
-                        <div className="layout__item arrow-column">
-                            <PanelArrow active={isOpen} width="1.6rem" />
+                        <div className="layout__item u-fit arrow-column">
+                            <PanelArrow active={isOpen} width={panelArrowWidth} />
                         </div>
                     )}
                 </div>
@@ -68,6 +71,7 @@ export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps>
 SlideOutContainer.defaultProps = {
     showHeaderPanelArrow: true,
     headerTextAlignment: 'left',
+    panelArrowWidth: '1.6rem',
 };
 
 SlideOutContainer.displayName = 'SelectListItem';
