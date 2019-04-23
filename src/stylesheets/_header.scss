@@ -4,8 +4,11 @@
 }
 
 .app__primary-navigation {
-    padding: 0.9rem 2.4rem;
     background-color: $color-background;
+
+    @include respond-to(sm) {
+        padding: 0.9rem 2.4rem;
+    }
 }
 
 .app__header__logo {
@@ -42,5 +45,62 @@
         top: 0;
         right: 0;
         left: 0;
+    }
+}
+
+.burger-menu {
+    position: relative;
+    height: 5.4rem;
+    margin-right: 1.2rem;
+
+    .burger-menu__button {
+        height: 5.4rem;
+        width: 5.4rem;
+    }
+
+    .burger-menu__icon, .burger-menu__icon:after, .burger-menu__icon:before {
+        background-color: currentColor;
+        content: "";
+        height: 0.2rem;
+        left: 0;
+        position: absolute;
+        width: 2.2rem;
+    }
+
+    .burger-menu__icon {
+        top: 50%;
+        display: block;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+
+        &:before {
+            top: -0.6rem;
+        }
+
+        &:after {
+            bottom: -0.6rem;
+        }
+    }
+}
+
+.burger-menu--open {
+    .burger-menu__icon {
+        transform: rotate(-45deg);
+
+        &:before {
+            display: none;
+        }
+
+        &:after {
+            bottom: 0;
+            transform: rotate(90deg);
+        }
+    }
+    
+    .burger-menu__button {
+        background: $burger-menu-open-color-background;
+        color: $burger-menu-open-color;
     }
 }
