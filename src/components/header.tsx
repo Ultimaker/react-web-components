@@ -8,9 +8,7 @@ export interface HeaderProps {
     headerLogoUrl?: string;
     appName?: string;
     userAccountMenu?: JSX.Element;
-    showSubNav?: boolean;
-    subNavLabel?: string;
-    subNavLinks?: JSX.Element;
+    children?: JSX.Element;
 }
 
 export const Header: React.StatelessComponent<HeaderProps> = ({
@@ -18,39 +16,23 @@ export const Header: React.StatelessComponent<HeaderProps> = ({
     headerLogoUrl,
     appName,
     userAccountMenu,
-    showSubNav,
-    subNavLabel,
-    subNavLinks,
+    children,
 }) => (
     <header className="app__header">
         <div className="layout layout--align-middle app__primary-navigation">
             <div className="layout__item u-fill">
                 <Link className="app__header__home" to={headerLogoUrl}>
                     <span className="app__header__logo">{headerLogo}</span>
-                    <span className="app__header__name">{appName}</span>
+                    <span className="app__header__name show-sm">{appName}</span>
                 </Link>
             </div>
             {userAccountMenu && (
-                <div className="layout__item u-fit">
+                <div className="layout__item u-fit show-sm">
                     { userAccountMenu }
                 </div>
             )}
         </div>
-
-        {showSubNav && (
-            <div className="layout layout--gutter-none layout--align-middle app__sub-navigation">
-                {subNavLabel && (
-                    <div className="layout__item u-fit">
-                        <div className="app__sub-navigation__label">
-                            {subNavLabel}
-                        </div>
-                    </div>
-                )}
-                <div className="layout__item u-fit">
-                    {subNavLinks}
-                </div>
-            </div>
-        )}
+        {children}
     </header>
 );
 

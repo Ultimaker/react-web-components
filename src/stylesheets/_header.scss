@@ -1,12 +1,11 @@
 .app__header {
     min-width: $min-window-width;
-    background-color: $color-background;
-    box-shadow: 0 2px 3px 0 $color-shadow;
     z-index: 999;
 }
 
 .app__primary-navigation {
     padding: 0.9rem 2.4rem;
+    background-color: $color-background;
 }
 
 .app__header__logo {
@@ -35,19 +34,6 @@
     font-size: 2.4rem;
     margin-left: 1.2rem;
     color: $color-text;
-}
-
-.app__sub-navigation {
-    padding: 0 2.4rem;
-    border-top: 1px solid $color-border-light;
-}
-
-.app__sub-navigation__label {
-    border-bottom: 3px solid transparent;
-    display: flex;
-    align-items: center;
-    margin: 0 2.4rem;
-    font-family: $font-primary-medium;
 }
 
 .app--fixed-header .app__header {

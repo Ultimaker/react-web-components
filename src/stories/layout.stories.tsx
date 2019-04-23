@@ -174,8 +174,6 @@ stories.add('Header', withInfo(
             <Header
                 headerLogoUrl="/"
                 appName={text('App name', '')}
-                showSubNav={boolean('Show sub navigation', true)}
-                subNavLabel={text('Sub navigation label', '')}
                 userAccountMenu={(
                     <UserAccountMenu
                         onSignOutClickHandler={() => { }}
@@ -187,16 +185,17 @@ stories.add('Header', withInfo(
                         signInButtonText="Sign in"
                     />
                 )}
-                subNavLinks={(
-                    <Navigation
-                        navLinks={routes}
-                        manageAccountURL=""
-                        onSignOutClickHandler={() => { }}
-                        accountNavText="Manage account"
-                        signOutNavText="Sign out"
-                    />
-                )}
-            />
+            >
+                <Navigation
+                    navLabel={text('Navigation label', '')}
+                    navLinks={routes}
+                    accountDisplayName="Test User"
+                    manageAccountURL=""
+                    onSignOutClickHandler={() => { }}
+                    accountNavText="Manage account"
+                    signOutNavText="Sign out"
+                />
+            </Header>
         </div>
     </BrowserRouter>
 )));

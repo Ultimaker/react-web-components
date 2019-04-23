@@ -23,6 +23,12 @@ export interface NavigationProps {
     accountNavText: string;
     /** The label for sign out on mobile */
     signOutNavText: string;
+
+    navLabel?: string;
+
+    accountDisplayName?: string;
+
+    imageURL?: string
 }
 
 export interface NavigationState {
@@ -31,7 +37,7 @@ export interface NavigationState {
 
 export class Navigation extends React.Component<NavigationProps, NavigationState> {
     state = {
-        showNav: false,
+        showNav: true,
     }
 
     private _toggleShowNav(showNav: boolean): void {
@@ -49,7 +55,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
     render(): JSX.Element {
         const {
             navLinks, onSignOutClickHandler, manageAccountURL,
-            accountNavText, signOutNavText, children,
+            accountNavText, signOutNavText, navLabel,
         } = this.props;
         const { showNav } = this.state;
 
@@ -58,29 +64,32 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
         const visibleNavLinks = navLinks.filter(navLink => navLink.visible);
 
         return (
-            <nav className={navClasses} role="navigation">
+            <div className={navClasses}>
+                <div className="layout layout--gutter-none layout--align-middle">
+                    {navLabel && (
+                        <div className="layout__item u-fit show-sm">
+                            <div className="navigation__label">
+                                {navLabel}
+                            </div>
+                        </div>
+                    )}
+                    <div className="layout__item u-fit-sm">
+                        <nav className="nav-links-container" role="navigation">
 
-                <div className="nav-links-container">
-                    <div className="burger-menu hide-sm">
-                        <Button
-                            appearance="primary"
-                            shape="circle"
-                            onClickHandler={() => this._toggleShowNav(!showNav)}
-                        >
-                            <div className={burgerIconClasses} />
-                        </Button>
-                    </div>
 
+                            {/* <div className="burger-menu hide-sm">
+                                <Button
+                                    appearance="primary"
+                                    shape="circle"
+                                    onClickHandler={() => this._toggleShowNav(!showNav)}
+                                >
+                                    <div className={burgerIconClasses} />
+                                </Button>
+                            </div> */}
 
-                    <Spring
-                        config={{ tension: 999, friction: 50 }}
-                        from={{ x: 0 }}
-                        to={{ x: showNav ? 56 : 0 }}
-                    >
-                        {(props: any) => (
                             <ul>
                                 {visibleNavLinks.map((navLink, index) => (
-                                    <li key={navLink.path} style={{ top: `${(index + 1) * props.x}px` }}>
+                                    <li key={navLink.path}>
                                         <NavLink
                                             to={navLink.path}
                                             activeClassName="active"
@@ -93,7 +102,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                                 ))}
 
                                 {manageAccountURL && (
-                                    <li style={{ top: `${(visibleNavLinks.length + 1) * props.x}px` }} className="hide-sm">
+                                    <li className="hide-sm">
                                         <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
                                             <span className="label">{accountNavText}</span>
                                         </a>
@@ -101,25 +110,17 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                                 )}
 
                                 {onSignOutClickHandler && (
-                                    <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * props.x}px` }} className="hide-sm">
+                                    <li className="hide-sm">
                                         <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
                                             <span className="label">{signOutNavText}</span>
                                         </Button>
                                     </li>
                                 )}
                             </ul>
-                        )}
-                    </Spring>
-
-
-                    {children && (
-                        <div className="children-containter">
-                            {children}
-                        </div>
-                    )}
-
+                        </nav>
+                    </div>
                 </div>
-            </nav>
+            </div>
         );
     }
 }
