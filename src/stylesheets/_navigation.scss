@@ -6,135 +6,63 @@
         display: flex;
     }
 
-    .burger-menu {
-        > .btn {
-            height: 5rem;
-            width: 5rem;
-            top: 0.9rem;
-            box-shadow: 0 2px 3px 0 $color-shadow;
-            z-index: 999999;
-        }
-    }
-
-
     ul {
-        width: 100vw;
-        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-basis: 100%;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
         margin: 0;
         list-style: none;
-        position: absolute;
-        top: 0.9rem;
-        left: 1.2rem;
-
-        @include respond-to(sm) {
-            box-sizing: border-box;
-            display: flex;
-            flex-basis: 100%;
-            flex-flow: row nowrap;
-            justify-content: flex-end;
-            margin: 0;
-            position: relative;
-            width: auto;
-            top: 0;
-            left: 0;
-        }
-
+        padding: 0;
 
         li {
-            position: absolute;
-
-            @include respond-to(sm) {
-                flex: 1 1 0;
-                margin: 0;
-                position: relative;
-                top: 0 !important;
-            }
-
-            &.settings {
-                min-width: 4.4rem;
-                max-width: 6rem;
-                margin: 0;
-            }
+            flex: 1 1 0;
+            margin: 0;
+            position: relative;
+            top: 0 !important;
 
             .nav-link {
-                border-radius: 9999px;
-                font-size: 1.6rem;
-                box-shadow: 0 2px 3px 0 $color-shadow-dark;
-                display: inline-block;
-                text-decoration: none;
-                color: $secondary-btn-color-text;
-                position: relative;
+                align-items: center;
+                color: $color-text;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                border-bottom: 3px solid transparent;
+                padding: 0 2.4rem;
+                font-size: 1.4rem;
+                transition: border 0.2s ease-out;
                 height: 4.8rem;
+                text-decoration: none;
 
-                @include respond-to(sm) {
-                    border-radius: 0;
-                    box-shadow: none;
-                    margin: 0;
-                    padding: 0;
-                    align-items: center;
-                    color: $color-text;
-                    display: flex;
-                    justify-content: center;
-                    text-align: center;
-                    border-bottom: 3px solid transparent;
-                    padding: 0 2.4rem;
-                    font-size: 1.4rem;
-                    transition: border 0.2s ease-out;
-
-                    &:hover {
-                        border-bottom-color: $color-background-darker;
-                    }
+                &:hover {
+                    border-bottom-color: $color-background-darker;
                 }
-
-
+                
                 @include respond-to(md) {
                     @include font-size-text-1;
                 }
 
 
                 &.active {
-                    @include respond-to(sm) {
-                        border-bottom-color: $color-border-active;
-                        color: $color-text;
-                    }
+                    border-bottom-color: $color-border-active;
+                    color: $color-text;
                 }
 
                 .label {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    opacity: 0;
-                    visibility: hidden;
-                    margin: 1.2rem 2.4rem;
-
-                    @include respond-to(sm) {
-                        opacity: 1;
-                        visibility: visible;
-                        position: relative;
-                        margin: 0;
-                    }
+                    opacity: 1;
+                    visibility: visible;
+                    position: relative;
+                    margin: 0;
                 }
             }
         }
     }
 
     &.open {
-        min-width: $min-window-width;
-        position: fixed;
-        z-index: 99999;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        overflow-x: hidden;
-        background-color: $modal-overlay-color-light;
-
-        @include respond-to(sm) {
-            position: relative;
-            background-color: transparent;
-        }
-
-
+        position: relative;
+        background-color: transparent;
+        
         li .nav-link {
             width: 150px;
             transition: width 200ms ease-in;
@@ -144,27 +72,6 @@
                 visibility: visible;
                 transition: visibility 200ms ease-in;
                 transition-delay: 200ms;
-            }
-        }
-    }
-
-    .children-containter {
-        display: none;
-
-        @include respond-to(sm) {
-            display: flex;
-            align-items: center;
-        }
-
-        .user-account-menu {
-            border-left: 1px solid $color-border-light;
-        
-            .drop-down-menu-base__trigger {
-                height: 5rem;
-        
-                @include respond-to(md) {
-                    height: 6rem;
-                }
             }
         }
     }
