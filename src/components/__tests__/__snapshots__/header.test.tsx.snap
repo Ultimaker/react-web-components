@@ -4,15 +4,47 @@ exports[`The Header component should render 1`] = `
 <header
   className="app__header"
 >
-  <Link
-    className="logo"
-    replace={false}
-    to="/"
-  >
-    <UltimakerLogo />
-  </Link>
   <div
-    className="navigation-container"
-  />
+    className="layout layout--gutter-none layout--align-middle app__primary-navigation"
+  >
+    <div
+      className="layout__item u-fit hide-sm"
+    >
+      <div
+        className="burger-menu"
+      >
+        <Button
+          appearance="no-style"
+          className="burger-menu__button"
+          linkToNewTab={false}
+          onClickHandler={[Function]}
+          shape="rectangle"
+          type="button"
+        >
+          <div
+            className="burger-menu__icon"
+          />
+        </Button>
+      </div>
+    </div>
+    <div
+      className="layout__item u-fill"
+    >
+      <Link
+        className="app__header__home"
+        replace={false}
+        to="/"
+      >
+        <span
+          className="app__header__logo"
+        >
+          <UltimakerLogo />
+        </span>
+        <span
+          className="app__header__name show-sm"
+        />
+      </Link>
+    </div>
+  </div>
 </header>
 `;
