@@ -38,7 +38,7 @@ export const Header: React.StatelessComponent<HeaderProps> = ({
         </div>
 
         {showSubNav && (
-            <div className="layout layout--align-middle app__sub-navigation">
+            <div className="layout layout--gutter-none layout--align-middle app__sub-navigation">
                 {subNavLabel && (
                     <div className="layout__item u-fit">
                         <div className="app__sub-navigation__label">

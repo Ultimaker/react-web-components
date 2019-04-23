@@ -33,7 +33,7 @@
 
 .app__header__name {
     font-size: 2.4rem;
-    margin-left: 0.9rem;
+    margin-left: 1.2rem;
     color: $color-text;
 }
 
@@ -46,6 +46,8 @@
     border-bottom: 3px solid transparent;
     display: flex;
     align-items: center;
+    margin: 0 2.4rem;
+    font-family: $font-primary-medium;
 }
 
 .app--fixed-header .app__header {
