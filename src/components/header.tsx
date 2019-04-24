@@ -12,6 +12,7 @@ export interface HeaderProps {
     headerLogoUrl?: string;
     appName?: string;
     userAccountMenu?: JSX.Element;
+    applicationSwitcher?: JSX.Element;
     children?: JSX.Element;
 }
 
@@ -47,6 +48,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
             headerLogoUrl,
             appName,
             userAccountMenu,
+            applicationSwitcher,
             children,
         } = this.props;
         const { showMobileMenu } = this.state;
@@ -75,6 +77,11 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
                             <span className="app__header__name show-sm">{appName}</span>
                         </Link>
                     </div>
+                    {applicationSwitcher && (
+                        <div className="layout__item u-fit">
+                            { applicationSwitcher }
+                        </div>
+                    )}
                     {userAccountMenu && (
                         <div className="layout__item u-fit show-sm">
                             { userAccountMenu }
