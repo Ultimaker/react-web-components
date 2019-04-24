@@ -1,10 +1,11 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, NavLink } from 'react-router-dom';
 
 // component
 import { Navigation, NavigationProps } from '../navigation';
+import SlideOutContainer from '../slide_out_container';
 
 describe('The Navigation component', () => {
     let props: NavigationProps;
@@ -21,6 +22,7 @@ describe('The Navigation component', () => {
             ],
             accountNavText: 'Account',
             signOutNavText: 'Sign out',
+            onCloseMobileMenuHandler: jest.fn(),
         };
         wrapper = shallow(<BrowserRouter><Navigation {...props} /></BrowserRouter>);
     });
@@ -45,5 +47,23 @@ describe('The Navigation component', () => {
             </BrowserRouter>,
         );
         expect(wrapper.render()).toMatchSnapshot();
+    });
+
+    it('should close mobile navigation menu when navigating', () => {
+        wrapper = shallow(<Navigation {...props} />);
+        wrapper.find(NavLink).first().props().onClick();
+        expect(props.onCloseMobileMenuHandler).toBeCalled();
+    });
+
+    it('should show account mobile navigation menu', () => {
+        wrapper = shallow(<Navigation {...props} />);
+        expect(wrapper.find(SlideOutContainer).props().isOpen).toBe(false);
+        wrapper.find(SlideOutContainer).props().onHeaderClick();
+        expect(wrapper.find(SlideOutContainer).props().isOpen).toBe(true);
+    });
+
+    it('should render navigation label', () => {
+        wrapper = shallow(<Navigation {...props} navLabel="Nav Label" />);
+        expect(wrapper.find('.navigation__label').text()).toBe('Nav Label');
     });
 });

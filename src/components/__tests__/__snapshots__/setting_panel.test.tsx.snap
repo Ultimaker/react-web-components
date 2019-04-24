@@ -9,6 +9,7 @@ exports[`The SettingPanel component should render 1`] = `
     headerTextAlignment="left"
     isOpen={false}
     onHeaderClick={[Function]}
+    panelArrowWidth="1.6rem"
     showHeaderPanelArrow={true}
   >
     <div

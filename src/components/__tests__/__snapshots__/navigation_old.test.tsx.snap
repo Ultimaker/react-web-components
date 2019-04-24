@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Navigation component should render 1`] = `
+<nav
+  class="navigation--old"
+  role="navigation"
+>
+  <div
+    class="nav-links-container"
+  >
+    <div
+      class="burger-menu hide-sm"
+    >
+      <button
+        class="btn btn--primary btn--circle "
+        type="button"
+      >
+        <span
+          class="text"
+        >
+          <div
+            class="burger-menu__icon"
+          />
+        </span>
+      </button>
+    </div>
+    <ul>
+      <li
+        style="top:0px"
+      >
+        <a
+          class="nav-link"
+          href="/home"
+        >
+          <span
+            class="label"
+          >
+            Home
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`The Navigation component should render manage account button 1`] = `
+<nav
+  class="navigation--old"
+  role="navigation"
+>
+  <div
+    class="nav-links-container"
+  >
+    <div
+      class="burger-menu hide-sm"
+    >
+      <button
+        class="btn btn--primary btn--circle "
+        type="button"
+      >
+        <span
+          class="text"
+        >
+          <div
+            class="burger-menu__icon"
+          />
+        </span>
+      </button>
+    </div>
+    <ul>
+      <li
+        style="top:0px"
+      >
+        <a
+          class="nav-link"
+          href="/home"
+        >
+          <span
+            class="label"
+          >
+            Home
+          </span>
+        </a>
+      </li>
+      <li
+        class="hide-sm"
+        style="top:0px"
+      >
+        <a
+          class="nav-link"
+          href="https://account.ultimaker.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span
+            class="label"
+          >
+            Account
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
+
+exports[`The Navigation component should render sign out button 1`] = `
+<nav
+  class="navigation--old"
+  role="navigation"
+>
+  <div
+    class="nav-links-container"
+  >
+    <div
+      class="burger-menu hide-sm"
+    >
+      <button
+        class="btn btn--primary btn--circle "
+        type="button"
+      >
+        <span
+          class="text"
+        >
+          <div
+            class="burger-menu__icon"
+          />
+        </span>
+      </button>
+    </div>
+    <ul>
+      <li
+        style="top:0px"
+      >
+        <a
+          class="nav-link"
+          href="/home"
+        >
+          <span
+            class="label"
+          >
+            Home
+          </span>
+        </a>
+      </li>
+      <li
+        class="hide-sm"
+        style="top:0px"
+      >
+        <button
+          class="btn btn--no-style btn--rectangle nav-link"
+          type="button"
+        >
+          <span
+            class="text"
+          >
+            <span
+              class="label"
+            >
+              Sign out
+            </span>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;

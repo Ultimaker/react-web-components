@@ -13,7 +13,7 @@ exports[`The SlideOutContainer component should open the panel 1`] = `
     type="button"
   >
     <div
-      className="layout"
+      className="layout layout--align-middle"
     >
       <div
         className="layout__item u-fill"
@@ -26,7 +26,7 @@ exports[`The SlideOutContainer component should open the panel 1`] = `
         Test panel
       </div>
       <div
-        className="layout__item arrow-column"
+        className="layout__item u-fit arrow-column"
       >
         <PanelArrow
           active={true}
@@ -77,7 +77,7 @@ exports[`The SlideOutContainer component should render 1`] = `
     type="button"
   >
     <div
-      className="layout"
+      className="layout layout--align-middle"
     >
       <div
         className="layout__item u-fill"
@@ -90,7 +90,7 @@ exports[`The SlideOutContainer component should render 1`] = `
         Test panel
       </div>
       <div
-        className="layout__item arrow-column"
+        className="layout__item u-fit arrow-column"
       >
         <PanelArrow
           active={false}

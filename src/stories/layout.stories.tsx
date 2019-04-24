@@ -24,6 +24,8 @@ import Carousel from '../components/carousel';
 import AspectRatioContainer from '../components/aspect_ratio_container';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
+import HeaderOld from '../components/header_old';
+import NavigationOld from '../components/navigation_old';
 import UserAccountMenu from '../components/user_account_menu';
 
 import UM3PrinterIcon from '../components/icons/um3_printer_icon';
@@ -169,8 +171,42 @@ stories.add('Header', withInfo(
 )(() => (
     <BrowserRouter>
         <div style={{ width: '100vw', marginTop: '-50px' }}>
-            <Header headerLogoUrl="/" showNav rightSideLabel={text('Label', '')}>
+            <Header
+                headerLogoUrl="/"
+                appName={text('App name', '')}
+                userAccountMenu={(
+                    <UserAccountMenu
+                        onSignOutClickHandler={() => { }}
+                        displayName="Test User"
+                        onSignInClickHandler={() => { }}
+                        accountHeaderText="My account"
+                        accountButtonText="Manage account"
+                        signOutButtonText="Sign out"
+                        signInButtonText="Sign in"
+                    />
+                )}
+            >
                 <Navigation
+                    navLabel={text('Navigation label', '')}
+                    navLinks={routes}
+                    accountDisplayName="Test User"
+                    manageAccountURL=""
+                    onSignOutClickHandler={() => { }}
+                    accountNavText="Manage account"
+                    signOutNavText="Sign out"
+                />
+            </Header>
+        </div>
+    </BrowserRouter>
+)));
+
+stories.add('Header Old', withInfo(
+    'Old application header with navigation',
+)(() => (
+    <BrowserRouter>
+        <div style={{ width: '100vw', marginTop: '-50px' }}>
+            <HeaderOld headerLogoUrl="/" showNav rightSideLabel={text('Label', '')}>
+                <NavigationOld
                     navLinks={routes}
                     manageAccountURL={text('Manage Account URL', '')}
                     onSignOutClickHandler={() => { }}
@@ -187,8 +223,8 @@ stories.add('Header', withInfo(
                         signOutButtonText="Sign out"
                         signInButtonText="Sign in"
                     />
-                </Navigation>
-            </Header>
+                </NavigationOld>
+            </HeaderOld>
         </div>
     </BrowserRouter>
 )));

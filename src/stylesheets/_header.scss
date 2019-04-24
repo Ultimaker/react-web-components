@@ -1,82 +1,42 @@
 .app__header {
     min-width: $min-window-width;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    background-color: $color-background;
-    box-shadow: 0 2px 3px 0 $color-shadow;
-    padding: 0 1.2rem 0 0;
     z-index: 999;
+}
+
+.app__primary-navigation {
+    background-color: $color-background;
 
     @include respond-to(sm) {
-        padding: 0 0 0 1.2rem;
+        padding: 0.9rem 2.4rem;
+    }
+}
+
+.app__header__logo {
+    height: 3.6rem;
+    display: inline-block;
+    padding: 0.9rem 0;
+
+    .cura-logo {
+        width: 9.5rem;
+        height: 1.8rem;
     }
 
-
-    @include respond-to(md) {
-        padding: 0 0 0 2.4rem;
+    .ulimaker-logo {
+        width: 12rem;
+        height: 1.8rem;
     }
+}
 
-
-    .navigation-container {
-        position: fixed;
-        left: 0;
-        z-index: 999999;
-
-        @include respond-to(sm) {
-            position: relative;
-            display: flex;
-            flex-flow: row nowrap;
-            flex-grow: 1;
-            justify-content: flex-end;
-        }
+.app__header__home {
+    &:hover {
+        text-decoration: none;
     }
+}
 
-    .logo {
-        display: flex;
-        min-height: 4.2rem;
-        align-items: center;
-        margin-left: auto;
-
-        @include respond-to(sm) {
-            margin-left: 0;
-            padding-right: 0.5rem;
-        }
-
-
-        @include respond-to(md) {
-            height: 6rem;
-        }
-
-
-        .cura-logo {
-            width: 9.5rem;
-            height: 1.8rem;
-        }
-
-        .ulimaker-logo {
-            width: 12rem;
-            height: 1.8rem;
-        }
-    }
-
-    .right-side-label {
-        display: flex;
-        align-items: center;
-        color: $color-text;
-        padding: 0 2.4rem;
-        border-bottom: 5px solid $color-background;
-        height: 6rem;
-        font-family: $font-primary-medium;
-        border-left: 1px solid $color-border-light;
-
-        & span {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-width: 25rem;
-        }
-    }
+.app__header__name {
+    font-size: 2.4rem;
+    margin-left: 1.2rem;
+    color: $color-text;
 }
 
 .app--fixed-header .app__header {
@@ -85,5 +45,62 @@
         top: 0;
         right: 0;
         left: 0;
+    }
+}
+
+.burger-menu {
+    position: relative;
+    height: 5.4rem;
+    margin-right: 1.2rem;
+
+    .burger-menu__button {
+        height: 5.4rem;
+        width: 5.4rem;
+    }
+
+    .burger-menu__icon, .burger-menu__icon:after, .burger-menu__icon:before {
+        background-color: currentColor;
+        content: "";
+        height: 0.2rem;
+        left: 0;
+        position: absolute;
+        width: 2.2rem;
+    }
+
+    .burger-menu__icon {
+        top: 50%;
+        display: block;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+
+        &:before {
+            top: -0.6rem;
+        }
+
+        &:after {
+            bottom: -0.6rem;
+        }
+    }
+}
+
+.burger-menu--open {
+    .burger-menu__icon {
+        transform: rotate(-45deg);
+
+        &:before {
+            display: none;
+        }
+
+        &:after {
+            bottom: 0;
+            transform: rotate(90deg);
+        }
+    }
+    
+    .burger-menu__button {
+        background: $burger-menu-open-color-background;
+        color: $burger-menu-open-color;
     }
 }

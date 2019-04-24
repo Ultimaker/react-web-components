@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { Spring } from 'react-spring';
 
 // components
 import Button from './button';
+import ProfileImage from './profile_image';
+import SlideOutContainer from './slide_out_container';
 
 export interface NavRoute {
     path: string;
@@ -23,103 +24,133 @@ export interface NavigationProps {
     accountNavText: string;
     /** The label for sign out on mobile */
     signOutNavText: string;
+    /** A label to be shown in the navigation bar */
+    navLabel?: string;
+    /** The username of the user to be shown in the mobile menu */
+    accountDisplayName?: string;
+    /** The URL to the user's account page */
+    accountImageURL?: string;
+    /** Used to toggle the visibility of the mobile navigation menu */
+    showMobileMenu?: boolean;
+    /** Called when the mobile navigation is closed */
+    onCloseMobileMenuHandler?: () => void;
 }
 
 export interface NavigationState {
-    showNav: boolean;
+    showAccountNav: boolean;
 }
 
 export class Navigation extends React.Component<NavigationProps, NavigationState> {
     state = {
-        showNav: false,
+        showAccountNav: false,
     }
 
-    private _toggleShowNav(showNav: boolean): void {
-        if (showNav) {
-            document.body.classList.add('noscroll');
-        } else {
-            document.body.classList.remove('noscroll');
-        }
+    private _onCloseMobileMenuHandler(): void {
+        const { onCloseMobileMenuHandler } = this.props;
 
+        if (onCloseMobileMenuHandler) {
+            onCloseMobileMenuHandler();
+        }
+    }
+
+    private _toggleShowAccountNav(showAccountNav: boolean): void {
         this.setState({
-            showNav,
+            showAccountNav,
         });
+    }
+
+    private _renderMobileMenu(): JSX.Element {
+        const {
+            onSignOutClickHandler, manageAccountURL,
+            accountNavText, signOutNavText, accountImageURL, accountDisplayName,
+        } = this.props;
+        const { showAccountNav } = this.state;
+
+        return (
+            <div className="navigation__account hide-sm">
+                <SlideOutContainer
+                    isOpen={showAccountNav}
+                    panelArrowWidth="1.2rem"
+                    headerText={(
+                        <div className="layout layout--align-middle">
+                            <div className="layout__item u-fit">
+                                <ProfileImage imageURL={accountImageURL} size="3.6rem" />
+                            </div>
+                            <div className="layout__item u-fill">
+                                <div className="navigation__account-name truncate">{accountDisplayName}</div>
+                            </div>
+                        </div>
+                    )}
+                    onHeaderClick={
+                        () => this._toggleShowAccountNav(!showAccountNav)
+                    }
+                >
+                    <ul className="navigation__account-options">
+                        {manageAccountURL && (
+                            <li>
+                                <a href={manageAccountURL} className="navigation__nav-link" target="_blank" rel="noopener noreferrer">
+                                    <span className="label">{accountNavText}</span>
+                                </a>
+                            </li>
+                        )}
+
+                        {onSignOutClickHandler && (
+                            <li>
+                                <Button className="navigation__nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
+                                    <span className="label">{signOutNavText}</span>
+                                </Button>
+                            </li>
+                        )}
+                    </ul>
+                </SlideOutContainer>
+            </div>
+        );
     }
 
     render(): JSX.Element {
         const {
-            navLinks, onSignOutClickHandler, manageAccountURL,
-            accountNavText, signOutNavText, children,
+            navLinks, showMobileMenu, navLabel,
         } = this.props;
-        const { showNav } = this.state;
 
-        const burgerIconClasses = classNames('burger-menu__icon', { open: showNav });
-        const navClasses = classNames('navigation', { open: showNav });
+        const navClasses = classNames('navigation', { 'navigation--open': showMobileMenu });
         const visibleNavLinks = navLinks.filter(navLink => navLink.visible);
 
         return (
-            <nav className={navClasses} role="navigation">
+            <div className={navClasses}>
+                <div className="layout layout--gutter-none layout--align-middle">
 
-                <div className="nav-links-container">
-                    <div className="burger-menu hide-sm">
-                        <Button
-                            appearance="primary"
-                            shape="circle"
-                            onClickHandler={() => this._toggleShowNav(!showNav)}
-                        >
-                            <div className={burgerIconClasses} />
-                        </Button>
-                    </div>
+                    <div className="layout__item u-fit-sm">
+                        <nav className="navigation__container" role="navigation">
 
+                            {this._renderMobileMenu()}
 
-                    <Spring
-                        config={{ tension: 999, friction: 50 }}
-                        from={{ x: 0 }}
-                        to={{ x: showNav ? 56 : 0 }}
-                    >
-                        {(props: any) => (
-                            <ul>
-                                {visibleNavLinks.map((navLink, index) => (
-                                    <li key={navLink.path} style={{ top: `${(index + 1) * props.x}px` }}>
+                            <ul className="navigation__nav-list">
+                                {visibleNavLinks.map(navLink => (
+                                    <li key={navLink.path}>
                                         <NavLink
                                             to={navLink.path}
                                             activeClassName="active"
-                                            className="nav-link"
-                                            onClick={() => this._toggleShowNav(false)}
+                                            className="navigation__nav-link"
+                                            onClick={() => this._onCloseMobileMenuHandler()}
                                         >
                                             <span className="label">{navLink.label}</span>
                                         </NavLink>
                                     </li>
                                 ))}
-
-                                {manageAccountURL && (
-                                    <li style={{ top: `${(visibleNavLinks.length + 1) * props.x}px` }} className="hide-sm">
-                                        <a href={manageAccountURL} className="nav-link" target="_blank" rel="noopener noreferrer">
-                                            <span className="label">{accountNavText}</span>
-                                        </a>
-                                    </li>
-                                )}
-
-                                {onSignOutClickHandler && (
-                                    <li style={{ top: `${(visibleNavLinks.length + (manageAccountURL ? 2 : 1)) * props.x}px` }} className="hide-sm">
-                                        <Button className="nav-link" onClickHandler={onSignOutClickHandler} appearance="no-style">
-                                            <span className="label">{signOutNavText}</span>
-                                        </Button>
-                                    </li>
-                                )}
                             </ul>
-                        )}
-                    </Spring>
 
+                        </nav>
+                    </div>
 
-                    {children && (
-                        <div className="children-containter">
-                            {children}
+                    {navLabel && (
+                        <div className="layout__item layout__item--right u-fit show-sm">
+                            <div className="navigation__label">
+                                {navLabel}
+                            </div>
                         </div>
                     )}
-
                 </div>
-            </nav>
+            </div>
         );
     }
 }
