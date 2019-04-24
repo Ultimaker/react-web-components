@@ -1,7 +1,6 @@
 .navigation {
     border-top: 1px solid $color-border-light;
     background-color: $color-background;
-    transition: 0.2s;
 
     @include respond-to(sm) {
         position: relative;
@@ -23,6 +22,7 @@
 
     .navigation__container {
         transform: translate(0);
+        transition: 0.3s;
     }
 }
 
@@ -32,7 +32,6 @@
     position: fixed;
     background-color: $color-background;
     overflow-x: hidden;
-    transition: 0.2s;
     transform: translate(-100%);
 
     @include respond-to(sm) {
@@ -56,7 +55,7 @@
     list-style: none;
     padding: 0;
     width: 100%;
-    padding: 0 1.2rem 0 3rem;
+    padding: 0 1.2rem 0 3.6rem;
 
     @include respond-to(sm) {
         display: flex;

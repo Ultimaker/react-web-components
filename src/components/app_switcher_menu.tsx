@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
 import * as React from 'react';
+import classNames from 'classnames';
 
 // components
 import DropDownMenuBase from './drop_down_menu_base';
 import Button from './button';
 import Divider from './divider';
+import AppSwitcherTrigger from './app_switcher_trigger';
 
 export interface AppsList {
     application_type: string,
@@ -21,22 +23,6 @@ export interface AppSwitcherMenuState {
 }
 
 export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, AppSwitcherMenuState> {
-    private static _renderTrigger() {
-        return (
-            <div className="grid-icon">
-                <span className="layer layer--primary">
-                    <span />
-                </span>
-                <span className="layer layer--secondary">
-                    <span />
-                </span>
-                <span className="layer layer--tertiary">
-                    <span />
-                </span>
-            </div>
-        );
-    }
-
     private static _renderLink(link: AppsList): JSX.Element {
         return (
             <li>
@@ -76,10 +62,10 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, AppSw
         const { showMenu } = this.state;
 
         return (
-            <div className="app-switcher-menu">
+            <div className={classNames('app-switcher-menu', { 'app-switcher-menu--open': showMenu })}>
                 <DropDownMenuBase
                     showMenu={showMenu}
-                    triggerElement={AppSwitcherMenu._renderTrigger()}
+                    triggerElement={<AppSwitcherTrigger isAppSwitcherOpen={showMenu} />}
                     onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
                 >
                     <div>

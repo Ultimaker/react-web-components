@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import * as React from 'react';
 import classNames from 'classnames';
 import { Spring, animated } from 'react-spring';
@@ -81,20 +83,29 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         );
 
         return (
-            // eslint-disable-next-line max-len
-            // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
             <div
                 ref={this._menuRef}
                 className={classes}
                 onClick={DropDownMenuBase._stopPropagation}
             >
 
-                <Button appearance="no-style" className="drop-down-menu-base__trigger" onClickHandler={() => this._onToggleMenuHandler(!showMenu)}>
+                <Button
+                    appearance="no-style"
+                    className="drop-down-menu-base__trigger"
+                    onClickHandler={() => this._onToggleMenuHandler(!showMenu)}
+                >
                     {triggerElement}
                 </Button>
 
-                <div className="drop-down-menu-base__menu-container">
-                    <div className="drop-down-menu-base__menu" style={menuStyle}>
+                <div
+                    className="drop-down-menu-base__menu-container"
+                    onClick={() => this._onToggleMenuHandler(false)}
+                >
+                    <div
+                        className="drop-down-menu-base__menu"
+                        style={menuStyle}
+                        onClick={DropDownMenuBase._stopPropagation}
+                    >
                         <Spring
                             native
                             from={{ height: 0 }}
@@ -111,6 +122,7 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
                         </Spring>
                     </div>
                     <div className="drop-down-menu-base__arrow" />
+
                 </div>
 
             </div>

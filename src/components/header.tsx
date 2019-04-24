@@ -6,6 +6,7 @@ import classNames from 'classnames';
 // components
 import Button from './button';
 import UltimakerLogo from './icons/ultimaker_logo';
+import AppSwitcherTrigger from './app_switcher_trigger';
 
 export interface HeaderProps {
     headerLogo?: JSX.Element;
