@@ -6,6 +6,7 @@ import { shallow } from 'enzyme';
 import Navigation from '../navigation';
 import Header from '../header';
 import Button from '../button';
+import AppSwitcherMenu from '../app_switcher_menu';
 
 describe('The Header component', () => {
     let wrapper;
@@ -72,5 +73,50 @@ describe('The Header component', () => {
             userAccountMenu: <div className="test-user-account-menu" />,
         });
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should add props to app switcher component', () => {
+        const appSwitcherProps = {
+            appsList: [
+                {
+                    application_type: 'internal',
+                    name: 'My Cloud Portal',
+                    url: 'https://mycloud-staging.ultimaker.com',
+                },
+            ],
+        };
+        wrapper = shallow(
+            <Header
+                applicationSwitcher={(
+                    <AppSwitcherMenu {...appSwitcherProps} />
+                )}
+            />,
+        );
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should be able to use props to app switcher component', () => {
+        const appSwitcherProps = {
+            appsList: [
+                {
+                    application_type: 'internal',
+                    name: 'My Cloud Portal',
+                    url: 'https://mycloud-staging.ultimaker.com',
+                },
+            ],
+        };
+        wrapper = shallow(
+            <Header
+                applicationSwitcher={(
+                    <AppSwitcherMenu {...appSwitcherProps} />
+                )}
+            />,
+        );
+
+        expect(wrapper.find(AppSwitcherMenu).props().showMenu).toBe(false);
+        wrapper.find(AppSwitcherMenu).props().onToggleMenuHandler(true);
+        expect(wrapper.find(AppSwitcherMenu).props().showMenu).toBe(true);
+        wrapper.find(AppSwitcherMenu).props().onToggleMenuHandler(false);
+        expect(wrapper.find(AppSwitcherMenu).props().showMenu).toBe(false);
     });
 });

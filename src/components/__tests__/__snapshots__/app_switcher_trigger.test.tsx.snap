@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The AppSwitcherTrigger component should render 1`] = `
+<div
+  className="app_switcher_trigger"
+>
+  <div
+    className="grid-icon"
+  >
+    <span
+      className="layer layer--primary"
+    >
+      <span />
+    </span>
+    <span
+      className="layer layer--secondary"
+    >
+      <span />
+    </span>
+    <span
+      className="layer layer--tertiary"
+    >
+      <span />
+    </span>
+  </div>
+</div>
+`;
