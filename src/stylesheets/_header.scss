@@ -5,6 +5,7 @@
 
 .app__primary-navigation {
     background-color: $color-background;
+    border-bottom: 1px solid $color-border-light;
 
     @include respond-to(sm) {
         padding: 0.9rem 2.4rem;
