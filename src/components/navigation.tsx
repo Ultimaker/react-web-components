@@ -31,9 +31,15 @@ export interface NavigationProps {
     accountDisplayName?: string;
     /** The URL to the user's account page */
     accountImageURL?: string;
-    /** Used to toggle the visibility of the mobile navigation menu */
+    /**
+     * Used to toggle the visibility of the mobile navigation menu.
+     * Passed in by the header component.
+     */
     showMobileMenu?: boolean;
-    /** Called when the mobile navigation is closed */
+    /**
+     * Called when the mobile navigation is closed.
+     * Passed in by the header component.
+     */
     onCloseMobileMenuHandler?: () => void;
 }
 

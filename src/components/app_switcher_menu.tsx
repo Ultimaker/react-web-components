@@ -16,14 +16,21 @@ export interface AppsList {
 }
 
 export interface AppSwitcherMenuProps {
+    /** The list of apps to show */
     appsList: AppsList[];
+    /**
+     * Used to toggle the visibility of the menu.
+     * Passed in by the header component.
+     */
+    showMenu?: boolean;
+    /**
+     * Called when the menu visibility is toggled.
+     * Passed in by the header component.
+     */
+    onToggleMenuHandler?: (showMenu: boolean) => void;
 }
 
-export interface AppSwitcherMenuState {
-    showMenu: boolean;
-}
-
-export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, AppSwitcherMenuState> {
+export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
     private static _renderLink(link: AppsList): JSX.Element {
         return (
             <li key={link.url}>
@@ -39,12 +46,9 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, AppSw
         );
     }
 
-    state = {
-        showMenu: false,
-    };
-
     private _onToggleMenuHandler(showMenu: boolean) {
-        this.setState({ showMenu });
+        const { onToggleMenuHandler } = this.props;
+        onToggleMenuHandler(showMenu);
     }
 
     private _renderInternalLinks(): JSX.Element[] {
@@ -60,7 +64,7 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, AppSw
     }
 
     render(): JSX.Element {
-        const { showMenu } = this.state;
+        const { showMenu } = this.props;
 
         return (
             <div className={classNames('app-switcher-menu', { 'app-switcher-menu--open': showMenu })}>

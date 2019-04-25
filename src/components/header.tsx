@@ -19,6 +19,7 @@ export interface HeaderProps {
 
 export interface HeaderState {
     showMobileMenu: boolean;
+    showAppSwitcherMenu: boolean;
 }
 
 export class Header extends React.Component<HeaderProps, HeaderState> {
@@ -27,19 +28,40 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
         headerLogoUrl: '/',
     };
 
+    constructor(props) {
+        super(props);
+
+        this._toggleAppSwitcherMenuHandler = this._toggleAppSwitcherMenuHandler.bind(this);
+    }
+
     state = {
         showMobileMenu: false,
+        showAppSwitcherMenu: false,
     }
 
     private _toggleShowMobileMenu(showMobileMenu: boolean): void {
         if (showMobileMenu) {
             document.body.classList.add('noscroll');
+            this._toggleAppSwitcherMenuHandler(false);
         } else {
             document.body.classList.remove('noscroll');
         }
 
         this.setState({
             showMobileMenu,
+        });
+    }
+
+    private _toggleAppSwitcherMenuHandler(showAppSwitcherMenu: boolean): void {
+        if (showAppSwitcherMenu) {
+            document.body.classList.add('noscroll');
+            this._toggleShowMobileMenu(false);
+        } else {
+            document.body.classList.remove('noscroll');
+        }
+
+        this.setState({
+            showAppSwitcherMenu,
         });
     }
 
@@ -52,7 +74,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
             applicationSwitcher,
             children,
         } = this.props;
-        const { showMobileMenu } = this.state;
+        const { showMobileMenu, showAppSwitcherMenu } = this.state;
         const burgerMenuClasses = classNames('burger-menu', { 'burger-menu--open': showMobileMenu });
 
         return (
@@ -80,7 +102,10 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
                     </div>
                     {applicationSwitcher && (
                         <div className="layout__item u-fit">
-                            { applicationSwitcher }
+                            {React.cloneElement(applicationSwitcher, {
+                                onToggleMenuHandler: this._toggleAppSwitcherMenuHandler,
+                                showMenu: showAppSwitcherMenu,
+                            })}
                         </div>
                     )}
                     {userAccountMenu && (
