@@ -1,6 +1,8 @@
 // components
 export * from './components/about_dialog';
 export * from './components/app';
+export * from './components/app_switcher_menu';
+export * from './components/app_switcher_trigger';
 export * from './components/aspect_ratio_container';
 export * from './components/beta_pill';
 export * from './components/button';
@@ -23,6 +25,7 @@ export * from './components/grid_empty';
 export * from './components/grid_item';
 export * from './components/grid';
 export * from './components/header';
+export * from './components/header_old';
 export * from './components/image_cropper';
 export * from './components/image_upload';
 export * from './components/image';
@@ -34,6 +37,7 @@ export * from './components/loading';
 export * from './components/modal';
 export * from './components/more_pill';
 export * from './components/navigation';
+export * from './components/navigation_old';
 export * from './components/page_section';
 export * from './components/page_title';
 export * from './components/page';
