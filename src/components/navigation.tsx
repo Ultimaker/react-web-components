@@ -24,7 +24,7 @@ export interface NavigationProps {
     /** Called when the sign in button is clicked */
     onSignInClickHandler?: () => void;
     /** The label for account navigation on mobile */
-    accountButtonText: string;
+    accountButtonText?: string;
     /** The label for sign out on mobile */
     signOutButtonText?: string;
     /** The label for sign in */
