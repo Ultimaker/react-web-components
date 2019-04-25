@@ -47,6 +47,8 @@ export interface NavigationProps {
      * Passed in by the header component.
      */
     onCloseMobileMenuHandler?: () => void;
+    /** Whether the user profile should be displayed in the mobile menu */
+    showMobileAccountNav?: boolean;
 }
 
 export interface NavigationState {
@@ -82,7 +84,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
         const {
             onSignOutClickHandler, onSignInClickHandler, manageAccountURL, showMobileMenu,
             signedOut, accountButtonText, signOutButtonText, accountImageURL, accountDisplayName,
-            signInButtonText,
+            signInButtonText, showMobileAccountNav,
         } = this.props;
         const { showAccountNav } = this.state;
 
@@ -98,54 +100,56 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                     slideDirection="left"
                 >
                     <div>
-                        <div className="navigation__account">
-                            {signedOut && (
-                                <Button
-                                    appearance="secondary"
-                                    className="navigation__account-sign-in-btn"
-                                    onClickHandler={onSignInClickHandler}
-                                >
-                                    {signInButtonText}
-                                </Button>
-                            )}
-                            {!signedOut && (
-                                <SlideOutContainer
-                                    isOpen={showAccountNav}
-                                    panelArrowWidth="1.2rem"
-                                    headerText={(
-                                        <div className="layout layout--align-middle">
-                                            <div className="layout__item u-fit">
-                                                <ProfileImage imageURL={accountImageURL} size="3.6rem" />
+                        {showMobileAccountNav && (
+                            <div className="navigation__account">
+                                {signedOut && (
+                                    <Button
+                                        appearance="secondary"
+                                        className="navigation__account-sign-in-btn"
+                                        onClickHandler={onSignInClickHandler}
+                                    >
+                                        {signInButtonText}
+                                    </Button>
+                                )}
+                                {!signedOut && (
+                                    <SlideOutContainer
+                                        isOpen={showAccountNav}
+                                        panelArrowWidth="1.2rem"
+                                        headerText={(
+                                            <div className="layout layout--align-middle">
+                                                <div className="layout__item u-fit">
+                                                    <ProfileImage imageURL={accountImageURL} size="3.6rem" />
+                                                </div>
+                                                <div className="layout__item u-fill">
+                                                    <div className="navigation__account-name truncate">{accountDisplayName}</div>
+                                                </div>
                                             </div>
-                                            <div className="layout__item u-fill">
-                                                <div className="navigation__account-name truncate">{accountDisplayName}</div>
-                                            </div>
-                                        </div>
-                                    )}
-                                    onHeaderClick={
-                                        () => this._toggleShowAccountNav(!showAccountNav)
-                                    }
-                                >
-                                    <ul className="navigation__account-options drop-down-menu-base__menu-list">
-                                        {manageAccountURL && (
-                                            <li>
-                                                <a href={manageAccountURL} className="drop-down-menu-base__item">
-                                                    <span className="label">{accountButtonText}</span>
-                                                </a>
-                                            </li>
                                         )}
+                                        onHeaderClick={
+                                            () => this._toggleShowAccountNav(!showAccountNav)
+                                        }
+                                    >
+                                        <ul className="navigation__account-options drop-down-menu-base__menu-list">
+                                            {manageAccountURL && (
+                                                <li>
+                                                    <a href={manageAccountURL} className="drop-down-menu-base__item">
+                                                        <span className="label">{accountButtonText}</span>
+                                                    </a>
+                                                </li>
+                                            )}
 
-                                        {onSignOutClickHandler && (
-                                            <li>
-                                                <Button className="drop-down-menu-base__item" onClickHandler={onSignOutClickHandler} appearance="no-style">
-                                                    <span className="label">{signOutButtonText}</span>
-                                                </Button>
-                                            </li>
-                                        )}
-                                    </ul>
-                                </SlideOutContainer>
-                            )}
-                        </div>
+                                            {onSignOutClickHandler && (
+                                                <li>
+                                                    <Button className="drop-down-menu-base__item" onClickHandler={onSignOutClickHandler} appearance="no-style">
+                                                        <span className="label">{signOutButtonText}</span>
+                                                    </Button>
+                                                </li>
+                                            )}
+                                        </ul>
+                                    </SlideOutContainer>
+                                )}
+                            </div>
+                        )}
 
                         <ul className="drop-down-menu-base__menu-list">
                             {visibleNavLinks.map(navLink => (
@@ -179,37 +183,40 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
 
         return (
             <div className={navClasses}>
-                <div className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle">
+                {(visibleNavLinks.length > 0 || navLabel) && (
+                    <div className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle">
+                        {visibleNavLinks.length > 0 && (
+                            <div className="layout__item u-fit-sm">
+                                <nav className="navigation__container" role="navigation">
 
-                    <div className="layout__item u-fit-sm">
-                        <nav className="navigation__container" role="navigation">
+                                    <ul className="navigation__nav-list">
+                                        {visibleNavLinks.map(navLink => (
+                                            <li key={navLink.path}>
+                                                <NavLink
+                                                    to={navLink.path}
+                                                    activeClassName="active"
+                                                    className="navigation__nav-link"
+                                                    onClick={() => this._onCloseMobileMenuHandler()}
+                                                >
+                                                    <span className="label">{navLink.label}</span>
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </ul>
 
-                            <ul className="navigation__nav-list">
-                                {visibleNavLinks.map(navLink => (
-                                    <li key={navLink.path}>
-                                        <NavLink
-                                            to={navLink.path}
-                                            activeClassName="active"
-                                            className="navigation__nav-link"
-                                            onClick={() => this._onCloseMobileMenuHandler()}
-                                        >
-                                            <span className="label">{navLink.label}</span>
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-
-                        </nav>
-                    </div>
-
-                    {navLabel && (
-                        <div className="layout__item layout__item--right u-fit">
-                            <div className="navigation__label">
-                                {navLabel}
+                                </nav>
                             </div>
-                        </div>
-                    )}
-                </div>
+                        )}
+
+                        {navLabel && (
+                            <div className="layout__item layout__item--right u-fit">
+                                <div className="navigation__label">
+                                    {navLabel}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 {this._renderMobileMenu(visibleNavLinks)}
             </div>

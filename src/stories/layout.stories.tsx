@@ -222,6 +222,7 @@ stories.add('Header', withInfo(
                     <Navigation
                         navLabel={text('Navigation label', '')}
                         navLinks={routes}
+                        showMobileAccountNav={boolean('Show mobile account navigation', true)}
                         accountDisplayName="Test User"
                         onSignOutClickHandler={() => { }}
                         onSignInClickHandler={() => { }}
