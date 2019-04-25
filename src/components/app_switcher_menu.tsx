@@ -8,6 +8,7 @@ import Button from './button';
 import Divider from './divider';
 import AppSwitcherTrigger from './app_switcher_trigger';
 import SlideInPanel from '../components/slide_in_panel';
+import LinkIcon from './icons/link_icon';
 
 export interface AppsList {
     application_type: string,
@@ -31,7 +32,12 @@ export interface AppSwitcherMenuProps {
 }
 
 export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
-    private static _renderLink(link: AppsList): JSX.Element {
+    private _onToggleMenuHandler(showMenu: boolean) {
+        const { onToggleMenuHandler } = this.props;
+        onToggleMenuHandler(showMenu);
+    }
+
+    private _renderLink(link: AppsList): JSX.Element {
         return (
             <li key={link.url}>
                 <Button
@@ -39,28 +45,28 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
                     className="drop-down-menu-base__item"
                     type="link"
                     linkURL={link.url}
+                    linkToNewTab={link.application_type === 'external'}
+                    onClickHandler={() => this._onToggleMenuHandler(false)}
                 >
-                    <span className="text">{link.name}</span>
+                    {link.name}
+                    {link.application_type === 'external'
+                        && <LinkIcon />
+                    }
                 </Button>
             </li>
         );
     }
 
-    private _onToggleMenuHandler(showMenu: boolean) {
-        const { onToggleMenuHandler } = this.props;
-        onToggleMenuHandler(showMenu);
-    }
-
     private _renderInternalLinks(): JSX.Element[] {
         const { appsList } = this.props;
         const internalLinks = appsList.filter(app => app.application_type === 'internal');
-        return internalLinks.map(link => AppSwitcherMenu._renderLink(link));
+        return internalLinks.map(link => this._renderLink(link));
     }
 
     private _renderExternalLinks(): JSX.Element[] {
         const { appsList } = this.props;
         const internalLinks = appsList.filter(app => app.application_type === 'external');
-        return internalLinks.map(link => AppSwitcherMenu._renderLink(link));
+        return internalLinks.map(link => this._renderLink(link));
     }
 
     render(): JSX.Element {
@@ -68,7 +74,7 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
 
         return (
             <div className={classNames('app-switcher-menu', { 'app-switcher-menu--open': showMenu })}>
-                <div className="app-switcher-menu--desktop show-sm">
+                <div className="app-switcher-menu__desktop show-sm">
                     <DropDownMenuBase
                         showMenu={showMenu}
                         triggerElement={<AppSwitcherTrigger isAppSwitcherOpen={showMenu} />}
@@ -84,7 +90,7 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
                     </DropDownMenuBase>
                 </div>
 
-                <div className="app-switcher-menu--mobile hide-sm">
+                <div className="app-switcher-menu__mobile hide-sm">
                     <Button
                         appearance="no-style"
                         onClickHandler={() => this._onToggleMenuHandler(!showMenu)}

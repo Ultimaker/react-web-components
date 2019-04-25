@@ -5,7 +5,7 @@ exports[`The Navigation component should render 1`] = `
   class="navigation"
 >
   <div
-    class="navigation--desktop show-sm layout layout--gutter-none layout--align-middle"
+    class="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
   >
     <div
       class="layout__item u-fit-sm"
@@ -34,7 +34,7 @@ exports[`The Navigation component should render 1`] = `
     </div>
   </div>
   <div
-    class="navigation--mobile hide-sm"
+    class="navigation__mobile hide-sm"
   >
     <div
       class="slide-in-panel"
@@ -188,7 +188,7 @@ exports[`The Navigation component should render manage account button 1`] = `
   class="navigation"
 >
   <div
-    class="navigation--desktop show-sm layout layout--gutter-none layout--align-middle"
+    class="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
   >
     <div
       class="layout__item u-fit-sm"
@@ -217,7 +217,7 @@ exports[`The Navigation component should render manage account button 1`] = `
     </div>
   </div>
   <div
-    class="navigation--mobile hide-sm"
+    class="navigation__mobile hide-sm"
   >
     <div
       class="slide-in-panel"
@@ -386,7 +386,7 @@ exports[`The Navigation component should render sign out button 1`] = `
   class="navigation"
 >
   <div
-    class="navigation--desktop show-sm layout layout--gutter-none layout--align-middle"
+    class="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
   >
     <div
       class="layout__item u-fit-sm"
@@ -415,7 +415,7 @@ exports[`The Navigation component should render sign out button 1`] = `
     </div>
   </div>
   <div
-    class="navigation--mobile hide-sm"
+    class="navigation__mobile hide-sm"
   >
     <div
       class="slide-in-panel"

@@ -68,6 +68,17 @@ button {
     &.waiting .text {
         opacity: 0;
     }
+
+    .icon--link {
+        padding-left: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+    
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+    }
 }
 
 .btn--primary {
@@ -196,17 +207,6 @@ button {
 
     &.btn--secondary, &.btn--alert {
         padding: 0.5rem 2.3rem;
-    }
-}
-
-.icon--link {
-    padding-left: 1.2rem;
-    width: 1.2rem;
-    height: 1.2rem;
-
-    svg {
-        width: 1.2rem;
-        height: 1.2rem;
     }
 }
 

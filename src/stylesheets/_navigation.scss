@@ -1,4 +1,4 @@
-.navigation--desktop {
+.navigation__desktop {
     background-color: $color-background;
     position: relative;
     padding: 0 2.4rem;
@@ -66,7 +66,7 @@
     }
 }
 
-.navigation--mobile {
+.navigation__mobile {
     .slide-in-panel,
     .slide-in-panel__container,
     .slide-in-panel__overlay {

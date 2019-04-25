@@ -80,7 +80,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
         const { showAccountNav } = this.state;
 
         return (
-            <div className="navigation--mobile hide-sm">
+            <div className="navigation__mobile hide-sm">
 
                 <SlideInPanel
                     isOpen={showMobileMenu}
@@ -161,7 +161,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
 
         return (
             <div className={navClasses}>
-                <div className="navigation--desktop show-sm layout layout--gutter-none layout--align-middle">
+                <div className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle">
 
                     <div className="layout__item u-fit-sm">
                         <nav className="navigation__container" role="navigation">

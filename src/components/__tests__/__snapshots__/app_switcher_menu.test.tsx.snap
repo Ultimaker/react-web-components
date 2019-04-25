@@ -5,7 +5,7 @@ exports[`The AppSwitcherMenu component should render 1`] = `
   className="app-switcher-menu"
 >
   <div
-    className="app-switcher-menu--desktop show-sm"
+    className="app-switcher-menu__desktop show-sm"
   >
     <DropDownMenuBase
       menuDirection="south"
@@ -21,14 +21,11 @@ exports[`The AppSwitcherMenu component should render 1`] = `
             className="drop-down-menu-base__item"
             linkToNewTab={false}
             linkURL="https://mycloud-staging.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              My Cloud Portal
-            </span>
+            My Cloud Portal
           </Button>
         </li>
         <li
@@ -39,14 +36,11 @@ exports[`The AppSwitcherMenu component should render 1`] = `
             className="drop-down-menu-base__item"
             linkToNewTab={false}
             linkURL="https://account-staging.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Account
-            </span>
+            Account
           </Button>
         </li>
         <li
@@ -57,14 +51,11 @@ exports[`The AppSwitcherMenu component should render 1`] = `
             className="drop-down-menu-base__item"
             linkToNewTab={false}
             linkURL="https://contribute-staging.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Marketplace Portal
-            </span>
+            Marketplace Portal
           </Button>
         </li>
         <Divider
@@ -78,16 +69,14 @@ exports[`The AppSwitcherMenu component should render 1`] = `
           <Button
             appearance="no-style"
             className="drop-down-menu-base__item"
-            linkToNewTab={false}
+            linkToNewTab={true}
             linkURL="https://community.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Ultimaker Community
-            </span>
+            Ultimaker Community
+            <Icon(LinkIcon) />
           </Button>
         </li>
         <li
@@ -96,23 +85,21 @@ exports[`The AppSwitcherMenu component should render 1`] = `
           <Button
             appearance="no-style"
             className="drop-down-menu-base__item"
-            linkToNewTab={false}
+            linkToNewTab={true}
             linkURL="https://ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Ultimaker.com
-            </span>
+            Ultimaker.com
+            <Icon(LinkIcon) />
           </Button>
         </li>
       </div>
     </DropDownMenuBase>
   </div>
   <div
-    className="app-switcher-menu--mobile hide-sm"
+    className="app-switcher-menu__mobile hide-sm"
   >
     <Button
       appearance="no-style"
@@ -141,14 +128,11 @@ exports[`The AppSwitcherMenu component should render 1`] = `
             className="drop-down-menu-base__item"
             linkToNewTab={false}
             linkURL="https://mycloud-staging.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              My Cloud Portal
-            </span>
+            My Cloud Portal
           </Button>
         </li>
         <li
@@ -159,14 +143,11 @@ exports[`The AppSwitcherMenu component should render 1`] = `
             className="drop-down-menu-base__item"
             linkToNewTab={false}
             linkURL="https://account-staging.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Account
-            </span>
+            Account
           </Button>
         </li>
         <li
@@ -177,14 +158,11 @@ exports[`The AppSwitcherMenu component should render 1`] = `
             className="drop-down-menu-base__item"
             linkToNewTab={false}
             linkURL="https://contribute-staging.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Marketplace Portal
-            </span>
+            Marketplace Portal
           </Button>
         </li>
         <Divider
@@ -198,16 +176,14 @@ exports[`The AppSwitcherMenu component should render 1`] = `
           <Button
             appearance="no-style"
             className="drop-down-menu-base__item"
-            linkToNewTab={false}
+            linkToNewTab={true}
             linkURL="https://community.ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Ultimaker Community
-            </span>
+            Ultimaker Community
+            <Icon(LinkIcon) />
           </Button>
         </li>
         <li
@@ -216,16 +192,14 @@ exports[`The AppSwitcherMenu component should render 1`] = `
           <Button
             appearance="no-style"
             className="drop-down-menu-base__item"
-            linkToNewTab={false}
+            linkToNewTab={true}
             linkURL="https://ultimaker.com"
+            onClickHandler={[Function]}
             shape="rectangle"
             type="link"
           >
-            <span
-              className="text"
-            >
-              Ultimaker.com
-            </span>
+            Ultimaker.com
+            <Icon(LinkIcon) />
           </Button>
         </li>
       </ul>

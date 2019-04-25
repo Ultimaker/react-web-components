@@ -180,6 +180,7 @@ stories.add('Header', withInfo(
                         onSignOutClickHandler={() => { }}
                         displayName="Test User"
                         onSignInClickHandler={() => { }}
+                        manageAccountURL="https://account-staging.ultimaker.com"
                         accountHeaderText="My account"
                         accountButtonText="Manage account"
                         signOutButtonText="Sign out"

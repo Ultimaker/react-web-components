@@ -1,4 +1,13 @@
-.app-switcher-menu--desktop {
+.app-switcher-menu {
+    .drop-down-menu-base__item {
+        &.btn > .text {
+            display: flex;
+            justify-content: flex-start;
+        }
+    }
+}
+
+.app-switcher-menu__desktop {
     @include respond-to(sm) {
         margin-right: 2.4rem;
     }
@@ -15,17 +24,19 @@
     }
 
     .drop-down-menu-base{
-        @include respond-to(sm) {
-            height: 3.6rem;
-        }
+        height: 3.6rem;
     }
 
     .drop-down-menu-base__item {
         @include font-size-text-1;
+
+        @include respond-to(md) {
+            line-height: 2.8rem;
+        }
     }
 }
 
-.app-switcher-menu--mobile {
+.app-switcher-menu__mobile {
     height: 5.4rem;
     
     .slide-in-panel,
