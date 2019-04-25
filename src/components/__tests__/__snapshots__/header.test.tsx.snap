@@ -114,7 +114,6 @@ exports[`The Header component should add props to navigation component 1`] = `
   </div>
   <Navigation
     accountNavText="Account"
-    key=".0"
     navLinks={
       Array [
         Object {

@@ -34,9 +34,9 @@ describe('The Header component', () => {
             showMobileMenu: null,
         };
         wrapper = shallow(
-            <Header>
-                <Navigation {...navProps} />
-            </Header>,
+            <Header
+                navigation={<Navigation {...navProps} />}
+            />,
         );
         expect(wrapper).toMatchSnapshot();
     });
@@ -56,9 +56,9 @@ describe('The Header component', () => {
             showMobileMenu: null,
         };
         wrapper = shallow(
-            <Header>
-                <Navigation {...navProps} />
-            </Header>,
+            <Header
+                navigation={<Navigation {...navProps} />}
+            />,
         );
 
         expect(wrapper.find(Navigation).props().showMobileMenu).toBe(false);
