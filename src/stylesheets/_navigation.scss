@@ -79,6 +79,10 @@
         &.active .label {
             border-bottom: 2px solid  $color-border-active;
         }
+
+        &:hover, &:focus {
+            background-color: $color-transparent;
+        }
     }
 }
 
@@ -99,4 +103,10 @@
 .navigation__account-options {
     background: $color-grey-lightest;
     border-top: 1px solid $color-border-light;
+}
+
+.navigation__account-sign-in-btn {
+    margin: 2.4rem auto;
+    display: block;
+    width: 80%;
 }

@@ -4,7 +4,6 @@ import classNames from 'classnames';
 // components
 import Button from './button';
 import ProfileImage from './profile_image';
-import LinkIcon from './icons/link_icon';
 import DropDownMenuBase from './drop_down_menu_base';
 
 export interface UserAccountMenuProps {
@@ -30,7 +29,7 @@ export interface UserAccountMenuProps {
     accountButtonText: string;
     /** The label for sign out */
     signOutButtonText: string;
-    /** The label for sign out */
+    /** The label for sign in */
     signInButtonText: string;
 }
 

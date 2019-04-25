@@ -20,14 +20,21 @@ describe('The Navigation component', () => {
                     visible: true,
                 },
             ],
-            accountNavText: 'Account',
-            signOutNavText: 'Sign out',
+            accountButtonText: 'Account',
+            signOutButtonText: 'Sign out',
             onCloseMobileMenuHandler: jest.fn(),
         };
         wrapper = shallow(<BrowserRouter><Navigation {...props} /></BrowserRouter>);
     });
 
     it('should render', () => {
+        expect(wrapper.render()).toMatchSnapshot();
+    });
+
+    it('should render when signed out', () => {
+        wrapper.setProps({
+            signedOut: true,
+        });
         expect(wrapper.render()).toMatchSnapshot();
     });
 

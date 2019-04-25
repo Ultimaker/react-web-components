@@ -177,14 +177,15 @@ stories.add('Header', withInfo(
                 appName={text('App name', '')}
                 userAccountMenu={(
                     <UserAccountMenu
-                        onSignOutClickHandler={() => { }}
                         displayName="Test User"
+                        onSignOutClickHandler={() => { }}
                         onSignInClickHandler={() => { }}
                         manageAccountURL="https://account-staging.ultimaker.com"
                         accountHeaderText="My account"
                         accountButtonText="Manage account"
                         signOutButtonText="Sign out"
                         signInButtonText="Sign in"
+                        signedOut={boolean('Signed out', false)}
                     />
                 )}
                 applicationSwitcher={(
@@ -224,8 +225,11 @@ stories.add('Header', withInfo(
                         accountDisplayName="Test User"
                         manageAccountURL=""
                         onSignOutClickHandler={() => { }}
-                        accountNavText="Manage account"
-                        signOutNavText="Sign out"
+                        onSignInClickHandler={() => { }}
+                        accountButtonText="Manage account"
+                        signOutButtonText="Sign out"
+                        signInButtonText="Sign in"
+                        signedOut={boolean('Signed out', false)}
                     />
                 )}
             />
