@@ -22,11 +22,14 @@ export interface SlideInPanelProps {
     includeFooter?: boolean;
     /** Show header */
     includeHeader?: boolean;
+    /** From which side the menu should slide from */
+    slideDirection?: 'left' | 'right';
 }
 
 export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
     static defaultProps = {
         includeHeader: true,
+        slideDirection: 'right',
     }
 
     componentDidUpdate(prevProps: SlideInPanelProps): void {
@@ -72,7 +75,8 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
 
     render(): JSX.Element {
         const {
-            headerTitle, headerLabels, isOpen, width, includeFooter, includeHeader, children,
+            headerTitle, headerLabels, isOpen, width,
+            includeFooter, includeHeader, slideDirection, children,
         } = this.props;
 
         const classes = classNames('slide-in-panel', { isOpen });
@@ -90,7 +94,7 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
                     {(props: any) => (
                         <animated.div
                             className="slide-in-panel__container"
-                            style={{ right: `${props.x}%`, width, minWidth: width }}
+                            style={{ [slideDirection]: `${props.x}%`, width, minWidth: width }}
                         >
                             {includeHeader && (
                                 <div className="slide-in-panel__header">

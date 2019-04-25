@@ -1,129 +1,88 @@
-.navigation {
+.navigation--desktop {
     border-top: 1px solid $color-border-light;
     background-color: $color-background;
-
-    @include respond-to(sm) {
-        position: relative;
-        padding: 0 2.4rem;
-        border-bottom: 1px solid $color-border-light;
-    }
-}
-
-.navigation--open {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: $modal-overlay-color;
-
-    @include respond-to(sm) {
-        position: relative;
-        background-color: $color-background;
-    }
+    position: relative;
+    padding: 0 2.4rem;
+    border-bottom: 1px solid $color-border-light;
 
     .navigation__container {
-        transform: translate(0);
-        transition: 0.3s;
-    }
-}
-
-.navigation__container {
-    width: 30rem;
-    height: 100%;
-    position: fixed;
-    background-color: $color-background;
-    overflow-x: hidden;
-    transform: translate(-100%);
-
-    @include respond-to(sm) {
-        position: relative;
-        transform: translate(0);
-        padding: 0;
         width: 100%;
     }
-}
-
-.navigation__label {
-    border-bottom: 3px solid transparent;
-    display: flex;
-    align-items: center;
-    font-family: $font-primary-medium;
-}
-
-.navigation__nav-list {
-    box-sizing: border-box;
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    width: 100%;
-    padding: 0 1.2rem 0 3.6rem;
-
-    @include respond-to(sm) {
+    
+    .navigation__label {
+        border-bottom: 3px solid transparent;
         display: flex;
-        flex-basis: 100%;
-        flex-flow: row nowrap;
-        justify-content: flex-end;
-        padding: 0;
-        border: none;
+        align-items: center;
+        font-family: $font-primary-medium;
     }
-
-    li {
-        flex: 1 1 0;
-        margin: 0;
+    
+    .navigation__nav-list {
+            box-sizing: border-box;
+            list-style: none;
+            display: flex;
+            flex-basis: 100%;
+            flex-flow: row nowrap;
+            justify-content: flex-end;
+            padding: 0;
+            margin: 0;
+            border: none;
+    
+        li {
+            flex: 1 1 0;
+            margin: 0;
+        }
     }
-}
-
-.navigation__nav-link {
-    display: flex;
-    align-items: center;
-    height: 6rem;
-    text-decoration: none;
-    font-size: 1.4rem;
-    color: $color-text;
-
-    &:hover, &:focus {
+    
+    .navigation__nav-link {
+        display: flex;
+        align-items: center;
         text-decoration: none;
-    }
-
-    @include respond-to(sm) {
+        font-size: 1.4rem;
+        color: $color-text;
         padding: 0 2.4rem;
         height: 4.8rem;
         justify-content: center;
         text-align: center;
         border-bottom: 3px solid transparent;
-        transition: border 0.2s ease-out;
-
-        &:hover {
-            border-bottom-color: $color-background-darker;
-        }
-    }
-
-
-    @include respond-to(md) {
         @include font-size-text-1;
-    }
-
-    .label {
-        opacity: 1;
-        visibility: visible;
-        position: relative;
-        margin: 0;
-        line-height: 3.6rem;
-
-        @include respond-to(sm) {
+    
+    
+        &:hover, &:focus {
+            border-bottom-color: $color-background-darker;
+            text-decoration: none;
+        }
+    
+        .label {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+            margin: 0;
             padding: 0;
         }
+    
+    
+        &.active {
+            border-bottom-color: $color-border-active;
+        }
+    }
+}
+
+.navigation--mobile {
+    .slide-in-panel,
+    .slide-in-panel__container,
+    .slide-in-panel__overlay {
+        top: 5.5rem;
     }
 
+    .slide-in-panel__content {
+        padding: 0 0 1.2rem 0;
+    }
 
-    &.active {
-        border-bottom-color: $color-border-active;
+    .drop-down-menu-base__item {
+        padding: 1.2rem 3.6rem;
 
-        .label {
-            border-bottom: 2px solid $color-border-active;
-
-            @include respond-to(sm) {
-                border-bottom: none;
-            }
+        &.active .label {
+            border-bottom: 2px solid  $color-border-active;
         }
     }
 }
@@ -143,8 +102,6 @@
 }
 
 .navigation__account-options {
-    @extend .navigation__nav-list;
     background: $color-grey-lightest;
-    padding: 0 1.2rem 0 4.8rem;
     border-top: 1px solid $color-border-light;
 }

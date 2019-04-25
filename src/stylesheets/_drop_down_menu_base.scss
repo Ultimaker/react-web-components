@@ -70,14 +70,13 @@
     @include font-size-text-2;
     cursor: pointer;
     padding: 1.2rem 2.4rem;
-
-    &:last-child {
-        border-bottom: none;
-    }
+    display: block;
+    color: $color-text;
 
     &:hover, &:focus {
         background-color: $context-menu-color-hover;
         transition: background-color 0.2s ease-out;
+        text-decoration: none;
     }
 
     &.disabled {
