@@ -223,9 +223,9 @@ stories.add('Header', withInfo(
                         navLabel={text('Navigation label', '')}
                         navLinks={routes}
                         accountDisplayName="Test User"
-                        manageAccountURL=""
                         onSignOutClickHandler={() => { }}
                         onSignInClickHandler={() => { }}
+                        manageAccountURL="https://account-staging.ultimaker.com"
                         accountButtonText="Manage account"
                         signOutButtonText="Sign out"
                         signInButtonText="Sign in"
