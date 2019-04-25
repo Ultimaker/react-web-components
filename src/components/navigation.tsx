@@ -111,7 +111,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
                                 <ul className="navigation__account-options drop-down-menu-base__menu-list">
                                     {manageAccountURL && (
                                         <li>
-                                            <a href={manageAccountURL} className="drop-down-menu-base__item" target="_blank" rel="noopener noreferrer">
+                                            <a href={manageAccountURL} className="drop-down-menu-base__item">
                                                 <span className="label">{accountNavText}</span>
                                             </a>
                                         </li>

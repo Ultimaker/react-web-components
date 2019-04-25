@@ -30,12 +30,7 @@ body {
 
 .app--fixed-header .app__main {
     @include respond-to(sm) {
-        padding-top: 5rem;
-    }
-
-
-    @include respond-to(md) {
-        padding-top: 6rem;
+        padding-top: 10.4rem;
     }
 }
 

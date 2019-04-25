@@ -29,7 +29,7 @@
 }
 
 .app__header__home {
-    &:hover {
+    &:hover, &:focus {
         text-decoration: none;
     }
 }

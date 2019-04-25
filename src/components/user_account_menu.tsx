@@ -134,10 +134,8 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                                 type="link"
                                                 id="account-menu-manage-button"
                                                 linkURL={manageAccountURL}
-                                                linkToNewTab
                                             >
                                                 {accountButtonText}
-                                                <LinkIcon />
                                             </Button>
                                         )}
 

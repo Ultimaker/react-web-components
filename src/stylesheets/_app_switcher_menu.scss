@@ -12,6 +12,7 @@
         margin-right: 2.4rem;
     }
 
+
     .drop-down-menu-base__menu-container {
         bottom: calc(50% - 2.5rem);
     }
@@ -23,7 +24,7 @@
         padding: 1.2rem 0;
     }
 
-    .drop-down-menu-base{
+    .drop-down-menu-base {
         height: 3.6rem;
     }
 
@@ -38,7 +39,7 @@
 
 .app-switcher-menu__mobile {
     height: 5.4rem;
-    
+
     .slide-in-panel,
     .slide-in-panel__container,
     .slide-in-panel__overlay {
@@ -89,7 +90,8 @@
     display: block;
     width: 6px;
     height: 100%;
-    background-color: $color-black;
+    background-color: $color-text;
+    transition: 0.2s;
 }
 
 .grid-icon > .layer > span {
@@ -102,9 +104,10 @@
     content: "";
     width: 6px;
     height: 100%;
-    background-color: $color-black;
+    background-color: $color-text;
     left: -9px;
     position: absolute;
+    transition: 0.2s;
 }
 
 .grid-icon > .layer > span:after {
@@ -112,9 +115,10 @@
     content: "";
     width: 6px;
     height: 100%;
-    background-color: $color-black;
+    background-color: $color-text;
     right: -9px;
     position: absolute;
+    transition: 0.2s;
 }
 
 .app_switcher_trigger {
@@ -122,6 +126,16 @@
 
     @include respond-to(sm) {
         padding: 0.6rem;
+    }
+
+    &:hover, &:focus {
+        .grid-icon > .layer > span,
+        .grid-icon > .layer > span:before,
+        .grid-icon > .layer > span:after {
+            @include respond-to(sm) {
+                background: $color-text-light;
+            }
+        }
     }
 }
 

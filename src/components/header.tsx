@@ -33,6 +33,14 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
         headerLogoUrl: '/',
     };
 
+    private static _toggleAppNoScroll(setNoScroll: boolean): void {
+        if (setNoScroll) {
+            document.body.classList.add('noscroll');
+        } else {
+            document.body.classList.remove('noscroll');
+        }
+    }
+
     constructor(props) {
         super(props);
 
@@ -45,28 +53,20 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     }
 
     private _toggleShowMobileMenu(showMobileMenu: boolean): void {
-        if (showMobileMenu) {
-            document.body.classList.add('noscroll');
-            this._toggleAppSwitcherMenuHandler(false);
-        } else {
-            document.body.classList.remove('noscroll');
-        }
+        Header._toggleAppNoScroll(showMobileMenu);
 
         this.setState({
             showMobileMenu,
+            showAppSwitcherMenu: false,
         });
     }
 
     private _toggleAppSwitcherMenuHandler(showAppSwitcherMenu: boolean): void {
-        if (showAppSwitcherMenu) {
-            document.body.classList.add('noscroll');
-            this._toggleShowMobileMenu(false);
-        } else {
-            document.body.classList.remove('noscroll');
-        }
+        Header._toggleAppNoScroll(showAppSwitcherMenu);
 
         this.setState({
             showAppSwitcherMenu,
+            showMobileMenu: false,
         });
     }
 
