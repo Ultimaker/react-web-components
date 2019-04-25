@@ -7,6 +7,7 @@ import DropDownMenuBase from './drop_down_menu_base';
 import Button from './button';
 import Divider from './divider';
 import AppSwitcherTrigger from './app_switcher_trigger';
+import SlideInPanel from '../components/slide_in_panel';
 
 export interface AppsList {
     application_type: string,
@@ -25,7 +26,7 @@ export interface AppSwitcherMenuState {
 export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, AppSwitcherMenuState> {
     private static _renderLink(link: AppsList): JSX.Element {
         return (
-            <li>
+            <li key={link.url}>
                 <Button
                     appearance="no-style"
                     className="drop-down-menu-base__item"
@@ -63,19 +64,45 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, AppSw
 
         return (
             <div className={classNames('app-switcher-menu', { 'app-switcher-menu--open': showMenu })}>
-                <DropDownMenuBase
-                    showMenu={showMenu}
-                    triggerElement={<AppSwitcherTrigger isAppSwitcherOpen={showMenu} />}
-                    onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
-                >
-                    <div>
-                        {this._renderInternalLinks()}
+                <div className="app-switcher-menu--desktop show-sm">
+                    <DropDownMenuBase
+                        showMenu={showMenu}
+                        triggerElement={<AppSwitcherTrigger isAppSwitcherOpen={showMenu} />}
+                        onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    >
+                        <div>
+                            {this._renderInternalLinks()}
 
-                        <Divider width="1px" margin />
+                            <Divider width="1px" margin />
 
-                        {this._renderExternalLinks()}
-                    </div>
-                </DropDownMenuBase>
+                            {this._renderExternalLinks()}
+                        </div>
+                    </DropDownMenuBase>
+                </div>
+
+                <div className="app-switcher-menu--mobile hide-sm">
+                    <Button
+                        appearance="no-style"
+                        onClickHandler={() => this._onToggleMenuHandler(!showMenu)}
+                    >
+                        <AppSwitcherTrigger isAppSwitcherOpen={showMenu} />
+                    </Button>
+
+                    <SlideInPanel
+                        isOpen={showMenu}
+                        width="30rem"
+                        includeHeader={false}
+                        onOverlayClickHandler={() => this._onToggleMenuHandler(false)}
+                    >
+                        <ul className="drop-down-menu-base__menu-list">
+                            {this._renderInternalLinks()}
+
+                            <Divider width="1px" margin />
+
+                            {this._renderExternalLinks()}
+                        </ul>
+                    </SlideInPanel>
+                </div>
             </div>
         );
     }

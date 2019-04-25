@@ -9,7 +9,7 @@ export interface SlideInPanelHeaderLabels {
 
 export interface SlideInPanelProps {
     /** Text to be displayed in the panel header */
-    headerTitle: string;
+    headerTitle?: string;
     /** Labels to be displayed on the right side of the panel header */
     headerLabels?: SlideInPanelHeaderLabels[]
     /** The panel will be open when true */
@@ -20,9 +20,15 @@ export interface SlideInPanelProps {
     width?: string;
     /** Show footer */
     includeFooter?: boolean;
+    /** Show header */
+    includeHeader?: boolean;
 }
 
 export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
+    static defaultProps = {
+        includeHeader: true,
+    }
+
     componentDidUpdate(prevProps: SlideInPanelProps): void {
         const { isOpen } = this.props;
 
@@ -66,7 +72,7 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
 
     render(): JSX.Element {
         const {
-            headerTitle, headerLabels, isOpen, width, includeFooter, children,
+            headerTitle, headerLabels, isOpen, width, includeFooter, includeHeader, children,
         } = this.props;
 
         const classes = classNames('slide-in-panel', { isOpen });
@@ -84,18 +90,20 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
                     {(props: any) => (
                         <animated.div
                             className="slide-in-panel__container"
-                            style={{ right: `${props.x}%`, width }}
+                            style={{ right: `${props.x}%`, width, minWidth: width }}
                         >
-                            <div className="slide-in-panel__header">
-                                <div className="layout">
-                                    <div className="layout__item u-fill">
-                                        {headerTitle}
+                            {includeHeader && (
+                                <div className="slide-in-panel__header">
+                                    <div className="layout">
+                                        <div className="layout__item u-fill">
+                                            {headerTitle}
+                                        </div>
+                                        {headerLabels && this._renderHeaderLabels()}
                                     </div>
-                                    {headerLabels && this._renderHeaderLabels()}
                                 </div>
-                            </div>
+                            )}
                             <div className="slide-in-panel__content">
-                                {children[0]}
+                                {children[0] || children}
                             </div>
                             {includeFooter && (
                                 <div className="slide-in-panel__footer">

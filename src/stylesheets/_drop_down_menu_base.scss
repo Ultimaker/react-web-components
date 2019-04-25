@@ -4,95 +4,95 @@
     &:focus {
         outline: none;
     }
+}
 
+.drop-down-menu-base__menu-container {
+    visibility: hidden;
+    position: absolute;
+    bottom: 3px;
+    width: 100%;
+    z-index: 99998;
+}
+
+.drop-down-menu-base__arrow {
+    background: white;
+    border-top: 1px solid $context-menu-color-chevron-shadow;
+    border-left: 1px solid $context-menu-color-chevron-shadow;
+    border-width: 1px 0 0 1px;
+    height: 1rem;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, 0) rotate(45deg);
+    top: -6px;
+    width: 1rem;
+}
+
+.drop-down-menu-base__menu {
+    background-color: $context-menu-color-background;
+    line-height: 2.2rem;
+    color: $context-menu-color-text;
+    position: absolute;
+    border-radius: 1px;
+    box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
+}
+
+.drop-down-menu-base__menu-list, .drop-down-menu-base__menu ul {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.drop-down-menu-base--north {
     .drop-down-menu-base__menu-container {
-        visibility: hidden;
-        position: absolute;
-        bottom: 3px;
-        width: 100%;
-        z-index: 99998;
+        bottom: auto;
+        top: 0;
     }
 
     .drop-down-menu-base__arrow {
-        background: white;
-        border-top: 1px solid $context-menu-color-chevron-shadow;
-        border-left: 1px solid $context-menu-color-chevron-shadow;
-        border-width: 1px 0 0 1px;
-        height: 1rem;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, 0) rotate(45deg);
-        top: -6px;
-        width: 1rem;
+        top: -5px;
+        border: none;
+        border-bottom: 1px solid $context-menu-color-chevron-shadow;
+        border-right: 1px solid $context-menu-color-chevron-shadow;
     }
 
     .drop-down-menu-base__menu {
-        background-color: $context-menu-color-background;
-        line-height: 2.2rem;
-        color: $context-menu-color-text;
-        position: absolute;
-        border-radius: 1px;
-        box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
+        transform: translate(0, calc(-100%));
+    }
+}
 
-        ul {
-            list-style: none;
-            padding: 1rem 0;
-            margin: 0;
-        }
+.drop-down-menu-base--visible {
+    .drop-down-menu-base__menu-container {
+        visibility: visible;
+    }
+}
+
+.drop-down-menu-base__item {
+    @include font-size-text-2;
+    cursor: pointer;
+    padding: 1.2rem 2.4rem;
+
+    &:last-child {
+        border-bottom: none;
     }
 
-    &.drop-down-menu-base--north {
-        .drop-down-menu-base__menu-container {
-            bottom: auto;
-            top: 0;
-        }
-
-        .drop-down-menu-base__arrow {
-            top: -5px;
-            border: none;
-            border-bottom: 1px solid $context-menu-color-chevron-shadow;
-            border-right: 1px solid $context-menu-color-chevron-shadow;
-        }
-
-        .drop-down-menu-base__menu {
-            transform: translate(0, calc(-100%));
-        }
+    &:hover, &:focus {
+        background-color: $context-menu-color-hover;
+        transition: background-color 0.2s ease-out;
     }
 
-    &.drop-down-menu-base--visible {
-        .drop-down-menu-base__menu-container {
-            visibility: visible;
-        }
-    }
+    &.disabled {
+        color: $color-text-lighter;
+        transition: color 0.2s ease-out;
+        cursor: default;
 
-    .drop-down-menu-base__item {
-        @include font-size-text-2;
-        cursor: pointer;
-        padding: 1.2rem 2.4rem;
-
-        &:last-child {
-            border-bottom: none;
-        }
-
-        &:hover, &:focus {
-            background-color: $context-menu-color-hover;
+        &:hover {
+            background-color: $context-menu-color-background;
             transition: background-color 0.2s ease-out;
         }
-
-        &.disabled {
-            color: $color-text-lighter;
-            transition: color 0.2s ease-out;
-            cursor: default;
-
-            &:hover {
-                background-color: $context-menu-color-background;
-                transition: background-color 0.2s ease-out;
-            }
-        }
-
-        .additional-info {
-            color: $color-text-lighter;
-        }
-
     }
+
+    .additional-info {
+        color: $color-text-lighter;
+    }
+
 }

@@ -68,145 +68,145 @@ button {
     &.waiting .text {
         opacity: 0;
     }
+}
 
-    &.btn--primary {
-        color: $primary-btn-color-text;
-        background-color: $primary-btn-color;
+.btn--primary {
+    color: $primary-btn-color-text;
+    background-color: $primary-btn-color;
 
-        &:hover, &:focus {
-            background-color: $primary-btn-color-hover;
-        }
-
-        &:active, &.waiting, &.waiting:hover {
-            background-color: $primary-btn-color-active;
-        }
-
-        &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
-            background-color: $primary-btn-color-disabled;
-            color: $primary-btn-color-disabled-text;
-        }
-
-        .spinner .path {
-            stroke: $primary-btn-color-text;
-        }
+    &:hover, &:focus {
+        background-color: $primary-btn-color-hover;
     }
 
-    &.btn--secondary {
-        border: 1px solid $secondary-btn-color-border;
-        padding: 0.8rem 3.5rem 1rem;
-        color: $secondary-btn-color-text;
-
-        &:hover, &:focus {
-            background-color: $secondary-btn-color-hover;
-        }
-
-        &:active, &.waiting, &.waiting:hover {
-            background-color: $secondary-btn-color-active;
-        }
-
-        &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
-            background-color: $secondary-btn-color-disabled;
-            color: $secondary-btn-color-disabled-text;
-        }
-
-        .spinner .path {
-            stroke: $secondary-btn-color-text;
-        }
+    &:active, &.waiting, &.waiting:hover {
+        background-color: $primary-btn-color-active;
     }
 
-    &.btn--quiet {
-        color: $quiet-btn-color-text;
-
-        &:hover, &:focus {
-            background-color: $quiet-btn-color-hover;
-        }
-
-        &:active, &.waiting, &.waiting:hover {
-            background-color: $quiet-btn-color-active;
-        }
-
-        &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
-            background-color: transparent;
-            color: $quiet-btn-color-disabled-text;
-        }
-
-        .spinner .path {
-            stroke: $quiet-btn-color-text;
-        }
+    &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
+        background-color: $primary-btn-color-disabled;
+        color: $primary-btn-color-disabled-text;
     }
 
-    &.btn--alert {
-        border: 1px solid $alert-btn-color-border;
-        padding: 0.8rem 3.5rem 1rem;
-        color: $alert-btn-color-text;
-        background-color: $alert-btn-color;
+    .spinner .path {
+        stroke: $primary-btn-color-text;
+    }
+}
 
-        &:hover, &:focus {
-            background-color: $alert-btn-color-hover;
-        }
+.btn--secondary {
+    border: 1px solid $secondary-btn-color-border;
+    padding: 0.8rem 3.5rem 1rem;
+    color: $secondary-btn-color-text;
 
-        &:active, &.waiting, &.waiting:hover {
-            background-color: $alert-btn-color-active;
-        }
-
-        &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
-            background-color: $alert-btn-color-disabled;
-            color: $alert-btn-color-disabled-text;
-        }
-
-        .spinner .path {
-            stroke: $alert-btn-color-text;
-        }
+    &:hover, &:focus {
+        background-color: $secondary-btn-color-hover;
     }
 
-    &.btn--no-style {
-        line-height: inherit;
-        padding: 0;
-        color: inherit;
-        width: 100%;
-
-        > .text {
-            display: block;
-            text-align: left;
-        }
+    &:active, &.waiting, &.waiting:hover {
+        background-color: $secondary-btn-color-active;
     }
 
-    &.btn--link {
-        line-height: inherit;
-        padding: 0;
-
-        &:hover, &:focus {
-            text-decoration: underline;
-        }
+    &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
+        background-color: $secondary-btn-color-disabled;
+        color: $secondary-btn-color-disabled-text;
     }
 
-    &.btn--circle {
-        border-radius: 50%;
-        height: 4.4rem;
-        width: 4.4rem;
-        padding: 0;
+    .spinner .path {
+        stroke: $secondary-btn-color-text;
+    }
+}
+
+.btn--quiet {
+    color: $quiet-btn-color-text;
+
+    &:hover, &:focus {
+        background-color: $quiet-btn-color-hover;
     }
 
-    &.btn--pill {
-        font-family: $font-primary;
-        border-radius: 9999px;
-        font-size: 1.6rem;
-        padding: 0.6rem 2.4rem;
-
-        &.btn--secondary, &.btn--alert {
-            padding: 0.5rem 2.3rem;
-        }
+    &:active, &.waiting, &.waiting:hover {
+        background-color: $quiet-btn-color-active;
     }
 
-    .icon--link {
-        padding-left: 1.2rem;
+    &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
+        background-color: transparent;
+        color: $quiet-btn-color-disabled-text;
+    }
+
+    .spinner .path {
+        stroke: $quiet-btn-color-text;
+    }
+}
+
+.btn--alert {
+    border: 1px solid $alert-btn-color-border;
+    padding: 0.8rem 3.5rem 1rem;
+    color: $alert-btn-color-text;
+    background-color: $alert-btn-color;
+
+    &:hover, &:focus {
+        background-color: $alert-btn-color-hover;
+    }
+
+    &:active, &.waiting, &.waiting:hover {
+        background-color: $alert-btn-color-active;
+    }
+
+    &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
+        background-color: $alert-btn-color-disabled;
+        color: $alert-btn-color-disabled-text;
+    }
+
+    .spinner .path {
+        stroke: $alert-btn-color-text;
+    }
+}
+
+.btn--no-style {
+    line-height: inherit;
+    padding: 0;
+    color: inherit;
+    width: 100%;
+
+    > .text {
+        display: block;
+        text-align: left;
+    }
+}
+
+.btn--link {
+    line-height: inherit;
+    padding: 0;
+
+    &:hover, &:focus {
+        text-decoration: underline;
+    }
+}
+
+.btn--circle {
+    border-radius: 50%;
+    height: 4.4rem;
+    width: 4.4rem;
+    padding: 0;
+}
+
+.btn--pill {
+    font-family: $font-primary;
+    border-radius: 9999px;
+    font-size: 1.6rem;
+    padding: 0.6rem 2.4rem;
+
+    &.btn--secondary, &.btn--alert {
+        padding: 0.5rem 2.3rem;
+    }
+}
+
+.icon--link {
+    padding-left: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+
+    svg {
         width: 1.2rem;
         height: 1.2rem;
-
-        svg {
-            width: 1.2rem;
-            height: 1.2rem;
-        }
     }
 }
 
