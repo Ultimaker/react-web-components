@@ -217,17 +217,18 @@ stories.add('Header', withInfo(
                     ]}
                     />
                 )}
-            >
-                <Navigation
-                    navLabel={text('Navigation label', '')}
-                    navLinks={routes}
-                    accountDisplayName="Test User"
-                    manageAccountURL=""
-                    onSignOutClickHandler={() => { }}
-                    accountNavText="Manage account"
-                    signOutNavText="Sign out"
-                />
-            </Header>
+                navigation={(
+                    <Navigation
+                        navLabel={text('Navigation label', '')}
+                        navLinks={routes}
+                        accountDisplayName="Test User"
+                        manageAccountURL=""
+                        onSignOutClickHandler={() => { }}
+                        accountNavText="Manage account"
+                        signOutNavText="Sign out"
+                    />
+                )}
+            />
         </div>
     </BrowserRouter>
 )));

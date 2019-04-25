@@ -6,15 +6,20 @@ import classNames from 'classnames';
 // components
 import Button from './button';
 import UltimakerLogo from './icons/ultimaker_logo';
-import AppSwitcherTrigger from './app_switcher_trigger';
 
 export interface HeaderProps {
+    /** The application logo */
     headerLogo?: JSX.Element;
+    /** The URL to go to when the logo is clicked */
     headerLogoUrl?: string;
+    /** The application name */
     appName?: string;
+    /** The user account menu component */
     userAccountMenu?: JSX.Element;
+    /** The application switcher component */
     applicationSwitcher?: JSX.Element;
-    children?: JSX.Element;
+    /** The in app navigation component */
+    navigation?: JSX.Element;
 }
 
 export interface HeaderState {
@@ -72,7 +77,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
             appName,
             userAccountMenu,
             applicationSwitcher,
-            children,
+            navigation,
         } = this.props;
         const { showMobileMenu, showAppSwitcherMenu } = this.state;
         const burgerMenuClasses = classNames('burger-menu', { 'burger-menu--open': showMobileMenu });
@@ -114,12 +119,10 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
                         </div>
                     )}
                 </div>
-                {React.Children.map(children, (child: JSX.Element) => (
-                    React.cloneElement(child, {
-                        onCloseMobileMenuHandler: () => this._toggleShowMobileMenu(false),
-                        showMobileMenu,
-                    })
-                ))}
+                {navigation && React.cloneElement(navigation, {
+                    onCloseMobileMenuHandler: () => this._toggleShowMobileMenu(false),
+                    showMobileMenu,
+                })}
             </header>
         );
     }
