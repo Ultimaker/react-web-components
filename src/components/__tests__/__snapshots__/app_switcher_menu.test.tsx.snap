@@ -10,7 +10,12 @@ exports[`The AppSwitcherMenu component should render 1`] = `
     <DropDownMenuBase
       menuDirection="south"
       onToggleMenuHandler={[Function]}
-      triggerElement={<AppSwitcherTrigger />}
+      showMenu={false}
+      triggerElement={
+        <AppSwitcherTrigger
+          isAppSwitcherOpen={false}
+        />
+      }
     >
       <div>
         <li
@@ -103,16 +108,19 @@ exports[`The AppSwitcherMenu component should render 1`] = `
   >
     <Button
       appearance="no-style"
-      className=""
+      className="app-switcher-menu__mobile-trigger"
       linkToNewTab={false}
       onClickHandler={[Function]}
       shape="rectangle"
       type="button"
     >
-      <AppSwitcherTrigger />
+      <AppSwitcherTrigger
+        isAppSwitcherOpen={false}
+      />
     </Button>
     <SlideInPanel
       includeHeader={false}
+      isOpen={false}
       onOverlayClickHandler={[Function]}
       slideDirection="right"
       width="30rem"

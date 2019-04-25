@@ -94,6 +94,7 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
                     <Button
                         appearance="no-style"
                         onClickHandler={() => this._onToggleMenuHandler(!showMenu)}
+                        className="app-switcher-menu__mobile-trigger"
                     >
                         <AppSwitcherTrigger isAppSwitcherOpen={showMenu} />
                     </Button>

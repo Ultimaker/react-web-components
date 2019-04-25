@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 
 // component
 import { AppSwitcherMenu, AppSwitcherMenuProps } from '../app_switcher_menu';
+import DropDownMenuBase from '../drop_down_menu_base';
+import SlideInPanel from '../slide_in_panel';
 
 describe('The AppSwitcherMenu component', () => {
     let props: AppSwitcherMenuProps;
@@ -38,11 +40,33 @@ describe('The AppSwitcherMenu component', () => {
                     url: 'https://ultimaker.com',
                 },
             ],
+            onToggleMenuHandler: jest.fn(),
+            showMenu: false,
         };
         wrapper = shallow(<AppSwitcherMenu {...props} />);
     });
 
     it('should render', () => {
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should toggle menu visibility on desktop', () => {
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        expect(props.onToggleMenuHandler).toHaveBeenCalledWith(true);
+    });
+
+    it('should toggle menu visibility on mobile', () => {
+        wrapper.find('.app-switcher-menu__mobile-trigger').props().onClickHandler();
+        expect(props.onToggleMenuHandler).toHaveBeenCalledWith(true);
+    });
+
+    it('should hide menu when mobile menu overlay is clicked', () => {
+        wrapper.find(SlideInPanel).props().onOverlayClickHandler();
+        expect(props.onToggleMenuHandler).toHaveBeenCalledWith(false);
+    });
+
+    it('should hide menu visibility when externial link is clicked', () => {
+        wrapper.find('.drop-down-menu-base__item').at(3).props().onClickHandler();
+        expect(props.onToggleMenuHandler).toHaveBeenCalledWith(false);
     });
 });
