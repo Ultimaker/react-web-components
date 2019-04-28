@@ -1,3 +1,4 @@
+/** eslint-disable needed due to the api returning application_type with an underscore */
 /* eslint-disable camelcase */
 import * as React from 'react';
 import classNames from 'classnames';

@@ -1,3 +1,4 @@
+/** eslint-disable needed due to the stopPropagation handler on the first div */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import * as React from 'react';
