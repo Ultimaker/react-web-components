@@ -11,3 +11,15 @@ exports[`The Divider component should render 1`] = `
   }
 />
 `;
+
+exports[`The Divider component should render vertically 1`] = `
+<div
+  className="divider divider--vertical"
+  style={
+    Object {
+      "borderWidth": "2px",
+      "width": "2px",
+    }
+  }
+/>
+`;
