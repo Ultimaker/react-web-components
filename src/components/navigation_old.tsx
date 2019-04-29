@@ -6,7 +6,7 @@ import { Spring } from 'react-spring';
 // components
 import Button from './button';
 
-export interface NavRoute {
+export interface NavRouteOld {
     path: string;
     label: string;
     visible: boolean;
@@ -14,7 +14,7 @@ export interface NavRoute {
 
 export interface NavigationOldProps {
     /** Details for the nav items */
-    navLinks: NavRoute[];
+    navLinks: NavRouteOld[];
     /** URL for the account portal */
     manageAccountURL?: string;
     /** Called when sign out is clicked */

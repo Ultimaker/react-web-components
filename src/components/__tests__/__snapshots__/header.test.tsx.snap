@@ -1,5 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`The Header component should add props to app switcher component 1`] = `
+<header
+  className="app__header"
+>
+  <div
+    className="layout layout--gutter-none layout--align-middle app__primary-navigation"
+  >
+    <div
+      className="layout__item u-fit hide-sm"
+    >
+      <div
+        className="burger-menu"
+      >
+        <Button
+          appearance="no-style"
+          className="burger-menu__button"
+          linkToNewTab={false}
+          onClickHandler={[Function]}
+          shape="rectangle"
+          type="button"
+        >
+          <div
+            className="burger-menu__icon"
+          />
+        </Button>
+      </div>
+    </div>
+    <div
+      className="layout__item u-fill"
+    >
+      <Link
+        className="app__header__home"
+        replace={false}
+        to="/"
+      >
+        <span
+          className="app__header__logo"
+        >
+          <UltimakerLogo />
+        </span>
+        <span
+          className="app__header__name show-sm"
+        />
+      </Link>
+    </div>
+    <div
+      className="layout__item u-fit"
+    >
+      <AppSwitcherMenu
+        appsList={
+          Array [
+            Object {
+              "application_type": "internal",
+              "name": "My Cloud Portal",
+              "url": "https://mycloud-staging.ultimaker.com",
+            },
+          ]
+        }
+        onToggleMenuHandler={[Function]}
+        showMenu={false}
+      />
+    </div>
+  </div>
+</header>
+`;
+
 exports[`The Header component should add props to navigation component 1`] = `
 <header
   className="app__header"
@@ -48,7 +114,6 @@ exports[`The Header component should add props to navigation component 1`] = `
   </div>
   <Navigation
     accountNavText="Account"
-    key=".0"
     navLinks={
       Array [
         Object {

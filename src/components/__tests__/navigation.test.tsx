@@ -20,15 +20,30 @@ describe('The Navigation component', () => {
                     visible: true,
                 },
             ],
-            accountNavText: 'Account',
-            signOutNavText: 'Sign out',
+            accountButtonText: 'Account',
+            signOutButtonText: 'Sign out',
             onCloseMobileMenuHandler: jest.fn(),
+            showMobileAccountNav: true,
         };
-        wrapper = shallow(<BrowserRouter><Navigation {...props} /></BrowserRouter>);
+        wrapper = shallow(<Navigation {...props} />);
     });
 
     it('should render', () => {
-        expect(wrapper.render()).toMatchSnapshot();
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render when signed out', () => {
+        wrapper.setProps({
+            signedOut: true,
+        });
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render without mobile account navigation', () => {
+        wrapper.setProps({
+            showMobileAccountNav: false,
+        });
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should render sign out button', () => {
@@ -65,5 +80,18 @@ describe('The Navigation component', () => {
     it('should render navigation label', () => {
         wrapper = shallow(<Navigation {...props} navLabel="Nav Label" />);
         expect(wrapper.find('.navigation__label').text()).toBe('Nav Label');
+    });
+
+    it('should not render desktop navigation if no visible links or label', () => {
+        wrapper.setProps({
+            navLinks: [
+                {
+                    path: '/home',
+                    label: 'Home',
+                    visible: false,
+                },
+            ],
+        });
+        expect(wrapper).toMatchSnapshot();
     });
 });

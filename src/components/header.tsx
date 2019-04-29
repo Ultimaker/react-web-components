@@ -8,15 +8,23 @@ import Button from './button';
 import UltimakerLogo from './icons/ultimaker_logo';
 
 export interface HeaderProps {
+    /** The application logo */
     headerLogo?: JSX.Element;
+    /** The URL to go to when the logo is clicked */
     headerLogoUrl?: string;
+    /** The application name */
     appName?: string;
+    /** The user account menu component */
     userAccountMenu?: JSX.Element;
-    children?: JSX.Element;
+    /** The application switcher component */
+    applicationSwitcher?: JSX.Element;
+    /** The in app navigation component */
+    navigation?: JSX.Element;
 }
 
 export interface HeaderState {
     showMobileMenu: boolean;
+    showAppSwitcherMenu: boolean;
 }
 
 export class Header extends React.Component<HeaderProps, HeaderState> {
@@ -25,19 +33,52 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
         headerLogoUrl: '/',
     };
 
-    state = {
-        showMobileMenu: false,
-    }
-
-    private _toggleShowMobileMenu(showMobileMenu: boolean): void {
-        if (showMobileMenu) {
+    private static _toggleAppNoScroll(setNoScroll: boolean): void {
+        if (setNoScroll) {
             document.body.classList.add('noscroll');
         } else {
             document.body.classList.remove('noscroll');
         }
+    }
+
+    private static _scrollToTop(): void {
+        window.scrollTo(0, 0);
+    }
+
+    constructor(props) {
+        super(props);
+
+        this._toggleAppSwitcherMenuHandler = this._toggleAppSwitcherMenuHandler.bind(this);
+    }
+
+    state = {
+        showMobileMenu: false,
+        showAppSwitcherMenu: false,
+    }
+
+    private _toggleShowMobileMenu(showMobileMenu: boolean): void {
+        Header._toggleAppNoScroll(showMobileMenu);
+
+        if (showMobileMenu) {
+            Header._scrollToTop();
+        }
 
         this.setState({
             showMobileMenu,
+            showAppSwitcherMenu: false,
+        });
+    }
+
+    private _toggleAppSwitcherMenuHandler(showAppSwitcherMenu: boolean): void {
+        Header._toggleAppNoScroll(showAppSwitcherMenu);
+
+        if (showAppSwitcherMenu) {
+            Header._scrollToTop();
+        }
+
+        this.setState({
+            showAppSwitcherMenu,
+            showMobileMenu: false,
         });
     }
 
@@ -47,9 +88,10 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
             headerLogoUrl,
             appName,
             userAccountMenu,
-            children,
+            applicationSwitcher,
+            navigation,
         } = this.props;
-        const { showMobileMenu } = this.state;
+        const { showMobileMenu, showAppSwitcherMenu } = this.state;
         const burgerMenuClasses = classNames('burger-menu', { 'burger-menu--open': showMobileMenu });
 
         return (
@@ -75,18 +117,24 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
                             <span className="app__header__name show-sm">{appName}</span>
                         </Link>
                     </div>
+                    {applicationSwitcher && (
+                        <div className="layout__item u-fit">
+                            {React.cloneElement(applicationSwitcher, {
+                                onToggleMenuHandler: this._toggleAppSwitcherMenuHandler,
+                                showMenu: showAppSwitcherMenu,
+                            })}
+                        </div>
+                    )}
                     {userAccountMenu && (
                         <div className="layout__item u-fit show-sm">
                             { userAccountMenu }
                         </div>
                     )}
                 </div>
-                {React.Children.map(children, (child: JSX.Element) => (
-                    React.cloneElement(child, {
-                        onCloseMobileMenuHandler: () => this._toggleShowMobileMenu(false),
-                        showMobileMenu,
-                    })
-                ))}
+                {navigation && React.cloneElement(navigation, {
+                    onCloseMobileMenuHandler: () => this._toggleShowMobileMenu(false),
+                    showMobileMenu,
+                })}
             </header>
         );
     }

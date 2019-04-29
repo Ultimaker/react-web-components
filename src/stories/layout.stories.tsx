@@ -27,6 +27,7 @@ import Navigation from '../components/navigation';
 import HeaderOld from '../components/header_old';
 import NavigationOld from '../components/navigation_old';
 import UserAccountMenu from '../components/user_account_menu';
+import AppSwitcherMenu from '../components/app_switcher_menu';
 
 import UM3PrinterIcon from '../components/icons/um3_printer_icon';
 import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
@@ -176,26 +177,63 @@ stories.add('Header', withInfo(
                 appName={text('App name', '')}
                 userAccountMenu={(
                     <UserAccountMenu
-                        onSignOutClickHandler={() => { }}
                         displayName="Test User"
+                        onSignOutClickHandler={() => { }}
                         onSignInClickHandler={() => { }}
+                        manageAccountURL="https://account-staging.ultimaker.com"
                         accountHeaderText="My account"
                         accountButtonText="Manage account"
                         signOutButtonText="Sign out"
                         signInButtonText="Sign in"
+                        signedOut={boolean('Signed out', false)}
                     />
                 )}
-            >
-                <Navigation
-                    navLabel={text('Navigation label', '')}
-                    navLinks={routes}
-                    accountDisplayName="Test User"
-                    manageAccountURL=""
-                    onSignOutClickHandler={() => { }}
-                    accountNavText="Manage account"
-                    signOutNavText="Sign out"
-                />
-            </Header>
+                applicationSwitcher={(
+                    <AppSwitcherMenu appsList={[
+                        {
+                            application_type: 'internal',
+                            name: 'My Cloud Portal',
+                            url: 'https://mycloud-staging.ultimaker.com',
+                        },
+                        {
+                            application_type: 'internal',
+                            name: 'Account',
+                            url: 'https://account-staging.ultimaker.com',
+                        },
+                        {
+                            application_type: 'internal',
+                            name: 'Marketplace Portal',
+                            url: 'https://contribute-staging.ultimaker.com',
+                        },
+                        {
+                            application_type: 'external',
+                            name: 'Ultimaker Community',
+                            url: 'https://community.ultimaker.com',
+                        },
+                        {
+                            application_type: 'external',
+                            name: 'Ultimaker.com',
+                            url: 'https://ultimaker.com',
+                        },
+                    ]}
+                    />
+                )}
+                navigation={(
+                    <Navigation
+                        navLabel={text('Navigation label', '')}
+                        navLinks={routes}
+                        showMobileAccountNav={boolean('Show mobile account navigation', true)}
+                        accountDisplayName="Test User"
+                        onSignOutClickHandler={() => { }}
+                        onSignInClickHandler={() => { }}
+                        manageAccountURL="https://account-staging.ultimaker.com"
+                        accountButtonText="Manage account"
+                        signOutButtonText="Sign out"
+                        signInButtonText="Sign in"
+                        signedOut={boolean('Signed out', false)}
+                    />
+                )}
+            />
         </div>
     </BrowserRouter>
 )));

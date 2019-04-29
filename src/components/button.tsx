@@ -90,6 +90,7 @@ export class Button extends React.Component<ButtonProps, {}> {
                 href={disabled || showSpinner ? undefined : linkURL}
                 target={linkToNewTab ? '_blank' : undefined}
                 rel="noopener noreferrer"
+                onClick={this._onClickHandler}
             >
                 <span className="text">{children}</span>
                 {showSpinner && <Spinner />}

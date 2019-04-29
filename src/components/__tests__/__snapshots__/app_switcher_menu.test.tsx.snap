@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The AppSwitcherMenu component should render 1`] = `
+<div
+  className="app-switcher-menu"
+>
+  <div
+    className="app-switcher-menu__desktop show-sm"
+  >
+    <DropDownMenuBase
+      menuDirection="south"
+      onToggleMenuHandler={[Function]}
+      showMenu={false}
+      triggerElement={
+        <AppSwitcherTrigger
+          isAppSwitcherOpen={false}
+        />
+      }
+    >
+      <div>
+        <li
+          key="https://mycloud-staging.ultimaker.com"
+        >
+          <Button
+            appearance="no-style"
+            className="drop-down-menu-base__item"
+            linkToNewTab={false}
+            linkURL="https://mycloud-staging.ultimaker.com"
+            onClickHandler={[Function]}
+            shape="rectangle"
+            type="link"
+          >
+            My Cloud Portal
+          </Button>
+        </li>
+        <li
+          key="https://account-staging.ultimaker.com"
+        >
+          <Button
+            appearance="no-style"
+            className="drop-down-menu-base__item"
+            linkToNewTab={false}
+            linkURL="https://account-staging.ultimaker.com"
+            onClickHandler={[Function]}
+            shape="rectangle"
+            type="link"
+          >
+            Account
+          </Button>
+        </li>
+        <li
+          key="https://contribute-staging.ultimaker.com"
+        >
+          <Button
+            appearance="no-style"
+            className="drop-down-menu-base__item"
+            linkToNewTab={false}
+            linkURL="https://contribute-staging.ultimaker.com"
+            onClickHandler={[Function]}
+            shape="rectangle"
+            type="link"
+          >
+            Marketplace Portal
+          </Button>
+        </li>
+        <Divider
+          direction="horizontal"
+          margin={true}
+          width="1px"
+        />
+        <li
+          key="https://community.ultimaker.com"
+        >
+          <Button
+            appearance="no-style"
+            className="drop-down-menu-base__item"
+            linkToNewTab={true}
+            linkURL="https://community.ultimaker.com"
+            onClickHandler={[Function]}
+            shape="rectangle"
+            type="link"
+          >
+            Ultimaker Community
+            <Icon(LinkIcon) />
+          </Button>
+        </li>
+        <li
+          key="https://ultimaker.com"
+        >
+          <Button
+            appearance="no-style"
+            className="drop-down-menu-base__item"
+            linkToNewTab={true}
+            linkURL="https://ultimaker.com"
+            onClickHandler={[Function]}
+            shape="rectangle"
+            type="link"
+          >
+            Ultimaker.com
+            <Icon(LinkIcon) />
+          </Button>
+        </li>
+      </div>
+    </DropDownMenuBase>
+  </div>
+  <div
+    className="app-switcher-menu__mobile hide-sm"
+  >
+    <Button
+      appearance="no-style"
+      className="app-switcher-menu__mobile-trigger"
+      linkToNewTab={false}
+      onClickHandler={[Function]}
+      shape="rectangle"
+      type="button"
+    >
+      <AppSwitcherTrigger
+        isAppSwitcherOpen={false}
+      />
+    </Button>
+    <SlideInPanel
+      includeHeader={false}
+      isOpen={false}
+      onOverlayClickHandler={[Function]}
+      slideDirection="right"
+      width="30rem"
+    >
+      <ul
+        className="drop-down-menu-base__menu-list"
+      >
+        <div>
+          <li
+            key="https://mycloud-staging.ultimaker.com"
+          >
+            <Button
+              appearance="no-style"
+              className="drop-down-menu-base__item"
+              linkToNewTab={false}
+              linkURL="https://mycloud-staging.ultimaker.com"
+              onClickHandler={[Function]}
+              shape="rectangle"
+              type="link"
+            >
+              My Cloud Portal
+            </Button>
+          </li>
+          <li
+            key="https://account-staging.ultimaker.com"
+          >
+            <Button
+              appearance="no-style"
+              className="drop-down-menu-base__item"
+              linkToNewTab={false}
+              linkURL="https://account-staging.ultimaker.com"
+              onClickHandler={[Function]}
+              shape="rectangle"
+              type="link"
+            >
+              Account
+            </Button>
+          </li>
+          <li
+            key="https://contribute-staging.ultimaker.com"
+          >
+            <Button
+              appearance="no-style"
+              className="drop-down-menu-base__item"
+              linkToNewTab={false}
+              linkURL="https://contribute-staging.ultimaker.com"
+              onClickHandler={[Function]}
+              shape="rectangle"
+              type="link"
+            >
+              Marketplace Portal
+            </Button>
+          </li>
+          <Divider
+            direction="horizontal"
+            margin={true}
+            width="1px"
+          />
+          <li
+            key="https://community.ultimaker.com"
+          >
+            <Button
+              appearance="no-style"
+              className="drop-down-menu-base__item"
+              linkToNewTab={true}
+              linkURL="https://community.ultimaker.com"
+              onClickHandler={[Function]}
+              shape="rectangle"
+              type="link"
+            >
+              Ultimaker Community
+              <Icon(LinkIcon) />
+            </Button>
+          </li>
+          <li
+            key="https://ultimaker.com"
+          >
+            <Button
+              appearance="no-style"
+              className="drop-down-menu-base__item"
+              linkToNewTab={true}
+              linkURL="https://ultimaker.com"
+              onClickHandler={[Function]}
+              shape="rectangle"
+              type="link"
+            >
+              Ultimaker.com
+              <Icon(LinkIcon) />
+            </Button>
+          </li>
+        </div>
+      </ul>
+    </SlideInPanel>
+  </div>
+</div>
+`;
+
+exports[`The AppSwitcherMenu component should render when there are no apps 1`] = `
+<div
+  className="app-switcher-menu"
+>
+  <div
+    className="app-switcher-menu__desktop show-sm"
+  >
+    <DropDownMenuBase
+      menuDirection="south"
+      onToggleMenuHandler={[Function]}
+      showMenu={false}
+      triggerElement={
+        <AppSwitcherTrigger
+          isAppSwitcherOpen={false}
+        />
+      }
+    />
+  </div>
+  <div
+    className="app-switcher-menu__mobile hide-sm"
+  >
+    <Button
+      appearance="no-style"
+      className="app-switcher-menu__mobile-trigger"
+      linkToNewTab={false}
+      onClickHandler={[Function]}
+      shape="rectangle"
+      type="button"
+    >
+      <AppSwitcherTrigger
+        isAppSwitcherOpen={false}
+      />
+    </Button>
+    <SlideInPanel
+      includeHeader={false}
+      isOpen={false}
+      onOverlayClickHandler={[Function]}
+      slideDirection="right"
+      width="30rem"
+    >
+      <ul
+        className="drop-down-menu-base__menu-list"
+      />
+    </SlideInPanel>
+  </div>
+</div>
+`;
