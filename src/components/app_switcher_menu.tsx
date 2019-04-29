@@ -60,12 +60,22 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
 
     private _renderInternalLinks(): JSX.Element[] {
         const { appsList } = this.props;
+
+        if (!appsList) {
+            return null;
+        }
+
         const internalLinks = appsList.filter(app => app.application_type === 'internal');
         return internalLinks.map(link => this._renderLink(link));
     }
 
     private _renderExternalLinks(): JSX.Element[] {
         const { appsList } = this.props;
+
+        if (!appsList) {
+            return null;
+        }
+
         const internalLinks = appsList.filter(app => app.application_type === 'external');
         return internalLinks.map(link => this._renderLink(link));
     }
