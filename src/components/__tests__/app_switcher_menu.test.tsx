@@ -50,6 +50,13 @@ describe('The AppSwitcherMenu component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should render when there are no apps', () => {
+        wrapper.setProps({
+            appsList: null,
+        });
+        expect(wrapper).toMatchSnapshot();
+    });
+
     it('should toggle menu visibility on desktop', () => {
         wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
         expect(props.onToggleMenuHandler).toHaveBeenCalledWith(true);

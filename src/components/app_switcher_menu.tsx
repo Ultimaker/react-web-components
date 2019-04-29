@@ -1,5 +1,3 @@
-/** eslint-disable needed due to the api returning application_type with an underscore */
-/* eslint-disable camelcase */
 import * as React from 'react';
 import classNames from 'classnames';
 
@@ -12,6 +10,7 @@ import SlideInPanel from '../components/slide_in_panel';
 import LinkIcon from './icons/link_icon';
 
 export interface ApplicationListItem {
+    /* eslint-disable camelcase */
     application_type?: string,
     name?: string,
     url?: string,
@@ -60,28 +59,19 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
 
     private _renderInternalLinks(): JSX.Element[] {
         const { appsList } = this.props;
-
-        if (!appsList) {
-            return null;
-        }
-
         const internalLinks = appsList.filter(app => app.application_type === 'internal');
         return internalLinks.map(link => this._renderLink(link));
     }
 
     private _renderExternalLinks(): JSX.Element[] {
         const { appsList } = this.props;
-
-        if (!appsList) {
-            return null;
-        }
-
         const internalLinks = appsList.filter(app => app.application_type === 'external');
         return internalLinks.map(link => this._renderLink(link));
     }
 
     render(): JSX.Element {
         const { showMenu } = this.props;
+        const { appsList } = this.props;
 
         return (
             <div className={classNames('app-switcher-menu', { 'app-switcher-menu--open': showMenu })}>
@@ -91,13 +81,15 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
                         triggerElement={<AppSwitcherTrigger isAppSwitcherOpen={showMenu} />}
                         onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
                     >
-                        <div>
-                            {this._renderInternalLinks()}
+                        {appsList && (
+                            <div>
+                                {this._renderInternalLinks()}
 
-                            <Divider width="1px" margin />
+                                <Divider width="1px" margin />
 
-                            {this._renderExternalLinks()}
-                        </div>
+                                {this._renderExternalLinks()}
+                            </div>
+                        )}
                     </DropDownMenuBase>
                 </div>
 
@@ -116,12 +108,17 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
                         includeHeader={false}
                         onOverlayClickHandler={() => this._onToggleMenuHandler(false)}
                     >
+
                         <ul className="drop-down-menu-base__menu-list">
-                            {this._renderInternalLinks()}
+                            {appsList && (
+                                <div>
+                                    {this._renderInternalLinks()}
 
-                            <Divider width="1px" margin />
+                                    <Divider width="1px" margin />
 
-                            {this._renderExternalLinks()}
+                                    {this._renderExternalLinks()}
+                                </div>
+                            )}
                         </ul>
                     </SlideInPanel>
                 </div>
