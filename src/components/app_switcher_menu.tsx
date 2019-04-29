@@ -11,15 +11,15 @@ import AppSwitcherTrigger from './app_switcher_trigger';
 import SlideInPanel from '../components/slide_in_panel';
 import LinkIcon from './icons/link_icon';
 
-export interface AppsList {
-    application_type: string,
-    name: string,
-    url: string,
+export interface ApplicationListItem {
+    application_type?: string,
+    name?: string,
+    url?: string,
 }
 
 export interface AppSwitcherMenuProps {
     /** The list of apps to show */
-    appsList: AppsList[];
+    appsList: ApplicationListItem[];
     /**
      * Used to toggle the visibility of the menu.
      * Passed in by the header component.
@@ -38,7 +38,7 @@ export class AppSwitcherMenu extends React.Component<AppSwitcherMenuProps, {}> {
         onToggleMenuHandler(showMenu);
     }
 
-    private _renderLink(link: AppsList): JSX.Element {
+    private _renderLink(link: ApplicationListItem): JSX.Element {
         return (
             <li key={link.url}>
                 <Button
