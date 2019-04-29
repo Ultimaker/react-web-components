@@ -27,3 +27,11 @@ yarn build
 ```
 
 You can now serve the static content in the `/public` folder.
+
+## Release to npm
+
+```bash
+yarn publish
+```
+A new version number should be given the follows [semver](https://semver.org/).
+You should also make a release on github to document the changes.
