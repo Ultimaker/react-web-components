@@ -1,6 +1,6 @@
 {
     "name": "@ultimaker/react-web-components",
-    "version": "4.0.2",
+    "version": "5.0.0",
     "description": "Ultimaker's unified react component and style library for front-end web",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
