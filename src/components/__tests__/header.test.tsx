@@ -1,6 +1,7 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 
 // component
 import Navigation from '../navigation';
@@ -12,6 +13,7 @@ describe('The Header component', () => {
     let wrapper;
 
     beforeEach(() => {
+        window.scrollTo = jest.fn();
         wrapper = shallow(<Header />);
     });
 
@@ -118,5 +120,16 @@ describe('The Header component', () => {
         expect(wrapper.find(AppSwitcherMenu).props().showMenu).toBe(true);
         wrapper.find(AppSwitcherMenu).props().onToggleMenuHandler(false);
         expect(wrapper.find(AppSwitcherMenu).props().showMenu).toBe(false);
+    });
+
+    it('should allow the background to scroll after unmount', () => {
+        const mountedWrapper = mount(
+            <BrowserRouter>
+                <Header />
+            </BrowserRouter>,
+        );
+        document.body.classList.add('noscroll-xs');
+        mountedWrapper.unmount();
+        expect(document.body.classList.contains('noscroll')).toBe(false);
     });
 });
