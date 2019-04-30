@@ -35,9 +35,9 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
 
     private static _toggleAppNoScroll(setNoScroll: boolean): void {
         if (setNoScroll) {
-            document.body.classList.add('noscroll');
+            document.body.classList.add('noscroll-xs');
         } else {
-            document.body.classList.remove('noscroll');
+            document.body.classList.remove('noscroll-xs');
         }
     }
 
@@ -54,6 +54,10 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     state = {
         showMobileMenu: false,
         showAppSwitcherMenu: false,
+    }
+
+    componentWillUnmount(): void {
+        document.body.classList.remove('noscroll-xs');
     }
 
     private _toggleShowMobileMenu(showMobileMenu: boolean): void {
