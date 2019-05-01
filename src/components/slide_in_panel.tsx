@@ -26,26 +26,39 @@ export interface SlideInPanelProps {
     slideDirection?: 'left' | 'right';
 }
 
-export class SlideInPanel extends React.Component<SlideInPanelProps, {}> {
+
+export interface SlideInPanelState {
+    /** Random id for the instance of the component */
+    id: number;
+}
+
+export class SlideInPanel extends React.Component<SlideInPanelProps, SlideInPanelState> {
     static defaultProps = {
         includeHeader: true,
         slideDirection: 'right',
     }
 
+    state = {
+        id: Math.floor(Math.random() * 10000000000),
+    };
+
     componentDidUpdate(prevProps: SlideInPanelProps): void {
         const { isOpen } = this.props;
+        const { id } = this.state;
 
         if (prevProps.isOpen !== isOpen) {
             if (isOpen) {
-                document.body.classList.add('noscroll');
+                document.body.classList.add(`noscroll-${id}`);
             } else {
-                document.body.classList.remove('noscroll');
+                document.body.classList.remove(`noscroll-${id}`);
             }
         }
     }
 
     componentWillUnmount(): void {
-        document.body.classList.remove('noscroll');
+        const { id } = this.state;
+
+        document.body.classList.remove(`noscroll-${id}`);
     }
 
     private _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {
