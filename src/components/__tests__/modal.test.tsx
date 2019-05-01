@@ -3,7 +3,6 @@ import * as React from 'react';
 import { shallow, mount } from 'enzyme';
 
 // component
-import { loadavg } from 'os';
 import Modal from '../modal';
 
 // mocks
