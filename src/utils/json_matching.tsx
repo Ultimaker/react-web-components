@@ -25,7 +25,6 @@ export function objectEquals(x: Object, y: Object) {
         if (hasOwnProperty.call(x, p)) {
             // allows to compare x[ p ] and y[ p ] when set to undefined
             if (!hasOwnProperty.call(y, p)) {
-                console.warn(`Mismatch in property ${p}`);
                 return false;
             }
 
@@ -33,13 +32,11 @@ export function objectEquals(x: Object, y: Object) {
             if (x[p] !== y[p]) {
                 // Numbers, Strings, Functions, Booleans must be strictly equal
                 if (typeof (x[p]) !== 'object') {
-                    console.warn(`Mismatch in property ${p}`);
                     return false;
                 }
 
                 // Objects and Arrays must be tested recursively
                 if (!objectEquals(x[p], y[p])) {
-                    console.warn(`Mismatch in property ${p}`);
                     return false;
                 }
             }
@@ -48,7 +45,6 @@ export function objectEquals(x: Object, y: Object) {
     }) && Object.keys(y).every((p) => {
         // allows x[ p ] to be set to undefined
         if (hasOwnProperty.call(y, p) && !hasOwnProperty.call(x, p)) {
-            console.warn(`Mismatch in property ${p}`);
             return false;
         }
         return true;

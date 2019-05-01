@@ -59,23 +59,19 @@ describe('The SlideInPanel component', () => {
     });
 
     it('should not allow the background to scroll when open', () => {
-        expect(document.body.classList.contains('noscroll')).toBe(false);
+        const { id } = wrapper.state();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
         wrapper.setProps({ isOpen: true });
-        expect(document.body.classList.contains('noscroll')).toBe(true);
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(true);
         wrapper.setProps({ isOpen: false });
-        expect(document.body.classList.contains('noscroll')).toBe(false);
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
     });
 
     it('should allow the background to scroll after unmount', () => {
-        const mountedWrapper = mount(
-            <SlideInPanel {...props}>
-                <div>Body</div>
-                <div>Footer</div>
-            </SlideInPanel>,
-        );
-        mountedWrapper.setProps({ isOpen: true });
-        expect(document.body.classList.contains('noscroll')).toBe(true);
-        mountedWrapper.unmount();
-        expect(document.body.classList.contains('noscroll')).toBe(false);
+        const { id } = wrapper.state();
+        wrapper.setProps({ isOpen: true });
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(true);
+        wrapper.unmount();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
     });
 });

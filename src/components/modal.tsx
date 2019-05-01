@@ -15,6 +15,8 @@ export interface ModalProps {
 export interface ModalState {
     /** The modal will be displayed when true */
     isOpen: boolean;
+    /** Random id for the instance of the component */
+    id: number;
 }
 
 export interface OpacityStyle {
@@ -28,16 +30,18 @@ export class Modal extends React.Component<ModalProps, ModalState> {
 
     state = {
         isOpen: false,
+        id: Math.floor(Math.random() * 10000000000),
     }
 
     componentDidMount(): void {
-        document.body.classList.add('noscroll');
-
+        const { id } = this.state;
+        document.body.classList.add(`noscroll-${id}`);
         this.setState({ isOpen: true });
     }
 
     componentWillUnmount(): void {
-        document.body.classList.remove('noscroll');
+        const { id } = this.state;
+        document.body.classList.remove(`noscroll-${id}`);
     }
 
     _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {
