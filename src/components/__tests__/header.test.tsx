@@ -12,6 +12,7 @@ describe('The Header component', () => {
     let wrapper;
 
     beforeEach(() => {
+        window.scrollTo = jest.fn();
         wrapper = shallow(<Header />);
     });
 

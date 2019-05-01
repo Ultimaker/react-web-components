@@ -3,6 +3,7 @@ import * as React from 'react';
 import { shallow, mount } from 'enzyme';
 
 // component
+import { loadavg } from 'os';
 import Modal from '../modal';
 
 // mocks
@@ -50,12 +51,13 @@ describe('The Modal component', () => {
     });
 
     it('should not allow the background to scroll when open', () => {
-        expect(document.body.classList.contains('noscroll')).toBe(true);
+        const { id } = wrapper.state();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(true);
     });
 
     it('should allow the background to scroll after unmount', () => {
-        const mountedWrapper = mount(<Modal {...props} />);
-        mountedWrapper.unmount();
-        expect(document.body.classList.contains('noscroll')).toBe(false);
+        const { id } = wrapper.state();
+        wrapper.unmount();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
     });
 });
