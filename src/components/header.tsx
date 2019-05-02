@@ -33,10 +33,6 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
         headerLogoUrl: '/',
     };
 
-    private static _scrollToTop(): void {
-        window.scrollTo(0, 0);
-    }
-
     constructor(props) {
         super(props);
 
@@ -49,10 +45,6 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     }
 
     private _toggleShowMobileMenu(showMobileMenu: boolean): void {
-        if (showMobileMenu) {
-            Header._scrollToTop();
-        }
-
         this.setState({
             showMobileMenu,
             showAppSwitcherMenu: false,
@@ -60,10 +52,6 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     }
 
     private _toggleAppSwitcherMenuHandler(showAppSwitcherMenu: boolean): void {
-        if (showAppSwitcherMenu) {
-            Header._scrollToTop();
-        }
-
         this.setState({
             showAppSwitcherMenu,
             showMobileMenu: false,

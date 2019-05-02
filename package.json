@@ -1,6 +1,6 @@
 {
     "name": "@ultimaker/react-web-components",
-    "version": "5.0.1",
+    "version": "5.1.0",
     "description": "Ultimaker's unified react component and style library for front-end web",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -110,10 +110,10 @@
         ],
         "coverageThreshold": {
             "global": {
-                "statements": 92,
-                "branches": 92,
-                "functions": 92,
-                "lines": 92
+                "statements": 93,
+                "branches": 93,
+                "functions": 93,
+                "lines": 93
             }
         },
         "transform": {
