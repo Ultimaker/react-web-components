@@ -88,11 +88,9 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     private _onDropHandler(files: ImageFile[]): void {
         const file = files[0];
         this.setState({ dropActive: false });
-
         const {
             allowCropping, onFileSelection, onFileRead, maxMb,
         } = this.props;
-
         if (maxMb && file.size > maxMb * 1024 * 1024) {
             // TODO: Make this a proper error in STAR-334.
             return;
@@ -104,12 +102,20 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
         if (onFileRead) {
             const reader = new FileReader();
-            reader.onload = () => onFileRead(reader.result as string);
+            reader.onload = () => {
+                if (allowCropping) {
+                    this.setState({ cropURL: reader.result as string });
+                }
+                if (onFileRead) {
+                    onFileRead(reader.result as string);
+                }
+            };
             reader.onerror = console.error;
             reader.readAsDataURL(file);
         }
 
-        if (allowCropping) {
+        // This seems only to be used in test cases, as file.preview is not available in the browser
+        if (allowCropping && file.preview !== null) {
             this.setState({ cropURL: file.preview });
         }
     }

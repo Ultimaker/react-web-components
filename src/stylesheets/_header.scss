@@ -1,6 +1,10 @@
 .app__header {
     min-width: $min-window-width;
     z-index: 9999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
 }
 
 .app__primary-navigation {
@@ -38,15 +42,6 @@
     font-size: 2.2rem;
     margin-left: 1.2rem;
     color: $color-text;
-}
-
-.app--fixed-header .app__header {
-    @include respond-to(sm) {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-    }
 }
 
 .burger-menu {

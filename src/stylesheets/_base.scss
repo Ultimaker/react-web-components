@@ -26,9 +26,8 @@ body {
 
 .app__main {
     flex: 1;
-}
+    padding-top: 5.5rem;
 
-.app--fixed-header .app__main {
     @include respond-to(sm) {
         padding-top: 10.4rem;
     }
