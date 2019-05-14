@@ -39,7 +39,7 @@ export const ResourceGrid: React.StatelessComponent<ResourceGridProps> = ({
 
     return (
         <div>
-            <Grid position="middle" align="center" gutter="md">
+            <Grid align="center" gutter="md">
                 {React.Children.map(children, (child: JSX.Element) => (
                     <GridItem layoutWidth="fit">
                         {child}
