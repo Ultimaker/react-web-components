@@ -113,11 +113,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         };
         reader.onerror = console.error;
         reader.readAsDataURL(file);
-
-        // // This seems only to be used in test cases, as file.preview is not available
-        // if (allowCropping && file.preview !== null) {
-        //     this.setState({ cropURL: file.preview });
-        // }
     }
 
     private _onDragEnter(): void {
