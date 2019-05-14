@@ -22,7 +22,6 @@ describe('The date field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
-            locale: 'en-US',
         };
         wrapper = shallow(<DateField {...props} />);
     });
@@ -38,7 +37,7 @@ describe('The date field component', () => {
     });
 
     it('should render a static date', () => {
-        wrapper.setProps({ staticField: true });
+        wrapper.setProps({ staticField: true, locale: 'en-US' });
         expect(wrapper.find(DatePicker)).toHaveLength(0);
         expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual('1/1/2019');
     });
@@ -59,5 +58,10 @@ describe('The date field component', () => {
         wrapper.setProps({ minDate: testMinDate, maxDate: testMaxDate });
         expect(wrapper.find(DatePicker).prop('minDate')).toEqual(new Date(testMinDate));
         expect(wrapper.find(DatePicker).prop('maxDate')).toEqual(new Date(testMaxDate));
+    });
+
+    it('should set locale', () => {
+        wrapper.setProps({ locale: 'nl-NL' });
+        expect(wrapper.find(DatePicker).prop('locale')).toEqual('nl-NL');
     });
 });

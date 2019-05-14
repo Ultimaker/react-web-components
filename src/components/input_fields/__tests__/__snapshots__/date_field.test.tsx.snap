@@ -17,7 +17,6 @@ exports[`The date field component should render a wrapper 1`] = `
       calendarIcon={null}
       clearIcon={null}
       isOpen={null}
-      locale="en-US"
       maxDate={null}
       minDate={null}
       onChange={[Function]}
