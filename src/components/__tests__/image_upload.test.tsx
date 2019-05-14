@@ -93,22 +93,27 @@ describe('The image upload component', () => {
         expect(props.onFileRead).not.toHaveBeenCalled();
     });
 
-    it('should allow for cropping', () => {
-        wrapper.setProps({ allowCropping: true });
+    it('should allow for cropping', (done) => {
+        function callback(data) {
+            // second call this is null and should be ignored
+            if (data === null) {
+                return;
+            }
+            expect(wrapper.find(Dropzone)).toHaveLength(0);
+            expect(wrapper.find(ImageCropper).props()).toEqual(expect.objectContaining({
+                onImageChanged: expect.any(Function),
+                imageURL: expect.stringContaining('data:image/jpeg;base64'),
+                onCropCancel: expect.any(Function),
+            }));
+            wrapper.find(ImageCropper).prop('onCropCancel')();
+            expect(wrapper.find(Dropzone)).toHaveLength(1);
+            expect(wrapper.find(ImageCropper)).toHaveLength(0);
+            done();
+        }
+        wrapper.setProps({ allowCropping: true, onFileRead: callback });
         expect(wrapper.find(Dropzone)).toHaveLength(1);
         expect(wrapper.find(ImageCropper)).toHaveLength(0);
         wrapper.find(Dropzone).prop('onDrop')([image]);
 
-        expect(wrapper.find(Dropzone)).toHaveLength(0);
-
-        expect(wrapper.find(ImageCropper).props()).toEqual(expect.objectContaining({
-            onImageChanged: props.onFileRead,
-            imageURL: image.preview,
-            onCropCancel: expect.any(Function),
-        }));
-
-        wrapper.find(ImageCropper).prop('onCropCancel')();
-        expect(wrapper.find(Dropzone)).toHaveLength(1);
-        expect(wrapper.find(ImageCropper)).toHaveLength(0);
     });
 });
