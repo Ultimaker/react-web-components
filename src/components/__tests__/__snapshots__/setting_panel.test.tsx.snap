@@ -4,7 +4,7 @@ exports[`The SettingPanel component should render 1`] = `
 <div
   className="setting-panel"
 >
-  <SelectListItem
+  <SlideOutContainer
     headerText="header text"
     headerTextAlignment="left"
     isOpen={false}
@@ -17,7 +17,7 @@ exports[`The SettingPanel component should render 1`] = `
     >
       a brief explanation
     </div>
-  </SelectListItem>
+  </SlideOutContainer>
   <div
     className="layout setting-panel__option"
   >
