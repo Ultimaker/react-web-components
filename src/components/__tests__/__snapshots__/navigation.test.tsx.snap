@@ -17,7 +17,7 @@ exports[`The Navigation component should not render desktop navigation if no vis
         <div
           className="navigation__account"
         >
-          <SelectListItem
+          <SlideOutContainer
             headerText={
               <div
                 className="layout layout--align-middle"
@@ -47,7 +47,7 @@ exports[`The Navigation component should not render desktop navigation if no vis
             <ul
               className="navigation__account-options drop-down-menu-base__menu-list"
             />
-          </SelectListItem>
+          </SlideOutContainer>
         </div>
         <ul
           className="drop-down-menu-base__menu-list"
@@ -109,7 +109,7 @@ exports[`The Navigation component should render 1`] = `
         <div
           className="navigation__account"
         >
-          <SelectListItem
+          <SlideOutContainer
             headerText={
               <div
                 className="layout layout--align-middle"
@@ -139,7 +139,7 @@ exports[`The Navigation component should render 1`] = `
             <ul
               className="navigation__account-options drop-down-menu-base__menu-list"
             />
-          </SelectListItem>
+          </SlideOutContainer>
         </div>
         <ul
           className="drop-down-menu-base__menu-list"

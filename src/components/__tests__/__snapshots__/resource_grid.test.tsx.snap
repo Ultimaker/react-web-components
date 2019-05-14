@@ -5,7 +5,7 @@ exports[`The ResourceGrid component should render a grid 1`] = `
   <Grid
     align="center"
     gutter="md"
-    position="middle"
+    position="top"
   >
     <GridItem
       breakpoint="xs"

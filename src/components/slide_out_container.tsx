@@ -74,6 +74,6 @@ SlideOutContainer.defaultProps = {
     panelArrowWidth: '1.6rem',
 };
 
-SlideOutContainer.displayName = 'SelectListItem';
+SlideOutContainer.displayName = 'SlideOutContainer';
 
 export default SlideOutContainer;
