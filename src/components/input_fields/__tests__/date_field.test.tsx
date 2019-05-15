@@ -10,9 +10,9 @@ import InputFieldWrapper from '../input_field_wrapper';
 describe('The date field component', () => {
     let props: DateFieldProps;
     let wrapper;
-    const testDate = new Date(0);
-    const testMinDate = new Date(0);
-    const testMaxDate = new Date(1);
+    const testDate = '2019-01-01T00:00:00.000Z';
+    const testMinDate = '2018-01-01T00:00:00.000Z';
+    const testMaxDate = '2019-01-01T00:00:00.000Z';
 
     beforeEach(() => {
         props = {
@@ -22,7 +22,6 @@ describe('The date field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             staticField: false,
-            locale: 'en-US',
         };
         wrapper = shallow(<DateField {...props} />);
     });
@@ -32,29 +31,15 @@ describe('The date field component', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
     });
 
-    it('should render a date picker', () => {
-        expect(wrapper.find(DatePicker).props()).toEqual(
-            expect.objectContaining({
-                calendarIcon: null,
-                clearIcon: null,
-                onChange: wrapper.instance()._onChange,
-                value: testDate,
-                isOpen: null,
-                locale: 'en-US',
-                returnValue: 'start',
-            }),
-        );
-    });
-
     it('should render an empty date', () => {
         wrapper.setProps({ value: null });
         expect(wrapper.find(DatePicker).prop('value')).toBeNull();
     });
 
     it('should render a static date', () => {
-        wrapper.setProps({ staticField: true });
+        wrapper.setProps({ staticField: true, locale: 'en-US' });
         expect(wrapper.find(DatePicker)).toHaveLength(0);
-        expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual('1/1/1970');
+        expect(wrapper.find(InputFieldWrapper).prop('children')).toEqual('1/1/2019');
     });
 
     it('should render an error', () => {
@@ -64,14 +49,19 @@ describe('The date field component', () => {
 
     it('should call the callback', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
-        wrapper.find(DatePicker).prop('onChange')(testDate);
+        wrapper.find(DatePicker).prop('onChange')(new Date(testDate));
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, testDate);
         expect(wrapper.find(InputFieldWrapper).prop('touched')).toEqual(true);
     });
 
     it('should set min and max date', () => {
         wrapper.setProps({ minDate: testMinDate, maxDate: testMaxDate });
-        expect(wrapper.find(DatePicker).prop('minDate')).toBe(testMinDate);
-        expect(wrapper.find(DatePicker).prop('maxDate')).toBe(testMaxDate);
+        expect(wrapper.find(DatePicker).prop('minDate')).toEqual(new Date(testMinDate));
+        expect(wrapper.find(DatePicker).prop('maxDate')).toEqual(new Date(testMaxDate));
+    });
+
+    it('should set locale', () => {
+        wrapper.setProps({ locale: 'nl-NL' });
+        expect(wrapper.find(DatePicker).prop('locale')).toEqual('nl-NL');
     });
 });
