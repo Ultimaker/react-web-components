@@ -25,3 +25,11 @@ pages:
     - public
   only:
     - master
+
+publish:
+  stage: deploy
+  script:
+    - npm --no-git-tag-version version from-git
+    - npm publish
+  only:
+    - tags
