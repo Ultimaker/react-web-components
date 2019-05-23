@@ -1,5 +1,11 @@
 image: node:8
 
+variables:
+  GIT_COMMITTER_NAME: stardust
+  GIT_COMMITTER_EMAIL: stardust@ultimaker.com
+  GIT_AUTHOR_NAME: stardust
+  GIT_AUTHOR_EMAIL: stardust@ultimaker.com
+
 stages:
   - test
   - deploy
