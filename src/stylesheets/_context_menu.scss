@@ -53,3 +53,19 @@
         }
     }
 }
+
+.context-menu.context-menu--disabled {
+    .drop-down-menu-base__trigger {
+        color: $context-menu-disabled-color-trigger;
+
+        &:hover, &:focus {
+            background-color: $context-menu-disabled-color-hover;
+            color: $context-menu-disabled-color-trigger-hover;
+        }
+
+        &:after {
+            background-color: $context-menu-disabled-color-trigger;
+            box-shadow: 0 0 0 1px $context-menu-disabled-color-trigger, 0 8px 0 1px $context-menu-disabled-color-trigger, 0 -8px 0 1px $context-menu-disabled-color-trigger;
+        }
+    }
+}

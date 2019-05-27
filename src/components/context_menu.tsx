@@ -19,6 +19,8 @@ export interface ContextMenuProps {
     menuDirection?: MenuDirection;
     /** Whether the context menu is positioned in a panel, such as a header or footer */
     positionMenuInPanel?: boolean;
+    /** Show a disabled state for the context menu, that doesn't toggle the dropdown part */
+    disabled?: boolean;
     /** The list of menu items */
     children: JSX.Element | JSX.Element[];
 }
@@ -71,9 +73,14 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     private _menuRef;
 
     private _onToggleMenuHandler(showMenu: boolean): void {
-        const { onToggleMenuHandler } = this.props;
-        onToggleMenuHandler(showMenu);
-        this._setMenuOffset();
+        const {
+            onToggleMenuHandler,
+            disabled,
+        } = this.props;
+        if (!disabled) {
+            onToggleMenuHandler(showMenu);
+            this._setMenuOffset();
+        }
     }
 
     private _setMenuOffset(): void {
@@ -116,12 +123,19 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
 
     render(): JSX.Element {
         const {
-            menuWidth, menuOffsetDirection, menuDirection, positionMenuInPanel, showMenu, children,
+            menuWidth,
+            menuOffsetDirection,
+            menuDirection,
+            positionMenuInPanel,
+            showMenu,
+            children,
+            disabled,
         } = this.props;
         const { menuOffset } = this.state;
 
         const classes = classNames(
             'context-menu',
+            { 'context-menu--disabled': disabled },
             { 'context-menu--panel': positionMenuInPanel },
         );
         const menuStyle = ContextMenu._getMenuStyle(menuOffset, menuOffsetDirection, menuWidth);
