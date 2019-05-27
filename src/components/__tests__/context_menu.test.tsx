@@ -25,6 +25,11 @@ describe('The ContextMenu component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
+    it('should render as disabled', () => {
+        wrapper.setProps({ disabled: true });
+        expect(wrapper).toMatchSnapshot();
+    });
+
     it('should render to right', () => {
         wrapper.setProps({ menuOffsetDirection: 'right' });
         expect(wrapper.find(DropDownMenuBase).prop('menuStyle').left).toBe(-24);
@@ -49,5 +54,11 @@ describe('The ContextMenu component', () => {
     it('should call onToggleMenuHandler when the trigger is clicked', () => {
         wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
         expect(props.onToggleMenuHandler).toHaveBeenCalled();
+    });
+
+    it('should not call onToggleMenuHandler when the trigger is clicked if disabled', () => {
+        wrapper.setProps({ disabled: true });
+        wrapper.find(DropDownMenuBase).props().onToggleMenuHandler(true);
+        expect(props.onToggleMenuHandler).not.toHaveBeenCalled();
     });
 });

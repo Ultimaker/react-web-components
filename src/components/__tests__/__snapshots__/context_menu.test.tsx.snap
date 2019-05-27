@@ -26,3 +26,30 @@ exports[`The ContextMenu component should render 1`] = `
   />
 </div>
 `;
+
+exports[`The ContextMenu component should render as disabled 1`] = `
+<div
+  className="context-menu context-menu--disabled"
+>
+  <DropDownMenuBase
+    menuDirection="south"
+    menuStyle={
+      Object {
+        "right": -24,
+        "width": 200,
+      }
+    }
+    onToggleMenuHandler={[Function]}
+    showMenu={false}
+    triggerElement={
+      <div
+        style={
+          Object {
+            "width": 45,
+          }
+        }
+      />
+    }
+  />
+</div>
+`;
