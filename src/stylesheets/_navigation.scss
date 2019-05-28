@@ -28,7 +28,6 @@
             border: none;
     
         li {
-            flex: 1 1 0;
             margin: 0;
         }
     }
@@ -110,4 +109,8 @@
     margin: 2.4rem auto;
     display: block;
     width: 80%;
+}
+
+.mobile-sub-navigation-menu-item {
+    margin-left: 2.4rem;
 }

@@ -23,7 +23,7 @@ import SettingPanel from '../components/setting_panel';
 import Carousel from '../components/carousel';
 import AspectRatioContainer from '../components/aspect_ratio_container';
 import Header from '../components/header';
-import Navigation from '../components/navigation';
+import Navigation, { NavRoute } from '../components/navigation';
 import HeaderOld from '../components/header_old';
 import NavigationOld from '../components/navigation_old';
 import UserAccountMenu from '../components/user_account_menu';
@@ -159,6 +159,22 @@ const routes = [{
     label: 'Profile',
     component: null,
     visible: true,
+},
+{
+    path: '/manage',
+    label: 'Manage',
+    component: null,
+    visible: true,
+    subRoutes: [
+        {
+            path: '/manage/teams',
+            label: 'Teams',
+        },
+        {
+            path: '/manage/printers',
+            label: 'Printers',
+        },
+    ],
 },
 {
     path: '/settings',
