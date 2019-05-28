@@ -44,6 +44,7 @@ stories.add('Context menu', withState({ showMenu: false })(withInfo(
     'Context menu for additional actions',
 )(({ store }) => (
     <ContextMenu
+        disabled={boolean('disabled', false)}
         showMenu={store.state.showMenu}
         onToggleMenuHandler={showMenu => store.set({ showMenu })}
         menuWidth={200}
@@ -52,19 +53,19 @@ stories.add('Context menu', withState({ showMenu: false })(withInfo(
     >
         <ContextMenuItem
             onClickHandler={() => { store.set({ showMenu: false }); }}
-            disabled={boolean('Disabled', false)}
+            disabled={boolean('ContextMenuItem disabled', false)}
         >
             {text('Text 1', 'Context menu item 1')}
         </ContextMenuItem>
         <ContextMenuItem
             onClickHandler={() => { store.set({ showMenu: false }); }}
-            disabled={boolean('Disabled', false)}
+            disabled={boolean('ContextMenuItem disabled', false)}
         >
             {text('Text 2', 'Context menu item 2')}
         </ContextMenuItem>
         <ContextMenuItem
             onClickHandler={() => { store.set({ showMenu: false }); }}
-            disabled={boolean('Disabled', false)}
+            disabled={boolean('ContextMenuItem disabled', false)}
         >
             {text('Text 3', 'Context menu item 3')}
         </ContextMenuItem>
