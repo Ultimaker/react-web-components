@@ -6,10 +6,11 @@
         border-bottom: 0.3rem solid transparent;
         padding: 0 1.8rem 0 2.4rem;
         height: 4.8rem;
+        transition: all 0.2s ease-out;
 
         &:hover, &:focus {
             background-color: transparent;
-            border-bottom-color: rgba(0, 0, 0, 0.06);
+            color: $color-blue;
         }
     }
 }
