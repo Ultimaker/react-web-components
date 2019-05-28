@@ -12,6 +12,7 @@ stages:
 
 before_script:
   - yarn install
+  - echo "${SSH_PRIVATE_KEY}" | base64 -d > "${CI_PROJECT_DIR}/id_rsa"
 
 test:
   stage: test
@@ -35,7 +36,8 @@ pages:
 publish:
   stage: deploy
   script:
-    - npm --no-git-tag-version version from-git
+    - npm version patch
+    - GIT_SSH_COMMAND="ssh -i ${CI_PROJECT_DIR}/id_rsa" git push git@github.com:Ultimaker/react-web-components.git
     - npm publish
   only:
-    - tags
+    - master
