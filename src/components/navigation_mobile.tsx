@@ -5,7 +5,8 @@ import { NavLink } from 'react-router-dom';
 import Button from './button';
 import ProfileImage from './profile_image';
 import SlideOutContainer from './slide_out_container';
-import SlideInPanel from '../components/slide_in_panel';
+import SlideInPanel from './slide_in_panel';
+import SubNavigationMobileMenu from './sub_navigation_mobile_menu';
 
 // components
 import { NavRoute } from './Navigation';
@@ -45,16 +46,7 @@ export interface NavigationMobileProps {
     showMobileAccountNav?: boolean;
 }
 
-export interface NavigationMobileState {
-    showAccountNav: boolean;
-}
-
-export class NavigationMobile extends
-    React.Component<NavigationMobileProps, NavigationMobileState> {
-    state = {
-        showAccountNav: false,
-    }
-
+export class NavigationMobile extends React.Component<NavigationMobileProps, {}> {
     constructor(props) {
         super(props);
 
@@ -69,19 +61,106 @@ export class NavigationMobile extends
         }
     }
 
-    private _toggleShowAccountNav(showAccountNav: boolean): void {
-        this.setState({
-            showAccountNav,
-        });
+    private _renderAccountNav(): JSX.Element {
+        const {
+            onSignOutClickHandler, onSignInClickHandler, manageAccountURL, signInButtonText,
+            signedOut, accountButtonText, signOutButtonText, accountImageURL, accountDisplayName,
+        } = this.props;
+
+        return (
+            <div className="navigation__account">
+                {signedOut && (
+                    <Button
+                        appearance="secondary"
+                        className="navigation__account-sign-in-btn"
+                        onClickHandler={onSignInClickHandler}
+                    >
+                        {signInButtonText}
+                    </Button>
+                )}
+                {!signedOut && (
+                    <SubNavigationMobileMenu
+                        menuLabel={(
+                            <div className="layout layout--align-middle">
+                                <div className="layout__item u-fit">
+                                    <ProfileImage imageURL={accountImageURL} size="3.6rem" />
+                                </div>
+                                <div className="layout__item u-fill">
+                                    <div className="navigation__account-name truncate">{accountDisplayName}</div>
+                                </div>
+                            </div>
+                        )}
+                    >
+                        <ul className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list">
+                            {manageAccountURL && (
+                                <li>
+                                    <a href={manageAccountURL} className="drop-down-menu-base__item">
+                                        <span className="label">{accountButtonText}</span>
+                                    </a>
+                                </li>
+                            )}
+
+                            {onSignOutClickHandler && (
+                                <li>
+                                    <Button className="drop-down-menu-base__item" onClickHandler={onSignOutClickHandler} appearance="no-style">
+                                        <span className="label">{signOutButtonText}</span>
+                                    </Button>
+                                </li>
+                            )}
+                        </ul>
+                    </SubNavigationMobileMenu>
+                )}
+            </div>
+        );
+    }
+
+    private _renderNavLinks(): JSX.Element {
+        const { visibleNavLinks } = this.props;
+
+        return (
+            <ul className="drop-down-menu-base__menu-list">
+                {visibleNavLinks.map(navLink => (
+                    <li key={navLink.path}>
+                        {!navLink.subRoutes && (
+                            <NavLink
+                                to={navLink.path}
+                                activeClassName="active"
+                                className="drop-down-menu-base__item"
+                                onClick={this._onCloseMobileMenuHandler}
+                            >
+                                <span className="label">{navLink.label}</span>
+                            </NavLink>
+                        )}
+                        {navLink.subRoutes && (
+                            <SubNavigationMobileMenu
+                                menuLabel={navLink.label}
+                            >
+                                <ul className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list">
+                                    {navLink.subRoutes && navLink.subRoutes.map(subNavItem => (
+                                        <li>
+                                            <NavLink
+                                                key={subNavItem.path}
+                                                to={subNavItem.path}
+                                                activeClassName="active"
+                                                className="drop-down-menu-base__item"
+                                                onClick={this._onCloseMobileMenuHandler}
+                                            >
+                                                <span className="label">{subNavItem.label}</span>
+                                            </NavLink>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </SubNavigationMobileMenu>
+                        )}
+                    </li>
+
+                ))}
+            </ul>
+        );
     }
 
     render(): JSX.Element {
-        const {
-            onSignOutClickHandler, onSignInClickHandler, manageAccountURL, showMobileMenu,
-            signedOut, accountButtonText, signOutButtonText, accountImageURL, accountDisplayName,
-            signInButtonText, showMobileAccountNav, visibleNavLinks,
-        } = this.props;
-        const { showAccountNav } = this.state;
+        const { showMobileMenu, showMobileAccountNav } = this.props;
 
         return (
             <div className="navigation__mobile hide-sm">
@@ -93,82 +172,8 @@ export class NavigationMobile extends
                     slideDirection="left"
                 >
                     <div>
-                        {showMobileAccountNav && (
-                            <div className="navigation__account">
-                                {signedOut && (
-                                    <Button
-                                        appearance="secondary"
-                                        className="navigation__account-sign-in-btn"
-                                        onClickHandler={onSignInClickHandler}
-                                    >
-                                        {signInButtonText}
-                                    </Button>
-                                )}
-                                {!signedOut && (
-                                    <SlideOutContainer
-                                        isOpen={showAccountNav}
-                                        panelArrowWidth="1.2rem"
-                                        headerText={(
-                                            <div className="layout layout--align-middle">
-                                                <div className="layout__item u-fit">
-                                                    <ProfileImage imageURL={accountImageURL} size="3.6rem" />
-                                                </div>
-                                                <div className="layout__item u-fill">
-                                                    <div className="navigation__account-name truncate">{accountDisplayName}</div>
-                                                </div>
-                                            </div>
-                                        )}
-                                        onHeaderClick={
-                                            () => this._toggleShowAccountNav(!showAccountNav)
-                                        }
-                                    >
-                                        <ul className="navigation__account-options drop-down-menu-base__menu-list">
-                                            {manageAccountURL && (
-                                                <li>
-                                                    <a href={manageAccountURL} className="drop-down-menu-base__item">
-                                                        <span className="label">{accountButtonText}</span>
-                                                    </a>
-                                                </li>
-                                            )}
-
-                                            {onSignOutClickHandler && (
-                                                <li>
-                                                    <Button className="drop-down-menu-base__item" onClickHandler={onSignOutClickHandler} appearance="no-style">
-                                                        <span className="label">{signOutButtonText}</span>
-                                                    </Button>
-                                                </li>
-                                            )}
-                                        </ul>
-                                    </SlideOutContainer>
-                                )}
-                            </div>
-                        )}
-                        <ul className="drop-down-menu-base__menu-list">
-                            {visibleNavLinks.map(navLink => (
-                                <li key={navLink.path}>
-                                    <NavLink
-                                        to={navLink.path}
-                                        activeClassName={navLink.subRoutes ? null : 'active'}
-                                        className="drop-down-menu-base__item"
-                                        onClick={this._onCloseMobileMenuHandler}
-                                    >
-                                        <span className="label">{navLink.label}</span>
-                                    </NavLink>
-                                    {navLink.subRoutes && navLink.subRoutes.map(subNavItem => (
-                                        <NavLink
-                                            key={subNavItem.path}
-                                            to={subNavItem.path}
-                                            activeClassName="active"
-                                            className="mobile-sub-navigation-menu-item drop-down-menu-base__item"
-                                            onClick={this._onCloseMobileMenuHandler}
-                                        >
-                                            <span className="label">{subNavItem.label}</span>
-                                        </NavLink>
-                                    ))}
-                                </li>
-
-                            ))}
-                        </ul>
+                        {showMobileAccountNav && this._renderAccountNav()}
+                        {this._renderNavLinks()}
                     </div>
                 </SlideInPanel>
             </div>

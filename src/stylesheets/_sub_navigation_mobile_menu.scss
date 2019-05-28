@@ -1,0 +1,17 @@
+.sub-navigation-mobile-menu {
+    .slide-out-container__header {
+        font-size: 1.4rem;
+        padding: 1.2rem 2.4rem;
+        font-family: $font-primary;
+    }
+
+    .slide-out-container__body {
+        padding: 0;
+    }
+}
+
+.sub-navigation-mobile-menu__options {
+    background: $color-grey-lightest;
+    border-top: 1px solid $color-border-light;
+    border-bottom: 1px solid $color-border-light;
+}

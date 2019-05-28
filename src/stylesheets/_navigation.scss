@@ -75,7 +75,7 @@
     }
 
     .drop-down-menu-base__item {
-        padding: 1.2rem 3.6rem;
+        padding: 1.2rem 2.4rem;
 
         &.active .label {
             border-bottom: 2px solid  $color-border-active;
@@ -91,19 +91,14 @@
     border-bottom: 1px solid $color-border-light;
     margin-bottom: 1.2rem;
 
-    .slide-out-container__header {
-        padding: 2.4rem 1.8rem;
+    .sub-navigation-mobile-menu .slide-out-container__header {
+        padding: 2.4rem 2.4rem 2.4rem 1.8rem;
         font-family: $font-primary;
     }
 
-    .slide-out-container__body {
-        padding: 0;
+    .sub-navigation-mobile-menu__options {
+        border-bottom: none;
     }
-}
-
-.navigation__account-options {
-    background: $color-grey-lightest;
-    border-top: 1px solid $color-border-light;
 }
 
 .navigation__account-sign-in-btn {
