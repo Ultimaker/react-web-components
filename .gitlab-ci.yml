@@ -37,7 +37,7 @@ publish:
   stage: deploy
   script:
     - npm --no-git-tag-version version from-git
-    - GIT_SSH_COMMAND="ssh -i ${CI_PROJECT_DIR}/id_rsa" git push git@github.com:Ultimaker/react-web-components.git HEAD:master
+    - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -i ${CI_PROJECT_DIR}/id_rsa" git push git@github.com:Ultimaker/react-web-components.git HEAD:master
     - npm publish
   only:
     - tags
