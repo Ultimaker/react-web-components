@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SubNavigationMenu component should render 1`] = `
+<div
+  className="sub-navigation-menu"
+>
+  <DropDownMenu
+    activeLabel="Home"
+  >
+    <div>
+      Test
+    </div>
+  </DropDownMenu>
+</div>
+`;
+
+exports[`The SubNavigationMenu component should render as active 1`] = `
+<div
+  className="sub-navigation-menu sub-navigation-menu--active"
+>
+  <DropDownMenu
+    activeLabel="Home"
+  >
+    <div>
+      Test
+    </div>
+  </DropDownMenu>
+</div>
+`;
