@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The NavigationDesktop component should render 1`] = `
+<div
+  className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
+>
+  <div
+    className="layout__item u-fit-sm"
+  >
+    <nav
+      className="navigation__container"
+      role="navigation"
+    >
+      <ul
+        className="navigation__nav-list"
+      >
+        <li
+          key="/home"
+        >
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="navigation__nav-link"
+            to="/home"
+          >
+            <span
+              className="label"
+            >
+              Home
+            </span>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`The NavigationDesktop component should render navigation label 1`] = `
+<div
+  className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
+>
+  <div
+    className="layout__item u-fit-sm"
+  >
+    <nav
+      className="navigation__container"
+      role="navigation"
+    >
+      <ul
+        className="navigation__nav-list"
+      >
+        <li
+          key="/home"
+        >
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="navigation__nav-link"
+            to="/home"
+          >
+            <span
+              className="label"
+            >
+              Home
+            </span>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div
+    className="layout__item layout__item--right u-fit"
+  >
+    <div
+      className="navigation__label"
+    >
+      Nav Label
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The NavigationDesktop component should render sub navigation 1`] = `
+<div
+  className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
+>
+  <div
+    className="layout__item u-fit-sm"
+  >
+    <nav
+      className="navigation__container"
+      role="navigation"
+    >
+      <ul
+        className="navigation__nav-list"
+      >
+        <li
+          key="/home"
+        >
+          <SubNavigationMenu
+            active={false}
+            menuLabel="Home"
+          >
+            <SubNavigationMenuItem
+              key="/home/teams"
+              label="Teams"
+              path="/home/teams"
+            />
+            <SubNavigationMenuItem
+              key="/home/printers"
+              label="Printers"
+              path="/home/printers"
+            />
+          </SubNavigationMenu>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;

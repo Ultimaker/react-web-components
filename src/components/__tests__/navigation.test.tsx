@@ -1,11 +1,9 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { BrowserRouter, NavLink } from 'react-router-dom';
 
 // component
 import { Navigation, NavigationProps } from '../navigation';
-import SlideOutContainer from '../slide_out_container';
 
 describe('The Navigation component', () => {
     let props: NavigationProps;
