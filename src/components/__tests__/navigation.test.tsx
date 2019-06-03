@@ -46,40 +46,9 @@ describe('The Navigation component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render sign out button', () => {
-        wrapper = shallow(
-            <BrowserRouter>
-                <Navigation {...props} onSignOutClickHandler={jest.fn()} />
-            </BrowserRouter>,
-        );
-        expect(wrapper.render()).toMatchSnapshot();
-    });
-
-    it('should render manage account button', () => {
-        wrapper = shallow(
-            <BrowserRouter>
-                <Navigation {...props} manageAccountURL="https://account.ultimaker.com/" />
-            </BrowserRouter>,
-        );
-        expect(wrapper.render()).toMatchSnapshot();
-    });
-
-    it('should close mobile navigation menu when navigating', () => {
-        wrapper = shallow(<Navigation {...props} />);
-        wrapper.find(NavLink).first().props().onClick();
-        expect(props.onCloseMobileMenuHandler).toBeCalled();
-    });
-
-    it('should show account mobile navigation menu', () => {
-        wrapper = shallow(<Navigation {...props} />);
-        expect(wrapper.find(SlideOutContainer).props().isOpen).toBe(false);
-        wrapper.find(SlideOutContainer).props().onHeaderClick();
-        expect(wrapper.find(SlideOutContainer).props().isOpen).toBe(true);
-    });
-
     it('should render navigation label', () => {
         wrapper = shallow(<Navigation {...props} navLabel="Nav Label" />);
-        expect(wrapper.find('.navigation__label').text()).toBe('Nav Label');
+        expect(wrapper).toMatchSnapshot();
     });
 
     it('should not render desktop navigation if no visible links or label', () => {

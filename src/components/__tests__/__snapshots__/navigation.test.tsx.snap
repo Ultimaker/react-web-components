@@ -247,6 +247,40 @@ exports[`The Navigation component should render manage account button 1`] = `
 </div>
 `;
 
+exports[`The Navigation component should render navigation label 1`] = `
+<div
+  className="navigation"
+>
+  <withRouter(NavigationDesktop)
+    navLabel="Nav Label"
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
+  <NavigationMobile
+    accountButtonText="Account"
+    onCloseMobileMenuHandler={[MockFunction]}
+    showMobileAccountNav={true}
+    signOutButtonText="Sign out"
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
+</div>
+`;
+
 exports[`The Navigation component should render sign out button 1`] = `
 <div
   class="navigation"
