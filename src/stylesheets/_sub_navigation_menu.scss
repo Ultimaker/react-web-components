@@ -26,3 +26,11 @@
         }
     }
 }
+
+.sub-navigation-menu-item {
+    max-width: 30rem;
+
+    .label {
+        @extend .truncate;
+    }
+}
