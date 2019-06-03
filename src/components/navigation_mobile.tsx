@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 // components
 import Button from './button';
 import ProfileImage from './profile_image';
-import SlideOutContainer from './slide_out_container';
 import SlideInPanel from './slide_in_panel';
 import SubNavigationMobileMenu from './sub_navigation_mobile_menu';
 
@@ -102,7 +101,11 @@ export class NavigationMobile extends React.Component<NavigationMobileProps, {}>
 
                             {onSignOutClickHandler && (
                                 <li>
-                                    <Button className="drop-down-menu-base__item" onClickHandler={onSignOutClickHandler} appearance="no-style">
+                                    <Button
+                                        className="navigation__account-sign-out-btn drop-down-menu-base__item"
+                                        onClickHandler={onSignOutClickHandler}
+                                        appearance="no-style"
+                                    >
                                         <span className="label">{signOutButtonText}</span>
                                     </Button>
                                 </li>

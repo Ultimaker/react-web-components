@@ -1,10 +1,9 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { BrowserRouter, NavLink } from 'react-router-dom';
 
 // component
-import { NavigationDesktop, NavigationDesktopProps } from '../navigation_desktop';
+import { NavigationDesktop } from '../navigation_desktop';
 
 describe('The NavigationDesktop component', () => {
     let props;

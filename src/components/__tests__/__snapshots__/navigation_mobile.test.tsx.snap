@@ -1,0 +1,378 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The NavigationMobile component should render 1`] = `
+<div
+  className="navigation__mobile hide-sm"
+>
+  <SlideInPanel
+    includeHeader={false}
+    onOverlayClickHandler={[Function]}
+    slideDirection="left"
+    width="30rem"
+  >
+    <div>
+      <div
+        className="navigation__account"
+      >
+        <SubNavigationMobileMenu
+          menuLabel={
+            <div
+              className="layout layout--align-middle"
+            >
+              <div
+                className="layout__item u-fit"
+              >
+                <ProfileImage
+                  size="3.6rem"
+                />
+              </div>
+              <div
+                className="layout__item u-fill"
+              >
+                <div
+                  className="navigation__account-name truncate"
+                />
+              </div>
+            </div>
+          }
+        >
+          <ul
+            className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list"
+          />
+        </SubNavigationMobileMenu>
+      </div>
+      <ul
+        className="drop-down-menu-base__menu-list"
+      >
+        <li
+          key="/home"
+        >
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="drop-down-menu-base__item"
+            onClick={[Function]}
+            to="/home"
+          >
+            <span
+              className="label"
+            >
+              Home
+            </span>
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+  </SlideInPanel>
+</div>
+`;
+
+exports[`The NavigationMobile component should render account link 1`] = `
+<div
+  className="navigation__mobile hide-sm"
+>
+  <SlideInPanel
+    includeHeader={false}
+    onOverlayClickHandler={[Function]}
+    slideDirection="left"
+    width="30rem"
+  >
+    <div>
+      <div
+        className="navigation__account"
+      >
+        <SubNavigationMobileMenu
+          menuLabel={
+            <div
+              className="layout layout--align-middle"
+            >
+              <div
+                className="layout__item u-fit"
+              >
+                <ProfileImage
+                  size="3.6rem"
+                />
+              </div>
+              <div
+                className="layout__item u-fill"
+              >
+                <div
+                  className="navigation__account-name truncate"
+                />
+              </div>
+            </div>
+          }
+        >
+          <ul
+            className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list"
+          >
+            <li>
+              <a
+                className="drop-down-menu-base__item"
+                href="/signout"
+              >
+                <span
+                  className="label"
+                >
+                  Account
+                </span>
+              </a>
+            </li>
+          </ul>
+        </SubNavigationMobileMenu>
+      </div>
+      <ul
+        className="drop-down-menu-base__menu-list"
+      >
+        <li
+          key="/home"
+        >
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="drop-down-menu-base__item"
+            onClick={[Function]}
+            to="/home"
+          >
+            <span
+              className="label"
+            >
+              Home
+            </span>
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+  </SlideInPanel>
+</div>
+`;
+
+exports[`The NavigationMobile component should render sign in button 1`] = `
+<div
+  className="navigation__mobile hide-sm"
+>
+  <SlideInPanel
+    includeHeader={false}
+    onOverlayClickHandler={[Function]}
+    slideDirection="left"
+    width="30rem"
+  >
+    <div>
+      <div
+        className="navigation__account"
+      >
+        <Button
+          appearance="secondary"
+          className="navigation__account-sign-in-btn"
+          linkToNewTab={false}
+          shape="rectangle"
+          type="button"
+        />
+      </div>
+      <ul
+        className="drop-down-menu-base__menu-list"
+      >
+        <li
+          key="/home"
+        >
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="drop-down-menu-base__item"
+            onClick={[Function]}
+            to="/home"
+          >
+            <span
+              className="label"
+            >
+              Home
+            </span>
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+  </SlideInPanel>
+</div>
+`;
+
+exports[`The NavigationMobile component should render sign out button 1`] = `
+<div
+  className="navigation__mobile hide-sm"
+>
+  <SlideInPanel
+    includeHeader={false}
+    onOverlayClickHandler={[Function]}
+    slideDirection="left"
+    width="30rem"
+  >
+    <div>
+      <div
+        className="navigation__account"
+      >
+        <SubNavigationMobileMenu
+          menuLabel={
+            <div
+              className="layout layout--align-middle"
+            >
+              <div
+                className="layout__item u-fit"
+              >
+                <ProfileImage
+                  size="3.6rem"
+                />
+              </div>
+              <div
+                className="layout__item u-fill"
+              >
+                <div
+                  className="navigation__account-name truncate"
+                />
+              </div>
+            </div>
+          }
+        >
+          <ul
+            className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list"
+          >
+            <li>
+              <Button
+                appearance="no-style"
+                className="navigation__account-sign-out-btn drop-down-menu-base__item"
+                linkToNewTab={false}
+                onClickHandler={[MockFunction]}
+                shape="rectangle"
+                type="button"
+              >
+                <span
+                  className="label"
+                >
+                  Sign out
+                </span>
+              </Button>
+            </li>
+          </ul>
+        </SubNavigationMobileMenu>
+      </div>
+      <ul
+        className="drop-down-menu-base__menu-list"
+      >
+        <li
+          key="/home"
+        >
+          <NavLink
+            activeClassName="active"
+            aria-current="page"
+            className="drop-down-menu-base__item"
+            onClick={[Function]}
+            to="/home"
+          >
+            <span
+              className="label"
+            >
+              Home
+            </span>
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+  </SlideInPanel>
+</div>
+`;
+
+exports[`The NavigationMobile component should render sub navigation 1`] = `
+<div
+  className="navigation__mobile hide-sm"
+>
+  <SlideInPanel
+    includeHeader={false}
+    onOverlayClickHandler={[Function]}
+    slideDirection="left"
+    width="30rem"
+  >
+    <div>
+      <div
+        className="navigation__account"
+      >
+        <SubNavigationMobileMenu
+          menuLabel={
+            <div
+              className="layout layout--align-middle"
+            >
+              <div
+                className="layout__item u-fit"
+              >
+                <ProfileImage
+                  size="3.6rem"
+                />
+              </div>
+              <div
+                className="layout__item u-fill"
+              >
+                <div
+                  className="navigation__account-name truncate"
+                />
+              </div>
+            </div>
+          }
+        >
+          <ul
+            className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list"
+          />
+        </SubNavigationMobileMenu>
+      </div>
+      <ul
+        className="drop-down-menu-base__menu-list"
+      >
+        <li
+          key="/home"
+        >
+          <SubNavigationMobileMenu
+            menuLabel="Home"
+          >
+            <ul
+              className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list"
+            >
+              <li
+                key="/home/teams"
+              >
+                <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  className="drop-down-menu-base__item"
+                  key="/home/teams"
+                  onClick={[Function]}
+                  to="/home/teams"
+                >
+                  <span
+                    className="label"
+                  >
+                    Teams
+                  </span>
+                </NavLink>
+              </li>
+              <li
+                key="/home/printers"
+              >
+                <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  className="drop-down-menu-base__item"
+                  key="/home/printers"
+                  onClick={[Function]}
+                  to="/home/printers"
+                >
+                  <span
+                    className="label"
+                  >
+                    Printers
+                  </span>
+                </NavLink>
+              </li>
+            </ul>
+          </SubNavigationMobileMenu>
+        </li>
+      </ul>
+    </div>
+  </SlideInPanel>
+</div>
+`;
