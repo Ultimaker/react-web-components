@@ -4,57 +4,13 @@ exports[`The Navigation component should not render desktop navigation if no vis
 <div
   className="navigation"
 >
-  <div
-    className="navigation__mobile hide-sm"
-  >
-    <SlideInPanel
-      includeHeader={false}
-      onOverlayClickHandler={[Function]}
-      slideDirection="left"
-      width="30rem"
-    >
-      <div>
-        <div
-          className="navigation__account"
-        >
-          <SlideOutContainer
-            headerText={
-              <div
-                className="layout layout--align-middle"
-              >
-                <div
-                  className="layout__item u-fit"
-                >
-                  <ProfileImage
-                    size="3.6rem"
-                  />
-                </div>
-                <div
-                  className="layout__item u-fill"
-                >
-                  <div
-                    className="navigation__account-name truncate"
-                  />
-                </div>
-              </div>
-            }
-            headerTextAlignment="left"
-            isOpen={false}
-            onHeaderClick={[Function]}
-            panelArrowWidth="1.2rem"
-            showHeaderPanelArrow={true}
-          >
-            <ul
-              className="navigation__account-options drop-down-menu-base__menu-list"
-            />
-          </SlideOutContainer>
-        </div>
-        <ul
-          className="drop-down-menu-base__menu-list"
-        />
-      </div>
-    </SlideInPanel>
-  </div>
+  <NavigationMobile
+    accountButtonText="Account"
+    onCloseMobileMenuHandler={[MockFunction]}
+    showMobileAccountNav={true}
+    signOutButtonText="Sign out"
+    visibleNavLinks={Array []}
+  />
 </div>
 `;
 
@@ -62,109 +18,32 @@ exports[`The Navigation component should render 1`] = `
 <div
   className="navigation"
 >
-  <div
-    className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
-  >
-    <div
-      className="layout__item u-fit-sm"
-    >
-      <nav
-        className="navigation__container"
-        role="navigation"
-      >
-        <ul
-          className="navigation__nav-list"
-        >
-          <li
-            key="/home"
-          >
-            <NavLink
-              activeClassName="active"
-              aria-current="page"
-              className="navigation__nav-link"
-              onClick={[Function]}
-              to="/home"
-            >
-              <span
-                className="label"
-              >
-                Home
-              </span>
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div
-    className="navigation__mobile hide-sm"
-  >
-    <SlideInPanel
-      includeHeader={false}
-      onOverlayClickHandler={[Function]}
-      slideDirection="left"
-      width="30rem"
-    >
-      <div>
-        <div
-          className="navigation__account"
-        >
-          <SlideOutContainer
-            headerText={
-              <div
-                className="layout layout--align-middle"
-              >
-                <div
-                  className="layout__item u-fit"
-                >
-                  <ProfileImage
-                    size="3.6rem"
-                  />
-                </div>
-                <div
-                  className="layout__item u-fill"
-                >
-                  <div
-                    className="navigation__account-name truncate"
-                  />
-                </div>
-              </div>
-            }
-            headerTextAlignment="left"
-            isOpen={false}
-            onHeaderClick={[Function]}
-            panelArrowWidth="1.2rem"
-            showHeaderPanelArrow={true}
-          >
-            <ul
-              className="navigation__account-options drop-down-menu-base__menu-list"
-            />
-          </SlideOutContainer>
-        </div>
-        <ul
-          className="drop-down-menu-base__menu-list"
-        >
-          <li
-            key="/home"
-          >
-            <NavLink
-              activeClassName="active"
-              aria-current="page"
-              className="drop-down-menu-base__item"
-              onClick={[Function]}
-              to="/home"
-            >
-              <span
-                className="label"
-              >
-                Home
-              </span>
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </SlideInPanel>
-  </div>
+  <withRouter(NavigationDesktop)
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
+  <NavigationMobile
+    accountButtonText="Account"
+    onCloseMobileMenuHandler={[MockFunction]}
+    showMobileAccountNav={true}
+    signOutButtonText="Sign out"
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
 </div>
 `;
 
@@ -222,120 +101,124 @@ exports[`The Navigation component should render manage account button 1`] = `
               class="navigation__account"
             >
               <div
-                class="slide-out-container"
+                class="sub-navigation-mobile-menu"
               >
-                <button
-                  class="btn btn--no-style btn--rectangle slide-out-container__header"
-                  type="button"
+                <div
+                  class="slide-out-container"
                 >
-                  <span
-                    class="text"
+                  <button
+                    class="btn btn--no-style btn--rectangle slide-out-container__header"
+                    type="button"
                   >
-                    <div
-                      class="layout layout--align-middle"
+                    <span
+                      class="text"
                     >
                       <div
-                        class="layout__item u-fill"
-                        style="text-align:left"
+                        class="layout layout--align-middle"
                       >
                         <div
-                          class="layout layout--align-middle"
+                          class="layout__item u-fill"
+                          style="text-align:left"
                         >
                           <div
-                            class="layout__item u-fit"
+                            class="layout layout--align-middle"
                           >
                             <div
-                              class="profile-image"
+                              class="layout__item u-fit"
                             >
                               <div
-                                class="circle-icon icon icon--circle primary disabled"
-                                style="width:3.6rem;height:3.6rem"
+                                class="profile-image"
                               >
                                 <div
-                                  class="icon icon--profile"
+                                  class="circle-icon icon icon--circle primary disabled"
+                                  style="width:3.6rem;height:3.6rem"
                                 >
-                                  <svg
-                                    data-name="Layer 1"
-                                    id="Layer_1"
-                                    viewBox="0 0 32 32"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                  <div
+                                    class="icon icon--profile"
                                   >
-                                    <path
-                                      d="M16,3c2.45,0,3.44.44,3.44,4.83,0,2.61-1.57,4.82-3.44,4.82s-3.44-2.21-3.44-4.82C12.56,3.44,13.55,3,16,3m0-3C10.5,0,9.56,3.5,9.56,7.83s2.88,7.82,6.44,7.82,6.44-3.5,6.44-7.82S21.49,0,16,0Z"
-                                    />
-                                    <path
-                                      d="M3.83,27.46v0Z"
-                                    />
-                                    <path
-                                      d="M28.17,27.56v0Z"
-                                    />
-                                    <path
-                                      d="M20.3,19.46A8.13,8.13,0,0,1,16,20.6a8.13,8.13,0,0,1-4.3-1.14c-2.13.48-3.34,1-3.88,1.74-.73,1-.92,3.06-1,5.89v.11c.92.63,3.42,1.8,9.15,1.8s8.22-1.17,9.15-1.8c0-2.87-.23-5-1-6C23.67,20.5,22.44,19.94,20.3,19.46Z"
-                                      fill="none"
-                                    />
-                                    <path
-                                      d="M28.15,27.28c-.12-7.53-1.1-9.67-8.62-11A4.51,4.51,0,0,1,16,17.6a4.51,4.51,0,0,1-3.53-1.35C5,17.59,4,19.71,3.85,27a4.59,4.59,0,0,1,0,.58v.77S5.62,32,16,32s12.17-3.61,12.17-3.61V27.8h0A4,4,0,0,1,28.15,27.28ZM16,29c-5.73,0-8.23-1.17-9.15-1.8v-.11c.05-2.83.24-4.91,1-5.89.54-.72,1.75-1.26,3.88-1.74A8.13,8.13,0,0,0,16,20.6a8.13,8.13,0,0,0,4.3-1.14c2.14.48,3.37,1,3.89,1.76.73,1,.91,3.11,1,6C24.22,27.83,21.73,29,16,29Z"
-                                    />
-                                  </svg>
+                                    <svg
+                                      data-name="Layer 1"
+                                      id="Layer_1"
+                                      viewBox="0 0 32 32"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M16,3c2.45,0,3.44.44,3.44,4.83,0,2.61-1.57,4.82-3.44,4.82s-3.44-2.21-3.44-4.82C12.56,3.44,13.55,3,16,3m0-3C10.5,0,9.56,3.5,9.56,7.83s2.88,7.82,6.44,7.82,6.44-3.5,6.44-7.82S21.49,0,16,0Z"
+                                      />
+                                      <path
+                                        d="M3.83,27.46v0Z"
+                                      />
+                                      <path
+                                        d="M28.17,27.56v0Z"
+                                      />
+                                      <path
+                                        d="M20.3,19.46A8.13,8.13,0,0,1,16,20.6a8.13,8.13,0,0,1-4.3-1.14c-2.13.48-3.34,1-3.88,1.74-.73,1-.92,3.06-1,5.89v.11c.92.63,3.42,1.8,9.15,1.8s8.22-1.17,9.15-1.8c0-2.87-.23-5-1-6C23.67,20.5,22.44,19.94,20.3,19.46Z"
+                                        fill="none"
+                                      />
+                                      <path
+                                        d="M28.15,27.28c-.12-7.53-1.1-9.67-8.62-11A4.51,4.51,0,0,1,16,17.6a4.51,4.51,0,0,1-3.53-1.35C5,17.59,4,19.71,3.85,27a4.59,4.59,0,0,1,0,.58v.77S5.62,32,16,32s12.17-3.61,12.17-3.61V27.8h0A4,4,0,0,1,28.15,27.28ZM16,29c-5.73,0-8.23-1.17-9.15-1.8v-.11c.05-2.83.24-4.91,1-5.89.54-.72,1.75-1.26,3.88-1.74A8.13,8.13,0,0,0,16,20.6a8.13,8.13,0,0,0,4.3-1.14c2.14.48,3.37,1,3.89,1.76.73,1,.91,3.11,1,6C24.22,27.83,21.73,29,16,29Z"
+                                      />
+                                    </svg>
+                                  </div>
                                 </div>
                               </div>
                             </div>
+                            <div
+                              class="layout__item u-fill"
+                            >
+                              <div
+                                class="navigation__account-name truncate"
+                              />
+                            </div>
                           </div>
+                        </div>
+                        <div
+                          class="layout__item u-fit arrow-column"
+                        >
                           <div
-                            class="layout__item u-fill"
+                            class="panel-arrow panel-arrow--black"
+                            style="width:1.2rem"
                           >
                             <div
-                              class="navigation__account-name truncate"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="layout__item u-fit arrow-column"
-                      >
-                        <div
-                          class="panel-arrow panel-arrow--black"
-                          style="width:1.2rem"
-                        >
-                          <div
-                            class="icon icon--single-arrow"
-                          >
-                            <svg
-                              viewBox="0 0 11 7"
+                              class="icon icon--single-arrow"
                             >
-                              <path
-                                d=" M 5.5 4.172 L 9.5 0.172 L 10.914 1.586 L 6.914 5.586 L 5.5 7 L 0.086 1.586 L 1.5 0.172 L 5.5 4.172 Z"
-                              />
-                            </svg>
+                              <svg
+                                viewBox="0 0 11 7"
+                              >
+                                <path
+                                  d=" M 5.5 4.172 L 9.5 0.172 L 10.914 1.586 L 6.914 5.586 L 5.5 7 L 0.086 1.586 L 1.5 0.172 L 5.5 4.172 Z"
+                                />
+                              </svg>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </span>
-                </button>
-                <div
-                  class="spring-container"
-                  style="height:0"
-                >
+                    </span>
+                  </button>
                   <div
-                    class="slide-out-container__body"
+                    class="spring-container"
+                    style="height:0"
                   >
-                    <ul
-                      class="navigation__account-options drop-down-menu-base__menu-list"
+                    <div
+                      class="slide-out-container__body"
                     >
-                      <li>
-                        <a
-                          class="drop-down-menu-base__item"
-                          href="https://account.ultimaker.com/"
-                        >
-                          <span
-                            class="label"
+                      <ul
+                        class="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list"
+                      >
+                        <li>
+                          <a
+                            class="drop-down-menu-base__item"
+                            href="https://account.ultimaker.com/"
                           >
-                            Account
-                          </span>
-                        </a>
-                      </li>
-                    </ul>
+                            <span
+                              class="label"
+                            >
+                              Account
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -418,124 +301,128 @@ exports[`The Navigation component should render sign out button 1`] = `
               class="navigation__account"
             >
               <div
-                class="slide-out-container"
+                class="sub-navigation-mobile-menu"
               >
-                <button
-                  class="btn btn--no-style btn--rectangle slide-out-container__header"
-                  type="button"
+                <div
+                  class="slide-out-container"
                 >
-                  <span
-                    class="text"
+                  <button
+                    class="btn btn--no-style btn--rectangle slide-out-container__header"
+                    type="button"
                   >
-                    <div
-                      class="layout layout--align-middle"
+                    <span
+                      class="text"
                     >
                       <div
-                        class="layout__item u-fill"
-                        style="text-align:left"
+                        class="layout layout--align-middle"
                       >
                         <div
-                          class="layout layout--align-middle"
+                          class="layout__item u-fill"
+                          style="text-align:left"
                         >
                           <div
-                            class="layout__item u-fit"
+                            class="layout layout--align-middle"
                           >
                             <div
-                              class="profile-image"
+                              class="layout__item u-fit"
                             >
                               <div
-                                class="circle-icon icon icon--circle primary disabled"
-                                style="width:3.6rem;height:3.6rem"
+                                class="profile-image"
                               >
                                 <div
-                                  class="icon icon--profile"
+                                  class="circle-icon icon icon--circle primary disabled"
+                                  style="width:3.6rem;height:3.6rem"
                                 >
-                                  <svg
-                                    data-name="Layer 1"
-                                    id="Layer_1"
-                                    viewBox="0 0 32 32"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                  <div
+                                    class="icon icon--profile"
                                   >
-                                    <path
-                                      d="M16,3c2.45,0,3.44.44,3.44,4.83,0,2.61-1.57,4.82-3.44,4.82s-3.44-2.21-3.44-4.82C12.56,3.44,13.55,3,16,3m0-3C10.5,0,9.56,3.5,9.56,7.83s2.88,7.82,6.44,7.82,6.44-3.5,6.44-7.82S21.49,0,16,0Z"
-                                    />
-                                    <path
-                                      d="M3.83,27.46v0Z"
-                                    />
-                                    <path
-                                      d="M28.17,27.56v0Z"
-                                    />
-                                    <path
-                                      d="M20.3,19.46A8.13,8.13,0,0,1,16,20.6a8.13,8.13,0,0,1-4.3-1.14c-2.13.48-3.34,1-3.88,1.74-.73,1-.92,3.06-1,5.89v.11c.92.63,3.42,1.8,9.15,1.8s8.22-1.17,9.15-1.8c0-2.87-.23-5-1-6C23.67,20.5,22.44,19.94,20.3,19.46Z"
-                                      fill="none"
-                                    />
-                                    <path
-                                      d="M28.15,27.28c-.12-7.53-1.1-9.67-8.62-11A4.51,4.51,0,0,1,16,17.6a4.51,4.51,0,0,1-3.53-1.35C5,17.59,4,19.71,3.85,27a4.59,4.59,0,0,1,0,.58v.77S5.62,32,16,32s12.17-3.61,12.17-3.61V27.8h0A4,4,0,0,1,28.15,27.28ZM16,29c-5.73,0-8.23-1.17-9.15-1.8v-.11c.05-2.83.24-4.91,1-5.89.54-.72,1.75-1.26,3.88-1.74A8.13,8.13,0,0,0,16,20.6a8.13,8.13,0,0,0,4.3-1.14c2.14.48,3.37,1,3.89,1.76.73,1,.91,3.11,1,6C24.22,27.83,21.73,29,16,29Z"
-                                    />
-                                  </svg>
+                                    <svg
+                                      data-name="Layer 1"
+                                      id="Layer_1"
+                                      viewBox="0 0 32 32"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M16,3c2.45,0,3.44.44,3.44,4.83,0,2.61-1.57,4.82-3.44,4.82s-3.44-2.21-3.44-4.82C12.56,3.44,13.55,3,16,3m0-3C10.5,0,9.56,3.5,9.56,7.83s2.88,7.82,6.44,7.82,6.44-3.5,6.44-7.82S21.49,0,16,0Z"
+                                      />
+                                      <path
+                                        d="M3.83,27.46v0Z"
+                                      />
+                                      <path
+                                        d="M28.17,27.56v0Z"
+                                      />
+                                      <path
+                                        d="M20.3,19.46A8.13,8.13,0,0,1,16,20.6a8.13,8.13,0,0,1-4.3-1.14c-2.13.48-3.34,1-3.88,1.74-.73,1-.92,3.06-1,5.89v.11c.92.63,3.42,1.8,9.15,1.8s8.22-1.17,9.15-1.8c0-2.87-.23-5-1-6C23.67,20.5,22.44,19.94,20.3,19.46Z"
+                                        fill="none"
+                                      />
+                                      <path
+                                        d="M28.15,27.28c-.12-7.53-1.1-9.67-8.62-11A4.51,4.51,0,0,1,16,17.6a4.51,4.51,0,0,1-3.53-1.35C5,17.59,4,19.71,3.85,27a4.59,4.59,0,0,1,0,.58v.77S5.62,32,16,32s12.17-3.61,12.17-3.61V27.8h0A4,4,0,0,1,28.15,27.28ZM16,29c-5.73,0-8.23-1.17-9.15-1.8v-.11c.05-2.83.24-4.91,1-5.89.54-.72,1.75-1.26,3.88-1.74A8.13,8.13,0,0,0,16,20.6a8.13,8.13,0,0,0,4.3-1.14c2.14.48,3.37,1,3.89,1.76.73,1,.91,3.11,1,6C24.22,27.83,21.73,29,16,29Z"
+                                      />
+                                    </svg>
+                                  </div>
                                 </div>
                               </div>
                             </div>
+                            <div
+                              class="layout__item u-fill"
+                            >
+                              <div
+                                class="navigation__account-name truncate"
+                              />
+                            </div>
                           </div>
+                        </div>
+                        <div
+                          class="layout__item u-fit arrow-column"
+                        >
                           <div
-                            class="layout__item u-fill"
+                            class="panel-arrow panel-arrow--black"
+                            style="width:1.2rem"
                           >
                             <div
-                              class="navigation__account-name truncate"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="layout__item u-fit arrow-column"
-                      >
-                        <div
-                          class="panel-arrow panel-arrow--black"
-                          style="width:1.2rem"
-                        >
-                          <div
-                            class="icon icon--single-arrow"
-                          >
-                            <svg
-                              viewBox="0 0 11 7"
+                              class="icon icon--single-arrow"
                             >
-                              <path
-                                d=" M 5.5 4.172 L 9.5 0.172 L 10.914 1.586 L 6.914 5.586 L 5.5 7 L 0.086 1.586 L 1.5 0.172 L 5.5 4.172 Z"
-                              />
-                            </svg>
+                              <svg
+                                viewBox="0 0 11 7"
+                              >
+                                <path
+                                  d=" M 5.5 4.172 L 9.5 0.172 L 10.914 1.586 L 6.914 5.586 L 5.5 7 L 0.086 1.586 L 1.5 0.172 L 5.5 4.172 Z"
+                                />
+                              </svg>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </span>
-                </button>
-                <div
-                  class="spring-container"
-                  style="height:0"
-                >
+                    </span>
+                  </button>
                   <div
-                    class="slide-out-container__body"
+                    class="spring-container"
+                    style="height:0"
                   >
-                    <ul
-                      class="navigation__account-options drop-down-menu-base__menu-list"
+                    <div
+                      class="slide-out-container__body"
                     >
-                      <li>
-                        <button
-                          class="btn btn--no-style btn--rectangle drop-down-menu-base__item"
-                          type="button"
-                        >
-                          <span
-                            class="text"
+                      <ul
+                        class="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list"
+                      >
+                        <li>
+                          <button
+                            class="btn btn--no-style btn--rectangle drop-down-menu-base__item"
+                            type="button"
                           >
                             <span
-                              class="label"
+                              class="text"
                             >
-                              Sign out
+                              <span
+                                class="label"
+                              >
+                                Sign out
+                              </span>
                             </span>
-                          </span>
-                        </button>
-                      </li>
-                    </ul>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -568,85 +455,33 @@ exports[`The Navigation component should render when signed out 1`] = `
 <div
   className="navigation"
 >
-  <div
-    className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
-  >
-    <div
-      className="layout__item u-fit-sm"
-    >
-      <nav
-        className="navigation__container"
-        role="navigation"
-      >
-        <ul
-          className="navigation__nav-list"
-        >
-          <li
-            key="/home"
-          >
-            <NavLink
-              activeClassName="active"
-              aria-current="page"
-              className="navigation__nav-link"
-              onClick={[Function]}
-              to="/home"
-            >
-              <span
-                className="label"
-              >
-                Home
-              </span>
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div
-    className="navigation__mobile hide-sm"
-  >
-    <SlideInPanel
-      includeHeader={false}
-      onOverlayClickHandler={[Function]}
-      slideDirection="left"
-      width="30rem"
-    >
-      <div>
-        <div
-          className="navigation__account"
-        >
-          <Button
-            appearance="secondary"
-            className="navigation__account-sign-in-btn"
-            linkToNewTab={false}
-            shape="rectangle"
-            type="button"
-          />
-        </div>
-        <ul
-          className="drop-down-menu-base__menu-list"
-        >
-          <li
-            key="/home"
-          >
-            <NavLink
-              activeClassName="active"
-              aria-current="page"
-              className="drop-down-menu-base__item"
-              onClick={[Function]}
-              to="/home"
-            >
-              <span
-                className="label"
-              >
-                Home
-              </span>
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </SlideInPanel>
-  </div>
+  <withRouter(NavigationDesktop)
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
+  <NavigationMobile
+    accountButtonText="Account"
+    onCloseMobileMenuHandler={[MockFunction]}
+    showMobileAccountNav={true}
+    signOutButtonText="Sign out"
+    signedOut={true}
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
 </div>
 `;
 
@@ -654,73 +489,31 @@ exports[`The Navigation component should render without mobile account navigatio
 <div
   className="navigation"
 >
-  <div
-    className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle"
-  >
-    <div
-      className="layout__item u-fit-sm"
-    >
-      <nav
-        className="navigation__container"
-        role="navigation"
-      >
-        <ul
-          className="navigation__nav-list"
-        >
-          <li
-            key="/home"
-          >
-            <NavLink
-              activeClassName="active"
-              aria-current="page"
-              className="navigation__nav-link"
-              onClick={[Function]}
-              to="/home"
-            >
-              <span
-                className="label"
-              >
-                Home
-              </span>
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div
-    className="navigation__mobile hide-sm"
-  >
-    <SlideInPanel
-      includeHeader={false}
-      onOverlayClickHandler={[Function]}
-      slideDirection="left"
-      width="30rem"
-    >
-      <div>
-        <ul
-          className="drop-down-menu-base__menu-list"
-        >
-          <li
-            key="/home"
-          >
-            <NavLink
-              activeClassName="active"
-              aria-current="page"
-              className="drop-down-menu-base__item"
-              onClick={[Function]}
-              to="/home"
-            >
-              <span
-                className="label"
-              >
-                Home
-              </span>
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </SlideInPanel>
-  </div>
+  <withRouter(NavigationDesktop)
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
+  <NavigationMobile
+    accountButtonText="Account"
+    onCloseMobileMenuHandler={[MockFunction]}
+    showMobileAccountNav={false}
+    signOutButtonText="Sign out"
+    visibleNavLinks={
+      Array [
+        Object {
+          "label": "Home",
+          "path": "/home",
+          "visible": true,
+        },
+      ]
+    }
+  />
 </div>
 `;

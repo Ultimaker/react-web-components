@@ -91,4 +91,6 @@ export const Navigation: React.StatelessComponent<NavigationProps> = ({
     );
 };
 
+Navigation.displayName = 'Navigation';
+
 export default Navigation;
