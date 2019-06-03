@@ -24,7 +24,7 @@ export const NavigationDesktop: React.StatelessComponent<NavigationDesktopProps>
                     <ul className="navigation__nav-list">
                         {visibleNavLinks.map(navLink => (
                             <li key={navLink.path}>
-                                {!navLink.subRoutes && (
+                                {(!navLink.subRoutes || navLink.subRoutes.length === 0) && (
                                     <NavLink
                                         to={navLink.path}
                                         activeClassName="active"
@@ -33,7 +33,7 @@ export const NavigationDesktop: React.StatelessComponent<NavigationDesktopProps>
                                         <span className="label">{navLink.label}</span>
                                     </NavLink>
                                 )}
-                                {navLink.subRoutes && (
+                                {navLink.subRoutes && navLink.subRoutes.length > 0 && (
                                     <SubNavigationMenu
                                         menuLabel={navLink.label}
                                         active={location.pathname.startsWith(navLink.path)}
