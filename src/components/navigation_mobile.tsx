@@ -8,7 +8,7 @@ import SlideInPanel from './slide_in_panel';
 import SubNavigationMobileMenu from './sub_navigation_mobile_menu';
 
 // components
-import { NavRoute } from './Navigation';
+import { NavRoute } from './navigation';
 
 export interface NavigationMobileProps {
     /** Details for the visible nav items */

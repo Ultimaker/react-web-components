@@ -4,7 +4,7 @@ import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
 // components
 import SubNavigationMenu from './sub_navigation_menu';
 import SubNavigationMenuItem from './sub_navigation_menu_item';
-import { NavRoute } from './Navigation';
+import { NavRoute } from './navigation';
 
 export interface NavigationDesktopProps extends RouteComponentProps<{}> {
     /** Details for the visible nav items */
