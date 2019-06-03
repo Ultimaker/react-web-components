@@ -137,7 +137,7 @@ export class NavigationMobile extends React.Component<NavigationMobileProps, {}>
                             >
                                 <ul className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list">
                                     {navLink.subRoutes && navLink.subRoutes.map(subNavItem => (
-                                        <li>
+                                        <li key={subNavItem.path}>
                                             <NavLink
                                                 key={subNavItem.path}
                                                 to={subNavItem.path}
