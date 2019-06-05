@@ -23,7 +23,7 @@ import SettingPanel from '../components/setting_panel';
 import Carousel from '../components/carousel';
 import AspectRatioContainer from '../components/aspect_ratio_container';
 import Header from '../components/header';
-import Navigation, { NavRoute } from '../components/navigation';
+import Navigation from '../components/navigation';
 import UserAccountMenu from '../components/user_account_menu';
 import AppSwitcherMenu from '../components/app_switcher_menu';
 

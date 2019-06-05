@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // components
-import PageTitle from './page_title';
+import { PageTitle, PageTitleAlign } from './page_title';
 
 import classNames = require('classnames');
 
@@ -16,16 +16,18 @@ export interface PageProps {
     id?: string;
     /** Additional classes for styling */
     className?: string;
+    /** How to align the page title */
+    titleAlign?: PageTitleAlign;
     /** The page content */
-    children: any;
+    children?: any;
 }
 
 export const Page: React.StatelessComponent<PageProps> = ({
-    title, isBeta, maxWidth, id, className, children,
+    title, isBeta, maxWidth, id, className, titleAlign, children,
 }): JSX.Element => (
     <div id={id} className={classNames('page', className)}>
         <div className="page__content" style={{ maxWidth }}>
-            {title && <PageTitle title={title} isBeta={isBeta} />}
+            {title && <PageTitle title={title} isBeta={isBeta} align={titleAlign} />}
             {children}
         </div>
     </div>

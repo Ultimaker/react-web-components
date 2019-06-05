@@ -3,6 +3,11 @@
 exports[`The PageTitle component should render 1`] = `
 <div
   className="page-title"
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
 >
   <div
     className="page-title__title-container"
