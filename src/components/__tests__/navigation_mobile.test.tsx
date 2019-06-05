@@ -59,6 +59,14 @@ describe('The NavigationMobile component', () => {
         expect(props.onCloseMobileMenuHandler).toBeCalled();
     });
 
+    it('should not call close handler if it is not passed', () => {
+        wrapper.setProps({
+            onCloseMobileMenuHandler: undefined,
+        });
+        wrapper.find(NavLink).first().props().onClick();
+        expect(props.onCloseMobileMenuHandler).not.toBeCalled();
+    });
+
     it('should render sign out button', () => {
         const onSignOutClickHandler = jest.fn();
         wrapper.setProps({
