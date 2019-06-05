@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SubNavigationMenuItem component should render 1`] = `
+<NavLink
+  activeClassName="active"
+  aria-current="page"
+  className="sub-navigation-menu-item drop-down-menu-base__item"
+  onClick={[MockFunction]}
+  to="/home"
+>
+  <div
+    className="label"
+  >
+    Home
+  </div>
+</NavLink>
+`;

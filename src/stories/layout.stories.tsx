@@ -24,8 +24,6 @@ import Carousel from '../components/carousel';
 import AspectRatioContainer from '../components/aspect_ratio_container';
 import Header from '../components/header';
 import Navigation from '../components/navigation';
-import HeaderOld from '../components/header_old';
-import NavigationOld from '../components/navigation_old';
 import UserAccountMenu from '../components/user_account_menu';
 import AppSwitcherMenu from '../components/app_switcher_menu';
 
@@ -161,6 +159,22 @@ const routes = [{
     visible: true,
 },
 {
+    path: '/manage',
+    label: 'Manage',
+    component: null,
+    visible: true,
+    subRoutes: [
+        {
+            path: '/manage/teams',
+            label: 'Teams',
+        },
+        {
+            path: '/manage/printers',
+            label: 'Printers',
+        },
+    ],
+},
+{
     path: '/settings',
     label: 'Settings',
     component: null,
@@ -242,35 +256,6 @@ stories.add('Header', withInfo(
                 Page bottom
                 </div>
             </div>
-        </div>
-    </BrowserRouter>
-)));
-
-stories.add('Header Old', withInfo(
-    'Old application header with navigation',
-)(() => (
-    <BrowserRouter>
-        <div style={{ width: '100vw', marginTop: '-50px' }}>
-            <HeaderOld headerLogoUrl="/" showNav rightSideLabel={text('Label', '')}>
-                <NavigationOld
-                    navLinks={routes}
-                    manageAccountURL={text('Manage Account URL', '')}
-                    onSignOutClickHandler={() => { }}
-                    accountNavText="Account"
-                    signOutNavText="Sign out"
-                >
-                    <UserAccountMenu
-                        onSignOutClickHandler={() => { }}
-                        displayName="Test User"
-                        onSignInClickHandler={() => { }}
-                        triggerWidth="10rem"
-                        accountHeaderText="My account"
-                        accountButtonText="Manage account"
-                        signOutButtonText="Sign out"
-                        signInButtonText="Sign in"
-                    />
-                </NavigationOld>
-            </HeaderOld>
         </div>
     </BrowserRouter>
 )));

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The SubNavigationMobileMenu component should render 1`] = `
+<div
+  className="sub-navigation-mobile-menu"
+>
+  <SlideOutContainer
+    headerText="Home"
+    headerTextAlignment="left"
+    isOpen={false}
+    onHeaderClick={[Function]}
+    panelArrowWidth="1.2rem"
+    showHeaderPanelArrow={true}
+  />
+</div>
+`;

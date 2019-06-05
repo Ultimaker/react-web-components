@@ -1,7 +1,6 @@
 .navigation__desktop {
     background-color: $color-background;
     position: relative;
-    padding: 0 2.4rem;
     border-bottom: 1px solid $color-border-light;
 
     .navigation__container {
@@ -28,7 +27,6 @@
             border: none;
     
         li {
-            flex: 1 1 0;
             margin: 0;
         }
     }
@@ -44,11 +42,12 @@
         justify-content: center;
         text-align: center;
         border-bottom: 3px solid transparent;
+        transition: all 0.2s ease-out;
         @include font-size-text-1;
     
     
         &:hover, &:focus {
-            border-bottom-color: $color-background-darker;
+            color: $color-blue;
             text-decoration: none;
         }
     
@@ -75,10 +74,10 @@
     }
 
     .drop-down-menu-base__item {
-        padding: 1.2rem 3.6rem;
+        padding: 1.8rem 2.4rem;
 
         &.active .label {
-            border-bottom: 2px solid  $color-border-active;
+            color: $color-blue;
         }
 
         &:hover, &:focus {
@@ -89,21 +88,15 @@
 
 .navigation__account {
     border-bottom: 1px solid $color-border-light;
-    margin-bottom: 1.2rem;
 
-    .slide-out-container__header {
-        padding: 2.4rem 1.8rem;
+    .sub-navigation-mobile-menu .slide-out-container__header {
+        padding: 2.4rem;
         font-family: $font-primary;
     }
 
-    .slide-out-container__body {
-        padding: 0;
+    .sub-navigation-mobile-menu__options {
+        border-bottom: none;
     }
-}
-
-.navigation__account-options {
-    background: $color-grey-lightest;
-    border-top: 1px solid $color-border-light;
 }
 
 .navigation__account-sign-in-btn {
