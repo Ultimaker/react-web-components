@@ -20,7 +20,7 @@ export const NavigationDesktop: React.StatelessComponent<NavigationDesktopProps>
     <div className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle">
         {visibleNavLinks.length > 0 && (
             <div className="layout__item u-fit-sm">
-                <nav className="navigation__container" role="navigation">
+                <nav className="navigation__container">
                     <ul className="navigation__nav-list">
                         {visibleNavLinks.map(navLink => (
                             <li key={navLink.path}>

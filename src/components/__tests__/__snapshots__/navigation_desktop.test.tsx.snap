@@ -9,7 +9,6 @@ exports[`The NavigationDesktop component should render 1`] = `
   >
     <nav
       className="navigation__container"
-      role="navigation"
     >
       <ul
         className="navigation__nav-list"
@@ -45,7 +44,6 @@ exports[`The NavigationDesktop component should render navigation label 1`] = `
   >
     <nav
       className="navigation__container"
-      role="navigation"
     >
       <ul
         className="navigation__nav-list"
@@ -90,7 +88,6 @@ exports[`The NavigationDesktop component should render sub navigation 1`] = `
   >
     <nav
       className="navigation__container"
-      role="navigation"
     >
       <ul
         className="navigation__nav-list"
