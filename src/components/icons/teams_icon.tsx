@@ -4,7 +4,7 @@ import { IconWrapper, IconProps } from './icon_wrapper';
 const TeamsIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--teams`}>
         <svg width="72px" height="45px" viewBox="0 0 72 45" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <g id="teams-icon-transparant" stroke="none" strokeWidth="1" fillRule="evenodd">
+            <g id="teams-icon">
                 <circle id="Oval" cx="15.5" cy="7.5" r="7.5" />
                 <circle id="Oval-Copy" cx="57.5" cy="7.5" r="7.5" />
                 <circle id="Oval-Copy-2" cx="36.5" cy="19.5" r="7.5" />
