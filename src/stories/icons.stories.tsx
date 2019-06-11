@@ -45,6 +45,7 @@ import UM3XPrinterIcon from '../components/icons/um3x_printer_icon';
 import UMS5PrinterIcon from '../components/icons/ums5_printer_icon';
 import MultiplyIcon from '../components/icons/multiply_icon';
 import MoveUpIcon from '../components/icons/move_up_icon';
+import TeamsIcon from '../components/icons/teams_icon';
 
 const stories = storiesOf('Icons', module);
 
@@ -253,6 +254,11 @@ stories.add('Icons', withInfo(
                 <GridItem layoutWidth="fit">
                     <Tooltip tooltipText="MoveUpIcon">
                         <MoveUpIcon {...props} />
+                    </Tooltip>
+                </GridItem>
+                <GridItem layoutWidth="fit">
+                    <Tooltip tooltipText="MoveUpIcon">
+                        <TeamsIcon {...props} />
                     </Tooltip>
                 </GridItem>
 
