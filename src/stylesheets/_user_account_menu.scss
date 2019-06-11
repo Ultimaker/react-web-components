@@ -1,4 +1,8 @@
 .user-account-menu {
+    @include respond-to(sm) {
+        margin-left: 2.4rem;
+    }
+
     .drop-down-menu-base__trigger {
         height: auto;
         position: relative;

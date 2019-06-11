@@ -8,11 +8,6 @@
 }
 
 .app-switcher-menu__desktop {
-    @include respond-to(sm) {
-        margin-right: 2.4rem;
-    }
-
-
     .drop-down-menu-base__menu-container {
         bottom: calc(50% - 2.5rem);
     }
