@@ -62,9 +62,10 @@
     display: flex;
 }
 
-// Modifier: gutters
+// Modifier: gutters. The gutter is the space between the items. 
+// Builds a class in the format `.layout--gutter-sm` where sm is the is from the variable list $layout-spacing
 
-@mixin layout-padding($sizes) {
+@mixin layout-gutters($sizes) {
     @each $name, $value in $sizes {
         .layout--gutter-#{$name} {
             margin: 0 (-0.5 * $value);
@@ -92,7 +93,7 @@
     }
 }
 
-@include layout-padding($layout-spacing);
+@include layout-gutters($layout-spacing);
 
 //   layout item
 //  ==========================================================================
@@ -148,7 +149,7 @@
 // Specify the proportional width of an object.
 //
 // Add breakpoint names for responsive widths.
-// Responsive widths are for the breakpoint and above.
+// Responsive widths are for the breakpoint from the variable list $layout-breakpoints
 //
 // 1. Use `flex-basis: auto` with a width to avoid box-sizing bug in IE10/11
 
@@ -188,8 +189,8 @@
     }
 }
 
-/* Intrinsic widths
- * ========================================================================== */
+// Intrinsic widths
+// ==========================================================================
 
 @mixin layout-widths-intrinsic($bp: null) {
     // Make an element shrink wrap its content.
@@ -222,7 +223,7 @@
         flex-basis: 100%;
     }
 
-    // Intrinsic widths at breakpoints
+    // Intrinsic widths at breakpoints from the variable list $layout-breakpoints
     @if $bp {
         @each $name, $value in $bp {
             @media (min-width: $value) {
@@ -254,7 +255,7 @@
 //  ==========================================================================
 
 // Specify the proportional offset before or after an element.
-// Add breakpoint names for responsive offsets.
+// Add breakpoint names for responsive offsets from the variable list $layout-breakpoints
 
 @mixin layout-offsets($columns, $bp: null) {
     // Loop through the number of columns for each denominator of our fractions.
@@ -294,6 +295,13 @@
 @include layout-widths-intrinsic($layout-breakpoints);
 @include layout-offsets($layout-fractions, $layout-breakpoints);
 
+
+// Additional classes
+// ==========================================================================
+
+// Creates the padding classes
+// Builds a class in the format `padding-sm` where sm is the is from the variable list $layout-spacing
+
 @mixin layout-padding($sizes) {
     @each $name, $value in $sizes {
         $valueTB: $value;
@@ -316,7 +324,9 @@
 
 @include layout-padding($layout-spacing);
 
-// Create the hide-{breakpoint} and show-{breakpoint} classes
+// Creates the hide-{breakpoint} and show-{breakpoint} classes
+// Builds a class in the format `hide-sm` where sm is the is from the variable list $layout-breakpoints
+
 @mixin layout-hiding-rules($bp) {
     @each $name, $value in $bp {
         .show-#{$name} {
