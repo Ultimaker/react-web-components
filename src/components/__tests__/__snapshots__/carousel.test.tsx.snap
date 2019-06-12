@@ -8,6 +8,7 @@ exports[`The carousel component should render a carousel 1`] = `
     className="carousel__carousel"
   >
     <AliceCarousel
+      autoHeight={false}
       autoPlay={true}
       autoPlayDirection="ltr"
       autoPlayInterval={5000}
@@ -148,6 +149,7 @@ exports[`The carousel component should render a grid and a carousel 1`] = `
     className="carousel__carousel hide-md"
   >
     <AliceCarousel
+      autoHeight={false}
       autoPlay={true}
       autoPlayDirection="ltr"
       autoPlayInterval={5000}
