@@ -145,3 +145,4 @@ export * from './utils/json_matching';
 export * from './utils/layout_constants';
 export * from './utils/range';
 export * from './utils/split_text_by_new_line';
+export * from './utils/array_intersection';
