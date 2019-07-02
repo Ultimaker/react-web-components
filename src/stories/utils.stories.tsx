@@ -13,6 +13,7 @@ import styles from '@sambego/storybook-styles';
 import copyToClipboard from '../utils/copy_to_clipboard';
 import downloadFile from '../utils/download_file';
 import splitTextByNewLine from '../utils/split_text_by_new_line';
+import arrayIntersection from '../utils/array_intersection';
 
 // inputs
 import TextareaField from '../components/input_fields/textarea_field';
@@ -91,3 +92,41 @@ stories.add('Split text by new line', withState({ value: null })(withInfo('Text 
         <StaticField value={splitTextByNewLine(store.state.value)} id="splitResult" label="Result" />
     </div>
 ))));
+
+stories.add('Array intersection', withState({
+    array1: ['1', '2', '3', '4', '5'],
+    array2: ['4', '5', '6', '7', '8'],
+    result: ['4', '5'],
+})(withInfo('Array intersection')(({ store }) => {
+    const { array1, array2, result } = store.state;
+    return (
+        <div style={{ width: 350 }}>
+            <TextField
+                value={array1}
+                id="array1"
+                onChangeHandler={(id, value) => store.set({
+                    array1: value.split(','),
+                    result: arrayIntersection(value.split(','), array2),
+                })}
+                label="array1"
+            />
+            <TextField
+                value={array2}
+                id="array2"
+                onChangeHandler={(id, value) => store.set({
+                    array2: value.split(','),
+                    result: arrayIntersection(array1, value.split(',')),
+                })}
+                label="array2"
+            />
+            <br />
+            <TextField
+                value={result}
+                id="result"
+                onChangeHandler={() => null}
+                label="result"
+            />
+            <br />
+        </div>
+    );
+})));
