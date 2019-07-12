@@ -7381,9 +7381,9 @@ meow@^3.7.0:
     trim-newlines "^1.0.0"
 
 merge-class-names@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/merge-class-names/-/merge-class-names-1.1.1.tgz#3bd2f38eb5418c464a0fef615484fdf6c8932256"
-  integrity sha512-+UUWBUoFw9QLY/UlBKU/xk9h6OhyG3BUDDuF2eIJcxmusWb/uedvNpZGkysqMw5b/ds+wkX7NJTDSdUuRsCNyA==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/merge-class-names/-/merge-class-names-1.2.0.tgz#cb30ecfc3bdbd96b6f76d0a98777907e5fbb3462"
+  integrity sha512-ifHxhC8DojHT1rG3PHCaJYInUqPd0WO+PxsaYDMkgy7RzfyOFtnlpr/hbhki+m/3R/ujIRVnZkD/AHjgjb5uhg==
 
 merge-deep@^3.0.2:
   version "3.0.2"
@@ -8930,10 +8930,10 @@ react-base16-styling@^0.6.0:
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
 
-react-calendar@^2.18.0:
-  version "2.18.1"
-  resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-2.18.1.tgz#f8ef9468d8566aa0d47d9d70c88917bb2030bcb9"
-  integrity sha512-J3tVim1gLpnsCOaeez+z4QJB5oK6UYLJj5TSMOStSJBvkWMEcTzj7bq7yCJJCNLUg2Vd3i11gJXish0LUFhXaw==
+react-calendar@^2.17.4:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-2.19.0.tgz#5451927c4a8f2136b9732c348bb27f3b91c032b0"
+  integrity sha512-vfmOuYSSzrWmJPJBH2WMLU7mVDPjhslawGBe2VYauN0tzEUt/cX/zsOLC+/PxH+3vD7dG4R7gpspl/q7L850sw==
   dependencies:
     get-user-locale "^1.1.1"
     merge-class-names "^1.1.1"
@@ -8960,17 +8960,17 @@ react-copy-to-clipboard@^5.0.1:
     copy-to-clipboard "^3"
     prop-types "^15.5.8"
 
-react-date-picker@^7.2.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-7.3.0.tgz#1c2398b6b958682853ef8f189c9fb8d500af632c"
-  integrity sha512-uxn4kgVCZPo0PEOeY9kMLkG8b9qJt+doVr/7qfp34jEI5zSdpl4gsZ7UsqxfIZSdGP3y1aQpmOvEAqVwZYHsHw==
+react-date-picker@^6.0.0:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-6.13.0.tgz#3ee21262619ed225e270deeff47c594f7fadd226"
+  integrity sha512-bsqPk10hUytNf0vUZoltVI+0Lx0YsfcpMjhb8FlKUux15UGQx6MnG8Om2OxoFoMyb0gosDH6pAu38wHe6Pf/YQ==
   dependencies:
+    detect-element-overflow "^1.1.1"
     get-user-locale "^1.1.1"
     make-event-props "^1.1.0"
     merge-class-names "^1.1.1"
     prop-types "^15.6.0"
-    react-calendar "^2.18.0"
-    react-fit "^1.0.3"
+    react-calendar "^2.17.4"
     react-lifecycles-compat "^3.0.4"
 
 react-dev-utils@^6.1.0:
@@ -9070,14 +9070,6 @@ react-error-overlay@^5.1.0:
   version "5.1.3"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.3.tgz#16fcbde75ed4dc6161dc6dc959b48e92c6ffa9ad"
   integrity sha512-GoqeM3Xadie7XUApXOjkY3Qhs8RkwB/Za4WMedBGrOKH1eTuKGyoAECff7jiVonJchOx6KZ9i8ILO5XIoHB+Tg==
-
-react-fit@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-fit/-/react-fit-1.0.3.tgz#92bf13bbbf26a809d30e11545ae119b1307ca1af"
-  integrity sha512-hUspwHv7iL8sB5K92kabHjUvxsnbEs+Qpgjk57a/r4lAISwrSTh5qzs2nqDpJypj7UxHOeJp5CmopLtn4FG4zQ==
-  dependencies:
-    detect-element-overflow "^1.1.1"
-    prop-types "^15.6.0"
 
 react-fuzzy@^0.5.2:
   version "0.5.2"
