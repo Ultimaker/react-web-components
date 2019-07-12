@@ -19,7 +19,7 @@ function preventDefault(e: any = window.event): void {
  * This is a replacement to the build-in 'keydown' handler in the browser.
  * @param e - Event object.
  */
-function keydownOverride(e: any): void {
+export function keydownOverride(e: any): void {
     scrollKeys.forEach((code) => {
         if (e.keyCode === code) {
             preventDefault(e);
@@ -31,7 +31,7 @@ function keydownOverride(e: any): void {
  * This is a replacement to the build-in 'mousewheel' and 'scroll' handlers in the browser.
  * @param e - Event object.
  */
-function wheelOverride(e: any): void {
+export function wheelOverride(e: any): void {
     preventDefault(e);
 }
 
@@ -42,10 +42,12 @@ export function enableScrolling(): void {
     if (window.removeEventListener) {
         window.removeEventListener('DOMMouseScroll', wheelOverride, false); // desktop
     }
+    if (document.removeEventListener) {
+        document.removeEventListener('touchmove', preventDefault, false); // mobile
+    }
     window.onmousewheel = null;
     document.onscroll = null;
     document.onkeydown = null;
-    document.removeEventListener('touchmove', preventDefault, false); // mobile
 }
 
 /**
@@ -55,10 +57,12 @@ export function disableScrolling(): void {
     if (window.addEventListener) {
         window.addEventListener('DOMMouseScroll', wheelOverride, false); // desktop
     }
+    if (document.addEventListener) {
+        document.addEventListener('touchmove', preventDefault, false); // mobile
+    }
     window.onmousewheel = wheelOverride;
     document.onscroll = wheelOverride;
     document.onkeydown = keydownOverride;
-    document.addEventListener('touchmove', preventDefault, false); // mobile
 }
 
 export default { enableScrolling, disableScrolling };

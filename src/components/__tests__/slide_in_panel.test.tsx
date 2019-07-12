@@ -5,6 +5,9 @@ import { shallow, mount } from 'enzyme';
 // component
 import SlideInPanel from '../slide_in_panel';
 
+// utils
+import {wheelOverride, keydownOverride} from '../../utils/toggle_scrolling'
+
 // mocks
 import { mockClickEvent } from '../../__mocks__/clickMock';
 
@@ -60,18 +63,28 @@ describe('The SlideInPanel component', () => {
 
     it('should not allow the background to scroll when open', () => {
         const { id } = wrapper.state();
-        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
+        expect(window.onmousewheel).toBeFalsy();
+        expect(document.onscroll).toBeFalsy();
+        expect(document.onkeydown).toBeFalsy();
         wrapper.setProps({ isOpen: true });
-        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(true);
+        expect(window.onmousewheel).toBe(wheelOverride);
+        expect(document.onscroll).toBe(wheelOverride);
+        expect(document.onkeydown).toBe(keydownOverride);
         wrapper.setProps({ isOpen: false });
-        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
+        expect(window.onmousewheel).toBeFalsy();
+        expect(document.onscroll).toBeFalsy();
+        expect(document.onkeydown).toBeFalsy();
     });
 
     it('should allow the background to scroll after unmount', () => {
         const { id } = wrapper.state();
         wrapper.setProps({ isOpen: true });
-        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(true);
+        expect(window.onmousewheel).toBe(wheelOverride);
+        expect(document.onscroll).toBe(wheelOverride);
+        expect(document.onkeydown).toBe(keydownOverride);
         wrapper.unmount();
-        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
+        expect(window.onmousewheel).toBeFalsy();
+        expect(document.onscroll).toBeFalsy();
+        expect(document.onkeydown).toBeFalsy();
     });
 });
