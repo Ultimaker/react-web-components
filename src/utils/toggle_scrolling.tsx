@@ -61,4 +61,4 @@ export function disableScrolling(): void {
     document.addEventListener('touchmove', preventDefault, false); // mobile
 }
 
-export default { enable_scrolling, disable_scrolling };
+export default { enableScrolling, disableScrolling };
