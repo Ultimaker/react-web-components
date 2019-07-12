@@ -3,7 +3,7 @@ import { Spring, animated } from 'react-spring';
 import classNames from 'classnames';
 
 // utils
-import { enable_scrolling, disable_scrolling } from "../utils/toggle_scrolling"
+import { enableScrolling, disableScrolling } from '../utils/toggle_scrolling';
 
 export interface SlideInPanelHeaderLabels {
     label: string
@@ -51,9 +51,9 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, SlideInPane
 
         if (prevProps.isOpen !== isOpen) {
             if (isOpen) {
-                disable_scrolling();
+                disableScrolling();
             } else {
-                enable_scrolling();
+                enableScrolling();
             }
         }
     }
@@ -61,7 +61,7 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, SlideInPane
     componentWillUnmount(): void {
         const { id } = this.state;
 
-        enable_scrolling();
+        enableScrolling();
     }
 
     private _handleOverlayClick(e: React.MouseEvent<HTMLDivElement>): void {

@@ -2,18 +2,17 @@
 
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
 // left: 37, up: 38, right: 39, down: 40,
-const scroll_keys = [32,33,34,35,36,37,38,39,40];
+const scrollKeys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
 
 /**
  * Robust way to really block default behavior.
  * @param e - Event object.
  */
-function preventDefault(e: any): void {
-    e = e || window.event;
+function preventDefault(e: any = window.event): void {
     if (e.preventDefault) {
         e.preventDefault();
     }
-    e.returnValue = false;  
+    e.returnValue = false;
 }
 
 /**
@@ -21,12 +20,11 @@ function preventDefault(e: any): void {
  * @param e - Event object.
  */
 function keydownOverride(e: any): void {
-    for (var i = scroll_keys.length; i--;) {
-        if (e.keyCode === scroll_keys[i]) {
+    scrollKeys.forEach((code) => {
+        if (e.keyCode === code) {
             preventDefault(e);
-            return;
         }
-    }
+    });
 }
 
 /**
@@ -40,24 +38,27 @@ function wheelOverride(e: any): void {
 /**
  * Enable scrolling in the DOM.
  */
-export function enable_scrolling(): void {
+export function enableScrolling(): void {
     if (window.removeEventListener) {
-        window.removeEventListener('DOMMouseScroll', wheelOverride, false);
+        window.removeEventListener('DOMMouseScroll', wheelOverride, false); // desktop
     }
-    window.onmousewheel = document.onscroll = document.onkeydown = null;  
-    document.removeEventListener('touchmove', preventDefault, false);
+    window.onmousewheel = null;
+    document.onscroll = null;
+    document.onkeydown = null;
+    document.removeEventListener('touchmove', preventDefault, false); // mobile
 }
 
 /**
  * Disable scrolling in the DOM.
  */
-export function disable_scrolling(): void {
+export function disableScrolling(): void {
     if (window.addEventListener) {
-        window.addEventListener('DOMMouseScroll', wheelOverride, false);
+        window.addEventListener('DOMMouseScroll', wheelOverride, false); // desktop
     }
-    window.onmousewheel = document.onscroll = wheelOverride;
+    window.onmousewheel = wheelOverride;
+    document.onscroll = wheelOverride;
     document.onkeydown = keydownOverride;
-    document.addEventListener('touchmove', preventDefault, false);
+    document.addEventListener('touchmove', preventDefault, false); // mobile
 }
 
 export default { enable_scrolling, disable_scrolling };
