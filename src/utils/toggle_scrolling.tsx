@@ -28,41 +28,25 @@ export function keydownOverride(e: any): void {
 }
 
 /**
- * This is a replacement to the build-in 'mousewheel' and 'scroll' handlers in the browser.
- * @param e - Event object.
- */
-export function wheelOverride(e: any): void {
-    preventDefault(e);
-}
-
-/**
  * Enable scrolling in the DOM.
  */
 export function enableScrolling(): void {
-    if (window.removeEventListener) {
-        window.removeEventListener('DOMMouseScroll', wheelOverride, false); // desktop
-    }
-    if (document.removeEventListener) {
-        document.removeEventListener('touchmove', preventDefault, false); // mobile
-    }
+    window.removeEventListener('DOMMouseScroll', preventDefault, false); // desktop
+    document.removeEventListener('touchmove', preventDefault, true); // mobile
+    document.removeEventListener('keydown', keydownOverride, true);
     window.onmousewheel = null;
     document.onscroll = null;
-    document.onkeydown = null;
 }
 
 /**
  * Disable scrolling in the DOM.
  */
 export function disableScrolling(): void {
-    if (window.addEventListener) {
-        window.addEventListener('DOMMouseScroll', wheelOverride, false); // desktop
-    }
-    if (document.addEventListener) {
-        document.addEventListener('touchmove', preventDefault, false); // mobile
-    }
-    window.onmousewheel = wheelOverride;
-    document.onscroll = wheelOverride;
-    document.onkeydown = keydownOverride;
+    window.addEventListener('DOMMouseScroll', preventDefault, false); // desktop
+    document.addEventListener('touchmove', preventDefault, true); // mobile
+    document.addEventListener('keydown', keydownOverride, true);
+    window.onmousewheel = preventDefault;
+    document.onscroll = preventDefault;
 }
 
 export default { enableScrolling, disableScrolling };
