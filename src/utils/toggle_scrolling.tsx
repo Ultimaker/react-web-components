@@ -9,7 +9,7 @@ const scrollKeys = [
     'ArrowLeft', // left
     'ArrowUp', // up
     'ArrowRight', // right
-    'ArrowDown' // down
+    'ArrowDown', // down
 ];
 
 /**
@@ -27,7 +27,7 @@ export function preventDefault(e: Event): void {
  */
 export function keydownOverride(e: KeyboardEvent): void {
     scrollKeys.forEach((code) => {
-        if (e.code == code) {
+        if (e.code === code) {
             preventDefault(e);
         }
     });
