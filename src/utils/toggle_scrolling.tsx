@@ -16,10 +16,8 @@ const scrollKeys = [
  * Robust way to really block default behavior.
  * @param e - Event object.
  */
-function preventDefault(e: any = window.event): void {
-    if (e.preventDefault) {
-        e.preventDefault();
-    }
+export function preventDefault(e: Event): void {
+    e.preventDefault();
     e.returnValue = false;
 }
 
@@ -27,7 +25,7 @@ function preventDefault(e: any = window.event): void {
  * This is a replacement to the build-in 'keydown' handler in the browser.
  * @param e - Event object.
  */
-export function keydownOverride(e: any): void {
+export function keydownOverride(e: KeyboardEvent): void {
     scrollKeys.forEach((code) => {
         if (e.code == code) {
             preventDefault(e);
