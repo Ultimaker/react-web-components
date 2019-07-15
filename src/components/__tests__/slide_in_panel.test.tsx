@@ -6,7 +6,7 @@ import { shallow, mount } from 'enzyme';
 import SlideInPanel from '../slide_in_panel';
 
 // utils
-import {wheelOverride, keydownOverride} from '../../utils/toggle_scrolling'
+import * as toggleScrolling from '../../utils/toggle_scrolling'
 
 // mocks
 import { mockClickEvent } from '../../__mocks__/clickMock';
@@ -14,6 +14,8 @@ import { mockClickEvent } from '../../__mocks__/clickMock';
 describe('The SlideInPanel component', () => {
     let props;
     let wrapper;
+    let enableScrollingSpy;
+    let disableScrollingSpy;
 
     beforeEach(() => {
         props = {
@@ -28,6 +30,8 @@ describe('The SlideInPanel component', () => {
                 <div>Footer</div>
             </SlideInPanel>,
         );
+        enableScrollingSpy = jest.spyOn(toggleScrolling, 'enableScrolling');
+        disableScrollingSpy = jest.spyOn(toggleScrolling, 'disableScrolling');
     });
 
     it('should render', () => {
@@ -61,30 +65,16 @@ describe('The SlideInPanel component', () => {
         expect(wrapper.render()).toMatchSnapshot();
     });
 
-    it('should not allow the background to scroll when open', () => {
-        const { id } = wrapper.state();
-        expect(window.onmousewheel).toBeFalsy();
-        expect(document.onscroll).toBeFalsy();
-        expect(document.onkeydown).toBeFalsy();
+    it('should disable scrolling when opened', () => {
         wrapper.setProps({ isOpen: true });
-        expect(window.onmousewheel).toBe(wheelOverride);
-        expect(document.onscroll).toBe(wheelOverride);
-        expect(document.onkeydown).toBe(keydownOverride);
+        expect(disableScrollingSpy).toHaveBeenCalled();
         wrapper.setProps({ isOpen: false });
-        expect(window.onmousewheel).toBeFalsy();
-        expect(document.onscroll).toBeFalsy();
-        expect(document.onkeydown).toBeFalsy();
+        expect(enableScrollingSpy).toHaveBeenCalled();
     });
 
-    it('should allow the background to scroll after unmount', () => {
-        const { id } = wrapper.state();
+    it('should re-enable scrolling after unmount', () => {
         wrapper.setProps({ isOpen: true });
-        expect(window.onmousewheel).toBe(wheelOverride);
-        expect(document.onscroll).toBe(wheelOverride);
-        expect(document.onkeydown).toBe(keydownOverride);
         wrapper.unmount();
-        expect(window.onmousewheel).toBeFalsy();
-        expect(document.onscroll).toBeFalsy();
-        expect(document.onkeydown).toBeFalsy();
+        expect(enableScrollingSpy).toHaveBeenCalled();
     });
 });
