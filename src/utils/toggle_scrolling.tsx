@@ -1,8 +1,16 @@
 // Adapted from from https://stackoverflow.com/a/4770179
 
-// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-// left: 37, up: 38, right: 39, down: 40,
-const scrollKeys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+const scrollKeys = [
+    "Space", // space
+    "PageDown", // page up
+    "PageDown", // page down
+    "End", // end
+    "Home", // home
+    "ArrowLeft", // left
+    "ArrowUp", // up
+    "ArrowRight", // right
+    "ArrowDown" // down
+];
 
 /**
  * Robust way to really block default behavior.
@@ -21,7 +29,7 @@ function preventDefault(e: any = window.event): void {
  */
 export function keydownOverride(e: any): void {
     scrollKeys.forEach((code) => {
-        if (e.keyCode === code) {
+        if (e.code == code) {
             preventDefault(e);
         }
     });
