@@ -1,15 +1,15 @@
 // Adapted from from https://stackoverflow.com/a/4770179
 
 const scrollKeys = [
-    "Space", // space
-    "PageDown", // page up
-    "PageDown", // page down
-    "End", // end
-    "Home", // home
-    "ArrowLeft", // left
-    "ArrowUp", // up
-    "ArrowRight", // right
-    "ArrowDown" // down
+    'Space', // space
+    'PageDown', // page up
+    'PageDown', // page down
+    'End', // end
+    'Home', // home
+    'ArrowLeft', // left
+    'ArrowUp', // up
+    'ArrowRight', // right
+    'ArrowDown' // down
 ];
 
 /**
