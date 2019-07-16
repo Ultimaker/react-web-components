@@ -131,6 +131,7 @@ export { default as UploadIcon } from './components/icons/upload_icon';
 export { default as WarningIcon } from './components/icons/warning_icon';
 export { default as WebsiteIcon } from './components/icons/website_icon';
 export { default as TeamsIcon } from './components/icons/teams_icon';
+export { default as TickIcon } from './components/icons/tick_icon';
 
 // views
 export * from './views/page_not_found';
