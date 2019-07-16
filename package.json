@@ -1,5 +1,5 @@
 {
-    "version": "5.3.0",
+    "version": "5.3.1",
     "name": "@ultimaker/react-web-components",
     "description": "Ultimaker's unified react component and style library for front-end web",
     "main": "./dist/index.js",
