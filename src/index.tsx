@@ -107,6 +107,7 @@ export { default as DraftIcon } from './components/icons/draft_icon';
 export { default as EmailIcon } from './components/icons/email_icon';
 export { default as HighlightIcon } from './components/icons/highlight_icon';
 export { default as IconWrapper } from './components/icons/icon_wrapper';
+export { default as IconProps } from './components/icons/icon_wrapper';
 export { default as LinkIcon } from './components/icons/link_icon';
 export { default as MaintenanceIcon } from './components/icons/maintenance_icon';
 export { default as MoveUpIcon } from './components/icons/move_up_icon';
