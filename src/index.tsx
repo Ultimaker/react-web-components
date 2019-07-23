@@ -1,3 +1,5 @@
+// Copyright (c) 2019 Ultimaker B.V.
+
 // components
 export * from './components/about_dialog';
 export * from './components/app';
@@ -94,6 +96,7 @@ export * from './components/input_fields/text_field';
 export * from './components/input_fields/textarea_field';
 
 // icon components
+export * from './components/icons/icon_wrapper';
 export { default as ApprovedIcon } from './components/icons/approved_icon';
 export { default as BuildPlateIcon } from './components/icons/build_plate_icon';
 export { default as CameraIcon } from './components/icons/camera_icon';
@@ -106,8 +109,6 @@ export { default as DownloadIcon } from './components/icons/download_icon';
 export { default as DraftIcon } from './components/icons/draft_icon';
 export { default as EmailIcon } from './components/icons/email_icon';
 export { default as HighlightIcon } from './components/icons/highlight_icon';
-export { default as IconWrapper } from './components/icons/icon_wrapper';
-export { default as IconProps } from './components/icons/icon_wrapper';
 export { default as LinkIcon } from './components/icons/link_icon';
 export { default as MaintenanceIcon } from './components/icons/maintenance_icon';
 export { default as MoveUpIcon } from './components/icons/move_up_icon';
