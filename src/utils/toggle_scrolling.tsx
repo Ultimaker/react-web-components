@@ -17,6 +17,7 @@ const scrollKeys = [
  * @param e - Event object.
  */
 export function preventDefault(e: Event): void {
+    console.log("SCROLL", e.target)
     e.preventDefault();
     e.returnValue = false;
 }
@@ -27,7 +28,10 @@ export function preventDefault(e: Event): void {
  */
 export function keydownOverride(e: KeyboardEvent): void {
     scrollKeys.forEach((code) => {
-        if (e.code === code) {
+        const target = e.target as HTMLElement;
+
+        // Only block keys which are listed above and when there isn't a more specific target
+        if (e.code === code && target.tagName.toUpperCase() === 'BODY') {
             preventDefault(e);
         }
     });
@@ -37,9 +41,10 @@ export function keydownOverride(e: KeyboardEvent): void {
  * Enable scrolling in the DOM.
  */
 export function enableScrolling(): void {
-    window.removeEventListener('DOMMouseScroll', preventDefault, false); // desktop
-    document.removeEventListener('touchmove', preventDefault, true); // mobile
-    document.removeEventListener('keydown', keydownOverride, true);
+    console.log("SCROLLING ENABLED")
+    window.removeEventListener('DOMMouseScroll', preventDefault, true); // desktop
+    document.body.removeEventListener('touchmove', preventDefault, true); // mobile
+    document.body.removeEventListener('keydown', keydownOverride, true);
     window.onmousewheel = null;
     document.onscroll = null;
 }
@@ -48,9 +53,10 @@ export function enableScrolling(): void {
  * Disable scrolling in the DOM.
  */
 export function disableScrolling(): void {
-    window.addEventListener('DOMMouseScroll', preventDefault, false); // desktop
-    document.addEventListener('touchmove', preventDefault, true); // mobile
-    document.addEventListener('keydown', keydownOverride, true);
+    console.log("SCROLLING DISABLED")
+    window.addEventListener('DOMMouseScroll', preventDefault, true); // desktop
+    document.body.addEventListener('touchmove', preventDefault, true); // mobile
+    document.body.addEventListener('keydown', keydownOverride, true);
     window.onmousewheel = preventDefault;
     document.onscroll = preventDefault;
 }
