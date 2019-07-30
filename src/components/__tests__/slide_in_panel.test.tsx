@@ -5,17 +5,12 @@ import { shallow, mount } from 'enzyme';
 // component
 import SlideInPanel from '../slide_in_panel';
 
-// utils
-import * as toggleScrolling from '../../utils/toggle_scrolling'
-
 // mocks
 import { mockClickEvent } from '../../__mocks__/clickMock';
 
 describe('The SlideInPanel component', () => {
     let props;
     let wrapper;
-    let enableScrollingSpy;
-    let disableScrollingSpy;
 
     beforeEach(() => {
         props = {
@@ -30,8 +25,6 @@ describe('The SlideInPanel component', () => {
                 <div>Footer</div>
             </SlideInPanel>,
         );
-        enableScrollingSpy = jest.spyOn(toggleScrolling, 'enableScrolling');
-        disableScrollingSpy = jest.spyOn(toggleScrolling, 'disableScrolling');
     });
 
     it('should render', () => {
@@ -66,15 +59,19 @@ describe('The SlideInPanel component', () => {
     });
 
     it('should disable scrolling when opened', () => {
+        const { id } = wrapper.state();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
         wrapper.setProps({ isOpen: true });
-        expect(disableScrollingSpy).toHaveBeenCalled();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(true);
         wrapper.setProps({ isOpen: false });
-        expect(enableScrollingSpy).toHaveBeenCalled();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
     });
 
     it('should re-enable scrolling after unmount', () => {
+        const { id } = wrapper.state();
         wrapper.setProps({ isOpen: true });
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(true);
         wrapper.unmount();
-        expect(enableScrollingSpy).toHaveBeenCalled();
+        expect(document.body.classList.contains(`noscroll-${id}`)).toBe(false);
     });
 });
