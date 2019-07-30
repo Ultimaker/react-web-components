@@ -17,7 +17,6 @@ const scrollKeys = [
  * @param e - Event object.
  */
 export function preventDefault(e: Event): void {
-    console.log("SCROLL", e.target)
     e.preventDefault();
     e.returnValue = false;
 }
@@ -41,7 +40,6 @@ export function keydownOverride(e: KeyboardEvent): void {
  * Enable scrolling in the DOM.
  */
 export function enableScrolling(): void {
-    console.log("SCROLLING ENABLED")
     window.removeEventListener('DOMMouseScroll', preventDefault, true); // desktop
     document.body.removeEventListener('touchmove', preventDefault, true); // mobile
     document.body.removeEventListener('keydown', keydownOverride, true);
@@ -53,7 +51,6 @@ export function enableScrolling(): void {
  * Disable scrolling in the DOM.
  */
 export function disableScrolling(): void {
-    console.log("SCROLLING DISABLED")
     window.addEventListener('DOMMouseScroll', preventDefault, true); // desktop
     document.body.addEventListener('touchmove', preventDefault, true); // mobile
     document.body.addEventListener('keydown', keydownOverride, true);
