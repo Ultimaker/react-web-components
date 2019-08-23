@@ -134,6 +134,7 @@ export { default as WarningIcon } from './components/icons/warning_icon';
 export { default as WebsiteIcon } from './components/icons/website_icon';
 export { default as TeamsIcon } from './components/icons/teams_icon';
 export { default as TickIcon } from './components/icons/tick_icon';
+export { default as InfoCircularIcon } from './components/icons/info_circular_icon';
 
 // views
 export * from './views/page_not_found';
