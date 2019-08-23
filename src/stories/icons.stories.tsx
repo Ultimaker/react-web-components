@@ -47,6 +47,7 @@ import MultiplyIcon from '../components/icons/multiply_icon';
 import MoveUpIcon from '../components/icons/move_up_icon';
 import TeamsIcon from '../components/icons/teams_icon';
 import TickIcon from '../components/icons/tick_icon';
+import InfoCircularIcon from '../components/icons/info_circular_icon';
 
 const stories = storiesOf('Icons', module);
 
@@ -265,6 +266,11 @@ stories.add('Icons', withInfo(
                 <GridItem layoutWidth="fit">
                     <Tooltip tooltipText="TickIcon">
                         <TickIcon {...props} />
+                    </Tooltip>
+                </GridItem>
+                <GridItem layoutWidth="fit">
+                    <Tooltip tooltipText="InfoCircularIcon">
+                        <InfoCircularIcon {...props} />
                     </Tooltip>
                 </GridItem>
 
