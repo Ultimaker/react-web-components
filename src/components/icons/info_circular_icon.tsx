@@ -2,9 +2,9 @@ import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
 /** this icon works a bit differently than the rest
- * when it's color is modified, it's affecting the 'i' letter in the inside
- * the color of the surrounding disc is colored by overwriting the background attribute
- * of the icon--info-circular class
+ *  when it's color is modified, it's affecting the 'i' letter in the inside
+ *  the color of the surrounding disc is colored by overwriting the background attribute
+ *  of the icon--info-circular class
 */
 const InfoCircularIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--info-circular`}>
