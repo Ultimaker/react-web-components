@@ -14,7 +14,7 @@
     }
 
     th {
-        font-family: $font-primary-medium;
+        font-family: $font-primary;
         font-weight: normal;
     }
 
@@ -84,7 +84,8 @@
         content: attr(data-th) " ";
         width: 30%;
         display: inline-block;
-        font-family: $font-primary-medium;
+        font-family: $font-primary;
+        font-weight: 500;
     }
 
     td.empty-cell:before {

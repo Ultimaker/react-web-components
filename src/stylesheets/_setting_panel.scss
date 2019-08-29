@@ -27,7 +27,8 @@
     .setting-panel__header {
         @include font-size-header-2;
 
-        font-family: $font-primary-medium;
+        font-family: $font-primary;
+        font-weight: 500;
         padding-bottom: 3rem;
         line-height: 2.6rem;
         cursor: pointer;
