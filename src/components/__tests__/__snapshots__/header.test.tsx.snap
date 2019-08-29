@@ -36,9 +36,9 @@ exports[`The Header component should add props to app switcher component 1`] = `
         to="/"
       >
         <span
-          className="app__header__logo"
+          className="app__header__um-text"
         >
-          <UltimakerLogo />
+          Ultimaker
         </span>
         <span
           className="app__header__name show-sm"
@@ -102,9 +102,9 @@ exports[`The Header component should add props to navigation component 1`] = `
         to="/"
       >
         <span
-          className="app__header__logo"
+          className="app__header__um-text"
         >
-          <UltimakerLogo />
+          Ultimaker
         </span>
         <span
           className="app__header__name show-sm"
@@ -166,9 +166,9 @@ exports[`The Header component should render 1`] = `
         to="/"
       >
         <span
-          className="app__header__logo"
+          className="app__header__um-text"
         >
-          <UltimakerLogo />
+          Ultimaker
         </span>
         <span
           className="app__header__name show-sm"
@@ -215,9 +215,9 @@ exports[`The Header component should render the user account menu 1`] = `
         to="/"
       >
         <span
-          className="app__header__logo"
+          className="app__header__um-text"
         >
-          <UltimakerLogo />
+          Ultimaker
         </span>
         <span
           className="app__header__name show-sm"
