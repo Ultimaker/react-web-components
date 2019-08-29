@@ -38,9 +38,15 @@
     }
 }
 
+.app__header__um-text {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: $color-text;
+}
 .app__header__name {
-    font-size: 2.2rem;
-    margin-left: 1.2rem;
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-left: 0.6rem;
     color: $color-text;
 }
 

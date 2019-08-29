@@ -14,7 +14,8 @@
 .slide-out-container__header {
     @include font-size-header-2;
 
-    font-family: $font-primary-medium;
+    font-family: $font-primary;
+    font-weight: 500;
     line-height: 2.6rem;
     cursor: pointer;
 }

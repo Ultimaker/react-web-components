@@ -89,7 +89,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
 
                     <div className="layout__item u-fill">
                         <Link className="app__header__home" to={headerLogoUrl}>
-                            <span className="app__header__logo">{headerLogo}</span>
+                            <span className="app__header__um-text">Ultimaker</span>
                             <span className="app__header__name show-sm">{appName}</span>
                         </Link>
                     </div>

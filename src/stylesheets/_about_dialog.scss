@@ -8,7 +8,8 @@
         @include font-size-header-1;
 
         line-height: 3.6rem;
-        font-family: $font-primary-medium;
+        font-family: $font-primary;
+        font-weight: 500;
         margin-top: 1.2rem;
         margin-bottom: 2.4rem;
     }
