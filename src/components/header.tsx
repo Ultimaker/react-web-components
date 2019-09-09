@@ -8,8 +8,6 @@ import Button from './button';
 import UltimakerLogo from './icons/ultimaker_logo';
 
 export interface HeaderProps {
-    /** The application logo */
-    headerLogo?: JSX.Element;
     /** The URL to go to when the logo is clicked */
     headerLogoUrl?: string;
     /** The application name */
@@ -29,7 +27,6 @@ export interface HeaderState {
 
 export class Header extends React.Component<HeaderProps, HeaderState> {
     static defaultProps = {
-        headerLogo: <UltimakerLogo />,
         headerLogoUrl: '/',
     };
 
@@ -60,7 +57,6 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
 
     render(): JSX.Element {
         const {
-            headerLogo,
             headerLogoUrl,
             appName,
             userAccountMenu,
