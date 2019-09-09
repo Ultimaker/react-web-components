@@ -18,7 +18,9 @@ export const GenericFlowPage: React.StatelessComponent<GenericFlowPageProps> = (
     <div className="generic-flow-page">
         <div className="generic-flow-page__header">
             <span className="generic-flow-page__um-text">Ultimaker</span>
-            <span className="generic-flow-page__app__name show-sm">{appName}</span>
+            {appName
+                && <span className="generic-flow-page__app__name show-sm">{appName}</span>
+            }
         </div>
         {image
             && <div className="generic-flow-page__image">{image}</div>

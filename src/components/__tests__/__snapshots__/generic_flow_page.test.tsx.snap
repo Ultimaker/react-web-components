@@ -61,9 +61,6 @@ exports[`The GenericFlowPage component should render without an application name
     >
       Ultimaker
     </span>
-    <span
-      className="generic-flow-page__app__name show-sm"
-    />
   </div>
   <div
     className="generic-flow-page__image"
