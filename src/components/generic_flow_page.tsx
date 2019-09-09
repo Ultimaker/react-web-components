@@ -1,9 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 
-// components
-import UltimakerLogo from './icons/ultimaker_logo';
-
 // utils
 import splitTextByNewLine from '../utils/split_text_by_new_line';
 
@@ -12,13 +9,17 @@ export interface GenericFlowPageProps {
     description?: string;
     image?: JSX.Element;
     children?: any;
+    appName?: string;
 }
 
 export const GenericFlowPage: React.StatelessComponent<GenericFlowPageProps> = ({
-    title, description, image, children,
+    title, description, image, children, appName,
 }) => (
     <div className="generic-flow-page">
-        <div className="generic-flow-page__logo"><UltimakerLogo /></div>
+        <div className="generic-flow-page__header">
+            <span className="generic-flow-page__um-text">Ultimaker</span>
+            <span className="generic-flow-page__app__name show-sm">{appName}</span>
+        </div>
         {image
             && <div className="generic-flow-page__image">{image}</div>
         }

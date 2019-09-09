@@ -20,7 +20,13 @@ describe('The GenericFlowPage component', () => {
         wrapper = shallow(<GenericFlowPage {...props} />);
     });
 
-    it('should render', () => {
+    it('should render without an application name', () => {
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render with an application name "My Account"', () => {
+        props.appName = 'My Account'
+        wrapper.setProps(props);
         expect(wrapper).toMatchSnapshot();
     });
 });
