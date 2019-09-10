@@ -1,13 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The GenericFlowPage component should render 1`] = `
+exports[`The GenericFlowPage component should render with an application name "My Account" 1`] = `
 <div
   className="generic-flow-page"
 >
   <div
-    className="generic-flow-page__logo"
+    className="generic-flow-page__header"
   >
-    <UltimakerLogo />
+    <span
+      className="generic-flow-page__um-text"
+    >
+      Ultimaker
+    </span>
+    <span
+      className="generic-flow-page__app__name show-sm"
+    >
+      My Account
+    </span>
+  </div>
+  <div
+    className="generic-flow-page__image"
+  >
+    <img
+      alt="cloud-connecting"
+      className="cloud-connecting-image"
+      src="../../images/cloud_connection/cloud_connecting-image.svg"
+    />
+  </div>
+  <div
+    className="generic-flow-page__title"
+  >
+    Cloud connectivity enabled
+  </div>
+  <div
+    className="generic-flow-page__description"
+  >
+    <p
+      key="0"
+    >
+      Sign in with your Ultimaker account to continue.
+    </p>
+  </div>
+  <div
+    className="generic-flow-page__content"
+  >
+    <Spinner />
+  </div>
+</div>
+`;
+
+exports[`The GenericFlowPage component should render without an application name 1`] = `
+<div
+  className="generic-flow-page"
+>
+  <div
+    className="generic-flow-page__header"
+  >
+    <span
+      className="generic-flow-page__um-text"
+    >
+      Ultimaker
+    </span>
   </div>
   <div
     className="generic-flow-page__image"

@@ -8,7 +8,7 @@
     }
 }
 
-.generic-flow-page__logo {
+.generic-flow-page__header {
     text-align: center;
     margin-bottom: 2.4rem;
 
@@ -16,10 +16,22 @@
         margin-bottom: 4.8rem;
     }
 
-    > svg {
-        width: 15rem;
-        height: 2.3rem;
+    &:hover, &:focus {
+        text-decoration: none;
     }
+}
+
+.generic-flow-page__um-text {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: $color-text;
+}
+
+.generic-flow-page__app__name {
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-left: 0.6rem;
+    color: $color-text;
 }
 
 .generic-flow-page__image {
