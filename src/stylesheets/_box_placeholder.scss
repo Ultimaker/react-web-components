@@ -1,0 +1,16 @@
+.box-placeholder {
+    display: inline-block;
+    background-color: $color-transparent-grey-light;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon--box {
+        width: 50%;
+        height: 50%;
+
+        svg {
+            fill: $color-grey-mid;
+        }
+    }
+}
