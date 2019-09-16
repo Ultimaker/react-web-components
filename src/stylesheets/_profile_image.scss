@@ -1,8 +1,14 @@
 .profile-image {
     display: inline-block;
 
-    .icon--profile {
-        width: 50%;
-        height: 50%;
+    .icon.icon--circle.primary.disabled {
+        .icon--profile {
+            width: 50%;
+            height: 50%;
+
+            svg {
+                fill: $color-grey-mid;
+            }
+        }
     }
 }
