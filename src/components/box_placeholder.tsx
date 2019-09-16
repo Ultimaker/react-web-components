@@ -9,12 +9,12 @@ export interface BoxPlaceholderProps {
 
 
 export const BoxPlaceholder: React.StatelessComponent<BoxPlaceholderProps> = ({ size }) => (
-        <div
-            className="box-placeholder"
-            style={{ height: size, width: size }}
-        >
-            <BoxIcon />
-        </div>
+    <div
+        className="box-placeholder"
+        style={{ height: size, width: size }}
+    >
+        <BoxIcon />
+    </div>
 );
 
 BoxPlaceholder.displayName = 'BoxPlaceholder';
