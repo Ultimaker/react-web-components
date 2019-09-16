@@ -35,7 +35,6 @@
     "dependencies": {
         "@types/classnames": "^2.2.0",
         "@types/history": "^4.7.0",
-        "@types/node": "^11.9.3",
         "@types/react-dom": "^16.0.7",
         "@types/react-router": "^4.0.30",
         "@types/react-router-dom": "^4.3.0",
@@ -69,6 +68,7 @@
         "@storybook/react": "^4.1.11",
         "@types/enzyme": "^3.1.13",
         "@types/jest": "^23.3.14",
+        "@types/node": "^11.9.3",
         "@types/storybook__addon-actions": "^3.0.3",
         "@types/storybook__addon-links": "^3.3.1",
         "@types/storybook__react": "^4.0.0",
