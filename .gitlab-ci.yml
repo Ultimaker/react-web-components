@@ -12,8 +12,6 @@ stages:
 
 before_script:
   - yarn install
-  - echo "${SSH_PRIVATE_KEY}" | base64 -d > "${CI_PROJECT_DIR}/id_rsa"
-  - chmod 0600 "${CI_PROJECT_DIR}/id_rsa"
 
 test:
   stage: test
