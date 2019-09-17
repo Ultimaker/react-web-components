@@ -13,3 +13,31 @@ exports[`The BoxPlaceholder component should render 1`] = `
   <Icon(BoxIcon) />
 </div>
 `;
+
+exports[`The BoxPlaceholder component should render with className "background--grey" 1`] = `
+<div
+  className="box-placeholder background--grey"
+  style={
+    Object {
+      "height": "10rem",
+      "width": "10rem",
+    }
+  }
+>
+  <Icon(BoxIcon) />
+</div>
+`;
+
+exports[`The BoxPlaceholder component should render with className "background--transparent" 1`] = `
+<div
+  className="box-placeholder background--transparent"
+  style={
+    Object {
+      "height": "10rem",
+      "width": "10rem",
+    }
+  }
+>
+  <Icon(BoxIcon) />
+</div>
+`;

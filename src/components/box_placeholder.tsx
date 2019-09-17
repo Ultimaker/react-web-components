@@ -2,20 +2,30 @@ import * as React from 'react';
 
 import BoxIcon from './icons/box_icon';
 
+export type BoxPlaceholderBackground = 'grey' | 'transparent';
+
 export interface BoxPlaceholderProps {
     /** Size of the placeholder. Include unit */
     size: string;
+    /** Background color */
+    backgroundColor?: BoxPlaceholderBackground;
 }
 
 
-export const BoxPlaceholder: React.StatelessComponent<BoxPlaceholderProps> = ({ size }) => (
+export const BoxPlaceholder: React.StatelessComponent<BoxPlaceholderProps> = ({
+    size, backgroundColor,
+}) => (
     <div
-        className="box-placeholder"
+        className={`box-placeholder background--${backgroundColor}`}
         style={{ height: size, width: size }}
     >
         <BoxIcon />
     </div>
 );
+
+BoxPlaceholder.defaultProps = {
+    backgroundColor: 'transparent',
+};
 
 BoxPlaceholder.displayName = 'BoxPlaceholder';
 

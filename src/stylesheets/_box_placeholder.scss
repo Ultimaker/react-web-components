@@ -1,8 +1,11 @@
 .box-placeholder {
-    background-color: $color-transparent-grey-light;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.background--grey {
+        background-color: $color-transparent-grey-light;
+    }
 
     .icon--box {
         width: 50%;
