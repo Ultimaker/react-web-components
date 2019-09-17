@@ -21,7 +21,7 @@ describe('The BoxPlaceholder component', () => {
     });
 
     it('should render with className "background--grey"', () => {
-        props.backgroundColor = 'grey'
+        props.backgroundColor = 'grey';
         wrapper.setProps(props);
         expect(wrapper).toMatchSnapshot();
     });
