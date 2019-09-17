@@ -29,11 +29,13 @@ yarn build
 You can now serve the static content in the `/public` folder.
 
 ## Release to npm
-To make a new release, just create an annotated git tag with the new version number. The CI will pick this up and publish it to npm. The new version number must follow [semver](https://semver.org/).
+To make a new release, run `npm version` with the right parameters (see example). This will update the package.json file, commit the changes and create an annotated tag. After pushing, the CI will pick this up and publish it to npm. 
 You should also make a release on github to document the changes.
 
-example:
+See https://docs.npmjs.com/cli/version for supported parameters to `npm version`. 
+
+example (%s here will be automatically replaced with the new version number):
 ```bash
-git tag -a v5.1.2 -m "Tagging 5.1.2 release"
-git push --tags
+npm version patch -m "Upgrade to %s for reasons"
+git push
 ```
