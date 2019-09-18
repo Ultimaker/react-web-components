@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import BoxIcon from './icons/box_icon';
 
-export type BoxPlaceholderBackground = 'grey' | 'transparent';
+export type BoxPlaceholderBackground = 'light' | 'transparent';
 
 export interface BoxPlaceholderProps {
     /** Size of the placeholder. Include unit */

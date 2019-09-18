@@ -20,9 +20,9 @@ describe('The BoxPlaceholder component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should render with className "background--grey"', () => {
-        props.backgroundColor = 'grey';
+    it('should render with className "background--light"', () => {
+        props.backgroundColor = 'light';
         wrapper.setProps(props);
-        expect(wrapper).toMatchSnapshot();
+        expect(wrapper.hasClass('background--light')).toBe(true);
     });
 });
