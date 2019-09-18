@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The BoxPlaceholder component should render 1`] = `
+exports[`The BoxPlaceholder component should render with className "background--transparent" 1`] = `
 <div
-  className="box-placeholder"
+  className="box-placeholder background--transparent"
   style={
     Object {
       "height": "10rem",

@@ -16,7 +16,13 @@ describe('The BoxPlaceholder component', () => {
         wrapper = shallow(<BoxPlaceholder {...props} />);
     });
 
-    it('should render', () => {
+    it('should render with className "background--transparent"', () => {
         expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render with className "background--light"', () => {
+        props.backgroundColor = 'light';
+        wrapper.setProps(props);
+        expect(wrapper.hasClass('background--light')).toBe(true);
     });
 });
