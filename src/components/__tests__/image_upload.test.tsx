@@ -5,6 +5,8 @@ import { shallow, render } from 'enzyme';
 // component
 import ImageUpload from '../image_upload';
 import ImageCropper from '../image_cropper';
+import ProfileImage from '../profile_image';
+import BoxPlaceholder from '../box_placeholder';
 
 let Dropzone = require('react-dropzone');
 
@@ -86,6 +88,20 @@ describe('The image upload component', () => {
         expect(wrapper.find('.cover')).toHaveLength(1);
     });
 
+    it('should render a person placeholder', () => {
+        wrapper.setProps({
+            placeholderType: 'person',
+        });
+        expect(wrapper.find(ProfileImage)).toHaveLength(1);
+    });
+
+    it('should render a box placeholder', () => {
+        wrapper.setProps({
+            placeholderType: 'other',
+        });
+        expect(wrapper.find(BoxPlaceholder)).toHaveLength(1);
+    });
+
     it('should ignore empty callbacks', () => {
         wrapper.setProps({ onFileSelection: null, onFileRead: null });
         wrapper.find(Dropzone).prop('onDrop')([image]);
@@ -114,6 +130,5 @@ describe('The image upload component', () => {
         expect(wrapper.find(Dropzone)).toHaveLength(1);
         expect(wrapper.find(ImageCropper)).toHaveLength(0);
         wrapper.find(Dropzone).prop('onDrop')([image]);
-
     });
 });

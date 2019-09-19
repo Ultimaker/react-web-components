@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
-import ImageUpload, { ImageFile } from '../image_upload';
+import ImageUpload, { ImageFile, ImagePlaceholderType } from '../image_upload';
 import { Image, ImageShape } from '../image';
 
 
@@ -33,6 +33,9 @@ export interface ImageUploadFieldProps extends InputFieldProps {
 
     /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
+
+    /** Placeholder type: 'person' | 'other' */
+    placeholderType?: ImagePlaceholderType;
 }
 
 /**
@@ -78,7 +81,7 @@ export class ImageUploadField extends React.Component
     render() {
         const {
             imageSize, imageShape, placeholder, value, onReadHandler,
-            children, allowCropping, maxMb, ...wrapperProps
+            children, allowCropping, maxMb, placeholderType, ...wrapperProps
         } = this.props;
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
@@ -97,6 +100,7 @@ export class ImageUploadField extends React.Component
                                 onFileRead={contents => this._onFileRead(contents)}
                                 shape={imageShape}
                                 placeholderLabel={placeholder}
+                                placeholderType={placeholderType}
                                 allowCropping={allowCropping}
                             />
                         )
