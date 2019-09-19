@@ -172,11 +172,14 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
 
     private _renderDropzone(): JSX.Element {
         const {
-            size, shape, imageURL, placeholderLabel,
+            size, shape, imageURL, placeholderLabel, placeholderType,
         } = this.props;
         const { dropActive, dropFocus } = this.state;
 
-        const iconClasses = classNames({ hide: imageURL !== null, 'icon-with-label': placeholderLabel });
+        const iconClasses = classNames({
+            hide: imageURL !== null || placeholderType !== undefined,
+            'icon-with-label': placeholderLabel,
+        });
         const hoverAreaClasses = classNames('hover-area', { show: dropActive || dropFocus });
 
         return (
