@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { Image, ImageShape } from './image';
 import UploadIcon from './icons/upload_icon';
 import ImageCropper from './image_cropper';
+import ProfileImage from './profile_image';
+import BoxPlaceholder from './box_placeholder';
 
 // dependencies
 let Dropzone = require('react-dropzone');
@@ -13,6 +15,8 @@ if ('default' in Dropzone) {
     /* istanbul ignore next */ // ignores coverage for this line.
     Dropzone = Dropzone.default;
 }
+
+export type ImagePlaceholderType = 'person' | 'other';
 
 /**
  * This interface adds an image preview URL to blob files.
@@ -38,6 +42,8 @@ export interface ImageUploadProps {
     imageURL?: string;
     /** Placeholder label */
     placeholderLabel?: string;
+    /** Placeholder type: 'person' | 'other' */
+    placeholderType?: ImagePlaceholderType;
     /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
     /**
@@ -151,13 +157,29 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         );
     }
 
+    private _renderPlaceholder(): JSX.Element {
+        const { size, shape, placeholderType } = this.props;
+
+        switch (placeholderType) {
+        case 'person':
+            return <ProfileImage size={size} />;
+        case 'other':
+            return <BoxPlaceholder backgroundColor="light" size={size} />;
+        default:
+            return <div className={`placeholder placeholder--${shape}`} />;
+        }
+    }
+
     private _renderDropzone(): JSX.Element {
         const {
-            size, shape, imageURL, placeholderLabel,
+            size, shape, imageURL, placeholderLabel, placeholderType,
         } = this.props;
         const { dropActive, dropFocus } = this.state;
 
-        const iconClasses = classNames({ hide: imageURL !== null, 'icon-with-label': placeholderLabel });
+        const iconClasses = classNames({
+            hide: imageURL !== null || placeholderType !== undefined,
+            'icon-with-label': placeholderLabel,
+        });
         const hoverAreaClasses = classNames('hover-area', { show: dropActive || dropFocus });
 
         return (
@@ -191,7 +213,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 </Dropzone>
                 {imageURL
                     ? <Image src={imageURL} shape={shape} size={size} />
-                    : <div className={`placeholder placeholder--${shape}`} />
+                    : this._renderPlaceholder()
                 }
             </div>
         );
