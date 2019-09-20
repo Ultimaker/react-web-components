@@ -16,7 +16,7 @@
         "copyStylesheets": "copyfiles -f ./src/stylesheets/**/* ./dist/stylesheets/",
         "copyFonts": "copyfiles -f ./src/fonts/**/* ./dist/fonts/",
         "cleanDist": "rimraf dist",
-        "prepublishOnly": "yarn cleanDist; tsc; yarn copyImages; yarn copyStylesheets; yarn copyFonts",
+        "prepublishOnly": "npm run-script cleanDist; tsc; npm run-script copyImages; npm run-script copyStylesheets; npm run-script copyFonts",
         "test": "jest",
         "test:watch": "jest --watch",
         "test:coverage": "jest --coverage",

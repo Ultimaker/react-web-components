@@ -8,22 +8,22 @@ This library contains all shared components, utilities and templates for front-e
 Make sure you have the following dependencies installed on your machine:
 
 * node.js 8.x
-* yarn
+* npm
 
 Then clone this repository.
 
 ## Run storybook
 ```bash
-yarn install
-yarn start
+npm install
+npm run-script start
 ```
 
 ## Build storybook
 Normally done automatically during CI.
 
 ```bash
-yarn install
-yarn build
+npm install
+npm run-script build
 ```
 
 You can now serve the static content in the `/public` folder.
