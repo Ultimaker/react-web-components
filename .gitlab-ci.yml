@@ -11,21 +11,21 @@ stages:
   - deploy
 
 before_script:
-  - yarn install
+  - npm install
 
 test:
   stage: test
   script:
-    - yarn lint
-    - yarn test:coverage
-    - yarn build
+    - npm run lint
+    - npm run test:coverage
+    - npm run build
   except:
     - master
 
 pages:
   stage: deploy
   script:
-    - yarn build
+    - npm run build
   artifacts:
     paths:
     - public
@@ -35,7 +35,7 @@ pages:
 publish:
   stage: deploy
   script:
-    - yarn build
+    - npm run build
     - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
     - npm --unsafe-perm publish
   only:

@@ -14,7 +14,6 @@ export function objectEquals(x: Object, y: Object) {
 
     // they must have the same prototype chain, the closest we can do is test their constructors.
     if (x.constructor !== y.constructor) {
-        console.warn('Mismatch in constructor');
         return false;
     }
 
