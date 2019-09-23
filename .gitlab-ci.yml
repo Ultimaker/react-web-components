@@ -16,16 +16,16 @@ before_script:
 test:
   stage: test
   script:
-    - npm run-script lint
-    - npm run-script test:coverage
-    - npm run-script build
+    - npm run lint
+    - npm run test:coverage
+    - npm run build
   except:
     - master
 
 pages:
   stage: deploy
   script:
-    - npm run-script build
+    - npm run build
   artifacts:
     paths:
     - public
@@ -35,7 +35,7 @@ pages:
 publish:
   stage: deploy
   script:
-    - npm run-script build
+    - npm run build
     - npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
     - npm --unsafe-perm publish
   only:

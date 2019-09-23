@@ -15,7 +15,7 @@ Then clone this repository.
 ## Run storybook
 ```bash
 npm install
-npm run-script start
+npm run start
 ```
 
 ## Build storybook
@@ -23,7 +23,7 @@ Normally done automatically during CI.
 
 ```bash
 npm install
-npm run-script build
+npm run build
 ```
 
 You can now serve the static content in the `/public` folder.
