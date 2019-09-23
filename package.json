@@ -33,7 +33,6 @@
     },
     "homepage": "https://github.com/Ultimaker/react-web-components#readme",
     "dependencies": {
-        "@ultimaker/eslint-config": "^1.1.0",
         "classnames": "^2.2.6",
         "css-loader": "^2.1.0",
         "gettext-parser": "^3.1.0",
@@ -74,6 +73,7 @@
         "@types/storybook__addon-links": "^3.3.1",
         "@types/storybook__react": "^4.0.0",
         "@typescript-eslint/parser": "^2.3.0",
+        "@ultimaker/eslint-config": "^1.1.0",
         "awesome-typescript-loader": "^5.2.1",
         "babel-loader": "^8.0.5",
         "copyfiles": "^2.1.0",
