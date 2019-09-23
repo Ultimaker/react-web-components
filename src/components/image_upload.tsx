@@ -117,7 +117,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 onFileRead(reader.result as string);
             }
         };
-        reader.onerror = console.error;
         reader.readAsDataURL(file);
     }
 
