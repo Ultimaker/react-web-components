@@ -22,7 +22,7 @@ export const NavigationDesktop: React.StatelessComponent<NavigationDesktopProps>
             <div className="layout__item u-fit-sm">
                 <nav className="navigation__container">
                     <ul className="navigation__nav-list">
-                        {visibleNavLinks.map(navLink => (
+                        {visibleNavLinks.map((navLink) => (
                             <li key={navLink.path}>
                                 {(!navLink.subRoutes || navLink.subRoutes.length === 0) && (
                                     <NavLink
@@ -38,7 +38,7 @@ export const NavigationDesktop: React.StatelessComponent<NavigationDesktopProps>
                                         menuLabel={navLink.label}
                                         active={location.pathname.startsWith(navLink.path)}
                                     >
-                                        {navLink.subRoutes.map(subNavItem => (
+                                        {navLink.subRoutes.map((subNavItem) => (
                                             <SubNavigationMenuItem
                                                 key={subNavItem.path}
                                                 path={subNavItem.path}

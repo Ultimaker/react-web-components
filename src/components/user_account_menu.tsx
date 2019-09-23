@@ -38,12 +38,11 @@ export interface UserAccountMenuState {
 }
 
 export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserAccountMenuState> {
-    state = {
-        showMenu: false,
-    };
-
     constructor(props: UserAccountMenuProps) {
         super(props);
+        this.setState({
+            showMenu: false,
+        });
         this._onSignIn = this._onSignIn.bind(this);
         this._onSignOut = this._onSignOut.bind(this);
     }
@@ -98,7 +97,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                 <DropDownMenuBase
                     showMenu={showMenu}
                     triggerElement={this._renderTrigger()}
-                    onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    onToggleMenuHandler={(newShowMenu) => this._onToggleMenuHandler(newShowMenu)}
                 >
                     <div className="sections">
 
@@ -114,7 +113,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
                         <div className="account-section">
                             {!signedOut && (
-                                <React.Fragment>
+                                <>
                                     <div className="account-section__title">
                                         {accountHeaderText}
                                     </div>
@@ -146,7 +145,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                             {signOutButtonText}
                                         </Button>
                                     </div>
-                                </React.Fragment>
+                                </>
                             )}
                             {signedOut && (
                                 <Button

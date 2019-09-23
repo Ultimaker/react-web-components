@@ -51,13 +51,13 @@ export interface PopupPromptState {
 }
 
 export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptState> {
-    state = {
-        inputValue: undefined,
-        validationError: undefined,
-    }
-
     constructor(props) {
         super(props);
+
+        this.setState({
+            inputValue: undefined,
+            validationError: undefined,
+        });
 
         // bind callbacks once
         this._onChangeHandler = this._onChangeHandler.bind(this);

@@ -74,14 +74,14 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         size: '18rem',
     };
 
-    state: ImageUploadState = {
-        dropActive: false,
-        cropURL: null,
-        dropFocus: false,
-    };
-
     constructor(props) {
         super(props);
+
+        this.setState({
+            dropActive: false,
+            cropURL: null,
+            dropFocus: false,
+        });
 
         this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
@@ -117,7 +117,6 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 onFileRead(reader.result as string);
             }
         };
-        reader.onerror = console.error;
         reader.readAsDataURL(file);
     }
 
@@ -206,8 +205,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                             </div>
 
                             {imageURL
-                                && <div className={`cover cover--${shape}`} />
-                            }
+                                && <div className={`cover cover--${shape}`} />}
                         </div>
                     )}
                 </Dropzone>

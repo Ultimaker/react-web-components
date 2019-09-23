@@ -158,7 +158,7 @@ stories.add('Form', withState({
                     submitted={typeof store.state.value === 'string'}
                 >
                     <input
-                        onChange={e => store.set({ customValue: e.target.value })}
+                        onChange={(e) => store.set({ customValue: e.target.value })}
                         value={store.state.customValue}
                     />
                 </InputField>

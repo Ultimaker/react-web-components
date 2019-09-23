@@ -32,7 +32,7 @@ export const RangeSlider: React.StatelessComponent<RangeSliderProps> = ({
         <input
             name="scale"
             type="range"
-            onChange={e => onChange(parseFloat(e.target.value))}
+            onChange={(e) => onChange(parseFloat(e.target.value))}
             min={min}
             max={max}
             step={step}

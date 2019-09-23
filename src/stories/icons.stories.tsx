@@ -87,6 +87,7 @@ stories.add('Icons', withInfo(
         borderColor: select('Border', colorOptions, borderDefaultValue),
         size: select('Size', sizeOptions, sizeDefaultValue),
     };
+    /* eslint-disable react/jsx-props-no-spreading */
     return (
         <div style={{ width: '80vw' }}>
             <Grid>
@@ -284,4 +285,5 @@ stories.add('Icons', withInfo(
             </Grid>
         </div>
     );
+    /* eslint-enable */
 }));

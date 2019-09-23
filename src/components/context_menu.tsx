@@ -61,16 +61,15 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         return menuStyle;
     }
 
-    state = {
-        menuOffset: null,
-    };
+    private _menuRef;
 
     constructor(props: ContextMenuProps) {
         super(props);
+        this.setState({
+            menuOffset: null,
+        });
         this._menuRef = React.createRef();
     }
-
-    private _menuRef;
 
     private _onToggleMenuHandler(showMenu: boolean): void {
         const {
@@ -147,7 +146,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
                     showMenu={showMenu}
                     triggerElement={<div style={{ width: triggerWidth }} />}
                     menuStyle={menuStyle}
-                    onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    onToggleMenuHandler={(newShowMenu) => this._onToggleMenuHandler(newShowMenu)}
                     menuDirection={menuDirection}
                 >
                     {children}

@@ -62,13 +62,13 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
         autofocus: false,
     };
 
-    state = {
-        tags: [],
-        suggestions: [],
-    }
-
     constructor(props) {
         super(props);
+
+        this.setState({
+            tags: [],
+            suggestions: [],
+        });
 
         this._handleDelete = this._handleDelete.bind(this);
         this._handleAddition = this._handleAddition.bind(this);

@@ -122,7 +122,7 @@ export class NavigationMobile extends React.Component<NavigationMobileProps, {}>
 
         return (
             <ul className="drop-down-menu-base__menu-list">
-                {visibleNavLinks.map(navLink => (
+                {visibleNavLinks.map((navLink) => (
                     <li key={navLink.path}>
                         {!navLink.subRoutes && (
                             <NavLink
@@ -139,7 +139,7 @@ export class NavigationMobile extends React.Component<NavigationMobileProps, {}>
                                 menuLabel={navLink.label}
                             >
                                 <ul className="sub-navigation-mobile-menu__options drop-down-menu-base__menu-list">
-                                    {navLink.subRoutes && navLink.subRoutes.map(subNavItem => (
+                                    {navLink.subRoutes && navLink.subRoutes.map((subNavItem) => (
                                         <li key={subNavItem.path}>
                                             <NavLink
                                                 key={subNavItem.path}

@@ -34,14 +34,14 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         e.stopPropagation();
     }
 
+    private _menuRef;
+
     constructor(props: DropDownMenuBaseProps) {
         super(props);
         this._menuRef = React.createRef();
         this._onOutsideFocusHandler = this._onOutsideFocusHandler.bind(this);
         this._onToggleMenuHandler = this._onToggleMenuHandler.bind(this);
     }
-
-    private _menuRef;
 
     private _onOutsideFocusHandler(event): void {
         /* istanbul ignore next */
@@ -109,7 +109,7 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
                             to={{ height: showMenu ? 'auto' : 0 }}
                             config={{ tension: 370, friction: 35 }}
                         >
-                            {props => (
+                            {(props) => (
                                 <animated.div className="spring-container" style={props}>
                                     <ul className="drop-down-menu-base__menu-list">
                                         {children}

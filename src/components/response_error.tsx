@@ -70,13 +70,13 @@ export interface ResponseErrorState {
 }
 
 export class ResponseError extends React.Component<ResponseErrorProps, ResponseErrorState> {
-    state = {
-        userText: null,
-        showPopup: true,
-    }
-
     constructor(props) {
         super(props);
+
+        this.setState({
+            userText: null,
+            showPopup: true,
+        });
 
         // bind callbacks once
         this._downloadTextFile = this._downloadTextFile.bind(this);
@@ -122,11 +122,11 @@ export class ResponseError extends React.Component<ResponseErrorProps, ResponseE
             popupBodyText, popupDownloadButtonText, popupCancelButtonText,
         } = this.props;
         const { showPopup } = this.state;
-        const isServerError = errors.find(e => parseInt(e.http_status, 10) >= 500);
+        const isServerError = errors.find((e) => parseInt(e.http_status, 10) >= 500);
         return (
             <div className="response-error">
                 <Tile align="center" alert>
-                    {errors.map(error => (
+                    {errors.map((error) => (
                         <div className="response-error__msg" key={error.id}>
                             {getTranslatedError(error, errorMessageTemplates, fieldNames)}
                         </div>

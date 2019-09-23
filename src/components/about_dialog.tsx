@@ -34,7 +34,7 @@ export const AboutDialog: React.StatelessComponent<AboutDialogProps> = ({
     componentsList, versionNumber, closeHandler,
     headerText, packagesPreText, licensePreText, versionPreText,
 }) => {
-    const licenseList = (): JSX.Element[] => componentsList.map(component => (
+    const licenseList = (): JSX.Element[] => componentsList.map((component) => (
         <tr key={component.name}>
             <td className="about-component-name">
                 <a href={component.url} target="_blank" rel="noopener noreferrer">{component.name}</a>
