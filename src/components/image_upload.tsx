@@ -211,8 +211,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 </Dropzone>
                 {imageURL
                     ? <Image src={imageURL} shape={shape} size={size} />
-                    : this._renderPlaceholder()
-                }
+                    : this._renderPlaceholder()}
             </div>
         );
     }
