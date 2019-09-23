@@ -1912,10 +1912,10 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
 
-"@ultimaker/eslint-config@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@ultimaker/eslint-config/-/eslint-config-1.0.1.tgz#5d4628ad528050aeb50cd2af052530c4070aec79"
-  integrity sha512-9e9ri2+xwobT62YXXQXkmeWasZAWoDCAkzBJzCWMSgokersPK6w5t+NR/fdPOYkbjDBUELTTcR330agtw8Mn3g==
+"@ultimaker/eslint-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@ultimaker/eslint-config/-/eslint-config-1.1.0.tgz#1c50a86e8664f6615cd8c13b5dfac37d24f9f09a"
+  integrity sha512-JSsrhdjClNrUDDp6RxZ9/692GapWahO+f+3qKP2rYOmLuwkzAQBwzHhqnKcZ/HEy+OVC8oMhuKjKGHnztwurfw==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"

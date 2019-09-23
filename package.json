@@ -33,7 +33,7 @@
     },
     "homepage": "https://github.com/Ultimaker/react-web-components#readme",
     "dependencies": {
-        "@ultimaker/eslint-config": "^1.0.1",
+        "@ultimaker/eslint-config": "^1.1.0",
         "classnames": "^2.2.6",
         "css-loader": "^2.1.0",
         "gettext-parser": "^3.1.0",
