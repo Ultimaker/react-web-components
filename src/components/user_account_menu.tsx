@@ -114,7 +114,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
 
                         <div className="account-section">
                             {!signedOut && (
-                                <React.Fragment>
+                                <>
                                     <div className="account-section__title">
                                         {accountHeaderText}
                                     </div>
@@ -146,7 +146,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                                             {signOutButtonText}
                                         </Button>
                                     </div>
-                                </React.Fragment>
+                                </>
                             )}
                             {signedOut && (
                                 <Button
