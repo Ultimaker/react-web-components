@@ -75,7 +75,7 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
 
     constructor(props) {
         super(props);
-        // bind callbacks once
+        
         this._showValidationError = this._showValidationError.bind(this);
     }
 

@@ -37,21 +37,18 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         };
     }
 
-    state = {
-        tooltipOffset: null,
-        showTooltip: false,
-    };
+    private _tooltipRef;
 
     constructor(props) {
         super(props);
-
+        this.state = {
+            tooltipOffset: null,
+            showTooltip: false,
+        };
         this._tooltipRef = React.createRef();
-
         this._showTooltip = this._showTooltip.bind(this);
         this._hideTooltip = this._hideTooltip.bind(this);
     }
-
-    private _tooltipRef;
 
     private _setTooltipOffset(): void {
         // get browser page width

@@ -70,7 +70,7 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
 
     constructor(props) {
         super(props);
-        // bind callbacks once
+        
         this._changeValue = this._changeValue.bind(this);
         this._changeValue = this._changeValue.bind(this);
         this._onKeyDown = this._onKeyDown.bind(this);

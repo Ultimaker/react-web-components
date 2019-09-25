@@ -26,7 +26,7 @@ export const Checkbox: React.StatelessComponent<CheckboxProps> = ({
                     name={id}
                     type="checkbox"
                     checked={value !== null ? value : false}
-                    onChange={e => onChangeHandler(e.currentTarget.checked)}
+                    onChange={(e) => onChangeHandler(e.currentTarget.checked)}
                     disabled={disabled}
                 />
                 <span className="checkbox__visual" />

@@ -75,12 +75,6 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         onImageChanged: null,
     };
 
-    /* The default state of the image cropper */
-    state: ImageCropperState = {
-        position: { x: 0.5, y: 0.5 },
-        scale: 1,
-    };
-
     /**
      * Handles the image changed event. This is debounced because the image data
      * can be pretty large and change very often during zooming / scaling.
@@ -107,6 +101,14 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         }
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            position: { x: 0.5, y: 0.5 },
+            scale: 1,
+        };
+    }
+
     /**
      * Renders the image cropper.
      */
@@ -119,13 +121,13 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         return (
             <div className="image-cropper--container">
                 <AvatarEditor
-                    ref={editor => this._editor = editor} // eslint-disable-line no-return-assign
+                    ref={(editor) => this._editor = editor} // eslint-disable-line no-return-assign
                     scale={scale}
                     border={borderSize}
                     width={sizePixels}
                     height={sizePixels}
                     position={position}
-                    onPositionChange={newPosition => this.setState({ position: newPosition })}
+                    onPositionChange={(newPosition) => this.setState({ position: newPosition })}
                     onImageChange={() => this._onImageChanged()}
                     borderRadius={shape === 'round' ? sizePixels : 0}
                     image={imageURL}
@@ -133,15 +135,14 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
                 />
                 <RangeSlider
                     className="image-cropper--slider"
-                    onChange={newScale => this.setState({ scale: newScale })}
+                    onChange={(newScale) => this.setState({ scale: newScale })}
                     min={minScale}
                     max={maxScale}
                     step={scaleStep}
                     value={scale}
                 />
                 {onCropCancel
-                    && <CloseButton onClickHandler={onCropCancel} color="white" />
-                }
+                    && <CloseButton onClickHandler={onCropCancel} color="white" />}
             </div>
         );
     }

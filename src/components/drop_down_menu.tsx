@@ -21,14 +21,11 @@ export interface DropDownMenuState {
 }
 
 export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
-    state = {
-        showMenu: false,
-    };
-
     constructor(props) {
         super(props);
-
-        // bind callbacks once
+        this.state = {
+            showMenu: false,
+        };
         this._onToggleMenuHandler = this._onToggleMenuHandler.bind(this);
     }
 
@@ -66,7 +63,7 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
                 <DropDownMenuBase
                     showMenu={showMenu}
                     triggerElement={this._renderTrigger()}
-                    onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    onToggleMenuHandler={(newShowMenu) => this._onToggleMenuHandler(newShowMenu)}
                 >
                     {React.Children.map(children, (child: JSX.Element) => (
                         React.cloneElement(

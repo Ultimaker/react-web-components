@@ -38,15 +38,12 @@ export class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerSt
         height: '100%',
     };
 
-    state = {
-        loading: true,
-        error: false,
-    };
-
     constructor(props) {
         super(props);
-
-        // bind callbacks once
+        this.state = {
+            loading: true,
+            error: false,
+        };
         this._ready = this._ready.bind(this);
         this._error = this._error.bind(this);
     }

@@ -58,7 +58,7 @@ export class ImageUploadField extends React.Component
 
     constructor(props) {
         super(props);
-        // bind callbacks once
+        
         this._onChange = this._onChange.bind(this);
     }
 

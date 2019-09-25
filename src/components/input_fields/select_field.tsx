@@ -32,7 +32,7 @@ export class SelectField extends React.Component<SelectFieldProps, SelectFieldSt
 
     constructor(props) {
         super(props);
-        // bind callbacks once
+        
         this._onChange = this._onChange.bind(this);
         this._getValueLabel = this._getValueLabel.bind(this);
     }

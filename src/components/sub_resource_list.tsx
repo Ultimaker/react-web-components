@@ -25,14 +25,14 @@ export const SubResourceList: React.StatelessComponent<SubResourceListProps> = (
                 {subResourceTitle}
             </div>
             <div className="sub-resource-list__items">
-                {subResources.slice(0, showItems).map(subResource => (
+                {subResources.slice(0, showItems).map((subResource) => (
                     <SubResourceItem
                         key={subResource.subResourceId}
                         subResource={subResource}
                     />
                 ))}
                 {showMorePill && (
-                    <MorePill names={subResources.slice(showItems).map(r => r.name)} />
+                    <MorePill names={subResources.slice(showItems).map((r) => r.name)} />
                 )}
             </div>
         </div>

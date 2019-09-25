@@ -15,15 +15,13 @@ export interface ProfileProps {
 export const ProfileImage: React.StatelessComponent<ProfileProps> = ({ size, imageURL }) => (
     <div className="profile-image">
         {imageURL
-            && <Image src={imageURL} size={size} />
-        }
+            && <Image src={imageURL} size={size} />}
         {!imageURL
             && (
                 <CircleIcon appearance="primary" disabled size={size}>
                     <ProfileIcon />
                 </CircleIcon>
-            )
-        }
+            )}
     </div>
 );
 

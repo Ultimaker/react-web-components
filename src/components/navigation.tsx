@@ -61,7 +61,7 @@ export const Navigation: React.StatelessComponent<NavigationProps> = ({
     onCloseMobileMenuHandler, showMobileAccountNav,
 }) => {
     const navClasses = classNames('navigation', { 'navigation--open': showMobileMenu });
-    const visibleNavLinks = navLinks.filter(navLink => navLink.visible);
+    const visibleNavLinks = navLinks.filter((navLink) => navLink.visible);
 
     return (
         <div className={navClasses}>
