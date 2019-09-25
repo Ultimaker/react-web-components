@@ -27,8 +27,6 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
 
     constructor(props) {
         super(props);
-
-        // bind callbacks once
         this._onToggleMenuHandler = this._onToggleMenuHandler.bind(this);
     }
 

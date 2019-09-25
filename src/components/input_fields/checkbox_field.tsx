@@ -34,7 +34,7 @@ export class CheckboxField extends React.Component<CheckboxFieldProps, CheckboxF
 
     constructor(props) {
         super(props);
-        // bind callbacks once
+        
         this._onChange = this._onChange.bind(this);
     }
 

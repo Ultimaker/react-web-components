@@ -77,8 +77,6 @@ export class ResponseError extends React.Component<ResponseErrorProps, ResponseE
 
     constructor(props) {
         super(props);
-
-        // bind callbacks once
         this._downloadTextFile = this._downloadTextFile.bind(this);
         this._validate = this._validate.bind(this);
         this._closePopup = this._closePopup.bind(this);

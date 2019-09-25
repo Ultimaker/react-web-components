@@ -58,8 +58,6 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
 
     constructor(props) {
         super(props);
-
-        // bind callbacks once
         this._onChangeHandler = this._onChangeHandler.bind(this);
         this._primaryBtnHandler = this._primaryBtnHandler.bind(this);
     }

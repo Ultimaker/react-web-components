@@ -71,8 +71,6 @@ export class Popup extends React.Component<PopupProps, PopupState> {
 
     constructor(props) {
         super(props);
-
-        // bind callbacks once
         this._primaryBtnHandler = this._primaryBtnHandler.bind(this);
         this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
     }

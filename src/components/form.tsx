@@ -52,8 +52,6 @@ export class Form extends React.Component<FormProps, FormState> {
 
     constructor(props) {
         super(props);
-
-        // bind callbacks once
         this._onSubmitHandler = this._onSubmitHandler.bind(this);
         this._renderChild = this._renderChild.bind(this);
     }

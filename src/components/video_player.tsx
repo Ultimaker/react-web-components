@@ -45,8 +45,6 @@ export class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerSt
 
     constructor(props) {
         super(props);
-
-        // bind callbacks once
         this._ready = this._ready.bind(this);
         this._error = this._error.bind(this);
     }
