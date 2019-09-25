@@ -61,13 +61,13 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
         return menuStyle;
     }
 
+    state = {
+        menuOffset: null,
+    };
     private _menuRef;
 
     constructor(props: ContextMenuProps) {
         super(props);
-        this.setState({
-            menuOffset: null,
-        });
         this._menuRef = React.createRef();
     }
 

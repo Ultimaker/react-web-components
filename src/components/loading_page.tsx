@@ -31,15 +31,16 @@ export class LoadingPage extends React.Component<LoadingPageProps, LoadingPageSt
     /** The timer that will time out the page and show the spinner */
     private _timeout: any = null;
 
+    state = {
+        isTimedOut: false,
+    }
+
     static defaultProps = {
         timeoutMs: 500,
     }
 
     constructor(props: LoadingPageProps) {
         super(props);
-        this.setState({
-            isTimedOut: false,
-        });
         this._onTimeout = this._onTimeout.bind(this);
     }
 

@@ -29,11 +29,12 @@ export class FileUpload extends React.Component<FileUploadProps, FileUploadState
         e.stopPropagation();
     }
 
+    state = {
+        selectedFileName: null,
+    }
+
     constructor(props) {
         super(props);
-        this.setState({
-            selectedFileName: null,
-        });
         this._onChangeHandler = this._onChangeHandler.bind(this);
     }
 

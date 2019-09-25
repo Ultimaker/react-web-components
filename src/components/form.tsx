@@ -46,11 +46,12 @@ export interface FormState {
 
 
 export class Form extends React.Component<FormProps, FormState> {
+    state = {
+        submitted: false,
+    }
+
     constructor(props) {
         super(props);
-        this.setState({
-            submitted: false,
-        });
         this._onSubmitHandler = this._onSubmitHandler.bind(this);
         this._renderChild = this._renderChild.bind(this);
     }
