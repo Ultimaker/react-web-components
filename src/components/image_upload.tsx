@@ -74,15 +74,13 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         size: '18rem',
     };
 
-    state: ImageUploadState = {
-        dropActive: false,
-        cropURL: null,
-        dropFocus: false,
-    };
-
     constructor(props) {
         super(props);
-
+        this.setState({
+            dropActive: false,
+            cropURL: null,
+            dropFocus: false,
+        });
         this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
         this._onDragLeave = this._onDragLeave.bind(this);

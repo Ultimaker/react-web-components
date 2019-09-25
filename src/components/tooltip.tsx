@@ -37,17 +37,15 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
         };
     }
 
-    state = {
-        tooltipOffset: null,
-        showTooltip: false,
-    };
     private _tooltipRef;
 
     constructor(props) {
         super(props);
-
+        this.setState({
+            tooltipOffset: null,
+            showTooltip: false,
+        });
         this._tooltipRef = React.createRef();
-
         this._showTooltip = this._showTooltip.bind(this);
         this._hideTooltip = this._hideTooltip.bind(this);
     }

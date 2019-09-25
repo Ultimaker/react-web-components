@@ -63,14 +63,13 @@ export class Popup extends React.Component<PopupProps, PopupState> {
         width: 'sm',
     };
 
-    state = {
-        primaryBtnShowSpinner: false,
-        secondaryBtnShowSpinner: false,
-        storedStep: null, // eslint-disable-line react/no-unused-state
-    };
-
     constructor(props) {
         super(props);
+        this.setState({
+            primaryBtnShowSpinner: false,
+            secondaryBtnShowSpinner: false,
+            storedStep: null, // eslint-disable-line react/no-unused-state
+        });
         this._primaryBtnHandler = this._primaryBtnHandler.bind(this);
         this._secondaryBtnHandler = this._secondaryBtnHandler.bind(this);
     }

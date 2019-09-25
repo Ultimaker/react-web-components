@@ -21,12 +21,11 @@ export interface DropDownMenuState {
 }
 
 export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMenuState> {
-    state = {
-        showMenu: false,
-    };
-
     constructor(props) {
         super(props);
+        this.setState({
+            showMenu: false,
+        });
         this._onToggleMenuHandler = this._onToggleMenuHandler.bind(this);
     }
 
