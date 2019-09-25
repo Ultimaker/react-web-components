@@ -38,9 +38,12 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, SlideInPane
         slideDirection: 'right',
     }
 
-    state = {
-        id: Math.floor(Math.random() * 10000000000),
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: Math.floor(Math.random() * 10000000000),
+        };
+    }
 
     componentDidUpdate(prevProps: SlideInPanelProps): void {
         const { isOpen } = this.props;

@@ -75,12 +75,6 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         onImageChanged: null,
     };
 
-    /* The default state of the image cropper */
-    state: ImageCropperState = {
-        position: { x: 0.5, y: 0.5 },
-        scale: 1,
-    };
-
     /**
      * Handles the image changed event. This is debounced because the image data
      * can be pretty large and change very often during zooming / scaling.
@@ -106,6 +100,14 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
             height: number;
         }
     };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            position: { x: 0.5, y: 0.5 },
+            scale: 1,
+        };
+    }
 
     /**
      * Renders the image cropper.

@@ -23,8 +23,11 @@ export interface ResourceContextMenuState {
  */
 export class ResourceContextMenu extends React.Component
 <ResourceContextMenuProps, ResourceContextMenuState> {
-    state = {
-        showMenu: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            showMenu: false,
+        };
     }
 
     render() {

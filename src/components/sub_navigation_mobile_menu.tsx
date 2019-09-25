@@ -13,8 +13,11 @@ export interface SubNavigationMobileMenuState {
 
 export class SubNavigationMobileMenu extends
     React.Component<SubNavigationMobileMenuProps, SubNavigationMobileMenuState> {
-    state = {
-        isOpen: false,
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false,
+        };
     }
 
     private _toggleShowAccountNav(isOpen: boolean): void {

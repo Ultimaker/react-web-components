@@ -32,13 +32,11 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
 
     constructor(props) {
         super(props);
-
+        this.state = {
+            showMobileMenu: false,
+            showAppSwitcherMenu: false,
+        };
         this._toggleAppSwitcherMenuHandler = this._toggleAppSwitcherMenuHandler.bind(this);
-    }
-
-    state = {
-        showMobileMenu: false,
-        showAppSwitcherMenu: false,
     }
 
     private _toggleShowMobileMenu(showMobileMenu: boolean): void {

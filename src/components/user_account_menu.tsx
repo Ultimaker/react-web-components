@@ -38,12 +38,11 @@ export interface UserAccountMenuState {
 }
 
 export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserAccountMenuState> {
-    state = {
-        showMenu: false,
-    };
-
     constructor(props: UserAccountMenuProps) {
         super(props);
+        this.state = {
+            showMenu: false,
+        };
         this._onSignIn = this._onSignIn.bind(this);
         this._onSignOut = this._onSignOut.bind(this);
     }

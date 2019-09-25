@@ -28,9 +28,12 @@ export class Modal extends React.Component<ModalProps, ModalState> {
         e.stopPropagation();
     }
 
-    state = {
-        isOpen: false,
-        id: Math.floor(Math.random() * 10000000000),
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false,
+            id: Math.floor(Math.random() * 10000000000),
+        };
     }
 
     componentDidMount(): void {
