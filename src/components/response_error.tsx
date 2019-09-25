@@ -83,7 +83,7 @@ export class ResponseError extends React.Component<ResponseErrorProps, ResponseE
 
     private _validate(value: string): any {
         this.setState({
-            userText: value
+            userText: value,
         });
     }
 
