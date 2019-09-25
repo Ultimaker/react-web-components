@@ -20,6 +20,8 @@ export interface TextareaProps {
 }
 
 export class Textarea extends React.Component<TextareaProps, {}> {
+    private _inputRef;
+
     constructor(props) {
         super(props);
         this._inputRef = React.createRef();
@@ -28,8 +30,6 @@ export class Textarea extends React.Component<TextareaProps, {}> {
     componentDidMount(): void {
         this._focusOnPromptInput();
     }
-
-    private _inputRef;
 
     private _focusOnPromptInput(): void {
         const { autofocus } = this.props;

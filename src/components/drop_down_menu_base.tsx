@@ -34,14 +34,14 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         e.stopPropagation();
     }
 
+    private _menuRef;
+
     constructor(props: DropDownMenuBaseProps) {
         super(props);
         this._menuRef = React.createRef();
         this._onOutsideFocusHandler = this._onOutsideFocusHandler.bind(this);
         this._onToggleMenuHandler = this._onToggleMenuHandler.bind(this);
     }
-
-    private _menuRef;
 
     private _onOutsideFocusHandler(event): void {
         /* istanbul ignore next */

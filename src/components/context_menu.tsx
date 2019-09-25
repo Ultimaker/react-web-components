@@ -64,13 +64,12 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     state = {
         menuOffset: null,
     };
+    private _menuRef;
 
     constructor(props: ContextMenuProps) {
         super(props);
         this._menuRef = React.createRef();
     }
-
-    private _menuRef;
 
     private _onToggleMenuHandler(showMenu: boolean): void {
         const {
