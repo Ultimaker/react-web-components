@@ -122,8 +122,7 @@ export class Form extends React.Component<FormProps, FormState> {
 
                                         {primaryBtnText}
                                     </Button>
-                                )
-                            }
+                                )}
                             {secondaryBtnText
                                 && (
                                     <Button
@@ -136,11 +135,9 @@ export class Form extends React.Component<FormProps, FormState> {
                                     >
                                         {secondaryBtnText}
                                     </Button>
-                                )
-                            }
+                                )}
                         </FormActions>
-                    )
-                }
+                    )}
             </form>
         );
     }

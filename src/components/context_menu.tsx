@@ -147,7 +147,7 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
                     showMenu={showMenu}
                     triggerElement={<div style={{ width: triggerWidth }} />}
                     menuStyle={menuStyle}
-                    onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    onToggleMenuHandler={(newShowMenu) => this._onToggleMenuHandler(newShowMenu)}
                     menuDirection={menuDirection}
                 >
                     {children}

@@ -263,7 +263,7 @@ stories.add('Range slider', withState({ value: null })(withInfo('Range slider')(
     <div style={{ width: 350 }}>
         <RangeSlider
             className="image-cropper--slider"
-            onChange={value => store.set({ value })}
+            onChange={(value) => store.set({ value })}
             min={number('Range start', RangeSlider.defaultProps.min)}
             max={number('Range end', RangeSlider.defaultProps.max)}
             step={number('Step', RangeSlider.defaultProps.step)}

@@ -23,7 +23,7 @@ export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({
                 name={id}
                 type="checkbox"
                 checked={value !== null ? value : false}
-                onChange={e => onChangeHandler(e.currentTarget.checked)}
+                onChange={(e) => onChangeHandler(e.currentTarget.checked)}
                 disabled={disabled}
             />
             <span className="toggle-button__slider" />

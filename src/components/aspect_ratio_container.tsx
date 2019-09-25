@@ -20,7 +20,7 @@ export const AspectRatioContainer: React.StatelessComponent<aspectRatioContainer
     aspectRatio, className, id, children,
 }) => {
     const containerClasses = classNames('aspect-ratio-container', className);
-    const bottomPadding = `${1 / aspectRatio * 100}%`;
+    const bottomPadding = `${(1 / aspectRatio) * 100}%`;
 
     function _renderChild(child: JSX.Element): JSX.Element {
         const contentClasses = classNames('aspect-ratio-container__content', child.props.className);

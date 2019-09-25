@@ -79,8 +79,7 @@ export class SlideInPanel extends React.Component<SlideInPanelProps, SlideInPane
                 <div className="header-label">
                     {item.label}
                     {item.info
-                        && <span className="header-label__info">{item.info}</span>
-                    }
+                        && <span className="header-label__info">{item.info}</span>}
                 </div>
             </div>
         ));

@@ -36,7 +36,7 @@ export class ResourceContextMenu extends React.Component
                 showMenu={showMenu}
                 onToggleMenuHandler={() => this.setState({ showMenu: !showMenu })}
             >
-                {resource.menuItems.map(menuItem => (
+                {resource.menuItems.map((menuItem) => (
                     <ContextMenuItem
                         key={menuItem.label}
                         onClickHandler={() => menuItem.handler(resource)}

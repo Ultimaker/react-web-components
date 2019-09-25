@@ -98,7 +98,7 @@ export class UserAccountMenu extends React.Component<UserAccountMenuProps, UserA
                 <DropDownMenuBase
                     showMenu={showMenu}
                     triggerElement={this._renderTrigger()}
-                    onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    onToggleMenuHandler={(newShowMenu) => this._onToggleMenuHandler(newShowMenu)}
                 >
                     <div className="sections">
 

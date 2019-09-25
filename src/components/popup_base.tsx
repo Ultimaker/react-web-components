@@ -48,8 +48,7 @@ export const PopupBase: React.StatelessComponent<PopupBaseProps> = ({
                     </div>
                 </div>
                 {step && totalSteps
-                    && <ProgressBar progressPercentage={step / totalSteps * 100} barHeight="0.9rem" />
-                }
+                    && <ProgressBar progressPercentage={(step / totalSteps) * 100} barHeight="0.9rem" />}
                 {footer && <div className="popup__footer">{footer}</div>}
             </div>
         </Modal>

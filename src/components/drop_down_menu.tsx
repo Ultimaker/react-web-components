@@ -66,7 +66,7 @@ export class DropDownMenu extends React.Component<DropDownMenuProps, DropDownMen
                 <DropDownMenuBase
                     showMenu={showMenu}
                     triggerElement={this._renderTrigger()}
-                    onToggleMenuHandler={newShowMenu => this._onToggleMenuHandler(newShowMenu)}
+                    onToggleMenuHandler={(newShowMenu) => this._onToggleMenuHandler(newShowMenu)}
                 >
                     {React.Children.map(children, (child: JSX.Element) => (
                         React.cloneElement(

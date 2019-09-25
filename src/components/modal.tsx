@@ -64,7 +64,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
             <div
                 className="modal"
-                onClick={e => this._handleOverlayClick(e)}
+                onClick={(e) => this._handleOverlayClick(e)}
                 style={style}
             >
                 {/* eslint-disable-next-line max-len */}
@@ -86,7 +86,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
                 enter={{ opacity: 1 }}
                 leave={{ opacity: 0 }}
             >
-                {show => show && (props => this._renderModal(props))}
+                {(show) => show && ((props) => this._renderModal(props))}
             </Transition>
         );
     }

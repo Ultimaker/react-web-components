@@ -44,7 +44,7 @@ export const Ratings: React.StatelessComponent<RatingsProps> = ({
                 ))}
             </div>
             {rating > 0 && (
-                <div className="ratings__foreground" style={{ width: `${(100 * rating / max)}%` }}>
+                <div className="ratings__foreground" style={{ width: `${(100 * rating) / max}%` }}>
                     {maxLengthArray.map((e, i) => (
                         <div className="ratings__foreground-icon" key={i}>
                             <Icon

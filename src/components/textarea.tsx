@@ -55,7 +55,7 @@ export class Textarea extends React.Component<TextareaProps, {}> {
                     minRows={3}
                     maxRows={autoGrow ? null : 3}
                     autoFocus={autofocus}
-                    onChange={e => onChangeHandler(e.target.value)}
+                    onChange={(e) => onChangeHandler(e.target.value)}
                 />
             </div>
         );
