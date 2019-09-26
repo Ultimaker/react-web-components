@@ -7,6 +7,7 @@ import ImageUploadField, { ImageUploadFieldProps } from '../image_upload_field';
 import InputFieldWrapper from '../input_field_wrapper';
 import ImageUpload from '../../image_upload';
 import { Image } from '../../image';
+import BoxPlaceholder from '../../box_placeholder';
 
 describe('The image upload field component', () => {
     let props: ImageUploadFieldProps;
@@ -38,6 +39,18 @@ describe('The image upload field component', () => {
         expect(wrapper.find(ImageUpload)).toHaveLength(0);
         expect(wrapper.find(Image).props()).toEqual({
             src: props.value, size: props.imageSize, shape: props.imageShape,
+        });
+    });
+
+    it('should render a placeholder', () => {
+        wrapper.setProps({
+            staticField: true,
+            value: null,
+        });
+        expect(wrapper.find(Image)).toHaveLength(0);
+        expect(wrapper.find(ImageUpload)).toHaveLength(0);
+        expect(wrapper.find(BoxPlaceholder).props()).toEqual({
+            size: props.imageSize,
         });
     });
 

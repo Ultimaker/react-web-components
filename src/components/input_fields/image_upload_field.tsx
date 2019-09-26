@@ -4,6 +4,7 @@ import * as React from 'react';
 import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 import ImageUpload, { ImageFile, ImagePlaceholderType } from '../image_upload';
 import { Image, ImageShape } from '../image';
+import { BoxPlaceholder } from '../box_placeholder';
 
 
 /**
@@ -78,6 +79,18 @@ export class ImageUploadField extends React.Component
         }
     }
 
+    private _renderImageOrPlaceholder(): JSX.Element {
+        const {
+            value, imageSize, imageShape
+        } = this.props;
+
+        if (value) {
+            return <Image src={value} size={imageSize} shape={imageShape} />
+        }
+
+        return <BoxPlaceholder size={imageSize} />
+    }
+
     render() {
         const {
             imageSize, imageShape, placeholder, value, onReadHandler,
@@ -89,7 +102,7 @@ export class ImageUploadField extends React.Component
             <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
                 {
                     staticField
-                        ? <Image src={value} size={imageSize} shape={imageShape} />
+                        ? this._renderImageOrPlaceholder()
                         : (
                             <ImageUpload
                                 id={id}
