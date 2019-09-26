@@ -50,6 +50,7 @@ describe('The image upload field component', () => {
         expect(wrapper.find(Image)).toHaveLength(0);
         expect(wrapper.find(ImageUpload)).toHaveLength(0);
         expect(wrapper.find(BoxPlaceholder).props()).toEqual({
+            backgroundColor: 'transparent',
             size: props.imageSize,
         });
     });
