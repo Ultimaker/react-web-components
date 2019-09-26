@@ -8,6 +8,7 @@ import InputFieldWrapper from '../input_field_wrapper';
 import ImageUpload from '../../image_upload';
 import { Image } from '../../image';
 import BoxPlaceholder from '../../box_placeholder';
+import ProfileImage from '../../profile_image';
 
 describe('The image upload field component', () => {
     let props: ImageUploadFieldProps;
@@ -25,6 +26,7 @@ describe('The image upload field component', () => {
             imageShape: 'round',
             value: 'http://image.ultimaker.com',
             placeholder: 'A placeholder text',
+            placeholderType: undefined,
         };
         wrapper = shallow(<ImageUploadField {...props} />);
     });
@@ -42,17 +44,27 @@ describe('The image upload field component', () => {
         });
     });
 
-    it('should render a placeholder', () => {
+    it('should render a box placeholder', () => {
         wrapper.setProps({
             staticField: true,
             value: null,
         });
         expect(wrapper.find(Image)).toHaveLength(0);
         expect(wrapper.find(ImageUpload)).toHaveLength(0);
-        expect(wrapper.find(BoxPlaceholder).props()).toEqual({
-            backgroundColor: 'transparent',
-            size: props.imageSize,
+        expect(wrapper.find(ProfileImage)).toHaveLength(0);
+        expect(wrapper.find(BoxPlaceholder)).toHaveLength(1);
+    });
+
+    it('should render a person placeholder', () => {
+        wrapper.setProps({
+            staticField: true,
+            value: null,
+            placeholderType: 'person',
         });
+        expect(wrapper.find(Image)).toHaveLength(0);
+        expect(wrapper.find(ImageUpload)).toHaveLength(0);
+        expect(wrapper.find(BoxPlaceholder)).toHaveLength(0);
+        expect(wrapper.find(ProfileImage)).toHaveLength(1);
     });
 
     it('should render a image upload', () => {

@@ -5,6 +5,7 @@ import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 import ImageUpload, { ImageFile, ImagePlaceholderType } from '../image_upload';
 import { Image, ImageShape } from '../image';
 import { BoxPlaceholder } from '../box_placeholder';
+import ProfileImage from 'components/profile_image';
 
 
 /**
@@ -81,11 +82,15 @@ export class ImageUploadField extends React.Component
 
     private _renderImageOrPlaceholder(): JSX.Element {
         const {
-            value, imageSize, imageShape
+            value, imageSize, imageShape, placeholderType,
         } = this.props;
 
         if (value) {
             return <Image src={value} size={imageSize} shape={imageShape} />;
+        }
+
+        if (placeholderType === 'person') {
+            return <ProfileImage size={imageSize} />;
         }
 
         return <BoxPlaceholder size={imageSize} />;
