@@ -5,7 +5,7 @@ import InputFieldWrapper, { InputFieldProps } from './input_field_wrapper';
 import ImageUpload, { ImageFile, ImagePlaceholderType } from '../image_upload';
 import { Image, ImageShape } from '../image';
 import { BoxPlaceholder } from '../box_placeholder';
-import ProfileImage from 'components/profile_image';
+import { ProfileImage } from '../profile_image';
 
 
 /**
