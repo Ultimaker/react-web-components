@@ -85,10 +85,10 @@ export class ImageUploadField extends React.Component
         } = this.props;
 
         if (value) {
-            return <Image src={value} size={imageSize} shape={imageShape} />
+            return <Image src={value} size={imageSize} shape={imageShape} />;
         }
 
-        return <BoxPlaceholder size={imageSize} />
+        return <BoxPlaceholder size={imageSize} />;
     }
 
     render() {
