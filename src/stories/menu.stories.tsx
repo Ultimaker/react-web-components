@@ -46,7 +46,7 @@ stories.add('Context menu', withState({ showMenu: false })(withInfo(
     <ContextMenu
         disabled={boolean('disabled', false)}
         showMenu={store.state.showMenu}
-        onToggleMenuHandler={showMenu => store.set({ showMenu })}
+        onToggleMenuHandler={(showMenu) => store.set({ showMenu })}
         menuWidth={200}
         menuDirection={select('Menu Direction', directionOptions, directionDefaultValue)}
         menuOffsetDirection={select('Menu Offset Direction', offsetOptions, offsetDefaultValue)}

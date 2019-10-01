@@ -79,7 +79,7 @@ export class Carousel extends React.Component<CarouselProps, {}> {
     private _getBreakpoint(): Breakpoint {
         const { itemCounts, children } = this.props;
         const childrenCount = React.Children.count(children);
-        const breakpointIndex = itemCounts.findIndex(count => childrenCount <= count);
+        const breakpointIndex = itemCounts.findIndex((count) => childrenCount <= count);
         if (breakpointIndex >= 0) {
             return BreakpointNames[breakpointIndex];
         }
@@ -103,9 +103,8 @@ export class Carousel extends React.Component<CarouselProps, {}> {
         }
         return (
             <Grid align="center" className={classNames('carousel__fixed', `show-${breakpoint}`)}>
-                {React.Children.map(children, child => React.isValidElement(child)
-                    && <GridItem layoutWidth="fit">{child}</GridItem>)
-                }
+                {React.Children.map(children, (child) => React.isValidElement(child)
+                    && <GridItem layoutWidth="fit">{child}</GridItem>)}
             </Grid>
         );
     }
@@ -128,7 +127,7 @@ export class Carousel extends React.Component<CarouselProps, {}> {
             // so we don't need to render it at all.
             return null;
         }
-        const extraProps = { onDragStart: e => e.preventDefault() };
+        const extraProps = { onDragStart: (e) => e.preventDefault() };
         return (
             <div className={classNames('carousel__carousel', breakpoint && `hide-${breakpoint}`)}>
                 <AliceCarousel
@@ -139,9 +138,8 @@ export class Carousel extends React.Component<CarouselProps, {}> {
                     autoPlayInterval={autoPlayInterval}
                     responsive={responsive}
                 >
-                    {React.Children.map(children, child => React.isValidElement(child)
-                        && React.cloneElement(child, extraProps))
-                    }
+                    {React.Children.map(children, (child) => React.isValidElement(child)
+                        && React.cloneElement(child, extraProps))}
                 </AliceCarousel>
             </div>
         );

@@ -19,16 +19,13 @@ export const GenericFlowPage: React.StatelessComponent<GenericFlowPageProps> = (
         <div className="generic-flow-page__header">
             <span className="generic-flow-page__um-text">Ultimaker</span>
             {appName
-                && <span className="generic-flow-page__app__name show-sm">{appName}</span>
-            }
+                && <span className="generic-flow-page__app__name show-sm">{appName}</span>}
         </div>
         {image
-            && <div className="generic-flow-page__image">{image}</div>
-        }
+            && <div className="generic-flow-page__image">{image}</div>}
         <div className="generic-flow-page__title">{title}</div>
         {description
-            && <div className="generic-flow-page__description">{splitTextByNewLine(description)}</div>
-        }
+            && <div className="generic-flow-page__description">{splitTextByNewLine(description)}</div>}
         <div className="generic-flow-page__content">{children}</div>
     </div>
 );
