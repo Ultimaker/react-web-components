@@ -83,15 +83,11 @@
     }
 
     input[type="range"]:focus::-ms-fill-lower {
-        background-color: $range-slider-color-background;
+        background-color: $range-slider-color-background-focus;
         border: none;
     }
 
     input[type="range"]:focus::-webkit-slider-runnable-track {
-        background-color: $range-slider-color-background-focus;
-    }
-
-    input[type="range"]:focus::-ms-fill-lower {
         background-color: $range-slider-color-background-focus;
     }
 
