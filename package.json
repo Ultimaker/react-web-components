@@ -12,6 +12,8 @@
         "build": "STATIC_URL=https://ultimaker.github.io/react-web-components build-storybook -c .storybook -o public",
         "lint": "eslint ./src/**/*.tsx",
         "lint:fix": "eslint --fix ./src/**/*.tsx",
+        "lint:scss": "stylelint './src/**/*.scss'",
+        "lint:scss:fix": "stylelint --fix './src/**/*.scss'",
         "copyImages": "copyfiles -f ./src/images/* ./src/images/**/* ./dist/images/",
         "copyStylesheets": "copyfiles -f ./src/stylesheets/**/* ./dist/stylesheets/",
         "copyFonts": "copyfiles -f ./src/fonts/**/* ./dist/fonts/",
