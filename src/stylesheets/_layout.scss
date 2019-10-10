@@ -8,6 +8,8 @@
 
 //  All content must be contained within child `layout__item` elements.
 
+// stylelint-disable declaration-no-important
+
 .layout {
     box-sizing: border-box;
     display: flex;
@@ -348,3 +350,5 @@
 }
 
 @include layout-hiding-rules($layout-breakpoints);
+
+// stylelint-enable declaration-no-important
