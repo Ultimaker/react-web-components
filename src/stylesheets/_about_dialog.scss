@@ -18,19 +18,19 @@
         text-align: right;
     }
 
-    table {
+    // table
+    .about-components-list {
         margin-bottom: 2.4rem;
+        width: 100%;
+    }
 
-        &.about-components-list {
-            width: 100%;
-        }
+    // td
+    .about-component-name {
+        width: 60%;
+    }
 
-        td.about-component-name {
-            width: 60%;
-        }
-
-        td.about-component-license {
-            width: 40%;
-        }
+    // td
+    .about-component-license {
+        width: 40%;
     }
 }

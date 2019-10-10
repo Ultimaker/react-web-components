@@ -89,11 +89,11 @@
         font-weight: 500;
     }
 
-    td.empty-cell::before {
+    .empty-cell::before {
         content: none;
     }
 
-    td.truncate-cell {
+    .truncate-cell {
         max-width: 100%;
         word-break: break-all;
 
@@ -136,12 +136,12 @@
     @extend .table;
     @extend .table--responsive;
 
-    tr.tile-table__tile {
+    .tile-table__tile {
         @extend .tile;
         border: none;
     }
 
-    td.tile-table__tile-cell {
+    .tile-table__tile-cell {
         padding: 1.8rem 0.9rem;
 
         @include respond-to(md) {
@@ -157,11 +157,11 @@
         }
     }
 
-    tr.tile-table__spacer {
+    .tile-table__spacer {
         border: none;
     }
 
-    td.tile-table__spacer-cell {
+    .tile-table__spacer-cell {
         border: none;
         padding: 0.6rem 0;
     }
