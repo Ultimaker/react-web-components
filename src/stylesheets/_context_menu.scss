@@ -32,7 +32,8 @@
             margin-top: -1px;
             background-color: $context-menu-color-trigger;
             border-radius: 50%;
-            box-shadow: 0 0 0 1px $context-menu-color-trigger, 0 8px 0 1px $context-menu-color-trigger, 0 -8px 0 1px $context-menu-color-trigger;
+            box-shadow: 0 0 0 1px $context-menu-color-trigger, 0 8px 0 1px $context-menu-color-trigger,
+                0 -8px 0 1px $context-menu-color-trigger;
         }
     }
 
@@ -67,7 +68,8 @@
 
         &::after {
             background-color: $context-menu-disabled-color-trigger;
-            box-shadow: 0 0 0 1px $context-menu-disabled-color-trigger, 0 8px 0 1px $context-menu-disabled-color-trigger, 0 -8px 0 1px $context-menu-disabled-color-trigger;
+            box-shadow: 0 0 0 1px $context-menu-disabled-color-trigger, 0 8px 0 1px $context-menu-disabled-color-trigger,
+                0 -8px 0 1px $context-menu-disabled-color-trigger;
         }
     }
 }

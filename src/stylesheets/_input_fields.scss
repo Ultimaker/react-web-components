@@ -235,7 +235,7 @@
 }
 
 .file-upload {
-    input[type=file] {
+    input[type="file"] {
         position: absolute;
         opacity: 0;
         left: -9999px;
@@ -263,7 +263,7 @@
         transform: translateY(-50%);
     }
 
-    input[type=file]:focus + .btn {
+    input[type="file"]:focus + .btn {
         background-color: $primary-btn-color-hover;
     }
 }

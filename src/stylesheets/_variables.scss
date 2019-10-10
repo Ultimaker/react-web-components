@@ -27,9 +27,19 @@ $font-primary-medium: "Noto Sans", sans-serif !default; // <- We keep this becau
 
 $min-window-width: 320px !default;
 
-$layout-breakpoints: (lg: 1025px, md: 800px, sm: 620px) !default;
+$layout-breakpoints: (
+    lg: 1025px,
+    md: 800px,
+    sm: 620px
+) !default;
 $layout-fractions: 1 2 3 4 5 !default;
-$layout-spacing: (lg: 3.6rem, md: 2.4rem, sm: 1.2rem, xs: 0.6rem, none: 0) !default;
+$layout-spacing: (
+    lg: 3.6rem,
+    md: 2.4rem,
+    sm: 1.2rem,
+    xs: 0.6rem,
+    none: 0
+) !default;
 $layout-gutter-default: 2.4rem !default;
 
 $border-radius: 3px !default;

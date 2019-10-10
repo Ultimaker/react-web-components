@@ -47,7 +47,6 @@
 
         @include font-size-text-1;
 
-
         &:hover,
         &:focus {
             color: $color-blue;
@@ -57,7 +56,6 @@
         .label {
             white-space: nowrap;
         }
-
 
         &.active {
             border-bottom-color: $color-border-active;
