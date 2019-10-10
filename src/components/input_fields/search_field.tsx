@@ -92,8 +92,7 @@ export class SearchField extends React.Component<SearchFieldProps, {}> {
                             >
                                 {value ? <RejectedIcon size="sm" /> : <PendingIcon size="sm" />}
                             </Button>
-                        )
-                    }
+                        )}
                 </DefaultInputField>
             </div>
         );

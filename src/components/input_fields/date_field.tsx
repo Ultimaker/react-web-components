@@ -53,7 +53,7 @@ export class DateField extends React.Component<DateFieldProps, DateFieldState> {
 
     constructor(props) {
         super(props);
-        
+
         this._onChange = this._onChange.bind(this);
     }
 

@@ -35,7 +35,7 @@ export class TextareaField extends React.Component<TextareaFieldProps, TextareaF
 
     constructor(props) {
         super(props);
-        
+
         this._onChange = this._onChange.bind(this);
     }
 
@@ -68,8 +68,7 @@ export class TextareaField extends React.Component<TextareaFieldProps, TextareaF
                             autofocus={focusOnLoad}
                             autoGrow={textareaAutoGrow}
                         />
-                    )
-                }
+                    )}
             </InputFieldWrapper>
         );
     }

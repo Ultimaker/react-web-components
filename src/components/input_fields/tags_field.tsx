@@ -34,7 +34,7 @@ export class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
 
     constructor(props) {
         super(props);
-        
+
         this._onChange = this._onChange.bind(this);
     }
 

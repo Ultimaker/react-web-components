@@ -50,7 +50,7 @@ export class FileUploadField extends React.Component<FileUploadFieldProps, FileU
 
     constructor(props) {
         super(props);
-        
+
         this._onChange = this._onChange.bind(this);
     }
 

@@ -70,7 +70,7 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
 
     constructor(props) {
         super(props);
-        
+
         this._changeValue = this._changeValue.bind(this);
         this._changeValue = this._changeValue.bind(this);
         this._onKeyDown = this._onKeyDown.bind(this);
@@ -109,7 +109,7 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
         const valueStr = value || '';
         // we use space values to hide
         return {
-            values: range(0, maxLength).map(i => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
+            values: range(0, maxLength).map((i) => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
         };
     }
 
@@ -121,7 +121,7 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
      * refs in this class, we select its text.
      */
     private _onSelectionChanged() {
-        const ref = this._inputRefs && this._inputRefs.find(r => r === document.activeElement);
+        const ref = this._inputRefs && this._inputRefs.find((r) => r === document.activeElement);
         if (ref && ref.value.length) {
             ref.select();
         }
@@ -188,7 +188,7 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
         }
 
         // Default chars to _emptyChar, remove the empty spaces in the end
-        const newValue: string = values.map(v => v || CodeField._emptyChar).join('').replace(/\s+$/g, '');
+        const newValue: string = values.map((v) => v || CodeField._emptyChar).join('').replace(/\s+$/g, '');
         onChangeHandler(id, newValue);
 
         this.setState({ touched: true, values });
@@ -293,8 +293,7 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
                 <InputFieldWrapper touched={touched} inputChildren={children} {...wrapperProps}>
                     {staticField
                         && type === 'password'
-                        && '*'.repeat(maxLength)
-                    }
+                        && '*'.repeat(maxLength)}
                     {staticField
                         && type !== 'password'
                         && value}
@@ -307,12 +306,12 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
                                 name={id}
                                 type={type}
                                 maxLength={1}
-                                onKeyDown={e => this._onKeyDown(i, e)}
-                                onChange={e => this._onChange(i, e)}
-                                onPaste={e => this._onPaste(i, e)}
+                                onKeyDown={(e) => this._onKeyDown(i, e)}
+                                onChange={(e) => this._onChange(i, e)}
+                                onPaste={(e) => this._onPaste(i, e)}
                                 placeholder={value ? null : placeholder && placeholder[i]}
                                 value={v}
-                                ref={ref => this._inputRefs[i] = ref}
+                                ref={(ref) => this._inputRefs[i] = ref}
                             />
                         </React.Fragment>
                     ))}

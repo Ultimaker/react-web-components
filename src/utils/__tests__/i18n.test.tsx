@@ -6,7 +6,7 @@ import { I18n } from '../i18n';
 
 test('I18n is initialized', () => {
     I18n.initialize({
-        'en': '/app/en.po'
+        en: '/app/en.po',
     });
 
     expect(I18n.getLocale()).toBe('en');

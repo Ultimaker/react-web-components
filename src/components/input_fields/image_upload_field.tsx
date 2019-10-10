@@ -60,7 +60,7 @@ export class ImageUploadField extends React.Component
 
     constructor(props) {
         super(props);
-        
+
         this._onChange = this._onChange.bind(this);
     }
 
@@ -115,7 +115,7 @@ export class ImageUploadField extends React.Component
                                 size={imageSize}
                                 imageURL={value && value.toString()}
                                 onFileSelection={this._onChange}
-                                onFileRead={contents => this._onFileRead(contents)}
+                                onFileRead={(contents) => this._onFileRead(contents)}
                                 shape={imageShape}
                                 placeholderLabel={placeholder}
                                 placeholderType={placeholderType}

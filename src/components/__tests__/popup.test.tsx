@@ -72,7 +72,7 @@ describe('The Popup component', () => {
     });
 
     it('should reset secondary button spinner when the promise is done', async () => {
-        const promise = new Promise(resolve => resolve('resolved'));
+        const promise = new Promise((resolve) => resolve('resolved'));
         props.secondaryBtnHandler.mockReturnValue(promise);
         expect(wrapper.find(Form).prop('secondaryBtnShowSpinner')).toBeFalsy();
         wrapper.find(Form).prop('secondaryBtnHandler')();
