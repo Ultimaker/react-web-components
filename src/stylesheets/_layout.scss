@@ -62,7 +62,7 @@
     display: flex;
 }
 
-// Modifier: gutters. The gutter is the space between the items. 
+// Modifier: gutters. The gutter is the space between the items.
 // Builds a class in the format `.layout--gutter-sm` where sm is the is from the variable list $layout-spacing
 
 @mixin layout-gutters($sizes) {
@@ -295,7 +295,6 @@
 @include layout-widths-intrinsic($layout-breakpoints);
 @include layout-offsets($layout-fractions, $layout-breakpoints);
 
-
 // Additional classes
 // ==========================================================================
 
@@ -309,6 +308,7 @@
         @if $value / 0.6 > 4 {
             $valueTB: $value - 1.2;
         }
+
         @else if $value / 0.6 >= 2 {
             $valueTB: $value - 0.6;
         }

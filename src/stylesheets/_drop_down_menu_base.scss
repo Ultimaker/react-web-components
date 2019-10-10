@@ -36,7 +36,8 @@
     box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
 }
 
-.drop-down-menu-base__menu-list, .drop-down-menu-base__menu ul {
+.drop-down-menu-base__menu-list,
+.drop-down-menu-base__menu ul {
     list-style: none;
     padding: 1.2rem 0;
     margin: 0;
@@ -73,7 +74,8 @@
     display: block;
     color: $color-text;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $context-menu-color-hover;
         transition: background-color 0.2s ease-out;
         text-decoration: none;
@@ -93,5 +95,4 @@
     .additional-info {
         color: $color-text-lighter;
     }
-
 }

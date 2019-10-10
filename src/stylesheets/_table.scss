@@ -15,10 +15,11 @@
 
     th {
         font-family: $font-primary;
-        font-weight: normal;
+        font-weight: 400;
     }
 
-    th, td {
+    th,
+    td {
         text-align: left;
         padding: 1.2rem 0.9rem;
 
@@ -52,7 +53,6 @@
         margin-bottom: 1.2rem;
     }
 
-
     th {
         min-width: 9rem;
 
@@ -76,11 +76,12 @@
         }
     }
 
-    th, thead {
+    th,
+    thead {
         display: none;
     }
 
-    td:before {
+    td::before {
         content: attr(data-th) " ";
         width: 30%;
         display: inline-block;
@@ -88,7 +89,7 @@
         font-weight: 500;
     }
 
-    td.empty-cell:before {
+    td.empty-cell::before {
         content: none;
     }
 
@@ -109,7 +110,8 @@
             display: table-header-group;
         }
 
-        td, th {
+        td,
+        th {
             display: table-cell;
         }
 
@@ -117,7 +119,7 @@
             padding-top: 1.8rem;
             padding-bottom: 1.8rem;
 
-            &:before {
+            &::before {
                 display: none;
             }
         }
@@ -136,7 +138,6 @@
 
     tr.tile-table__tile {
         @extend .tile;
-
         border: none;
     }
 
@@ -146,7 +147,6 @@
         @include respond-to(md) {
             padding: 1.8rem 1.2rem;
         }
-
 
         &:first-child {
             padding-left: 2.4rem;
@@ -165,5 +165,4 @@
         border: none;
         padding: 0.6rem 0;
     }
-
 }

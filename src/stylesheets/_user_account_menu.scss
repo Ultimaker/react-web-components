@@ -18,14 +18,15 @@
         user-select: none;
         z-index: 99;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: $context-menu-color-hover;
             color: $context-menu-color-trigger-hover;
             transition: all 0.2s ease-out;
         }
     }
 
-    .user-account-menu__trigger-image{
+    .user-account-menu__trigger-image {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -69,7 +70,6 @@
 
         .account-section__title {
             @include font-size-header-2;
-
             font-family: $font-primary;
             font-weight: 500;
             margin-bottom: 1.2rem;
@@ -98,7 +98,6 @@
 
     .other-section {
         @extend .account-section;
-
         border-right: 1px solid $color-border;
     }
 }

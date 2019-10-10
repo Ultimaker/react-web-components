@@ -61,7 +61,8 @@
             }
         }
 
-        &.alert, &.secondary {
+        &.alert,
+        &.secondary {
             &.disabled {
                 border-color: $color-text-lighter;
                 color: $color-text-lighter;

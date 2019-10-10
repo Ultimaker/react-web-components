@@ -15,7 +15,6 @@
     input[type=range]::-webkit-slider-thumb {
         -webkit-appearance: none;
         margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-
         width: 2.4rem;
         height: 2.4rem;
         border-radius: 50%;
@@ -53,7 +52,7 @@
         cursor: pointer;
         background-color: $range-slider-color-background;
         border-radius: 9999px;
-        transition: background-color 0.2s ease-out
+        transition: background-color 0.2s ease-out;
     }
 
     input[type=range]::-moz-range-track {

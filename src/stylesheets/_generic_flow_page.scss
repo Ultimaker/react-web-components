@@ -16,7 +16,8 @@
         margin-bottom: 4.8rem;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: none;
     }
 }
@@ -49,6 +50,7 @@
 
 .generic-flow-page__title {
     text-align: center;
+
     @include font-size-header-1;
 }
 

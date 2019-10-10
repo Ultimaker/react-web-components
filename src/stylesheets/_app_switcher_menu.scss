@@ -25,7 +25,6 @@
 
     .drop-down-menu-base__item {
         @include font-size-text-1;
-
         @include respond-to(md) {
             line-height: 2.8rem;
         }
@@ -48,7 +47,8 @@
     .drop-down-menu-base__item {
         padding: 1.2rem 3.6rem;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: $color-transparent;
         }
     }
@@ -98,7 +98,7 @@
     margin-left: -3px;
 }
 
-.grid-icon > .layer > span:before {
+.grid-icon > .layer > span::before {
     display: block;
     content: "";
     width: 6px;
@@ -109,7 +109,7 @@
     transition: 0.2s;
 }
 
-.grid-icon > .layer > span:after {
+.grid-icon > .layer > span::after {
     display: block;
     content: "";
     width: 6px;
@@ -127,10 +127,11 @@
         padding: 0.6rem;
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         .grid-icon > .layer > span,
-        .grid-icon > .layer > span:before,
-        .grid-icon > .layer > span:after {
+        .grid-icon > .layer > span::before,
+        .grid-icon > .layer > span::after {
             @include respond-to(sm) {
                 background: $color-text-light;
             }
@@ -147,8 +148,8 @@
     }
 
     .grid-icon > .layer > span,
-    .grid-icon > .layer > span:before,
-    .grid-icon > .layer > span:after {
+    .grid-icon > .layer > span::before,
+    .grid-icon > .layer > span::after {
         background: $burger-menu-open-color;
         transition: 0.2s;
 

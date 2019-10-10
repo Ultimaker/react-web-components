@@ -56,12 +56,9 @@
     @include respond-to(sm) {
         height: 5.1rem;
     }
-
-
     @include respond-to(md) {
         height: 6.1rem;
     }
-
 
     & > .layout {
         width: 100%;

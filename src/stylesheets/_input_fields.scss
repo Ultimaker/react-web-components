@@ -19,7 +19,8 @@
         border-bottom-color: $input-field-color-border-hover;
     }
 
-    &:focus, &:active {
+    &:focus,
+    &:active {
         border-bottom-color: $input-field-color-border-active;
     }
 
@@ -34,7 +35,8 @@
 
 .input-field {
     &.hide-input {
-        .input-container, .input-field__error-message {
+        .input-container,
+        .input-field__error-message {
             display: none;
         }
 
@@ -87,7 +89,6 @@
 
     .input-field__label {
         @include font-size-text-2;
-
         margin-bottom: 0.6rem;
         margin-top: 1.2rem;
     }
@@ -126,7 +127,9 @@
             border-bottom: 2px solid $input-field-color-border;
             min-height: 4.8rem;
 
-            &:hover, &:active, &.active {
+            &:hover,
+            &:active,
+            &.active {
                 background-color: white;
                 border-bottom-color: $input-field-color-border-hover;
             }
@@ -160,7 +163,6 @@
 .textarea {
     .input {
         @extend %input-style;
-
         vertical-align: top;
         height: auto;
         min-width: 15rem;
@@ -182,7 +184,6 @@
 
     .react-date-picker__inputGroup {
         @extend %input-style;
-
         color: $color-text;
         font-weight: 400;
     }
@@ -212,7 +213,7 @@
             transform: translate(-50%, 0) rotate(45deg);
             top: -6px;
             width: 1rem;
-            content: '';
+            content: "";
         }
     }
 
@@ -246,9 +247,7 @@
 
     .file-upload__input {
         @extend %input-style;
-
         @extend .truncate;
-
         position: absolute;
         top: 0;
         bottom: 0;

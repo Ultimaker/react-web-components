@@ -3,9 +3,11 @@
 }
 
 .alice-carousel__dots-item {
-  background-color: $primary-btn-color-disabled;
-  transition: background-color 0.2s ease-out;
-  &:hover, &.__active {
-    background-color: $primary-btn-color;
-  }
+    background-color: $primary-btn-color-disabled;
+    transition: background-color 0.2s ease-out;
+
+    &:hover,
+    &.__active {
+        background-color: $primary-btn-color;
+    }
 }
