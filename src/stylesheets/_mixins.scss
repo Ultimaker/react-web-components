@@ -8,6 +8,7 @@
     }
 
     @else {
+        // stylelint-disable-next-line max-line-length
         @warn "Unfortunately, no value could be retrieved from #{$breakpoint}. Please make sure it is defined in '$layout-breakpoints' map.";
     }
 }

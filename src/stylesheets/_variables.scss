@@ -23,7 +23,9 @@ $color-transparent-grey-darkest: rgba(0, 0, 0, 0.85) !default;
 $color-transparent-blue: rgba(0, 167, 233, 0.06) !default;
 
 $font-primary: "Noto Sans", sans-serif !default;
-$font-primary-medium: "Noto Sans", sans-serif !default; // <- We keep this because we reference it in other places but it should never be used ever again! Specify weights instead!
+// We keep the next line because we reference it in other places but it should never be used ever again!
+// Specify weights instead!
+$font-primary-medium: "Noto Sans", sans-serif !default;
 
 $min-window-width: 320px !default;
 
