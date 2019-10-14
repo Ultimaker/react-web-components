@@ -9,7 +9,7 @@
     display: inline-block;
 
     &.active {
-        color: #fff;
+        color: $color-white;
         background-color: $pill-color-background-active;
     }
 }

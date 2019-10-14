@@ -1,5 +1,5 @@
 %input-style {
-    background-color: #fff;
+    background-color: $color-white;
     width: 100%;
     padding: 1.2rem 0.9rem;
     border: none;
@@ -113,7 +113,7 @@
     .drop-down-menu {
         &.drop-down-menu-base--visible {
             .drop-down-menu-base__trigger:hover {
-                background-color: #fff;
+                background-color: $color-white;
             }
         }
 
@@ -123,19 +123,19 @@
 
         .drop-down-menu-base__trigger {
             padding: 1.2rem 1.8rem 1.2rem 0.9rem;
-            background-color: #fff;
+            background-color: $color-white;
             border-bottom: 2px solid $input-field-color-border;
             min-height: 4.8rem;
 
             &:hover,
             &:active,
             &.active {
-                background-color: #fff;
+                background-color: $color-white;
                 border-bottom-color: $input-field-color-border-hover;
             }
 
             &:focus {
-                background-color: #fff;
+                background-color: $color-white;
                 border-bottom-color: $input-field-color-border-active;
             }
         }
@@ -203,7 +203,7 @@
         margin-bottom: 1.2rem;
 
         &::before {
-            background: #fff;
+            background: $color-white;
             border-top: 1px solid $context-menu-color-chevron-shadow;
             border-left: 1px solid $context-menu-color-chevron-shadow;
             border-width: 1px 0 0 1px;
