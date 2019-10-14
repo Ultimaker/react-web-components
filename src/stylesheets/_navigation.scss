@@ -43,9 +43,8 @@
         justify-content: center;
         text-align: center;
         border-bottom: 3px solid transparent;
-        transition-duration: 0.2s;
-        transition-property: border-bottom-color, color;
-        transition-timing-function: ease-out;
+        transition: border-bottom-color 0.2s ease-out,
+            color 0.2s ease-out;
 
         @include font-size-text-1;
 

@@ -16,9 +16,8 @@
     display: block;
     border-radius: 2px;
     border: 1px solid $checkbox-color-border;
-    transition-duration: 0.2s;
-    transition-property: background, border-color;
-    transition-timing-function: ease-out;
+    transition: background 0.2s ease-out,
+        border-color 0.2s ease-out;
 
     @include respond-to(sm) {
         &:hover::after {
@@ -40,9 +39,9 @@
     background: transparent;
     opacity: 0;
     transform: rotate(-45deg);
-    transition-duration: 0.1s;
-    transition-property: background, border-color, opacity;
-    transition-timing-function: ease-out;
+    transition: background 0.1s ease-out,
+        border-color 0.1s ease-out,
+        opacity 0.1s ease-out;
 }
 
 .checkbox--disabled {

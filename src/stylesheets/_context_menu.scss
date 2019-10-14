@@ -18,9 +18,8 @@
         &:focus {
             background-color: $context-menu-color-hover;
             color: $context-menu-color-trigger-hover;
-            transition-duration: 0.2s;
-            transition-property: background-color, color;
-            transition-timing-function: ease-out;
+            transition: background-color 0.2s ease-out,
+                color 0.2s ease-out;
         }
 
         &::after {
