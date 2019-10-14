@@ -16,7 +16,7 @@
 .toggle-button__slider::before {
     background-color: $toggle-button-color-background;
     border-radius: 9999px;
-    content: "";
+    content: '';
     cursor: pointer;
     display: block;
     height: 2.4rem;
@@ -32,7 +32,7 @@
 .toggle-button__slider::after {
     background-color: $toggle-button-color;
     border-radius: 50%;
-    content: "";
+    content: '';
     cursor: pointer;
     display: block;
     height: 3rem;

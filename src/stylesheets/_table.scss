@@ -82,7 +82,7 @@
     }
 
     td::before {
-        content: attr(data-th) " ";
+        content: attr(data-th) ' ';
         width: 30%;
         display: inline-block;
         font-family: $font-primary;

@@ -213,7 +213,7 @@
             transform: translate(-50%, 0) rotate(45deg);
             top: -6px;
             width: 1rem;
-            content: "";
+            content: '';
         }
     }
 
@@ -235,7 +235,7 @@
 }
 
 .file-upload {
-    input[type="file"] {
+    input[type='file'] {
         position: absolute;
         opacity: 0;
         left: -9999px;
@@ -263,7 +263,7 @@
         transform: translateY(-50%);
     }
 
-    input[type="file"]:focus + .btn {
+    input[type='file']:focus + .btn {
         background-color: $primary-btn-color-hover;
     }
 }
@@ -302,13 +302,13 @@
         }
     }
 
-    input[type="number"]::-webkit-outer-spin-button,
-    input[type="number"]::-webkit-inner-spin-button {
+    input[type='number']::-webkit-outer-spin-button,
+    input[type='number']::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
 
-    input[type="number"] {
+    input[type='number'] {
         -moz-appearance: textfield;
     }
 }

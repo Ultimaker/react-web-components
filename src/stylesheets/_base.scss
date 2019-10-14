@@ -42,7 +42,7 @@ body {
     bottom: 0;
 }
 
-[class^="noscroll-"],
-[class*=" noscroll-"] {
+[class^='noscroll-'],
+[class*=' noscroll-'] {
     @extend .noscroll;
 }
