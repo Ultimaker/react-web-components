@@ -28,13 +28,12 @@ export interface TagsFieldState {
  * TODO: merge TagsField and TagsSelector?
  */
 export class TagsField extends React.Component<TagsFieldProps, TagsFieldState> {
-    state = {
-        touched: false,
-    };
-
     constructor(props) {
         super(props);
 
+        this.state = {
+            touched: false,
+        };
         this._onChange = this._onChange.bind(this);
     }
 

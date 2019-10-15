@@ -61,16 +61,13 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
 
     private readonly _inputRefs: HTMLInputElement[] = [];
 
-
-    /** The default state */
-    state = {
-        touched: false,
-        values: [],
-    };
-
     constructor(props) {
         super(props);
 
+        this.state = {
+            touched: false,
+            values: [],
+        };
         this._changeValue = this._changeValue.bind(this);
         this._changeValue = this._changeValue.bind(this);
         this._onKeyDown = this._onKeyDown.bind(this);
@@ -311,6 +308,7 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
                                 onPaste={(e) => this._onPaste(i, e)}
                                 placeholder={value ? null : placeholder && placeholder[i]}
                                 value={v}
+                                // eslint-disable-next-line no-return-assign
                                 ref={(ref) => this._inputRefs[i] = ref}
                             />
                         </React.Fragment>

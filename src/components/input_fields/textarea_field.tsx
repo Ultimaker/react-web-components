@@ -29,13 +29,12 @@ export interface TextareaFieldState {
  * TODO: merge TextareaField and Textarea?
  */
 export class TextareaField extends React.Component<TextareaFieldProps, TextareaFieldState> {
-    state = {
-        touched: false,
-    };
-
     constructor(props) {
         super(props);
 
+        this.state = {
+            touched: false,
+        };
         this._onChange = this._onChange.bind(this);
     }
 

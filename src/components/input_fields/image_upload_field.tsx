@@ -54,13 +54,12 @@ export interface ImageUploadFieldState {
  */
 export class ImageUploadField extends React.Component
 <ImageUploadFieldProps, ImageUploadFieldState> {
-    state = {
-        touched: false,
-    };
-
     constructor(props) {
         super(props);
 
+        this.state = {
+            touched: false,
+        };
         this._onChange = this._onChange.bind(this);
     }
 

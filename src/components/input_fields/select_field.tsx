@@ -26,13 +26,12 @@ export interface SelectFieldState {
 }
 
 export class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
-    state = {
-        touched: false,
-    };
-
     constructor(props) {
         super(props);
 
+        this.state = {
+            touched: false,
+        };
         this._onChange = this._onChange.bind(this);
         this._getValueLabel = this._getValueLabel.bind(this);
     }
