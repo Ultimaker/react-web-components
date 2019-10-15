@@ -50,9 +50,12 @@ describe('The search field component', () => {
         props.staticField = true;
         props.children = 'a child';
         wrapper.setProps(props);
-        props.inputChildren = props.children;
-        props.inputRef = expect.anything();
-        props.type = 'text';
+        // This test needs to be rewritten
+        /* eslint-disable dot-notation */
+        props['inputChildren'] = props.children;
+        props['inputRef'] = expect.anything();
+        props['type'] = 'text';
+        /* eslint-enable dot-notation */
         props.children = props.value;
         expect(wrapper.find(DefaultInputField).props()).toEqual(props);
     });
