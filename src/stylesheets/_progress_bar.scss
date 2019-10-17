@@ -2,7 +2,7 @@
     width: 100%;
     position: relative;
     line-height: 0;
-    display:flex;
+    display: flex;
 
     .progress-bar__progress-indicator {
         height: 2px;
@@ -19,6 +19,6 @@
         height: 2px;
         transition: width 0.5s;
         display: inline-block;
-        background: white;
+        background: $color-white;
     }
 }

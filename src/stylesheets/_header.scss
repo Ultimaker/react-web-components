@@ -33,7 +33,8 @@
 }
 
 .app__header__home {
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: none;
     }
 }
@@ -43,6 +44,7 @@
     font-weight: 500;
     color: $color-text;
 }
+
 .app__header__name {
     font-size: 2.4rem;
     font-weight: 300;
@@ -60,9 +62,11 @@
         width: 5.4rem;
     }
 
-    .burger-menu__icon, .burger-menu__icon:after, .burger-menu__icon:before {
+    .burger-menu__icon,
+    .burger-menu__icon::after,
+    .burger-menu__icon::before {
         background-color: currentColor;
-        content: "";
+        content: '';
         height: 0.2rem;
         left: 0;
         position: absolute;
@@ -77,11 +81,11 @@
         margin-left: auto;
         margin-right: auto;
 
-        &:before {
+        &::before {
             top: -0.6rem;
         }
 
-        &:after {
+        &::after {
             bottom: -0.6rem;
         }
     }
@@ -91,16 +95,16 @@
     .burger-menu__icon {
         transform: rotate(-45deg);
 
-        &:before {
+        &::before {
             display: none;
         }
 
-        &:after {
+        &::after {
             bottom: 0;
             transform: rotate(90deg);
         }
     }
-    
+
     .burger-menu__button {
         background: $burger-menu-open-color-background;
         color: $burger-menu-open-color;

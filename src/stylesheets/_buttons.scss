@@ -3,7 +3,8 @@ a {
     text-decoration: none;
     cursor: pointer;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: underline;
         outline: none;
     }
@@ -31,7 +32,8 @@ button {
     text-decoration: none;
     color: $color-anchor;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: none;
         outline: none;
     }
@@ -61,7 +63,8 @@ button {
         transition: background-color 0.2s ease-out, color 0.2s ease-out, border 0.2s ease-out;
     }
 
-    &.disabled:hover, &.waiting:hover {
+    &.disabled:hover,
+    &.waiting:hover {
         cursor: default;
     }
 
@@ -73,7 +76,7 @@ button {
         padding-left: 1.2rem;
         width: 1.2rem;
         height: 1.2rem;
-    
+
         svg {
             width: 1.2rem;
             height: 1.2rem;
@@ -85,15 +88,21 @@ button {
     color: $primary-btn-color-text;
     background-color: $primary-btn-color;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $primary-btn-color-hover;
     }
 
-    &:active, &.waiting, &.waiting:hover {
+    &:active,
+    &.waiting,
+    &.waiting:hover {
         background-color: $primary-btn-color-active;
     }
 
-    &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
+    &.disabled,
+    .disabled:hover,
+    .disabled:active,
+    .disabled:focus {
         background-color: $primary-btn-color-disabled;
         color: $primary-btn-color-disabled-text;
     }
@@ -108,15 +117,21 @@ button {
     padding: 0.8rem 3.5rem 1rem;
     color: $secondary-btn-color-text;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $secondary-btn-color-hover;
     }
 
-    &:active, &.waiting, &.waiting:hover {
+    &:active,
+    &.waiting,
+    &.waiting:hover {
         background-color: $secondary-btn-color-active;
     }
 
-    &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:active,
+    .disabled:focus {
         background-color: $secondary-btn-color-disabled;
         color: $secondary-btn-color-disabled-text;
     }
@@ -129,15 +144,21 @@ button {
 .btn--quiet {
     color: $quiet-btn-color-text;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $quiet-btn-color-hover;
     }
 
-    &:active, &.waiting, &.waiting:hover {
+    &:active,
+    &.waiting,
+    &.waiting:hover {
         background-color: $quiet-btn-color-active;
     }
 
-    &.disabled, &.disabled:hover, &.disabled:active, .disabled:focus {
+    &.disabled,
+    &.disabled:hover,
+    &.disabled:active,
+    .disabled:focus {
         background-color: transparent;
         color: $quiet-btn-color-disabled-text;
     }
@@ -153,15 +174,21 @@ button {
     color: $alert-btn-color-text;
     background-color: $alert-btn-color;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $alert-btn-color-hover;
     }
 
-    &:active, &.waiting, &.waiting:hover {
+    &:active,
+    &.waiting,
+    &.waiting:hover {
         background-color: $alert-btn-color-active;
     }
 
-    &.disabled, .disabled:hover, .disabled:active, .disabled:focus {
+    &.disabled,
+    .disabled:hover,
+    .disabled:active,
+    .disabled:focus {
         background-color: $alert-btn-color-disabled;
         color: $alert-btn-color-disabled-text;
     }
@@ -187,7 +214,8 @@ button {
     line-height: inherit;
     padding: 0;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         text-decoration: underline;
     }
 }
@@ -205,7 +233,8 @@ button {
     font-size: 1.6rem;
     padding: 0.6rem 2.4rem;
 
-    &.btn--secondary, &.btn--alert {
+    &.btn--secondary,
+    &.btn--alert {
         padding: 0.5rem 2.3rem;
     }
 }
@@ -263,8 +292,8 @@ button {
             .btn--circle {
                 width: 4.6rem;
                 height: 4.6rem;
-                background-color: white;
-                color: black;
+                background-color: $color-white;
+                color: $color-black;
             }
         }
     }

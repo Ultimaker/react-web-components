@@ -1,5 +1,5 @@
 %input-style {
-    background-color: white;
+    background-color: $color-white;
     width: 100%;
     padding: 1.2rem 0.9rem;
     border: none;
@@ -19,7 +19,8 @@
         border-bottom-color: $input-field-color-border-hover;
     }
 
-    &:focus, &:active {
+    &:focus,
+    &:active {
         border-bottom-color: $input-field-color-border-active;
     }
 
@@ -34,7 +35,8 @@
 
 .input-field {
     &.hide-input {
-        .input-container, .input-field__error-message {
+        .input-container,
+        .input-field__error-message {
             display: none;
         }
 
@@ -87,7 +89,6 @@
 
     .input-field__label {
         @include font-size-text-2;
-
         margin-bottom: 0.6rem;
         margin-top: 1.2rem;
     }
@@ -112,7 +113,7 @@
     .drop-down-menu {
         &.drop-down-menu-base--visible {
             .drop-down-menu-base__trigger:hover {
-                background-color: white;
+                background-color: $color-white;
             }
         }
 
@@ -122,17 +123,19 @@
 
         .drop-down-menu-base__trigger {
             padding: 1.2rem 1.8rem 1.2rem 0.9rem;
-            background-color: white;
+            background-color: $color-white;
             border-bottom: 2px solid $input-field-color-border;
             min-height: 4.8rem;
 
-            &:hover, &:active, &.active {
-                background-color: white;
+            &:hover,
+            &:active,
+            &.active {
+                background-color: $color-white;
                 border-bottom-color: $input-field-color-border-hover;
             }
 
             &:focus {
-                background-color: white;
+                background-color: $color-white;
                 border-bottom-color: $input-field-color-border-active;
             }
         }
@@ -160,7 +163,6 @@
 .textarea {
     .input {
         @extend %input-style;
-
         vertical-align: top;
         height: auto;
         min-width: 15rem;
@@ -182,7 +184,6 @@
 
     .react-date-picker__inputGroup {
         @extend %input-style;
-
         color: $color-text;
         font-weight: 400;
     }
@@ -202,7 +203,7 @@
         margin-bottom: 1.2rem;
 
         &::before {
-            background: white;
+            background: $color-white;
             border-top: 1px solid $context-menu-color-chevron-shadow;
             border-left: 1px solid $context-menu-color-chevron-shadow;
             border-width: 1px 0 0 1px;
@@ -234,7 +235,7 @@
 }
 
 .file-upload {
-    input[type=file] {
+    input[type='file'] {
         position: absolute;
         opacity: 0;
         left: -9999px;
@@ -246,9 +247,7 @@
 
     .file-upload__input {
         @extend %input-style;
-
         @extend .truncate;
-
         position: absolute;
         top: 0;
         bottom: 0;
@@ -264,7 +263,7 @@
         transform: translateY(-50%);
     }
 
-    input[type=file]:focus + .btn {
+    input[type='file']:focus + .btn {
         background-color: $primary-btn-color-hover;
     }
 }
@@ -303,13 +302,13 @@
         }
     }
 
-    input[type="number"]::-webkit-outer-spin-button,
-    input[type="number"]::-webkit-inner-spin-button {
+    input[type='number']::-webkit-outer-spin-button,
+    input[type='number']::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
 
-    input[type="number"] {
+    input[type='number'] {
         -moz-appearance: textfield;
     }
 }

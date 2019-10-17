@@ -11,6 +11,7 @@ test:
   stage: test
   script:
     - npm run lint
+    - npm run lint:scss
     - npm run test:coverage
     - npm run build
   except:

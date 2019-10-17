@@ -15,10 +15,11 @@
 
     th {
         font-family: $font-primary;
-        font-weight: normal;
+        font-weight: 400;
     }
 
-    th, td {
+    th,
+    td {
         text-align: left;
         padding: 1.2rem 0.9rem;
 
@@ -52,7 +53,6 @@
         margin-bottom: 1.2rem;
     }
 
-
     th {
         min-width: 9rem;
 
@@ -76,23 +76,24 @@
         }
     }
 
-    th, thead {
+    th,
+    thead {
         display: none;
     }
 
-    td:before {
-        content: attr(data-th) " ";
+    td::before {
+        content: attr(data-th) ' ';
         width: 30%;
         display: inline-block;
         font-family: $font-primary;
         font-weight: 500;
     }
 
-    td.empty-cell:before {
+    .empty-cell::before {
         content: none;
     }
 
-    td.truncate-cell {
+    .truncate-cell {
         max-width: 100%;
         word-break: break-all;
 
@@ -109,7 +110,8 @@
             display: table-header-group;
         }
 
-        td, th {
+        td,
+        th {
             display: table-cell;
         }
 
@@ -117,7 +119,7 @@
             padding-top: 1.8rem;
             padding-bottom: 1.8rem;
 
-            &:before {
+            &::before {
                 display: none;
             }
         }
@@ -134,19 +136,17 @@
     @extend .table;
     @extend .table--responsive;
 
-    tr.tile-table__tile {
+    .tile-table__tile {
         @extend .tile;
-
         border: none;
     }
 
-    td.tile-table__tile-cell {
+    .tile-table__tile-cell {
         padding: 1.8rem 0.9rem;
 
         @include respond-to(md) {
             padding: 1.8rem 1.2rem;
         }
-
 
         &:first-child {
             padding-left: 2.4rem;
@@ -157,13 +157,12 @@
         }
     }
 
-    tr.tile-table__spacer {
+    .tile-table__spacer {
         border: none;
     }
 
-    td.tile-table__spacer-cell {
+    .tile-table__spacer-cell {
         border: none;
         padding: 0.6rem 0;
     }
-
 }

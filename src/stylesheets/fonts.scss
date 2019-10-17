@@ -2,10 +2,10 @@
  * Noto Sans
  * -------------------------------------------------------------------------- */
 
- /*
+/*
  Web font files created using https://transfonter.org.
  - Selected character sets: Latin (non-extended), Cyrillic (non-extended)
- 
+
  Verified with https://fontdrop.info.
 
  Using limited character sets keeps file size down. Therefore we support the following 20 languages:
@@ -42,28 +42,28 @@
     font-style: normal;
     font-weight: 300;
     src: url('../fonts/NotoSans-Light.woff') format('woff');
-    src: url('../fonts/NotoSans-Light.woff2') format('woff2'); 
+    src: url('../fonts/NotoSans-Light.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Noto Sans';
     font-style: italic;
     font-weight: 300;
     src: url('../fonts/NotoSans-LightItalic.woff') format('woff');
-    src: url('../fonts/NotoSans-LightItalic.woff2') format('woff2'),
+    src: url('../fonts/NotoSans-LightItalic.woff2') format('woff2');
 }
 
 /* 400 -  Regular */
 @font-face {
     font-family: 'Noto Sans';
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     src: url('../fonts/NotoSans-Regular.woff') format('woff');
     src: url('../fonts/NotoSans-Regular.woff2') format('woff2');
 }
 @font-face {
     font-family: 'Noto Sans';
     font-style: italic;
-    font-weight: normal;
+    font-weight: 400;
     src: url('../fonts/NotoSans-Italic.woff') format('woff');
     src: url('../fonts/NotoSans-Italic.woff2') format('woff2');
 }
@@ -85,8 +85,8 @@
 }
 
 /* EXTRA Weights */
-/* These are included so that when we need them we have them, and already in the correct format with matching character sets.
-Until that point though, they're commented out to prevent being loaded. */
+/* These are included so that when we need them we have them, and already in the correct format with matching character
+   sets. Until that point though, they're commented out to prevent being loaded. */
 
 /* 100 - Thin */
 // @font-face {

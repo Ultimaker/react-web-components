@@ -2,10 +2,11 @@
     position: relative;
 }
 
-.ratings__foreground, .ratings__background {
+.ratings__foreground,
+.ratings__background {
     white-space: nowrap;
     overflow: hidden;
-    
+
     svg {
         padding: 0.1rem;
     }

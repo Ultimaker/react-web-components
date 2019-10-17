@@ -18,14 +18,16 @@
         user-select: none;
         z-index: 99;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: $context-menu-color-hover;
             color: $context-menu-color-trigger-hover;
-            transition: all 0.2s ease-out;
+            transition: background-color 0.2s ease-out,
+                color 0.2s ease-out;
         }
     }
 
-    .user-account-menu__trigger-image{
+    .user-account-menu__trigger-image {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -55,13 +57,11 @@
         width: 28rem;
         padding: 2.4rem;
         display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
+        flex-flow: column nowrap;
 
         .account-section__profile {
             display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
+            flex-flow: column nowrap;
             justify-content: center;
             flex-grow: 1;
             padding: 3.6rem 0;
@@ -69,7 +69,6 @@
 
         .account-section__title {
             @include font-size-header-2;
-
             font-family: $font-primary;
             font-weight: 500;
             margin-bottom: 1.2rem;
@@ -98,7 +97,6 @@
 
     .other-section {
         @extend .account-section;
-
         border-right: 1px solid $color-border;
     }
 }
