@@ -9,7 +9,6 @@
 
         input {
             @extend %input-style;
-
             width: 100%;
             padding-top: 0.5rem;
         }
@@ -18,7 +17,6 @@
     .react-tags__selected {
         .react-tags__selected-tag {
             @extend .pill;
-
             margin-right: 0.6rem;
             margin-bottom: 1.2rem;
 
@@ -43,7 +41,6 @@
             box-shadow: 0 0.1rem 0.2rem 0.1rem $color-shadow;
 
             @include font-size-text-2;
-
             list-style: none;
             padding: 1rem 0;
             margin: 0;
@@ -75,11 +72,13 @@
         .react-tags__search {
             display: none;
         }
+
         .react-tags__selected-tag {
             &:hover {
                 background-color: $pill-color-background;
                 cursor: default;
             }
+
             &:focus {
                 outline: none;
             }

@@ -3,14 +3,19 @@
         min-width: 100%;
         right: auto;
     }
+
     .drop-down-menu .drop-down-menu-base__trigger {
         border-bottom: 0.3rem solid transparent;
         padding: 0 1.8rem 0 2.4rem;
         height: 4.8rem;
+        // allowing 'all' as the transition-property
+        // stylelint-disable-next-line declaration-property-value-blacklist
         transition: all 0.2s ease-out;
+
         @include font-size-text-1;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: transparent;
             color: $color-blue;
         }
@@ -21,7 +26,8 @@
     .drop-down-menu .drop-down-menu-base__trigger {
         border-bottom-color: $color-border-active;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             border-bottom-color: $color-border-active;
         }
     }

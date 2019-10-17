@@ -14,14 +14,16 @@
         user-select: none;
         z-index: 99;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: $context-menu-color-hover;
             color: $context-menu-color-trigger-hover;
-            transition: all 0.2s ease-out;
+            transition: background-color 0.2s ease-out,
+                color 0.2s ease-out;
         }
 
-        &:after {
-            content: "";
+        &::after {
+            content: '';
             position: absolute;
             left: 50%;
             top: 50%;
@@ -31,7 +33,9 @@
             margin-top: -1px;
             background-color: $context-menu-color-trigger;
             border-radius: 50%;
-            box-shadow: 0 0 0 1px $context-menu-color-trigger, 0 8px 0 1px $context-menu-color-trigger, 0 -8px 0 1px $context-menu-color-trigger;
+            box-shadow: 0 0 0 1px $context-menu-color-trigger,
+                0 8px 0 1px $context-menu-color-trigger,
+                0 -8px 0 1px $context-menu-color-trigger;
         }
     }
 
@@ -58,14 +62,17 @@
     .drop-down-menu-base__trigger {
         color: $context-menu-disabled-color-trigger;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: $context-menu-disabled-color-hover;
             color: $context-menu-disabled-color-trigger-hover;
         }
 
-        &:after {
+        &::after {
             background-color: $context-menu-disabled-color-trigger;
-            box-shadow: 0 0 0 1px $context-menu-disabled-color-trigger, 0 8px 0 1px $context-menu-disabled-color-trigger, 0 -8px 0 1px $context-menu-disabled-color-trigger;
+            box-shadow: 0 0 0 1px $context-menu-disabled-color-trigger,
+                0 8px 0 1px $context-menu-disabled-color-trigger,
+                0 -8px 0 1px $context-menu-disabled-color-trigger;
         }
     }
 }

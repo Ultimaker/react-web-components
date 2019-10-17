@@ -1,3 +1,4 @@
+// stylelint-disable declaration-no-important
 .image-upload {
     position: relative;
     display: inline-block;
@@ -13,8 +14,11 @@
         right: 0;
         left: 0;
 
-        &:hover, &.show {
-            .cover, .icon, .placeholder-label {
+        &:hover,
+        &.show {
+            .cover,
+            .icon,
+            .placeholder-label {
                 visibility: visible !important;
                 opacity: 1 !important;
             }
@@ -29,8 +33,10 @@
         }
     }
 
-    input[type=range]:focus + .hover-area {
-        .cover, .icon, .placeholder-label {
+    input[type='range']:focus + .hover-area {
+        .cover,
+        .icon,
+        .placeholder-label {
             visibility: visible !important;
             opacity: 1 !important;
         }
@@ -103,7 +109,8 @@
     }
 
     .hide {
-        .icon, .placeholder-label {
+        .icon,
+        .placeholder-label {
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.2s ease-out;
@@ -115,3 +122,4 @@
         }
     }
 }
+// stylelint-enable declaration-no-important

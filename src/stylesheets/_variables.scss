@@ -1,18 +1,18 @@
-$color-blue: #00a7e9 !default;
-$color-blue-light: #24bcf3 !default;
-$color-blue-lighter: #46C4F2 !default;
-$color-blue-lightest: #d8f3fd !default;
-$color-red: #ef5b5b !default;
-$color-green: #23aa1d !default;
-$color-orange: #fbb045 !default;
-$color-black: #000000 !default;
-$color-grey-darker: #666666 !default;
-$color-grey-dark: #999999 !default;
-$color-grey-mid: #b7b7b7 !default;
-$color-grey-light: #dcdcdc !default;
-$color-grey-lighter: #e6e6e6 !default;
-$color-grey-lightest: #f3f3f3 !default;
-$color-white: #ffffff !default;
+$color-blue: rgb(0, 167, 233) !default;
+$color-blue-light: rgb(36, 188, 243) !default;
+$color-blue-lighter: rgb(70, 196, 242) !default;
+$color-blue-lightest: rgb(216, 243, 253) !default;
+$color-red: rgb(239, 91, 91) !default;
+$color-green: rgb(35, 170, 29) !default;
+$color-orange: rgb(251, 176, 69) !default;
+$color-black: rgb(0, 0, 0) !default;
+$color-grey-darker: rgb(102, 102, 102) !default;
+$color-grey-dark: rgb(153, 153, 153) !default;
+$color-grey-mid: rgb(183, 183, 183) !default;
+$color-grey-light: rgb(220, 220, 220) !default;
+$color-grey-lighter: rgb(230, 230, 230) !default;
+$color-grey-lightest: rgb(243, 243, 243) !default;
+$color-white: rgb(255, 255, 255) !default;
 $color-transparent: rgba(255, 255, 255, 0) !default;
 $color-transparent-grey-lighter: rgba(0, 0, 0, 0.03) !default;
 $color-transparent-grey-light: rgba(0, 0, 0, 0.06) !default;
@@ -22,14 +22,26 @@ $color-transparent-grey-darker: rgba(0, 0, 0, 0.25) !default;
 $color-transparent-grey-darkest: rgba(0, 0, 0, 0.85) !default;
 $color-transparent-blue: rgba(0, 167, 233, 0.06) !default;
 
-$font-primary: "Noto Sans", sans-serif !default;
-$font-primary-medium: "Noto Sans", sans-serif !default; // <- We keep this because we reference it in other places but it should never be used ever again! Specify weights instead!
+$font-primary: 'Noto Sans', sans-serif !default;
+// We keep the next line because we reference it in other places but it should never be used ever again!
+// Specify weights instead!
+$font-primary-medium: 'Noto Sans', sans-serif !default;
 
 $min-window-width: 320px !default;
 
-$layout-breakpoints: (lg: 1025px, md: 800px, sm: 620px) !default;
+$layout-breakpoints: (
+    lg: 1025px,
+    md: 800px,
+    sm: 620px
+) !default;
 $layout-fractions: 1 2 3 4 5 !default;
-$layout-spacing: (lg: 3.6rem, md: 2.4rem, sm: 1.2rem, xs: 0.6rem, none: 0) !default;
+$layout-spacing: (
+    lg: 3.6rem,
+    md: 2.4rem,
+    sm: 1.2rem,
+    xs: 0.6rem,
+    none: 0
+) !default;
 $layout-gutter-default: 2.4rem !default;
 
 $border-radius: 3px !default;

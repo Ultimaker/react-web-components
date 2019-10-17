@@ -2,7 +2,7 @@
     .drop-down-menu-base__menu-container {
         z-index: 99999;
 
-        &:before {
+        &::before {
             right: 13px;
             left: auto;
         }
@@ -30,8 +30,11 @@
         padding: 1.2rem 1.8rem;
         width: 100%;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             background-color: $context-menu-color-hover;
+            // allowing 'all' as the transition-property
+            // stylelint-disable-next-line declaration-property-value-blacklist
             transition: all 0.2s ease-out;
         }
 

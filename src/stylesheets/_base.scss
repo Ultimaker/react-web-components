@@ -12,6 +12,7 @@ body {
     color: $color-text;
     font-family: $font-primary;
     line-height: 2.2rem;
+
     @include font-size-text-1;
     width: 100vw;
     overflow-x: hidden;
@@ -41,6 +42,7 @@ body {
     bottom: 0;
 }
 
-[class^='noscroll-'], [class*=' noscroll-']{
+[class^='noscroll-'],
+[class*=' noscroll-'] {
     @extend .noscroll;
 }

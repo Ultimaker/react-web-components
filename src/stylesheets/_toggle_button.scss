@@ -13,10 +13,10 @@
     position: relative;
 }
 
-.toggle-button__slider:before {
+.toggle-button__slider::before {
     background-color: $toggle-button-color-background;
     border-radius: 9999px;
-    content: "";
+    content: '';
     cursor: pointer;
     display: block;
     height: 2.4rem;
@@ -29,10 +29,10 @@
     width: 6.2rem;
 }
 
-.toggle-button__slider:after {
+.toggle-button__slider::after {
     background-color: $toggle-button-color;
     border-radius: 50%;
-    content: "";
+    content: '';
     cursor: pointer;
     display: block;
     height: 3rem;
@@ -46,20 +46,20 @@
     box-shadow: 0 0.1rem 0.5rem 0 $color-shadow;
 }
 
-.toggle-button__input:focus + .toggle-button__slider:before {
+.toggle-button__input:focus + .toggle-button__slider::before {
     background-color: $toggle-button-color-background-focus;
 }
 
 .toggle-button--checked {
-    .toggle-button__slider:before {
+    .toggle-button__slider::before {
         background-color: $toggle-button-color-active;
     }
 
-    .toggle-button__slider:after {
+    .toggle-button__slider::after {
         right: 0;
     }
 
-    .toggle-button__input:focus + .toggle-button__slider:before {
+    .toggle-button__input:focus + .toggle-button__slider::before {
         background-color: $toggle-button-color-active-focus;
     }
 }

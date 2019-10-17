@@ -6,7 +6,6 @@
         padding: 2.4rem 3.6rem;
     }
 
-
     .arrow-column {
         flex-basis: 4rem;
         text-align: center;
@@ -26,7 +25,6 @@
 
     .setting-panel__header {
         @include font-size-header-2;
-
         font-family: $font-primary;
         font-weight: 500;
         padding-bottom: 3rem;

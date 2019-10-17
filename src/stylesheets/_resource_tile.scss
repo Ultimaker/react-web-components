@@ -29,7 +29,8 @@
 .resource-tile__name {
     margin-top: 1.2rem;
     margin-bottom: 2.4rem;
+
     @extend .truncate;
+
     @include font-size-text-1;
 }
-

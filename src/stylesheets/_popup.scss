@@ -26,7 +26,6 @@
         padding: 2.4rem 2.4rem 1.2rem;
 
         @include font-size-header-1;
-
         line-height: 3.6rem;
     }
 
@@ -52,8 +51,7 @@
         flex: 0 0 auto;
         padding: 1.2rem 2rem 0.8rem;
         display: flex;
-        flex-wrap: wrap;
-        flex-direction: row-reverse;
+        flex-flow: row-reverse wrap;
 
         .popup__btn-container {
             margin-left: 1.2rem;
