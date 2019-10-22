@@ -48,17 +48,16 @@ export class DefaultInputField extends React.Component
     private readonly _inputRef: React.RefObject<HTMLInputElement> =
         React.createRef<HTMLInputElement>();
 
-    state = {
-        touched: false,
-    }
-
     static defaultProps = {
         type: 'text',
     }
 
     constructor(props) {
         super(props);
-        
+
+        this.state = {
+            touched: false,
+        };
         this._onChange = this._onChange.bind(this);
     }
 

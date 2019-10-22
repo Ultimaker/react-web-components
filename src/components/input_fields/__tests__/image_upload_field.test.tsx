@@ -83,7 +83,7 @@ describe('The image upload field component', () => {
         expect(props.onChangeHandler).not.toHaveBeenCalled();
 
         const image = new Blob(['A+test+string+for+testing+image'], { type: 'image/jpeg' });
-        image['preview'] = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
+        // image.preview = 'blob:http://localhost:3050/a8e0fa3b-feb4-4409-ac43-8335e412189c';
         wrapper.find(ImageUpload).prop('onFileSelection')(image);
 
         expect(props.onChangeHandler).toHaveBeenCalledWith(props.id, image);

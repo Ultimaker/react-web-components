@@ -28,13 +28,12 @@ export interface CheckboxFieldState {
  * TODO: merge Checkbox and CheckboxField?
  */
 export class CheckboxField extends React.Component<CheckboxFieldProps, CheckboxFieldState> {
-    state = {
-        touched: false,
-    }
-
     constructor(props) {
         super(props);
-        
+        this.state = {
+            touched: false,
+        };
+
         this._onChange = this._onChange.bind(this);
     }
 

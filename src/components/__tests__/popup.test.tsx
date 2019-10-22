@@ -58,7 +58,7 @@ describe('The Popup component', () => {
     });
 
     it('should reset primary button spinner when the promise is done', async () => {
-        const promise = new Promise((resolve, reject) => reject('promise rejected'));
+        const promise = Promise.reject(new Error('promise rejected'));
         props.primaryBtnHandler.mockReturnValue(promise);
         expect(wrapper.find(Form).prop('primaryBtnShowSpinner')).toBeFalsy();
         wrapper.find(Form).prop('onSubmitHandler')();
@@ -66,13 +66,13 @@ describe('The Popup component', () => {
         try {
             await promise;
         } catch (e) {
-            expect(e).toEqual('promise rejected');
+            expect(e.message).toEqual('promise rejected');
         }
         expect(wrapper.find(Form).prop('primaryBtnShowSpinner')).toBeFalsy();
     });
 
     it('should reset secondary button spinner when the promise is done', async () => {
-        const promise = new Promise(resolve => resolve('resolved'));
+        const promise = new Promise((resolve) => resolve('resolved'));
         props.secondaryBtnHandler.mockReturnValue(promise);
         expect(wrapper.find(Form).prop('secondaryBtnShowSpinner')).toBeFalsy();
         wrapper.find(Form).prop('secondaryBtnHandler')();

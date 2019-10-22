@@ -52,8 +52,7 @@ export const TextField: React.StatelessComponent<TextFieldProps> = ({
 }) => (
     <DefaultInputField inputChildren={children} {...wrapperProps}>
         {wrapperProps.staticField && wrapperProps.value
-            && staticRender(wrapperProps.type, wrapperProps.value)
-        }
+            && staticRender(wrapperProps.type, wrapperProps.value)}
     </DefaultInputField>
 );
 

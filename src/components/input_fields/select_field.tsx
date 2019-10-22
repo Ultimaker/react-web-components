@@ -26,13 +26,12 @@ export interface SelectFieldState {
 }
 
 export class SelectField extends React.Component<SelectFieldProps, SelectFieldState> {
-    state = {
-        touched: false,
-    };
-
     constructor(props) {
         super(props);
-        
+
+        this.state = {
+            touched: false,
+        };
         this._onChange = this._onChange.bind(this);
         this._getValueLabel = this._getValueLabel.bind(this);
     }
@@ -45,7 +44,7 @@ export class SelectField extends React.Component<SelectFieldProps, SelectFieldSt
 
     private _getValueLabel(value: string | number): string {
         const { selectOptions } = this.props;
-        const option = selectOptions.find(findOption => findOption.value === value);
+        const option = selectOptions.find((findOption) => findOption.value === value);
 
         if (option) {
             return option.label;
@@ -82,8 +81,7 @@ export class SelectField extends React.Component<SelectFieldProps, SelectFieldSt
                                 </DropDownMenuItem>
                             ))}
                         </DropDownMenu>
-                    )
-                }
+                    )}
             </InputFieldWrapper>
         );
     }

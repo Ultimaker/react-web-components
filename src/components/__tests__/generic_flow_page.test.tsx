@@ -25,7 +25,7 @@ describe('The GenericFlowPage component', () => {
     });
 
     it('should render with an application name "My Account"', () => {
-        props.appName = 'My Account'
+        props.appName = 'My Account';
         wrapper.setProps(props);
         expect(wrapper).toMatchSnapshot();
     });

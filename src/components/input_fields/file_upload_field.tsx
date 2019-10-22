@@ -40,17 +40,16 @@ export interface FileUploadFieldState {
  * TODO: merge FileUploadField and FileUpload?
  */
 export class FileUploadField extends React.Component<FileUploadFieldProps, FileUploadFieldState> {
-    state = {
-        touched: false,
-    };
-
     static defaultProps = {
         uploading: false,
     }
 
     constructor(props) {
         super(props);
-        
+
+        this.state = {
+            touched: false,
+        };
         this._onChange = this._onChange.bind(this);
     }
 

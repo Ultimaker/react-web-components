@@ -71,7 +71,7 @@ describe('The code input field component', () => {
             type: 'text',
             placeholder: null,
         };
-        expect(wrapper.find(InputFieldWrapper).find('input').map(i => i.props())).toEqual([
+        expect(wrapper.find(InputFieldWrapper).find('input').map((i) => i.props())).toEqual([
             { id: 'testInputField__0', value: '2', ...commonProps },
             { id: 'testInputField__1', value: '0', ...commonProps },
             { id: 'testInputField__2', value: '1', ...commonProps },
@@ -100,7 +100,7 @@ describe('The code input field component', () => {
         wrapper = shallow(<CodeField {...props} />);
         wrapper.setProps({ maxLength: 10 });
         expect(wrapper.find('input')).toHaveLength(10);
-        wrapper.find('input').map(i => expect(i.prop('maxLength')).toEqual(1));
+        wrapper.find('input').map((i) => expect(i.prop('maxLength')).toEqual(1));
     });
 
     it('should allow an empty placeholder', () => {
@@ -113,7 +113,7 @@ describe('The code input field component', () => {
         expect(wrapper.find(InputFieldWrapper).prop('validationError')).toBeFalsy();
         wrapper.setProps({ validationError: 'An error', submitted: true });
         expect(wrapper.find(InputFieldWrapper).prop('validationError')).toEqual('An error');
-        expect(wrapper.find('input').map(i => i.prop('className'))).toEqual([
+        expect(wrapper.find('input').map((i) => i.prop('className'))).toEqual([
             'input error', 'input error', 'input error', 'input error', 'input error', 'input error',
         ]);
     });
