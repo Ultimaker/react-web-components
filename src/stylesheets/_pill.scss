@@ -1,15 +1,14 @@
 .pill {
-    padding: 0 1.2rem;
-    color: $color-text-light;
-
-    @include font-size-text-3;
-    border-radius: 9999px;
-    line-height: 2.6rem;
-    background-color: $pill-color-background;
+    background-color: $color-grey-lighter;
+    border-radius: 1.3rem;
+    color: $color-grey-darker;
     display: inline-block;
+    font-size: 1.2rem;
+    line-height: 2.6rem;
+    padding: 0 1.2rem;
+}
 
-    &.active {
-        color: $color-white;
-        background-color: $pill-color-background-active;
-    }
+.pill--active {
+    background-color: $color-blue;
+    color: $color-white;
 }
