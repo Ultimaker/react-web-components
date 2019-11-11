@@ -1,10 +1,10 @@
 module.exports = {
     coverageDirectory: 'coverage',
     collectCoverageFrom: [
-        'src/**/*.tsx',
-        '!src/index.tsx',
-        '!src/components/icons/*.tsx',
-        '!src/stories/*',
+        '<rootDir>/**/*.tsx',
+        '!<rootDir>/index.tsx',
+        '!<rootDir>/components/icons/*.tsx',
+        '!<rootDir>/stories/**',
     ],
     coverageThreshold: {
         global: {
@@ -14,25 +14,14 @@ module.exports = {
             lines: 93,
         },
     },
-    transformIgnorePatterns: [
-        'node_modules/(?!(react-web-components)/)',
-    ],
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
     testPathIgnorePatterns: ['jest.setup.ts$'],
     moduleNameMapper: {
-        '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/src/__mocks__/testFileStub.tsx',
-        '\\.(css|scss)$': '<rootDir>/src/__mocks__/emptyModule.tsx',
+        '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/testFileStub.tsx',
+        '\\.(css|scss)$': '<rootDir>/__mocks__/emptyModule.tsx',
     },
-    moduleFileExtensions: [
-        'ts',
-        'tsx',
-        'js',
-        'jsx',
-        'json',
-        'node',
-    ],
+    rootDir: './src',
     setupFilesAfterEnv: [
-        '<rootDir>/src/__tests__/jest.setup.ts',
+        '<rootDir>/__tests__/jest.setup.ts',
     ],
     snapshotSerializers: [
         'enzyme-to-json/serializer',
