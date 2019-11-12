@@ -1,10 +1,11 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount, ShallowWrapper } from 'enzyme';
 
 // component
 import { DropDownMenuBase, DropDownMenuBaseProps } from '../drop_down_menu_base';
 import DropDownMenuItem from '../drop_down_menu_item';
+import Button from '../button';
 
 // mocks
 import { mockClickEvent } from '../../__mocks__/clickMock';
@@ -29,18 +30,18 @@ describe('The DropDownMenuBase component', () => {
     });
 
     it('should call toggle menu handler when the trigger is clicked', () => {
-        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onToggleMenuHandler).toBeCalledWith(true);
     });
 
     it('should call toggle menu handler when the trigger is clicked', () => {
         // open menu
-        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onToggleMenuHandler).toBeCalledWith(true);
 
         // close menu
         wrapper.setProps({ showMenu: true });
-        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onToggleMenuHandler).toBeCalledWith(false);
     });
 
@@ -66,7 +67,8 @@ describe('The DropDownMenuBase component', () => {
     });
 
     it('should call toggle menu handler when escape is pressed', () => {
-        wrapper.instance()._onOutsideFocusHandler({ key: 'Escape' });
+        // TODO this needs a better way to test, along with the click event, as right now it is not meaningful.
+        wrapper.instance()._keyPressHandler({ key: 'Escape' });
         expect(props.onToggleMenuHandler).toBeCalledWith(false);
     });
 });

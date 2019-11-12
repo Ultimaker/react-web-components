@@ -44,7 +44,7 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         this._keyPressHandler = this._keyPressHandler.bind(this);
     }
 
-    private _onAnywhereClickHandler(event): void {
+    private _onAnywhereClickHandler(event:MouseEvent): void {
         /* istanbul ignore next */
         if (this._menuRef
             && this._menuRef.current
@@ -53,7 +53,7 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         }
     }
 
-    private _keyPressHandler(event): void {
+    private _keyPressHandler(event:KeyboardEvent): void {
         /* istanbul ignore next */
         if (event.key === 'Escape') {
             this._onToggleMenuHandler(false);
