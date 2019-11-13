@@ -8,46 +8,20 @@ import { BoxPlaceholder } from '../box_placeholder';
 import { ProfileImage } from '../profile_image';
 
 
-/**
- * The image upload field provides these props in addition to those supported by all input fields.
- */
 export interface ImageUploadFieldProps extends InputFieldProps {
-    /** Size of the image for type image. Include size unit */
     imageSize?: string;
-
-    /** Shape of the image for type image: 'round' | 'square' */
     imageShape?: ImageShape;
-
-    /** Called when the field changes */
     onChangeHandler?: (id: string, value: ImageFile) => any;
-
-    /** Called when an image file is read */
     onReadHandler?: (id: string, dataURL: string) => any;
-
-    /** html placeholder text */
     placeholder?: string;
-
     /** The file URL or preview URL */
     value: string;
-
-    /** Whether cropping should be enabled */
     allowCropping?: boolean;
-
-    /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
-
-    /** The warning message to show when the uploaded image file size exceeds maxMb.
-     * Can be any[] if returned from I18n.format.
-    */
-    fileSizeExceedsMessage?: string | any[];
-
-    /** Placeholder type: 'person' | 'other' */
+    fileSizeExceedsMessage?: string;
     placeholderType?: ImagePlaceholderType;
 }
 
-/**
- * The image upload field keeps track of whether it has been touched.
- */
 export interface ImageUploadFieldState {
     /** Indicates if the field has been touched (changed) or not from the default value. */
     touched: boolean;

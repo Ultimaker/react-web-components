@@ -31,26 +31,15 @@ export interface ImageFile extends File {
 export interface ImageUploadProps {
     /** The ImageUpload list id */
     id?: string;
-    /** Called when an image has been selected */
     onFileSelection?: (file: ImageFile) => any;
-    /** Called when an image has been read */
     onFileRead?: (dataURL: string) => any;
-    /** Size of the image. Include size unit */
     size?: string;
-    /** Shape of the image: 'round' | 'square' */
     shape?: ImageShape;
-    /** Image URL */
     imageURL?: string;
-    /** Placeholder label */
     placeholderLabel?: string;
-    /** Placeholder type: 'person' | 'other' */
     placeholderType?: ImagePlaceholderType;
-    /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
-    /** The warning message to show when the uploaded image file size exceeds maxMb.
-     * Can be any[] if returned from I18n.format.
-    */
-    fileSizeExceedsMessage?: string | any[];
+    fileSizeExceedsMessage?: string;
     /**
      * Whether cropping should be enabled. If enabled, the user is allowed to choose what
      * part of the image to use. For every change, the `onFileRead` callback is called.
@@ -228,26 +217,22 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         );
     }
 
-    private _renderFileSizeExceedsMessage(): JSX.Element {
-        const { fileSizeExceedsMessage, size } = this.props;
-        return (
-            <div className="image-upload__warning" style={{ width: size }}>
-                <InputFieldValidation
-                    validationError={fileSizeExceedsMessage}
-                    labelLayoutWidth="1/1"
-                    labelWidthBreakpoint="sm"
-                />
-            </div>
-        );
-    }
-
     render(): JSX.Element {
-        const { id } = this.props;
+        const { id, size, fileSizeExceedsMessage } = this.props;
         const { cropURL, showFileSizeWarning } = this.state;
         return (
             <div id={id} className="image-upload">
                 {cropURL ? this._renderCropper() : this._renderDropzone()}
-                {showFileSizeWarning && this._renderFileSizeExceedsMessage()}
+                {showFileSizeWarning
+                && (
+                    <div style={{ width: size }}>
+                        <InputFieldValidation
+                            validationError={fileSizeExceedsMessage}
+                            labelLayoutWidth="1/1"
+                            labelWidthBreakpoint="sm"
+                        />
+                    </div>
+                )}
             </div>
         );
     }
