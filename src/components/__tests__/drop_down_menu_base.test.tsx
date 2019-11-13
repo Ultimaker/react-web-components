@@ -67,7 +67,9 @@ describe('The DropDownMenuBase component', () => {
     });
 
     it('should call toggle menu handler when escape is pressed', () => {
-        // TODO this needs a better way to test, along with the click event, as right now it is not meaningful.
+        // TODO This test is now calling a private method of the component.
+        // If the correct type is added to the wrapper, this will not be possible.
+        // It is also not actually testing the functionality. Tests like this need to be revised.
         wrapper.instance()._keyPressHandler({ key: 'Escape' });
         expect(props.onToggleMenuHandler).toBeCalledWith(false);
     });
