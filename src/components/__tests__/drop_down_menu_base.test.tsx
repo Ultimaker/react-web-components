@@ -1,6 +1,6 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-import { shallow, mount, ShallowWrapper } from 'enzyme';
+import { shallow } from 'enzyme';
 
 // component
 import { DropDownMenuBase, DropDownMenuBaseProps } from '../drop_down_menu_base';
