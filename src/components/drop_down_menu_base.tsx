@@ -39,20 +39,23 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
     constructor(props: DropDownMenuBaseProps) {
         super(props);
         this._menuRef = React.createRef();
-        this._onOutsideFocusHandler = this._onOutsideFocusHandler.bind(this);
+        this._onAnywhereClickHandler = this._onAnywhereClickHandler.bind(this);
         this._onToggleMenuHandler = this._onToggleMenuHandler.bind(this);
+        this._keyPressHandler = this._keyPressHandler.bind(this);
     }
 
-    private _onOutsideFocusHandler(event): void {
+    private _onAnywhereClickHandler(event:MouseEvent): void {
         /* istanbul ignore next */
         if (this._menuRef
             && this._menuRef.current
             && !this._menuRef.current.contains(event.target)) {
             this._onToggleMenuHandler(false);
         }
+    }
 
+    private _keyPressHandler(event:KeyboardEvent): void {
+        /* istanbul ignore next */
         if (event.key === 'Escape') {
-            // close menu is user presses escape
             this._onToggleMenuHandler(false);
         }
     }
@@ -63,11 +66,11 @@ export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}>
         onToggleMenuHandler(showMenu);
 
         if (showMenu) {
-            document.addEventListener('mousedown', this._onOutsideFocusHandler);
-            document.addEventListener('keydown', this._onOutsideFocusHandler);
+            document.addEventListener('mousedown', this._onAnywhereClickHandler);
+            document.addEventListener('keydown', this._keyPressHandler);
         } else {
-            document.removeEventListener('mousedown', this._onOutsideFocusHandler);
-            document.removeEventListener('keydown', this._onOutsideFocusHandler);
+            document.removeEventListener('mousedown', this._onAnywhereClickHandler);
+            document.removeEventListener('keydown', this._keyPressHandler);
         }
     }
 

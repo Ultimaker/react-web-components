@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 // component
 import { DropDownMenuBase, DropDownMenuBaseProps } from '../drop_down_menu_base';
 import DropDownMenuItem from '../drop_down_menu_item';
+import Button from '../button';
 
 // mocks
 import { mockClickEvent } from '../../__mocks__/clickMock';
@@ -29,18 +30,18 @@ describe('The DropDownMenuBase component', () => {
     });
 
     it('should call toggle menu handler when the trigger is clicked', () => {
-        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onToggleMenuHandler).toBeCalledWith(true);
     });
 
     it('should call toggle menu handler when the trigger is clicked', () => {
         // open menu
-        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onToggleMenuHandler).toBeCalledWith(true);
 
         // close menu
         wrapper.setProps({ showMenu: true });
-        wrapper.find('.drop-down-menu-base__trigger').props().onClickHandler();
+        wrapper.find(Button).props().onClickHandler();
         expect(props.onToggleMenuHandler).toBeCalledWith(false);
     });
 
@@ -66,7 +67,10 @@ describe('The DropDownMenuBase component', () => {
     });
 
     it('should call toggle menu handler when escape is pressed', () => {
-        wrapper.instance()._onOutsideFocusHandler({ key: 'Escape' });
+        // TODO This test is now calling a private method of the component.
+        // If the correct type is added to the wrapper, this will not be possible.
+        // It is also not actually testing the functionality. Tests like this need to be revised.
+        wrapper.instance()._keyPressHandler({ key: 'Escape' });
         expect(props.onToggleMenuHandler).toBeCalledWith(false);
     });
 });
