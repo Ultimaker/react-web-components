@@ -194,7 +194,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         const hoverAreaClasses = classNames('hover-area', { show: dropActive || dropFocus });
 
         return (
-            <div style={{ height: size, width: size }}>
+            <div className="image-upload__dropzone" style={{ height: size, width: size }}>
                 <Dropzone
                     accept="image/jpeg, image/png"
                     multiple={false}
@@ -229,24 +229,24 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     private _renderFileSizeExceedsMessage(): JSX.Element {
-        const { fileSizeExceedsMessage } = this.props;
+        const { fileSizeExceedsMessage, size } = this.props;
         return (
-            <InputFieldValidation
-                validationError={fileSizeExceedsMessage}
-                labelLayoutWidth="1/1"
-                labelWidthBreakpoint="sm"
-            />
+            <div className="image-upload__warning" style={{ width: size }}>
+                <InputFieldValidation
+                    validationError={fileSizeExceedsMessage}
+                    labelLayoutWidth="1/1"
+                    labelWidthBreakpoint="sm"
+                />
+            </div>
         );
     }
 
     render(): JSX.Element {
-        const { id, size } = this.props;
+        const { id } = this.props;
         const { cropURL, showFileSizeWarning } = this.state;
         return (
-            <div style={{ width: size }}>
-                <div id={id} className="image-upload">
-                    {cropURL ? this._renderCropper() : this._renderDropzone()}
-                </div>
+            <div id={id} className="image-upload">
+                {cropURL ? this._renderCropper() : this._renderDropzone()}
                 {showFileSizeWarning && this._renderFileSizeExceedsMessage()}
             </div>
         );

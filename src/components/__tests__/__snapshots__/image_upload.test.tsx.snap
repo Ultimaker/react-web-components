@@ -2,44 +2,37 @@
 
 exports[`The image upload component should render 1`] = `
 <div
-  style={
-    Object {
-      "width": "18rem",
-    }
-  }
+  className="image-upload"
 >
   <div
-    className="image-upload"
-  >
-    <div
-      style={
-        Object {
-          "height": "18rem",
-          "width": "18rem",
-        }
+    className="image-upload__dropzone"
+    style={
+      Object {
+        "height": "18rem",
+        "width": "18rem",
       }
+    }
+  >
+    <t
+      accept="image/jpeg, image/png"
+      disableClick={false}
+      disabled={false}
+      getDataTransferItems={[Function]}
+      maxSize={Infinity}
+      minSize={0}
+      multiple={false}
+      onBlur={[Function]}
+      onDragEnter={[Function]}
+      onDragLeave={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      preventDropOnDocument={true}
     >
-      <t
-        accept="image/jpeg, image/png"
-        disableClick={false}
-        disabled={false}
-        getDataTransferItems={[Function]}
-        maxSize={Infinity}
-        minSize={0}
-        multiple={false}
-        onBlur={[Function]}
-        onDragEnter={[Function]}
-        onDragLeave={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        preventDropOnDocument={true}
-      >
-        <Component />
-      </t>
-      <div
-        className="placeholder placeholder--round"
-      />
-    </div>
+      <Component />
+    </t>
+    <div
+      className="placeholder placeholder--round"
+    />
   </div>
 </div>
 `;
