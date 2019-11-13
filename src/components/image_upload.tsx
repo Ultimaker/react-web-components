@@ -7,6 +7,7 @@ import UploadIcon from './icons/upload_icon';
 import ImageCropper from './image_cropper';
 import ProfileImage from './profile_image';
 import BoxPlaceholder from './box_placeholder';
+import InputFieldValidation from './input_fields/input_field_validation';
 
 // dependencies
 let Dropzone = require('react-dropzone');
@@ -46,6 +47,10 @@ export interface ImageUploadProps {
     placeholderType?: ImagePlaceholderType;
     /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
+    /** The warning message to show when the uploaded image file size exceeds maxMb.
+     * Can be any[] if returned from I18n.format.
+    */
+    fileSizeExceedsMessage?: string | any[];
     /**
      * Whether cropping should be enabled. If enabled, the user is allowed to choose what
      * part of the image to use. For every change, the `onFileRead` callback is called.
@@ -63,6 +68,8 @@ export interface ImageUploadState {
     cropURL: string | null;
     /** Whether the component is focused using the keyboard */
     dropFocus: boolean;
+    /** Whether to show the file size warning */
+    showFileSizeWarning: boolean;
 }
 
 /**
@@ -80,6 +87,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
             dropActive: false,
             cropURL: null,
             dropFocus: false,
+            showFileSizeWarning: false,
         };
         this._onDropHandler = this._onDropHandler.bind(this);
         this._onDragEnter = this._onDragEnter.bind(this);
@@ -96,9 +104,15 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
             allowCropping, onFileSelection, onFileRead, maxMb,
         } = this.props;
         if (maxMb && file.size > maxMb * 1024 * 1024) {
-            // TODO: Make this a proper error in STAR-334.
+            this.setState({
+                showFileSizeWarning: true,
+            });
             return;
         }
+
+        this.setState({
+            showFileSizeWarning: false,
+        });
 
         if (onFileSelection) {
             onFileSelection(file);
@@ -214,12 +228,26 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
         );
     }
 
-    render(): JSX.Element {
-        const { id } = this.props;
-        const { cropURL } = this.state;
+    private _renderFileSizeExceedsMessage(): JSX.Element {
+        const { fileSizeExceedsMessage } = this.props;
         return (
-            <div id={id} className="image-upload">
-                {cropURL ? this._renderCropper() : this._renderDropzone()}
+            <InputFieldValidation
+                validationError={fileSizeExceedsMessage}
+                labelLayoutWidth="1/1"
+                labelWidthBreakpoint="sm"
+            />
+        );
+    }
+
+    render(): JSX.Element {
+        const { id, size } = this.props;
+        const { cropURL, showFileSizeWarning } = this.state;
+        return (
+            <div style={{ width: size }}>
+                <div id={id} className="image-upload">
+                    {cropURL ? this._renderCropper() : this._renderDropzone()}
+                </div>
+                {showFileSizeWarning && this._renderFileSizeExceedsMessage()}
             </div>
         );
     }

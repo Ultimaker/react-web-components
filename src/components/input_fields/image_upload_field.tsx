@@ -36,6 +36,11 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     /** The maximum amount of megabytes allowed to be uploaded */
     maxMb?: number;
 
+    /** The warning message to show when the uploaded image file size exceeds maxMb.
+     * Can be any[] if returned from I18n.format.
+    */
+    fileSizeExceedsMessage?: string | any[];
+
     /** Placeholder type: 'person' | 'other' */
     placeholderType?: ImagePlaceholderType;
 }
@@ -98,7 +103,7 @@ export class ImageUploadField extends React.Component
     render() {
         const {
             imageSize, imageShape, placeholder, value, onReadHandler,
-            children, allowCropping, maxMb, placeholderType, ...wrapperProps
+            children, allowCropping, maxMb, placeholderType, fileSizeExceedsMessage, ...wrapperProps
         } = this.props;
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
@@ -119,6 +124,7 @@ export class ImageUploadField extends React.Component
                                 placeholderLabel={placeholder}
                                 placeholderType={placeholderType}
                                 allowCropping={allowCropping}
+                                fileSizeExceedsMessage={fileSizeExceedsMessage}
                             />
                         )
                 }
