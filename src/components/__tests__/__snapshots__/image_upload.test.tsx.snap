@@ -5,6 +5,7 @@ exports[`The image upload component should render 1`] = `
   className="image-upload"
 >
   <div
+    className="image-upload__dropzone"
     style={
       Object {
         "height": "18rem",
