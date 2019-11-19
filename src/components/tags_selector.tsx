@@ -111,9 +111,7 @@ export class TagsSelector extends React.Component<TagsSelectorProps, TagsSelecto
 
         if (!disabled) {
             const { tags } = this.state;
-            const alreadyExists = tags.find((existingTag) => {
-                return existingTag.name.toLowerCase() === tag.name.toLowerCase();
-            });
+            const alreadyExists = tags.find((existingTag) => existingTag.name.toLowerCase() === tag.name.toLowerCase());
             if (!alreadyExists) {
                 const updatedTags = [...tags, tag];
                 onChangeHandler(TagsSelector.convertTagsToStrings(updatedTags));
