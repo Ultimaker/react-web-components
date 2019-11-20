@@ -62,6 +62,14 @@ describe('The TagsSelector component', () => {
         expect(props.onChangeHandler).not.toBeCalled();
     });
 
+    it('should not add a duplicate of a tag with different case', () => {
+        wrapper.instance()._handleAddition({
+            id: 'tAg 1',
+            name: 'tAg 1',
+        });
+        expect(props.onChangeHandler).not.toBeCalled();
+    });
+
     it('should handle deleting a tag', () => {
         wrapper.instance()._handleDelete(1);
         expect(props.onChangeHandler).toHaveBeenCalledWith(['tag 1']);
