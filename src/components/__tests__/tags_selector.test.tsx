@@ -46,12 +46,28 @@ describe('The TagsSelector component', () => {
         ]);
     });
 
-    it('should handle adding a tag', () => {
+    it('should add a tag if it does not exist', () => {
         wrapper.instance()._handleAddition({
             id: 'tag 3',
             name: 'tag 3',
         });
         expect(props.onChangeHandler).toHaveBeenCalledWith(['tag 1', 'tag 2', 'tag 3']);
+    });
+
+    it('should not add a duplicate of a tag which already exists', () => {
+        wrapper.instance()._handleAddition({
+            id: 'tag 1',
+            name: 'tag 1',
+        });
+        expect(props.onChangeHandler).not.toBeCalled();
+    });
+
+    it('should not add a duplicate of a tag with different case', () => {
+        wrapper.instance()._handleAddition({
+            id: 'tAg 1',
+            name: 'tAg 1',
+        });
+        expect(props.onChangeHandler).not.toBeCalled();
     });
 
     it('should handle deleting a tag', () => {
