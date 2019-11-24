@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input_text.tsx: snapshot 1`] = `
+<input
+  className="input-text"
+  type="text"
+/>
+`;

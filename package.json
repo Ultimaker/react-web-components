@@ -38,7 +38,6 @@
     "homepage": "https://github.com/Ultimaker/react-web-components#readme",
     "dependencies": {
         "classnames": "^2.2.6",
-        "eslint-plugin-react-hooks": "^1.7.0",
         "gettext-parser": "^3.1.0",
         "lodash.debounce": "^4.0.8",
         "node-gettext": "^2.0.0",
@@ -91,6 +90,7 @@
         "eslint-plugin-import": "^2.18.2",
         "eslint-plugin-jsx-a11y": "^6.2.3",
         "eslint-plugin-react": "^7.14.3",
+        "eslint-plugin-react-hooks": "^1.7.0",
         "file-loader": "^3.0.1",
         "gettext-extractor": "^3.4.0",
         "jest": "^24.9.0",
