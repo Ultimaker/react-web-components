@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search_bar.tsx snapshot and instance 1`] = `
+<SearchBar
+  emitDelay={0}
+  onChange={[MockFunction]}
+  placeholder="For example…"
+>
+  <div
+    className="search-bar"
+  >
+    <span
+      className="search-bar__icon"
+    >
+      <MagnifierIconSmall>
+        <svg
+          aria-hidden="true"
+          fill="currentColor"
+          focusable="false"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15,1.99999996 C11.1,1.99999996 7.99999996,5.09999997 7.99999996,8.99999996 C7.99999996,10.6 8.49999996,12 9.39999999,13.2 L1.99999996,20.6 L3.39999996,22 L10.8,14.6 C12,15.5 13.4,16 15,16 C18.9,16 22,12.9 22,8.99999996 C22,5.09999997 18.9,1.99999996 15,1.99999996 Z M15,14 C12.2,14 9.99999999,11.8 9.99999999,8.99999997 C9.99999999,6.19999998 12.2,3.99999997 15,3.99999997 C17.8,3.99999997 20,6.19999998 20,8.99999997 C20,11.8 17.8,14 15,14 Z"
+            fill="currentColor"
+          />
+        </svg>
+      </MagnifierIconSmall>
+    </span>
+    <ForwardRef
+      className="search-bar__input"
+      hasError={false}
+      onChange={[Function]}
+      placeholder="For example…"
+      type="text"
+      value=""
+    >
+      <input
+        className="input-text search-bar__input"
+        onChange={[Function]}
+        placeholder="For example…"
+        type="text"
+        value=""
+      />
+    </ForwardRef>
+  </div>
+</SearchBar>
+`;

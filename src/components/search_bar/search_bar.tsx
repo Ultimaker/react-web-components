@@ -1,12 +1,13 @@
 import React from 'react';
 import debounce from 'lodash.debounce';
-import * as Input from './input';
-import * as Icon from './icons';
+import * as Input from '../input';
+import * as Icon from '../icons';
 
 interface SearchBarProps {
     query?: string;
     emitDelay?: number;
-    onChangeHandler: (value: string) => void;
+    onChange: (value: string) => void;
+    placeholder?: string;
 }
 
 interface SearchBarState {
@@ -18,8 +19,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         emitDelay: 0,
     }
 
-    debouncedEmit = (({ onChangeHandler, emitDelay }) => debounce(
-        onChangeHandler, emitDelay,
+    debouncedEmit = (({ onChange, emitDelay }) => debounce(
+        onChange, emitDelay,
     ))(this.props);
 
     constructor(props: Readonly<SearchBarProps>) {
@@ -55,12 +56,18 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     render() {
         const { query } = this.state;
         const { onChange } = this;
+        const { placeholder } = this.props;
         return (
             <div className="search-bar">
                 <span className="search-bar__icon">
                     <Icon.MagnifierSmall />
                 </span>
-                <Input.Text className="search-bar__input" value={query} onChange={onChange} />
+                <Input.Text
+                    className="search-bar__input"
+                    value={query}
+                    onChange={onChange}
+                    placeholder={placeholder}
+                />
             </div>
         );
     }

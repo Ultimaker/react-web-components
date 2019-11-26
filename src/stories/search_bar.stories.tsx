@@ -21,7 +21,8 @@ stories.addDecorator(withKnobs)
 
 stories.add('SearchBar', () => (
     <SearchBar
-        onChangeHandler={action('query')}
+        onChange={action('query')}
         emitDelay={500}
+        placeholder="Search for…"
     />
 ));
