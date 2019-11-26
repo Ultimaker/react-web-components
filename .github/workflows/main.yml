@@ -3,9 +3,7 @@ on: [push]
 
 jobs:
   build:
+    container: node:8
     runs-on: ubuntu-latest
     steps:
-      - name: npm run build
-        uses: docker://node:8
-        with:
-          args: npm run build
+      - run: npm run build
