@@ -4,6 +4,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    uses: docker://node:8
     steps:
       - run: npm run build
+        uses: docker://node:8
