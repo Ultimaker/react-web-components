@@ -92,6 +92,7 @@ export class DefaultInputField extends React.Component
                 {!staticField && (
                     <input
                         id={id}
+                        autoComplete={'off'}
                         className={classNames('input', { error: validationError && (touched || submitted) })}
                         name={id}
                         type={type}
