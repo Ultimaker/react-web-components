@@ -1,0 +1,30 @@
+.input-text {
+    background-color: $color-white;
+    border: 0;
+    border-bottom: 2px solid $color-transparent-grey-dark;
+    border-radius: 0;
+    color: $color-black;
+    font: inherit;
+    line-height: 2.2;
+    padding: 1.2rem 0.9rem;
+    transition: border-bottom-color 200ms ease-out;
+    width: 100%;
+
+    &:focus {
+        outline: 0;
+        border-bottom-color: $color-blue;
+    }
+
+    &:disabled {
+        color: $color-transparent-grey-mid;
+        border-bottom-color: $color-transparent-grey-mid;
+    }
+
+    &::placeholder {
+        color: $color-transparent-grey-darker;
+    }
+}
+
+.input-text--error {
+    border-bottom-color: $color-red;
+}
