@@ -19,7 +19,7 @@ module.exports = {
                 test: /\.tsx?$/,
                 loaders: [
                     'awesome-typescript-loader',
-                    'react-docgen-typescript-loader',
+                    // 'react-docgen-typescript-loader',
                 ],
                 include: path.resolve(__dirname, '../src'),
                 exclude: /node_modules/,

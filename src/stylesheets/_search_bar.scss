@@ -1,0 +1,29 @@
+@import './accessibility';
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar__icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    position: relative;
+    width: 5.5rem;
+    z-index: 1;
+}
+
+.search-bar__icon > svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.search-bar__label {
+    @include visually-hidden;
+}
+
+.search-bar__input {
+    margin-left: -5.5rem;
+    padding-left: 5.5rem;
+}
