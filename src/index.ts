@@ -77,6 +77,12 @@ export * from './components/tooltip';
 export * from './components/user_account_menu';
 export * from './components/video_player';
 
+export * from './components/input';
+export { InputText } from './components/input/input_text';
+export { SearchBar } from './components/search_bar';
+// once icons are in their own package this will be removed
+export * from './components/icons';
+
 // input fields components
 export * from './components/input_fields/checkbox_field';
 export * from './components/input_fields/children_field';
