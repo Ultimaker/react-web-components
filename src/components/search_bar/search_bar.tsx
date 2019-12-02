@@ -1,5 +1,6 @@
 import React from 'react';
 import debounce from 'lodash.debounce';
+import uuidv4 from 'uuid/v4';
 import * as Input from '../input';
 import * as Icon from '../icons';
 
@@ -57,13 +58,18 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         const { query } = this.state;
         const { onChange } = this;
         const { placeholder } = this.props;
+        const id = uuidv4();
         return (
             <div className="search-bar">
                 <span className="search-bar__icon">
                     <Icon.MagnifierSmall />
                 </span>
+                <label htmlFor={id} className="search-bar__label">
+                    {placeholder}
+                </label>
                 <Input.Text
                     className="search-bar__input"
+                    id={id}
                     value={query}
                     onChange={onChange}
                     placeholder={placeholder}

@@ -29,9 +29,16 @@ exports[`search_bar.tsx snapshot and instance 1`] = `
         </svg>
       </MagnifierIconSmall>
     </span>
+    <label
+      className="search-bar__label"
+      htmlFor="d2e08c2a-365b-40a5-9f2d-64c28610b113"
+    >
+      For example…
+    </label>
     <ForwardRef
       className="search-bar__input"
       hasError={false}
+      id="d2e08c2a-365b-40a5-9f2d-64c28610b113"
       onChange={[Function]}
       placeholder="For example…"
       type="text"
@@ -39,6 +46,7 @@ exports[`search_bar.tsx snapshot and instance 1`] = `
     >
       <input
         className="input-text search-bar__input"
+        id="d2e08c2a-365b-40a5-9f2d-64c28610b113"
         onChange={[Function]}
         placeholder="For example…"
         type="text"

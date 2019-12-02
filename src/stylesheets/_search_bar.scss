@@ -1,3 +1,5 @@
+@import './accessibility';
+
 .search-bar {
     display: flex;
 }
@@ -15,6 +17,10 @@
 .search-bar__icon > svg {
     height: 2rem;
     width: 2rem;
+}
+
+.search-bar__label {
+    @include visually-hidden;
 }
 
 .search-bar__input {
