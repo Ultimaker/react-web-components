@@ -21,7 +21,8 @@
     }
 
     &::placeholder {
-        color: $color-transparent-grey-darker;
+        color: $color-grey-mid;
+        opacity: 1;
     }
 }
 
