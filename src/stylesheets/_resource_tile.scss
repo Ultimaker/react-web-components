@@ -3,10 +3,16 @@
     height: 31.2rem;
     padding: 3.6rem 1.8rem 1.8rem;
 
+    // TODO: NO NO NO NO! BAD! WAS IMPOSSIBLE TO FIND!
     .context-menu {
         position: absolute;
         top: 0.6rem;
         right: 0.6rem;
+    }
+    .resource-view-more-button {
+        position: absolute;
+        top: 0.6rem;
+        left: 0.6rem;
     }
 }
 
