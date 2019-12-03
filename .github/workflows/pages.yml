@@ -1,0 +1,28 @@
+name: Pages
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: "${{ secrets.NPM_TOKEN }}"
+    steps:
+    - uses: actions/checkout@v1
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: /home/runner/.npm
+        key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - run: npm ci
+    - run: npm run build
+    - name: Upload pages
+      uses: actions/upload-artifact@v1
+      with:
+        name: pages
+        path: public
