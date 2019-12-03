@@ -1,0 +1,30 @@
+.resource-view-more-button {
+    position: relative;
+    cursor: pointer;
+    color: $context-menu-color-trigger;
+    height: 4.4rem;
+    width: 4.4rem;
+    text-align: center;
+    display: inline-block;
+    border-radius: 9999px;
+    background-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 99;
+
+    &:hover,
+    &:focus {
+        background-color: $context-menu-color-hover;
+        color: $context-menu-color-trigger-hover;
+        transition: background-color 0.2s ease-out,
+            color 0.2s ease-out;
+    }
+
+    .icon {
+        width: 70%;
+        height: 70%;
+        padding: 15%;
+    }
+}
