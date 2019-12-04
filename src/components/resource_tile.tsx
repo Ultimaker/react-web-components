@@ -4,7 +4,7 @@ import * as React from 'react';
 // components
 import Tile from './tile';
 import ResourceContextMenu from './resource_context_menu';
-import ResourceViewMoreLink from './resource_view_more_link'
+import ResourceViewMoreLink from './resource_view_more_link';
 
 import classNames = require('classnames');
 
