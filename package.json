@@ -22,6 +22,7 @@
         "cleanDist": "rimraf dist",
         "prepublishOnly": "npm run cleanDist; tsc; npm run copyImages; npm run copyStylesheets; npm run copyFonts",
         "test": "jest",
+        "test:update": "jest --update-snapshot",
         "test:watch": "jest --watch",
         "test:coverage": "jest --coverage",
         "test:debug": "echo 'Open chrome://inspect to debug'; node --inspect-brk node_modules/.bin/jest --runInBand --watch"
