@@ -117,6 +117,7 @@ export { default as DoubleArrowIcon } from './components/icons/double_arrow_icon
 export { default as DownloadIcon } from './components/icons/download_icon';
 export { default as DraftIcon } from './components/icons/draft_icon';
 export { default as EmailIcon } from './components/icons/email_icon';
+export { default as EyeIcon } from './components/icons/eye_icon';
 export { default as HighlightIcon } from './components/icons/highlight_icon';
 export { default as LinkIcon } from './components/icons/link_icon';
 export { default as MaintenanceIcon } from './components/icons/maintenance_icon';
