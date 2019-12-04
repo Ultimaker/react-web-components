@@ -1,7 +1,6 @@
-.resource-view-more-button {
+.resource-view-more-link {
     position: relative;
     cursor: pointer;
-    color: $context-menu-color-trigger;
     height: 4.4rem;
     width: 4.4rem;
     text-align: center;
@@ -23,8 +22,14 @@
     }
 
     .icon {
-        width: 70%;
-        height: 70%;
-        padding: 15%;
+        width: 50%;
+        height: 50%;
+        margin: 25%;
+        svg {
+            fill: $context-menu-color-trigger;
+            &:focus {
+                fill: $context-menu-color-trigger-hover;
+            }
+        }
     }
 }

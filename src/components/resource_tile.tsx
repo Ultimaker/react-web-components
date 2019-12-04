@@ -4,7 +4,7 @@ import * as React from 'react';
 // components
 import Tile from './tile';
 import ResourceContextMenu from './resource_context_menu';
-import ResourceViewMoreButton from './resource_view_more_button'
+import ResourceViewMoreLink from './resource_view_more_link'
 
 import classNames = require('classnames');
 
@@ -40,7 +40,7 @@ export const ResourceTile: React.StatelessComponent<ResourceTileProps> = (
     { resource, className, children },
 ) => (
     <Tile className={classNames('resource-tile', className)} align="center" id={resource.resourceId}>
-        {resource.viewMoreUrl && <ResourceViewMoreButton resource={resource} />}
+        {resource.viewMoreUrl && <ResourceViewMoreLink url={resource.viewMoreUrl} icon={resource.viewMoreIcon} />}
         {resource.menuItems && <ResourceContextMenu resource={resource} />}
         <img className="resource-tile__image" src={resource.imageUrl} alt={resource.imageAlt} title={resource.imageAlt} />
         <div className="resource-tile__name" title={resource.title}>{resource.title}</div>
