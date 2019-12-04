@@ -10,19 +10,15 @@ export interface ResourceViewMoreLinkProps {
  * The resource context menu component displays a menu
  * that allows the user to execute extra actions for a resource.
  */
-export class ResourceViewMoreLink extends React.Component
-<ResourceViewMoreLinkProps> {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        const {icon, url } = this.props;
-        return (
-            <a className={'resource-view-more-link'} href={url}>
-                {icon}
-            </a>
-        );
-    }
-}
+const ResourceViewMoreLink: React.StatelessComponent<ResourceViewMoreLinkProps> = (props: ResourceViewMoreLinkProps): JSX.Element => {
+    const { icon, url } = props;
+    return (
+        <a className="resource-view-more-link" href={url}>
+            {icon}
+        </a>
+    );
+};
+
+ResourceViewMoreLink.displayName = 'ResourceViewMoreLink';
 
 export default ResourceViewMoreLink;
