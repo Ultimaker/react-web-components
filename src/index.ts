@@ -59,6 +59,7 @@ export * from './components/resource_empty_state';
 export * from './components/resource_empty_tile';
 export * from './components/resource_grid';
 export * from './components/resource_tile';
+export * from './components/resource_view_more_link';
 export * from './components/response_error';
 export * from './components/setting_panel';
 export * from './components/slide_in_panel';
