@@ -5,5 +5,5 @@ export const Icons = {
     Eye,
     EyeSmall,
     Magnifier,
-    MagnifierSmall
-}
+    MagnifierSmall,
+};
