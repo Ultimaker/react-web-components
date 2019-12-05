@@ -106,8 +106,8 @@ export * from './components/input_fields/textarea_field';
 // icon components
 export * from './components/icons/icon_wrapper';
 export { default as ApprovedIcon } from './components/icons/approved_icon';
-export { default as BuildPlateIcon } from './components/icons/build_plate_icon';
 export { default as BoxIcon } from './components/icons/box_icon';
+export { default as BuildPlateIcon } from './components/icons/build_plate_icon';
 export { default as CameraIcon } from './components/icons/camera_icon';
 export { default as CrossIcon } from './components/icons/cross_icon';
 export { default as CuraLogo } from './components/icons/cura_logo';
@@ -118,6 +118,7 @@ export { default as DownloadIcon } from './components/icons/download_icon';
 export { default as DraftIcon } from './components/icons/draft_icon';
 export { default as EmailIcon } from './components/icons/email_icon';
 export { default as HighlightIcon } from './components/icons/highlight_icon';
+export { default as InfoCircularIcon } from './components/icons/info_circular_icon';
 export { default as LinkIcon } from './components/icons/link_icon';
 export { default as MaintenanceIcon } from './components/icons/maintenance_icon';
 export { default as MoveUpIcon } from './components/icons/move_up_icon';
@@ -132,6 +133,8 @@ export { default as RequiredIcon } from './components/icons/required_icon';
 export { default as SegmentIcon } from './components/icons/segment_icon';
 export { default as SettingsIcon } from './components/icons/settings_icon';
 export { default as SingleArrowIcon } from './components/icons/single_arrow_icon';
+export { default as TeamsIcon } from './components/icons/teams_icon';
+export { default as TickIcon } from './components/icons/tick_icon';
 export { default as TransferIcon } from './components/icons/transfer_icon';
 export { default as UltimakerLogo } from './components/icons/ultimaker_logo';
 export { default as UM3PrinterIcon } from './components/icons/um3_printer_icon';
@@ -141,9 +144,6 @@ export { default as UnpublishedIcon } from './components/icons/unpublished_icon'
 export { default as UploadIcon } from './components/icons/upload_icon';
 export { default as WarningIcon } from './components/icons/warning_icon';
 export { default as WebsiteIcon } from './components/icons/website_icon';
-export { default as TeamsIcon } from './components/icons/teams_icon';
-export { default as TickIcon } from './components/icons/tick_icon';
-export { default as InfoCircularIcon } from './components/icons/info_circular_icon';
 
 // views
 export * from './views/page_not_found';
