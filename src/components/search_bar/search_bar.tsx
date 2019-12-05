@@ -2,7 +2,7 @@ import React from 'react';
 import debounce from 'lodash.debounce';
 import uuidv4 from 'uuid/v4';
 import * as Input from '../input';
-import * as Icon from '../icons';
+import { Icons } from '../icons';
 
 interface SearchBarProps {
     query?: string;
@@ -62,7 +62,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         return (
             <div className="search-bar">
                 <span className="search-bar__icon">
-                    <Icon.MagnifierSmall />
+                    <Icons.MagnifierSmall />
                 </span>
                 <label htmlFor={id} className="search-bar__label">
                     {placeholder}
