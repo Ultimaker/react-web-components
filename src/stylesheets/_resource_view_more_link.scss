@@ -1,34 +1,27 @@
 .resource-view-more-link {
-    position: relative;
-    color: $context-menu-color-trigger;
-    height: 4.4rem;
-    width: 4.4rem;
-    text-align: center;
-    display: inline-block;
-    border-radius: 2.2rem;
     background-color: transparent;
+    border-radius: 2.2rem;
+    color: $color-grey-dark;
+    display: inline-block;
+    height: 4.4rem;
+    position: relative;
+    text-align: center;
+    transition: background-color 0.2s ease-out;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    width: 4.4rem;
     z-index: 99;
 
     &:hover,
     &:focus {
-        background-color: $context-menu-color-hover;
-        color: $context-menu-color-trigger-hover;
-        transition: background-color 0.2s ease-out,
-            color 0.2s ease-out;
+        background-color: $color-transparent-grey-light;
     }
 
     svg {
         width: 50%;
         height: 50%;
         margin: 25%;
-
-        &:hover,
-        &:focus {
-            color: $context-menu-color-trigger-hover;
-        }
     }
 }
