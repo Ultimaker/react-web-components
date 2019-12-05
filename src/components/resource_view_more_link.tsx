@@ -1,6 +1,7 @@
 // Copyright (c) 2019 Ultimaker B.V.
 import * as React from 'react';
 
+import { Icons } from './icons';
 import { I18n } from '../utils/i18n';
 
 export interface ResourceViewMoreLinkProps {
@@ -17,7 +18,7 @@ const ResourceViewMoreLink: React.StatelessComponent<ResourceViewMoreLinkProps> 
     return (
         <a className="resource-view-more-link" href={url}>
             <span className="visually-hidden">{I18n.translate('View more information link', 'View More')}</span>
-            {icon}
+            {Icons[icon]()}
         </a>
     );
 };
