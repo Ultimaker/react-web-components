@@ -17,7 +17,6 @@ export interface Resource {
     className?: string;
     menuItems?: ResourceMenuItem[];
     viewMoreUrl?: string;
-    viewMoreIcon?: string;
 }
 
 export interface ResourceMenuItem {
@@ -40,7 +39,7 @@ export const ResourceTile: React.StatelessComponent<ResourceTileProps> = (
     { resource, className, children },
 ) => (
     <Tile className={classNames('resource-tile', className)} align="center" id={resource.resourceId}>
-        {resource.viewMoreUrl && <ResourceViewMoreLink url={resource.viewMoreUrl} icon={resource.viewMoreIcon} />}
+        {resource.viewMoreUrl && <ResourceViewMoreLink url={resource.viewMoreUrl} />}
         {resource.menuItems && <ResourceContextMenu resource={resource} />}
         <img className="resource-tile__image" src={resource.imageUrl} alt={resource.imageAlt} title={resource.imageAlt} />
         <div className="resource-tile__name" title={resource.title}>{resource.title}</div>
