@@ -12,7 +12,7 @@ exports[`search_bar.tsx snapshot and instance 1`] = `
     <span
       className="search-bar__icon"
     >
-      <MagnifierIconSmall>
+      <MagnifierSmall>
         <svg
           aria-hidden="true"
           fill="currentColor"
@@ -27,7 +27,7 @@ exports[`search_bar.tsx snapshot and instance 1`] = `
             fill="currentColor"
           />
         </svg>
-      </MagnifierIconSmall>
+      </MagnifierSmall>
     </span>
     <label
       className="search-bar__label"
