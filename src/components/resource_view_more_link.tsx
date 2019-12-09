@@ -1,5 +1,6 @@
 // Copyright (c) 2019 Ultimaker B.V.
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Icons } from './icons';
 import { I18n } from '../utils/i18n';
@@ -15,10 +16,10 @@ export interface ResourceViewMoreLinkProps {
 const ResourceViewMoreLink: React.FC<ResourceViewMoreLinkProps> = (props) => {
     const { url } = props;
     return (
-        <a className="resource-view-more-link" href={url}>
+        <Link className="resource-view-more-link" to={url} >
             <span className="visually-hidden">{I18n.translate('View more information link', 'View More')}</span>
             <Icons.EyeSmall />
-        </a>
+        </Link>
     );
 };
 
