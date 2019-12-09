@@ -42,6 +42,8 @@ export interface InputFieldProps {
      * It should be translated. Can be JSX.Element[] if returned from I18n.interpolateElements
      */
     validationError?: string | JSX.Element[];
+    /** Allow autocomplete or not. Can be "on" or "off". NOTE: True and false do not work. */
+    autocomplete: string;
 }
 
 /**
