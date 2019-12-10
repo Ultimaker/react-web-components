@@ -28,6 +28,9 @@ export const NumberField: React.StatelessComponent<NumberFieldProps> = ({
         value={value || value === 0 ? value.toString() : null}
         onChangeHandler={(id, val) => onChangeHandler(id, val ? parseFloat(val) : null)}
         inputChildren={children}
+        /** Chrome is incosistent about respecting autocomplete="off" but we
+         * probably never want it on a number field. */
+        autocomplete="off"
         {...wrapperProps}
     >
         {wrapperProps.staticField && value}
