@@ -5,7 +5,6 @@ import * as React from 'react';
 import { I18n } from '../utils/i18n';
 
 // components
-import { PopupPrompt } from './popup_prompt';
 import Tile from './tile';
 
 
@@ -58,70 +57,19 @@ export interface ResponseErrorProps {
     errorMessageTemplates?: { [key: string]: () => string };
     fieldNames?: { [key: string]: () => string };
 
-    popupHeaderText: string;
-    popupBodyText: string;
-    popupDownloadButtonText: string;
-    popupCancelButtonText: string;
+    popupHeaderText: string;            // Deprecated
+    popupBodyText: string;              // Deprecated
+    popupDownloadButtonText: string;    // Deprecated
+    popupCancelButtonText: string;      // Deprecated
 }
 
-export interface ResponseErrorState {
-    userText: string;
-    showPopup: boolean;
-}
-
-export class ResponseError extends React.Component<ResponseErrorProps, ResponseErrorState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userText: null,
-            showPopup: true,
-        };
-        this._downloadTextFile = this._downloadTextFile.bind(this);
-        this._validate = this._validate.bind(this);
-        this._closePopup = this._closePopup.bind(this);
-    }
-
-    private _validate(value: string): any {
-        this.setState({
-            userText: value,
-        });
-    }
-
-    private _closePopup(): void {
-        this.setState({ showPopup: false });
-    }
-
-    /**
-     * Generates a downloadable text file with error details.
-     */
-    private _downloadTextFile(): void {
-        const { errors } = this.props;
-        const { userText } = this.state;
-
-        const blob = new Blob([JSON.stringify({
-            userText,
-            userAgent: navigator.userAgent,
-            currentPage: window.location,
-            currentTime: new Date().toISOString(),
-            language: navigator.language,
-            errors,
-        }, null, 4)], { type: 'text/plain;charset=utf-8' });
-
-        const element = document.createElement('a');
-
-        element.href = URL.createObjectURL(blob);
-        element.download = `cura-cloud-error-${errors[0].id}.txt`;
-        element.click();
-        this._closePopup();
-    }
+export class ResponseError extends React.Component<ResponseErrorProps, {}> {
 
     render(): JSX.Element {
         const {
-            errors, errorMessageTemplates, fieldNames, popupHeaderText,
-            popupBodyText, popupDownloadButtonText, popupCancelButtonText,
+            errors, errorMessageTemplates, fieldNames
         } = this.props;
-        const { showPopup } = this.state;
-        const isServerError = errors.find((e) => parseInt(e.http_status, 10) >= 500);
+
         return (
             <div className="response-error">
                 <Tile align="center" alert>
@@ -131,20 +79,6 @@ export class ResponseError extends React.Component<ResponseErrorProps, ResponseE
                         </div>
                     ))}
                 </Tile>
-                {isServerError && showPopup && (
-                    <PopupPrompt
-                        headerText={popupHeaderText}
-                        bodyText={popupBodyText}
-                        primaryBtnText={popupDownloadButtonText}
-                        primaryBtnAppearance="primary"
-                        primaryBtnHandler={this._downloadTextFile}
-                        secondaryBtnText={popupCancelButtonText}
-                        secondaryBtnAppearance="quiet"
-                        secondaryBtnHandler={this._closePopup}
-                        inputType="textarea"
-                        validationHandler={this._validate}
-                    />
-                )}
             </div>
         );
     }
