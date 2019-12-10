@@ -32,6 +32,9 @@ export interface DefaultInputFieldProps extends InputFieldProps {
 
     /** Optional reference object in case the caller wants more control of the input's focus */
     inputRef?: React.RefObject<HTMLInputElement>;
+
+    /** Allow browser suggest/autofill functionality or not. */
+    autocomplete?: string;
 }
 
 export interface DefaultInputFieldState {
