@@ -43,9 +43,6 @@ export interface PopupPromptProps {
     promptPlaceholder?: string;
     /** A component or text to be rendered in the footer of the popup */
     footer?: any;
-    /** Allow parent components to disable autocomplete (for example so that IP addresses are not
-     * suggested when entering number of times to duplicate a print job). */
-    disableAutocomplete?: boolean;
 }
 
 export interface PopupPromptState {
@@ -109,7 +106,7 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
         const {
             headerText, bodyText, primaryBtnText, secondaryBtnText, promptPlaceholder, inputType,
             inputMin, inputMax, primaryBtnAppearance, secondaryBtnAppearance, secondaryBtnHandler,
-            footer, disableAutocomplete,
+            footer,
         } = this.props;
         const { inputValue, validationError } = this.state;
 
@@ -136,8 +133,6 @@ export class PopupPrompt extends React.Component<PopupPromptProps, PopupPromptSt
                     onChangeHandler={this._onChangeHandler}
                     placeholder={promptPlaceholder}
                     focusOnLoad
-                    // Only a random string ("nope" is the common one on the internet) will disable it.
-                    autocomplete={disableAutocomplete ? "nope" : "on"}
                 />
             </Popup>
         );
