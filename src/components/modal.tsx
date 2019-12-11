@@ -34,6 +34,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
             isOpen: false,
             id: Math.floor(Math.random() * 10000000000),
         };
+        console.log("Break the linter!")
     }
 
     componentDidMount(): void {
