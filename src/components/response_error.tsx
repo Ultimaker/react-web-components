@@ -57,10 +57,10 @@ export interface ResponseErrorProps {
     errorMessageTemplates?: { [key: string]: () => string };
     fieldNames?: { [key: string]: () => string };
 
-    popupHeaderText: string; // Deprecated
-    popupBodyText: string; // Deprecated
-    popupDownloadButtonText: string; // Deprecated
-    popupCancelButtonText: string; // Deprecated
+    popupHeaderText?: string; // Deprecated
+    popupBodyText?: string; // Deprecated
+    popupDownloadButtonText?: string; // Deprecated
+    popupCancelButtonText?: string; // Deprecated
 }
 
 export const ResponseError: React.StatelessComponent<ResponseErrorProps> = ({
