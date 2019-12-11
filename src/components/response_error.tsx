@@ -77,6 +77,6 @@ export const ResponseError: React.StatelessComponent<ResponseErrorProps> = ({
     </div>
 );
 
-ResponseError.displayName = "ResponseError";
+ResponseError.displayName = 'ResponseError';
 
 export default ResponseError;
