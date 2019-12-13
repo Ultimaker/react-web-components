@@ -2,6 +2,7 @@
 
 exports[`The number field component should render a wrapper 1`] = `
 <DefaultInputField
+  autocomplete="off"
   id="testInputField"
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
