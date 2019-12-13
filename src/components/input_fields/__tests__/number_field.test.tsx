@@ -53,11 +53,7 @@ describe('The number field component', () => {
             value: '2018',
             children: false,
             inputChildren: undefined,
-<<<<<<< HEAD
             autocomplete: 'off',
-=======
-            autocomplete: "off",
->>>>>>> 2ac18d16... Update tests
         });
     });
 
