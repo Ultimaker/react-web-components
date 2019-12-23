@@ -26,7 +26,7 @@ export interface SlideOutContainerProps {
 }
 
 
-export const SlideOutContainer: React.StatelessComponent<SlideOutContainerProps> = ({
+export const SlideOutContainer: React.FC<SlideOutContainerProps> = ({
     isOpen, headerText, showHeaderPanelArrow, headerTextAlignment,
     panelArrowWidth, onHeaderClick, children,
 }) => (

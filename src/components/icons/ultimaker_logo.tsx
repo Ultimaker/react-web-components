@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const UltimakerLogo: React.StatelessComponent = (): JSX.Element => (
+const UltimakerLogo: React.FC = (): JSX.Element => (
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340.18 50.69" className="ulimaker-logo">
         <path d="M107,18.33c0-3.22,2-4.9,4.9-4.9s4.9,1.68,4.9,4.9V45.71c0,3.23-1.94,4.91-4.9,4.91s-4.9-1.68-4.9-4.91Z" fill="#231f20" />
         <path d="M111.92,0A5,5,0,1,1,107,5h0A5,5,0,0,1,111.92,0" fill="#231f20" />

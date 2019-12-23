@@ -14,7 +14,7 @@ export interface StaticFieldProps extends InputFieldProps {
  * The static field does not have change handling and simply outputs it's value and children.
  * @constructor
  */
-export const StaticField: React.StatelessComponent<StaticFieldProps> = ({
+export const StaticField: React.FC<StaticFieldProps> = ({
     children, staticField, ...wrapperProps
 }) => (
     <InputFieldWrapper touched={false} staticField inputChildren={children} {...wrapperProps}>

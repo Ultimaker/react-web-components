@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const TickIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const TickIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--tick`}>
         <svg
             version="1.1"

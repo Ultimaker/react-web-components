@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const WarningIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const WarningIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--warning`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M3.34,29H28.66L16,3.83ZM17.6,26.74a2,2,0,0,1-1.54.55,2.14,2.14,0,0,1-1.56-.55,2.24,2.24,0,0,1-.57-1.41,2.19,2.19,0,0,1,2.13-2.25,2,2,0,0,1,1.56.56,2.19,2.19,0,0,1,.53,1.55A2.07,2.07,0,0,1,17.6,26.74Zm0-5.06H14.39l-.5-9.83h4.22Z" fill="none" />

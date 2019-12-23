@@ -5,7 +5,7 @@ export interface AppSwitcherTriggerProps {
     isAppSwitcherOpen: boolean;
 }
 
-export const AppSwitcherTrigger: React.StatelessComponent<AppSwitcherTriggerProps> = ({
+export const AppSwitcherTrigger: React.FC<AppSwitcherTriggerProps> = ({
     isAppSwitcherOpen,
 }) => {
     const classes = classNames('app_switcher_trigger', { 'app_switcher_trigger--open': isAppSwitcherOpen });

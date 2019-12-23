@@ -63,7 +63,7 @@ export interface ResponseErrorProps {
     popupCancelButtonText?: string; // Deprecated
 }
 
-export const ResponseError: React.StatelessComponent<ResponseErrorProps> = ({
+export const ResponseError: React.FC<ResponseErrorProps> = ({
     errors, errorMessageTemplates, fieldNames,
 }) => (
     <div className="response-error">

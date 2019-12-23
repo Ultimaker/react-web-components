@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const UploadIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const UploadIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--upload`}>
         <svg viewBox="0 0 24 24">
             <g>

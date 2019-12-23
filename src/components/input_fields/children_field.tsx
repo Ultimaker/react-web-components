@@ -23,7 +23,7 @@ export interface ChildrenFieldProps extends InputFieldProps {
  * @constructor
  * @deprecated
  */
-export const ChildrenField: React.StatelessComponent<ChildrenFieldProps> = (
+export const ChildrenField: React.FC<ChildrenFieldProps> = (
     { children, touched, ...wrapperProps },
 ) => (
     <InputFieldWrapper inputChildren={null} touched={touched} {...wrapperProps}>

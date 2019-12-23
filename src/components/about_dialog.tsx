@@ -30,7 +30,7 @@ export interface OpenSourceComponent {
     url: string;
 }
 
-export const AboutDialog: React.StatelessComponent<AboutDialogProps> = ({
+export const AboutDialog: React.FC<AboutDialogProps> = ({
     componentsList, versionNumber, closeHandler,
     headerText, packagesPreText, licensePreText, versionPreText,
 }) => {

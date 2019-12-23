@@ -16,7 +16,7 @@ export interface ResourceEmptyStateProps {
 /**
  * The resource empty tile component displays the empty state for clusters or teams.
  */
-export const ResourceEmptyState: React.StatelessComponent<ResourceEmptyStateProps> = ({
+export const ResourceEmptyState: React.FC<ResourceEmptyStateProps> = ({
     text, imageAlt, imageUrl, onCreateHandler, createButtonText,
 }) => (
     <div className="resource-empty-state">

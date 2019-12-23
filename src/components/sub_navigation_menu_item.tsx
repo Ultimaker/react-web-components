@@ -12,7 +12,7 @@ export interface SubNavigationMenuItemProps {
 /**
  * Component that displays information about a product
  */
-export const SubNavigationMenuItem: React.StatelessComponent<SubNavigationMenuItemProps> = ({
+export const SubNavigationMenuItem: React.FC<SubNavigationMenuItemProps> = ({
     path, label, onCloseMenuHandler,
 }) => (
     <NavLink

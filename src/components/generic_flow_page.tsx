@@ -12,7 +12,7 @@ export interface GenericFlowPageProps {
     appName?: string;
 }
 
-export const GenericFlowPage: React.StatelessComponent<GenericFlowPageProps> = ({
+export const GenericFlowPage: React.FC<GenericFlowPageProps> = ({
     title, description, image, children, appName,
 }) => (
     <div className="generic-flow-page">

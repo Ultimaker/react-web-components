@@ -13,7 +13,7 @@ export interface InfoTooltipProps {
     disableTooltip?: boolean;
 }
 
-export const InfoTooltip: React.StatelessComponent<InfoTooltipProps> = ({
+export const InfoTooltip: React.FC<InfoTooltipProps> = ({
     infoText, direction, disableTooltip,
 }) => (
     <div className="info-tooltip">

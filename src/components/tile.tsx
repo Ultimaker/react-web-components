@@ -28,7 +28,7 @@ export interface TileProps {
     radius?: string;
 }
 
-export const Tile: React.StatelessComponent<TileProps> = ({
+export const Tile: React.FC<TileProps> = ({
     padding, align, children, disabled, selected, alert, success, className, appearance, radius, id,
 }): JSX.Element => {
     const classes = classnames('tile', className, `padding-${padding}`, `tile--${appearance}`, {

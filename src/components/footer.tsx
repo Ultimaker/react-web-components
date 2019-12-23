@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const Footer: React.StatelessComponent = ({ children }) => (
+export const Footer: React.FC = ({ children }) => (
     <footer className="app__footer">
         {children}
     </footer>

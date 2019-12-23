@@ -6,7 +6,7 @@ import { IconWrapper, IconProps } from './icon_wrapper';
  *  the color of the surrounding disc is colored by overwriting the background attribute
  *  of the icon--info-circular class
 */
-const InfoCircularIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const InfoCircularIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--info-circular`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
             <path d="M12,14.5v-5a1,1,0,0,0-1-1H10a1,1,0,0,0,0,2v4a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />

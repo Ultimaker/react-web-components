@@ -12,7 +12,7 @@ export interface DividerProps {
     width?: string;
 }
 
-export const Divider: React.StatelessComponent<DividerProps> = ({ direction, margin, width }) => (
+export const Divider: React.FC<DividerProps> = ({ direction, margin, width }) => (
     <div
         className={classNames(`divider divider--${direction}`, { 'divider--with-margin': margin })}
         style={direction === 'horizontal' ? { height: width, borderWidth: width } : { width, borderWidth: width }}

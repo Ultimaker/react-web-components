@@ -20,8 +20,8 @@ export interface IconProps {
  * Creates classes based on the size and color props,
  * and passes it to the wrapped svg as the className prop
  */
-export function IconWrapper(Svg: React.StatelessComponent<IconProps>) {
-    const Icon: React.StatelessComponent<IconWrapperProps> = ({
+export function IconWrapper(Svg: React.FC<IconProps>) {
+    const Icon: React.FC<IconWrapperProps> = ({
         size, color, borderColor,
     }): JSX.Element => {
         const sizeClass = `icon--${size}`;

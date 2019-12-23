@@ -7,7 +7,7 @@ export interface InfoLinkProps {
     infoLinkURL: string;
 }
 
-export const InfoLink: React.StatelessComponent<InfoLinkProps> = ({ infoLinkURL }) => (
+export const InfoLink: React.FC<InfoLinkProps> = ({ infoLinkURL }) => (
     <div className="info-link">
         <a className="icon icon--circle" href={infoLinkURL} target="_blank" rel="noopener noreferrer">
             <LinkIcon />

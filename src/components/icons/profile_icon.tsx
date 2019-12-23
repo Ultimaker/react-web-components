@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const ProfileIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const ProfileIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--profile`}>
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12,14.6c-3.6,0-6.5-2.9-6.5-6.5c0-3.6,2.9-6.5,6.5-6.5c3.6,0,6.5,2.9,6.5,6.5C18.5,11.7,15.6,14.6,12,14.6zM12,3.7c-2.5,0-4.5,2-4.5,4.5s2,4.5,4.5,4.5s4.5-2,4.5-4.5S14.5,3.7,12,3.7z" />

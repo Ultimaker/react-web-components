@@ -13,7 +13,7 @@ export interface SubNavigationMenuProps {
 /**
  * Component that displays information about a product
  */
-export const SubNavigationMenu: React.StatelessComponent<SubNavigationMenuProps> = ({
+export const SubNavigationMenu: React.FC<SubNavigationMenuProps> = ({
     menuLabel, active, children,
 }) => {
     const navClasses = classNames('sub-navigation-menu', { 'sub-navigation-menu--active': active });

@@ -12,7 +12,7 @@ export interface BoxPlaceholderProps {
 }
 
 
-export const BoxPlaceholder: React.StatelessComponent<BoxPlaceholderProps> = ({
+export const BoxPlaceholder: React.FC<BoxPlaceholderProps> = ({
     size, backgroundColor,
 }) => (
     <div

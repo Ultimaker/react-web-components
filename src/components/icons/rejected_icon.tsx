@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const RejectedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const RejectedIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--rejected`}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M17.69,28.89a13,13,0,0,0,11.2-11.2,12.75,12.75,0,0,0,0-3.38,13,13,0,1,0-11.2,14.58ZM9.28,11.4,11.4,9.28l4.6,4.6,4.6-4.6,2.12,2.12L18.12,16l4.6,4.6L20.6,22.72,16,18.12l-4.6,4.6L9.28,20.6l4.6-4.6Z" fill="none" />

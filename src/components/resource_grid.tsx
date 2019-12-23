@@ -21,7 +21,7 @@ export interface ResourceGridProps {
 /**
  * The resource teams component that shows a list of the teams belonging to a resource.
  */
-export const ResourceGrid: React.StatelessComponent<ResourceGridProps> = ({
+export const ResourceGrid: React.FC<ResourceGridProps> = ({
     emptyStateText, emptyStateImageUrl, emptyTileImageUrl, emptyTileImageAlt,
     emptyStateImageAlt, onCreate, createButtonText, children,
 }) => {
