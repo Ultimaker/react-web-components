@@ -15,7 +15,7 @@ export interface PanelArrowProps {
     width: string;
 }
 
-export const PanelArrow: React.StatelessComponent<PanelArrowProps> = ({ active, width, color }) => {
+export const PanelArrow: React.FC<PanelArrowProps> = ({ active, width, color }) => {
     const classes = classNames(`panel-arrow panel-arrow--${color}`, { 'panel-arrow--active': active });
 
     return (

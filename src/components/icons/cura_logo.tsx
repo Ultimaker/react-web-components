@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const CuraLogo: React.StatelessComponent = (): JSX.Element => (
+const CuraLogo: React.FC = (): JSX.Element => (
     <svg viewBox="0 0 743.005 160.328" width="743.005" height="160.328" className="cura-logo">
         <g id="Group">
             <path d=" M 743.005 95.298 L 703.247 95.298 L 682.969 115.476 L 682.969 155.234 L 722.826 155.234 L 743.005 135.055 L 743.005 95.298 Z " fill="rgb(32,166,219)" />

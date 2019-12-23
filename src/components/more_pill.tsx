@@ -12,7 +12,7 @@ export interface MorePillProps {
 /**
  * The more pill component that shows the team name.
  */
-export const MorePill: React.StatelessComponent<MorePillProps> = ({ names }) => (
+export const MorePill: React.FC<MorePillProps> = ({ names }) => (
     <Tooltip tooltipText={names.join('\n')}>
         <div className="more-pill">
             <Pill>

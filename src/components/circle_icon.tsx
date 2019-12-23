@@ -12,7 +12,7 @@ export interface CircleIconProps {
     size?: string;
 }
 
-export const CircleIcon: React.StatelessComponent<CircleIconProps> = ({
+export const CircleIcon: React.FC<CircleIconProps> = ({
     appearance, disabled, size, children,
 }) => (
     <div

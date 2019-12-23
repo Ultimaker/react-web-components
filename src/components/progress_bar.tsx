@@ -10,7 +10,7 @@ export interface ProgressBarProps {
     barHeight?: string
 }
 
-export const ProgressBar: React.StatelessComponent<ProgressBarProps> = ({
+export const ProgressBar: React.FC<ProgressBarProps> = ({
     progressPercentage, isStopped, barHeight, children,
 }) => {
     const barClasses = classNames('progress-bar__progress-indicator', { stopped: isStopped });

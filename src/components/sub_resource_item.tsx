@@ -21,7 +21,7 @@ export interface SubResourceItemProps {
 /**
  * The sub-resource component shows a list of names/images.
  */
-export const SubResourceItem: React.StatelessComponent<SubResourceItemProps> = ({
+export const SubResourceItem: React.FC<SubResourceItemProps> = ({
     subResource,
 }) => (
     <Tooltip tooltipText={subResource.name}>

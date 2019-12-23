@@ -35,7 +35,7 @@ export interface ResourceTileProps {
 /**
  * The resource tile component display one of the user's clusters or teams in a tile.
  */
-export const ResourceTile: React.StatelessComponent<ResourceTileProps> = (
+export const ResourceTile: React.FC<ResourceTileProps> = (
     { resource, className, children },
 ) => (
     <Tile className={classNames('resource-tile', className)} align="center" id={resource.resourceId}>

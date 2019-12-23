@@ -12,7 +12,7 @@ export interface CheckboxProps {
     disabled?: boolean;
 }
 
-export const Checkbox: React.StatelessComponent<CheckboxProps> = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
     id, value, onChangeHandler, disabled,
 }) => {
     const classes = classNames('checkbox', { 'checkbox--checked': value, 'checkbox--disabled': disabled });

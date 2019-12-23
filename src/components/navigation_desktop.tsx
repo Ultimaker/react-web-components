@@ -14,7 +14,7 @@ export interface NavigationDesktopProps extends RouteComponentProps<{}> {
 }
 
 
-export const NavigationDesktop: React.StatelessComponent<NavigationDesktopProps> = ({
+export const NavigationDesktop: React.FC<NavigationDesktopProps> = ({
     navLabel, visibleNavLinks, location,
 }) => (
     <div className="navigation__desktop show-sm layout layout--gutter-none layout--align-middle">

@@ -8,7 +8,7 @@ export interface RatingsProps {
     /* The actual rating of the object. */
     rating: number | null;
     /* The icon class to use. It should be wrapped by `IconWrapper`. */
-    Icon: React.StatelessComponent<IconWrapperProps>;
+    Icon: React.FC<IconWrapperProps>;
     /* The size of the icons. Defaults to 'sm' (small). */
     size?: IconSize;
     /* The color of the foreground icons. Defaults to 'orange'. */
@@ -25,7 +25,7 @@ export interface RatingsProps {
  * The ratings component shows the ratings score of an object.
  * @constructor
  */
-export const Ratings: React.StatelessComponent<RatingsProps> = ({
+export const Ratings: React.FC<RatingsProps> = ({
     max, rating, Icon, foregroundColor, foregroundBorder, backgroundColor, backgroundBorder, size,
 }) => {
     const maxLengthArray = Array.from({ length: max });

@@ -17,7 +17,7 @@ export interface GridProps {
     className?: string;
 }
 
-export const Grid: React.StatelessComponent<GridProps> = ({
+export const Grid: React.FC<GridProps> = ({
     align, gutter, position, children, className,
 }): JSX.Element => {
     const classes = classNames('grid-component', 'layout', `layout--align-${align}`, `layout--gutter-${gutter}`,

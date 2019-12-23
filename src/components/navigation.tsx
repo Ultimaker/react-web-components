@@ -54,7 +54,7 @@ export interface NavigationProps {
     showMobileAccountNav?: boolean;
 }
 
-export const Navigation: React.StatelessComponent<NavigationProps> = ({
+export const Navigation: React.FC<NavigationProps> = ({
     navLinks, navLabel, manageAccountURL, onSignOutClickHandler,
     onSignInClickHandler, accountButtonText, signOutButtonText, signInButtonText,
     accountDisplayName, accountImageURL, signedOut, showMobileMenu,

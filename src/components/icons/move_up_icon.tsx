@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const MoveUpIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const MoveUpIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--move-up`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
             <rect width="22" height="2" rx="1" ry="1" />

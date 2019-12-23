@@ -12,7 +12,7 @@ export interface ToggleButtonProps {
     disabled?: boolean;
 }
 
-export const ToggleButton: React.StatelessComponent<ToggleButtonProps> = ({
+export const ToggleButton: React.FC<ToggleButtonProps> = ({
     id, value, onChangeHandler, disabled,
 }) => (
     <div className={classNames('toggle-button', { 'toggle-button--checked': value })}>

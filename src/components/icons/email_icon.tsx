@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const EmailIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const EmailIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--email`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
             <path d="M24.39,3.71A3,3,0,0,0,22,2.5H3A3,3,0,0,0,.61,3.71,3,3,0,0,0,0,5.5v14a3,3,0,0,0,3,3H22a3,3,0,0,0,3-3V5.5A3,3,0,0,0,24.39,3.71ZM23,19.5a1,1,0,0,1-1,1H3a1,1,0,0,1-1-1V7.17L5.94,10a6.49,6.49,0,0,1,1-1.76L2.24,4.88A1,1,0,0,1,3,4.5H22a1,1,0,0,1,.76.38L18.3,8.09a5.8,5.8,0,0,1,.94,1.79L23,7.17Z" />

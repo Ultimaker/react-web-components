@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const PublishedIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const PublishedIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--published`}>
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
             <path d="M22.66,10.57A7.34,7.34,0,0,1,23.5,14,7.5,7.5,0,1,1,9.34,10.57,19.34,19.34,0,0,0,3.09,16c3.55,4.61,8.12,7.14,12.91,7.14S25.36,20.61,28.91,16A19.46,19.46,0,0,0,22.66,10.57Z" fill="none" />

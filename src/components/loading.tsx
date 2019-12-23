@@ -5,7 +5,7 @@ export interface LoadingProps {
     label: string;
 }
 
-export const Loading: React.StatelessComponent<LoadingProps> = ({ label }): JSX.Element => (
+export const Loading: React.FC<LoadingProps> = ({ label }): JSX.Element => (
     <div className="loader">
         {label}
         <span>

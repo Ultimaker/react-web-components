@@ -12,7 +12,7 @@ export interface FormActionsProps {
 /**
  * Form actions component that adds the right classes to a list of buttons after a form.
  */
-export const FormActions: React.StatelessComponent<FormActionsProps> = ({ align, children }) => {
+export const FormActions: React.FC<FormActionsProps> = ({ align, children }) => {
     const classNames = (`form-actions form-actions--${align}`);
 
     return (

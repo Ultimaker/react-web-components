@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const RequiredIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const RequiredIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--required`}>
         <svg viewBox="0 0 36 36" width="36" height="36">
             <g>

@@ -15,7 +15,7 @@ export interface AppProps {
 /**
  * Application wrapper component that applies the correct CSS classes.
  */
-export const App: React.StatelessComponent<AppProps> = ({ fixedHeader, children }) => {
+export const App: React.FC<AppProps> = ({ fixedHeader, children }) => {
     const classes = classNames('app', { 'app--fixed-header': fixedHeader });
 
     return (

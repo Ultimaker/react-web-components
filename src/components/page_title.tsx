@@ -9,7 +9,7 @@ export interface PageTitleProps {
     align?: PageTitleAlign
 }
 
-export const PageTitle: React.StatelessComponent<PageTitleProps> = (
+export const PageTitle: React.FC<PageTitleProps> = (
     { title, isBeta, align },
 ): JSX.Element => (
     <div className="page-title" style={{ textAlign: align }}>

@@ -12,7 +12,7 @@ export interface ProfileProps {
 }
 
 
-export const ProfileImage: React.StatelessComponent<ProfileProps> = ({ size, imageURL }) => (
+export const ProfileImage: React.FC<ProfileProps> = ({ size, imageURL }) => (
     <div className="profile-image">
         {imageURL
             && <Image src={imageURL} size={size} />}

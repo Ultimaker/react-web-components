@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconWrapper, IconProps } from './icon_wrapper';
 
-const TeamsIcon: React.StatelessComponent<IconProps> = ({ className }): JSX.Element => (
+const TeamsIcon: React.FC<IconProps> = ({ className }): JSX.Element => (
     <div className={`${className} icon--teams`}>
         <svg width="72px" height="45px" viewBox="0 0 72 45" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <g id="teams-icon">

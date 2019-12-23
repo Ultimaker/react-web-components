@@ -10,7 +10,7 @@ export interface BetaPillProps {
     betaExplanationText?: string;
 }
 
-export const BetaPill: React.StatelessComponent<BetaPillProps> = ({
+export const BetaPill: React.FC<BetaPillProps> = ({
     betaExplanationText,
 }) => (
     <div className="beta-pill">

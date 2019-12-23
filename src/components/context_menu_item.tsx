@@ -14,7 +14,7 @@ export interface ContextMenuItemProps {
     className?: string;
 }
 
-export const ContextMenuItem: React.StatelessComponent<ContextMenuItemProps> = ({
+export const ContextMenuItem: React.FC<ContextMenuItemProps> = ({
     disabled, onClickHandler, id, className, children,
 }) => (
     <DropDownMenuItem

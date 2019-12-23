@@ -14,7 +14,7 @@ export interface SubResourceListProps {
 /**
  * The sub resource list component that shows a list of the items belonging to a resource.
  */
-export const SubResourceList: React.StatelessComponent<SubResourceListProps> = ({
+export const SubResourceList: React.FC<SubResourceListProps> = ({
     subResourceTitle, subResources, visibleSubResourceCount,
 }) => {
     const showMorePill = subResources.length > visibleSubResourceCount;

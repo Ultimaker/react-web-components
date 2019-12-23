@@ -19,7 +19,7 @@ export interface DropDownMenuItemProps {
     onCloseMenuHandler?: () => void;
 }
 
-export const DropDownMenuItem: React.StatelessComponent<DropDownMenuItemProps> = ({
+export const DropDownMenuItem: React.FC<DropDownMenuItemProps> = ({
     active, disabled, onClickHandler, id, className, onCloseMenuHandler, children,
 }) => {
     const _onClickHandler = () => {

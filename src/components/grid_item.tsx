@@ -13,7 +13,7 @@ export interface GridItemProps {
     className?: string;
 }
 
-export const GridItem: React.StatelessComponent<GridItemProps> = ({
+export const GridItem: React.FC<GridItemProps> = ({
     layoutWidth, breakpoint, id, className, children,
 }): JSX.Element => {
     const breakpointClass = breakpoint === 'xs' ? '' : `-${breakpoint}`;

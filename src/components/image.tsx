@@ -21,7 +21,7 @@ export interface ImageProps {
     title?: string;
 }
 
-export const Image: React.StatelessComponent<ImageProps> = ({
+export const Image: React.FC<ImageProps> = ({
     shape, src, size, id, className, alt, title,
 }) => {
     const classes = classNames(`image image--${shape}`, className);

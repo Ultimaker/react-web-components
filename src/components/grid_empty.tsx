@@ -8,7 +8,7 @@ export interface GridEmptyProps {
     loading?: boolean;
 }
 
-export const GridEmpty: React.StatelessComponent<GridEmptyProps> = ({
+export const GridEmpty: React.FC<GridEmptyProps> = ({
     label, loading,
 }): JSX.Element => (
     <GridItem>

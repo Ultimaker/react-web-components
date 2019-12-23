@@ -17,7 +17,7 @@ export interface PageNotFoundViewProps {
 /**
  * The page not found view.
  */
-export const PageNotFoundView: React.StatelessComponent<PageNotFoundViewProps> = ({
+export const PageNotFoundView: React.FC<PageNotFoundViewProps> = ({
     location, titleText, messageText,
 }) => (
     <Page title={titleText} maxWidth={550}>

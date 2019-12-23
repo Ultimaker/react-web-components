@@ -24,7 +24,7 @@ export interface PopupBaseProps {
 /**
  * The popup base component is a simple modal with a title, content and optionally a progress bar.
  */
-export const PopupBase: React.StatelessComponent<PopupBaseProps> = ({
+export const PopupBase: React.FC<PopupBaseProps> = ({
     headerElement, headerText, step, totalSteps, width, children, footer,
 }) => (
     <div className="popup">

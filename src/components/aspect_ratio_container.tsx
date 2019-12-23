@@ -16,7 +16,7 @@ export interface aspectRatioContainerProps {
 /**
  * returns a copy of the content with modified classes, wrapped in containers to manage it's size
  */
-export const AspectRatioContainer: React.StatelessComponent<aspectRatioContainerProps> = ({
+export const AspectRatioContainer: React.FC<aspectRatioContainerProps> = ({
     aspectRatio, className, id, children,
 }) => {
     const containerClasses = classNames('aspect-ratio-container', className);
