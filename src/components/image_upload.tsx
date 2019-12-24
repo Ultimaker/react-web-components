@@ -45,6 +45,9 @@ export interface ImageUploadProps {
      * part of the image to use. For every change, the `onFileRead` callback is called.
      */
     allowCropping?: boolean;
+    minCropperScale?: number;
+    maxCropperScale?: number;
+    cropperScaleStep?: number;
 }
 
 export interface ImageUploadState {
@@ -144,7 +147,7 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     private _renderCropper(): JSX.Element {
-        const { size, shape, onFileRead } = this.props;
+        const { size, shape, onFileRead, minCropperScale, maxCropperScale, cropperScaleStep } = this.props;
         const { cropURL } = this.state;
         return (
             <ImageCropper
@@ -153,6 +156,9 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
                 size={size}
                 shape={shape}
                 onCropCancel={this._onCropCancel}
+                minScale={minCropperScale}
+                maxScale={maxCropperScale}
+                scaleStep={cropperScaleStep}
             />
         );
     }

@@ -17,6 +17,9 @@ export interface ImageUploadFieldProps extends InputFieldProps {
     /** The file URL or preview URL */
     value: string;
     allowCropping?: boolean;
+    minCropperScale?: number;
+    maxCropperScale?: number;
+    cropperScaleStep?: number;
     maxMb?: number;
     fileSizeExceedsMessage?: string;
     placeholderType?: ImagePlaceholderType;
@@ -77,7 +80,8 @@ export class ImageUploadField extends React.Component
     render() {
         const {
             imageSize, imageShape, placeholder, value, onReadHandler,
-            children, allowCropping, maxMb, placeholderType, fileSizeExceedsMessage, ...wrapperProps
+            children, allowCropping, minCropperScale, maxCropperScale, cropperScaleStep,
+            maxMb, placeholderType, fileSizeExceedsMessage, ...wrapperProps
         } = this.props;
         const { id, staticField } = wrapperProps;
         const { touched } = this.state;
@@ -98,6 +102,9 @@ export class ImageUploadField extends React.Component
                                 placeholderLabel={placeholder}
                                 placeholderType={placeholderType}
                                 allowCropping={allowCropping}
+                                minCropperScale={minCropperScale}
+                                maxCropperScale={maxCropperScale}
+                                cropperScaleStep={cropperScaleStep}
                                 fileSizeExceedsMessage={fileSizeExceedsMessage}
                             />
                         )
