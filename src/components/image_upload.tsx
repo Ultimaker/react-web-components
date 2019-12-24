@@ -147,7 +147,10 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadSt
     }
 
     private _renderCropper(): JSX.Element {
-        const { size, shape, onFileRead, minCropperScale, maxCropperScale, cropperScaleStep } = this.props;
+        const {
+            size, shape, onFileRead,
+            minCropperScale, maxCropperScale, cropperScaleStep,
+        } = this.props;
         const { cropURL } = this.state;
         return (
             <ImageCropper
