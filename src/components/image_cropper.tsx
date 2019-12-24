@@ -67,9 +67,9 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
     static defaultProps: ImageCropperProps = {
         shape: 'square',
         size: '200px',
-        minScale: 1,
+        minScale: 0.5,
         maxScale: 2.5,
-        scaleStep: 0.1,
+        scaleStep: 0.05,
         borderSize: 25,
         imageURL: null,
         onImageChanged: null,
