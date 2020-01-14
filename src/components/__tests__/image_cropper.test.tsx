@@ -1,23 +1,15 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
 import { shallow } from 'enzyme';
-
-// component
+import AvatarEditor from 'react-avatar-editor';
 import RangeSlider from '../range_slider';
 import ImageCropper from '../image_cropper';
-
-let AvatarEditor = require('react-avatar-editor');
-
-if ('default' in AvatarEditor) {
-    /* istanbul ignore next */ // ignores coverage for this line.
-    AvatarEditor = AvatarEditor.default;
-}
 
 describe('The Image Cropper component', () => {
     let props;
     const onImageChanged = jest.fn();
     const onCropCancel = jest.fn();
-    const editor = { getImage: () => ({ toDataURL: () => 'imageData' }) };
+    const mockEditor = { getImageScaledToCanvas: () => ({ toDataURL: () => 'imageData' }) };
 
     beforeEach(() => {
         onImageChanged.mockReset();
@@ -31,7 +23,7 @@ describe('The Image Cropper component', () => {
     const createWrapper = () => {
         const wrapper = shallow(<ImageCropper {...props} />);
         // @ts-ignore
-        wrapper.instance()._editor = editor;
+        wrapper.instance()._editor = mockEditor;
         return wrapper;
     };
 

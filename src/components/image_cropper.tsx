@@ -1,19 +1,10 @@
 // Copyright (c) 2018 Ultimaker B.V.
 import * as React from 'react';
-
+import debounce from 'lodash.debounce';
+import AvatarEditor from 'react-avatar-editor';
 import { ImageShape } from './image';
 import RangeSlider from './range_slider';
 import CloseButton from './close_button';
-
-// needs to be imported this way to keep jest happy
-let AvatarEditor = require('react-avatar-editor');
-
-if ('default' in AvatarEditor) {
-    /* istanbul ignore next */ // ignores coverage for this line.
-    AvatarEditor = AvatarEditor.default;
-}
-
-const debounce = require('lodash.debounce');
 
 export interface ImageCropperProps {
     /** Size of the image. Include size unit */
@@ -38,10 +29,10 @@ export interface ImageCropperProps {
     imageURL?: string;
 
     /** Callback for when the image is changed */
-    onImageChanged: (data: string) => any;
+    onImageChanged: (data: string) => void;
 
     /** If given, the user is allowed to cancel cropping. This callback is then called. */
-    onCropCancel?: () => any;
+    onCropCancel?: () => void;
 }
 
 export interface ImageCropperState {
@@ -81,7 +72,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
      */
     _onImageChanged = debounce(() => {
         const { onImageChanged } = this.props;
-        const canvas = this._editor.getImage();
+        const canvas = this._editor.getImageScaledToCanvas();
         const imageData = canvas.toDataURL();
         onImageChanged(imageData);
     }, 100);
