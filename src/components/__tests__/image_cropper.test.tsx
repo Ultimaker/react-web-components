@@ -3,10 +3,10 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import AvatarEditor from 'react-avatar-editor';
 import RangeSlider from '../range_slider';
-import ImageCropper from '../image_cropper';
+import ImageCropper, { ImageCropperProps } from '../image_cropper';
 
 describe('The Image Cropper component', () => {
-    let props;
+    let props: ImageCropperProps;
     const onImageChanged = jest.fn();
     const onCropCancel = jest.fn();
     const mockEditor = { getImageScaledToCanvas: () => ({ toDataURL: () => 'imageData' }) };
@@ -47,7 +47,7 @@ describe('The Image Cropper component', () => {
         }));
     });
 
-    it('should keep the range slider', async () => {
+    it('should keep the range slider', () => {
         const wrapper = createWrapper();
         expect(wrapper.find(RangeSlider).prop('value')).toEqual(1);
         expect(wrapper.find(AvatarEditor).prop('scale')).toEqual(1);
@@ -56,7 +56,7 @@ describe('The Image Cropper component', () => {
         expect(wrapper.find(AvatarEditor).prop('scale')).toEqual(0.5);
     });
 
-    it('should keep the image position', async () => {
+    it('should keep the image position', () => {
         const wrapper = createWrapper();
         const avatarProps: any = wrapper.find(AvatarEditor).props();
         expect(avatarProps.position).toEqual({ x: 0.5, y: 0.5 });
@@ -64,7 +64,7 @@ describe('The Image Cropper component', () => {
         expect(wrapper.find(AvatarEditor).prop('position')).toEqual({ x: 0, y: 1 });
     });
 
-    it('should parse the callback', async () => {
+    it('should parse the callback', () => {
         const wrapper = createWrapper();
         const avatarProps: any = wrapper.find(AvatarEditor).props();
         avatarProps.onImageChange();

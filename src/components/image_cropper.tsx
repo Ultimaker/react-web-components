@@ -61,7 +61,7 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         minScale: 0.5,
         maxScale: 2.5,
         scaleStep: 0.05,
-        borderSize: 25,
+        borderSize: 0,
         imageURL: null,
         onImageChanged: null,
     };

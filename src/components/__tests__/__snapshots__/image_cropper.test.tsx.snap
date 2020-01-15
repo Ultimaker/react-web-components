@@ -5,7 +5,7 @@ exports[`The Image Cropper component should render 1`] = `
   className="image-cropper--container"
 >
   <d
-    border={25}
+    border={0}
     borderRadius={0}
     className="editor-canvas"
     color={
@@ -18,7 +18,7 @@ exports[`The Image Cropper component should render 1`] = `
     }
     disableBoundaryChecks={false}
     disableHiDPIScaling={false}
-    height={150}
+    height={200}
     image={null}
     onImageChange={[Function]}
     onImageReady={[Function]}
@@ -36,7 +36,7 @@ exports[`The Image Cropper component should render 1`] = `
     rotate={0}
     scale={1}
     style={Object {}}
-    width={150}
+    width={200}
   />
   <RangeSlider
     className="image-cropper--slider"
