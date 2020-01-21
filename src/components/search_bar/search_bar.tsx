@@ -21,6 +21,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         query: '',
     }
 
+    id = uuidv4();
+
     debouncedEmit = (({ onChange, emitDelay }) => debounce(
         onChange, emitDelay,
     ))(this.props);
@@ -66,9 +68,8 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
     render() {
         const { query } = this.state;
-        const { onChange } = this;
+        const { id, onChange } = this;
         const { placeholder } = this.props;
-        const id = uuidv4();
         return (
             <div className="search-bar">
                 <span className="search-bar__icon">
