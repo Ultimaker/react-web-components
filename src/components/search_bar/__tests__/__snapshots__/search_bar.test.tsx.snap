@@ -5,6 +5,7 @@ exports[`search_bar.tsx snapshot and instance 1`] = `
   emitDelay={0}
   onChange={[MockFunction]}
   placeholder="For example…"
+  query=""
 >
   <div
     className="search-bar"
