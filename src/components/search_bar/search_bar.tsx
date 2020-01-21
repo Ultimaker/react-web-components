@@ -18,6 +18,7 @@ interface SearchBarState {
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     static defaultProps = {
         emitDelay: 0,
+        query: '',
     }
 
     debouncedEmit = (({ onChange, emitDelay }) => debounce(
@@ -26,7 +27,7 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
 
     constructor(props: Readonly<SearchBarProps>) {
         super(props);
-        const { query = '' } = props;
+        const { query } = props;
         this.state = {
             query,
         };
@@ -40,18 +41,27 @@ class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
         }
     }
 
+    componentDidUpdate(prevProps: SearchBarProps, prevState: SearchBarState) {
+        const { query } = this.props;
+        if (query !== prevProps.query && query !== prevState.query) {
+            // eslint-disable-next-line react/no-did-update-set-state
+            this.setState({
+                query,
+            });
+        }
+    }
+
     componentWillUnmount() {
         this.debouncedEmit.cancel();
     }
 
     onChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { value: query } = event.target;
-
         this.setState({
             query,
+        }, () => {
+            this.debouncedEmit(query);
         });
-        event.persist();
-        this.debouncedEmit(query);
     }
 
     render() {
