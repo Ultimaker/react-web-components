@@ -26,15 +26,15 @@ export interface DropDownMenuBaseProps {
 }
 
 export class DropDownMenuBase extends React.Component<DropDownMenuBaseProps, {}> {
-    public static defaultProps: Partial<DropDownMenuBaseProps> = {
-        menuDirection: 'south',
-    };
-
     static _stopPropagation(e): void {
         e.stopPropagation();
     }
 
     private _menuRef;
+
+    public static defaultProps: Partial<DropDownMenuBaseProps> = {
+        menuDirection: 'south',
+    };
 
     constructor(props: DropDownMenuBaseProps) {
         super(props);

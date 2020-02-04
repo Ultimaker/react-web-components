@@ -250,10 +250,10 @@ stories.add('Header', withInfo(
             />
             <div className="app__main">
                 <div>
-                Page Top
+                    Page Top
                 </div>
                 <div style={{ marginTop: '200vh' }}>
-                Page bottom
+                    Page bottom
                 </div>
             </div>
         </div>

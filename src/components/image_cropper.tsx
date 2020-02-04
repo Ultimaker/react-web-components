@@ -55,17 +55,6 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
         return parseFloat(size) * sizeScale - borderSize * 2;
     }
 
-    static defaultProps: ImageCropperProps = {
-        shape: 'square',
-        size: '200px',
-        minScale: 0.5,
-        maxScale: 2.5,
-        scaleStep: 0.05,
-        borderSize: 0,
-        imageURL: null,
-        onImageChanged: null,
-    };
-
     /**
      * Handles the image changed event. This is debounced because the image data
      * can be pretty large and change very often during zooming / scaling.
@@ -90,6 +79,17 @@ export class ImageCropper extends React.Component<ImageCropperProps, ImageCroppe
             width: number;
             height: number;
         }
+    };
+
+    static defaultProps: ImageCropperProps = {
+        shape: 'square',
+        size: '200px',
+        minScale: 0.5,
+        maxScale: 2.5,
+        scaleStep: 0.05,
+        borderSize: 0,
+        imageURL: null,
+        onImageChanged: null,
     };
 
     constructor(props) {

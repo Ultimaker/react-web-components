@@ -91,7 +91,7 @@ stories.add('Icons', withInfo(
         <div style={{ width: '80vw' }}>
             <Grid>
                 <GridItem layoutWidth="1/1">
-                Icons
+                    Icons
                 </GridItem>
 
                 <GridItem layoutWidth="fit">
@@ -279,8 +279,6 @@ stories.add('Icons', withInfo(
                         <InfoCircularIcon {...props} />
                     </Tooltip>
                 </GridItem>
-
-
             </Grid>
         </div>
     );

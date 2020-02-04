@@ -34,11 +34,6 @@ const triggerWidth = 45;
 const windowMargin = 12;
 
 export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuState> {
-    public static defaultProps: Partial<ContextMenuProps> = {
-        menuOffsetDirection: 'left',
-        menuDirection: 'south',
-    };
-
     static _getMenuStyle(
         menuOffset: number,
         menuOffsetDirection: MenuOffsetDirection,
@@ -62,6 +57,11 @@ export class ContextMenu extends React.Component<ContextMenuProps, ContextMenuSt
     }
 
     private _menuRef;
+
+    public static defaultProps: Partial<ContextMenuProps> = {
+        menuOffsetDirection: 'left',
+        menuDirection: 'south',
+    };
 
     constructor(props: ContextMenuProps) {
         super(props);
