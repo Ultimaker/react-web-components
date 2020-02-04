@@ -61,13 +61,6 @@ export interface OldInputFieldProps extends InputFieldProps {
  * However this component is still available to be backwards compatible.
  */
 export class InputField extends React.Component<OldInputFieldProps, {}> {
-    static defaultProps = {
-        type: 'text',
-        labelLayoutWidth: '1/1',
-        labelWidthBreakpoint: 'sm',
-        staticField: false,
-    };
-
     private readonly inputFields = {
         number: NumberField,
         textarea: TextareaField,
@@ -84,6 +77,13 @@ export class InputField extends React.Component<OldInputFieldProps, {}> {
         url: TextField,
         code: CodeField,
         search: SearchField,
+    };
+
+    static defaultProps = {
+        type: 'text',
+        labelLayoutWidth: '1/1',
+        labelWidthBreakpoint: 'sm',
+        staticField: false,
     };
 
     render() {

@@ -16,16 +16,16 @@ interface SearchBarState {
 }
 
 class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
-    static defaultProps = {
-        emitDelay: 0,
-        query: '',
-    }
-
     id = uuidv4();
 
     debouncedEmit = (({ onChange, emitDelay }) => debounce(
         onChange, emitDelay,
     ))(this.props);
+
+    static defaultProps = {
+        emitDelay: 0,
+        query: '',
+    }
 
     constructor(props: Readonly<SearchBarProps>) {
         super(props);

@@ -43,25 +43,17 @@ export interface CodeFieldState {
  */
 export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
     /**
-     * if the user wrote one of the later characters but not earlier ones,
-     * we add this character as filler
-     */
-    private static readonly _emptyChar: string = '\t';
-
-    /**
      * References to the input fields to focus on them.
      * Note that we don't use React.CreateRef because that would require some extra code
      * for re-initializing the array whenever {maxLength} changes.
      */
+    private readonly _inputRefs: HTMLInputElement[] = [];
 
-    /** The default props */
     static defaultProps = {
         type: 'number',
     };
 
-    private readonly _inputRefs: HTMLInputElement[] = [];
-
-    constructor(props) {
+    constructor(props: Readonly<CodeFieldProps>) {
         super(props);
 
         this.state = {
@@ -110,6 +102,11 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
         };
     }
 
+    /**
+     * if the user wrote one of the later characters but not earlier ones,
+     * we add this character as filler
+     */
+    private static readonly _emptyChar: string = '\t';
 
     /**
      * Handles changes to the text selection in the document.

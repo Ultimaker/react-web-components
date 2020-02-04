@@ -22,10 +22,6 @@ export interface TooltipState {
 const windowMargin = 10;
 
 export class Tooltip extends React.Component<TooltipProps, TooltipState> {
-    static defaultProps = {
-        direction: 'north',
-    };
-
     private static _getElementDetails(el: any): any {
         // get global positions of a html element
         const element = el.getBoundingClientRect();
@@ -38,6 +34,10 @@ export class Tooltip extends React.Component<TooltipProps, TooltipState> {
     }
 
     private _tooltipRef;
+
+    static defaultProps = {
+        direction: 'north',
+    };
 
     constructor(props) {
         super(props);
