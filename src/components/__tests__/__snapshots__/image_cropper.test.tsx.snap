@@ -4,7 +4,7 @@ exports[`The Image Cropper component should render 1`] = `
 <div
   className="image-cropper--container"
 >
-  <d
+  <l
     border={0}
     borderRadius={0}
     className="editor-canvas"
@@ -35,7 +35,6 @@ exports[`The Image Cropper component should render 1`] = `
     }
     rotate={0}
     scale={1}
-    style={Object {}}
     width={200}
   />
   <RangeSlider
