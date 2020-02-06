@@ -1,6 +1,7 @@
 # React Web Components
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Ultimaker/react-web-components.svg)](https://greenkeeper.io/)
+![Build](https://github.com/Ultimaker/react-web-components/workflows/Build%20and%20test/badge.svg)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=Ultimaker/react-web-components)](https://dependabot.com)
 
 This library contains all shared components, utilities and templates for front-end applications within Ultimaker R&D.
 
