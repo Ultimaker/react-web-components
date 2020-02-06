@@ -58,7 +58,7 @@
         "@dump247/storybook-state": "^1.6.1",
         "@sambego/storybook-styles": "^1.0.0",
         "@storybook/addon-actions": "^4.1.18",
-        "@storybook/addon-info": "^4.1.18",
+        "@storybook/addon-info": "^5.3.12",
         "@storybook/addon-knobs": "^4.1.18",
         "@storybook/addon-viewport": "^4.1.18",
         "@storybook/addons": "^4.1.18",
