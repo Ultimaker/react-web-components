@@ -42,6 +42,8 @@ export interface InputFieldProps {
      * It should be translated. Can be JSX.Element[] if returned from I18n.interpolateElements
      */
     validationError?: string | JSX.Element[];
+    /** Whether to show the validation error message or not */
+    showValidationError?: boolean;
 }
 
 /**
@@ -80,8 +82,10 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
     }
 
     private _showValidationError(): boolean {
-        const { validationError, submitted, touched } = this.props;
-        return validationError && (touched || submitted);
+        const {
+            validationError, submitted, touched, showValidationError,
+        } = this.props;
+        return validationError && (touched || submitted) && showValidationError;
     }
 
     private _renderLabel(): JSX.Element {
