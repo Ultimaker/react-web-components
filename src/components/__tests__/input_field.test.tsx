@@ -34,6 +34,7 @@ describe('The InputField component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             onChangeHandler: props.onChangeHandler,
+            showValidationError: true,
             staticField: true,
             value: 'Test input',
         });
@@ -48,6 +49,7 @@ describe('The InputField component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             onChangeHandler: props.onChangeHandler,
+            showValidationError: true,
             staticField: false,
             value: 'Test input',
         });

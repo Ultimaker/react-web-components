@@ -15,6 +15,7 @@ exports[`The PopupPrompt component should render a prompt popup 1`] = `
     labelLayoutWidth="1/1"
     labelWidthBreakpoint="sm"
     onChangeHandler={[Function]}
+    showValidationError={true}
     staticField={false}
     type="text"
   />
