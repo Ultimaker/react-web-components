@@ -82,7 +82,9 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
     }
 
     private _showValidationError(): boolean {
-        const { validationError, submitted, touched, showValidationError } = this.props;
+        const {
+            validationError, submitted, touched, showValidationError,
+        } = this.props;
         return validationError && (touched || submitted) && showValidationError;
     }
 
