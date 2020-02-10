@@ -24,6 +24,7 @@ describe('The input field wrapper component', () => {
             required: true,
             submitted: false,
             validationError: 'A validation error!',
+            showValidationError: true,
             touched: true,
             children: <div>child</div>,
             inputChildren: <div>input child</div>,
@@ -48,6 +49,11 @@ describe('The input field wrapper component', () => {
             inputChildren: null,
         };
         wrapper = shallow(<InputFieldWrapper {...props} />);
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should render a wrapper without the validation error', () => {
+        wrapper.setProps({ showValidationError: false });
         expect(wrapper).toMatchSnapshot();
     });
 });

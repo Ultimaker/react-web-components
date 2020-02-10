@@ -84,6 +84,7 @@ export class InputField extends React.Component<OldInputFieldProps, {}> {
         labelLayoutWidth: '1/1',
         labelWidthBreakpoint: 'sm',
         staticField: false,
+        showValidationError: true,
     };
 
     render() {

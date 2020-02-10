@@ -6,6 +6,7 @@ exports[`The InputField component should render 1`] = `
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
   onChangeHandler={[MockFunction]}
+  showValidationError={true}
   staticField={false}
   type="text"
   value="Test input"
