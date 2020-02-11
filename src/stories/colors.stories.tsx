@@ -36,10 +36,10 @@ stories.add('Colors', withInfo(
                     <div className="color-square color-blue" />
                 </GridItem>
                 <GridItem layoutWidth="fit">
-                    <div className="color-label">#00a7e9</div>
+                    <div className="color-label">#196ef0</div>
                 </GridItem>
                 <GridItem layoutWidth="fit">
-                    $color-blue
+                    $um-blue-5
                 </GridItem>
             </Grid>
 

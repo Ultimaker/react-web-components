@@ -1,4 +1,38 @@
-$color-blue: #196ef0 !default;
+// The following are the new colors - namespaced um, so far only the um-blue-5 is used
+
+// black and white
+$um-black: #000e1a;
+$um-white: #fff;
+
+// blues
+$um-blue-7: #10469c;
+$um-blue-5: #196ef0;
+
+// grays
+$um-gray-7: #6c6c6c;
+$um-gray-5: #b4b4b4;
+$um-gray-3: #d4d4d4;
+$um-gray-1: #f3f3f3;
+
+// greens
+$um-green-5: #24a249;
+$um-green-1: #e9f6ec;
+
+// indigos
+$um-indigo-5: #061884;
+
+// oranges
+$um-orange-5: #fc7b1e;
+
+// reds
+$um-red-5: #da1e28;
+$um-red-1: #fbe8e9;
+
+// yellows
+$um-yellow-5: #fdd13a;
+
+
+$color-blue: rgb(0, 167, 233) !default;
 $color-blue-light: rgb(36, 188, 243) !default;
 $color-blue-lighter: rgb(70, 196, 242) !default;
 $color-blue-lightest: rgb(216, 243, 253) !default;
@@ -61,16 +95,16 @@ $color-background-success: $color-green !default;
 
 $color-border: $color-grey-light !default;
 $color-border-light: $color-grey-lighter !default;
-$color-border-active: $color-blue !default;
+$color-border-active: $um-blue-5 !default;
 $color-border-error: $color-red !default;
 
 $color-shadow-light: $color-transparent-grey-lighter !default;
 $color-shadow: $color-transparent-grey-dark !default;
 $color-shadow-dark: $color-transparent-grey-darker !default;
 
-$color-anchor: $color-blue !default;
+$color-anchor: $um-blue-5 !default;
 
-$primary-btn-color: $color-blue !default;
+$primary-btn-color: $um-blue-5 !default;
 $primary-btn-color-text: $color-white !default;
 $primary-btn-color-hover: $color-blue-light !default;
 $primary-btn-color-active: $color-blue-lighter !default;
@@ -85,7 +119,7 @@ $secondary-btn-color-active: $color-background-darkest !default;
 $secondary-btn-color-disabled: $color-background-darker !default;
 $secondary-btn-color-disabled-text: $color-text-lighter !default;
 
-$quiet-btn-color-text: $color-blue !default;
+$quiet-btn-color-text: $um-blue-5 !default;
 $quiet-btn-color-hover: $color-background-darker !default;
 $quiet-btn-color-active: $color-background-darkest !default;
 $quiet-btn-color-disabled-text: $color-text-lighter !default;
@@ -98,7 +132,7 @@ $alert-btn-color-active: $color-background-darkest !default;
 $alert-btn-color-disabled: $color-background-darker !default;
 $alert-btn-color-disabled-text: $color-text-lighter !default;
 
-$progress-bar-color: $color-blue !default;
+$progress-bar-color: $um-blue-5 !default;
 $progress-bar-color-paused: $color-grey-mid !default;
 $progress-bar-color-background: $color-grey-lightest !default;
 
@@ -112,7 +146,7 @@ $context-menu-disabled-color-trigger: $color-grey-light !default;
 $context-menu-disabled-color-trigger-hover: $color-background-dark !default;
 $context-menu-disabled-color-hover: $color-transparent !default;
 
-$drop-down-menu-color-text-active: $color-blue !default;
+$drop-down-menu-color-text-active: $um-blue-5 !default;
 
 $checkbox-color-background-active: $primary-btn-color !default;
 $checkbox-color-border-active: $primary-btn-color !default;
@@ -120,14 +154,14 @@ $checkbox-color-tick-active: $color-white !default;
 $checkbox-color-border: $secondary-btn-color-border !default;
 $checkbox-color-tick-hover: $color-border !default;
 
-$tooltip-color-background: $color-blue !default;
+$tooltip-color-background: $um-blue-5 !default;
 $tooltip-dark-color-background: $color-grey-darker !default;
 $tooltip-color-text: $color-white !default;
 $tooltip-arrow-size: 15px !default;
 
 $input-field-color-border: $color-transparent-grey-dark !default;
 $input-field-color-border-hover: $color-transparent-grey-mid !default;
-$input-field-color-border-active: $color-blue !default;
+$input-field-color-border-active: $um-blue-5 !default;
 $input-field-color-border-error: $color-red !default;
 $input-field-color-placeholder: $color-transparent-grey-darker !default;
 
@@ -137,20 +171,20 @@ $modal-overlay-color: $color-transparent-grey-darker !default;
 $modal-overlay-color-light: $color-transparent-grey-mid !default;
 $modal-overlay-color-dark: $color-transparent-grey-darkest !default;
 
-$toolbar-color-background: $color-blue !default;
+$toolbar-color-background: $um-blue-5 !default;
 
 $tags-color-hover: $color-grey-darker !default;
 $tags-color-close-text: $color-white !default;
 $tags-color-close-background: $color-grey-dark !default;
 
 $pill-color-background: $color-grey-lighter !default;
-$pill-color-background-active: $color-blue !default;
+$pill-color-background-active: $um-blue-5 !default;
 
-$spinner-color: $color-blue !default;
+$spinner-color: $um-blue-5 !default;
 
 $toggle-button-color: $color-white !default;
 $toggle-button-color-background: $color-grey-light !default;
-$toggle-button-color-active: $color-blue !default;
+$toggle-button-color-active: $um-blue-5 !default;
 $toggle-button-color-background-focus: $color-grey-lighter !default;
 $toggle-button-color-active-focus: $color-blue-lighter !default;
 
@@ -158,7 +192,7 @@ $range-slider-color: $color-white !default;
 $range-slider-color-background-focus: $color-grey-lighter !default;
 $range-slider-color-background: $color-grey-light !default;
 
-$panel-arrow-color-blue: $color-blue !default;
+$panel-arrow-color-blue: $um-blue-5 !default;
 $panel-arrow-color-black: $color-black !default;
 
 $burger-menu-open-color: $color-white;
