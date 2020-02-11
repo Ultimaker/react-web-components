@@ -50,7 +50,7 @@
 
         &:hover,
         &:focus {
-            color: $color-blue;
+            color: $um-blue-5;
             text-decoration: none;
         }
 
@@ -79,7 +79,7 @@
         padding: 1.8rem 2.4rem;
 
         &.active .label {
-            color: $color-blue;
+            color: $um-blue-5;
         }
 
         &:hover,
