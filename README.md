@@ -1,7 +1,7 @@
 # React Web Components
 
 **Warning: this library is considered deprecated.
-New simple components should live in [stardust-web](https://github.com/Ultimaker/print-web).**
+New simple components should live in [stardust-web](https://github.com/Ultimaker/stardust-web).**
 
 ![Build](https://github.com/Ultimaker/react-web-components/workflows/Build%20and%20test/badge.svg)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=Ultimaker/react-web-components)](https://dependabot.com)
