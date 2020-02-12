@@ -16,7 +16,7 @@
 
     &.tooltip-trigger--south {
         &::after {
-            @include triangle($tooltip-arrow-size, $tooltip-color-background, up);
+            @include triangle($tooltip-arrow-size, $um-blue-5, up);
             bottom: -1 * $tooltip-arrow-size;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -33,7 +33,7 @@
 
     &.tooltip-trigger--west {
         &::after {
-            @include triangle($tooltip-arrow-size, $tooltip-color-background, right);
+            @include triangle($tooltip-arrow-size, $um-blue-5, right);
             top: 50%;
             left: -1 * $tooltip-arrow-size;
             transform: translate(0, -50%);
@@ -49,7 +49,7 @@
 
     &.tooltip-trigger--north {
         &::after {
-            @include triangle($tooltip-arrow-size, $tooltip-color-background, down);
+            @include triangle($tooltip-arrow-size, $um-blue-5, down);
             top: -0.5 * $tooltip-arrow-size;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -66,7 +66,7 @@
 
     .tooltip {
         display: none;
-        background-color: $tooltip-color-background;
+        background-color: $um-blue-5;
         color: $tooltip-color-text;
         font-family: $font-primary;
         position: absolute;
