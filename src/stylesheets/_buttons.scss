@@ -142,7 +142,7 @@ button {
 }
 
 .btn--quiet {
-    color: $quiet-btn-color-text;
+    color: $um-blue-5;
 
     &:hover,
     &:focus {
@@ -164,7 +164,7 @@ button {
     }
 
     .spinner .path {
-        stroke: $quiet-btn-color-text;
+        stroke: $um-blue-5;
     }
 }
 
