@@ -24,11 +24,11 @@
 
 .sub-navigation-menu--active {
     .drop-down-menu .drop-down-menu-base__trigger {
-        border-bottom-color: $color-border-active;
+        border-bottom-color: $um-blue-5;
 
         &:hover,
         &:focus {
-            border-bottom-color: $color-border-active;
+            border-bottom-color: $um-blue-5;
         }
     }
 }
