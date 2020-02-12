@@ -1,9 +1,10 @@
 # React Web Components
 
+**Warning: this library is considered deprecated.
+New simple components should live in [stardust-web](https://github.com/Ultimaker/print-web).**
+
 ![Build](https://github.com/Ultimaker/react-web-components/workflows/Build%20and%20test/badge.svg)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=Ultimaker/react-web-components)](https://dependabot.com)
-
-This library contains all shared components, utilities and templates for front-end applications within Ultimaker R&D.
 
 ## Installation
 Make sure you have the following dependencies installed on your machine:
