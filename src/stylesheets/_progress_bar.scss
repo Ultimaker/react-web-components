@@ -7,7 +7,7 @@
     .progress-bar__progress-indicator {
         height: 2px;
         display: inline-block;
-        background: $progress-bar-color;
+        background: $um-blue-5;
         transition: width 0.5s;
 
         &.stopped {
