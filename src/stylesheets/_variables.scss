@@ -100,7 +100,6 @@ $color-shadow-light: $color-transparent-grey-lighter !default;
 $color-shadow: $color-transparent-grey-dark !default;
 $color-shadow-dark: $color-transparent-grey-darker !default;
 
-$primary-btn-color: $um-blue-5 !default;
 $primary-btn-color-text: $color-white !default;
 $primary-btn-color-hover: $color-blue-light !default;
 $primary-btn-color-active: $color-blue-lighter !default;
@@ -144,8 +143,8 @@ $context-menu-disabled-color-hover: $color-transparent !default;
 
 $drop-down-menu-color-text-active: $um-blue-5 !default;
 
-$checkbox-color-background-active: $primary-btn-color !default;
-$checkbox-color-border-active: $primary-btn-color !default;
+$checkbox-color-background-active: $um-blue-5 !default;
+$checkbox-color-border-active: $um-blue-5 !default;
 $checkbox-color-tick-active: $color-white !default;
 $checkbox-color-border: $secondary-btn-color-border !default;
 $checkbox-color-tick-hover: $color-border !default;
