@@ -85,59 +85,60 @@ button {
 }
 
 .btn--primary {
-    color: $primary-btn-color-text;
+    color: $um-white;
     background-color: $um-blue-5;
 
     &:hover,
     &:focus {
-        background-color: $primary-btn-color-hover;
+        background-color: $um-blue-7;
     }
 
     &:active,
     &.waiting,
     &.waiting:hover {
-        background-color: $primary-btn-color-active;
+        background-color: $um-blue-5;
     }
 
     &.disabled,
     .disabled:hover,
     .disabled:active,
     .disabled:focus {
-        background-color: $primary-btn-color-disabled;
-        color: $primary-btn-color-disabled-text;
+        background-color: $um-gray-5;
     }
 
     .spinner .path {
-        stroke: $primary-btn-color-text;
+        stroke: $um-white;
     }
 }
 
 .btn--secondary {
-    border: 1px solid $secondary-btn-color-border;
+    background-color: $um-white;
+    border: 2px solid;
     padding: 0.8rem 3.5rem 1rem;
-    color: $secondary-btn-color-text;
+    color: $um-blue-5;
 
     &:hover,
     &:focus {
-        background-color: $secondary-btn-color-hover;
+        background-color: $um-gray-3;
     }
 
     &:active,
     &.waiting,
     &.waiting:hover {
-        background-color: $secondary-btn-color-active;
+        background-color: $um-white;
     }
 
     &.disabled,
     &.disabled:hover,
     &.disabled:active,
     .disabled:focus {
-        background-color: $secondary-btn-color-disabled;
-        color: $secondary-btn-color-disabled-text;
+        background-color: $um-white;
+        border-color: $um-gray-5;
+        color: $um-gray-5;
     }
 
     .spinner .path {
-        stroke: $secondary-btn-color-text;
+        stroke: $um-blue-5;
     }
 }
 
@@ -146,13 +147,13 @@ button {
 
     &:hover,
     &:focus {
-        background-color: $quiet-btn-color-hover;
+        background-color: $um-gray-3;
     }
 
     &:active,
     &.waiting,
     &.waiting:hover {
-        background-color: $quiet-btn-color-active;
+        background-color: transparent;
     }
 
     &.disabled,
@@ -160,7 +161,7 @@ button {
     &.disabled:active,
     .disabled:focus {
         background-color: transparent;
-        color: $quiet-btn-color-disabled-text;
+        color: $um-gray-5;
     }
 
     .spinner .path {
@@ -169,32 +170,32 @@ button {
 }
 
 .btn--alert {
-    border: 1px solid $alert-btn-color-border;
+    border: 2px solid $um-red-5;
     padding: 0.8rem 3.5rem 1rem;
-    color: $alert-btn-color-text;
-    background-color: $alert-btn-color;
+    color: $um-red-5;
+    background-color: $um-white;
 
     &:hover,
     &:focus {
-        background-color: $alert-btn-color-hover;
+        background-color: $um-gray-3;
     }
 
     &:active,
     &.waiting,
     &.waiting:hover {
-        background-color: $alert-btn-color-active;
+        background-color: $um-white;
     }
 
     &.disabled,
     .disabled:hover,
     .disabled:active,
     .disabled:focus {
-        background-color: $alert-btn-color-disabled;
-        color: $alert-btn-color-disabled-text;
+        background-color: $um-gray-3;
+        color: $um-white;
     }
 
     .spinner .path {
-        stroke: $alert-btn-color-text;
+        stroke: $um-red-5;
     }
 }
 
@@ -292,8 +293,8 @@ button {
             .btn--circle {
                 width: 4.6rem;
                 height: 4.6rem;
-                background-color: $color-white;
-                color: $color-black;
+                background-color: $um-white;
+                color: $um-black;
             }
         }
     }

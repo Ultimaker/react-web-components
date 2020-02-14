@@ -15,7 +15,7 @@
     position: relative;
     display: block;
     border-radius: 2px;
-    border: 1px solid $checkbox-color-border;
+    border: 1px solid $um-black;
     transition: background 0.2s ease-out,
         border-color 0.2s ease-out;
 
@@ -33,7 +33,7 @@
     position: absolute;
     top: 0.6rem;
     left: 0.6rem;
-    border: 3px solid $checkbox-color-tick-hover;
+    border: 3px solid $um-gray-5;
     border-top: none;
     border-right: none;
     background: transparent;
@@ -66,7 +66,7 @@
 
     .checkbox__visual::after {
         opacity: 1;
-        border-color: $checkbox-color-tick-active;
+        border-color: $um-white;
     }
 }
 

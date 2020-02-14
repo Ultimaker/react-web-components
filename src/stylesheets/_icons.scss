@@ -22,42 +22,42 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: $primary-btn-color-text;
+        color: $um-white;
         background-color: $um-blue-5;
         font-size: 1.6rem;
 
         &.primary {
             svg {
-                fill: $primary-btn-color-text;
+                fill: $um-blue-5;
             }
 
             &.disabled {
-                background-color: $primary-btn-color-disabled;
-                color: $primary-btn-color-disabled-text;
+                background-color: $um-gray-5;
+                color: $um-white;
 
                 svg {
-                    fill: $primary-btn-color-disabled-text;
+                    fill: $um-white;
                 }
             }
         }
 
         &.secondary {
-            color: $secondary-btn-color-text;
-            background-color: $secondary-btn-color;
-            border: 2px solid $secondary-btn-color-border;
+            color: $um-blue-5;
+            background-color: $um-white;
+            border: 2px solid;
 
             svg {
-                fill: $secondary-btn-color-text;
+                fill: $um-blue-5;
             }
         }
 
         &.alert {
-            color: $alert-btn-color-text;
-            background-color: $alert-btn-color;
-            border: 2px solid $alert-btn-color-border;
+            color: $um-red-5;
+            background-color: $um-white;
+            border: 2px solid;
 
             svg {
-                fill: $alert-btn-color-text;
+                fill: $um-red-5;
             }
         }
 

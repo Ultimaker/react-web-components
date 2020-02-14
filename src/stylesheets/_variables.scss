@@ -100,32 +100,6 @@ $color-shadow-light: $color-transparent-grey-lighter !default;
 $color-shadow: $color-transparent-grey-dark !default;
 $color-shadow-dark: $color-transparent-grey-darker !default;
 
-$primary-btn-color-text: $color-white !default;
-$primary-btn-color-hover: $color-blue-light !default;
-$primary-btn-color-active: $color-blue-lighter !default;
-$primary-btn-color-disabled: $color-background-darker !default;
-$primary-btn-color-disabled-text: $color-text-lighter !default;
-
-$secondary-btn-color: $color-transparent !default;
-$secondary-btn-color-text: $color-text !default;
-$secondary-btn-color-border: $color-black !default;
-$secondary-btn-color-hover: $color-background-darker !default;
-$secondary-btn-color-active: $color-background-darkest !default;
-$secondary-btn-color-disabled: $color-background-darker !default;
-$secondary-btn-color-disabled-text: $color-text-lighter !default;
-
-$quiet-btn-color-hover: $color-background-darker !default;
-$quiet-btn-color-active: $color-background-darkest !default;
-$quiet-btn-color-disabled-text: $color-text-lighter !default;
-
-$alert-btn-color: $color-transparent !default;
-$alert-btn-color-text: $color-red !default;
-$alert-btn-color-border: $color-red !default;
-$alert-btn-color-hover: $color-background-darker !default;
-$alert-btn-color-active: $color-background-darkest !default;
-$alert-btn-color-disabled: $color-background-darker !default;
-$alert-btn-color-disabled-text: $color-text-lighter !default;
-
 $progress-bar-color-paused: $color-grey-mid !default;
 $progress-bar-color-background: $color-grey-lightest !default;
 
@@ -138,10 +112,6 @@ $context-menu-color-chevron-shadow: $color-transparent-grey-light !default;
 $context-menu-disabled-color-trigger: $color-grey-light !default;
 $context-menu-disabled-color-trigger-hover: $color-background-dark !default;
 $context-menu-disabled-color-hover: $color-transparent !default;
-
-$checkbox-color-tick-active: $color-white !default;
-$checkbox-color-border: $secondary-btn-color-border !default;
-$checkbox-color-tick-hover: $color-border !default;
 
 $tooltip-dark-color-background: $color-grey-darker !default;
 $tooltip-color-text: $color-white !default;
