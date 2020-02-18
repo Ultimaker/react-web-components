@@ -54,6 +54,7 @@ describe('The code input field component', () => {
             labelLayoutWidth: '1/1',
             labelWidthBreakpoint: 'sm',
             onChangeHandler: props.onChangeHandler,
+            showValidationError: true,
             inputChildren: props.children,
             staticField: false,
             touched: false,

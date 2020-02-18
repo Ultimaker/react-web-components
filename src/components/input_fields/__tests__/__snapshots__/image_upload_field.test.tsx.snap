@@ -6,6 +6,7 @@ exports[`The image upload field component should render a wrapper 1`] = `
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
   onChangeHandler={[MockFunction]}
+  showValidationError={true}
   staticField={false}
   touched={false}
 >
