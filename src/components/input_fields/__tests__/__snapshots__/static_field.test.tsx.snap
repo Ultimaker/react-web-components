@@ -6,6 +6,7 @@ exports[`The static field component should render an input wrapper 1`] = `
   inputChildren="child"
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
+  showValidationError={true}
   staticField={true}
   touched={false}
   value="2018"

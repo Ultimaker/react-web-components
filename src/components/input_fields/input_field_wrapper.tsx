@@ -73,6 +73,7 @@ export class InputFieldWrapper extends React.Component<InputFieldWrapperProps, {
         labelLayoutWidth: '1/1',
         labelWidthBreakpoint: 'sm',
         staticField: false,
+        showValidationError: true,
     };
 
     constructor(props) {

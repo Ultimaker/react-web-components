@@ -6,6 +6,7 @@ exports[`The children field component should render a wrapper 1`] = `
   inputChildren={null}
   labelLayoutWidth="1/1"
   labelWidthBreakpoint="sm"
+  showValidationError={true}
   staticField={false}
 >
   <div>
