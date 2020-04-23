@@ -26,6 +26,11 @@ body {
 }
 
 .app__main {
+    // These two will force a new stacking context and allow context menus
+    // inside the main area to stay under the header at the top.
+    position: relative;
+    z-index: 0;
+
     flex: 1;
     padding-top: 5.5rem;
 
