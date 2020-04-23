@@ -1,0 +1,22 @@
+name: Lint, test and build
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Npm cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('**/package.json') }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.13.1
+      - run: npm install
+      - run: npm run build
+      - run: npm run lint
