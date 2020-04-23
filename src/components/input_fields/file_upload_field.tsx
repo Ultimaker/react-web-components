@@ -62,6 +62,7 @@ export class FileUploadField extends React.Component<FileUploadFieldProps, FileU
         if (onReadHandler) {
             const reader = new FileReader();
             reader.onload = () => onReadHandler(id, reader.result as string);
+            // eslint-disable-next-line no-console
             reader.onerror = console.error; // TODO
             reader.readAsDataURL(target.files[0]);
         }
