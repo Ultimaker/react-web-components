@@ -1,0 +1,35 @@
+name: Lint, test, build, and publish
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  publish:
+    name: Publish regular version
+    if: "!contains(github.ref, 'beta')"
+    runs-on: ubuntu-latest
+    env:
+      CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Npm cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('**/package.json') }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.13.1
+      - run: npm install
+      - run: npm publish
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: Stardust - Deploy
+          fields: repo,commit,message,author
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_USERNAME: Stardust
+        if: failure()
