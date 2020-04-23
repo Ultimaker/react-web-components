@@ -103,6 +103,8 @@ export class Button extends React.Component<ButtonProps, {}> {
             id, disabled, showSpinner, type, children,
         } = this.props;
 
+        if (type === 'link') return null;
+
         return (
             // eslint-disable-next-line react/button-has-type
             <button

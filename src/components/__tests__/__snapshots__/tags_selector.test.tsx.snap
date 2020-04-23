@@ -10,6 +10,7 @@ exports[`The TagsSelector component should render 1`] = `
     allowNew={true}
     autofocus={false}
     autoresize={false}
+    clearInputOnDelete={true}
     delimiterChars={Array []}
     delimiters={
       Array [
@@ -24,8 +25,10 @@ exports[`The TagsSelector component should render 1`] = `
     maxLength={30}
     maxSuggestionsLength={6}
     minQueryLength={2}
+    noSuggestionsText={null}
     placeholder="Add new tag"
     suggestions={Array []}
+    suggestionsFilter={null}
     tagComponent={null}
     tags={
       Array [
