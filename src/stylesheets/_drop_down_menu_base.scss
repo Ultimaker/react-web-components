@@ -14,6 +14,11 @@
     z-index: 99998;
 }
 
+// Prevent the context from appearing on top of the header.
+.app__main .drop-down-menu-base__menu-container {
+    z-index: 9998;
+}
+
 .drop-down-menu-base__arrow {
     background: $color-white;
     border-top: 1px solid $context-menu-color-chevron-shadow;
