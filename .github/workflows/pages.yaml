@@ -15,11 +15,11 @@ jobs:
       uses: actions/cache@v1
       with:
         path: /home/runner/.npm
-        key: npm-cache-${{ hashFiles('**/package-lock.json') }}
+        key: npm-cache-${{ hashFiles('**/package.json') }}
     - uses: actions/setup-node@v1
       with:
-        node-version: 10.x
-    - run: npm ci
+        node-version: 12.13.1
+    - run: npm install
     - run: npm run build
     - name: Upload pages
       uses: actions/upload-artifact@v1
