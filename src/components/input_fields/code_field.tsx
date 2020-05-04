@@ -43,6 +43,12 @@ export interface CodeFieldState {
  */
 export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
     /**
+     * if the user wrote one of the later characters but not earlier ones,
+     * we add this character as filler
+     */
+    private static readonly _emptyChar: string = '\t';
+
+    /**
      * References to the input fields to focus on them.
      * Note that we don't use React.CreateRef because that would require some extra code
      * for re-initializing the array whenever {maxLength} changes.
@@ -101,12 +107,6 @@ export class CodeField extends React.Component<CodeFieldProps, CodeFieldState> {
             values: range(0, maxLength).map((i) => (valueStr[i] === CodeField._emptyChar ? '' : valueStr[i] || '')),
         };
     }
-
-    /**
-     * if the user wrote one of the later characters but not earlier ones,
-     * we add this character as filler
-     */
-    private static readonly _emptyChar: string = '\t';
 
     /**
      * Handles changes to the text selection in the document.
