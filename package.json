@@ -76,7 +76,7 @@
         "@types/lodash.debounce": "^4.0.6",
         "@types/minimist": "^1.2.0",
         "@types/node": "^12.12.26",
-        "@types/node-gettext": "^2.0.1",
+        "@types/node-gettext": "^3.0.1",
         "@types/normalize-package-data": "^2.4.0",
         "@types/parse-json": "^4.0.0",
         "@types/q": "^1.5.2",
