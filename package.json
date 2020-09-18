@@ -44,7 +44,7 @@
         "node-gettext": "^2.0.0",
         "react-alice-carousel": "^1.14.0",
         "react-avatar-editor": "^11.0.4",
-        "react-date-picker": "6.13.0",
+        "react-date-picker": "8.0.3",
         "react-dropzone": "^8.1.0",
         "react-player": "^1.7.0",
         "react-router-dom": "^4.1.1",
