@@ -51,7 +51,7 @@
         "react-spring": "7.2.0",
         "react-tag-autocomplete": "^5.8.0",
         "react-textarea-autosize": "^7.0.4",
-        "uuid": "^7.0.0"
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
         "@babel/core": "^7.8.4",
