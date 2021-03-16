@@ -1,3 +1,5 @@
+Copyright © Ultimaker 2018-2021 
+
 # React Web Components
 
 **Warning: this library is considered deprecated.
