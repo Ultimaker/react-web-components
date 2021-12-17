@@ -131,10 +131,10 @@ export class Carousel extends React.Component<CarouselProps, {}> {
         return (
             <div className={classNames('carousel__carousel', breakpoint && `hide-${breakpoint}`)}>
                 <AliceCarousel
-                    mouseTrackingEnabled
+                    mouseTracking
                     autoPlay={autoPlayInterval > 0}
-                    buttonsDisabled
-                    duration={transitionDuration}
+                    disableButtonsControls
+                    animationDuration={transitionDuration}
                     autoPlayInterval={autoPlayInterval}
                     responsive={responsive}
                 >
