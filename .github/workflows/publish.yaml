@@ -1,35 +1,51 @@
+---
 name: Lint, test, build, and publish
 on:
   release:
     types:
       - published
 
+env:
+  # Vault settings
+  VAULT_ADDR: https://vault-eyzrjbz27a-ew.a.run.app/
+  # To get the role id, change to the terraform production environment directory, and run:
+  # terraform state pull | jq '.resources[] | select(.type=="vault_approle_auth_backend_role" and .name=="github").instances[].attributes.role_id'
+  VAULT_ROLE_ID: 572856f8-3509-d6f8-7369-11468e595488
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   publish:
     name: Publish regular version
     if: "!contains(github.ref, 'beta')"
     runs-on: ubuntu-latest
-    env:
-      CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Npm cache
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('**/package.json') }}
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12.13.1
-      - run: npm install
-      - run: npm publish
-      - uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          author_name: Stardust - Deploy
-          fields: repo,commit,message,author
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_USERNAME: Stardust
-        if: failure()
+    - name: Get common secrets
+      uses: hashicorp/vault-action@v2.3.1
+      id: secrets
+      with:
+        url: ${{ env.VAULT_ADDR }}
+        method: approle
+        roleId: ${{ env.VAULT_ROLE_ID }}
+        secretId: ${{ secrets.VAULT_SECRET_ID }}
+        secrets: |
+          secret/data/systems/common/slack webhook
+    - uses: actions/checkout@v2
+    - name: NPM cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: npm-${{ hashFiles('**/package-lock.json') }}
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+    - run: npm ci
+    - run: npm publish
+    - uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        author_name: Stardust - Deploy
+        fields: repo,commit,message,author
+      env:
+        SLACK_WEBHOOK_URL: ${{ steps.secrets.outputs.webhook }}
+        SLACK_USERNAME: Stardust
+      if: failure()

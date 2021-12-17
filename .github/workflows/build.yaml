@@ -1,22 +1,23 @@
+---
 name: Lint, test and build
 on: push
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Npm cache
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('**/package.json') }}
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12.13.1
-      - run: npm install
-      - run: npm run build
-      - run: npm run lint
+    - uses: actions/checkout@v2
+    - name: NPM cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: npm-${{ hashFiles('**/package-lock.json') }}
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+    - run: npm ci
+    - run: npm run build
+    - run: npm run lint
