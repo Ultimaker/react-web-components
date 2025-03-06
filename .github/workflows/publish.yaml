@@ -19,7 +19,7 @@ jobs:
         with:
           path: ~/.npm
           key: npm-${{ hashFiles('**/package.json') }}
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
           node-version: 12.13.1
       - run: npm install
