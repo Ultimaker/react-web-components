@@ -2,7 +2,7 @@ const path = require('path');
 const sass = require('sass');
 const webpack = require('webpack');
 
-const static_url = process.env.STATIC_URL || 'http://localhost:9001';
+const static_url = 'http://localhost:9001';
 
 module.exports = {
     plugins: [

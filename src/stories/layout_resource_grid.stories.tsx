@@ -15,9 +15,7 @@ import SubResourceList from '../components/sub_resource_list';
 
 const stories = storiesOf('Layout', module);
 
-const logobot = process.env.NODE_ENV === 'development'
-    ? '../images/logobot-placeholder-dark.svg'
-    : './images/logobot-placeholder-dark.svg';
+const logobot = './images/logobot-placeholder-dark.svg';
 
 stories.addDecorator(withKnobs);
 
